@@ -1,0 +1,1126 @@
+<!DOCTYPE html>
+<html dir="ltr" lang="en">
+<head>
+	<meta charset="UTF-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1" />
+<meta name='robots' content='max-image-preview:large' />
+<meta name="google-site-verification" content="XECAgs1qhOf9tfH5snpZFPxF4nDR6Jmy58IraJfFVo0" />
+
+<!-- Async WordPress.com Remote Login -->
+<script id="wpcom_remote_login_js">
+var wpcom_remote_login_extra_auth = '';
+function wpcom_remote_login_remove_dom_node_id( element_id ) {
+	var dom_node = document.getElementById( element_id );
+	if ( dom_node ) { dom_node.parentNode.removeChild( dom_node ); }
+}
+function wpcom_remote_login_remove_dom_node_classes( class_name ) {
+	var dom_nodes = document.querySelectorAll( '.' + class_name );
+	for ( var i = 0; i < dom_nodes.length; i++ ) {
+		dom_nodes[ i ].parentNode.removeChild( dom_nodes[ i ] );
+	}
+}
+function wpcom_remote_login_final_cleanup() {
+	wpcom_remote_login_remove_dom_node_classes( "wpcom_remote_login_msg" );
+	wpcom_remote_login_remove_dom_node_id( "wpcom_remote_login_key" );
+	wpcom_remote_login_remove_dom_node_id( "wpcom_remote_login_validate" );
+	wpcom_remote_login_remove_dom_node_id( "wpcom_remote_login_js" );
+	wpcom_remote_login_remove_dom_node_id( "wpcom_request_access_iframe" );
+	wpcom_remote_login_remove_dom_node_id( "wpcom_request_access_styles" );
+}
+
+// Watch for messages back from the remote login
+window.addEventListener( "message", function( e ) {
+	if ( e.origin === "https://r-login.wordpress.com" ) {
+		var data = {};
+		try {
+			data = JSON.parse( e.data );
+		} catch( e ) {
+			wpcom_remote_login_final_cleanup();
+			return;
+		}
+
+		if ( data.msg === 'LOGIN' ) {
+			// Clean up the login check iframe
+			wpcom_remote_login_remove_dom_node_id( "wpcom_remote_login_key" );
+
+			var id_regex = new RegExp( /^[0-9]+$/ );
+			var token_regex = new RegExp( /^.*|.*|.*$/ );
+			if (
+				token_regex.test( data.token )
+				&& id_regex.test( data.wpcomid )
+			) {
+				// We have everything we need to ask for a login
+				var script = document.createElement( "script" );
+				script.setAttribute( "id", "wpcom_remote_login_validate" );
+				script.src = '/remote-login.php?wpcom_remote_login=validate'
+					+ '&wpcomid=' + data.wpcomid
+					+ '&token=' + encodeURIComponent( data.token )
+					+ '&host=' + window.location.protocol
+					+ '//' + window.location.hostname
+					+ '&postid=13'
+					+ '&is_singular=';
+				document.body.appendChild( script );
+			}
+
+			return;
+		}
+
+		// Safari ITP, not logged in, so redirect
+		if ( data.msg === 'LOGIN-REDIRECT' ) {
+			window.location = 'https://wordpress.com/log-in?redirect_to=' + window.location.href;
+			return;
+		}
+
+		// Safari ITP, storage access failed, remove the request
+		if ( data.msg === 'LOGIN-REMOVE' ) {
+			var css_zap = 'html { -webkit-transition: margin-top 1s; transition: margin-top 1s; } /* 9001 */ html { margin-top: 0 !important; } * html body { margin-top: 0 !important; } @media screen and ( max-width: 782px ) { html { margin-top: 0 !important; } * html body { margin-top: 0 !important; } }';
+			var style_zap = document.createElement( 'style' );
+			style_zap.type = 'text/css';
+			style_zap.appendChild( document.createTextNode( css_zap ) );
+			document.body.appendChild( style_zap );
+
+			var e = document.getElementById( 'wpcom_request_access_iframe' );
+			e.parentNode.removeChild( e );
+
+			document.cookie = 'wordpress_com_login_access=denied; path=/; max-age=31536000';
+
+			return;
+		}
+
+		// Safari ITP
+		if ( data.msg === 'REQUEST_ACCESS' ) {
+			console.log( 'request access: safari' );
+
+			// Check ITP iframe enable/disable knob
+			if ( wpcom_remote_login_extra_auth !== 'safari_itp_iframe' ) {
+				return;
+			}
+
+			// If we are in a "private window" there is no ITP.
+			var private_window = false;
+			try {
+				var opendb = window.openDatabase( null, null, null, null );
+			} catch( e ) {
+				private_window = true;
+			}
+
+			if ( private_window ) {
+				console.log( 'private window' );
+				return;
+			}
+
+			var iframe = document.createElement( 'iframe' );
+			iframe.id = 'wpcom_request_access_iframe';
+			iframe.setAttribute( 'scrolling', 'no' );
+			iframe.setAttribute( 'sandbox', 'allow-storage-access-by-user-activation allow-scripts allow-same-origin allow-top-navigation-by-user-activation' );
+			iframe.src = 'https://r-login.wordpress.com/remote-login.php?wpcom_remote_login=request_access&origin=' + encodeURIComponent( data.origin ) + '&wpcomid=' + encodeURIComponent( data.wpcomid );
+
+			var css = 'html { -webkit-transition: margin-top 1s; transition: margin-top 1s; } /* 9001 */ html { margin-top: 46px !important; } * html body { margin-top: 46px !important; } @media screen and ( max-width: 660px ) { html { margin-top: 71px !important; } * html body { margin-top: 71px !important; } #wpcom_request_access_iframe { display: block; height: 71px !important; } } #wpcom_request_access_iframe { border: 0px; height: 46px; position: fixed; top: 0; left: 0; width: 100%; min-width: 100%; z-index: 99999; background: #23282d; } ';
+
+			var style = document.createElement( 'style' );
+			style.type = 'text/css';
+			style.id = 'wpcom_request_access_styles';
+			style.appendChild( document.createTextNode( css ) );
+			document.body.appendChild( style );
+
+			document.body.appendChild( iframe );
+		}
+
+		if ( data.msg === 'DONE' ) {
+			wpcom_remote_login_final_cleanup();
+		}
+	}
+}, false );
+
+// Inject the remote login iframe after the page has had a chance to load
+// more critical resources
+window.addEventListener( "DOMContentLoaded", function( e ) {
+	var iframe = document.createElement( "iframe" );
+	iframe.style.display = "none";
+	iframe.setAttribute( "scrolling", "no" );
+	iframe.setAttribute( "id", "wpcom_remote_login_key" );
+	iframe.src = "https://r-login.wordpress.com/remote-login.php"
+		+ "?wpcom_remote_login=key"
+		+ "&origin=aHR0cHM6Ly9hdXRvbWF0dGljLmNvbQ%3D%3D"
+		+ "&wpcomid=54117"
+		+ "&time=" + Math.floor( Date.now() / 1000 );
+	document.body.appendChild( iframe );
+}, false );
+</script>
+<title>Privacy Policy &#8211; Automattic</title>
+<link rel="alternate" type="application/rss+xml" title="Automattic &raquo; Feed" href="https://automattic.com/feed/" />
+<link rel="alternate" type="application/rss+xml" title="Automattic &raquo; Comments Feed" href="https://automattic.com/comments/feed/" />
+	<script type="text/javascript">
+		/* <![CDATA[ */
+		function addLoadEvent(func) {
+			var oldonload = window.onload;
+			if (typeof window.onload != 'function') {
+				window.onload = func;
+			} else {
+				window.onload = function () {
+					oldonload();
+					func();
+				}
+			}
+		}
+		/* ]]> */
+	</script>
+	<link crossorigin='anonymous' rel='stylesheet' id='all-css-0-1' href='/wp-content/mu-plugins/jetpack-plugin/moon/modules/related-posts/related-posts.css?m=1753284714i&cssminify=yes' type='text/css' media='all' />
+<style id='wp-block-image-inline-css'>
+.wp-block-image>a,.wp-block-image>figure>a{display:inline-block}.wp-block-image img{box-sizing:border-box;height:auto;max-width:100%;vertical-align:bottom}@media not (prefers-reduced-motion){.wp-block-image img.hide{visibility:hidden}.wp-block-image img.show{animation:show-content-image .4s}}.wp-block-image[style*=border-radius] img,.wp-block-image[style*=border-radius]>a{border-radius:inherit}.wp-block-image.has-custom-border img{box-sizing:border-box}.wp-block-image.aligncenter{text-align:center}.wp-block-image.alignfull>a,.wp-block-image.alignwide>a{width:100%}.wp-block-image.alignfull img,.wp-block-image.alignwide img{height:auto;width:100%}.wp-block-image .aligncenter,.wp-block-image .alignleft,.wp-block-image .alignright,.wp-block-image.aligncenter,.wp-block-image.alignleft,.wp-block-image.alignright{display:table}.wp-block-image .aligncenter>figcaption,.wp-block-image .alignleft>figcaption,.wp-block-image .alignright>figcaption,.wp-block-image.aligncenter>figcaption,.wp-block-image.alignleft>figcaption,.wp-block-image.alignright>figcaption{caption-side:bottom;display:table-caption}.wp-block-image .alignleft{float:left;margin:.5em 1em .5em 0}.wp-block-image .alignright{float:right;margin:.5em 0 .5em 1em}.wp-block-image .aligncenter{margin-left:auto;margin-right:auto}.wp-block-image :where(figcaption){margin-bottom:1em;margin-top:.5em}.wp-block-image.is-style-circle-mask img{border-radius:9999px}@supports ((-webkit-mask-image:none) or (mask-image:none)) or (-webkit-mask-image:none){.wp-block-image.is-style-circle-mask img{border-radius:0;-webkit-mask-image:url('data:image/svg+xml;utf8,<svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg"><circle cx="50" cy="50" r="50"/></svg>');mask-image:url('data:image/svg+xml;utf8,<svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg"><circle cx="50" cy="50" r="50"/></svg>');mask-mode:alpha;-webkit-mask-position:center;mask-position:center;-webkit-mask-repeat:no-repeat;mask-repeat:no-repeat;-webkit-mask-size:contain;mask-size:contain}}:root :where(.wp-block-image.is-style-rounded img,.wp-block-image .is-style-rounded img){border-radius:9999px}.wp-block-image figure{margin:0}.wp-lightbox-container{display:flex;flex-direction:column;position:relative}.wp-lightbox-container img{cursor:zoom-in}.wp-lightbox-container img:hover+button{opacity:1}.wp-lightbox-container button{align-items:center;backdrop-filter:blur(16px) saturate(180%);background-color:#5a5a5a40;border:none;border-radius:4px;cursor:zoom-in;display:flex;height:20px;justify-content:center;opacity:0;padding:0;position:absolute;right:16px;text-align:center;top:16px;width:20px;z-index:100}@media not (prefers-reduced-motion){.wp-lightbox-container button{transition:opacity .2s ease}}.wp-lightbox-container button:focus-visible{outline:3px auto #5a5a5a40;outline:3px auto -webkit-focus-ring-color;outline-offset:3px}.wp-lightbox-container button:hover{cursor:pointer;opacity:1}.wp-lightbox-container button:focus{opacity:1}.wp-lightbox-container button:focus,.wp-lightbox-container button:hover,.wp-lightbox-container button:not(:hover):not(:active):not(.has-background){background-color:#5a5a5a40;border:none}.wp-lightbox-overlay{box-sizing:border-box;cursor:zoom-out;height:100vh;left:0;overflow:hidden;position:fixed;top:0;visibility:hidden;width:100%;z-index:100000}.wp-lightbox-overlay .close-button{align-items:center;cursor:pointer;display:flex;justify-content:center;min-height:40px;min-width:40px;padding:0;position:absolute;right:calc(env(safe-area-inset-right) + 16px);top:calc(env(safe-area-inset-top) + 16px);z-index:5000000}.wp-lightbox-overlay .close-button:focus,.wp-lightbox-overlay .close-button:hover,.wp-lightbox-overlay .close-button:not(:hover):not(:active):not(.has-background){background:none;border:none}.wp-lightbox-overlay .lightbox-image-container{height:var(--wp--lightbox-container-height);left:50%;overflow:hidden;position:absolute;top:50%;transform:translate(-50%,-50%);transform-origin:top left;width:var(--wp--lightbox-container-width);z-index:9999999999}.wp-lightbox-overlay .wp-block-image{align-items:center;box-sizing:border-box;display:flex;height:100%;justify-content:center;margin:0;position:relative;transform-origin:0 0;width:100%;z-index:3000000}.wp-lightbox-overlay .wp-block-image img{height:var(--wp--lightbox-image-height);min-height:var(--wp--lightbox-image-height);min-width:var(--wp--lightbox-image-width);width:var(--wp--lightbox-image-width)}.wp-lightbox-overlay .wp-block-image figcaption{display:none}.wp-lightbox-overlay button{background:none;border:none}.wp-lightbox-overlay .scrim{background-color:#fff;height:100%;opacity:.9;position:absolute;width:100%;z-index:2000000}.wp-lightbox-overlay.active{visibility:visible}@media not (prefers-reduced-motion){.wp-lightbox-overlay.active{animation:turn-on-visibility .25s both}.wp-lightbox-overlay.active img{animation:turn-on-visibility .35s both}.wp-lightbox-overlay.show-closing-animation:not(.active){animation:turn-off-visibility .35s both}.wp-lightbox-overlay.show-closing-animation:not(.active) img{animation:turn-off-visibility .25s both}.wp-lightbox-overlay.zoom.active{animation:none;opacity:1;visibility:visible}.wp-lightbox-overlay.zoom.active .lightbox-image-container{animation:lightbox-zoom-in .4s}.wp-lightbox-overlay.zoom.active .lightbox-image-container img{animation:none}.wp-lightbox-overlay.zoom.active .scrim{animation:turn-on-visibility .4s forwards}.wp-lightbox-overlay.zoom.show-closing-animation:not(.active){animation:none}.wp-lightbox-overlay.zoom.show-closing-animation:not(.active) .lightbox-image-container{animation:lightbox-zoom-out .4s}.wp-lightbox-overlay.zoom.show-closing-animation:not(.active) .lightbox-image-container img{animation:none}.wp-lightbox-overlay.zoom.show-closing-animation:not(.active) .scrim{animation:turn-off-visibility .4s forwards}}@keyframes show-content-image{0%{visibility:hidden}99%{visibility:hidden}to{visibility:visible}}@keyframes turn-on-visibility{0%{opacity:0}to{opacity:1}}@keyframes turn-off-visibility{0%{opacity:1;visibility:visible}99%{opacity:0;visibility:visible}to{opacity:0;visibility:hidden}}@keyframes lightbox-zoom-in{0%{transform:translate(calc((-100vw + var(--wp--lightbox-scrollbar-width))/2 + var(--wp--lightbox-initial-left-position)),calc(-50vh + var(--wp--lightbox-initial-top-position))) scale(var(--wp--lightbox-scale))}to{transform:translate(-50%,-50%) scale(1)}}@keyframes lightbox-zoom-out{0%{transform:translate(-50%,-50%) scale(1);visibility:visible}99%{visibility:visible}to{transform:translate(calc((-100vw + var(--wp--lightbox-scrollbar-width))/2 + var(--wp--lightbox-initial-left-position)),calc(-50vh + var(--wp--lightbox-initial-top-position))) scale(var(--wp--lightbox-scale));visibility:hidden}}
+/*# sourceURL=/wp-content/plugins/gutenberg-core/v22.2.0/build/styles/block-library/image/style.css */
+</style>
+<style id='wp-block-paragraph-inline-css'>
+.is-small-text{font-size:.875em}.is-regular-text{font-size:1em}.is-large-text{font-size:2.25em}.is-larger-text{font-size:3em}.has-drop-cap:not(:focus):first-letter{float:left;font-size:8.4em;font-style:normal;font-weight:100;line-height:.68;margin:.05em .1em 0 0;text-transform:uppercase}body.rtl .has-drop-cap:not(:focus):first-letter{float:none;margin-left:.1em}p.has-drop-cap.has-background{overflow:hidden}:root :where(p.has-background){padding:1.25em 2.375em}:where(p.has-text-color:not(.has-link-color)) a{color:inherit}p.has-text-align-left[style*="writing-mode:vertical-lr"],p.has-text-align-right[style*="writing-mode:vertical-rl"]{rotate:180deg}
+/*# sourceURL=/wp-content/plugins/gutenberg-core/v22.2.0/build/styles/block-library/paragraph/style.css */
+</style>
+<style id='wp-block-group-inline-css'>
+.wp-block-group{box-sizing:border-box}:where(.wp-block-group.wp-block-group-is-layout-constrained){position:relative}
+/*# sourceURL=/wp-content/plugins/gutenberg-core/v22.2.0/build/styles/block-library/group/style.css */
+</style>
+<style id='wp-block-navigation-link-inline-css'>
+.wp-block-navigation .wp-block-navigation-item__label{overflow-wrap:break-word}.wp-block-navigation .wp-block-navigation-item__description{display:none}.link-ui-tools{outline:1px solid #f0f0f0;padding:8px}.link-ui-block-inserter{padding-top:8px}.link-ui-block-inserter__back{margin-left:8px;text-transform:uppercase}
+/*# sourceURL=/wp-content/plugins/gutenberg-core/v22.2.0/build/styles/block-library/navigation-link/style.css */
+</style>
+<link crossorigin='anonymous' rel='stylesheet' id='all-css-10-1' href='/wp-content/plugins/gutenberg-core/v22.2.0/build/styles/block-library/navigation/style.css?m=1764855221i&cssminify=yes' type='text/css' media='all' />
+<style id='wp-block-columns-inline-css'>
+.wp-block-columns{box-sizing:border-box;display:flex;flex-wrap:wrap!important}@media (min-width:782px){.wp-block-columns{flex-wrap:nowrap!important}}.wp-block-columns{align-items:normal!important}.wp-block-columns.are-vertically-aligned-top{align-items:flex-start}.wp-block-columns.are-vertically-aligned-center{align-items:center}.wp-block-columns.are-vertically-aligned-bottom{align-items:flex-end}@media (max-width:781px){.wp-block-columns:not(.is-not-stacked-on-mobile)>.wp-block-column{flex-basis:100%!important}}@media (min-width:782px){.wp-block-columns:not(.is-not-stacked-on-mobile)>.wp-block-column{flex-basis:0;flex-grow:1}.wp-block-columns:not(.is-not-stacked-on-mobile)>.wp-block-column[style*=flex-basis]{flex-grow:0}}.wp-block-columns.is-not-stacked-on-mobile{flex-wrap:nowrap!important}.wp-block-columns.is-not-stacked-on-mobile>.wp-block-column{flex-basis:0;flex-grow:1}.wp-block-columns.is-not-stacked-on-mobile>.wp-block-column[style*=flex-basis]{flex-grow:0}:where(.wp-block-columns){margin-bottom:1.75em}:where(.wp-block-columns.has-background){padding:1.25em 2.375em}.wp-block-column{flex-grow:1;min-width:0;overflow-wrap:break-word;word-break:break-word}.wp-block-column.is-vertically-aligned-top{align-self:flex-start}.wp-block-column.is-vertically-aligned-center{align-self:center}.wp-block-column.is-vertically-aligned-bottom{align-self:flex-end}.wp-block-column.is-vertically-aligned-stretch{align-self:stretch}.wp-block-column.is-vertically-aligned-bottom,.wp-block-column.is-vertically-aligned-center,.wp-block-column.is-vertically-aligned-top{width:100%}
+/*# sourceURL=/wp-content/plugins/gutenberg-core/v22.2.0/build/styles/block-library/columns/style.css */
+</style>
+<style id='wp-block-post-title-inline-css'>
+.wp-block-post-title{box-sizing:border-box;word-break:break-word}.wp-block-post-title :where(a){display:inline-block;font-family:inherit;font-size:inherit;font-style:inherit;font-weight:inherit;letter-spacing:inherit;line-height:inherit;text-decoration:inherit}
+/*# sourceURL=/wp-content/plugins/gutenberg-core/v22.2.0/build/styles/block-library/post-title/style.css */
+</style>
+<style id='wp-block-post-content-inline-css'>
+.wp-block-post-content{display:flow-root}
+/*# sourceURL=/wp-content/plugins/gutenberg-core/v22.2.0/build/styles/block-library/post-content/style.css */
+</style>
+<style id='a8ctheme-table-of-contents-style-inline-css'>
+.page-template-table-of-contents .table-of-contents--title{margin:0}.page-template-table-of-contents .table-of-contents{list-style-type:none;margin-left:0;max-height:calc(100vh - 270px);max-width:300px;overflow-y:auto}.page-template-table-of-contents .table-of-contents .toc-h4{display:list-item;list-style-type:disc;margin-left:18px}.page-template-table-of-contents .table-of-contents--toggle{display:none}.page-template-table-of-contents .table-of-contents--toggle:focus,.page-template-table-of-contents .table-of-contents--toggle:hover{background:#39c;color:#fff}.page-template-table-of-contents .table-of-contents--toggle[aria-expanded=true]{margin-top:-37px;transform:rotate(180deg)}@media screen and (max-width:780px){.page-template-table-of-contents .toc-wrapper .table-of-contents--title{border-bottom:1px solid rgba(0,0,0,.1);border-top:1px solid rgba(0,0,0,.1);padding:.5em 0 .4em}.page-template-table-of-contents .toc-wrapper .table-of-contents{height:0;margin:0;opacity:0;transition:all .2s ease-out;visibility:hidden}.page-template-table-of-contents .toc-wrapper .table-of-contents--toggle{color:#404040;display:inline-block;float:right;margin-top:-38px}.page-template-table-of-contents .toc-wrapper.visible .table-of-contents{border-bottom:1px solid rgba(0,0,0,.1);height:auto;margin:0 0 20px;max-width:100%;opacity:1;padding-bottom:.5em;visibility:visible}.page-template-table-of-contents .toc-wrapper.visible .table-of-contents--title{border-bottom:0}}
+
+/*# sourceURL=https://automattic.com/wp-content/themes/a8c/automattic-2011/blocks/build/table-of-contents/style-index.css */
+</style>
+<style id='wp-block-social-links-inline-css'>
+.wp-block-social-links{background:none;box-sizing:border-box;margin-left:0;padding-left:0;padding-right:0;text-indent:0}.wp-block-social-links .wp-social-link a,.wp-block-social-links .wp-social-link a:hover{border-bottom:0;box-shadow:none;text-decoration:none}.wp-block-social-links .wp-social-link svg{height:1em;width:1em}.wp-block-social-links .wp-social-link span:not(.screen-reader-text){font-size:.65em;margin-left:.5em;margin-right:.5em}.wp-block-social-links.has-small-icon-size{font-size:16px}.wp-block-social-links,.wp-block-social-links.has-normal-icon-size{font-size:24px}.wp-block-social-links.has-large-icon-size{font-size:36px}.wp-block-social-links.has-huge-icon-size{font-size:48px}.wp-block-social-links.aligncenter{display:flex;justify-content:center}.wp-block-social-links.alignright{justify-content:flex-end}.wp-block-social-link{border-radius:9999px;display:block}@media not (prefers-reduced-motion){.wp-block-social-link{transition:transform .1s ease}}.wp-block-social-link{height:auto}.wp-block-social-link a{align-items:center;display:flex;line-height:0}.wp-block-social-link:hover{transform:scale(1.1)}.wp-block-social-links .wp-block-social-link.wp-social-link{display:inline-block;margin:0;padding:0}.wp-block-social-links .wp-block-social-link.wp-social-link .wp-block-social-link-anchor,.wp-block-social-links .wp-block-social-link.wp-social-link .wp-block-social-link-anchor svg,.wp-block-social-links .wp-block-social-link.wp-social-link .wp-block-social-link-anchor:active,.wp-block-social-links .wp-block-social-link.wp-social-link .wp-block-social-link-anchor:hover,.wp-block-social-links .wp-block-social-link.wp-social-link .wp-block-social-link-anchor:visited{fill:currentColor;color:currentColor}:where(.wp-block-social-links:not(.is-style-logos-only)) .wp-social-link{background-color:#f0f0f0;color:#444}:where(.wp-block-social-links:not(.is-style-logos-only)) .wp-social-link-amazon{background-color:#f90;color:#fff}:where(.wp-block-social-links:not(.is-style-logos-only)) .wp-social-link-bandcamp{background-color:#1ea0c3;color:#fff}:where(.wp-block-social-links:not(.is-style-logos-only)) .wp-social-link-behance{background-color:#0757fe;color:#fff}:where(.wp-block-social-links:not(.is-style-logos-only)) .wp-social-link-bluesky{background-color:#0a7aff;color:#fff}:where(.wp-block-social-links:not(.is-style-logos-only)) .wp-social-link-codepen{background-color:#1e1f26;color:#fff}:where(.wp-block-social-links:not(.is-style-logos-only)) .wp-social-link-deviantart{background-color:#02e49b;color:#fff}:where(.wp-block-social-links:not(.is-style-logos-only)) .wp-social-link-discord{background-color:#5865f2;color:#fff}:where(.wp-block-social-links:not(.is-style-logos-only)) .wp-social-link-dribbble{background-color:#e94c89;color:#fff}:where(.wp-block-social-links:not(.is-style-logos-only)) .wp-social-link-dropbox{background-color:#4280ff;color:#fff}:where(.wp-block-social-links:not(.is-style-logos-only)) .wp-social-link-etsy{background-color:#f45800;color:#fff}:where(.wp-block-social-links:not(.is-style-logos-only)) .wp-social-link-facebook{background-color:#0866ff;color:#fff}:where(.wp-block-social-links:not(.is-style-logos-only)) .wp-social-link-fivehundredpx{background-color:#000;color:#fff}:where(.wp-block-social-links:not(.is-style-logos-only)) .wp-social-link-flickr{background-color:#0461dd;color:#fff}:where(.wp-block-social-links:not(.is-style-logos-only)) .wp-social-link-foursquare{background-color:#e65678;color:#fff}:where(.wp-block-social-links:not(.is-style-logos-only)) .wp-social-link-github{background-color:#24292d;color:#fff}:where(.wp-block-social-links:not(.is-style-logos-only)) .wp-social-link-goodreads{background-color:#eceadd;color:#382110}:where(.wp-block-social-links:not(.is-style-logos-only)) .wp-social-link-google{background-color:#ea4434;color:#fff}:where(.wp-block-social-links:not(.is-style-logos-only)) .wp-social-link-gravatar{background-color:#1d4fc4;color:#fff}:where(.wp-block-social-links:not(.is-style-logos-only)) .wp-social-link-instagram{background-color:#f00075;color:#fff}:where(.wp-block-social-links:not(.is-style-logos-only)) .wp-social-link-lastfm{background-color:#e21b24;color:#fff}:where(.wp-block-social-links:not(.is-style-logos-only)) .wp-social-link-linkedin{background-color:#0d66c2;color:#fff}:where(.wp-block-social-links:not(.is-style-logos-only)) .wp-social-link-mastodon{background-color:#3288d4;color:#fff}:where(.wp-block-social-links:not(.is-style-logos-only)) .wp-social-link-medium{background-color:#000;color:#fff}:where(.wp-block-social-links:not(.is-style-logos-only)) .wp-social-link-meetup{background-color:#f6405f;color:#fff}:where(.wp-block-social-links:not(.is-style-logos-only)) .wp-social-link-patreon{background-color:#000;color:#fff}:where(.wp-block-social-links:not(.is-style-logos-only)) .wp-social-link-pinterest{background-color:#e60122;color:#fff}:where(.wp-block-social-links:not(.is-style-logos-only)) .wp-social-link-pocket{background-color:#ef4155;color:#fff}:where(.wp-block-social-links:not(.is-style-logos-only)) .wp-social-link-reddit{background-color:#ff4500;color:#fff}:where(.wp-block-social-links:not(.is-style-logos-only)) .wp-social-link-skype{background-color:#0478d7;color:#fff}:where(.wp-block-social-links:not(.is-style-logos-only)) .wp-social-link-snapchat{stroke:#000;background-color:#fefc00;color:#fff}:where(.wp-block-social-links:not(.is-style-logos-only)) .wp-social-link-soundcloud{background-color:#ff5600;color:#fff}:where(.wp-block-social-links:not(.is-style-logos-only)) .wp-social-link-spotify{background-color:#1bd760;color:#fff}:where(.wp-block-social-links:not(.is-style-logos-only)) .wp-social-link-telegram{background-color:#2aabee;color:#fff}:where(.wp-block-social-links:not(.is-style-logos-only)) .wp-social-link-threads{background-color:#000;color:#fff}:where(.wp-block-social-links:not(.is-style-logos-only)) .wp-social-link-tiktok{background-color:#000;color:#fff}:where(.wp-block-social-links:not(.is-style-logos-only)) .wp-social-link-tumblr{background-color:#011835;color:#fff}:where(.wp-block-social-links:not(.is-style-logos-only)) .wp-social-link-twitch{background-color:#6440a4;color:#fff}:where(.wp-block-social-links:not(.is-style-logos-only)) .wp-social-link-twitter{background-color:#1da1f2;color:#fff}:where(.wp-block-social-links:not(.is-style-logos-only)) .wp-social-link-vimeo{background-color:#1eb7ea;color:#fff}:where(.wp-block-social-links:not(.is-style-logos-only)) .wp-social-link-vk{background-color:#4680c2;color:#fff}:where(.wp-block-social-links:not(.is-style-logos-only)) .wp-social-link-wordpress{background-color:#3499cd;color:#fff}:where(.wp-block-social-links:not(.is-style-logos-only)) .wp-social-link-whatsapp{background-color:#25d366;color:#fff}:where(.wp-block-social-links:not(.is-style-logos-only)) .wp-social-link-x{background-color:#000;color:#fff}:where(.wp-block-social-links:not(.is-style-logos-only)) .wp-social-link-yelp{background-color:#d32422;color:#fff}:where(.wp-block-social-links:not(.is-style-logos-only)) .wp-social-link-youtube{background-color:red;color:#fff}:where(.wp-block-social-links.is-style-logos-only) .wp-social-link{background:none}:where(.wp-block-social-links.is-style-logos-only) .wp-social-link svg{height:1.25em;width:1.25em}:where(.wp-block-social-links.is-style-logos-only) .wp-social-link-amazon{color:#f90}:where(.wp-block-social-links.is-style-logos-only) .wp-social-link-bandcamp{color:#1ea0c3}:where(.wp-block-social-links.is-style-logos-only) .wp-social-link-behance{color:#0757fe}:where(.wp-block-social-links.is-style-logos-only) .wp-social-link-bluesky{color:#0a7aff}:where(.wp-block-social-links.is-style-logos-only) .wp-social-link-codepen{color:#1e1f26}:where(.wp-block-social-links.is-style-logos-only) .wp-social-link-deviantart{color:#02e49b}:where(.wp-block-social-links.is-style-logos-only) .wp-social-link-discord{color:#5865f2}:where(.wp-block-social-links.is-style-logos-only) .wp-social-link-dribbble{color:#e94c89}:where(.wp-block-social-links.is-style-logos-only) .wp-social-link-dropbox{color:#4280ff}:where(.wp-block-social-links.is-style-logos-only) .wp-social-link-etsy{color:#f45800}:where(.wp-block-social-links.is-style-logos-only) .wp-social-link-facebook{color:#0866ff}:where(.wp-block-social-links.is-style-logos-only) .wp-social-link-fivehundredpx{color:#000}:where(.wp-block-social-links.is-style-logos-only) .wp-social-link-flickr{color:#0461dd}:where(.wp-block-social-links.is-style-logos-only) .wp-social-link-foursquare{color:#e65678}:where(.wp-block-social-links.is-style-logos-only) .wp-social-link-github{color:#24292d}:where(.wp-block-social-links.is-style-logos-only) .wp-social-link-goodreads{color:#382110}:where(.wp-block-social-links.is-style-logos-only) .wp-social-link-google{color:#ea4434}:where(.wp-block-social-links.is-style-logos-only) .wp-social-link-gravatar{color:#1d4fc4}:where(.wp-block-social-links.is-style-logos-only) .wp-social-link-instagram{color:#f00075}:where(.wp-block-social-links.is-style-logos-only) .wp-social-link-lastfm{color:#e21b24}:where(.wp-block-social-links.is-style-logos-only) .wp-social-link-linkedin{color:#0d66c2}:where(.wp-block-social-links.is-style-logos-only) .wp-social-link-mastodon{color:#3288d4}:where(.wp-block-social-links.is-style-logos-only) .wp-social-link-medium{color:#000}:where(.wp-block-social-links.is-style-logos-only) .wp-social-link-meetup{color:#f6405f}:where(.wp-block-social-links.is-style-logos-only) .wp-social-link-patreon{color:#000}:where(.wp-block-social-links.is-style-logos-only) .wp-social-link-pinterest{color:#e60122}:where(.wp-block-social-links.is-style-logos-only) .wp-social-link-pocket{color:#ef4155}:where(.wp-block-social-links.is-style-logos-only) .wp-social-link-reddit{color:#ff4500}:where(.wp-block-social-links.is-style-logos-only) .wp-social-link-skype{color:#0478d7}:where(.wp-block-social-links.is-style-logos-only) .wp-social-link-snapchat{stroke:#000;color:#fff}:where(.wp-block-social-links.is-style-logos-only) .wp-social-link-soundcloud{color:#ff5600}:where(.wp-block-social-links.is-style-logos-only) .wp-social-link-spotify{color:#1bd760}:where(.wp-block-social-links.is-style-logos-only) .wp-social-link-telegram{color:#2aabee}:where(.wp-block-social-links.is-style-logos-only) .wp-social-link-threads{color:#000}:where(.wp-block-social-links.is-style-logos-only) .wp-social-link-tiktok{color:#000}:where(.wp-block-social-links.is-style-logos-only) .wp-social-link-tumblr{color:#011835}:where(.wp-block-social-links.is-style-logos-only) .wp-social-link-twitch{color:#6440a4}:where(.wp-block-social-links.is-style-logos-only) .wp-social-link-twitter{color:#1da1f2}:where(.wp-block-social-links.is-style-logos-only) .wp-social-link-vimeo{color:#1eb7ea}:where(.wp-block-social-links.is-style-logos-only) .wp-social-link-vk{color:#4680c2}:where(.wp-block-social-links.is-style-logos-only) .wp-social-link-whatsapp{color:#25d366}:where(.wp-block-social-links.is-style-logos-only) .wp-social-link-wordpress{color:#3499cd}:where(.wp-block-social-links.is-style-logos-only) .wp-social-link-x{color:#000}:where(.wp-block-social-links.is-style-logos-only) .wp-social-link-yelp{color:#d32422}:where(.wp-block-social-links.is-style-logos-only) .wp-social-link-youtube{color:red}.wp-block-social-links.is-style-pill-shape .wp-social-link{width:auto}:root :where(.wp-block-social-links .wp-social-link a){padding:.25em}:root :where(.wp-block-social-links.is-style-logos-only .wp-social-link a){padding:0}:root :where(.wp-block-social-links.is-style-pill-shape .wp-social-link a){padding-left:.6666666667em;padding-right:.6666666667em}.wp-block-social-links:not(.has-icon-color):not(.has-icon-background-color) .wp-social-link-snapchat .wp-block-social-link-label{color:#000}
+/*# sourceURL=/wp-content/plugins/gutenberg-core/v22.2.0/build/styles/block-library/social-links/style.css */
+</style>
+<style id='wp-block-library-inline-css'>
+:root{--wp-block-synced-color:#7a00df;--wp-block-synced-color--rgb:122,0,223;--wp-bound-block-color:var(--wp-block-synced-color);--wp-editor-canvas-background:#ddd;--wp-admin-theme-color:#007cba;--wp-admin-theme-color--rgb:0,124,186;--wp-admin-theme-color-darker-10:#006ba1;--wp-admin-theme-color-darker-10--rgb:0,107,160.5;--wp-admin-theme-color-darker-20:#005a87;--wp-admin-theme-color-darker-20--rgb:0,90,135;--wp-admin-border-width-focus:2px}@media (min-resolution:192dpi){:root{--wp-admin-border-width-focus:1.5px}}.wp-element-button{cursor:pointer}:root .has-very-light-gray-background-color{background-color:#eee}:root .has-very-dark-gray-background-color{background-color:#313131}:root .has-very-light-gray-color{color:#eee}:root .has-very-dark-gray-color{color:#313131}:root .has-vivid-green-cyan-to-vivid-cyan-blue-gradient-background{background:linear-gradient(135deg,#00d084,#0693e3)}:root .has-purple-crush-gradient-background{background:linear-gradient(135deg,#34e2e4,#4721fb 50%,#ab1dfe)}:root .has-hazy-dawn-gradient-background{background:linear-gradient(135deg,#faaca8,#dad0ec)}:root .has-subdued-olive-gradient-background{background:linear-gradient(135deg,#fafae1,#67a671)}:root .has-atomic-cream-gradient-background{background:linear-gradient(135deg,#fdd79a,#004a59)}:root .has-nightshade-gradient-background{background:linear-gradient(135deg,#330968,#31cdcf)}:root .has-midnight-gradient-background{background:linear-gradient(135deg,#020381,#2874fc)}:root{--wp--preset--font-size--normal:16px;--wp--preset--font-size--huge:42px}.has-regular-font-size{font-size:1em}.has-larger-font-size{font-size:2.625em}.has-normal-font-size{font-size:var(--wp--preset--font-size--normal)}.has-huge-font-size{font-size:var(--wp--preset--font-size--huge)}:root .has-text-align-center{text-align:center}:root .has-text-align-left{text-align:left}:root .has-text-align-right{text-align:right}.has-fit-text{white-space:nowrap!important}#end-resizable-editor-section{display:none}.aligncenter{clear:both}.items-justified-left{justify-content:flex-start}.items-justified-center{justify-content:center}.items-justified-right{justify-content:flex-end}.items-justified-space-between{justify-content:space-between}.screen-reader-text{word-wrap:normal!important;border:0;clip-path:inset(50%);height:1px;margin:-1px;overflow:hidden;padding:0;position:absolute;width:1px}.screen-reader-text:focus{background-color:#ddd;clip-path:none;color:#444;display:block;font-size:1em;height:auto;left:5px;line-height:normal;padding:15px 23px 14px;text-decoration:none;top:5px;width:auto;z-index:100000}html :where(.has-border-color){border-style:solid}html :where([style*=border-top-color]){border-top-style:solid}html :where([style*=border-right-color]){border-right-style:solid}html :where([style*=border-bottom-color]){border-bottom-style:solid}html :where([style*=border-left-color]){border-left-style:solid}html :where([style*=border-width]){border-style:solid}html :where([style*=border-top-width]){border-top-style:solid}html :where([style*=border-right-width]){border-right-style:solid}html :where([style*=border-bottom-width]){border-bottom-style:solid}html :where([style*=border-left-width]){border-left-style:solid}html :where(img[class*=wp-image-]){height:auto;max-width:100%}:where(figure){margin:0 0 1em}html :where(.is-position-sticky){--wp-admin--admin-bar--position-offset:var(--wp-admin--admin-bar--height,0px)}@media screen and (max-width:600px){html :where(.is-position-sticky){--wp-admin--admin-bar--position-offset:0px}}
+.has-text-align-justify {
+	text-align:justify;
+}
+.has-text-align-justify{text-align:justify;}
+/*# sourceURL=wp-block-library-inline-css */
+</style>
+<style id='wp-block-template-skip-link-inline-css'>
+
+		.skip-link.screen-reader-text {
+			border: 0;
+			clip-path: inset(50%);
+			height: 1px;
+			margin: -1px;
+			overflow: hidden;
+			padding: 0;
+			position: absolute !important;
+			width: 1px;
+			word-wrap: normal !important;
+		}
+
+		.skip-link.screen-reader-text:focus {
+			background-color: #eee;
+			clip-path: none;
+			color: #444;
+			display: block;
+			font-size: 1em;
+			height: auto;
+			left: 5px;
+			line-height: normal;
+			padding: 15px 23px 14px;
+			text-decoration: none;
+			top: 5px;
+			width: auto;
+			z-index: 100000;
+		}
+/*# sourceURL=wp-block-template-skip-link-inline-css */
+</style>
+<link crossorigin='anonymous' rel='stylesheet' id='all-css-30-1' href='/_static/??-eJx9jcEKg0AMRH+oaVhorR7Eb9E16IpZg8min2889FZ6GYbhPQYPgbhlo2zIBWQtU8qKcdvJd5be0AmmMfW0Ejv2jKoP/K0daZzIXNdvB6PzvyJ+A8MgO6mCJ6fCYLN/6e113IZXU9WfUL/DcgHSTkDo&cssminify=yes' type='text/css' media='all' />
+<style id='global-styles-inline-css'>
+:root{--wp--preset--aspect-ratio--square: 1;--wp--preset--aspect-ratio--4-3: 4/3;--wp--preset--aspect-ratio--3-4: 3/4;--wp--preset--aspect-ratio--3-2: 3/2;--wp--preset--aspect-ratio--2-3: 2/3;--wp--preset--aspect-ratio--16-9: 16/9;--wp--preset--aspect-ratio--9-16: 9/16;--wp--preset--color--black: #000000;--wp--preset--color--cyan-bluish-gray: #abb8c3;--wp--preset--color--white: #ffffff;--wp--preset--color--pale-pink: #f78da7;--wp--preset--color--vivid-red: #cf2e2e;--wp--preset--color--luminous-vivid-orange: #ff6900;--wp--preset--color--luminous-vivid-amber: #fcb900;--wp--preset--color--light-green-cyan: #7bdcb5;--wp--preset--color--vivid-green-cyan: #00d084;--wp--preset--color--pale-cyan-blue: #8ed1fc;--wp--preset--color--vivid-cyan-blue: #0693e3;--wp--preset--color--vivid-purple: #9b51e0;--wp--preset--color--base: #FFFFFF;--wp--preset--color--contrast: #000000;--wp--preset--gradient--vivid-cyan-blue-to-vivid-purple: linear-gradient(135deg,rgb(6,147,227) 0%,rgb(155,81,224) 100%);--wp--preset--gradient--light-green-cyan-to-vivid-green-cyan: linear-gradient(135deg,rgb(122,220,180) 0%,rgb(0,208,130) 100%);--wp--preset--gradient--luminous-vivid-amber-to-luminous-vivid-orange: linear-gradient(135deg,rgb(252,185,0) 0%,rgb(255,105,0) 100%);--wp--preset--gradient--luminous-vivid-orange-to-vivid-red: linear-gradient(135deg,rgb(255,105,0) 0%,rgb(207,46,46) 100%);--wp--preset--gradient--very-light-gray-to-cyan-bluish-gray: linear-gradient(135deg,rgb(238,238,238) 0%,rgb(169,184,195) 100%);--wp--preset--gradient--cool-to-warm-spectrum: linear-gradient(135deg,rgb(74,234,220) 0%,rgb(151,120,209) 20%,rgb(207,42,186) 40%,rgb(238,44,130) 60%,rgb(251,105,98) 80%,rgb(254,248,76) 100%);--wp--preset--gradient--blush-light-purple: linear-gradient(135deg,rgb(255,206,236) 0%,rgb(152,150,240) 100%);--wp--preset--gradient--blush-bordeaux: linear-gradient(135deg,rgb(254,205,165) 0%,rgb(254,45,45) 50%,rgb(107,0,62) 100%);--wp--preset--gradient--luminous-dusk: linear-gradient(135deg,rgb(255,203,112) 0%,rgb(199,81,192) 50%,rgb(65,88,208) 100%);--wp--preset--gradient--pale-ocean: linear-gradient(135deg,rgb(255,245,203) 0%,rgb(182,227,212) 50%,rgb(51,167,181) 100%);--wp--preset--gradient--electric-grass: linear-gradient(135deg,rgb(202,248,128) 0%,rgb(113,206,126) 100%);--wp--preset--gradient--midnight: linear-gradient(135deg,rgb(2,3,129) 0%,rgb(40,116,252) 100%);--wp--preset--font-size--small: 0.82rem;--wp--preset--font-size--medium: 20px;--wp--preset--font-size--large: 36px;--wp--preset--font-size--x-large: 42px;--wp--preset--font-family--albert-sans: 'Albert Sans', sans-serif;--wp--preset--font-family--alegreya: Alegreya, serif;--wp--preset--font-family--arvo: Arvo, serif;--wp--preset--font-family--bodoni-moda: 'Bodoni Moda', serif;--wp--preset--font-family--bricolage-grotesque: 'Bricolage Grotesque', sans-serif;--wp--preset--font-family--cabin: Cabin, sans-serif;--wp--preset--font-family--chivo: Chivo, sans-serif;--wp--preset--font-family--commissioner: Commissioner, sans-serif;--wp--preset--font-family--cormorant: Cormorant, serif;--wp--preset--font-family--courier-prime: 'Courier Prime', monospace;--wp--preset--font-family--crimson-pro: 'Crimson Pro', serif;--wp--preset--font-family--dm-mono: 'DM Mono', monospace;--wp--preset--font-family--dm-sans: 'DM Sans', sans-serif;--wp--preset--font-family--dm-serif-display: 'DM Serif Display', serif;--wp--preset--font-family--domine: Domine, serif;--wp--preset--font-family--eb-garamond: 'EB Garamond', serif;--wp--preset--font-family--epilogue: Epilogue, sans-serif;--wp--preset--font-family--fahkwang: Fahkwang, sans-serif;--wp--preset--font-family--figtree: Figtree, sans-serif;--wp--preset--font-family--fira-sans: 'Fira Sans', sans-serif;--wp--preset--font-family--fjalla-one: 'Fjalla One', sans-serif;--wp--preset--font-family--fraunces: Fraunces, serif;--wp--preset--font-family--gabarito: Gabarito, system-ui;--wp--preset--font-family--ibm-plex-mono: 'IBM Plex Mono', monospace;--wp--preset--font-family--ibm-plex-sans: 'IBM Plex Sans', sans-serif;--wp--preset--font-family--ibarra-real-nova: 'Ibarra Real Nova', serif;--wp--preset--font-family--instrument-serif: 'Instrument Serif', serif;--wp--preset--font-family--inter: Inter, sans-serif;--wp--preset--font-family--josefin-sans: 'Josefin Sans', sans-serif;--wp--preset--font-family--jost: Jost, sans-serif;--wp--preset--font-family--libre-baskerville: 'Libre Baskerville', serif;--wp--preset--font-family--libre-franklin: 'Libre Franklin', sans-serif;--wp--preset--font-family--literata: Literata, serif;--wp--preset--font-family--lora: Lora, serif;--wp--preset--font-family--merriweather: Merriweather, serif;--wp--preset--font-family--montserrat: Montserrat, sans-serif;--wp--preset--font-family--newsreader: Newsreader, serif;--wp--preset--font-family--noto-sans-mono: 'Noto Sans Mono', sans-serif;--wp--preset--font-family--nunito: Nunito, sans-serif;--wp--preset--font-family--open-sans: 'Open Sans', sans-serif;--wp--preset--font-family--overpass: Overpass, sans-serif;--wp--preset--font-family--pt-serif: 'PT Serif', serif;--wp--preset--font-family--petrona: Petrona, serif;--wp--preset--font-family--piazzolla: Piazzolla, serif;--wp--preset--font-family--playfair-display: 'Playfair Display', serif;--wp--preset--font-family--plus-jakarta-sans: 'Plus Jakarta Sans', sans-serif;--wp--preset--font-family--poppins: Poppins, sans-serif;--wp--preset--font-family--raleway: Raleway, sans-serif;--wp--preset--font-family--roboto: Roboto, sans-serif;--wp--preset--font-family--roboto-slab: 'Roboto Slab', serif;--wp--preset--font-family--rubik: Rubik, sans-serif;--wp--preset--font-family--rufina: Rufina, serif;--wp--preset--font-family--sora: Sora, sans-serif;--wp--preset--font-family--source-sans-3: 'Source Sans 3', sans-serif;--wp--preset--font-family--source-serif-4: 'Source Serif 4', serif;--wp--preset--font-family--space-mono: 'Space Mono', monospace;--wp--preset--font-family--syne: Syne, sans-serif;--wp--preset--font-family--texturina: Texturina, serif;--wp--preset--font-family--urbanist: Urbanist, sans-serif;--wp--preset--font-family--work-sans: 'Work Sans', sans-serif;--wp--preset--spacing--20: 0.44rem;--wp--preset--spacing--30: 0.67rem;--wp--preset--spacing--40: 1rem;--wp--preset--spacing--50: 1.5rem;--wp--preset--spacing--60: 2.25rem;--wp--preset--spacing--70: 3.38rem;--wp--preset--spacing--80: 5.06rem;--wp--preset--shadow--natural: 6px 6px 9px rgba(0, 0, 0, 0.2);--wp--preset--shadow--deep: 12px 12px 50px rgba(0, 0, 0, 0.4);--wp--preset--shadow--sharp: 6px 6px 0px rgba(0, 0, 0, 0.2);--wp--preset--shadow--outlined: 6px 6px 0px -3px rgb(255, 255, 255), 6px 6px rgb(0, 0, 0);--wp--preset--shadow--crisp: 6px 6px 0px rgb(0, 0, 0);}:root { --wp--style--global--content-size: 960px;--wp--style--global--wide-size: 1200px; }:where(body) { margin: 0; }.wp-site-blocks { padding-top: var(--wp--style--root--padding-top); padding-bottom: var(--wp--style--root--padding-bottom); }.has-global-padding { padding-right: var(--wp--style--root--padding-right); padding-left: var(--wp--style--root--padding-left); }.has-global-padding > .alignfull { margin-right: calc(var(--wp--style--root--padding-right) * -1); margin-left: calc(var(--wp--style--root--padding-left) * -1); }.has-global-padding :where(:not(.alignfull.is-layout-flow) > .has-global-padding:not(.wp-block-block, .alignfull)) { padding-right: 0; padding-left: 0; }.has-global-padding :where(:not(.alignfull.is-layout-flow) > .has-global-padding:not(.wp-block-block, .alignfull)) > .alignfull { margin-left: 0; margin-right: 0; }.wp-site-blocks > .alignleft { float: left; margin-right: 2em; }.wp-site-blocks > .alignright { float: right; margin-left: 2em; }.wp-site-blocks > .aligncenter { justify-content: center; margin-left: auto; margin-right: auto; }:where(.is-layout-flex){gap: 0.5em;}:where(.is-layout-grid){gap: 0.5em;}.is-layout-flow > .alignleft{float: left;margin-inline-start: 0;margin-inline-end: 2em;}.is-layout-flow > .alignright{float: right;margin-inline-start: 2em;margin-inline-end: 0;}.is-layout-flow > .aligncenter{margin-left: auto !important;margin-right: auto !important;}.is-layout-constrained > .alignleft{float: left;margin-inline-start: 0;margin-inline-end: 2em;}.is-layout-constrained > .alignright{float: right;margin-inline-start: 2em;margin-inline-end: 0;}.is-layout-constrained > .aligncenter{margin-left: auto !important;margin-right: auto !important;}.is-layout-constrained > :where(:not(.alignleft):not(.alignright):not(.alignfull)){max-width: var(--wp--style--global--content-size);margin-left: auto !important;margin-right: auto !important;}.is-layout-constrained > .alignwide{max-width: var(--wp--style--global--wide-size);}body .is-layout-flex{display: flex;}.is-layout-flex{flex-wrap: wrap;align-items: center;}.is-layout-flex > :is(*, div){margin: 0;}body .is-layout-grid{display: grid;}.is-layout-grid > :is(*, div){margin: 0;}body{margin-top: 0.5rem;margin-right: 0.5rem;margin-bottom: 0.5rem;margin-left: 0.5rem;--wp--style--root--padding-top: 0px;--wp--style--root--padding-right: 0px;--wp--style--root--padding-bottom: 0px;--wp--style--root--padding-left: 0px;}a:where(:not(.wp-element-button)){text-decoration: underline;}:root :where(.wp-element-button, .wp-block-button__link){background-color: #32373c;border-width: 0;color: #fff;font-family: inherit;font-size: inherit;font-style: inherit;font-weight: inherit;letter-spacing: inherit;line-height: inherit;padding-top: calc(0.667em + 2px);padding-right: calc(1.333em + 2px);padding-bottom: calc(0.667em + 2px);padding-left: calc(1.333em + 2px);text-decoration: none;text-transform: inherit;}.has-black-color{color: var(--wp--preset--color--black) !important;}.has-cyan-bluish-gray-color{color: var(--wp--preset--color--cyan-bluish-gray) !important;}.has-white-color{color: var(--wp--preset--color--white) !important;}.has-pale-pink-color{color: var(--wp--preset--color--pale-pink) !important;}.has-vivid-red-color{color: var(--wp--preset--color--vivid-red) !important;}.has-luminous-vivid-orange-color{color: var(--wp--preset--color--luminous-vivid-orange) !important;}.has-luminous-vivid-amber-color{color: var(--wp--preset--color--luminous-vivid-amber) !important;}.has-light-green-cyan-color{color: var(--wp--preset--color--light-green-cyan) !important;}.has-vivid-green-cyan-color{color: var(--wp--preset--color--vivid-green-cyan) !important;}.has-pale-cyan-blue-color{color: var(--wp--preset--color--pale-cyan-blue) !important;}.has-vivid-cyan-blue-color{color: var(--wp--preset--color--vivid-cyan-blue) !important;}.has-vivid-purple-color{color: var(--wp--preset--color--vivid-purple) !important;}.has-base-color{color: var(--wp--preset--color--base) !important;}.has-contrast-color{color: var(--wp--preset--color--contrast) !important;}.has-black-background-color{background-color: var(--wp--preset--color--black) !important;}.has-cyan-bluish-gray-background-color{background-color: var(--wp--preset--color--cyan-bluish-gray) !important;}.has-white-background-color{background-color: var(--wp--preset--color--white) !important;}.has-pale-pink-background-color{background-color: var(--wp--preset--color--pale-pink) !important;}.has-vivid-red-background-color{background-color: var(--wp--preset--color--vivid-red) !important;}.has-luminous-vivid-orange-background-color{background-color: var(--wp--preset--color--luminous-vivid-orange) !important;}.has-luminous-vivid-amber-background-color{background-color: var(--wp--preset--color--luminous-vivid-amber) !important;}.has-light-green-cyan-background-color{background-color: var(--wp--preset--color--light-green-cyan) !important;}.has-vivid-green-cyan-background-color{background-color: var(--wp--preset--color--vivid-green-cyan) !important;}.has-pale-cyan-blue-background-color{background-color: var(--wp--preset--color--pale-cyan-blue) !important;}.has-vivid-cyan-blue-background-color{background-color: var(--wp--preset--color--vivid-cyan-blue) !important;}.has-vivid-purple-background-color{background-color: var(--wp--preset--color--vivid-purple) !important;}.has-base-background-color{background-color: var(--wp--preset--color--base) !important;}.has-contrast-background-color{background-color: var(--wp--preset--color--contrast) !important;}.has-black-border-color{border-color: var(--wp--preset--color--black) !important;}.has-cyan-bluish-gray-border-color{border-color: var(--wp--preset--color--cyan-bluish-gray) !important;}.has-white-border-color{border-color: var(--wp--preset--color--white) !important;}.has-pale-pink-border-color{border-color: var(--wp--preset--color--pale-pink) !important;}.has-vivid-red-border-color{border-color: var(--wp--preset--color--vivid-red) !important;}.has-luminous-vivid-orange-border-color{border-color: var(--wp--preset--color--luminous-vivid-orange) !important;}.has-luminous-vivid-amber-border-color{border-color: var(--wp--preset--color--luminous-vivid-amber) !important;}.has-light-green-cyan-border-color{border-color: var(--wp--preset--color--light-green-cyan) !important;}.has-vivid-green-cyan-border-color{border-color: var(--wp--preset--color--vivid-green-cyan) !important;}.has-pale-cyan-blue-border-color{border-color: var(--wp--preset--color--pale-cyan-blue) !important;}.has-vivid-cyan-blue-border-color{border-color: var(--wp--preset--color--vivid-cyan-blue) !important;}.has-vivid-purple-border-color{border-color: var(--wp--preset--color--vivid-purple) !important;}.has-base-border-color{border-color: var(--wp--preset--color--base) !important;}.has-contrast-border-color{border-color: var(--wp--preset--color--contrast) !important;}.has-vivid-cyan-blue-to-vivid-purple-gradient-background{background: var(--wp--preset--gradient--vivid-cyan-blue-to-vivid-purple) !important;}.has-light-green-cyan-to-vivid-green-cyan-gradient-background{background: var(--wp--preset--gradient--light-green-cyan-to-vivid-green-cyan) !important;}.has-luminous-vivid-amber-to-luminous-vivid-orange-gradient-background{background: var(--wp--preset--gradient--luminous-vivid-amber-to-luminous-vivid-orange) !important;}.has-luminous-vivid-orange-to-vivid-red-gradient-background{background: var(--wp--preset--gradient--luminous-vivid-orange-to-vivid-red) !important;}.has-very-light-gray-to-cyan-bluish-gray-gradient-background{background: var(--wp--preset--gradient--very-light-gray-to-cyan-bluish-gray) !important;}.has-cool-to-warm-spectrum-gradient-background{background: var(--wp--preset--gradient--cool-to-warm-spectrum) !important;}.has-blush-light-purple-gradient-background{background: var(--wp--preset--gradient--blush-light-purple) !important;}.has-blush-bordeaux-gradient-background{background: var(--wp--preset--gradient--blush-bordeaux) !important;}.has-luminous-dusk-gradient-background{background: var(--wp--preset--gradient--luminous-dusk) !important;}.has-pale-ocean-gradient-background{background: var(--wp--preset--gradient--pale-ocean) !important;}.has-electric-grass-gradient-background{background: var(--wp--preset--gradient--electric-grass) !important;}.has-midnight-gradient-background{background: var(--wp--preset--gradient--midnight) !important;}.has-small-font-size{font-size: var(--wp--preset--font-size--small) !important;}.has-medium-font-size{font-size: var(--wp--preset--font-size--medium) !important;}.has-large-font-size{font-size: var(--wp--preset--font-size--large) !important;}.has-x-large-font-size{font-size: var(--wp--preset--font-size--x-large) !important;}.has-albert-sans-font-family{font-family: var(--wp--preset--font-family--albert-sans) !important;}.has-alegreya-font-family{font-family: var(--wp--preset--font-family--alegreya) !important;}.has-arvo-font-family{font-family: var(--wp--preset--font-family--arvo) !important;}.has-bodoni-moda-font-family{font-family: var(--wp--preset--font-family--bodoni-moda) !important;}.has-bricolage-grotesque-font-family{font-family: var(--wp--preset--font-family--bricolage-grotesque) !important;}.has-cabin-font-family{font-family: var(--wp--preset--font-family--cabin) !important;}.has-chivo-font-family{font-family: var(--wp--preset--font-family--chivo) !important;}.has-commissioner-font-family{font-family: var(--wp--preset--font-family--commissioner) !important;}.has-cormorant-font-family{font-family: var(--wp--preset--font-family--cormorant) !important;}.has-courier-prime-font-family{font-family: var(--wp--preset--font-family--courier-prime) !important;}.has-crimson-pro-font-family{font-family: var(--wp--preset--font-family--crimson-pro) !important;}.has-dm-mono-font-family{font-family: var(--wp--preset--font-family--dm-mono) !important;}.has-dm-sans-font-family{font-family: var(--wp--preset--font-family--dm-sans) !important;}.has-dm-serif-display-font-family{font-family: var(--wp--preset--font-family--dm-serif-display) !important;}.has-domine-font-family{font-family: var(--wp--preset--font-family--domine) !important;}.has-eb-garamond-font-family{font-family: var(--wp--preset--font-family--eb-garamond) !important;}.has-epilogue-font-family{font-family: var(--wp--preset--font-family--epilogue) !important;}.has-fahkwang-font-family{font-family: var(--wp--preset--font-family--fahkwang) !important;}.has-figtree-font-family{font-family: var(--wp--preset--font-family--figtree) !important;}.has-fira-sans-font-family{font-family: var(--wp--preset--font-family--fira-sans) !important;}.has-fjalla-one-font-family{font-family: var(--wp--preset--font-family--fjalla-one) !important;}.has-fraunces-font-family{font-family: var(--wp--preset--font-family--fraunces) !important;}.has-gabarito-font-family{font-family: var(--wp--preset--font-family--gabarito) !important;}.has-ibm-plex-mono-font-family{font-family: var(--wp--preset--font-family--ibm-plex-mono) !important;}.has-ibm-plex-sans-font-family{font-family: var(--wp--preset--font-family--ibm-plex-sans) !important;}.has-ibarra-real-nova-font-family{font-family: var(--wp--preset--font-family--ibarra-real-nova) !important;}.has-instrument-serif-font-family{font-family: var(--wp--preset--font-family--instrument-serif) !important;}.has-inter-font-family{font-family: var(--wp--preset--font-family--inter) !important;}.has-josefin-sans-font-family{font-family: var(--wp--preset--font-family--josefin-sans) !important;}.has-jost-font-family{font-family: var(--wp--preset--font-family--jost) !important;}.has-libre-baskerville-font-family{font-family: var(--wp--preset--font-family--libre-baskerville) !important;}.has-libre-franklin-font-family{font-family: var(--wp--preset--font-family--libre-franklin) !important;}.has-literata-font-family{font-family: var(--wp--preset--font-family--literata) !important;}.has-lora-font-family{font-family: var(--wp--preset--font-family--lora) !important;}.has-merriweather-font-family{font-family: var(--wp--preset--font-family--merriweather) !important;}.has-montserrat-font-family{font-family: var(--wp--preset--font-family--montserrat) !important;}.has-newsreader-font-family{font-family: var(--wp--preset--font-family--newsreader) !important;}.has-noto-sans-mono-font-family{font-family: var(--wp--preset--font-family--noto-sans-mono) !important;}.has-nunito-font-family{font-family: var(--wp--preset--font-family--nunito) !important;}.has-open-sans-font-family{font-family: var(--wp--preset--font-family--open-sans) !important;}.has-overpass-font-family{font-family: var(--wp--preset--font-family--overpass) !important;}.has-pt-serif-font-family{font-family: var(--wp--preset--font-family--pt-serif) !important;}.has-petrona-font-family{font-family: var(--wp--preset--font-family--petrona) !important;}.has-piazzolla-font-family{font-family: var(--wp--preset--font-family--piazzolla) !important;}.has-playfair-display-font-family{font-family: var(--wp--preset--font-family--playfair-display) !important;}.has-plus-jakarta-sans-font-family{font-family: var(--wp--preset--font-family--plus-jakarta-sans) !important;}.has-poppins-font-family{font-family: var(--wp--preset--font-family--poppins) !important;}.has-raleway-font-family{font-family: var(--wp--preset--font-family--raleway) !important;}.has-roboto-font-family{font-family: var(--wp--preset--font-family--roboto) !important;}.has-roboto-slab-font-family{font-family: var(--wp--preset--font-family--roboto-slab) !important;}.has-rubik-font-family{font-family: var(--wp--preset--font-family--rubik) !important;}.has-rufina-font-family{font-family: var(--wp--preset--font-family--rufina) !important;}.has-sora-font-family{font-family: var(--wp--preset--font-family--sora) !important;}.has-source-sans-3-font-family{font-family: var(--wp--preset--font-family--source-sans-3) !important;}.has-source-serif-4-font-family{font-family: var(--wp--preset--font-family--source-serif-4) !important;}.has-space-mono-font-family{font-family: var(--wp--preset--font-family--space-mono) !important;}.has-syne-font-family{font-family: var(--wp--preset--font-family--syne) !important;}.has-texturina-font-family{font-family: var(--wp--preset--font-family--texturina) !important;}.has-urbanist-font-family{font-family: var(--wp--preset--font-family--urbanist) !important;}.has-work-sans-font-family{font-family: var(--wp--preset--font-family--work-sans) !important;}
+:where(.wp-block-columns.is-layout-flex){gap: 2em;}:where(.wp-block-columns.is-layout-grid){gap: 2em;}
+:root :where(.wp-block-group){margin-top: 0;margin-bottom: 0;padding-top: 0;padding-right: 0;padding-bottom: 0;padding-left: 0;}
+/*# sourceURL=global-styles-inline-css */
+</style>
+<style id='core-block-supports-inline-css'>
+.wp-container-core-group-is-layout-ad2f72ca{flex-wrap:nowrap;}.wp-container-core-navigation-is-layout-f94d45a2{flex-wrap:nowrap;justify-content:flex-end;}.wp-container-core-columns-is-layout-9d6595d7{flex-wrap:nowrap;}.wp-container-content-9cfa9a5a{flex-grow:1;}.wp-container-core-navigation-is-layout-bdb2f032{flex-wrap:nowrap;}.wp-container-core-social-links-is-layout-4cba5a1d{flex-wrap:nowrap;justify-content:center;}.wp-container-core-columns-is-layout-905c269e{flex-wrap:nowrap;}.wp-elements-7a8a4e54aad33dc2d11f3da102e522d3 a:where(:not(.wp-element-button)){color:#777777;}.wp-container-core-group-is-layout-2e78a0d0 > .alignfull{margin-right:calc(20px * -1);margin-left:calc(20px * -1);}
+/*# sourceURL=core-block-supports-inline-css */
+</style>
+<link crossorigin='anonymous' rel='stylesheet' id='all-css-34-1' href='/_static/??-eJx9y0EOwjAMRNELYZwEAd0gzhIsE4KcuKodIW5P2ZUNu/nSPHzNQNqdu6M/uLFhngjzcG3ZvRKkECOav4X3ZLbDDWgDZhmldsOFb6JlnQXX1yb/ocIKopS9av8JuEuuy5de2yWeT8dDmFJIzw/xpT8Z&cssminify=yes' type='text/css' media='all' />
+<style id='jetpack-global-styles-frontend-style-inline-css'>
+:root { --font-headings: unset; --font-base: unset; --font-headings-default: -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Oxygen-Sans,Ubuntu,Cantarell,"Helvetica Neue",sans-serif; --font-base-default: -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Oxygen-Sans,Ubuntu,Cantarell,"Helvetica Neue",sans-serif;}
+/*# sourceURL=jetpack-global-styles-frontend-style-inline-css */
+</style>
+<script src="https://automattic.com/wp-content/themes/a8c/automattic-2011/blocks/build/table-of-contents/view.js?m=1763585693i&amp;ver=aab977eb3dabe5de6e21" id="a8ctheme-table-of-contents-view-script-js" defer data-wp-strategy="defer"></script>
+<script id="jetpack-mu-wpcom-settings-js-before">
+var JETPACK_MU_WPCOM_SETTINGS = {"assetsUrl":"https://automattic.com/wp-content/mu-plugins/jetpack-mu-wpcom-plugin/moon/jetpack_vendor/automattic/jetpack-mu-wpcom/src/build/"};
+//# sourceURL=jetpack-mu-wpcom-settings-js-before
+</script>
+<script crossorigin='anonymous' type='text/javascript'  src='/wp-content/js/rlt-proxy.js?m=1720530689i'></script>
+<script id="rlt-proxy-js-after">
+	rltInitialize( {"token":null,"iframeOrigins":["https:\/\/widgets.wp.com"]} );
+//# sourceURL=rlt-proxy-js-after
+</script>
+<script src="https://automattic.com/wp-content/themes/a8c/automattic-2011/includes/charts/Chart.js?m=1413160685i&amp;ver=1" id="a8c-chartsjs-js"></script>
+<script src="https://automattic.com/wp-content/themes/a8c/automattic-2011/includes/charts/Chart.Line.js?m=1413160685i&amp;ver=1" id="a8c-chartlinejs-js"></script>
+<script id="a8c-infographicstats-js-extra">
+var o2_json_deploys = [{"date":"Wed","deploys":"121"},{"date":"Thu","deploys":"82"},{"date":"Fri","deploys":"70"},{"date":"Sat","deploys":"10"},{"date":"Sun","deploys":"8"},{"date":"Mon","deploys":"76"},{"date":"Tue","deploys":"112"},{"date":"Wed","deploys":"38"}];
+var o2_json_support = [{"date":"Wed","replies":"1922"},{"date":"Thu","replies":"1734"},{"date":"Fri","replies":"1713"},{"date":"Sat","replies":"492"},{"date":"Sun","replies":"364"},{"date":"Mon","replies":"1761"},{"date":"Tue","replies":"1984"},{"date":"Wed","replies":"727"}];
+var o2_json_communicate = [{"posts":"2657","comments":"6969","slack":405885}];
+//# sourceURL=a8c-infographicstats-js-extra
+</script>
+<script src="https://automattic.com/wp-content/themes/a8c/automattic-2011/includes/infographic-stats.js?m=1600202871i&amp;ver=1" id="a8c-infographicstats-js"></script>
+<script id="wpcom-actionbar-placeholder-js-extra">
+var actionbardata = {"siteID":"54117","postID":"13","siteURL":"https://automattic.com","xhrURL":"https://automattic.com/wp-admin/admin-ajax.php","nonce":"c32948a172","isLoggedIn":"","statusMessage":"","subsEmailDefault":"instantly","proxyScriptUrl":"https://s0.wp.com/wp-content/js/wpcom-proxy-request.js?m=1513050504i&amp;ver=20211021","shortlink":"https://wp.me/Pe4R-d","i18n":{"followedText":"New posts from this site will now appear in your \u003Ca href=\"https://wordpress.com/reader\"\u003EReader\u003C/a\u003E","foldBar":"Collapse this bar","unfoldBar":"Expand this bar","shortLinkCopied":"Shortlink copied to clipboard."}};
+//# sourceURL=wpcom-actionbar-placeholder-js-extra
+</script>
+<link rel="EditURI" type="application/rsd+xml" title="RSD" href="https://automattic.wordpress.com/xmlrpc.php?rsd" />
+<meta name="generator" content="WordPress.com" />
+<link rel='shortlink' href='https://wp.me/Pe4R-d' />
+	<style>
+		@font-face {
+			font-family: Recoleta;
+			font-display: swap;
+			src: url('https://s1.wp.com/i/fonts/recoleta/400.woff2')
+		}
+	</style>
+	<link rel="alternate" type="application/json+oembed" href="https://public-api.wordpress.com/oembed/?format=json&amp;url=https%3A%2F%2Fautomattic.com%2Fprivacy%2F&amp;for=wpcom-auto-discovery" /><link rel="alternate" type="application/xml+oembed" href="https://public-api.wordpress.com/oembed/?format=xml&amp;url=https%3A%2F%2Fautomattic.com%2Fprivacy%2F&amp;for=wpcom-auto-discovery" />
+<!-- Jetpack Open Graph Tags -->
+<meta property="og:type" content="article" />
+<meta property="og:title" content="Privacy Policy" />
+<meta property="og:url" content="https://automattic.com/privacy/" />
+<meta property="og:description" content="Your privacy is critically important to us. At Automattic, we have a few fundamental principles: We are thoughtful about the personal information we ask you to provide and the personal information …" />
+<meta property="article:published_time" content="2006-03-24T20:26:35+00:00" />
+<meta property="article:modified_time" content="2025-11-26T14:46:03+00:00" />
+<meta property="og:site_name" content="Automattic" />
+<meta property="og:image" content="https://automattic.com/wp-content/uploads/2024/11/cropped-automattic-logo-square.png?w=200" />
+<meta property="og:image:width" content="200" />
+<meta property="og:image:height" content="200" />
+<meta property="og:image:alt" content="" />
+<meta property="og:locale" content="en_US" />
+<meta property="article:publisher" content="https://www.facebook.com/WordPresscom" />
+<meta name="twitter:creator" content="@automattic" />
+<meta name="twitter:site" content="@automattic" />
+<meta name="twitter:text:title" content="Privacy Policy" />
+<meta name="twitter:image" content="https://automattic.com/wp-content/uploads/2024/11/cropped-automattic-logo-square.png?w=240" />
+<meta name="twitter:card" content="summary" />
+<meta name="twitter:app:name:iphone" content="Jetpack" />
+<meta name="twitter:app:id:iphone" content="1565481562" />
+<meta name="twitter:app:name:ipad" content="Jetpack" />
+<meta name="twitter:app:id:ipad" content="1565481562" />
+<meta name="twitter:app:name:googleplay" content="Jetpack" />
+<meta name="twitter:app:id:googleplay" content="com.jetpack.android" />
+
+<!-- End Jetpack Open Graph Tags -->
+<link rel='openid.server' href='https://automattic.com/?openidserver=1' />
+<link rel='openid.delegate' href='https://automattic.com/' />
+<link rel="search" type="application/opensearchdescription+xml" href="https://automattic.com/osd.xml" title="Automattic" />
+<link rel="search" type="application/opensearchdescription+xml" href="https://s1.wp.com/opensearch.xml" title="WordPress.com" />
+<link rel="canonical" href="https://automattic.com/privacy/" />
+<script type="application/ld+json">
+{"@context":"https:\/\/schema.org","@graph":[{"@type":"WebSite","@id":"https:\/\/automattic.com\/#website","url":"https:\/\/automattic.com\/","name":"Automattic","description":"Making the web a better place","potentialAction":{"@type":"SearchAction","target":"https:\/\/automattic.com\/search\/{search_term_string}\/","query-input":"required name=search_term_string"},"publisher":{"@id":"https:\/\/automattic.com\/#website"}},{"@type":"BreadcrumbList","@id":"https:\/\/automattic.com\/privacy\/#breadcrumbs","itemListElement":[{"@type":"ListItem","position":0,"item":{"@type":"WebSite","@id":"https:\/\/automattic.com\/#website-breadcrumb","url":"https:\/\/automattic.com\/","name":"Home"}},{"@type":"ListItem","position":1,"item":{"@type":"CollectionPage","@id":"https:\/\/automattic.com\/category\/uncategorized\/#term-breadcrumb","url":"https:\/\/automattic.com\/category\/uncategorized\/","name":"Uncategorized"}},{"@type":"ListItem","position":2,"item":{"@type":"CollectionPage","@id":"https:\/\/automattic.com\/tag\/343\/#term-breadcrumb","url":"https:\/\/automattic.com\/tag\/343\/","name":"343"}},{"@type":"ListItem","position":3,"item":{"@type":"WebPage","@id":"https:\/\/automattic.com\/privacy\/#webpage-breadcrumb","url":"https:\/\/automattic.com\/privacy\/","name":"Privacy\u00a0Policy"}}]},{"@type":"ImageObject","@id":"https:\/\/automattic.com\/privacy\/#primaryimage","url":"https:\/\/automattic.com\/wp-content\/uploads\/2024\/11\/cropped-automattic-logo-square.png?w=200","width":200,"height":200,"caption":"Privacy\u00a0Policy"},{"@type":"WebPage","@id":"https:\/\/automattic.com\/privacy\/#webpage","url":"https:\/\/automattic.com\/privacy\/","name":"Privacy\u00a0Policy","description":"Making the web a better place","inLanguage":"en","isPartOf":{"@id":"https:\/\/automattic.com\/#website"},"primaryImageOfPage":{"@id":"https:\/\/automattic.com\/privacy\/#primaryimage"},"publisher":{"@id":"https:\/\/automattic.com\/#website"},"datePublished":"2006-03-24T20:26:35+0000","dateModified":"2025-11-26T14:46:03+0000","breadcrumb":{"@id":"https:\/\/automattic.com\/privacy\/#breadcrumbs"}}]}
+</script>
+<meta name="description" content="Your privacy is critically important to us. At Automattic, we have a few fundamental principles: We are thoughtful about the personal information we ask you to provide and the personal information that we collect about you through the operation of our services. We store personal information for only as long as we have a reason&hellip;" />
+<link rel="icon" href="https://automattic.com/wp-content/uploads/2024/11/cropped-automattic-logo-square.png?w=32" sizes="32x32" />
+<link rel="icon" href="https://automattic.com/wp-content/uploads/2024/11/cropped-automattic-logo-square.png?w=192" sizes="192x192" />
+<link rel="apple-touch-icon" href="https://automattic.com/wp-content/uploads/2024/11/cropped-automattic-logo-square.png?w=180" />
+<meta name="msapplication-TileImage" content="https://automattic.com/wp-content/uploads/2024/11/cropped-automattic-logo-square.png?w=270" />
+<!-- Your Google Analytics Plugin is missing the tracking ID -->
+</head>
+
+<body class="wp-singular page-template page-template-table-of-contents page page-id-13 wp-custom-logo wp-embed-responsive wp-theme-a8cautomattic-2011 is-block-theme customizer-styles-applied jetpack-reblog-enabled">
+
+<div class="wp-site-blocks">
+<div class="wp-block-group wrapper has-global-padding is-layout-constrained wp-block-group-is-layout-constrained">
+	<header class="wp-block-template-part">
+<div class="wp-block-group is-layout-constrained has-global-padding wp-block-group-is-layout-constrained">
+	
+	<div class="wp-block-columns header is-layout-flex wp-container-core-columns-is-layout-9d6595d7 wp-block-columns-is-layout-flex">
+		
+		<div class="wp-block-column is-layout-flow wp-block-column-is-layout-flow">
+			
+			<div class="wp-block-group logo is-nowrap is-layout-flex wp-container-core-group-is-layout-ad2f72ca wp-block-group-is-layout-flex">
+				
+				<figure class="wp-block-image size-full is-resized">
+					<a href="/" class="logo-link">
+						<img src="https://automattic.com/wp-content/themes/a8c/automattic-2011/images/automattic-20.svg" alt="Home of Automattic.com" />
+					</a>
+				</figure>
+				
+
+				
+				<div class="wp-block-group timeline-container is-nowrap is-layout-flex wp-container-core-group-is-layout-ad2f72ca wp-block-group-is-layout-flex">
+					
+					<figure class="wp-block-image size-full is-resized timeline-slash">
+						<a href="/timeline">
+							<img src="https://automattic.com/wp-content/themes/a8c/automattic-2011/images/automattic-20-slash.svg" alt="Explore the Automattic timeline" />
+						</a>
+					</figure>
+					
+
+					
+					<figure class="wp-block-image size-full is-resized timeline-20">
+						<a href="/timeline">
+							<img src="https://automattic.com/wp-content/themes/a8c/automattic-2011/images/automattic-20-20.svg" alt="Explore the Automattic timeline" />
+						</a>
+					</figure>
+					
+
+					
+					<p class="header-twenty-years">
+						<a href="/timeline">
+							Automattic timeline <span></span>
+						</a>
+					</p>
+					
+				</div>
+				
+			</div>
+			
+		</div>
+		
+
+		
+		<div class="wp-block-column is-vertically-aligned-center internal-links is-layout-flow wp-block-column-is-layout-flow">
+			<nav class="has-text-color has-contrast-color items-justified-right no-wrap wp-block-navigation is-content-justification-right is-nowrap is-layout-flex wp-container-core-navigation-is-layout-f94d45a2 wp-block-navigation-is-layout-flex"><ul class="wp-block-navigation__container has-text-color has-contrast-color items-justified-right no-wrap wp-block-navigation"><li class=" wp-block-navigation-item page-item page-item-home wp-block-navigation-link"><a class="wp-block-navigation-item__content"  href="/"><span class="wp-block-navigation-item__label">Home</span></a></li><li class=" wp-block-navigation-item page-item page-item-about wp-block-navigation-link"><a class="wp-block-navigation-item__content"  href="/about/"><span class="wp-block-navigation-item__label">About Us</span></a></li><li class=" wp-block-navigation-item page-item page-item-news wp-block-navigation-link"><a class="wp-block-navigation-item__content"  href="/news/"><span class="wp-block-navigation-item__label">News</span></a></li><li class=" wp-block-navigation-item page-item page-item-work-with-us wp-block-navigation-link"><a class="wp-block-navigation-item__content"  href="/work-with-us/"><span class="wp-block-navigation-item__label">Work With Us</span></a></li></ul></nav>
+		</div>
+		
+	</div>
+	
+</div>
+
+
+</header>
+
+	
+	<div class="wp-block-group has-global-padding is-layout-constrained wp-block-group-is-layout-constrained" id="container">
+		
+		<main class="wp-block-group tier has-global-padding is-layout-constrained wp-block-group-is-layout-constrained" id="content">
+			<h1 class="wp-block-post-title">Privacy Policy</h1>
+
+			
+			<div class="wp-block-columns toc-layout is-layout-flex wp-container-core-columns-is-layout-9d6595d7 wp-block-columns-is-layout-flex">
+				
+				<div class="wp-block-column is-layout-flow wp-block-column-is-layout-flow" style="flex-basis:66.66%">
+					<div class="entry-content wp-block-post-content is-layout-flow wp-block-post-content-is-layout-flow"><p>Your privacy is critically important to us. At Automattic, we have a few fundamental principles:</p>
+<ul>
+<li>We are thoughtful about the personal information we ask you to provide and the personal information that we collect about you through the operation of our services.</li>
+<li>We store personal information for only as long as we have a reason to keep it.</li>
+<li>We aim to make it as simple as possible for you to control what information on your website is shared publicly (or kept private), indexed by search engines, and permanently deleted.</li>
+<li>We help protect you from overreaching government demands for your personal information.</li>
+<li>We aim for full transparency on how we gather, use, and share your personal information.</li>
+</ul>
+<p>Below is our Privacy Policy, which incorporates and clarifies these principles.</p>
+<h3 id="who-we-are-and-what-this-policy-covers">Who We Are and What This Policy Covers</h3>
+<p>Howdy! We are the folks behind a variety of products and services designed to allow anyone — from bloggers, to photographers, small business owners, and enterprises — to take full advantage of the power and promise of the open web. Our mission is to democratize publishing and commerce so that anyone with a story can tell it, and anyone can turn their great idea into a livelihood. We believe in powering the open internet with code that is open source and are proud to say that the vast majority of our work is available under the General Public License (“GPL”). Unlike most other services, because our GPL code is public, you can actually download and take a look at that code to see how it works.</p>
+<p>This Privacy Policy applies to information that we collect about you when you use:</p>
+<ul>
+<li>Our websites (including automattic.com, wordpress.com, jetpack.com, woocommerce.com, crowdsignal.com, gravatar.com, intensedebate.com, vaultpress.com, akismet.com, simplenote.com, simperium.com, leandomainsearch.com, cloudup.com, longreads.com, atavist.com, mailpoet.com, automatewoo.com, jetpackcrm.com, happy.tools, wpcourses.com, wpscan.com, newspack.pub, and wp.cloud);</li>
+<li>Our mobile applications (including the WordPress mobile app for Android and iOS);</li>
+<li>Our other Automattic products, services, and features that are available on or through our websites (for example, WordPress.com plans, the Payments feature, the Pay with PayPal block, WordPress.com, Jetpack, Woo Shipping, Woo Tax, Gravatar, the IntenseDebate comment management system, Akismet plans, Simplenote, Simperium, Cloudup, Longreads, MailPoet, AutomateWoo, Jetpack CRM, Happy Tools, WordPress.com Courses, WPScan, Newspack, and WP Cloud); and</li>
+<li>Other users’ websites that use our Services, while you are logged in to your account with us.</li>
+</ul>
+<p>This Privacy Policy also applies to information we collect when you apply for a job at Automattic or one of our subsidiaries.</p>
+<p>Throughout this Privacy Policy we’ll refer to our websites, mobile applications, and other products and services collectively as “Services.” And if you’d like to learn more about which Automattic company is the controller of information about you, take a look at the section below on <a href="https://automattic.com/privacy/#controllers-and-responsible-companies">Controllers and Responsible Companies</a>.</p>
+<p>Please note that this Privacy Policy does not apply to any of our products or services, like Tumblr, that have a separate privacy policy.</p>
+<p>Below we explain how we collect, use, and share information about you, along with the choices that you have with respect to that information.</p>
+<h3 id="creative-commons-sharealike-license">Creative Commons Sharealike License</h3>
+<p>We’ve decided to make this Privacy Policy available under a <a href="https://creativecommons.org/licenses/by-sa/4.0/">Creative Commons Sharealike</a> license. You can grab a copy of this Privacy Policy and other legal documents on <a href="https://github.com/Automattic/legalmattic">GitHub</a>. You’re more than welcome to copy it, adapt it, and repurpose it for your own use. Just make sure to revise the language so that your policy reflects your actual practices. If you do use it, we’d appreciate a credit and link to Automattic somewhere on your site.</p>
+<h3 id="information-we-collect">Information We Collect</h3>
+<p>We only collect information about you if we have a reason to do so — for example, to provide our Services, to communicate with you, or to make our Services better.</p>
+<p>We collect this information from three sources: if and when you provide information to us, automatically through operating our Services, and from outside sources. Let’s go over the information that we collect.</p>
+<h4 id="information-you-provide-to-us"><em>Information You Provide to Us</em></h4>
+<p>It’s probably no surprise that we collect information that you provide to us directly. Here are some examples:</p>
+<ul>
+<li><strong>Basic account information: </strong>We ask for basic information from you in order to set up your account. For example, we require individuals who sign up for a WordPress.com account to provide an email address and password, along with a username or name — and that’s it. You may provide us with more information — like your address and other information you want to share — but we don’t require that information to create a WordPress.com account.</li>
+<li><strong>Public profile information:</strong> If you have an account with us, we collect the information that you provide for your public profile. For example, if you have a WordPress.com account, your username is part of that public profile, along with any other information you put into your public profile, like a photo or an “About Me” description. Your public profile information is just that — public — so please keep that in mind when deciding what information you would like to include.</li>
+<li><strong>Payment and contact information: </strong>There are various ways in which you may provide us payment information and associated contact information. For example, if you buy something from us or earn revenue through your site, we’ll collect information to process those payments and contact you. If you buy something from us — a subscription to a WordPress.com plan, a premium theme, a <a href="https://wordpress.com/support/domains/domain-registrations-and-privacy/">custom domain</a>, some Longreads swag — or if you pay fees to a person or business through their WordPress.com site (for example via the Payments feature or the Pay with PayPal block), you’ll provide additional personal and payment information like your name, credit card information, and contact information. We also keep a record of the purchases you’ve made. If you use our Ecommerce Services (including Woo Shipping, Woo Tax, and WooPayments), you’ll have to create a WordPress.com account or connect an existing account and, for some Services, provide your site URL. You may also provide us with financial details to set up a payments integration, like the email address for your Stripe or PayPal account or your bank account information. Additionally, if you use <a href="https://woo.app/">WooPay</a> to make purchases on other sites, we will store the contact information and payment information you provide to that service. And if you participate in a revenue sharing opportunity for your site, like <a href="https://wordads.co/">WordAds</a>, you’ll provide some additional information — for example, a tax ID or other identifier so we can process payments to you.</li>
+<li><b>Business Profile: </b>Some of our products collect additional information from you as part of creating a user/customer profile. For example, if you are a Jetpack CRM customer we may add you to our customer relationship database (powered by Jetpack CRM!) using information you provide us including your name, your employer, your job title or role, your contact information, and your communications with us. If you are a Happy Tools user, we use information you provide us like your timezone and location information, your company and team information, and your contact information, to set up your account and power the Service’s features.</li>
+<li><strong>Content information: </strong>You might provide us with information about you in draft and published content (a blog post or comment that includes biographic information about you, or any media or files you upload).</li>
+<li><strong>Credentials: </strong>Depending on the Services you use, you may provide us with credentials for your self-hosted website (like SSH, FTP, and SFTP username and password). Jetpack and VaultPress users may provide us with these credentials in order to use our one-click restore feature if there is a problem with their site, or to allow us to troubleshoot problems more quickly.</li>
+<li><strong>Communications with us (hi there!): </strong>You may also provide us with information when you respond to surveys, communicate with our Happiness Engineers about a support question, post a question in our public forums, or sign up for a newsletter like the one we send through Longreads. When you communicate with us via form, email, phone, WordPress.com comment, or otherwise, we store a copy of our communications (including any call recordings as permitted by applicable law).</li>
+<li><strong>Job applicant information:</strong> If you apply for a job with us — awesome! You may provide us with information like your name, contact information, resume or CV, professional or personal references, similar professional and employment-related data, and work authorization verification as part of the application process. We may also collect additional information about you during the process, like background and credit checks (in applicable jurisdictions and only for certain job roles). You may also provide us with demographic information when required by law or to support our diverse workplace initiatives, such as your gender, racial or ethnic origin, veteran status, and disability status if you voluntarily submit such information as part of your application. We collect demographic information in accordance with applicable law, and do not request demographic information in jurisdictions where it may be prohibited. We will only use this sensitive information to accommodate a disability or illness, comply with legal obligations, protect the health and safety of our employees, and facilitate our internal programs relating to diversity, inclusion, and anti-discrimination. As part of the application process, we may also collect technical indicators such as VPN usage and IP addresses to support the integrity and security of our hiring practices.</li>
+</ul>
+<h4 id="information-we-collect-automatically"><i>Information We Collect Automatically</i></h4>
+<p>We also collect some information automatically:</p>
+<ul>
+<li><strong>Log information:</strong> Like most online service providers, we collect information that web browsers, mobile devices, and servers typically make available, including the browser type, IP address, unique device identifiers, language preference, referring site, the date and time of access, operating system, and mobile network information. We collect log information when you use our Services — for example, when you create or make changes to your website on WordPress.com.</li>
+<li><strong>Transactional information:</strong> When you make a purchase through our Services, we collect information about the transaction, such as product details, purchase price, and the date and location of the transaction. This includes when you purchase something we sell or when you use our Services (like <a href="https://woo.app/">WooPay</a>) to buy something from a third party.</li>
+<li><strong>Usage information:</strong> We collect information about your usage of our Services. For example, we collect information about the actions that site administrators and users perform on a site using our WordPress.com or Jetpack services — in other words, who did what and when (e.g., [WordPress.com username] deleted “[title of post]” at [time/date]). Our <a href="https://woocommerce.com/usage-tracking/">WooCommerce Usage Tracker</a> also tracks information like your email address, WooCommerce settings, and PHP settings, along with information about your online store, like the aggregate number of orders and customers. We also collect information about what happens when you use our Services (e.g., page views, support document searches at en.support.wordpress.com, features enabled for your website, interactions with our <a href="https://wordpress.com/support/admin-bar/">Admin Bar</a> and other parts of our Services) along with information about your device (e.g., screen size, name of cellular network, and mobile device manufacturer). We use this information to, for example, provide our Services to you, get insights on how people use our Services so we can make our Services better, and understand and make predictions about user retention.</li>
+<li><strong>Location information:</strong> We may determine the approximate location of your device from your IP address. We collect and use this information to, for example, calculate how many people visit our Services from certain geographic regions. We may also collect information about your precise location via our mobile apps (like when you post a photograph with location information) if you allow us to do so through your mobile device operating system’s permissions.</li>
+<li><strong>Stored information:</strong> We may access information stored on your mobile device via our mobile apps. We access this stored information through your device operating system’s permissions. For example, if you give us permission to access the photographs on your mobile device’s camera roll, our Services may access the photos stored on your device when you upload a really amazing photograph of the sunrise to your website.</li>
+<li><strong>Interactions with other users’ sites:</strong> We collect some information about your interactions with other users’ sites while you are logged in to your account with us, such as your “Likes” and the fact that you commented on a particular post, so that we can, for example, <a href="https://wordpress.com/support/reader/algorithms-search-and-recommendations/">recommend posts</a> we think may interest you. As another example, we collect information about the comments IntenseDebate users make while logged in and use that information to, for example, tally up statistics about your comments (check them out in your dashboard!) and display information about your comments in your IntenseDebate public profile.</li>
+<li><strong>Information from cookies &amp; other technologies:</strong> A cookie is a string of information that a website stores on a visitor’s computer, and that the visitor’s browser provides to the website each time the visitor returns. Pixel tags (also called web beacons) are small blocks of code placed on websites and emails. Automattic uses cookies and other technologies like pixel tags to help us identify and track visitors, usage, and access preferences for our Services, as well as track and understand email campaign effectiveness and to deliver targeted ads. For more information about our use of cookies and other technologies for tracking, including how you can control the use of cookies, please see our <a href="https://automattic.com/cookies/">Cookie Policy</a>.</li>
+</ul>
+<h4 id="information-we-collect-from-other-sources"><i>Information We Collect from Other Sources</i></h4>
+<p>We may also get information about you from other sources. For example:</p>
+<ul>
+<li><b>Third Party Login:</b> If you create or log in to your WordPress.com account through another service (like Google) we’ll receive associated login information (e.g. a connection token, your username, your email address)</li>
+<li><b>Social Sharing Services: </b>If you connect your website or account to a social media service (like Twitter) through our <a href="https://wordpress.com/support/post-automatically-to-social-media/">Publicize feature</a>, we’ll receive information from that service (e.g., your username, basic profile information, friends list) via the authorization procedures for that service.</li>
+<li><strong>Financial Account Info</strong><strong>: </strong>If you use WooPayments, we’ll receive information relating to your Stripe account, such as your email address and phone number. If you use WooPay, we’ll receive your payment information from Stripe.</li>
+<li><b>Google Account Information: </b>When you connect your Google account to your Newspack powered site, we may access certain Google user data such as your Google Ad Manager Configuration (the network code and your ad units) and your Google Analytics data to allow you to access and manage features more seamlessly. For example, you may be able to manage your Google ads and see your Google Analytics data directly within the dashboard of your Newspack powered site.</li>
+</ul>
+<p>The information we receive depends on which services you use or authorize and what options are available.</p>
+<p>Third-party services may also give us information, like mailing addresses for individuals who are not yet our users (but we hope will be!). We use this information for marketing purposes like postcards and other mailers advertising our Services.</p>
+<h3 id="how-and-why-we-use-information">How and Why We Use Information</h3>
+<h4 id="purposes-for-using-information"><i>Purposes for Using Information</i></h4>
+<p>We use information about you for the purposes listed below:</p>
+<ul>
+<li><strong>To provide our Services.</strong> For example, to set up and maintain your account, host your website, backup and restore your website, provide customer service, process payments and orders, and verify user information.</li>
+<li><strong>To ensure quality, maintain safety, and improve our Services.</strong> For example, by providing automatic upgrades and new versions of our Services. Or, for example, by monitoring and analyzing how users interact with our Services so we can create new features that we think our users will enjoy and that will help them create and manage websites more efficiently or make our Services easier to use.</li>
+<li><strong>To place and manage ads in our advertising program.</strong> For example, to place ads on our users’ sites and some of our own sites as part of our advertising program, and understand ad performance.</li>
+<li><strong>To market our Services and measure, gauge, and improve the effectiveness of our marketing.</strong> For example, by targeting our marketing messages to groups of our users (like those who have a particular plan with us or have been users for a certain length of time), advertising our Services, analyzing the results of our marketing campaigns (like how many people purchased a paid plan after receiving a marketing message), and understanding and forecasting user retention.</li>
+<li><strong>To protect our Services, our users, and the public.</strong> For example, by detecting security incidents; detecting and protecting against malicious, deceptive, fraudulent, or illegal activity; fighting spam; complying with our legal obligations; and protecting the rights and property of Automattic and others, which may result in us, for example, declining a transaction or terminating Services.</li>
+<li><strong>To fix problems with our Services.</strong> For example, by monitoring, debugging, repairing, and preventing issues.</li>
+<li><strong>To customize the user experience.</strong> For example, to personalize your experience by serving you relevant notifications and advertisements for our Services, recommending content through our Reader post suggestions, and providing new essays and stories through Longreads for your reading pleasure.</li>
+<li><strong>To communicate with you.</strong> For example, by emailing you to ask for your feedback, share tips for getting the most out of our products, or keep you up to date on Automattic; texting you to verify your payment; or calling you to share offers and promotions that we think will be of interest to you. If you don’t want to hear from us, you can opt out of marketing communications at any time. (If you opt out, we’ll still send you important updates relating to your account.)</li>
+<li><strong>To recruit and hire new Automatticians.</strong> For example, by evaluating job applicants (including verifying their identity, experience, and other information submitted), screening their applications using automated or partially automated tools (which are subject to human review at every stage of the process), and communicating with them by phone, email, or social media platforms. If the application progresses, we may also collect interview information and background check information. This may also include verifying information required to initiate employment, for purposes such as confirming ability to legally work in a specific location, setting up payroll, and complying with statutory reporting requirements.</li>
+</ul>
+<h4 id="legal-bases-for-collecting-and-using-information"><i>Legal Bases for Collecting and Using Information</i></h4>
+<p>A note here for those in the European Union about our legal grounds for processing information about you under EU data protection laws, which is that our use of your information is based on the grounds that:</p>
+<p>(1) The use is necessary in order to fulfill our commitments to you under the applicable terms of service or other agreements with you or is necessary to administer your account — for example, in order to enable access to our website on your device or charge you for a paid plan; or</p>
+<p>(2) The use is necessary for compliance with a legal obligation; or</p>
+<p>(3) The use is necessary in order to protect your vital interests or those of another person; or</p>
+<p>(4) We have a legitimate interest in using your information — for example, to provide and update our Services; to improve our Services so that we can offer you an even better user experience; to safeguard our Services; to communicate with you; to measure, gauge, and improve the effectiveness of our advertising; and to understand our user retention and attrition; to monitor and prevent any problems with our Services; and to personalize your experience; for job applicants, to ensure that we hire the most suitable applicant for a role; or</p>
+<p>(5) You have given us your consent — for example before we place certain cookies on your device and access and analyze them later on, as described in our <a href="https://automattic.com/cookies/">Cookie Policy</a>.</p>
+<h3 id="sharing-information">Sharing Information</h3>
+<h4 id="how-we-share-information"><i>How We Share Information</i></h4>
+<p>We share information about you in limited circumstances, and with appropriate safeguards on your privacy. These are spelled out below, as well as in the section called <a href="https://automattic.com/privacy/#ads-and-analytics-services-provided-by-others">Ads and Analytics Services Provided by Others</a>:</p>
+<ul>
+<li><strong>Subsidiaries and independent contractors:</strong> We may disclose information about you to our subsidiaries and independent contractors who need the information to help us provide our Services or process the information on our behalf. We require our subsidiaries and independent contractors to follow this Privacy Policy for any personal information that we share with them.</li>
+<li><strong>Third-party vendors:</strong> We may share information about you with third-party vendors who need the information in order to provide their services to us, or to provide their services to you or your site. This includes vendors that help us provide our Services to you (like Stripe, which powers WooPayments, payment providers that process your credit and debit card information, payment providers you use for your own ecommerce operations, fraud prevention services that allow us to analyze fraudulent payment transactions, cloud storage services, postal and email delivery services that help us stay in touch with you, customer chat and email support services that help us communicate with you, registrars, registries, data escrow services that allow us to provide domain registration services, and your hosting provider if your site is not hosted by Automattic); those that assist us with our marketing efforts (e.g., by providing tools for identifying a specific marketing target group or improving our marketing campaigns, and by placing ads to market our services); those that help us understand and enhance our Services (like analytics providers); those that make tools to help us run our operations (like programs that help us with task management, scheduling, word processing, email and other communications, collaboration among our teams, and recruitment screening); other third-party tools that help us manage operations; and companies that make products available on our websites (like the extensions on woocommerce.com), who may need information about you in order to, for example, provide technical or other support services to you. We require vendors to agree to privacy commitments in order to share information with them. Other vendors are listed in our more specific policies (e.g., our <a href="https://automattic.com/cookies/">Cookie Policy</a>).</li>
+<li><strong>Legal and regulatory requirements:</strong> We may disclose information about you in response to a subpoena, court order, or other governmental request. For more information on how we respond to requests for information about WordPress.com users, please see our <a href="https://wordpress.com/support/report-blogs/legal-guidelines/">Legal Guidelines</a>. Additionally, if you have a domain registered with WordPress.com, we may share your information to comply with the Internet Corporation for Assigned Names and Numbers&#8217; (ICANN) regulations, rules, or policies. For example, your information relating to your domain registration may be available in the WHOIS database, or we may be required to share your information with ICANN-approved Dispute Resolution Service Providers. Please see our <a href="https://wordpress.com/support/domains/domain-registrations-and-privacy/">Domain Registrations and Privacy support document</a> for more details.</li>
+<li><strong>To protect rights, property, and others:</strong> We may disclose information about you when we believe in good faith that disclosure is reasonably necessary to protect the property or rights of Automattic, third parties, or the public at large. For example, if we have a good faith belief that there is an imminent danger of death or serious physical injury, we <a href="https://wordpress.com/support/report-blogs/legal-guidelines/#emergency-requests-from-government-agencieslaw-enforcement">may disclose information related to the emergency without delay</a>.</li>
+<li><strong>Business transfers:</strong> In connection with any merger, sale of company assets, or acquisition of all or a portion of our business by another company, or in the unlikely event that Automattic goes out of business or enters bankruptcy, user information would likely be one of the assets that is transferred or acquired by a third party. If any of these events were to happen, this Privacy Policy would continue to apply to your information and the party receiving your information may continue to use your information, but only consistent with this Privacy Policy.</li>
+<li><strong>With your consent:</strong> We may share and disclose information with your consent or at your direction. For example, we may share your information with third parties when you authorize us to do so, like when you connected your site to a social media service through our Publicize feature.</li>
+<li><strong>Aggregated or de-identified information:</strong> We may share information that has been aggregated or de-identified, so that it can no longer reasonably be used to identify you. For instance, we may publish aggregate statistics about the use of our Services, or share a hashed version of your email address to facilitate customized ad campaigns on other platforms.</li>
+<li><strong>Site owners: </strong>If you have a WordPress.com account and interact with another site using our Services, your information may be shared with the administrators of the site. For example, if you leave a comment on a site created on WordPress.com or running Jetpack, your IP address and the email address associated with your WordPress.com account may be shared with the administrator(s) of the site where you left the comment. Or if you make a payment (like via the <a href="https://wordpress.com/support/recurring-payments/">Payments feature</a>) to a site, your public display name, user name, and email address may be shared with the administrator(s) of the site. Or if you follow/subscribe to another WordPress.com site we will share your email address with the site owner.<strong><br />
+</strong></li>
+<li><strong>Published support requests:</strong> If you send us a request for assistance (for example, via a support email or one of our other feedback mechanisms), we reserve the right to publish that request in order to clarify or respond to your request, or to help us support other users.</li>
+</ul>
+<h4 id="information-shared-publicly"><i>Information Shared Publicly</i></h4>
+<p>Information that you choose to make public is — you guessed it — disclosed publicly.</p>
+<p>That means information like your public profile, posts, other content that you make public on your website, and your “Likes” and comments on other websites are all available to others — and we hope they get a lot of views!</p>
+<p>For example, the photo that you upload to your public profile, or a default image if you haven’t uploaded one, is your <strong>G</strong>lobally <strong>R</strong>ecognized Avatar, or Gravatar — get it? :) Your Gravatar, along with other public profile information, displays alongside the comments and “Likes” that you make on other users’ websites while logged in to your WordPress.com account. Your Gravatar and public profile information may also display with your comments, “Likes,” and other interactions on websites that use our Gravatar service, if the email address associated with your account is the same email address you use on the other website.</p>
+<p>We also provide a “Firehose” stream of public data (like posts and comments) from some sites that use our Services to provide that data to Firehose subscribers, who may view and analyze the content (all subject to our Terms of Service), but do not have rights to re-publish it publicly. Find out more about opting out of the Firehose for <a href="https://en.support.wordpress.com/settings/privacy-settings/#firehose-settings">WordPress.com</a> and <a href="https://jetpack.com/support/privacy/enhanced-distribution/">Jetpack</a> sites. Public information may also be indexed by search engines or used by third parties.</p>
+<p>Please keep all of this in mind when deciding what you would like to share publicly.</p>
+<h3 id="how-long-we-keep-information">How Long We Keep Information</h3>
+<p>We generally discard information about you when it’s no longer needed for the purposes for which we collect and use it — described in the section above on How and Why We Use Information — and we’re not legally required to keep it.</p>
+<p>For example, we keep web server logs that record information about a visitor to one of Automattic’s websites, like the visitor’s IP address, browser type, and operating system, for approximately 30 days. We retain the logs for this period of time in order to, among other things, analyze traffic to Automattic’s websites and investigate issues if something goes wrong on one of our websites.</p>
+<p>As another example, when you delete a post, page, or comment from your WordPress.com site, it stays in your Trash folder for thirty days in case you change your mind and would like to restore that content, because starting from scratch is no fun. After the thirty days are up, the deleted content may remain on our backups and caches until purged.</p>
+<p>If you are a job applicant, we will keep your personal data during the application process, and for a certain period thereafter. To determine that period, we take into account a number of factors, like our legal and regulatory obligations (such as equal opportunity obligations) and whether we may need to retain personal data for internal business purposes like analyzing our applicant pool.</p>
+<h3 id="security">Security</h3>
+<p>While no online service is 100% secure, we work very hard to protect information about you against unauthorized access, use, alteration, or destruction, and take reasonable measures to do so. We monitor our Services for potential vulnerabilities and attacks.</p>
+<p>To enhance the security of your account, we encourage you to enable our advanced security settings, like <a href="https://wordpress.com/support/security/two-step-authentication/">Two Step Authentication</a>.</p>
+<h3 id="choices">Choices</h3>
+<p>You have several choices available when it comes to information about you:</p>
+<ul>
+<li><strong>Limit the information that you provide:</strong> If you have an account with us, you can choose not to provide the optional account information, profile information, and transaction and billing information. Please keep in mind that if you do not provide this information, certain features of our Services — for example, premium themes that carry an additional charge — may not be accessible. If you are a job applicant, and you choose not to provide certain data elements to us, we may not be able to proceed with the recruitment process.</li>
+<li><strong>Limit access to information on your mobile device:</strong> Your mobile device operating system should provide you with the option to discontinue our ability to collect stored information or location information via our mobile apps. If you choose to limit this, you may not be able to use certain features, like geotagging for photographs.</li>
+<li><strong>Opt out of marketing communications:</strong> You may opt out of receiving promotional communications from us. Just follow the instructions in those communications or let us know. If you opt out of promotional communications, we may still send you other communications, like those about your account and legal notices.</li>
+<li><strong>Set your browser to reject cookies:</strong> At this time, Automattic does not respond to “do not track” signals across all of our Services. However, you can <a href="https://automattic.com/cookies/#controlling-cookies">usually choose</a> to set your browser to remove or reject browser cookies before using Automattic’s websites, with the drawback that certain features of Automattic’s websites may not function properly without the aid of cookies.</li>
+<li><strong>Opt out of our internal analytics program:</strong> You can do this through your user settings. By opting out, you will stop sharing information with our analytics tool about events or actions that happen after the opt-out, while you’re logged in to your WordPress.com account. For more information, please see our <a href="https://automattic.com/cookies/#our-internal-analytics-tool">Cookie Policy</a>.</li>
+<li><strong>Close your account:</strong> While we’d be very sad to see you go, you can close your account if you no longer want to use our Services. (<a href="https://wordpress.com/support/close-account/">Here</a> are account closure instructions for WordPress.com accounts.) Please keep in mind that we may continue to retain your information after closing your account, as described in How Long We Keep Information above — for example, when that information is reasonably needed to comply with (or demonstrate our compliance with) legal obligations such as law enforcement requests, or reasonably needed for our legitimate business interests.</li>
+</ul>
+<h3 id="your-rights">Your Rights</h3>
+<p>If you are located in certain parts of the world, including some US states and countries that fall under the scope of the UK or European General Data Protection Regulation (aka the “GDPR”), you may have certain rights regarding your personal information, like the right to request access to or deletion of your data.</p>
+<h4 id="uk-or-european-general-data-protection-regulation-gdpr"><em>UK or European General Data Protection Regulation (GDPR)</em></h4>
+<p>If you are located in a country that falls under the scope of the GDPR, data protection laws give you certain rights with respect to your personal data, subject to any exemptions provided by the law, including the rights to:</p>
+<ul>
+<li>Request access to your personal data;</li>
+<li>Request correction or deletion of your personal data;</li>
+<li>Object to our use and processing of your personal data;</li>
+<li>Request that we limit our use and processing of your personal data; and</li>
+<li>Request portability of your personal data.</li>
+</ul>
+<p>You also have the right to make a complaint to a government supervisory authority.</p>
+<h4 id="us-privacy-laws"><em>US Privacy Laws</em></h4>
+<p>Laws in some US states require us to provide residents with additional information about the categories of personal information we collect and share, where we get that personal information, and how and why we use it. You’ll find that information in this section (if you are a California resident, please note that this is the Notice at Collection we are required to provide you under California law).</p>
+<p>In the last 12 months, we collected the following categories of personal information, depending on the Services used:</p>
+<ul>
+<li>Identifiers (like your name, contact information, and device and online identifiers);</li>
+<li>Commercial information (your billing information and purchase history, for example);</li>
+<li>Characteristics protected by law (for example, you might provide your gender as part of a research survey for us or you may choose to voluntarily disclose your race or veteran status as part of your job application);</li>
+<li>Internet or other electronic network activity information (such as your usage of our Services, like the actions you take as an administrator of a WordPress.com site);</li>
+<li>Geolocation data (such as your location based on your IP address);</li>
+<li>Audio, electronic, visual or similar information (such as your profile picture, if you uploaded one);</li>
+<li>Professional or employment-related information (for example, your company and team information if you are a Happy Tools user, or information you provide in a job application); and</li>
+<li>Inferences we make (such as likelihood of retention or attrition).</li>
+</ul>
+<p>If you are a job applicant, we may have also collected:</p>
+<ul>
+<li>Education information, such as the education you disclose in your job application.</li>
+</ul>
+<p>You can find more information about what we collect and sources of that information in the <a href="https://automattic.com/privacy/#information-we-collect">Information We Collect section</a> above.</p>
+<p>We collect personal information for the business and commercial purposes described in the <a href="https://automattic.com/privacy/#how-and-why-we-use-information">How and Why We Use Information section</a>. And we share this information with the categories of third parties described in the <a href="https://automattic.com/privacy/#sharing-information">Sharing Information section</a>. We retain this information for the length of time described in our <a href="https://automattic.com/privacy/#how-long-we-keep-information">How Long We Keep Information section</a>.</p>
+<p>In some US states you have additional rights subject to any exemptions provided by your state&#8217;s respective law, including the right to:</p>
+<ul>
+<li>Request a copy of the specific pieces of information we collect about you and, if you’re in California, to know the categories of personal information we collect, the categories of business or commercial purpose for collecting and using it, the categories of sources from which the information came, and the categories of third parties we share it with;</li>
+<li>Request deletion of personal information we collect or maintain;</li>
+<li>Request correction of personal information we collect or maintain;</li>
+<li>Opt out of the sale or sharing of personal information;</li>
+<li>Receive a copy of your information in a readily portable format; and</li>
+<li>Not receive discriminatory treatment for exercising your rights.</li>
+</ul>
+<p>You can find detailed metrics about Automattic&#8217;s compliance with these rights in <a href="https://transparency.automattic.com/">our Privacy Report</a>.</p>
+<p><strong><em>Right to Opt Out</em></strong></p>
+<p>We never directly sell your personal information in the conventional sense (i.e., for money).</p>
+<p>We may share your information as necessary with our third-party service providers to provide our services to you. To the extent that we share your information with certain advertising, marketing, or analytics vendors, this can be considered a &#8220;sale&#8221; or “share” in certain U.S. States, which you may have the right to opt out of.</p>
+<p>You can learn more about this sharing and how to opt out by clicking the &#8220;Do Not Sell My Personal Information&#8221; link in the footer of our websites, or from the settings page within our apps. Note that in some instances this link will only display to individuals visiting our sites from within the relevant states.</p>
+<p>Our opt-out is managed through cookies, so if you delete cookies, your browser is set to delete cookies automatically after a certain length of time, or if you visit sites in a different browser, you&#8217;ll need to make this selection again.</p>
+<p>We also respect the GPC browser signal and will treat it as a valid means of communicating your desire to opt out.</p>
+<p>We do not collect or process your sensitive (and potentially sensitive) personal information except where it is strictly necessary to provide you with our service, where the processing is not for the purpose of inferring characteristics about you, or for other purposes that do not require an option to limit under California law. We don’t knowingly sell or share personal information of those under 16.</p>
+<p><strong><em>Your Information &amp; Personalized Advertising</em></strong></p>
+<p>Our mission is to democratize publishing and commerce, and that means making our Services accessible to as many people as possible. We show ads on some of our users’ sites as well as some of our own sites, and the revenue these ads generate lets us offer free access to some of our Services so that money doesn’t become an obstacle to having a voice. Our ads program also allows our users to earn revenue to support and grow their own sites. As part of our advertising program, we and our users do use cookies to share certain device identifiers and information about your browsing activities with our advertising partners, and those advertising partners may use that information to show you personalized ads on some of our users’ sites and some of our own.</p>
+<p>The personal information we share includes online identifiers; internet or other network or device activity (such as cookie information, other device identifiers, and IP address); and geolocation data (approximate location information from your IP address). These disclosures may be considered a “sale” or “share” of information under some US state privacy laws. We do not sell (or share) information through our ads program that identifies you personally, like your name or contact information. Learn how you can opt out by going to<a href="https://wordpress.com/advertising-program-optout/"> Advertising on WordPress.com Sites and Sites in the WordAds Program</a>.</p>
+<h4 id="contacting-us-about-these-rights"><em>Contacting Us About These Rights</em></h4>
+<p>You can usually access, correct, or delete your personal data using your account settings and tools that we offer, but if you aren’t able to or you’d like to contact us about one of the other rights, scroll down to “<a href="https://automattic.com/privacy/#how-to-reach-us">How to Reach Us</a>” to, well, find out how to reach us.</p>
+<p>When you contact us about one of your rights under this section, we’ll need to verify that you are the right person before we disclose or delete anything. For example, if you are a user, we will need you to contact us from the email address associated with your account. You can also designate an authorized agent to make a request on your behalf by giving us written authorization. We may still require you to verify your identity with us.</p>
+<h4 id="appeals-process-for-rights-requests-denials"><b><i>Appeals Process for Rights Requests Denials</i></b></h4>
+<p>In some circumstances we may deny your request to exercise one of these rights. For example, if we cannot verify that you are the account owner we may deny your request to access the personal information associated with your account. As another example, if we are legally required to maintain a copy of your personal information we may deny your request to delete your personal information.</p>
+<p>In the event that we deny your request, we will communicate this fact to you in writing. You may appeal our decision by responding in writing to our denial email and stating that you would like to appeal. All appeals will be reviewed by an internal expert who was not involved in your original request. In the event that your appeal is also denied this information will be communicated to you in writing. Please note that the appeal process does not apply to job applicants.</p>
+<p>If your appeal is denied, in some US states you may refer the denied appeal to the state attorney general if you believe the denial is in conflict with your legal rights. The process for how to do this will be communicated to you in writing at the same time we send you our decision about your appeal.</p>
+<h3 id="controllers-and-responsible-companies">Controllers and Responsible Companies</h3>
+<p>Automattic’s Services are worldwide. Different Automattic companies are the controller (or co-controller) of personal information, which means that they are the company responsible for processing that information, based on the particular service and the location of the individual using our Services.</p>
+<p>Depending on the Services you use, more than one company may be the controller of your personal data. Generally, the “controller” is the Automattic company that entered into the contract with you under the Terms of Service for the product or service you use. In addition, Automattic Inc., our US-based company, is the controller for some of the processing activities across all of our Services worldwide.</p>
+<p>The chart below explains the current controllers for processing your personal information. We use the term “Designated Countries” to refer to Australia, Canada, Japan, Mexico, New Zealand, Russia, and all countries located in Europe (including the UK and ROI).</p>
+<p><em><strong>Automattic Services (except Woo)</strong></em></p>
+<table>
+<tbody>
+<tr>
+<td align="top">If you reside outside of the Designated Countries:</td>
+<td><strong>Automattic Inc.</strong><br />
+60 29th Street #343<br />
+San Francisco, CA 94110</td>
+</tr>
+<tr>
+<td align="top">If you reside in the Designated Countries:</td>
+<td align="top"><strong>Aut O’Mattic A8C Ireland Ltd.</strong><br />
+Grand Canal Dock, 25 Herbert Pl<br />
+Dublin, D02 AY86<br />
+Ireland</p>
+<p>Automattic Inc. is also the controller for some of the processing activities related to Services provided by Aut O’Mattic A8C Ireland Ltd.</td>
+</tr>
+</tbody>
+</table>
+<p><em><strong>Woo Services<br />
+</strong></em></p>
+<p><em>Woo services includes WooCommerce, WooPayments, Woo Shipping, Woo Tax, MailPoet, and other products and services available at woocommerce.com.</em></p>
+<table>
+<tbody>
+<tr>
+<td align="top">If you reside outside of the Designated Countries:</td>
+<td><strong>WooCommerce, Inc.</strong><br />
+60 29th Street #343<br />
+San Francisco, CA 94110</p>
+<p>Automattic Inc. is also the controller for some of the processing activities related to Services provided by WooCommerce, Inc.</td>
+</tr>
+<tr>
+<td align="top">If you reside in the Designated Countries:</td>
+<td align="top"><strong>WooCommerce Ireland Ltd.</strong><br />
+Grand Canal Dock, 25 Herbert Pl<br />
+Dublin, D02 AY86<br />
+Ireland</p>
+<p>Automattic Inc and WooCommerce, Inc are also the joint controllers for some of the processing activities related to Services provided by WooCommerce Ireland Ltd.</td>
+</tr>
+</tbody>
+</table>
+<h3 id="how-to-reach-us">How to Reach Us</h3>
+<p>If you have a question about this Privacy Policy, or you would like to contact us about any of the rights mentioned in the <a href="https://automattic.com/privacy/#your-rights">Your Rights section</a> above, please contact us through our <a href="https://wordpress.com/help/contact">web form</a> or via <a href="mailto:privacypolicyupdates@automattic.com">email</a>. These are the fastest ways to get a response to your inquiry, but you can also contact us by telephone at 1-877-273-3049.</p>
+<h3 id="other-things-you-should-know-keep-reading">Other Things You Should Know (Keep Reading!)</h3>
+<h4 id="transferring-information"><i>Transferring Information</i></h4>
+<p>Because Automattic’s Services are offered worldwide, the information about you that we process when you use the Services in the EU or the UK may be used, stored, and/or accessed by individuals operating outside the European Economic Area (EEA) or the UK who work for us, other members of our group of companies, or third-party data processors. This is required for the purposes listed in the <a href="https://automattic.com/privacy/#how-and-why-we-use-information">How and Why We Use Information section</a> above.</p>
+<p>When providing information about you to entities outside the EEA or the UK, we will take appropriate measures to ensure that the recipient protects your personal information adequately in accordance with this Privacy Policy as required by applicable law. These measures include entering into European Commission or UK government approved standard contractual arrangements with entities based in countries outside the EEA or the UK.</p>
+<p>You can ask us for more information about the steps we take to protect your personal information when transferring it from the EU or the UK.</p>
+<h4 id="ads-and-analytics-services-provided-by-others"><i>Ads and Analytics Services Provided by Others</i></h4>
+<p>Ads appearing on any of our Services may be delivered by advertising networks. Other parties may also provide analytics services via our Services. These ad networks and analytics providers may set tracking technologies (like cookies) to collect information about your use of our Services and across other websites and online services. These technologies allow these third parties to recognize your device to compile information about you or others who use your device. This information allows us and other companies to, among other things, analyze and track usage, determine the popularity of certain content, and deliver ads that may be more targeted to your interests. Please note this Privacy Policy only covers the collection of information by Automattic and does not cover the collection of information by any third-party advertisers or analytics providers.</p>
+<h4 id="third-party-software-and-services"><i>Third-Party Software and Services</i></h4>
+<p>If you’d like to use third-party plugins or embeds, WooPayments (powered by Stripe), Woo extensions that enable services provided by third parties, or other third-party software or services, please keep in mind that interacting with them may mean providing information about yourself (or your site visitors) to those third parties. For example, some third-party services may request or require access to your (yours, your visitors’, or customers’) data via a pixel or cookie. Please note that if you use the third-party service or grant access, your data will be handled in accordance with the third party’s privacy policy and practices. We don’t own or control these third parties, and they have their own rules about information collection, use, and sharing, which you should review before using the software or services.</p>
+<h4 id="visitors-to-our-userse28099-websites"><i>Visitors to Our Users’ Websites</i></h4>
+<p>We also process information about visitors to our users’ websites, on behalf of our users and in accordance with our user agreements. Please note that our processing of that information on behalf of our users for their websites isn’t covered by this Privacy Policy. We encourage our users to post a privacy policy that accurately describes their practices on data collection, use, and sharing of personal information. If you’d like, you can also read more about the data we collect on behalf of our users in our <a href="https://automattic.com/privacy-notice/">Privacy Notice</a>.</p>
+<p>Users control the content posted on their sites, so any disputes regarding content on a user’s site should be made directly to the site owner, through their “contact us” page, at an email address they provide, or by leaving a comment on the site.</p>
+<h3 id="privacy-policy-changes">Privacy Policy Changes</h3>
+<p>Although most changes are likely to be minor, Automattic may change its Privacy Policy from time to time. Automattic encourages visitors to frequently check this page for any changes to its Privacy Policy. If we make changes, we will notify you by revising the change log below, and, in some cases, we may provide additional notice (like adding a statement to our homepage or the <a href="https://wordpress.com/blog/">WordPress.com Blog,</a> or sending you a notification through email or your dashboard). Your further use of the Services after a change to our Privacy Policy will be subject to the updated policy.</p>
+<h3 id="other-information-and-resources">Other Information and Resources</h3>
+<p><a href="https://jetpack.com/support/privacy/">Jetpack Privacy Center</a></p>
+<p><a href="https://woocommerce.com/gdpr/">Woo and the GDPR</a></p>
+<h3 id="translation">Translation</h3>
+<p>Our Privacy Policy was originally written in English (US). We may translate it into other languages. For example:</p>
+<p>French: <a href="https://automattic.com/fr/privacy/">https://automattic.com/fr/privacy/</a><br />
+Spanish: <a href="https://automattic.com/es/privacy/">https://automattic.com/es/privacy/</a><br />
+German: <a href="https://automattic.com/de/privacy/">https://automattic.com/de/privacy/</a></p>
+<p>In the event of a conflict between a translated version of our Privacy Policy and the English version, the English version will control.</p>
+<p>That’s it! Thanks for reading.</p>
+<h3 id="change-log">Change log</h3>
+<ul>
+<li><em>October 6, 2025:</em> Added more detail about the use of information we collect about job applicants.</li>
+<li><em>August 5, 2025</em>: Added more detail about information we collect about job applicants.</li>
+<li><em>April 22, 2024: </em>Removed the outdated list of specific US states covered by the US Privacy Laws section.</li>
+<li><em>October 31, 2023:</em> Changed instances of &#8220;WooCommerce&#8221; to &#8220;Woo.&#8221;</li>
+<li><em>July 12, 2023:</em> Added new example of information shared with site owners.</li>
+<li><em>March 17, 2023: </em>Removed references to WPVIP.</li>
+<li><i>December 30, 2022: </i>Updated the California rights section to apply to additional US states.</li>
+<li><em>October 18, 2022</em>: Added wp.cloud to the list of our websites.</li>
+<li><em>April 26, 2022:</em> Included information regarding WooPay.</li>
+<li><em>November 22, 2021: </em>Included information for WPScan.</li>
+<li><em>October 8, 2021:</em> Included information for WordPress.com Courses and Newspack. Updated the &#8220;Information we Collect from Other Sources&#8221; section with new examples.</li>
+<li><i>January 1, 2021</i>: Included information for AutomateWoo and Jetpack CRM. Updated the “Controllers and Responsible Companies” section to reflect changes affecting WooCommerce users.</li>
+<li><em>December 7, 2020: </em>Included information for MailPoet.</li>
+<li><em>October 12, 2020</em>: Renamed WooCommerce Services to WooCommerce Shipping &amp; Tax.</li>
+<li><em>August 1, 2020</em>: Renamed some Payments features and updated the &#8220;Controllers and Responsible Companies&#8221; section to reflect changes affecting WooCommerce users.</li>
+<li><em>February 21, 2020:</em> Updated for WooCommerce Payments and added a new section: &#8220;Other Information and Resources.&#8221;</li>
+<li><em>December 31, 2019</em>: Updated for California Consumer Privacy Act and miscellaneous clarification throughout.</li>
+<li><em>October 2, 2019: </em>A few miscellaneous changes, such as new sections about translations of this Privacy Policy and how to opt out of our internal analytics program.</li>
+<li><em>May 31, 2019:</em> Included information for the Recurring Payments feature.</li>
+<li><em>April 1, 2019:</em> Included information for Happy Tools.</li>
+<li><em>March 13, 2019: </em>Added clarifications and additional details to existing sections, for example about ICANN policies and what we may store when you communicate with us.</li>
+<li><em>February 1, 2019:</em> Included information for Longreads and additional information regarding Longreads accounts.</li>
+<li><em>November 6, 2018:</em> Removed references to Polldaddy, which has been rebranded as Crowdsignal.</li>
+<li><em>September 24, 2018: </em>Included information for Simplenote, Simperium, Cloudup, and Lean Domain Search.</li>
+<li><em>May 25, 2018:</em> Added more specific information to help clarify our practices, included information for Crowdsignal and Woocommerce.com services, and added information to reflect the requirements of the EU’s General Data Protection Regulation.</li>
+<li><em>January 3, 2018:</em> Revised and reorganized language throughout to help simplify the policy and clarify our practices.</li>
+<li><em>August 22, 2017:</em> Added “Information We Collect from Other Sources” section.</li>
+<li><em>November 2, 2016</em>: Added that comments submitted as missed spam are retained by Akismet to improve future performance.</li>
+<li><em>February 18, 2015:</em> Updated Creative Commons license from 2.5 to 4.0.</li>
+<li><em>September 18, 2013:</em> Added that blog commenter email addresses are disclosed to administrators of the blog where the comment was left.</li>
+<li><em>February 1, 2011:</em> Clarified subpoena language and added Business Transfers paragraph.</li>
+<li><em>January 3, 2011:</em> Added court order and subpoena clarification.</li>
+<li><em>July 1, 2010:</em> Revised paragraph about IP addresses to explain when they are collected and that commenter IPs are visible to blog administrators.</li>
+<li><em>October 29, 2009:</em> Added Comments paragraph to explain Akismet comment storage policy.</li>
+<li><em>March 10, 2009:</em> Added Ads paragraph to alert users that ads from third parties may use cookies.</li>
+</ul>
+</div>
+				</div>
+				
+
+				
+				<div class="wp-block-column is-layout-flow wp-block-column-is-layout-flow" style="flex-basis:33.33%">
+					<div class="toc-wrapper wp-block-a8ctheme-table-of-contents">
+	<h3 class="table-of-contents--title">Sections</h3>
+	<button class="table-of-contents--toggle" aria-label="Open table of contents" aria-expanded="false">&#9660;</button>
+	<ul class="table-of-contents"><li><a  href="#who-we-are-and-what-this-policy-covers">Who We Are and What This Policy Covers</a></li><li><a  href="#creative-commons-sharealike-license">Creative Commons Sharealike License</a></li><li><a  href="#information-we-collect">Information We Collect</a></li><li><a class="toc-h4" href="#information-you-provide-to-us">Information You Provide to Us</a></li><li><a class="toc-h4" href="#information-we-collect-automatically">Information We Collect Automatically</a></li><li><a class="toc-h4" href="#information-we-collect-from-other-sources">Information We Collect from Other Sources</a></li><li><a  href="#how-and-why-we-use-information">How and Why We Use Information</a></li><li><a class="toc-h4" href="#purposes-for-using-information">Purposes for Using Information</a></li><li><a class="toc-h4" href="#legal-bases-for-collecting-and-using-information">Legal Bases for Collecting and Using Information</a></li><li><a  href="#sharing-information">Sharing Information</a></li><li><a class="toc-h4" href="#how-we-share-information">How We Share Information</a></li><li><a class="toc-h4" href="#information-shared-publicly">Information Shared Publicly</a></li><li><a  href="#how-long-we-keep-information">How Long We Keep Information</a></li><li><a  href="#security">Security</a></li><li><a  href="#choices">Choices</a></li><li><a  href="#your-rights">Your Rights</a></li><li><a class="toc-h4" href="#uk-or-european-general-data-protection-regulation-gdpr">UK or European General Data Protection Regulation (GDPR)</a></li><li><a class="toc-h4" href="#us-privacy-laws">US Privacy Laws</a></li><li><a class="toc-h4" href="#contacting-us-about-these-rights">Contacting Us About These Rights</a></li><li><a class="toc-h4" href="#appeals-process-for-rights-requests-denials">Appeals Process for Rights Requests Denials</a></li><li><a  href="#controllers-and-responsible-companies">Controllers and Responsible Companies</a></li><li><a  href="#how-to-reach-us">How to Reach Us</a></li><li><a  href="#other-things-you-should-know-keep-reading">Other Things You Should Know (Keep Reading!)</a></li><li><a class="toc-h4" href="#transferring-information">Transferring Information</a></li><li><a class="toc-h4" href="#ads-and-analytics-services-provided-by-others">Ads and Analytics Services Provided by Others</a></li><li><a class="toc-h4" href="#third-party-software-and-services">Third-Party Software and Services</a></li><li><a class="toc-h4" href="#visitors-to-our-userse28099-websites">Visitors to Our Users’ Websites</a></li><li><a  href="#privacy-policy-changes">Privacy Policy Changes</a></li><li><a  href="#other-information-and-resources">Other Information and Resources</a></li><li><a  href="#translation">Translation</a></li><li><a  href="#change-log">Change log</a></li></ul></div>
+
+				</div>
+				
+			</div>
+			
+		</main>
+		
+	</div>
+	
+
+	<footer class="wp-block-template-part">
+<div class="wp-block-group has-global-padding is-layout-constrained wp-block-group-is-layout-constrained">
+<div class="wp-block-columns are-vertically-aligned-center is-style-default is-layout-flex wp-container-core-columns-is-layout-905c269e wp-block-columns-is-layout-flex" style="border-top-width:3px;border-bottom-color:#cccccc;border-bottom-width:1px;padding-right:20px;padding-left:20px">
+<div class="wp-block-column is-vertically-aligned-center left-section is-layout-flow wp-block-column-is-layout-flow" style="flex-basis:66%">
+<div class="wp-block-columns are-vertically-aligned-center is-nowrap is-layout-flex wp-container-core-columns-is-layout-9d6595d7 wp-block-columns-is-layout-flex">
+<div class="wp-block-column is-vertically-aligned-center external-links has-small-font-size is-layout-flow wp-block-column-is-layout-flow"><nav class="no-wrap secondary-menu wp-block-navigation is-content-justification-flex-start is-nowrap is-layout-flex wp-container-core-navigation-is-layout-bdb2f032 wp-block-navigation-is-layout-flex" aria-label="Menu 2"><ul class="wp-block-navigation__container  no-wrap secondary-menu wp-block-navigation"><li class="wp-block-navigation-item fieldguide wp-block-navigation-link wp-container-content-9cfa9a5a"><a class="wp-block-navigation-item__content"  href="/fieldguide/"><span class="wp-block-navigation-item__label">Field Guide</span></a></li><li class="wp-block-navigation-item contactus wp-block-navigation-link wp-container-content-9cfa9a5a"><a class="wp-block-navigation-item__content"  href="/contact/"><span class="wp-block-navigation-item__label">Contact</span></a></li><li class="wp-block-navigation-item diversity wp-block-navigation-link wp-container-content-9cfa9a5a"><a class="wp-block-navigation-item__content"  href="/diversity-and-inclusion/"><span class="wp-block-navigation-item__label">Diversity</span></a></li><li class="wp-block-navigation-item press wp-block-navigation-link wp-container-content-9cfa9a5a"><a class="wp-block-navigation-item__content"  href="/press/"><span class="wp-block-navigation-item__label">Press</span></a></li><li class="wp-block-navigation-item privacy wp-block-navigation-link wp-container-content-9cfa9a5a"><a class="wp-block-navigation-item__content"  href="/privacy/"><span class="wp-block-navigation-item__label">Privacy</span></a></li></ul></nav></div>
+
+
+
+<div class="wp-block-column is-vertically-aligned-center social-links is-layout-flow wp-block-column-is-layout-flow">
+<ul class="wp-block-social-links has-small-icon-size has-icon-color has-icon-background-color is-content-justification-center is-nowrap is-layout-flex wp-container-core-social-links-is-layout-4cba5a1d wp-block-social-links-is-layout-flex"><li style="color:#000000;background-color:#ffffff;" class="wp-social-link wp-social-link-x has-black-color has-white-background-color wp-block-social-link"><a href="https://twitter.com/automattic" class="wp-block-social-link-anchor"><svg width="24" height="24" viewBox="0 0 24 24" version="1.1" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false"><path d="M13.982 10.622 20.54 3h-1.554l-5.693 6.618L8.745 3H3.5l6.876 10.007L3.5 21h1.554l6.012-6.989L15.868 21h5.245l-7.131-10.378Zm-2.128 2.474-.697-.997-5.543-7.93H8l4.474 6.4.697.996 5.815 8.318h-2.387l-4.745-6.787Z" /></svg><span class="wp-block-social-link-label screen-reader-text">X</span></a></li>
+
+<li style="color:#000000;background-color:#ffffff;" class="wp-social-link wp-social-link-facebook has-black-color has-white-background-color wp-block-social-link"><a href="https://www.facebook.com/AutomatticInc/" class="wp-block-social-link-anchor"><svg width="24" height="24" viewBox="0 0 24 24" version="1.1" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false"><path d="M12 2C6.5 2 2 6.5 2 12c0 5 3.7 9.1 8.4 9.9v-7H7.9V12h2.5V9.8c0-2.5 1.5-3.9 3.8-3.9 1.1 0 2.2.2 2.2.2v2.5h-1.3c-1.2 0-1.6.8-1.6 1.6V12h2.8l-.4 2.9h-2.3v7C18.3 21.1 22 17 22 12c0-5.5-4.5-10-10-10z"></path></svg><span class="wp-block-social-link-label screen-reader-text">Facebook</span></a></li>
+
+<li style="color:#000000;background-color:#ffffff;" class="wp-social-link wp-social-link-youtube has-black-color has-white-background-color wp-block-social-link"><a href="https://www.youtube.com/c/automattic" class="wp-block-social-link-anchor"><svg width="24" height="24" viewBox="0 0 24 24" version="1.1" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false"><path d="M21.8,8.001c0,0-0.195-1.378-0.795-1.985c-0.76-0.797-1.613-0.801-2.004-0.847c-2.799-0.202-6.997-0.202-6.997-0.202 h-0.009c0,0-4.198,0-6.997,0.202C4.608,5.216,3.756,5.22,2.995,6.016C2.395,6.623,2.2,8.001,2.2,8.001S2,9.62,2,11.238v1.517 c0,1.618,0.2,3.237,0.2,3.237s0.195,1.378,0.795,1.985c0.761,0.797,1.76,0.771,2.205,0.855c1.6,0.153,6.8,0.201,6.8,0.201 s4.203-0.006,7.001-0.209c0.391-0.047,1.243-0.051,2.004-0.847c0.6-0.607,0.795-1.985,0.795-1.985s0.2-1.618,0.2-3.237v-1.517 C22,9.62,21.8,8.001,21.8,8.001z M9.935,14.594l-0.001-5.62l5.404,2.82L9.935,14.594z"></path></svg><span class="wp-block-social-link-label screen-reader-text">YouTube</span></a></li>
+
+<li style="color:#000000;background-color:#ffffff;" class="wp-social-link wp-social-link-linkedin has-black-color has-white-background-color wp-block-social-link"><a href="https://www.linkedin.com/company/automattic/" class="wp-block-social-link-anchor"><svg width="24" height="24" viewBox="0 0 24 24" version="1.1" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false"><path d="M19.7,3H4.3C3.582,3,3,3.582,3,4.3v15.4C3,20.418,3.582,21,4.3,21h15.4c0.718,0,1.3-0.582,1.3-1.3V4.3 C21,3.582,20.418,3,19.7,3z M8.339,18.338H5.667v-8.59h2.672V18.338z M7.004,8.574c-0.857,0-1.549-0.694-1.549-1.548 c0-0.855,0.691-1.548,1.549-1.548c0.854,0,1.547,0.694,1.547,1.548C8.551,7.881,7.858,8.574,7.004,8.574z M18.339,18.338h-2.669 v-4.177c0-0.996-0.017-2.278-1.387-2.278c-1.389,0-1.601,1.086-1.601,2.206v4.249h-2.667v-8.59h2.559v1.174h0.037 c0.356-0.675,1.227-1.387,2.526-1.387c2.703,0,3.203,1.779,3.203,4.092V18.338z"></path></svg><span class="wp-block-social-link-label screen-reader-text">LinkedIn</span></a></li></ul>
+</div>
+</div>
+</div>
+
+
+
+<div class="wp-block-column is-vertically-aligned-center internal-links has-small-font-size is-layout-flow wp-block-column-is-layout-flow"><nav class="has-text-color has-contrast-color items-justified-right no-wrap wp-block-navigation is-content-justification-right is-nowrap is-layout-flex wp-container-core-navigation-is-layout-f94d45a2 wp-block-navigation-is-layout-flex" aria-label=" 2"><ul class="wp-block-navigation__container has-text-color has-contrast-color items-justified-right no-wrap wp-block-navigation"><li class=" wp-block-navigation-item page-item page-item-home wp-block-navigation-link"><a class="wp-block-navigation-item__content"  href="/"><span class="wp-block-navigation-item__label">Home</span></a></li><li class=" wp-block-navigation-item page-item page-item-about wp-block-navigation-link"><a class="wp-block-navigation-item__content"  href="/about/"><span class="wp-block-navigation-item__label">About Us</span></a></li><li class=" wp-block-navigation-item page-item page-item-news wp-block-navigation-link"><a class="wp-block-navigation-item__content"  href="/news/"><span class="wp-block-navigation-item__label">News</span></a></li><li class=" wp-block-navigation-item page-item page-item-work-with-us wp-block-navigation-link"><a class="wp-block-navigation-item__content"  href="/work-with-us/"><span class="wp-block-navigation-item__label">Work With Us</span></a></li></ul></nav></div>
+</div>
+
+
+
+<div class="wp-block-group has-global-padding is-layout-constrained wp-container-core-group-is-layout-2e78a0d0 wp-block-group-is-layout-constrained" style="padding-top:var(--wp--preset--spacing--40);padding-right:20px;padding-bottom:var(--wp--preset--spacing--40);padding-left:20px">
+<p class="copyright has-text-color has-link-color wp-elements-7a8a4e54aad33dc2d11f3da102e522d3" style="color:#777777"><em>© Automattic Inc., purveyors of fine blogging and site-building services since 2005. Thank you for your&nbsp;time.</em></p>
+</div>
+</div>
+</footer>
+</div>
+
+</div>
+<!-- wpcom_wp_footer -->
+<script type="speculationrules">
+{"prefetch":[{"source":"document","where":{"and":[{"href_matches":"/*"},{"not":{"href_matches":["/wp-*.php","/wp-admin/*","/files/*","/wp-content/*","/wp-content/plugins/*","/wp-content/themes/a8c/automattic-2011/*","/*\\?(.+)"]}},{"not":{"selector_matches":"a[rel~=\"nofollow\"]"}},{"not":{"selector_matches":".no-prefetch, .no-prefetch a"}}]},"eagerness":"conservative"}]}
+</script>
+	<script type="speculationrules">
+	{
+		"prerender": [
+			{
+				"urls": [
+					"/",
+					"/about/",
+					"/news/",
+					"/work-with-us/"
+				]
+			}
+		]
+	}
+	</script>
+				<!-- A8C Analytics [start] -->
+			<script type="text/javascript">
+				( function() {
+					'use strict';
+
+					var setupAnalytics = function() {
+						window.a8cAnalyticsConfig = {"cookieBanner":{"version":"2","cssZIndex":50001,"skipBanner":false,"cookieDomain":"automattic.com","v1CookieName":"sensitive_pixel_option","v2CookieName":"sensitive_pixel_options","v1Text":"Our websites and dashboards use cookies. By continuing, you agree to their use. <a target=\"_blank\" href=\"https:\/\/automattic.com\/cookies\/\">Learn more<\/a>, including how to control cookies.","v2Text":"As an open-source company, we take your privacy seriously and want to be as transparent as possible. We use cookies to collect some personal data from you, such as browsing data, IP addresses, and other unique identifiers. Some of these cookies we absolutely need in order to make things work, and others you can choose in order to optimize your experience while using our site and services.","v2OptionsText":"Your privacy is critically important to us. We and our partners use, store, and process your personal data to optimize: our <strong>website<\/strong> such as by improving security or conducting analytics, <strong>marketing activities<\/strong> to help deliver relevant marketing or content, and your <strong>user experience<\/strong> such as by remembering your account name, language settings, or cart information, where applicable. You can customize your cookie settings below. Learn more in our <a href=\"https:\/\/automattic.com\/privacy\/\" target=\"_blank\">Privacy Policy<\/a> and <a href=\"https:\/\/automattic.com\/cookies\/\" target=\"_blank\">Cookie Policy<\/a>.","v2EssentialOptionHeading":"Required","v2EssentialOptionText":"These cookies are essential for our websites and services to perform basic functions and are necessary for us to operate certain features, like allowing registered users to authenticate and perform account-related functions, storing preferences set by users (like account name, language, and location), and ensuring our services operate properly.","v2AnalyticsOptionHeading":"Analytics","v2AnalyticsOptionText":"These cookies allow us to optimize performance by collecting information on how users interact with our websites.","v2AdvertisingOptionHeading":"Advertising","v2AdvertisingOptionText":"We and our advertising partners set these cookies to provide you with relevant content and to understand that content\u2019s effectiveness.","v1ButtonText":"Got It!","v2CustomizeButtonText":"Customize","v2AcceptAllButtonText":"Accept all","v2AcceptSelectionButtonText":"Accept selection","v2EssentialsOnlyButtonText":"Decline non-essential cookies","hiddenConsents":[],"isLoggedIn":false},"doNotSellDialog":{"contactEmailAddress":"privacypolicyupdates@automattic.com"},"adminAnalytics":"analytics-wpcom-admin.php","fireAnalyticsOptions":[]};
+					};
+
+					if ( window.defQueue && defQueue.isLOHP && defQueue.isLOHP === 2020 ) {
+						defQueue.items.push( setupAnalytics );
+					} else {
+						setupAnalytics();
+					}
+				} )();
+			</script>
+
+			
+<script type="text/javascript">
+  ( function () {
+		'use strict';
+
+		/**
+		 * Returns the current page path
+		 */
+		function getCurrentPagePath( pathname = '' ) {
+			return ( pathname || window.location.pathname ).replace( /^\/|\/$/g, '' );
+		}
+
+		/**
+		 * Returns the current page name
+		 */
+		function getCurrentPageName( pathname = '' ) {
+			return getCurrentPagePath( pathname ).replace( getLocaleInPagePathRegExp(), '' );
+		}
+
+		/**
+		 * Returns the current page locale
+		 */
+		function getCurrentPageLocale() {
+			var currentPagePath = getLocaleInPagePathRegExp().exec( getCurrentPagePath() );
+			return currentPagePath !== null && currentPagePath.length === 2 ? currentPagePath[1] : '';
+		}
+		/**
+		 * Helper function to extract locale from page path
+		 */
+		function getLocaleInPagePathRegExp() {
+			return /^(af|als|am|an|ar|arc|as|ast|av|ay|az|ba|bel|bg|bm|bn|bo|br|bs|ca|ce|ckb|cs|csb|cv|cy|da|de|dv|dz|el|el\-po|en|en\-gb|eo|es|es\-mx|et|eu|fa|fi|fo|fr|fr\-be|fr\-ca|fr\-ch|fur|fy|ga|gd|gl|gn|gu|he|hi|hr|hu|hy|ia|id|ii|ilo|is|it|ja|ka|kal|kir|km|kn|ko|kk|ks|kv|la|li|lo|lv|lt|mk|ml|mwl|mn|mr|ms|mya|nah|nap|ne|nds|nl|nn|nb|non|nv|oci|or|os|pa|pl|ps|pt|pt\-br|qu|ro|ru|rup|sc|si|sk|skr|sl|snd|so|sq|sr|su|sv|ta|te|th|tl|tir|tr|tt|ty|udm|ug|uk|ur|uz|vec|vi|wa|xal|yi|yo|za|zh\-cn|zh\-hk|zh\-tw)(?:\/|$)/;
+		}
+
+		document.addEventListener( 'a8c-analytics:loaded', function () {
+			'use strict';
+
+			var cb = window.a8cAnalytics.cb;
+			var kit = window.a8cAnalytics.kit;
+
+			if ( kit.doNotTrack() ) {
+				return;
+			}
+
+			/**
+			 * Set up global page view Tracks tracking for automattic.com
+			 */
+			var loadTracks = () => {
+				var props = Object.assign( {}, kit.getQueryVars( '', kit.QUERY_PARAMS ), {
+					// Common event properties
+					path: getCurrentPagePath(),
+					name: getCurrentPageName() === '' ? 'homepage' : getCurrentPageName(),
+					locale: getCurrentPageLocale(),
+				} );
+
+				// Fire Tracks view event
+				window._tkq.push( [ 'recordEvent', 'a8ccom_page_view', props ] );
+
+				// Set up global link click tracking
+				document.querySelector( 'body' ).addEventListener( 'click', ( event ) => {
+					// We only care about clicks on certain elements
+					if ( event.target.matches( 'a, button' ) ) {
+						const { target: clickEventTarget } = event;
+
+						// Fill in the link specific props
+						props.href = clickEventTarget.getAttribute( 'href' ) || '';
+						props.text = clickEventTarget.innerText || '';
+						props.use_beacon = true;
+
+						// Fire Tracks click event
+						window._tkq.push( [ 'recordEvent', 'a8ccom_link_click', props ] );
+					}
+				});
+			};
+
+			function loadGoogleAnalyticsFour() {
+				var gtagOptions = { 'anonymize_ip': true };
+				kit.loadGtag( 'G-737CYY5004', gtagOptions );
+			}
+
+			function loadHubSpot() {
+				if ( [ 'for-agencies', 'for-agencies/program-incentives', 'for-agencies/switch-from-wp-engine-to-pressable-hosting' ].includes( getCurrentPageName() ) ) {
+					kit.loadHubSpot( 45522507 );
+				}
+			}
+
+			function fireLinkedinInsight() {
+				if ( '/work-with-us/wordpress-engine/' === window.location.pathname ) {
+					kit.loadLinkedinInsight( "6570626" );
+					const pixelImage = kit.loadPixelImage( "https://px.ads.linkedin.com/collect/?pid=6570626&fmt=gif" );
+					pixelImage.style.display = "none";
+					document.body.appendChild( pixelImage );
+				}
+			}
+			// ------- Fire Normal Pixels -------
+
+			cb.addTracker( 'analytics', false, loadTracks );
+						cb.addTracker( 'analytics', true, loadGoogleAnalyticsFour );
+			cb.addTracker( 'advertising', true, loadHubSpot );
+			cb.addTracker( 'advertising', true, fireLinkedinInsight );
+		} );
+	} )();
+</script>
+
+			<script type="text/javascript">
+				( function() {
+					'use strict';
+					var currentScript = document.currentScript;
+
+					var setupAnalytics = function() {
+						function getScript() {
+							var script = document.createElement( 'script' );
+							var prev = currentScript || document.getElementsByTagName( 'script' )[ 0 ];
+							script.setAttribute( 'src', "https:\/\/s0.wp.com\/wp-content\/mu-plugins\/a8c-analytics\/a8c-analytics.js?v=1756416274" );
+							script.setAttribute( 'async', true );
+							prev.parentNode.insertBefore( script, prev );
+						}
+
+													getScript();
+											};
+
+					if ( window.defQueue && defQueue.isLOHP && defQueue.isLOHP === 2020 ) {
+						defQueue.items.push( setupAnalytics );
+					} else {
+						setupAnalytics();
+					}
+				} )();
+			</script>
+			<!-- A8C Analytics [end] -->
+			<div style="display:none">
+	</div>
+		<div id="actionbar" dir="ltr" style="display: none;"
+			class="actnbr-a8c-automattic-2011 actnbr-has-follow actnbr-has-actions">
+		<ul>
+								<li class="actnbr-btn actnbr-hidden">
+								<a class="actnbr-action actnbr-actn-follow " href="">
+			<svg class="gridicon" height="20" width="20" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"><path clip-rule="evenodd" d="m4 4.5h12v6.5h1.5v-6.5-1.5h-1.5-12-1.5v1.5 10.5c0 1.1046.89543 2 2 2h7v-1.5h-7c-.27614 0-.5-.2239-.5-.5zm10.5 2h-9v1.5h9zm-5 3h-4v1.5h4zm3.5 1.5h-1v1h1zm-1-1.5h-1.5v1.5 1 1.5h1.5 1 1.5v-1.5-1-1.5h-1.5zm-2.5 2.5h-4v1.5h4zm6.5 1.25h1.5v2.25h2.25v1.5h-2.25v2.25h-1.5v-2.25h-2.25v-1.5h2.25z"  fill-rule="evenodd"></path></svg>
+			<span>Subscribe</span>
+		</a>
+		<a class="actnbr-action actnbr-actn-following  no-display" href="">
+			<svg class="gridicon" height="20" width="20" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"><path fill-rule="evenodd" clip-rule="evenodd" d="M16 4.5H4V15C4 15.2761 4.22386 15.5 4.5 15.5H11.5V17H4.5C3.39543 17 2.5 16.1046 2.5 15V4.5V3H4H16H17.5V4.5V12.5H16V4.5ZM5.5 6.5H14.5V8H5.5V6.5ZM5.5 9.5H9.5V11H5.5V9.5ZM12 11H13V12H12V11ZM10.5 9.5H12H13H14.5V11V12V13.5H13H12H10.5V12V11V9.5ZM5.5 12H9.5V13.5H5.5V12Z" fill="#008A20"></path><path class="following-icon-tick" d="M13.5 16L15.5 18L19 14.5" stroke="#008A20" stroke-width="1.5"></path></svg>
+			<span>Subscribed</span>
+		</a>
+							<div class="actnbr-popover tip tip-top-left actnbr-notice" id="follow-bubble">
+							<div class="tip-arrow"></div>
+							<div class="tip-inner actnbr-follow-bubble">
+															<ul>
+											<li class="actnbr-sitename">
+			<a href="https://automattic.com">
+				<img loading='lazy' alt='' src='https://automattic.com/wp-content/uploads/2024/11/cropped-automattic-logo-square.png?w=50' srcset='https://automattic.com/wp-content/uploads/2024/11/cropped-automattic-logo-square.png?w=50 1x, https://automattic.com/wp-content/uploads/2024/11/cropped-automattic-logo-square.png?w=75 1.5x, https://automattic.com/wp-content/uploads/2024/11/cropped-automattic-logo-square.png?w=100 2x, https://automattic.com/wp-content/uploads/2024/11/cropped-automattic-logo-square.png?w=150 3x, https://automattic.com/wp-content/uploads/2024/11/cropped-automattic-logo-square.png?w=200 4x' class='avatar avatar-50' height='50' width='50' />				Automattic			</a>
+		</li>
+										<div class="actnbr-message no-display"></div>
+									<form method="post" action="https://subscribe.wordpress.com" accept-charset="utf-8" style="display: none;">
+																						<div class="actnbr-follow-count">Join 11,370 other subscribers</div>
+																					<div>
+										<input type="email" name="email" placeholder="Enter your email address" class="actnbr-email-field" aria-label="Enter your email address" />
+										</div>
+										<input type="hidden" name="action" value="subscribe" />
+										<input type="hidden" name="blog_id" value="54117" />
+										<input type="hidden" name="source" value="https://automattic.com/privacy/" />
+										<input type="hidden" name="sub-type" value="actionbar-follow" />
+										<input type="hidden" id="_wpnonce" name="_wpnonce" value="dbdd207dcc" />										<div class="actnbr-button-wrap">
+											<button type="submit" value="Sign me up">
+												Sign me up											</button>
+										</div>
+									</form>
+									<li class="actnbr-login-nudge">
+										<div>
+											Already have a WordPress.com account? <a href="https://wordpress.com/log-in?redirect_to=https%3A%2F%2Fr-login.wordpress.com%2Fremote-login.php%3Faction%3Dlink%26back%3Dhttps%253A%252F%252Fautomattic.com%252Fprivacy%252F">Log in now.</a>										</div>
+									</li>
+								</ul>
+															</div>
+						</div>
+					</li>
+									<li class="actnbr-btn actnbr-hidden no-display" onclick="javascript:__tcfapi( 'showUi' );">
+						<a class="actnbr-action actnbr-actn-privacy" href="#">
+							<svg class="gridicon gridicons-info-outline" height="20" width="20" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><g><path d="M13 9h-2V7h2v2zm0 2h-2v6h2v-6zm-1-7c-4.41 0-8 3.59-8 8s3.59 8 8 8 8-3.59 8-8-3.59-8-8-8m0-2c5.523 0 10 4.477 10 10s-4.477 10-10 10S2 17.523 2 12 6.477 2 12 2z"/></g></svg>							<span>Privacy						</span>
+						</a>
+					</li>
+							<li class="actnbr-ellipsis actnbr-hidden">
+				<svg class="gridicon gridicons-ellipsis" height="24" width="24" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><g><path d="M7 12c0 1.104-.896 2-2 2s-2-.896-2-2 .896-2 2-2 2 .896 2 2zm12-2c-1.104 0-2 .896-2 2s.896 2 2 2 2-.896 2-2-.896-2-2-2zm-7 0c-1.104 0-2 .896-2 2s.896 2 2 2 2-.896 2-2-.896-2-2-2z"/></g></svg>				<div class="actnbr-popover tip tip-top-left actnbr-more">
+					<div class="tip-arrow"></div>
+					<div class="tip-inner">
+						<ul>
+								<li class="actnbr-sitename">
+			<a href="https://automattic.com">
+				<img loading='lazy' alt='' src='https://automattic.com/wp-content/uploads/2024/11/cropped-automattic-logo-square.png?w=50' srcset='https://automattic.com/wp-content/uploads/2024/11/cropped-automattic-logo-square.png?w=50 1x, https://automattic.com/wp-content/uploads/2024/11/cropped-automattic-logo-square.png?w=75 1.5x, https://automattic.com/wp-content/uploads/2024/11/cropped-automattic-logo-square.png?w=100 2x, https://automattic.com/wp-content/uploads/2024/11/cropped-automattic-logo-square.png?w=150 3x, https://automattic.com/wp-content/uploads/2024/11/cropped-automattic-logo-square.png?w=200 4x' class='avatar avatar-50' height='50' width='50' />				Automattic			</a>
+		</li>
+								<li class="actnbr-folded-follow">
+										<a class="actnbr-action actnbr-actn-follow " href="">
+			<svg class="gridicon" height="20" width="20" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"><path clip-rule="evenodd" d="m4 4.5h12v6.5h1.5v-6.5-1.5h-1.5-12-1.5v1.5 10.5c0 1.1046.89543 2 2 2h7v-1.5h-7c-.27614 0-.5-.2239-.5-.5zm10.5 2h-9v1.5h9zm-5 3h-4v1.5h4zm3.5 1.5h-1v1h1zm-1-1.5h-1.5v1.5 1 1.5h1.5 1 1.5v-1.5-1-1.5h-1.5zm-2.5 2.5h-4v1.5h4zm6.5 1.25h1.5v2.25h2.25v1.5h-2.25v2.25h-1.5v-2.25h-2.25v-1.5h2.25z"  fill-rule="evenodd"></path></svg>
+			<span>Subscribe</span>
+		</a>
+		<a class="actnbr-action actnbr-actn-following  no-display" href="">
+			<svg class="gridicon" height="20" width="20" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"><path fill-rule="evenodd" clip-rule="evenodd" d="M16 4.5H4V15C4 15.2761 4.22386 15.5 4.5 15.5H11.5V17H4.5C3.39543 17 2.5 16.1046 2.5 15V4.5V3H4H16H17.5V4.5V12.5H16V4.5ZM5.5 6.5H14.5V8H5.5V6.5ZM5.5 9.5H9.5V11H5.5V9.5ZM12 11H13V12H12V11ZM10.5 9.5H12H13H14.5V11V12V13.5H13H12H10.5V12V11V9.5ZM5.5 12H9.5V13.5H5.5V12Z" fill="#008A20"></path><path class="following-icon-tick" d="M13.5 16L15.5 18L19 14.5" stroke="#008A20" stroke-width="1.5"></path></svg>
+			<span>Subscribed</span>
+		</a>
+								</li>
+														<li class="actnbr-signup"><a href="https://wordpress.com/start/">Sign up</a></li>
+							<li class="actnbr-login"><a href="https://wordpress.com/log-in?redirect_to=https%3A%2F%2Fr-login.wordpress.com%2Fremote-login.php%3Faction%3Dlink%26back%3Dhttps%253A%252F%252Fautomattic.com%252Fprivacy%252F">Log in</a></li>
+																<li class="actnbr-shortlink">
+										<a href="https://wp.me/Pe4R-d">
+											<span class="actnbr-shortlink__text">Copy shortlink</span>
+											<span class="actnbr-shortlink__icon"><svg class="gridicon gridicons-checkmark" height="16" width="16" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><g><path d="M9 19.414l-6.707-6.707 1.414-1.414L9 16.586 20.293 5.293l1.414 1.414"/></g></svg></span>
+										</a>
+									</li>
+																<li class="flb-report">
+									<a href="https://wordpress.com/abuse/?report_url=https://automattic.com/privacy/" target="_blank" rel="noopener noreferrer">
+										Report this content									</a>
+								</li>
+															<li class="actnbr-reader">
+									<a href="https://wordpress.com/reader/blogs/54117/posts/13">
+										View post in Reader									</a>
+								</li>
+															<li class="actnbr-subs">
+									<a href="https://subscribe.wordpress.com/">Manage subscriptions</a>
+								</li>
+																<li class="actnbr-fold"><a href="">Collapse this bar</a></li>
+														</ul>
+					</div>
+				</div>
+			</li>
+		</ul>
+	</div>
+	
+<script>
+window.addEventListener( "DOMContentLoaded", function( event ) {
+	var link = document.createElement( "link" );
+	link.href = "/wp-content/mu-plugins/actionbar/actionbar.css?v=20250116";
+	link.type = "text/css";
+	link.rel = "stylesheet";
+	document.head.appendChild( link );
+
+	var script = document.createElement( "script" );
+	script.src = "/wp-content/mu-plugins/actionbar/actionbar.js?v=20250204";
+	document.body.appendChild( script );
+} );
+</script>
+
+	<script id="wp-block-template-skip-link-js-after">
+	( function() {
+		var skipLinkTarget = document.querySelector( 'main' ),
+			sibling,
+			skipLinkTargetID,
+			skipLink;
+
+		// Early exit if a skip-link target can't be located.
+		if ( ! skipLinkTarget ) {
+			return;
+		}
+
+		/*
+		 * Get the site wrapper.
+		 * The skip-link will be injected in the beginning of it.
+		 */
+		sibling = document.querySelector( '.wp-site-blocks' );
+
+		// Early exit if the root element was not found.
+		if ( ! sibling ) {
+			return;
+		}
+
+		// Get the skip-link target's ID, and generate one if it doesn't exist.
+		skipLinkTargetID = skipLinkTarget.id;
+		if ( ! skipLinkTargetID ) {
+			skipLinkTargetID = 'wp--skip-link--target';
+			skipLinkTarget.id = skipLinkTargetID;
+		}
+
+		// Create the skip link.
+		skipLink = document.createElement( 'a' );
+		skipLink.classList.add( 'skip-link', 'screen-reader-text' );
+		skipLink.id = 'wp-skip-link';
+		skipLink.href = '#' + skipLinkTargetID;
+		skipLink.innerText = 'Skip to content';
+
+		// Inject the skip link.
+		sibling.parentElement.insertBefore( skipLink, sibling );
+	}() );
+	
+//# sourceURL=wp-block-template-skip-link-js-after
+</script>
+<script src="https://automattic.com/wp-content/themes/a8c/automattic-2011/includes/logo-right-click.js?m=1763037289i&amp;ver=2025-11-11" id="logo-right-click-js"></script>
+
+	<script type="text/javascript">
+		(function () {
+			var wpcom_reblog = {
+				source: 'toolbar',
+
+				toggle_reblog_box_flair: function (obj_id, post_id) {
+
+					// Go to site selector. This will redirect to their blog if they only have one.
+					const postEndpoint = `https://wordpress.com/post`;
+
+					// Ideally we would use the permalink here, but fortunately this will be replaced with the 
+					// post permalink in the editor.
+					const originalURL = `${ document.location.href }?page_id=${ post_id }`; 
+					
+					const url =
+						postEndpoint +
+						'?url=' +
+						encodeURIComponent( originalURL ) +
+						'&is_post_share=true' +
+						'&v=5';
+
+					const redirect = function () {
+						if (
+							! window.open( url, '_blank' )
+						) {
+							location.href = url;
+						}
+					};
+
+					if ( /Firefox/.test( navigator.userAgent ) ) {
+						setTimeout( redirect, 0 );
+					} else {
+						redirect();
+					}
+				},
+			};
+
+			window.wpcom_reblog = wpcom_reblog;
+		})();
+	</script>
+<script src="//stats.wp.com/w.js?68" defer></script> <script type="text/javascript">
+_tkq = window._tkq || [];
+_stq = window._stq || [];
+_tkq.push(['storeContext', {'blog_id':'54117','blog_tz':'0','user_lang':'en','blog_lang':'en','user_id':'0'}]);
+		// Prevent sending pageview tracking from WP-Admin pages.
+		_stq.push(['view', {'blog':'54117','v':'wpcom','tz':'0','user_id':'0','post':'13','subd':'automattic'}]);
+		_stq.push(['extra', {'crypt':'UE5tW3cvZGRWRT1KYTlKak98Rz9haG9wL35lbm9BTmhlUWM/cDdpK05BSyV2VmxZL3A1WXx2ZGN0YmoxM0RwQ0Q0aXdhcDFXVn5NQUtPZz1MU1RMUklCamQsemFVd3xFczlnRkNjejZpNXFwcF8/V04wSzgyOUVlckNrR0otMWgrRUhtTDI3LElYaF1fPS9EPysyYjVLWWNnL2VjSGgyLHMzSi5JSDJwVU5xVGZQUDVCSkpYMVVyeHAvRw=='}]);
+_stq.push([ 'clickTrackerInit', '54117', '13' ]);
+</script>
+<noscript><img src="https://pixel.wp.com/b.gif?v=noscript" style="height:1px;width:1px;overflow:hidden;position:absolute;bottom:1px;" alt="" /></noscript>
+<meta id="bilmur" property="bilmur:data" content="" data-provider="wordpress.com" data-service="simple" data-site-tz="Etc/GMT-0" data-custom-props="{&quot;logged_in&quot;:&quot;0&quot;,&quot;wptheme&quot;:&quot;a8c\/automattic-2011&quot;,&quot;wptheme_is_block&quot;:&quot;1&quot;}"  >
+		<script defer src="/wp-content/js/bilmur.min.js?i=17&amp;m=202550"></script> 	</body>
+</html>
