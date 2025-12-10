@@ -1,0 +1,8005 @@
+
+
+
+
+
+
+
+
+
+<!doctype html>
+<html 
+      lang="en"
+      dir="ltr">
+  <head>
+    <meta name="google-signin-client-id" content="721724668570-nbkv1cfusk7kk4eni4pjvepaus73b13t.apps.googleusercontent.com"><meta name="google-signin-scope"
+          content="profile email https://www.googleapis.com/auth/developerprofiles https://www.googleapis.com/auth/developerprofiles.award"><meta property="og:site_name" content="Google for Developers">
+    <meta property="og:type" content="website"><meta name="theme-color" content="#fff"><meta charset="utf-8">
+    <meta content="IE=Edge" http-equiv="X-UA-Compatible">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    
+
+    <link rel="manifest" href="/_pwa/developers/manifest.json"
+          crossorigin="use-credentials">
+    <link rel="preconnect" href="//www.gstatic.com" crossorigin>
+    <link rel="preconnect" href="//fonts.gstatic.com" crossorigin>
+    <link rel="preconnect" href="//fonts.googleapis.com" crossorigin>
+    <link rel="preconnect" href="//apis.google.com" crossorigin>
+    <link rel="preconnect" href="//www.google-analytics.com" crossorigin><link rel="stylesheet" href="//fonts.googleapis.com/css?family=Google+Sans:400,500|Roboto:400,400italic,500,500italic,700,700italic|Roboto+Mono:400,500,700&display=swap">
+      <link rel="stylesheet"
+            href="//fonts.googleapis.com/css2?family=Material+Icons&family=Material+Symbols+Outlined&display=block"><link rel="stylesheet" href="https://www.gstatic.com/devrel-devsite/prod/v9de0f443992d54ad799f913d3a82969ff613e39ab9e3e056983c556b3c2ef1f8/developers/css/app.css">
+      <link rel="shortcut icon" href="https://www.gstatic.com/devrel-devsite/prod/v9de0f443992d54ad799f913d3a82969ff613e39ab9e3e056983c556b3c2ef1f8/developers/images/favicon-new.png">
+    <link rel="apple-touch-icon" href="https://www.gstatic.com/devrel-devsite/prod/v9de0f443992d54ad799f913d3a82969ff613e39ab9e3e056983c556b3c2ef1f8/developers/images/touchicon-180-new.png"><link rel="canonical" href="https://developers.google.com/maps/documentation/earth/content-policy"><link rel="search" type="application/opensearchdescription+xml"
+            title="Google for Developers" href="https://developers.google.com/s/opensearch.xml">
+      <link rel="alternate" hreflang="en"
+          href="https://developers.google.com/maps/documentation/earth/content-policy" /><link rel="alternate" hreflang="x-default" href="https://developers.google.com/maps/documentation/earth/content-policy" /><link rel="alternate" hreflang="ar"
+          href="https://developers.google.com/maps/documentation/earth/content-policy?hl=ar" /><link rel="alternate" hreflang="bn"
+          href="https://developers.google.com/maps/documentation/earth/content-policy?hl=bn" /><link rel="alternate" hreflang="zh-Hans"
+          href="https://developers.google.com/maps/documentation/earth/content-policy?hl=zh-cn" /><link rel="alternate" hreflang="zh-Hant"
+          href="https://developers.google.com/maps/documentation/earth/content-policy?hl=zh-tw" /><link rel="alternate" hreflang="fa"
+          href="https://developers.google.com/maps/documentation/earth/content-policy?hl=fa" /><link rel="alternate" hreflang="fr"
+          href="https://developers.google.com/maps/documentation/earth/content-policy?hl=fr" /><link rel="alternate" hreflang="de"
+          href="https://developers.google.com/maps/documentation/earth/content-policy?hl=de" /><link rel="alternate" hreflang="he"
+          href="https://developers.google.com/maps/documentation/earth/content-policy?hl=he" /><link rel="alternate" hreflang="hi"
+          href="https://developers.google.com/maps/documentation/earth/content-policy?hl=hi" /><link rel="alternate" hreflang="id"
+          href="https://developers.google.com/maps/documentation/earth/content-policy?hl=id" /><link rel="alternate" hreflang="it"
+          href="https://developers.google.com/maps/documentation/earth/content-policy?hl=it" /><link rel="alternate" hreflang="ja"
+          href="https://developers.google.com/maps/documentation/earth/content-policy?hl=ja" /><link rel="alternate" hreflang="ko"
+          href="https://developers.google.com/maps/documentation/earth/content-policy?hl=ko" /><link rel="alternate" hreflang="pl"
+          href="https://developers.google.com/maps/documentation/earth/content-policy?hl=pl" /><link rel="alternate" hreflang="pt-BR"
+          href="https://developers.google.com/maps/documentation/earth/content-policy?hl=pt-br" /><link rel="alternate" hreflang="ru"
+          href="https://developers.google.com/maps/documentation/earth/content-policy?hl=ru" /><link rel="alternate" hreflang="es-419"
+          href="https://developers.google.com/maps/documentation/earth/content-policy?hl=es-419" /><link rel="alternate" hreflang="th"
+          href="https://developers.google.com/maps/documentation/earth/content-policy?hl=th" /><link rel="alternate" hreflang="tr"
+          href="https://developers.google.com/maps/documentation/earth/content-policy?hl=tr" /><link rel="alternate" hreflang="vi"
+          href="https://developers.google.com/maps/documentation/earth/content-policy?hl=vi" /><title>Google Earth content policy &nbsp;|&nbsp; Google for Developers</title>
+
+<meta property="og:title" content="Google Earth content policy &nbsp;|&nbsp; Google for Developers"><meta property="og:url" content="https://developers.google.com/maps/documentation/earth/content-policy"><meta property="og:image" content="https://developers.google.com/static/maps/images/google-maps-platform-1200x675.png">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="675"><meta property="og:locale" content="en"><meta name="twitter:card" content="summary_large_image"><meta name="twitter:site" content="@GMapsPlatform"><script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Article",
+    
+    "headline": "Google Earth content policy"
+  }
+</script><script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [{
+      "@type": "ListItem",
+      "position": 1,
+      "name": "Google Maps Platform",
+      "item": "https://developers.google.com/maps"
+    },{
+      "@type": "ListItem",
+      "position": 2,
+      "name": "Google Earth",
+      "item": "https://developers.google.com/maps/documentation/earth"
+    },{
+      "@type": "ListItem",
+      "position": 3,
+      "name": "Google Earth content policy",
+      "item": "https://developers.google.com/maps/documentation/earth/content-policy"
+    }]
+  }
+  </script>
+  
+
+  
+
+  
+
+
+    
+      <link rel="stylesheet" href="/extras.css"></head>
+  <body class="color-scheme--light"
+        template="page"
+        theme="white"
+        type="article"
+        
+        
+        
+        layout="docs"
+        
+        
+        
+        
+        
+          
+            concierge='closed'
+          
+        
+        display-toc
+        pending>
+  
+    <devsite-progress type="indeterminate" id="app-progress"></devsite-progress>
+  
+  
+    <a href="#main-content" class="skip-link button">
+      
+      Skip to main content
+    </a>
+    <section class="devsite-wrapper">
+      <devsite-cookie-notification-bar></devsite-cookie-notification-bar><devsite-header role="banner">
+  
+    
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="devsite-header--inner" data-nosnippet>
+  <div class="devsite-top-logo-row-wrapper-wrapper">
+    <div class="devsite-top-logo-row-wrapper">
+      <div class="devsite-top-logo-row">
+        <button type="button" id="devsite-hamburger-menu"
+          class="devsite-header-icon-button button-flat material-icons gc-analytics-event"
+          data-category="Site-Wide Custom Events"
+          data-label="Navigation menu button"
+          visually-hidden
+          aria-label="Open menu">
+        </button>
+        
+<div class="devsite-product-name-wrapper">
+
+  
+    
+  
+  <a href="https://developers.google.com/maps">
+    
+  <div class="devsite-product-logo-container"
+       
+       
+       
+    size="medium"
+  >
+  
+    <picture>
+      
+      <img class="devsite-product-logo"
+           alt="Google Maps Platform"
+           src="https://developers.google.com/static/maps/images/maps-icon.svg"
+           srcset=" /static/maps/images/maps-icon.svg"
+           sizes="64px"
+           loading="lazy"
+           >
+    </picture>
+  
+  </div>
+  
+  </a>
+  
+
+  
+
+
+
+  
+  
+  <span class="devsite-product-name">
+    <ul class="devsite-breadcrumb-list"
+  >
+  
+  <li class="devsite-breadcrumb-item
+             devsite-has-google-wordmark">
+    
+    
+    
+      
+      
+        
+  <a href="https://developers.google.com/maps"
+      
+        class="devsite-breadcrumb-link gc-analytics-event"
+      
+        data-category="Site-Wide Custom Events"
+      
+        data-label="Upper Header"
+      
+        data-value="1"
+      
+        track-type="globalNav"
+      
+        track-name="breadcrumb"
+      
+        track-metadata-position="1"
+      
+        track-metadata-eventdetail="Google Maps Platform"
+      
+    >
+    
+          <svg class="devsite-google-wordmark"
+       xmlns="http://www.w3.org/2000/svg"
+       viewBox="0 0 148 48">
+    <title>Google</title>
+    <path class="devsite-google-wordmark-svg-path" d="M19.58,37.65c-9.87,0-18.17-8.04-18.17-17.91c0-9.87,8.3-17.91,18.17-17.91c5.46,0,9.35,2.14,12.27,4.94l-3.45,3.45c-2.1-1.97-4.93-3.49-8.82-3.49c-7.21,0-12.84,5.81-12.84,13.02c0,7.21,5.64,13.02,12.84,13.02c4.67,0,7.34-1.88,9.04-3.58c1.4-1.4,2.32-3.41,2.66-6.16H19.58v-4.89h16.47c0.18,0.87,0.26,1.92,0.26,3.06c0,3.67-1.01,8.21-4.24,11.44C28.93,35.9,24.91,37.65,19.58,37.65z M61.78,26.12c0,6.64-5.1,11.53-11.36,11.53s-11.36-4.89-11.36-11.53c0-6.68,5.1-11.53,11.36-11.53S61.78,19.43,61.78,26.12z M56.8,26.12c0-4.15-2.96-6.99-6.39-6.99c-3.43,0-6.39,2.84-6.39,6.99c0,4.11,2.96,6.99,6.39,6.99C53.84,33.11,56.8,30.22,56.8,26.12z M87.25,26.12c0,6.64-5.1,11.53-11.36,11.53c-6.26,0-11.36-4.89-11.36-11.53c0-6.68,5.1-11.53,11.36-11.53C82.15,14.59,87.25,19.43,87.25,26.12zM82.28,26.12c0-4.15-2.96-6.99-6.39-6.99c-3.43,0-6.39,2.84-6.39,6.99c0,4.11,2.96,6.99,6.39,6.99C79.32,33.11,82.28,30.22,82.28,26.12z M112.09,15.29v20.7c0,8.52-5.02,12.01-10.96,12.01c-5.59,0-8.95-3.76-10.22-6.81l4.41-1.83c0.79,1.88,2.71,4.1,5.81,4.1c3.8,0,6.16-2.36,6.16-6.77v-1.66h-0.18c-1.14,1.4-3.32,2.62-6.07,2.62c-5.76,0-11.05-5.02-11.05-11.49c0-6.51,5.28-11.57,11.05-11.57c2.75,0,4.93,1.22,6.07,2.58h0.18v-1.88H112.09z M107.64,26.16c0-4.06-2.71-7.03-6.16-7.03c-3.49,0-6.42,2.97-6.42,7.03c0,4.02,2.93,6.94,6.42,6.94C104.93,33.11,107.64,30.18,107.64,26.16z M120.97,3.06v33.89h-5.07V3.06H120.97z M140.89,29.92l3.93,2.62c-1.27,1.88-4.32,5.11-9.61,5.11c-6.55,0-11.28-5.07-11.28-11.53c0-6.86,4.77-11.53,10.71-11.53c5.98,0,8.91,4.76,9.87,7.34l0.52,1.31l-15.42,6.38c1.18,2.31,3.01,3.49,5.59,3.49C137.79,33.11,139.58,31.84,140.89,29.92zM128.79,25.77l10.31-4.28c-0.57-1.44-2.27-2.45-4.28-2.45C132.24,19.04,128.66,21.31,128.79,25.77z"/>
+  </svg>Maps Platform
+        
+  </a>
+  
+      
+    
+  </li>
+  
+</ul>
+  </span>
+
+</div>
+        <div class="devsite-top-logo-row-middle">
+          <div class="devsite-header-upper-tabs">
+            
+              
+              
+  <devsite-tabs class="upper-tabs">
+
+    <nav class="devsite-tabs-wrapper" aria-label="Upper tabs">
+      
+        
+          <tab  >
+            
+    <a href="https://mapsplatform.google.com/"
+    class="devsite-tabs-content gc-analytics-event "
+      track-metadata-eventdetail="https://mapsplatform.google.com/"
+    
+       track-type="nav"
+       track-metadata-position="nav - overview"
+       track-metadata-module="primary nav"
+       
+       
+         
+           data-category="home"
+         
+           data-label="navTopMenu"
+         
+           track-name="overview"
+         
+           data-action="tabClick"
+         
+       >
+    Overview
+  
+    </a>
+    
+  
+          </tab>
+        
+      
+        
+          <tab  >
+            
+    <a href="https://mapsplatform.google.com/maps-products/"
+    class="devsite-tabs-content gc-analytics-event "
+      track-metadata-eventdetail="https://mapsplatform.google.com/maps-products/"
+    
+       track-type="nav"
+       track-metadata-position="nav - products"
+       track-metadata-module="primary nav"
+       
+       
+         
+           data-category="products"
+         
+           data-label="navTopMenu"
+         
+           track-name="products"
+         
+           data-action="tabClick"
+         
+       >
+    Products
+  
+    </a>
+    
+  
+          </tab>
+        
+      
+        
+          <tab  >
+            
+    <a href="https://mapsplatform.google.com/pricing/"
+    class="devsite-tabs-content gc-analytics-event "
+      track-metadata-eventdetail="https://mapsplatform.google.com/pricing/"
+    
+       track-type="nav"
+       track-metadata-position="nav - pricing"
+       track-metadata-module="primary nav"
+       
+       
+         
+           data-category="pricing"
+         
+           data-label="navTopMenu"
+         
+           track-name="pricing"
+         
+           data-action="tabClick"
+         
+       >
+    Pricing
+  
+    </a>
+    
+  
+          </tab>
+        
+      
+        
+          <tab class="devsite-dropdown
+    devsite-dropdown-full
+    devsite-active
+    
+    ">
+  
+    <a href="https://developers.google.com/maps/documentation"
+    class="devsite-tabs-content gc-analytics-event "
+      track-metadata-eventdetail="https://developers.google.com/maps/documentation"
+    
+       track-type="nav"
+       track-metadata-position="nav - documentation"
+       track-metadata-module="primary nav"
+       aria-label="Documentation, selected" 
+       
+         
+           data-category="documentation"
+         
+           data-label="navTopMenu"
+         
+           track-name="documentation"
+         
+           data-actions="tabClick"
+         
+       >
+    Documentation
+  
+    </a>
+    
+      <button
+         aria-haspopup="menu"
+         aria-expanded="false"
+         aria-label="Dropdown menu for Documentation"
+         track-type="nav"
+         track-metadata-eventdetail="https://developers.google.com/maps/documentation"
+         track-metadata-position="nav - documentation"
+         track-metadata-module="primary nav"
+         
+          
+            data-category="documentation"
+          
+            data-label="navTopMenu"
+          
+            track-name="documentation"
+          
+            data-actions="tabClick"
+          
+        
+         class="devsite-tabs-dropdown-toggle devsite-icon devsite-icon-arrow-drop-down"></button>
+    
+  
+  <div class="devsite-tabs-dropdown" role="menu" aria-label="submenu" hidden>
+    
+    <div class="devsite-tabs-dropdown-content">
+      
+        <div class="devsite-tabs-dropdown-column
+                    ">
+          
+            <ul class="devsite-tabs-dropdown-section
+                       ">
+              
+                <li class="devsite-nav-title" role="heading" tooltip>Get Started</li>
+              
+              
+              
+                <li class="devsite-nav-item">
+                  <a href="https://developers.google.com/maps/get-started"
+                    
+                     track-type="nav"
+                     track-metadata-eventdetail="https://developers.google.com/maps/get-started"
+                     track-metadata-position="nav - documentation"
+                     track-metadata-module="tertiary nav"
+                     
+                       track-metadata-module_headline="get started"
+                     
+                     tooltip
+                  >
+                    
+                    <div class="devsite-nav-item-title">
+                      Get Started with Google Maps Platform
+                    </div>
+                    
+                  </a>
+                </li>
+              
+                <li class="devsite-nav-item">
+                  <a href="https://developers.google.com/maps/documentation/capabilities-explorer"
+                    
+                     track-type="nav"
+                     track-metadata-eventdetail="https://developers.google.com/maps/documentation/capabilities-explorer"
+                     track-metadata-position="nav - documentation"
+                     track-metadata-module="tertiary nav"
+                     
+                       track-metadata-module_headline="get started"
+                     
+                     tooltip
+                  >
+                    
+                    <div class="devsite-nav-item-title">
+                      Capabilities Explorer
+                    </div>
+                    
+                  </a>
+                </li>
+              
+                <li class="devsite-nav-item">
+                  <a href="https://developers.google.com/maps/billing-and-pricing"
+                    
+                      class="gc-analytics-event"
+                    
+                     track-type="nav"
+                     track-metadata-eventdetail="https://developers.google.com/maps/billing-and-pricing"
+                     track-metadata-position="nav - documentation"
+                     track-metadata-module="tertiary nav"
+                     
+                       track-metadata-module_headline="get started"
+                     
+                     tooltip
+                  
+                    
+                     data-action="tabClick"
+                    
+                     data-category="pricing"
+                    
+                     data-label="documentationMenu"
+                    
+                  >
+                    
+                    <div class="devsite-nav-item-title">
+                      Pricing & Billing
+                    </div>
+                    
+                  </a>
+                </li>
+              
+                <li class="devsite-nav-item">
+                  <a href="https://mapsplatform.google.com/resources/trust-center"
+                    
+                     track-type="nav"
+                     track-metadata-eventdetail="https://mapsplatform.google.com/resources/trust-center"
+                     track-metadata-position="nav - documentation"
+                     track-metadata-module="tertiary nav"
+                     
+                       track-metadata-module_headline="get started"
+                     
+                     tooltip
+                  >
+                    
+                    <div class="devsite-nav-item-title">
+                      Security & Compliance
+                    </div>
+                    
+                  </a>
+                </li>
+              
+                <li class="devsite-nav-item">
+                  <a href="https://developers.google.com/maps/billing-and-pricing/reporting-and-monitoring"
+                    
+                     track-type="nav"
+                     track-metadata-eventdetail="https://developers.google.com/maps/billing-and-pricing/reporting-and-monitoring"
+                     track-metadata-position="nav - documentation"
+                     track-metadata-module="tertiary nav"
+                     
+                       track-metadata-module_headline="get started"
+                     
+                     tooltip
+                  >
+                    
+                    <div class="devsite-nav-item-title">
+                      Reporting & Monitoring
+                    </div>
+                    
+                  </a>
+                </li>
+              
+                <li class="devsite-nav-item">
+                  <a href="https://developers.google.com/maps/faq"
+                    
+                     track-type="nav"
+                     track-metadata-eventdetail="https://developers.google.com/maps/faq"
+                     track-metadata-position="nav - documentation"
+                     track-metadata-module="tertiary nav"
+                     
+                       track-metadata-module_headline="get started"
+                     
+                     tooltip
+                  >
+                    
+                    <div class="devsite-nav-item-title">
+                      FAQ
+                    </div>
+                    
+                  </a>
+                </li>
+              
+                <li class="devsite-nav-item">
+                  <a href="https://developers.google.com/maps/support"
+                    
+                     track-type="nav"
+                     track-metadata-eventdetail="https://developers.google.com/maps/support"
+                     track-metadata-position="nav - documentation"
+                     track-metadata-module="tertiary nav"
+                     
+                       track-metadata-module_headline="get started"
+                     
+                     tooltip
+                  >
+                    
+                    <div class="devsite-nav-item-title">
+                      Support and Resources
+                    </div>
+                    
+                  </a>
+                </li>
+              
+                <li class="devsite-nav-item">
+                  <a href="https://developers.google.com/maps/support/care"
+                    
+                     track-type="nav"
+                     track-metadata-eventdetail="https://developers.google.com/maps/support/care"
+                     track-metadata-position="nav - documentation"
+                     track-metadata-module="tertiary nav"
+                     
+                       track-metadata-module_headline="get started"
+                     
+                     tooltip
+                  >
+                    
+                    <div class="devsite-nav-item-title">
+                      Customer Care
+                    </div>
+                    
+                  </a>
+                </li>
+              
+                <li class="devsite-nav-item">
+                  <a href="https://developers.google.com/maps/incident-management"
+                    
+                     track-type="nav"
+                     track-metadata-eventdetail="https://developers.google.com/maps/incident-management"
+                     track-metadata-position="nav - documentation"
+                     track-metadata-module="tertiary nav"
+                     
+                       track-metadata-module_headline="get started"
+                     
+                     tooltip
+                  >
+                    
+                    <div class="devsite-nav-item-title">
+                      Incident Management
+                    </div>
+                    
+                  </a>
+                </li>
+              
+            </ul>
+          
+        </div>
+      
+        <div class="devsite-tabs-dropdown-column
+                    ">
+          
+            <ul class="devsite-tabs-dropdown-section
+                       ">
+              
+                <li class="devsite-nav-title" role="heading" tooltip>Maps</li>
+              
+              
+              
+                <li class="devsite-nav-item">
+                  <a href="https://developers.google.com/maps/documentation/javascript"
+                    
+                     track-type="nav"
+                     track-metadata-eventdetail="https://developers.google.com/maps/documentation/javascript"
+                     track-metadata-position="nav - documentation"
+                     track-metadata-module="tertiary nav"
+                     
+                       track-metadata-module_headline="maps"
+                     
+                     tooltip
+                  >
+                    
+                    <div class="devsite-nav-item-title">
+                      Maps JavaScript API
+                    </div>
+                    
+                  </a>
+                </li>
+              
+                <li class="devsite-nav-item">
+                  <a href="https://developers.google.com/maps/documentation/android-sdk"
+                    
+                     track-type="nav"
+                     track-metadata-eventdetail="https://developers.google.com/maps/documentation/android-sdk"
+                     track-metadata-position="nav - documentation"
+                     track-metadata-module="tertiary nav"
+                     
+                       track-metadata-module_headline="maps"
+                     
+                     tooltip
+                  >
+                    
+                    <div class="devsite-nav-item-title">
+                      Maps SDK for Android
+                    </div>
+                    
+                  </a>
+                </li>
+              
+                <li class="devsite-nav-item">
+                  <a href="https://developers.google.com/maps/documentation/ios-sdk"
+                    
+                     track-type="nav"
+                     track-metadata-eventdetail="https://developers.google.com/maps/documentation/ios-sdk"
+                     track-metadata-position="nav - documentation"
+                     track-metadata-module="tertiary nav"
+                     
+                       track-metadata-module_headline="maps"
+                     
+                     tooltip
+                  >
+                    
+                    <div class="devsite-nav-item-title">
+                      Maps SDK for iOS
+                    </div>
+                    
+                  </a>
+                </li>
+              
+                <li class="devsite-nav-item">
+                  <a href="https://developers.google.com/maps/flutter-package/overview"
+                    
+                     track-type="nav"
+                     track-metadata-eventdetail="https://developers.google.com/maps/flutter-package/overview"
+                     track-metadata-position="nav - documentation"
+                     track-metadata-module="tertiary nav"
+                     
+                       track-metadata-module_headline="maps"
+                     
+                     tooltip
+                  >
+                    
+                    <div class="devsite-nav-item-title">
+                      Google Maps for Flutter
+                    </div>
+                    
+                  </a>
+                </li>
+              
+                <li class="devsite-nav-item">
+                  <a href="https://developers.google.com/maps/documentation/embed"
+                    
+                     track-type="nav"
+                     track-metadata-eventdetail="https://developers.google.com/maps/documentation/embed"
+                     track-metadata-position="nav - documentation"
+                     track-metadata-module="tertiary nav"
+                     
+                       track-metadata-module_headline="maps"
+                     
+                     tooltip
+                  >
+                    
+                    <div class="devsite-nav-item-title">
+                      Maps Embed API
+                    </div>
+                    
+                  </a>
+                </li>
+              
+                <li class="devsite-nav-item">
+                  <a href="https://developers.google.com/maps/documentation/maps-static"
+                    
+                     track-type="nav"
+                     track-metadata-eventdetail="https://developers.google.com/maps/documentation/maps-static"
+                     track-metadata-position="nav - documentation"
+                     track-metadata-module="tertiary nav"
+                     
+                       track-metadata-module_headline="maps"
+                     
+                     tooltip
+                  >
+                    
+                    <div class="devsite-nav-item-title">
+                      Maps Static API
+                    </div>
+                    
+                  </a>
+                </li>
+              
+                <li class="devsite-nav-item">
+                  <a href="https://developers.google.com/maps/documentation/street-view-insights"
+                    
+                     track-type="nav"
+                     track-metadata-eventdetail="https://developers.google.com/maps/documentation/street-view-insights"
+                     track-metadata-position="nav - documentation"
+                     track-metadata-module="tertiary nav"
+                     
+                       track-metadata-module_headline="maps"
+                     
+                     tooltip
+                  >
+                    
+                    <div class="devsite-nav-item-title">
+                      Street View Insights
+                    </div>
+                    
+                  </a>
+                </li>
+              
+                <li class="devsite-nav-item">
+                  <a href="https://developers.google.com/maps/documentation/streetview"
+                    
+                     track-type="nav"
+                     track-metadata-eventdetail="https://developers.google.com/maps/documentation/streetview"
+                     track-metadata-position="nav - documentation"
+                     track-metadata-module="tertiary nav"
+                     
+                       track-metadata-module_headline="maps"
+                     
+                     tooltip
+                  >
+                    
+                    <div class="devsite-nav-item-title">
+                      Street View Static API
+                    </div>
+                    
+                  </a>
+                </li>
+              
+                <li class="devsite-nav-item">
+                  <a href="https://developers.google.com/maps/documentation/urls"
+                    
+                     track-type="nav"
+                     track-metadata-eventdetail="https://developers.google.com/maps/documentation/urls"
+                     track-metadata-position="nav - documentation"
+                     track-metadata-module="tertiary nav"
+                     
+                       track-metadata-module_headline="maps"
+                     
+                     tooltip
+                  >
+                    
+                    <div class="devsite-nav-item-title">
+                      Maps URLs
+                    </div>
+                    
+                  </a>
+                </li>
+              
+                <li class="devsite-nav-item">
+                  <a href="https://developers.google.com/maps/documentation/aerial-view"
+                    
+                     track-type="nav"
+                     track-metadata-eventdetail="https://developers.google.com/maps/documentation/aerial-view"
+                     track-metadata-position="nav - documentation"
+                     track-metadata-module="tertiary nav"
+                     
+                       track-metadata-module_headline="maps"
+                     
+                     tooltip
+                  >
+                    
+                    <div class="devsite-nav-item-title">
+                      Aerial View API
+                    </div>
+                    
+                  </a>
+                </li>
+              
+                <li class="devsite-nav-item">
+                  <a href="https://developers.google.com/maps/documentation/elevation"
+                    
+                     track-type="nav"
+                     track-metadata-eventdetail="https://developers.google.com/maps/documentation/elevation"
+                     track-metadata-position="nav - documentation"
+                     track-metadata-module="tertiary nav"
+                     
+                       track-metadata-module_headline="maps"
+                     
+                     tooltip
+                  >
+                    
+                    <div class="devsite-nav-item-title">
+                      Elevation API
+                    </div>
+                    
+                  </a>
+                </li>
+              
+                <li class="devsite-nav-item">
+                  <a href="https://developers.google.com/maps/documentation/tile"
+                    
+                     track-type="nav"
+                     track-metadata-eventdetail="https://developers.google.com/maps/documentation/tile"
+                     track-metadata-position="nav - documentation"
+                     track-metadata-module="tertiary nav"
+                     
+                       track-metadata-module_headline="maps"
+                     
+                     tooltip
+                  >
+                    
+                    <div class="devsite-nav-item-title">
+                      Map Tiles API
+                    </div>
+                    
+                  </a>
+                </li>
+              
+                <li class="devsite-nav-item">
+                  <a href="https://developers.google.com/maps/documentation/datasets"
+                    
+                     track-type="nav"
+                     track-metadata-eventdetail="https://developers.google.com/maps/documentation/datasets"
+                     track-metadata-position="nav - documentation"
+                     track-metadata-module="tertiary nav"
+                     
+                       track-metadata-module_headline="maps"
+                     
+                     tooltip
+                  >
+                    
+                    <div class="devsite-nav-item-title">
+                      Maps Datasets API
+                    </div>
+                    
+                  </a>
+                </li>
+              
+                <li class="devsite-nav-item">
+                  <a href="https://developers.google.com/maps/documentation/web-components"
+                    
+                     track-type="nav"
+                     track-metadata-eventdetail="https://developers.google.com/maps/documentation/web-components"
+                     track-metadata-position="nav - documentation"
+                     track-metadata-module="tertiary nav"
+                     
+                       track-metadata-module_headline="maps"
+                     
+                     tooltip
+                  >
+                    
+                    <div class="devsite-nav-item-title">
+                      Web Components
+                    </div>
+                    
+                  </a>
+                </li>
+              
+            </ul>
+          
+        </div>
+      
+        <div class="devsite-tabs-dropdown-column
+                    ">
+          
+            <ul class="devsite-tabs-dropdown-section
+                       ">
+              
+                <li class="devsite-nav-title" role="heading" tooltip>Routes</li>
+              
+              
+              
+                <li class="devsite-nav-item">
+                  <a href="https://developers.google.com/maps/documentation/routes"
+                    
+                     track-type="nav"
+                     track-metadata-eventdetail="https://developers.google.com/maps/documentation/routes"
+                     track-metadata-position="nav - documentation"
+                     track-metadata-module="tertiary nav"
+                     
+                       track-metadata-module_headline="routes"
+                     
+                     tooltip
+                  >
+                    
+                    <div class="devsite-nav-item-title">
+                      Routes API
+                    </div>
+                    
+                  </a>
+                </li>
+              
+                <li class="devsite-nav-item">
+                  <a href="https://developers.google.com/maps/documentation/navigation/android-sdk"
+                    
+                     track-type="nav"
+                     track-metadata-eventdetail="https://developers.google.com/maps/documentation/navigation/android-sdk"
+                     track-metadata-position="nav - documentation"
+                     track-metadata-module="tertiary nav"
+                     
+                       track-metadata-module_headline="routes"
+                     
+                     tooltip
+                  >
+                    
+                    <div class="devsite-nav-item-title">
+                      Navigation SDK for Android
+                    </div>
+                    
+                  </a>
+                </li>
+              
+                <li class="devsite-nav-item">
+                  <a href="https://developers.google.com/maps/documentation/navigation/ios-sdk"
+                    
+                     track-type="nav"
+                     track-metadata-eventdetail="https://developers.google.com/maps/documentation/navigation/ios-sdk"
+                     track-metadata-position="nav - documentation"
+                     track-metadata-module="tertiary nav"
+                     
+                       track-metadata-module_headline="routes"
+                     
+                     tooltip
+                  >
+                    
+                    <div class="devsite-nav-item-title">
+                      Navigation SDK for iOS
+                    </div>
+                    
+                  </a>
+                </li>
+              
+                <li class="devsite-nav-item">
+                  <a href="https://developers.google.com/maps/documentation/cross-platform/navigation"
+                    
+                     track-type="nav"
+                     track-metadata-eventdetail="https://developers.google.com/maps/documentation/cross-platform/navigation"
+                     track-metadata-position="nav - documentation"
+                     track-metadata-module="tertiary nav"
+                     
+                       track-metadata-module_headline="routes"
+                     
+                     tooltip
+                  >
+                    
+                    <div class="devsite-nav-item-title">
+                      Navigation for Flutter
+                    </div>
+                    
+                  </a>
+                </li>
+              
+                <li class="devsite-nav-item">
+                  <a href="https://developers.google.com/maps/documentation/cross-platform/navigation"
+                    
+                     track-type="nav"
+                     track-metadata-eventdetail="https://developers.google.com/maps/documentation/cross-platform/navigation"
+                     track-metadata-position="nav - documentation"
+                     track-metadata-module="tertiary nav"
+                     
+                       track-metadata-module_headline="routes"
+                     
+                     tooltip
+                  >
+                    
+                    <div class="devsite-nav-item-title">
+                      Navigation for React Native
+                    </div>
+                    
+                  </a>
+                </li>
+              
+                <li class="devsite-nav-item">
+                  <a href="https://developers.google.com/maps/documentation/roads"
+                    
+                     track-type="nav"
+                     track-metadata-eventdetail="https://developers.google.com/maps/documentation/roads"
+                     track-metadata-position="nav - documentation"
+                     track-metadata-module="tertiary nav"
+                     
+                       track-metadata-module_headline="routes"
+                     
+                     tooltip
+                  >
+                    
+                    <div class="devsite-nav-item-title">
+                      Roads API
+                    </div>
+                    
+                  </a>
+                </li>
+              
+                <li class="devsite-nav-item">
+                  <a href="https://developers.google.com/maps/documentation/route-optimization"
+                    
+                     track-type="nav"
+                     track-metadata-eventdetail="https://developers.google.com/maps/documentation/route-optimization"
+                     track-metadata-position="nav - documentation"
+                     track-metadata-module="tertiary nav"
+                     
+                       track-metadata-module_headline="routes"
+                     
+                     tooltip
+                  >
+                    
+                    <div class="devsite-nav-item-title">
+                      Route Optimization API
+                    </div>
+                    
+                  </a>
+                </li>
+              
+            </ul>
+          
+            <ul class="devsite-tabs-dropdown-section
+                       ">
+              
+                <li class="devsite-nav-title" role="heading" tooltip>Analytics</li>
+              
+              
+              
+                <li class="devsite-nav-item">
+                  <a href="https://developers.google.com/maps/documentation/earth"
+                    
+                     track-type="nav"
+                     track-metadata-eventdetail="https://developers.google.com/maps/documentation/earth"
+                     track-metadata-position="nav - documentation"
+                     track-metadata-module="tertiary nav"
+                     
+                       track-metadata-module_headline="routes"
+                     
+                     tooltip
+                  >
+                    
+                    <div class="devsite-nav-item-title">
+                      Google Earth
+                    </div>
+                    
+                  </a>
+                </li>
+              
+                <li class="devsite-nav-item">
+                  <a href="https://developers.google.com/maps/documentation/placesinsights"
+                    
+                     track-type="nav"
+                     track-metadata-eventdetail="https://developers.google.com/maps/documentation/placesinsights"
+                     track-metadata-position="nav - documentation"
+                     track-metadata-module="tertiary nav"
+                     
+                       track-metadata-module_headline="routes"
+                     
+                     tooltip
+                  >
+                    
+                    <div class="devsite-nav-item-title">
+                      Places Insights
+                    </div>
+                    
+                  </a>
+                </li>
+              
+                <li class="devsite-nav-item">
+                  <a href="https://developers.google.com/maps/documentation/imagery-insights"
+                    
+                     track-type="nav"
+                     track-metadata-eventdetail="https://developers.google.com/maps/documentation/imagery-insights"
+                     track-metadata-position="nav - documentation"
+                     track-metadata-module="tertiary nav"
+                     
+                       track-metadata-module_headline="routes"
+                     
+                     tooltip
+                  >
+                    
+                    <div class="devsite-nav-item-title">
+                      Imagery Insights
+                    </div>
+                    
+                  </a>
+                </li>
+              
+                <li class="devsite-nav-item">
+                  <a href="https://developers.google.com/maps/documentation/roads-management-insights"
+                    
+                     track-type="nav"
+                     track-metadata-eventdetail="https://developers.google.com/maps/documentation/roads-management-insights"
+                     track-metadata-position="nav - documentation"
+                     track-metadata-module="tertiary nav"
+                     
+                       track-metadata-module_headline="routes"
+                     
+                     tooltip
+                  >
+                    
+                    <div class="devsite-nav-item-title">
+                      Roads Management Insights
+                    </div>
+                    
+                  </a>
+                </li>
+              
+            </ul>
+          
+        </div>
+      
+        <div class="devsite-tabs-dropdown-column
+                    ">
+          
+            <ul class="devsite-tabs-dropdown-section
+                       ">
+              
+                <li class="devsite-nav-title" role="heading" tooltip>Places</li>
+              
+              
+              
+                <li class="devsite-nav-item">
+                  <a href="https://developers.google.com/maps/documentation/places/web-service"
+                    
+                     track-type="nav"
+                     track-metadata-eventdetail="https://developers.google.com/maps/documentation/places/web-service"
+                     track-metadata-position="nav - documentation"
+                     track-metadata-module="tertiary nav"
+                     
+                       track-metadata-module_headline="places"
+                     
+                     tooltip
+                  >
+                    
+                    <div class="devsite-nav-item-title">
+                      Places API
+                    </div>
+                    
+                  </a>
+                </li>
+              
+                <li class="devsite-nav-item">
+                  <a href="https://developers.google.com/maps/documentation/places/android-sdk"
+                    
+                     track-type="nav"
+                     track-metadata-eventdetail="https://developers.google.com/maps/documentation/places/android-sdk"
+                     track-metadata-position="nav - documentation"
+                     track-metadata-module="tertiary nav"
+                     
+                       track-metadata-module_headline="places"
+                     
+                     tooltip
+                  >
+                    
+                    <div class="devsite-nav-item-title">
+                      Places SDK for Android
+                    </div>
+                    
+                  </a>
+                </li>
+              
+                <li class="devsite-nav-item">
+                  <a href="https://developers.google.com/maps/documentation/places/ios-sdk"
+                    
+                     track-type="nav"
+                     track-metadata-eventdetail="https://developers.google.com/maps/documentation/places/ios-sdk"
+                     track-metadata-position="nav - documentation"
+                     track-metadata-module="tertiary nav"
+                     
+                       track-metadata-module_headline="places"
+                     
+                     tooltip
+                  >
+                    
+                    <div class="devsite-nav-item-title">
+                      Places SDK for iOS
+                    </div>
+                    
+                  </a>
+                </li>
+              
+                <li class="devsite-nav-item">
+                  <a href="https://developers.google.com/maps/documentation/javascript/places-js"
+                    
+                     track-type="nav"
+                     track-metadata-eventdetail="https://developers.google.com/maps/documentation/javascript/places-js"
+                     track-metadata-position="nav - documentation"
+                     track-metadata-module="tertiary nav"
+                     
+                       track-metadata-module_headline="places"
+                     
+                     tooltip
+                  >
+                    
+                    <div class="devsite-nav-item-title">
+                      Places Library, Maps JavaScript API
+                    </div>
+                    
+                  </a>
+                </li>
+              
+                <li class="devsite-nav-item">
+                  <a href="https://developers.google.com/maps/documentation/geocoding"
+                    
+                     track-type="nav"
+                     track-metadata-eventdetail="https://developers.google.com/maps/documentation/geocoding"
+                     track-metadata-position="nav - documentation"
+                     track-metadata-module="tertiary nav"
+                     
+                       track-metadata-module_headline="places"
+                     
+                     tooltip
+                  >
+                    
+                    <div class="devsite-nav-item-title">
+                      Geocoding API
+                    </div>
+                    
+                  </a>
+                </li>
+              
+                <li class="devsite-nav-item">
+                  <a href="https://developers.google.com/maps/documentation/geolocation"
+                    
+                     track-type="nav"
+                     track-metadata-eventdetail="https://developers.google.com/maps/documentation/geolocation"
+                     track-metadata-position="nav - documentation"
+                     track-metadata-module="tertiary nav"
+                     
+                       track-metadata-module_headline="places"
+                     
+                     tooltip
+                  >
+                    
+                    <div class="devsite-nav-item-title">
+                      Geolocation API
+                    </div>
+                    
+                  </a>
+                </li>
+              
+                <li class="devsite-nav-item">
+                  <a href="https://developers.google.com/maps/documentation/address-validation"
+                    
+                     track-type="nav"
+                     track-metadata-eventdetail="https://developers.google.com/maps/documentation/address-validation"
+                     track-metadata-position="nav - documentation"
+                     track-metadata-module="tertiary nav"
+                     
+                       track-metadata-module_headline="places"
+                     
+                     tooltip
+                  >
+                    
+                    <div class="devsite-nav-item-title">
+                      Address Validation API
+                    </div>
+                    
+                  </a>
+                </li>
+              
+                <li class="devsite-nav-item">
+                  <a href="https://developers.google.com/maps/documentation/timezone"
+                    
+                     track-type="nav"
+                     track-metadata-eventdetail="https://developers.google.com/maps/documentation/timezone"
+                     track-metadata-position="nav - documentation"
+                     track-metadata-module="tertiary nav"
+                     
+                       track-metadata-module_headline="places"
+                     
+                     tooltip
+                  >
+                    
+                    <div class="devsite-nav-item-title">
+                      Time Zone API
+                    </div>
+                    
+                  </a>
+                </li>
+              
+                <li class="devsite-nav-item">
+                  <a href="https://developers.google.com/maps/documentation/places-aggregate"
+                    
+                     track-type="nav"
+                     track-metadata-eventdetail="https://developers.google.com/maps/documentation/places-aggregate"
+                     track-metadata-position="nav - documentation"
+                     track-metadata-module="tertiary nav"
+                     
+                       track-metadata-module_headline="places"
+                     
+                     tooltip
+                  >
+                    
+                    <div class="devsite-nav-item-title">
+                      Places Aggregate API
+                    </div>
+                    
+                  </a>
+                </li>
+              
+            </ul>
+          
+            <ul class="devsite-tabs-dropdown-section
+                       ">
+              
+                <li class="devsite-nav-title" role="heading" tooltip>Environment</li>
+              
+              
+              
+                <li class="devsite-nav-item">
+                  <a href="https://developers.google.com/maps/documentation/air-quality"
+                    
+                     track-type="nav"
+                     track-metadata-eventdetail="https://developers.google.com/maps/documentation/air-quality"
+                     track-metadata-position="nav - documentation"
+                     track-metadata-module="tertiary nav"
+                     
+                       track-metadata-module_headline="places"
+                     
+                     tooltip
+                  >
+                    
+                    <div class="devsite-nav-item-title">
+                      Air Quality API
+                    </div>
+                    
+                  </a>
+                </li>
+              
+                <li class="devsite-nav-item">
+                  <a href="https://developers.google.com/maps/documentation/pollen"
+                    
+                     track-type="nav"
+                     track-metadata-eventdetail="https://developers.google.com/maps/documentation/pollen"
+                     track-metadata-position="nav - documentation"
+                     track-metadata-module="tertiary nav"
+                     
+                       track-metadata-module_headline="places"
+                     
+                     tooltip
+                  >
+                    
+                    <div class="devsite-nav-item-title">
+                      Pollen API
+                    </div>
+                    
+                  </a>
+                </li>
+              
+                <li class="devsite-nav-item">
+                  <a href="https://developers.google.com/maps/documentation/solar"
+                    
+                     track-type="nav"
+                     track-metadata-eventdetail="https://developers.google.com/maps/documentation/solar"
+                     track-metadata-position="nav - documentation"
+                     track-metadata-module="tertiary nav"
+                     
+                       track-metadata-module_headline="places"
+                     
+                     tooltip
+                  >
+                    
+                    <div class="devsite-nav-item-title">
+                      Solar API
+                    </div>
+                    
+                  </a>
+                </li>
+              
+                <li class="devsite-nav-item">
+                  <a href="https://developers.google.com/maps/documentation/weather"
+                    
+                     track-type="nav"
+                     track-metadata-eventdetail="https://developers.google.com/maps/documentation/weather"
+                     track-metadata-position="nav - documentation"
+                     track-metadata-module="tertiary nav"
+                     
+                       track-metadata-module_headline="places"
+                     
+                     tooltip
+                  >
+                    
+                    <div class="devsite-nav-item-title">
+                      Weather API
+                    </div>
+                    
+                  </a>
+                </li>
+              
+            </ul>
+          
+        </div>
+      
+        <div class="devsite-tabs-dropdown-column
+                    ">
+          
+            <ul class="devsite-tabs-dropdown-section
+                       ">
+              
+                <li class="devsite-nav-title" role="heading" tooltip>Solutions</li>
+              
+              
+              
+                <li class="devsite-nav-item">
+                  <a href="https://developers.google.com/maps/ai/build-with-ai"
+                    
+                     track-type="nav"
+                     track-metadata-eventdetail="https://developers.google.com/maps/ai/build-with-ai"
+                     track-metadata-position="nav - documentation"
+                     track-metadata-module="tertiary nav"
+                     
+                       track-metadata-module_headline="solutions"
+                     
+                     tooltip
+                  >
+                    
+                    <div class="devsite-nav-item-title">
+                      Maps Builder agent
+                    </div>
+                    
+                  </a>
+                </li>
+              
+                <li class="devsite-nav-item">
+                  <a href="https://developers.google.com/maps/solutions"
+                    
+                     track-type="nav"
+                     track-metadata-eventdetail="https://developers.google.com/maps/solutions"
+                     track-metadata-position="nav - documentation"
+                     track-metadata-module="tertiary nav"
+                     
+                       track-metadata-module_headline="solutions"
+                     
+                     tooltip
+                  >
+                    
+                    <div class="devsite-nav-item-title">
+                      Industry solutions
+                    </div>
+                    
+                  </a>
+                </li>
+              
+                <li class="devsite-nav-item">
+                  <a href="https://developers.google.com/maps/documentation/mobility"
+                    
+                     track-type="nav"
+                     track-metadata-eventdetail="https://developers.google.com/maps/documentation/mobility"
+                     track-metadata-position="nav - documentation"
+                     track-metadata-module="tertiary nav"
+                     
+                       track-metadata-module_headline="solutions"
+                     
+                     tooltip
+                  >
+                    
+                    <div class="devsite-nav-item-title">
+                      Mobility services
+                    </div>
+                    
+                  </a>
+                </li>
+              
+            </ul>
+          
+            <ul class="devsite-tabs-dropdown-section
+                       ">
+              
+                <li class="devsite-nav-title" role="heading" tooltip>Additional Resources</li>
+              
+              
+              
+                <li class="devsite-nav-item">
+                  <a href="https://developers.google.com/maps/api-security-best-practices"
+                    
+                     track-type="nav"
+                     track-metadata-eventdetail="https://developers.google.com/maps/api-security-best-practices"
+                     track-metadata-position="nav - documentation"
+                     track-metadata-module="tertiary nav"
+                     
+                       track-metadata-module_headline="solutions"
+                     
+                     tooltip
+                  >
+                    
+                    <div class="devsite-nav-item-title">
+                      API Security Best Practices
+                    </div>
+                    
+                  </a>
+                </li>
+              
+                <li class="devsite-nav-item">
+                  <a href="https://developers.google.com/maps/digital-signature"
+                    
+                     track-type="nav"
+                     track-metadata-eventdetail="https://developers.google.com/maps/digital-signature"
+                     track-metadata-position="nav - documentation"
+                     track-metadata-module="tertiary nav"
+                     
+                       track-metadata-module_headline="solutions"
+                     
+                     tooltip
+                  >
+                    
+                    <div class="devsite-nav-item-title">
+                      Digital Signature Guide
+                    </div>
+                    
+                  </a>
+                </li>
+              
+                <li class="devsite-nav-item">
+                  <a href="https://developers.google.com/maps/coverage"
+                    
+                     track-type="nav"
+                     track-metadata-eventdetail="https://developers.google.com/maps/coverage"
+                     track-metadata-position="nav - documentation"
+                     track-metadata-module="tertiary nav"
+                     
+                       track-metadata-module_headline="solutions"
+                     
+                     tooltip
+                  >
+                    
+                    <div class="devsite-nav-item-title">
+                      Map Coverage Details
+                    </div>
+                    
+                  </a>
+                </li>
+              
+                <li class="devsite-nav-item">
+                  <a href="https://developers.google.com/maps/optimization-guide"
+                    
+                     track-type="nav"
+                     track-metadata-eventdetail="https://developers.google.com/maps/optimization-guide"
+                     track-metadata-position="nav - documentation"
+                     track-metadata-module="tertiary nav"
+                     
+                       track-metadata-module_headline="solutions"
+                     
+                     tooltip
+                  >
+                    
+                    <div class="devsite-nav-item-title">
+                      Optimization Guide
+                    </div>
+                    
+                  </a>
+                </li>
+              
+                <li class="devsite-nav-item">
+                  <a href="https://developers.google.com/maps/software-support"
+                    
+                     track-type="nav"
+                     track-metadata-eventdetail="https://developers.google.com/maps/software-support"
+                     track-metadata-position="nav - documentation"
+                     track-metadata-module="tertiary nav"
+                     
+                       track-metadata-module_headline="solutions"
+                     
+                     tooltip
+                  >
+                    
+                    <div class="devsite-nav-item-title">
+                      Mobile OS and software support
+                    </div>
+                    
+                  </a>
+                </li>
+              
+                <li class="devsite-nav-item">
+                  <a href="https://developers.google.com/maps/launch-stages"
+                    
+                     track-type="nav"
+                     track-metadata-eventdetail="https://developers.google.com/maps/launch-stages"
+                     track-metadata-position="nav - documentation"
+                     track-metadata-module="tertiary nav"
+                     
+                       track-metadata-module_headline="solutions"
+                     
+                     tooltip
+                  >
+                    
+                    <div class="devsite-nav-item-title">
+                      Launch stages
+                    </div>
+                    
+                  </a>
+                </li>
+              
+                <li class="devsite-nav-item">
+                  <a href="https://developers.google.com/maps/legacy"
+                    
+                     track-type="nav"
+                     track-metadata-eventdetail="https://developers.google.com/maps/legacy"
+                     track-metadata-position="nav - documentation"
+                     track-metadata-module="tertiary nav"
+                     
+                       track-metadata-module_headline="solutions"
+                     
+                     tooltip
+                  >
+                    
+                    <div class="devsite-nav-item-title">
+                      Legacy products
+                    </div>
+                    
+                  </a>
+                </li>
+              
+                <li class="devsite-nav-item">
+                  <a href="https://developers.google.com/maps/deprecations"
+                    
+                     track-type="nav"
+                     track-metadata-eventdetail="https://developers.google.com/maps/deprecations"
+                     track-metadata-position="nav - documentation"
+                     track-metadata-module="tertiary nav"
+                     
+                       track-metadata-module_headline="solutions"
+                     
+                     tooltip
+                  >
+                    
+                    <div class="devsite-nav-item-title">
+                      Deprecations
+                    </div>
+                    
+                  </a>
+                </li>
+              
+                <li class="devsite-nav-item">
+                  <a href="https://developers.google.com/maps/url-encoding"
+                    
+                     track-type="nav"
+                     track-metadata-eventdetail="https://developers.google.com/maps/url-encoding"
+                     track-metadata-position="nav - documentation"
+                     track-metadata-module="tertiary nav"
+                     
+                       track-metadata-module_headline="solutions"
+                     
+                     tooltip
+                  >
+                    
+                    <div class="devsite-nav-item-title">
+                      URL Encoding
+                    </div>
+                    
+                  </a>
+                </li>
+              
+                <li class="devsite-nav-item">
+                  <a href="https://developers.google.com/maps/third-party-platforms/wordpress"
+                    
+                     track-type="nav"
+                     track-metadata-eventdetail="https://developers.google.com/maps/third-party-platforms/wordpress"
+                     track-metadata-position="nav - documentation"
+                     track-metadata-module="tertiary nav"
+                     
+                       track-metadata-module_headline="solutions"
+                     
+                     tooltip
+                  >
+                    
+                    <div class="devsite-nav-item-title">
+                      WordPress Users
+                    </div>
+                    
+                  </a>
+                </li>
+              
+            </ul>
+          
+        </div>
+      
+    </div>
+  </div>
+</tab>
+        
+      
+        
+          <tab class="devsite-dropdown
+    
+    
+    
+    ">
+  
+    <a href="https://developers.google.com/maps/developer-community"
+    class="devsite-tabs-content gc-analytics-event "
+      track-metadata-eventdetail="https://developers.google.com/maps/developer-community"
+    
+       track-type="nav"
+       track-metadata-position="nav - community"
+       track-metadata-module="primary nav"
+       
+       
+         
+           data-category="community"
+         
+           data-label="navTopMenu"
+         
+           track-name="community"
+         
+           data-action="tabClick"
+         
+       >
+    Community
+  
+    </a>
+    
+      <button
+         aria-haspopup="menu"
+         aria-expanded="false"
+         aria-label="Dropdown menu for Community"
+         track-type="nav"
+         track-metadata-eventdetail="https://developers.google.com/maps/developer-community"
+         track-metadata-position="nav - community"
+         track-metadata-module="primary nav"
+         
+          
+            data-category="community"
+          
+            data-label="navTopMenu"
+          
+            track-name="community"
+          
+            data-action="tabClick"
+          
+        
+         class="devsite-tabs-dropdown-toggle devsite-icon devsite-icon-arrow-drop-down"></button>
+    
+  
+  <div class="devsite-tabs-dropdown" role="menu" aria-label="submenu" hidden>
+    
+    <div class="devsite-tabs-dropdown-content">
+      
+        <div class="devsite-tabs-dropdown-column
+                    ">
+          
+            <ul class="devsite-tabs-dropdown-section
+                       ">
+              
+              
+              
+                <li class="devsite-nav-item">
+                  <a href="https://github.com/googlemaps/"
+                    
+                     track-type="nav"
+                     track-metadata-eventdetail="https://github.com/googlemaps/"
+                     track-metadata-position="nav - community"
+                     track-metadata-module="tertiary nav"
+                     
+                     tooltip
+                  >
+                    
+                    <div class="devsite-nav-item-title">
+                      GitHub
+                    </div>
+                    
+                  </a>
+                </li>
+              
+                <li class="devsite-nav-item">
+                  <a href="https://www.youtube.com/c/GoogleMapsPlatform"
+                    
+                     track-type="nav"
+                     track-metadata-eventdetail="https://www.youtube.com/c/GoogleMapsPlatform"
+                     track-metadata-position="nav - community"
+                     track-metadata-module="tertiary nav"
+                     
+                     tooltip
+                  >
+                    
+                    <div class="devsite-nav-item-title">
+                      YouTube
+                    </div>
+                    
+                  </a>
+                </li>
+              
+                <li class="devsite-nav-item">
+                  <a href="https://www.linkedin.com/showcase/googlemapsplatform/"
+                    
+                     track-type="nav"
+                     track-metadata-eventdetail="https://www.linkedin.com/showcase/googlemapsplatform/"
+                     track-metadata-position="nav - community"
+                     track-metadata-module="tertiary nav"
+                     
+                     tooltip
+                  >
+                    
+                    <div class="devsite-nav-item-title">
+                      LinkedIn
+                    </div>
+                    
+                  </a>
+                </li>
+              
+                <li class="devsite-nav-item">
+                  <a href="https://discord.gg/f4hvx8Rp2q"
+                    
+                     track-type="nav"
+                     track-metadata-eventdetail="https://discord.gg/f4hvx8Rp2q"
+                     track-metadata-position="nav - community"
+                     track-metadata-module="tertiary nav"
+                     
+                     tooltip
+                  >
+                    
+                    <div class="devsite-nav-item-title">
+                      Discord
+                    </div>
+                    
+                  </a>
+                </li>
+              
+                <li class="devsite-nav-item">
+                  <a href="https://developers.google.com/maps/innovators"
+                    
+                     track-type="nav"
+                     track-metadata-eventdetail="https://developers.google.com/maps/innovators"
+                     track-metadata-position="nav - community"
+                     track-metadata-module="tertiary nav"
+                     
+                     tooltip
+                  >
+                    
+                    <div class="devsite-nav-item-title">
+                      Innovators
+                    </div>
+                    
+                  </a>
+                </li>
+              
+                <li class="devsite-nav-item">
+                  <a href="https://issuetracker.google.com/bookmark-groups/76561"
+                    
+                     track-type="nav"
+                     track-metadata-eventdetail="https://issuetracker.google.com/bookmark-groups/76561"
+                     track-metadata-position="nav - community"
+                     track-metadata-module="tertiary nav"
+                     
+                     tooltip
+                  >
+                    
+                    <div class="devsite-nav-item-title">
+                      Issue Tracker
+                    </div>
+                    
+                  </a>
+                </li>
+              
+            </ul>
+          
+        </div>
+      
+    </div>
+  </div>
+</tab>
+        
+      
+    </nav>
+
+  </devsite-tabs>
+
+            
+           </div>
+          
+<devsite-search
+    enable-signin
+    enable-search
+    enable-suggestions
+      enable-query-completion
+    
+    enable-search-summaries
+    project-name="Google Earth"
+    tenant-name="Google for Developers"
+    project-scope="/maps/documentation/earth"
+    url-scoped="https://developers.google.com/s/results/maps/documentation/earth"
+    
+    
+    
+    >
+  <form class="devsite-search-form" action="https://developers.google.com/s/results" method="GET">
+    <div class="devsite-search-container">
+      <button type="button"
+              search-open
+              class="devsite-search-button devsite-header-icon-button button-flat material-icons"
+              
+              aria-label="Open search"></button>
+      <div class="devsite-searchbox">
+        <input
+          aria-activedescendant=""
+          aria-autocomplete="list"
+          
+          aria-label="Search"
+          aria-expanded="false"
+          aria-haspopup="listbox"
+          autocomplete="off"
+          class="devsite-search-field devsite-search-query"
+          name="q"
+          
+          placeholder="Search"
+          role="combobox"
+          type="text"
+          value=""
+          >
+          <div class="devsite-search-image material-icons" aria-hidden="true">
+            
+              <svg class="devsite-search-ai-image" width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <g clip-path="url(#clip0_6641_386)">
+                    <path d="M19.6 21L13.3 14.7C12.8 15.1 12.225 15.4167 11.575 15.65C10.925 15.8833 10.2333 16 9.5 16C7.68333 16 6.14167 15.375 4.875 14.125C3.625 12.8583 3 11.3167 3 9.5C3 7.68333 3.625 6.15 4.875 4.9C6.14167 3.63333 7.68333 3 9.5 3C10.0167 3 10.5167 3.05833 11 3.175C11.4833 3.275 11.9417 3.43333 12.375 3.65L10.825 5.2C10.6083 5.13333 10.3917 5.08333 10.175 5.05C9.95833 5.01667 9.73333 5 9.5 5C8.25 5 7.18333 5.44167 6.3 6.325C5.43333 7.19167 5 8.25 5 9.5C5 10.75 5.43333 11.8167 6.3 12.7C7.18333 13.5667 8.25 14 9.5 14C10.6667 14 11.6667 13.625 12.5 12.875C13.35 12.1083 13.8417 11.15 13.975 10H15.975C15.925 10.6333 15.7833 11.2333 15.55 11.8C15.3333 12.3667 15.05 12.8667 14.7 13.3L21 19.6L19.6 21ZM17.5 12C17.5 10.4667 16.9667 9.16667 15.9 8.1C14.8333 7.03333 13.5333 6.5 12 6.5C13.5333 6.5 14.8333 5.96667 15.9 4.9C16.9667 3.83333 17.5 2.53333 17.5 0.999999C17.5 2.53333 18.0333 3.83333 19.1 4.9C20.1667 5.96667 21.4667 6.5 23 6.5C21.4667 6.5 20.1667 7.03333 19.1 8.1C18.0333 9.16667 17.5 10.4667 17.5 12Z" fill="#5F6368"/>
+                  </g>
+                <defs>
+                <clipPath id="clip0_6641_386">
+                <rect width="24" height="24" fill="white"/>
+                </clipPath>
+                </defs>
+              </svg>
+            
+          </div>
+          <div class="devsite-search-shortcut-icon-container" aria-hidden="true">
+            <kbd class="devsite-search-shortcut-icon">/</kbd>
+          </div>
+      </div>
+    </div>
+  </form>
+  <button type="button"
+          search-close
+          class="devsite-search-button devsite-header-icon-button button-flat material-icons"
+          
+          aria-label="Close search"></button>
+</devsite-search>
+
+        </div>
+
+        
+
+          
+
+          
+
+          
+
+          
+<devsite-language-selector>
+  <ul role="presentation">
+    
+    
+    <li role="presentation">
+      <a role="menuitem" lang="en"
+        >English</a>
+    </li>
+    
+    <li role="presentation">
+      <a role="menuitem" lang="de"
+        >Deutsch</a>
+    </li>
+    
+    <li role="presentation">
+      <a role="menuitem" lang="es"
+        >Español</a>
+    </li>
+    
+    <li role="presentation">
+      <a role="menuitem" lang="es_419"
+        >Español – América Latina</a>
+    </li>
+    
+    <li role="presentation">
+      <a role="menuitem" lang="fr"
+        >Français</a>
+    </li>
+    
+    <li role="presentation">
+      <a role="menuitem" lang="id"
+        >Indonesia</a>
+    </li>
+    
+    <li role="presentation">
+      <a role="menuitem" lang="it"
+        >Italiano</a>
+    </li>
+    
+    <li role="presentation">
+      <a role="menuitem" lang="pl"
+        >Polski</a>
+    </li>
+    
+    <li role="presentation">
+      <a role="menuitem" lang="pt_br"
+        >Português – Brasil</a>
+    </li>
+    
+    <li role="presentation">
+      <a role="menuitem" lang="vi"
+        >Tiếng Việt</a>
+    </li>
+    
+    <li role="presentation">
+      <a role="menuitem" lang="tr"
+        >Türkçe</a>
+    </li>
+    
+    <li role="presentation">
+      <a role="menuitem" lang="ru"
+        >Русский</a>
+    </li>
+    
+    <li role="presentation">
+      <a role="menuitem" lang="he"
+        >עברית</a>
+    </li>
+    
+    <li role="presentation">
+      <a role="menuitem" lang="ar"
+        >العربيّة</a>
+    </li>
+    
+    <li role="presentation">
+      <a role="menuitem" lang="fa"
+        >فارسی</a>
+    </li>
+    
+    <li role="presentation">
+      <a role="menuitem" lang="hi"
+        >हिंदी</a>
+    </li>
+    
+    <li role="presentation">
+      <a role="menuitem" lang="bn"
+        >বাংলা</a>
+    </li>
+    
+    <li role="presentation">
+      <a role="menuitem" lang="th"
+        >ภาษาไทย</a>
+    </li>
+    
+    <li role="presentation">
+      <a role="menuitem" lang="zh_cn"
+        >中文 – 简体</a>
+    </li>
+    
+    <li role="presentation">
+      <a role="menuitem" lang="zh_tw"
+        >中文 – 繁體</a>
+    </li>
+    
+    <li role="presentation">
+      <a role="menuitem" lang="ja"
+        >日本語</a>
+    </li>
+    
+    <li role="presentation">
+      <a role="menuitem" lang="ko"
+        >한국어</a>
+    </li>
+    
+  </ul>
+</devsite-language-selector>
+
+
+          
+
+        
+
+        
+          <devsite-user 
+                        
+                        
+                          enable-profiles
+                        
+                        
+                          fp-auth
+                        
+                        id="devsite-user">
+            
+              
+              <span class="button devsite-top-button" aria-hidden="true" visually-hidden>Sign in</span>
+            
+          </devsite-user>
+        
+        
+        
+      </div>
+    </div>
+  </div>
+
+
+
+  <div class="devsite-collapsible-section
+    ">
+    <div class="devsite-header-background">
+      
+        
+          <div class="devsite-product-id-row"
+           >
+            <div class="devsite-product-description-row">
+              
+                
+                <div class="devsite-product-id">
+                  
+                  
+                  
+                    <ul class="devsite-breadcrumb-list"
+  >
+  
+  <li class="devsite-breadcrumb-item
+             ">
+    
+    
+    
+      
+        
+  <a href="https://developers.google.com/maps/documentation/earth"
+      
+        class="devsite-breadcrumb-link gc-analytics-event"
+      
+        data-category="Site-Wide Custom Events"
+      
+        data-label="Lower Header"
+      
+        data-value="1"
+      
+        track-type="globalNav"
+      
+        track-name="breadcrumb"
+      
+        track-metadata-position="1"
+      
+        track-metadata-eventdetail="Google Earth"
+      
+    >
+    
+          Google Earth
+        
+  </a>
+  
+      
+    
+  </li>
+  
+</ul>
+                </div>
+                
+              
+              
+            </div>
+            
+          </div>
+          
+        
+      
+      
+        <div class="devsite-doc-set-nav-row">
+          
+          
+            
+            
+  <devsite-tabs class="lower-tabs">
+
+    <nav class="devsite-tabs-wrapper" aria-label="Lower tabs">
+      
+        
+          <tab  >
+            
+    <a href="https://developers.google.com/maps/documentation/earth"
+    class="devsite-tabs-content gc-analytics-event "
+      track-metadata-eventdetail="https://developers.google.com/maps/documentation/earth"
+    
+       track-type="nav"
+       track-metadata-position="nav - guides"
+       track-metadata-module="primary nav"
+       
+       
+         
+           data-category="Site-Wide Custom Events"
+         
+           data-label="Tab: Guides"
+         
+           track-name="guides"
+         
+       >
+    Guides
+  
+    </a>
+    
+  
+          </tab>
+        
+      
+        
+          <tab  class="devsite-active">
+            
+    <a href="https://developers.google.com/maps/documentation/earth/support"
+    class="devsite-tabs-content gc-analytics-event "
+      track-metadata-eventdetail="https://developers.google.com/maps/documentation/earth/support"
+    
+       track-type="nav"
+       track-metadata-position="nav - resources"
+       track-metadata-module="primary nav"
+       aria-label="Resources, selected" 
+       
+         
+           data-category="Site-Wide Custom Events"
+         
+           data-label="Tab: Resources"
+         
+           track-name="resources"
+         
+       >
+    Resources
+  
+    </a>
+    
+  
+          </tab>
+        
+      
+        
+          <tab  >
+            
+    <a href="https://developers.google.com/maps/documentation/earth/experimental-overview"
+    class="devsite-tabs-content gc-analytics-event "
+      track-metadata-eventdetail="https://developers.google.com/maps/documentation/earth/experimental-overview"
+    
+       track-type="nav"
+       track-metadata-position="nav - experimental"
+       track-metadata-module="primary nav"
+       
+       
+         
+           data-category="Site-Wide Custom Events"
+         
+           data-label="Tab: Experimental"
+         
+           track-name="experimental"
+         
+       >
+    Experimental
+  
+    </a>
+    
+  
+          </tab>
+        
+      
+    </nav>
+
+  </devsite-tabs>
+
+          
+          
+        </div>
+      
+    </div>
+  </div>
+
+</div>
+
+
+
+  
+
+  
+</devsite-header>
+      <devsite-book-nav scrollbars >
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="devsite-book-nav-filter"
+     >
+  <span class="filter-list-icon material-icons" aria-hidden="true"></span>
+  <input type="text"
+         placeholder="Filter"
+         
+         aria-label="Type to filter"
+         role="searchbox">
+  
+  <span class="filter-clear-button hidden"
+        data-title="Clear filter"
+        aria-label="Clear filter"
+        role="button"
+        tabindex="0"></span>
+</div>
+
+<nav class="devsite-book-nav devsite-nav nocontent"
+     aria-label="Side menu">
+  <div class="devsite-mobile-header">
+    <button type="button"
+            id="devsite-close-nav"
+            class="devsite-header-icon-button button-flat material-icons gc-analytics-event"
+            data-category="Site-Wide Custom Events"
+            data-label="Close navigation"
+            aria-label="Close navigation">
+    </button>
+    <div class="devsite-product-name-wrapper">
+
+  
+    
+  
+  <a href="https://developers.google.com/maps">
+    
+  <div class="devsite-product-logo-container"
+       
+       
+       
+    size="medium"
+  >
+  
+    <picture>
+      
+      <img class="devsite-product-logo"
+           alt="Google Maps Platform"
+           src="https://developers.google.com/static/maps/images/maps-icon.svg"
+           srcset=" /static/maps/images/maps-icon.svg"
+           sizes="64px"
+           loading="lazy"
+           >
+    </picture>
+  
+  </div>
+  
+  </a>
+  
+
+  
+
+
+  
+      <span class="devsite-product-name">
+        
+        
+        <ul class="devsite-breadcrumb-list"
+  >
+  
+  <li class="devsite-breadcrumb-item
+             devsite-has-google-wordmark">
+    
+    
+    
+      
+      
+        
+  <a href="https://developers.google.com/maps"
+      
+        class="devsite-breadcrumb-link gc-analytics-event"
+      
+        data-category="Site-Wide Custom Events"
+      
+        data-label="Upper Header"
+      
+        data-value="1"
+      
+        track-type="globalNav"
+      
+        track-name="breadcrumb"
+      
+        track-metadata-position="1"
+      
+        track-metadata-eventdetail="Google Maps Platform"
+      
+    >
+    
+          <svg class="devsite-google-wordmark"
+       xmlns="http://www.w3.org/2000/svg"
+       viewBox="0 0 148 48">
+    <title>Google</title>
+    <path class="devsite-google-wordmark-svg-path" d="M19.58,37.65c-9.87,0-18.17-8.04-18.17-17.91c0-9.87,8.3-17.91,18.17-17.91c5.46,0,9.35,2.14,12.27,4.94l-3.45,3.45c-2.1-1.97-4.93-3.49-8.82-3.49c-7.21,0-12.84,5.81-12.84,13.02c0,7.21,5.64,13.02,12.84,13.02c4.67,0,7.34-1.88,9.04-3.58c1.4-1.4,2.32-3.41,2.66-6.16H19.58v-4.89h16.47c0.18,0.87,0.26,1.92,0.26,3.06c0,3.67-1.01,8.21-4.24,11.44C28.93,35.9,24.91,37.65,19.58,37.65z M61.78,26.12c0,6.64-5.1,11.53-11.36,11.53s-11.36-4.89-11.36-11.53c0-6.68,5.1-11.53,11.36-11.53S61.78,19.43,61.78,26.12z M56.8,26.12c0-4.15-2.96-6.99-6.39-6.99c-3.43,0-6.39,2.84-6.39,6.99c0,4.11,2.96,6.99,6.39,6.99C53.84,33.11,56.8,30.22,56.8,26.12z M87.25,26.12c0,6.64-5.1,11.53-11.36,11.53c-6.26,0-11.36-4.89-11.36-11.53c0-6.68,5.1-11.53,11.36-11.53C82.15,14.59,87.25,19.43,87.25,26.12zM82.28,26.12c0-4.15-2.96-6.99-6.39-6.99c-3.43,0-6.39,2.84-6.39,6.99c0,4.11,2.96,6.99,6.39,6.99C79.32,33.11,82.28,30.22,82.28,26.12z M112.09,15.29v20.7c0,8.52-5.02,12.01-10.96,12.01c-5.59,0-8.95-3.76-10.22-6.81l4.41-1.83c0.79,1.88,2.71,4.1,5.81,4.1c3.8,0,6.16-2.36,6.16-6.77v-1.66h-0.18c-1.14,1.4-3.32,2.62-6.07,2.62c-5.76,0-11.05-5.02-11.05-11.49c0-6.51,5.28-11.57,11.05-11.57c2.75,0,4.93,1.22,6.07,2.58h0.18v-1.88H112.09z M107.64,26.16c0-4.06-2.71-7.03-6.16-7.03c-3.49,0-6.42,2.97-6.42,7.03c0,4.02,2.93,6.94,6.42,6.94C104.93,33.11,107.64,30.18,107.64,26.16z M120.97,3.06v33.89h-5.07V3.06H120.97z M140.89,29.92l3.93,2.62c-1.27,1.88-4.32,5.11-9.61,5.11c-6.55,0-11.28-5.07-11.28-11.53c0-6.86,4.77-11.53,10.71-11.53c5.98,0,8.91,4.76,9.87,7.34l0.52,1.31l-15.42,6.38c1.18,2.31,3.01,3.49,5.59,3.49C137.79,33.11,139.58,31.84,140.89,29.92zM128.79,25.77l10.31-4.28c-0.57-1.44-2.27-2.45-4.28-2.45C132.24,19.04,128.66,21.31,128.79,25.77z"/>
+  </svg>Maps Platform
+        
+  </a>
+  
+      
+    
+  </li>
+  
+</ul>
+      </span>
+    
+
+</div>
+  </div>
+
+  <div class="devsite-book-nav-wrapper">
+    <div class="devsite-mobile-nav-top">
+      
+        <ul class="devsite-nav-list">
+          
+            <li class="devsite-nav-item">
+              
+  
+  <a href="https://mapsplatform.google.com/"
+    
+       class="devsite-nav-title gc-analytics-event
+              
+              "
+    
+
+    
+      
+        data-category="home"
+      
+        data-label="navTopMenu"
+      
+        track-name="overview"
+      
+        data-action="tabClick"
+      
+    
+     data-category="Site-Wide Custom Events"
+     data-label="Responsive Tab: Overview"
+     track-type="globalNav"
+     track-metadata-eventDetail="globalMenu"
+     track-metadata-position="nav">
+  
+    <span class="devsite-nav-text" tooltip >
+      Overview
+   </span>
+    
+  
+  </a>
+  
+
+  
+              
+            </li>
+          
+            <li class="devsite-nav-item">
+              
+  
+  <a href="https://mapsplatform.google.com/maps-products/"
+    
+       class="devsite-nav-title gc-analytics-event
+              
+              "
+    
+
+    
+      
+        data-category="products"
+      
+        data-label="navTopMenu"
+      
+        track-name="products"
+      
+        data-action="tabClick"
+      
+    
+     data-category="Site-Wide Custom Events"
+     data-label="Responsive Tab: Products"
+     track-type="globalNav"
+     track-metadata-eventDetail="globalMenu"
+     track-metadata-position="nav">
+  
+    <span class="devsite-nav-text" tooltip >
+      Products
+   </span>
+    
+  
+  </a>
+  
+
+  
+              
+            </li>
+          
+            <li class="devsite-nav-item">
+              
+  
+  <a href="https://mapsplatform.google.com/pricing/"
+    
+       class="devsite-nav-title gc-analytics-event
+              
+              "
+    
+
+    
+      
+        data-category="pricing"
+      
+        data-label="navTopMenu"
+      
+        track-name="pricing"
+      
+        data-action="tabClick"
+      
+    
+     data-category="Site-Wide Custom Events"
+     data-label="Responsive Tab: Pricing"
+     track-type="globalNav"
+     track-metadata-eventDetail="globalMenu"
+     track-metadata-position="nav">
+  
+    <span class="devsite-nav-text" tooltip >
+      Pricing
+   </span>
+    
+  
+  </a>
+  
+
+  
+              
+            </li>
+          
+            <li class="devsite-nav-item">
+              
+  
+  <a href="/maps/documentation"
+    
+       class="devsite-nav-title gc-analytics-event
+              
+              devsite-nav-active"
+    
+
+    
+      
+        data-category="documentation"
+      
+        data-label="navTopMenu"
+      
+        track-name="documentation"
+      
+        data-actions="tabClick"
+      
+    
+     data-category="Site-Wide Custom Events"
+     data-label="Responsive Tab: Documentation"
+     track-type="globalNav"
+     track-metadata-eventDetail="globalMenu"
+     track-metadata-position="nav">
+  
+    <span class="devsite-nav-text" tooltip >
+      Documentation
+   </span>
+    
+  
+  </a>
+  
+
+  
+    <ul class="devsite-nav-responsive-tabs devsite-nav-has-menu
+               ">
+      
+<li class="devsite-nav-item">
+
+  
+  <span
+    
+       class="devsite-nav-title"
+       tooltip
+    
+    
+      
+        data-category="documentation"
+      
+        data-label="navTopMenu"
+      
+        track-name="documentation"
+      
+        data-actions="tabClick"
+      
+    >
+  
+    <span class="devsite-nav-text" tooltip menu="Documentation">
+      More
+   </span>
+    
+    <span class="devsite-nav-icon material-icons" data-icon="forward"
+          menu="Documentation">
+    </span>
+    
+  
+  </span>
+  
+
+</li>
+
+    </ul>
+  
+              
+                <ul class="devsite-nav-responsive-tabs">
+                  
+                    
+                    
+                    
+                    <li class="devsite-nav-item">
+                      
+  
+  <a href="/maps/documentation/earth"
+    
+       class="devsite-nav-title gc-analytics-event
+              
+              "
+    
+
+    
+      
+        data-category="Site-Wide Custom Events"
+      
+        data-label="Tab: Guides"
+      
+        track-name="guides"
+      
+    
+     data-category="Site-Wide Custom Events"
+     data-label="Responsive Tab: Guides"
+     track-type="globalNav"
+     track-metadata-eventDetail="globalMenu"
+     track-metadata-position="nav">
+  
+    <span class="devsite-nav-text" tooltip >
+      Guides
+   </span>
+    
+  
+  </a>
+  
+
+  
+                    </li>
+                  
+                    
+                    
+                    
+                    <li class="devsite-nav-item">
+                      
+  
+  <a href="/maps/documentation/earth/support"
+    
+       class="devsite-nav-title gc-analytics-event
+              
+              devsite-nav-active"
+    
+
+    
+      
+        data-category="Site-Wide Custom Events"
+      
+        data-label="Tab: Resources"
+      
+        track-name="resources"
+      
+    
+     data-category="Site-Wide Custom Events"
+     data-label="Responsive Tab: Resources"
+     track-type="globalNav"
+     track-metadata-eventDetail="globalMenu"
+     track-metadata-position="nav">
+  
+    <span class="devsite-nav-text" tooltip menu="_book">
+      Resources
+   </span>
+    
+  
+  </a>
+  
+
+  
+                    </li>
+                  
+                    
+                    
+                    
+                    <li class="devsite-nav-item">
+                      
+  
+  <a href="/maps/documentation/earth/experimental-overview"
+    
+       class="devsite-nav-title gc-analytics-event
+              
+              "
+    
+
+    
+      
+        data-category="Site-Wide Custom Events"
+      
+        data-label="Tab: Experimental"
+      
+        track-name="experimental"
+      
+    
+     data-category="Site-Wide Custom Events"
+     data-label="Responsive Tab: Experimental"
+     track-type="globalNav"
+     track-metadata-eventDetail="globalMenu"
+     track-metadata-position="nav">
+  
+    <span class="devsite-nav-text" tooltip >
+      Experimental
+   </span>
+    
+  
+  </a>
+  
+
+  
+                    </li>
+                  
+                </ul>
+              
+            </li>
+          
+            <li class="devsite-nav-item">
+              
+  
+  <a href="/maps/developer-community"
+    
+       class="devsite-nav-title gc-analytics-event
+              
+              "
+    
+
+    
+      
+        data-category="community"
+      
+        data-label="navTopMenu"
+      
+        track-name="community"
+      
+        data-action="tabClick"
+      
+    
+     data-category="Site-Wide Custom Events"
+     data-label="Responsive Tab: Community"
+     track-type="globalNav"
+     track-metadata-eventDetail="globalMenu"
+     track-metadata-position="nav">
+  
+    <span class="devsite-nav-text" tooltip >
+      Community
+   </span>
+    
+  
+  </a>
+  
+
+  
+    <ul class="devsite-nav-responsive-tabs devsite-nav-has-menu
+               ">
+      
+<li class="devsite-nav-item">
+
+  
+  <span
+    
+       class="devsite-nav-title"
+       tooltip
+    
+    
+      
+        data-category="community"
+      
+        data-label="navTopMenu"
+      
+        track-name="community"
+      
+        data-action="tabClick"
+      
+    >
+  
+    <span class="devsite-nav-text" tooltip menu="Community">
+      More
+   </span>
+    
+    <span class="devsite-nav-icon material-icons" data-icon="forward"
+          menu="Community">
+    </span>
+    
+  
+  </span>
+  
+
+</li>
+
+    </ul>
+  
+              
+            </li>
+          
+          
+          
+        </ul>
+      
+    </div>
+    
+      <div class="devsite-mobile-nav-bottom">
+        
+          
+          <ul class="devsite-nav-list" menu="_book">
+            <li class="devsite-nav-item
+           devsite-nav-heading"><div class="devsite-nav-title devsite-nav-title-no-path">
+        <span class="devsite-nav-text" tooltip>Support</span>
+      </div></li>
+
+  <li class="devsite-nav-item"><a href="/maps/documentation/earth/support"
+        class="devsite-nav-title gc-analytics-event"
+        data-category="Site-Wide Custom Events"
+        data-label="Book nav link, pathname: /maps/documentation/earth/support"
+        track-type="bookNav"
+        track-name="click"
+        track-metadata-eventdetail="/maps/documentation/earth/support"
+      ><span class="devsite-nav-text" tooltip>Support options</span></a></li>
+
+  <li class="devsite-nav-item"><a href="/maps/documentation/earth/release-notes"
+        class="devsite-nav-title gc-analytics-event"
+        data-category="Site-Wide Custom Events"
+        data-label="Book nav link, pathname: /maps/documentation/earth/release-notes"
+        track-type="bookNav"
+        track-name="click"
+        track-metadata-eventdetail="/maps/documentation/earth/release-notes"
+      ><span class="devsite-nav-text" tooltip>Release notes</span></a></li>
+
+  <li class="devsite-nav-item
+           devsite-nav-heading"><div class="devsite-nav-title devsite-nav-title-no-path">
+        <span class="devsite-nav-text" tooltip>Usage and billing</span>
+      </div></li>
+
+  <li class="devsite-nav-item"><a href="/maps/documentation/earth/earth-plans"
+        class="devsite-nav-title gc-analytics-event"
+        data-category="Site-Wide Custom Events"
+        data-label="Book nav link, pathname: /maps/documentation/earth/earth-plans"
+        track-type="bookNav"
+        track-name="click"
+        track-metadata-eventdetail="/maps/documentation/earth/earth-plans"
+      ><span class="devsite-nav-text" tooltip>Learn about Google Earth plans</span></a></li>
+
+  <li class="devsite-nav-item
+           devsite-nav-heading"><div class="devsite-nav-title devsite-nav-title-no-path">
+        <span class="devsite-nav-text" tooltip>Policies</span>
+      </div></li>
+
+  <li class="devsite-nav-item"><a href="/maps/documentation/earth/content-policy"
+        class="devsite-nav-title gc-analytics-event"
+        data-category="Site-Wide Custom Events"
+        data-label="Book nav link, pathname: /maps/documentation/earth/content-policy"
+        track-type="bookNav"
+        track-name="click"
+        track-metadata-eventdetail="/maps/documentation/earth/content-policy"
+      ><span class="devsite-nav-text" tooltip>Content policy</span></a></li>
+          </ul>
+        
+        
+          
+    
+  
+    
+  
+    
+  
+    
+      
+      <ul class="devsite-nav-list" menu="Documentation"
+          aria-label="Side menu" hidden>
+        
+          
+            
+              
+<li class="devsite-nav-item devsite-nav-heading">
+
+  
+  <span
+    
+       class="devsite-nav-title"
+       tooltip
+    
+    >
+  
+    <span class="devsite-nav-text" tooltip >
+      Get Started
+   </span>
+    
+  
+  </span>
+  
+
+</li>
+
+            
+            
+              
+<li class="devsite-nav-item">
+
+  
+  <a href="/maps/get-started"
+    
+       class="devsite-nav-title gc-analytics-event
+              
+              "
+    
+
+    
+     data-category="Site-Wide Custom Events"
+     data-label="Responsive Tab: Get Started with Google Maps Platform"
+     track-type="navMenu"
+     track-metadata-eventDetail="globalMenu"
+     track-metadata-position="nav">
+  
+    <span class="devsite-nav-text" tooltip >
+      Get Started with Google Maps Platform
+   </span>
+    
+  
+  </a>
+  
+
+</li>
+
+            
+              
+<li class="devsite-nav-item">
+
+  
+  <a href="/maps/documentation/capabilities-explorer"
+    
+       class="devsite-nav-title gc-analytics-event
+              
+              "
+    
+
+    
+     data-category="Site-Wide Custom Events"
+     data-label="Responsive Tab: Capabilities Explorer"
+     track-type="navMenu"
+     track-metadata-eventDetail="globalMenu"
+     track-metadata-position="nav">
+  
+    <span class="devsite-nav-text" tooltip >
+      Capabilities Explorer
+   </span>
+    
+  
+  </a>
+  
+
+</li>
+
+            
+              
+<li class="devsite-nav-item">
+
+  
+  <a href="/maps/billing-and-pricing"
+    
+       class="gc-analytics-event"
+    
+
+    
+     data-category="Site-Wide Custom Events"
+     data-label="Responsive Tab: Pricing &amp; Billing"
+     track-type="navMenu"
+     track-metadata-eventDetail="globalMenu"
+     track-metadata-position="nav">
+  
+    <span class="devsite-nav-text" tooltip >
+      Pricing &amp; Billing
+   </span>
+    
+  
+  </a>
+  
+
+</li>
+
+            
+              
+<li class="devsite-nav-item">
+
+  
+  <a href="https://mapsplatform.google.com/resources/trust-center"
+    
+       class="devsite-nav-title gc-analytics-event
+              
+              "
+    
+
+    
+     data-category="Site-Wide Custom Events"
+     data-label="Responsive Tab: Security &amp; Compliance"
+     track-type="navMenu"
+     track-metadata-eventDetail="globalMenu"
+     track-metadata-position="nav">
+  
+    <span class="devsite-nav-text" tooltip >
+      Security &amp; Compliance
+   </span>
+    
+  
+  </a>
+  
+
+</li>
+
+            
+              
+<li class="devsite-nav-item">
+
+  
+  <a href="/maps/billing-and-pricing/reporting-and-monitoring"
+    
+       class="devsite-nav-title gc-analytics-event
+              
+              "
+    
+
+    
+     data-category="Site-Wide Custom Events"
+     data-label="Responsive Tab: Reporting &amp; Monitoring"
+     track-type="navMenu"
+     track-metadata-eventDetail="globalMenu"
+     track-metadata-position="nav">
+  
+    <span class="devsite-nav-text" tooltip >
+      Reporting &amp; Monitoring
+   </span>
+    
+  
+  </a>
+  
+
+</li>
+
+            
+              
+<li class="devsite-nav-item">
+
+  
+  <a href="/maps/faq"
+    
+       class="devsite-nav-title gc-analytics-event
+              
+              "
+    
+
+    
+     data-category="Site-Wide Custom Events"
+     data-label="Responsive Tab: FAQ"
+     track-type="navMenu"
+     track-metadata-eventDetail="globalMenu"
+     track-metadata-position="nav">
+  
+    <span class="devsite-nav-text" tooltip >
+      FAQ
+   </span>
+    
+  
+  </a>
+  
+
+</li>
+
+            
+              
+<li class="devsite-nav-item">
+
+  
+  <a href="/maps/support"
+    
+       class="devsite-nav-title gc-analytics-event
+              
+              "
+    
+
+    
+     data-category="Site-Wide Custom Events"
+     data-label="Responsive Tab: Support and Resources"
+     track-type="navMenu"
+     track-metadata-eventDetail="globalMenu"
+     track-metadata-position="nav">
+  
+    <span class="devsite-nav-text" tooltip >
+      Support and Resources
+   </span>
+    
+  
+  </a>
+  
+
+</li>
+
+            
+              
+<li class="devsite-nav-item">
+
+  
+  <a href="/maps/support/care"
+    
+       class="devsite-nav-title gc-analytics-event
+              
+              "
+    
+
+    
+     data-category="Site-Wide Custom Events"
+     data-label="Responsive Tab: Customer Care"
+     track-type="navMenu"
+     track-metadata-eventDetail="globalMenu"
+     track-metadata-position="nav">
+  
+    <span class="devsite-nav-text" tooltip >
+      Customer Care
+   </span>
+    
+  
+  </a>
+  
+
+</li>
+
+            
+              
+<li class="devsite-nav-item">
+
+  
+  <a href="/maps/incident-management"
+    
+       class="devsite-nav-title gc-analytics-event
+              
+              "
+    
+
+    
+     data-category="Site-Wide Custom Events"
+     data-label="Responsive Tab: Incident Management"
+     track-type="navMenu"
+     track-metadata-eventDetail="globalMenu"
+     track-metadata-position="nav">
+  
+    <span class="devsite-nav-text" tooltip >
+      Incident Management
+   </span>
+    
+  
+  </a>
+  
+
+</li>
+
+            
+          
+        
+          
+            
+              
+<li class="devsite-nav-item devsite-nav-heading">
+
+  
+  <span
+    
+       class="devsite-nav-title"
+       tooltip
+    
+    >
+  
+    <span class="devsite-nav-text" tooltip >
+      Maps
+   </span>
+    
+  
+  </span>
+  
+
+</li>
+
+            
+            
+              
+<li class="devsite-nav-item">
+
+  
+  <a href="/maps/documentation/javascript"
+    
+       class="devsite-nav-title gc-analytics-event
+              
+              "
+    
+
+    
+     data-category="Site-Wide Custom Events"
+     data-label="Responsive Tab: Maps JavaScript API"
+     track-type="navMenu"
+     track-metadata-eventDetail="globalMenu"
+     track-metadata-position="nav">
+  
+    <span class="devsite-nav-text" tooltip >
+      Maps JavaScript API
+   </span>
+    
+  
+  </a>
+  
+
+</li>
+
+            
+              
+<li class="devsite-nav-item">
+
+  
+  <a href="/maps/documentation/android-sdk"
+    
+       class="devsite-nav-title gc-analytics-event
+              
+              "
+    
+
+    
+     data-category="Site-Wide Custom Events"
+     data-label="Responsive Tab: Maps SDK for Android"
+     track-type="navMenu"
+     track-metadata-eventDetail="globalMenu"
+     track-metadata-position="nav">
+  
+    <span class="devsite-nav-text" tooltip >
+      Maps SDK for Android
+   </span>
+    
+  
+  </a>
+  
+
+</li>
+
+            
+              
+<li class="devsite-nav-item">
+
+  
+  <a href="/maps/documentation/ios-sdk"
+    
+       class="devsite-nav-title gc-analytics-event
+              
+              "
+    
+
+    
+     data-category="Site-Wide Custom Events"
+     data-label="Responsive Tab: Maps SDK for iOS"
+     track-type="navMenu"
+     track-metadata-eventDetail="globalMenu"
+     track-metadata-position="nav">
+  
+    <span class="devsite-nav-text" tooltip >
+      Maps SDK for iOS
+   </span>
+    
+  
+  </a>
+  
+
+</li>
+
+            
+              
+<li class="devsite-nav-item">
+
+  
+  <a href="/maps/flutter-package/overview"
+    
+       class="devsite-nav-title gc-analytics-event
+              
+              "
+    
+
+    
+     data-category="Site-Wide Custom Events"
+     data-label="Responsive Tab: Google Maps for Flutter"
+     track-type="navMenu"
+     track-metadata-eventDetail="globalMenu"
+     track-metadata-position="nav">
+  
+    <span class="devsite-nav-text" tooltip >
+      Google Maps for Flutter
+   </span>
+    
+  
+  </a>
+  
+
+</li>
+
+            
+              
+<li class="devsite-nav-item">
+
+  
+  <a href="/maps/documentation/embed"
+    
+       class="devsite-nav-title gc-analytics-event
+              
+              "
+    
+
+    
+     data-category="Site-Wide Custom Events"
+     data-label="Responsive Tab: Maps Embed API"
+     track-type="navMenu"
+     track-metadata-eventDetail="globalMenu"
+     track-metadata-position="nav">
+  
+    <span class="devsite-nav-text" tooltip >
+      Maps Embed API
+   </span>
+    
+  
+  </a>
+  
+
+</li>
+
+            
+              
+<li class="devsite-nav-item">
+
+  
+  <a href="/maps/documentation/maps-static"
+    
+       class="devsite-nav-title gc-analytics-event
+              
+              "
+    
+
+    
+     data-category="Site-Wide Custom Events"
+     data-label="Responsive Tab: Maps Static API"
+     track-type="navMenu"
+     track-metadata-eventDetail="globalMenu"
+     track-metadata-position="nav">
+  
+    <span class="devsite-nav-text" tooltip >
+      Maps Static API
+   </span>
+    
+  
+  </a>
+  
+
+</li>
+
+            
+              
+<li class="devsite-nav-item">
+
+  
+  <a href="/maps/documentation/street-view-insights"
+    
+       class="devsite-nav-title gc-analytics-event
+              
+              "
+    
+
+    
+     data-category="Site-Wide Custom Events"
+     data-label="Responsive Tab: Street View Insights"
+     track-type="navMenu"
+     track-metadata-eventDetail="globalMenu"
+     track-metadata-position="nav">
+  
+    <span class="devsite-nav-text" tooltip >
+      Street View Insights
+   </span>
+    
+  
+  </a>
+  
+
+</li>
+
+            
+              
+<li class="devsite-nav-item">
+
+  
+  <a href="/maps/documentation/streetview"
+    
+       class="devsite-nav-title gc-analytics-event
+              
+              "
+    
+
+    
+     data-category="Site-Wide Custom Events"
+     data-label="Responsive Tab: Street View Static API"
+     track-type="navMenu"
+     track-metadata-eventDetail="globalMenu"
+     track-metadata-position="nav">
+  
+    <span class="devsite-nav-text" tooltip >
+      Street View Static API
+   </span>
+    
+  
+  </a>
+  
+
+</li>
+
+            
+              
+<li class="devsite-nav-item">
+
+  
+  <a href="/maps/documentation/urls"
+    
+       class="devsite-nav-title gc-analytics-event
+              
+              "
+    
+
+    
+     data-category="Site-Wide Custom Events"
+     data-label="Responsive Tab: Maps URLs"
+     track-type="navMenu"
+     track-metadata-eventDetail="globalMenu"
+     track-metadata-position="nav">
+  
+    <span class="devsite-nav-text" tooltip >
+      Maps URLs
+   </span>
+    
+  
+  </a>
+  
+
+</li>
+
+            
+              
+<li class="devsite-nav-item">
+
+  
+  <a href="/maps/documentation/aerial-view"
+    
+       class="devsite-nav-title gc-analytics-event
+              
+              "
+    
+
+    
+     data-category="Site-Wide Custom Events"
+     data-label="Responsive Tab: Aerial View API"
+     track-type="navMenu"
+     track-metadata-eventDetail="globalMenu"
+     track-metadata-position="nav">
+  
+    <span class="devsite-nav-text" tooltip >
+      Aerial View API
+   </span>
+    
+  
+  </a>
+  
+
+</li>
+
+            
+              
+<li class="devsite-nav-item">
+
+  
+  <a href="/maps/documentation/elevation"
+    
+       class="devsite-nav-title gc-analytics-event
+              
+              "
+    
+
+    
+     data-category="Site-Wide Custom Events"
+     data-label="Responsive Tab: Elevation API"
+     track-type="navMenu"
+     track-metadata-eventDetail="globalMenu"
+     track-metadata-position="nav">
+  
+    <span class="devsite-nav-text" tooltip >
+      Elevation API
+   </span>
+    
+  
+  </a>
+  
+
+</li>
+
+            
+              
+<li class="devsite-nav-item">
+
+  
+  <a href="/maps/documentation/tile"
+    
+       class="devsite-nav-title gc-analytics-event
+              
+              "
+    
+
+    
+     data-category="Site-Wide Custom Events"
+     data-label="Responsive Tab: Map Tiles API"
+     track-type="navMenu"
+     track-metadata-eventDetail="globalMenu"
+     track-metadata-position="nav">
+  
+    <span class="devsite-nav-text" tooltip >
+      Map Tiles API
+   </span>
+    
+  
+  </a>
+  
+
+</li>
+
+            
+              
+<li class="devsite-nav-item">
+
+  
+  <a href="/maps/documentation/datasets"
+    
+       class="devsite-nav-title gc-analytics-event
+              
+              "
+    
+
+    
+     data-category="Site-Wide Custom Events"
+     data-label="Responsive Tab: Maps Datasets API"
+     track-type="navMenu"
+     track-metadata-eventDetail="globalMenu"
+     track-metadata-position="nav">
+  
+    <span class="devsite-nav-text" tooltip >
+      Maps Datasets API
+   </span>
+    
+  
+  </a>
+  
+
+</li>
+
+            
+              
+<li class="devsite-nav-item">
+
+  
+  <a href="/maps/documentation/web-components"
+    
+       class="devsite-nav-title gc-analytics-event
+              
+              "
+    
+
+    
+     data-category="Site-Wide Custom Events"
+     data-label="Responsive Tab: Web Components"
+     track-type="navMenu"
+     track-metadata-eventDetail="globalMenu"
+     track-metadata-position="nav">
+  
+    <span class="devsite-nav-text" tooltip >
+      Web Components
+   </span>
+    
+  
+  </a>
+  
+
+</li>
+
+            
+          
+        
+          
+            
+              
+<li class="devsite-nav-item devsite-nav-heading">
+
+  
+  <span
+    
+       class="devsite-nav-title"
+       tooltip
+    
+    >
+  
+    <span class="devsite-nav-text" tooltip >
+      Routes
+   </span>
+    
+  
+  </span>
+  
+
+</li>
+
+            
+            
+              
+<li class="devsite-nav-item">
+
+  
+  <a href="/maps/documentation/routes"
+    
+       class="devsite-nav-title gc-analytics-event
+              
+              "
+    
+
+    
+     data-category="Site-Wide Custom Events"
+     data-label="Responsive Tab: Routes API"
+     track-type="navMenu"
+     track-metadata-eventDetail="globalMenu"
+     track-metadata-position="nav">
+  
+    <span class="devsite-nav-text" tooltip >
+      Routes API
+   </span>
+    
+  
+  </a>
+  
+
+</li>
+
+            
+              
+<li class="devsite-nav-item">
+
+  
+  <a href="/maps/documentation/navigation/android-sdk"
+    
+       class="devsite-nav-title gc-analytics-event
+              
+              "
+    
+
+    
+     data-category="Site-Wide Custom Events"
+     data-label="Responsive Tab: Navigation SDK for Android"
+     track-type="navMenu"
+     track-metadata-eventDetail="globalMenu"
+     track-metadata-position="nav">
+  
+    <span class="devsite-nav-text" tooltip >
+      Navigation SDK for Android
+   </span>
+    
+  
+  </a>
+  
+
+</li>
+
+            
+              
+<li class="devsite-nav-item">
+
+  
+  <a href="/maps/documentation/navigation/ios-sdk"
+    
+       class="devsite-nav-title gc-analytics-event
+              
+              "
+    
+
+    
+     data-category="Site-Wide Custom Events"
+     data-label="Responsive Tab: Navigation SDK for iOS"
+     track-type="navMenu"
+     track-metadata-eventDetail="globalMenu"
+     track-metadata-position="nav">
+  
+    <span class="devsite-nav-text" tooltip >
+      Navigation SDK for iOS
+   </span>
+    
+  
+  </a>
+  
+
+</li>
+
+            
+              
+<li class="devsite-nav-item">
+
+  
+  <a href="/maps/documentation/cross-platform/navigation"
+    
+       class="devsite-nav-title gc-analytics-event
+              
+              "
+    
+
+    
+     data-category="Site-Wide Custom Events"
+     data-label="Responsive Tab: Navigation for Flutter"
+     track-type="navMenu"
+     track-metadata-eventDetail="globalMenu"
+     track-metadata-position="nav">
+  
+    <span class="devsite-nav-text" tooltip >
+      Navigation for Flutter
+   </span>
+    
+  
+  </a>
+  
+
+</li>
+
+            
+              
+<li class="devsite-nav-item">
+
+  
+  <a href="/maps/documentation/cross-platform/navigation"
+    
+       class="devsite-nav-title gc-analytics-event
+              
+              "
+    
+
+    
+     data-category="Site-Wide Custom Events"
+     data-label="Responsive Tab: Navigation for React Native"
+     track-type="navMenu"
+     track-metadata-eventDetail="globalMenu"
+     track-metadata-position="nav">
+  
+    <span class="devsite-nav-text" tooltip >
+      Navigation for React Native
+   </span>
+    
+  
+  </a>
+  
+
+</li>
+
+            
+              
+<li class="devsite-nav-item">
+
+  
+  <a href="/maps/documentation/roads"
+    
+       class="devsite-nav-title gc-analytics-event
+              
+              "
+    
+
+    
+     data-category="Site-Wide Custom Events"
+     data-label="Responsive Tab: Roads API"
+     track-type="navMenu"
+     track-metadata-eventDetail="globalMenu"
+     track-metadata-position="nav">
+  
+    <span class="devsite-nav-text" tooltip >
+      Roads API
+   </span>
+    
+  
+  </a>
+  
+
+</li>
+
+            
+              
+<li class="devsite-nav-item">
+
+  
+  <a href="/maps/documentation/route-optimization"
+    
+       class="devsite-nav-title gc-analytics-event
+              
+              "
+    
+
+    
+     data-category="Site-Wide Custom Events"
+     data-label="Responsive Tab: Route Optimization API"
+     track-type="navMenu"
+     track-metadata-eventDetail="globalMenu"
+     track-metadata-position="nav">
+  
+    <span class="devsite-nav-text" tooltip >
+      Route Optimization API
+   </span>
+    
+  
+  </a>
+  
+
+</li>
+
+            
+          
+            
+              
+<li class="devsite-nav-item devsite-nav-heading">
+
+  
+  <span
+    
+       class="devsite-nav-title"
+       tooltip
+    
+    >
+  
+    <span class="devsite-nav-text" tooltip >
+      Analytics
+   </span>
+    
+  
+  </span>
+  
+
+</li>
+
+            
+            
+              
+<li class="devsite-nav-item">
+
+  
+  <a href="/maps/documentation/earth"
+    
+       class="devsite-nav-title gc-analytics-event
+              
+              "
+    
+
+    
+     data-category="Site-Wide Custom Events"
+     data-label="Responsive Tab: Google Earth"
+     track-type="navMenu"
+     track-metadata-eventDetail="globalMenu"
+     track-metadata-position="nav">
+  
+    <span class="devsite-nav-text" tooltip >
+      Google Earth
+   </span>
+    
+  
+  </a>
+  
+
+</li>
+
+            
+              
+<li class="devsite-nav-item">
+
+  
+  <a href="/maps/documentation/placesinsights"
+    
+       class="devsite-nav-title gc-analytics-event
+              
+              "
+    
+
+    
+     data-category="Site-Wide Custom Events"
+     data-label="Responsive Tab: Places Insights"
+     track-type="navMenu"
+     track-metadata-eventDetail="globalMenu"
+     track-metadata-position="nav">
+  
+    <span class="devsite-nav-text" tooltip >
+      Places Insights
+   </span>
+    
+  
+  </a>
+  
+
+</li>
+
+            
+              
+<li class="devsite-nav-item">
+
+  
+  <a href="/maps/documentation/imagery-insights"
+    
+       class="devsite-nav-title gc-analytics-event
+              
+              "
+    
+
+    
+     data-category="Site-Wide Custom Events"
+     data-label="Responsive Tab: Imagery Insights"
+     track-type="navMenu"
+     track-metadata-eventDetail="globalMenu"
+     track-metadata-position="nav">
+  
+    <span class="devsite-nav-text" tooltip >
+      Imagery Insights
+   </span>
+    
+  
+  </a>
+  
+
+</li>
+
+            
+              
+<li class="devsite-nav-item">
+
+  
+  <a href="/maps/documentation/roads-management-insights"
+    
+       class="devsite-nav-title gc-analytics-event
+              
+              "
+    
+
+    
+     data-category="Site-Wide Custom Events"
+     data-label="Responsive Tab: Roads Management Insights"
+     track-type="navMenu"
+     track-metadata-eventDetail="globalMenu"
+     track-metadata-position="nav">
+  
+    <span class="devsite-nav-text" tooltip >
+      Roads Management Insights
+   </span>
+    
+  
+  </a>
+  
+
+</li>
+
+            
+          
+        
+          
+            
+              
+<li class="devsite-nav-item devsite-nav-heading">
+
+  
+  <span
+    
+       class="devsite-nav-title"
+       tooltip
+    
+    >
+  
+    <span class="devsite-nav-text" tooltip >
+      Places
+   </span>
+    
+  
+  </span>
+  
+
+</li>
+
+            
+            
+              
+<li class="devsite-nav-item">
+
+  
+  <a href="/maps/documentation/places/web-service"
+    
+       class="devsite-nav-title gc-analytics-event
+              
+              "
+    
+
+    
+     data-category="Site-Wide Custom Events"
+     data-label="Responsive Tab: Places API"
+     track-type="navMenu"
+     track-metadata-eventDetail="globalMenu"
+     track-metadata-position="nav">
+  
+    <span class="devsite-nav-text" tooltip >
+      Places API
+   </span>
+    
+  
+  </a>
+  
+
+</li>
+
+            
+              
+<li class="devsite-nav-item">
+
+  
+  <a href="/maps/documentation/places/android-sdk"
+    
+       class="devsite-nav-title gc-analytics-event
+              
+              "
+    
+
+    
+     data-category="Site-Wide Custom Events"
+     data-label="Responsive Tab: Places SDK for Android"
+     track-type="navMenu"
+     track-metadata-eventDetail="globalMenu"
+     track-metadata-position="nav">
+  
+    <span class="devsite-nav-text" tooltip >
+      Places SDK for Android
+   </span>
+    
+  
+  </a>
+  
+
+</li>
+
+            
+              
+<li class="devsite-nav-item">
+
+  
+  <a href="/maps/documentation/places/ios-sdk"
+    
+       class="devsite-nav-title gc-analytics-event
+              
+              "
+    
+
+    
+     data-category="Site-Wide Custom Events"
+     data-label="Responsive Tab: Places SDK for iOS"
+     track-type="navMenu"
+     track-metadata-eventDetail="globalMenu"
+     track-metadata-position="nav">
+  
+    <span class="devsite-nav-text" tooltip >
+      Places SDK for iOS
+   </span>
+    
+  
+  </a>
+  
+
+</li>
+
+            
+              
+<li class="devsite-nav-item">
+
+  
+  <a href="/maps/documentation/javascript/places-js"
+    
+       class="devsite-nav-title gc-analytics-event
+              
+              "
+    
+
+    
+     data-category="Site-Wide Custom Events"
+     data-label="Responsive Tab: Places Library, Maps JavaScript API"
+     track-type="navMenu"
+     track-metadata-eventDetail="globalMenu"
+     track-metadata-position="nav">
+  
+    <span class="devsite-nav-text" tooltip >
+      Places Library, Maps JavaScript API
+   </span>
+    
+  
+  </a>
+  
+
+</li>
+
+            
+              
+<li class="devsite-nav-item">
+
+  
+  <a href="/maps/documentation/geocoding"
+    
+       class="devsite-nav-title gc-analytics-event
+              
+              "
+    
+
+    
+     data-category="Site-Wide Custom Events"
+     data-label="Responsive Tab: Geocoding API"
+     track-type="navMenu"
+     track-metadata-eventDetail="globalMenu"
+     track-metadata-position="nav">
+  
+    <span class="devsite-nav-text" tooltip >
+      Geocoding API
+   </span>
+    
+  
+  </a>
+  
+
+</li>
+
+            
+              
+<li class="devsite-nav-item">
+
+  
+  <a href="/maps/documentation/geolocation"
+    
+       class="devsite-nav-title gc-analytics-event
+              
+              "
+    
+
+    
+     data-category="Site-Wide Custom Events"
+     data-label="Responsive Tab: Geolocation API"
+     track-type="navMenu"
+     track-metadata-eventDetail="globalMenu"
+     track-metadata-position="nav">
+  
+    <span class="devsite-nav-text" tooltip >
+      Geolocation API
+   </span>
+    
+  
+  </a>
+  
+
+</li>
+
+            
+              
+<li class="devsite-nav-item">
+
+  
+  <a href="/maps/documentation/address-validation"
+    
+       class="devsite-nav-title gc-analytics-event
+              
+              "
+    
+
+    
+     data-category="Site-Wide Custom Events"
+     data-label="Responsive Tab: Address Validation API"
+     track-type="navMenu"
+     track-metadata-eventDetail="globalMenu"
+     track-metadata-position="nav">
+  
+    <span class="devsite-nav-text" tooltip >
+      Address Validation API
+   </span>
+    
+  
+  </a>
+  
+
+</li>
+
+            
+              
+<li class="devsite-nav-item">
+
+  
+  <a href="/maps/documentation/timezone"
+    
+       class="devsite-nav-title gc-analytics-event
+              
+              "
+    
+
+    
+     data-category="Site-Wide Custom Events"
+     data-label="Responsive Tab: Time Zone API"
+     track-type="navMenu"
+     track-metadata-eventDetail="globalMenu"
+     track-metadata-position="nav">
+  
+    <span class="devsite-nav-text" tooltip >
+      Time Zone API
+   </span>
+    
+  
+  </a>
+  
+
+</li>
+
+            
+              
+<li class="devsite-nav-item">
+
+  
+  <a href="/maps/documentation/places-aggregate"
+    
+       class="devsite-nav-title gc-analytics-event
+              
+              "
+    
+
+    
+     data-category="Site-Wide Custom Events"
+     data-label="Responsive Tab: Places Aggregate API"
+     track-type="navMenu"
+     track-metadata-eventDetail="globalMenu"
+     track-metadata-position="nav">
+  
+    <span class="devsite-nav-text" tooltip >
+      Places Aggregate API
+   </span>
+    
+  
+  </a>
+  
+
+</li>
+
+            
+          
+            
+              
+<li class="devsite-nav-item devsite-nav-heading">
+
+  
+  <span
+    
+       class="devsite-nav-title"
+       tooltip
+    
+    >
+  
+    <span class="devsite-nav-text" tooltip >
+      Environment
+   </span>
+    
+  
+  </span>
+  
+
+</li>
+
+            
+            
+              
+<li class="devsite-nav-item">
+
+  
+  <a href="/maps/documentation/air-quality"
+    
+       class="devsite-nav-title gc-analytics-event
+              
+              "
+    
+
+    
+     data-category="Site-Wide Custom Events"
+     data-label="Responsive Tab: Air Quality API"
+     track-type="navMenu"
+     track-metadata-eventDetail="globalMenu"
+     track-metadata-position="nav">
+  
+    <span class="devsite-nav-text" tooltip >
+      Air Quality API
+   </span>
+    
+  
+  </a>
+  
+
+</li>
+
+            
+              
+<li class="devsite-nav-item">
+
+  
+  <a href="/maps/documentation/pollen"
+    
+       class="devsite-nav-title gc-analytics-event
+              
+              "
+    
+
+    
+     data-category="Site-Wide Custom Events"
+     data-label="Responsive Tab: Pollen API"
+     track-type="navMenu"
+     track-metadata-eventDetail="globalMenu"
+     track-metadata-position="nav">
+  
+    <span class="devsite-nav-text" tooltip >
+      Pollen API
+   </span>
+    
+  
+  </a>
+  
+
+</li>
+
+            
+              
+<li class="devsite-nav-item">
+
+  
+  <a href="/maps/documentation/solar"
+    
+       class="devsite-nav-title gc-analytics-event
+              
+              "
+    
+
+    
+     data-category="Site-Wide Custom Events"
+     data-label="Responsive Tab: Solar API"
+     track-type="navMenu"
+     track-metadata-eventDetail="globalMenu"
+     track-metadata-position="nav">
+  
+    <span class="devsite-nav-text" tooltip >
+      Solar API
+   </span>
+    
+  
+  </a>
+  
+
+</li>
+
+            
+              
+<li class="devsite-nav-item">
+
+  
+  <a href="/maps/documentation/weather"
+    
+       class="devsite-nav-title gc-analytics-event
+              
+              "
+    
+
+    
+     data-category="Site-Wide Custom Events"
+     data-label="Responsive Tab: Weather API"
+     track-type="navMenu"
+     track-metadata-eventDetail="globalMenu"
+     track-metadata-position="nav">
+  
+    <span class="devsite-nav-text" tooltip >
+      Weather API
+   </span>
+    
+  
+  </a>
+  
+
+</li>
+
+            
+          
+        
+          
+            
+              
+<li class="devsite-nav-item devsite-nav-heading">
+
+  
+  <span
+    
+       class="devsite-nav-title"
+       tooltip
+    
+    >
+  
+    <span class="devsite-nav-text" tooltip >
+      Solutions
+   </span>
+    
+  
+  </span>
+  
+
+</li>
+
+            
+            
+              
+<li class="devsite-nav-item">
+
+  
+  <a href="/maps/ai/build-with-ai"
+    
+       class="devsite-nav-title gc-analytics-event
+              
+              "
+    
+
+    
+     data-category="Site-Wide Custom Events"
+     data-label="Responsive Tab: Maps Builder agent"
+     track-type="navMenu"
+     track-metadata-eventDetail="globalMenu"
+     track-metadata-position="nav">
+  
+    <span class="devsite-nav-text" tooltip >
+      Maps Builder agent
+   </span>
+    
+  
+  </a>
+  
+
+</li>
+
+            
+              
+<li class="devsite-nav-item">
+
+  
+  <a href="/maps/solutions"
+    
+       class="devsite-nav-title gc-analytics-event
+              
+              "
+    
+
+    
+     data-category="Site-Wide Custom Events"
+     data-label="Responsive Tab: Industry solutions"
+     track-type="navMenu"
+     track-metadata-eventDetail="globalMenu"
+     track-metadata-position="nav">
+  
+    <span class="devsite-nav-text" tooltip >
+      Industry solutions
+   </span>
+    
+  
+  </a>
+  
+
+</li>
+
+            
+              
+<li class="devsite-nav-item">
+
+  
+  <a href="/maps/documentation/mobility"
+    
+       class="devsite-nav-title gc-analytics-event
+              
+              "
+    
+
+    
+     data-category="Site-Wide Custom Events"
+     data-label="Responsive Tab: Mobility services"
+     track-type="navMenu"
+     track-metadata-eventDetail="globalMenu"
+     track-metadata-position="nav">
+  
+    <span class="devsite-nav-text" tooltip >
+      Mobility services
+   </span>
+    
+  
+  </a>
+  
+
+</li>
+
+            
+          
+            
+              
+<li class="devsite-nav-item devsite-nav-heading">
+
+  
+  <span
+    
+       class="devsite-nav-title"
+       tooltip
+    
+    >
+  
+    <span class="devsite-nav-text" tooltip >
+      Additional Resources
+   </span>
+    
+  
+  </span>
+  
+
+</li>
+
+            
+            
+              
+<li class="devsite-nav-item">
+
+  
+  <a href="/maps/api-security-best-practices"
+    
+       class="devsite-nav-title gc-analytics-event
+              
+              "
+    
+
+    
+     data-category="Site-Wide Custom Events"
+     data-label="Responsive Tab: API Security Best Practices"
+     track-type="navMenu"
+     track-metadata-eventDetail="globalMenu"
+     track-metadata-position="nav">
+  
+    <span class="devsite-nav-text" tooltip >
+      API Security Best Practices
+   </span>
+    
+  
+  </a>
+  
+
+</li>
+
+            
+              
+<li class="devsite-nav-item">
+
+  
+  <a href="/maps/digital-signature"
+    
+       class="devsite-nav-title gc-analytics-event
+              
+              "
+    
+
+    
+     data-category="Site-Wide Custom Events"
+     data-label="Responsive Tab: Digital Signature Guide"
+     track-type="navMenu"
+     track-metadata-eventDetail="globalMenu"
+     track-metadata-position="nav">
+  
+    <span class="devsite-nav-text" tooltip >
+      Digital Signature Guide
+   </span>
+    
+  
+  </a>
+  
+
+</li>
+
+            
+              
+<li class="devsite-nav-item">
+
+  
+  <a href="/maps/coverage"
+    
+       class="devsite-nav-title gc-analytics-event
+              
+              "
+    
+
+    
+     data-category="Site-Wide Custom Events"
+     data-label="Responsive Tab: Map Coverage Details"
+     track-type="navMenu"
+     track-metadata-eventDetail="globalMenu"
+     track-metadata-position="nav">
+  
+    <span class="devsite-nav-text" tooltip >
+      Map Coverage Details
+   </span>
+    
+  
+  </a>
+  
+
+</li>
+
+            
+              
+<li class="devsite-nav-item">
+
+  
+  <a href="/maps/optimization-guide"
+    
+       class="devsite-nav-title gc-analytics-event
+              
+              "
+    
+
+    
+     data-category="Site-Wide Custom Events"
+     data-label="Responsive Tab: Optimization Guide"
+     track-type="navMenu"
+     track-metadata-eventDetail="globalMenu"
+     track-metadata-position="nav">
+  
+    <span class="devsite-nav-text" tooltip >
+      Optimization Guide
+   </span>
+    
+  
+  </a>
+  
+
+</li>
+
+            
+              
+<li class="devsite-nav-item">
+
+  
+  <a href="/maps/software-support"
+    
+       class="devsite-nav-title gc-analytics-event
+              
+              "
+    
+
+    
+     data-category="Site-Wide Custom Events"
+     data-label="Responsive Tab: Mobile OS and software support"
+     track-type="navMenu"
+     track-metadata-eventDetail="globalMenu"
+     track-metadata-position="nav">
+  
+    <span class="devsite-nav-text" tooltip >
+      Mobile OS and software support
+   </span>
+    
+  
+  </a>
+  
+
+</li>
+
+            
+              
+<li class="devsite-nav-item">
+
+  
+  <a href="/maps/launch-stages"
+    
+       class="devsite-nav-title gc-analytics-event
+              
+              "
+    
+
+    
+     data-category="Site-Wide Custom Events"
+     data-label="Responsive Tab: Launch stages"
+     track-type="navMenu"
+     track-metadata-eventDetail="globalMenu"
+     track-metadata-position="nav">
+  
+    <span class="devsite-nav-text" tooltip >
+      Launch stages
+   </span>
+    
+  
+  </a>
+  
+
+</li>
+
+            
+              
+<li class="devsite-nav-item">
+
+  
+  <a href="/maps/legacy"
+    
+       class="devsite-nav-title gc-analytics-event
+              
+              "
+    
+
+    
+     data-category="Site-Wide Custom Events"
+     data-label="Responsive Tab: Legacy products"
+     track-type="navMenu"
+     track-metadata-eventDetail="globalMenu"
+     track-metadata-position="nav">
+  
+    <span class="devsite-nav-text" tooltip >
+      Legacy products
+   </span>
+    
+  
+  </a>
+  
+
+</li>
+
+            
+              
+<li class="devsite-nav-item">
+
+  
+  <a href="/maps/deprecations"
+    
+       class="devsite-nav-title gc-analytics-event
+              
+              "
+    
+
+    
+     data-category="Site-Wide Custom Events"
+     data-label="Responsive Tab: Deprecations"
+     track-type="navMenu"
+     track-metadata-eventDetail="globalMenu"
+     track-metadata-position="nav">
+  
+    <span class="devsite-nav-text" tooltip >
+      Deprecations
+   </span>
+    
+  
+  </a>
+  
+
+</li>
+
+            
+              
+<li class="devsite-nav-item">
+
+  
+  <a href="/maps/url-encoding"
+    
+       class="devsite-nav-title gc-analytics-event
+              
+              "
+    
+
+    
+     data-category="Site-Wide Custom Events"
+     data-label="Responsive Tab: URL Encoding"
+     track-type="navMenu"
+     track-metadata-eventDetail="globalMenu"
+     track-metadata-position="nav">
+  
+    <span class="devsite-nav-text" tooltip >
+      URL Encoding
+   </span>
+    
+  
+  </a>
+  
+
+</li>
+
+            
+              
+<li class="devsite-nav-item">
+
+  
+  <a href="/maps/third-party-platforms/wordpress"
+    
+       class="devsite-nav-title gc-analytics-event
+              
+              "
+    
+
+    
+     data-category="Site-Wide Custom Events"
+     data-label="Responsive Tab: WordPress Users"
+     track-type="navMenu"
+     track-metadata-eventDetail="globalMenu"
+     track-metadata-position="nav">
+  
+    <span class="devsite-nav-text" tooltip >
+      WordPress Users
+   </span>
+    
+  
+  </a>
+  
+
+</li>
+
+            
+          
+        
+      </ul>
+    
+  
+    
+      
+      <ul class="devsite-nav-list" menu="Community"
+          aria-label="Side menu" hidden>
+        
+          
+            
+            
+              
+<li class="devsite-nav-item">
+
+  
+  <a href="https://github.com/googlemaps/"
+    
+       class="devsite-nav-title gc-analytics-event
+              
+              "
+    
+
+    
+     data-category="Site-Wide Custom Events"
+     data-label="Responsive Tab: GitHub"
+     track-type="navMenu"
+     track-metadata-eventDetail="globalMenu"
+     track-metadata-position="nav">
+  
+    <span class="devsite-nav-text" tooltip >
+      GitHub
+   </span>
+    
+  
+  </a>
+  
+
+</li>
+
+            
+              
+<li class="devsite-nav-item">
+
+  
+  <a href="https://www.youtube.com/c/GoogleMapsPlatform"
+    
+       class="devsite-nav-title gc-analytics-event
+              
+              "
+    
+
+    
+     data-category="Site-Wide Custom Events"
+     data-label="Responsive Tab: YouTube"
+     track-type="navMenu"
+     track-metadata-eventDetail="globalMenu"
+     track-metadata-position="nav">
+  
+    <span class="devsite-nav-text" tooltip >
+      YouTube
+   </span>
+    
+  
+  </a>
+  
+
+</li>
+
+            
+              
+<li class="devsite-nav-item">
+
+  
+  <a href="https://www.linkedin.com/showcase/googlemapsplatform/"
+    
+       class="devsite-nav-title gc-analytics-event
+              
+              "
+    
+
+    
+     data-category="Site-Wide Custom Events"
+     data-label="Responsive Tab: LinkedIn"
+     track-type="navMenu"
+     track-metadata-eventDetail="globalMenu"
+     track-metadata-position="nav">
+  
+    <span class="devsite-nav-text" tooltip >
+      LinkedIn
+   </span>
+    
+  
+  </a>
+  
+
+</li>
+
+            
+              
+<li class="devsite-nav-item">
+
+  
+  <a href="https://discord.gg/f4hvx8Rp2q"
+    
+       class="devsite-nav-title gc-analytics-event
+              
+              "
+    
+
+    
+     data-category="Site-Wide Custom Events"
+     data-label="Responsive Tab: Discord"
+     track-type="navMenu"
+     track-metadata-eventDetail="globalMenu"
+     track-metadata-position="nav">
+  
+    <span class="devsite-nav-text" tooltip >
+      Discord
+   </span>
+    
+  
+  </a>
+  
+
+</li>
+
+            
+              
+<li class="devsite-nav-item">
+
+  
+  <a href="/maps/innovators"
+    
+       class="devsite-nav-title gc-analytics-event
+              
+              "
+    
+
+    
+     data-category="Site-Wide Custom Events"
+     data-label="Responsive Tab: Innovators"
+     track-type="navMenu"
+     track-metadata-eventDetail="globalMenu"
+     track-metadata-position="nav">
+  
+    <span class="devsite-nav-text" tooltip >
+      Innovators
+   </span>
+    
+  
+  </a>
+  
+
+</li>
+
+            
+              
+<li class="devsite-nav-item">
+
+  
+  <a href="https://issuetracker.google.com/bookmark-groups/76561"
+    
+       class="devsite-nav-title gc-analytics-event
+              
+              "
+    
+
+    
+     data-category="Site-Wide Custom Events"
+     data-label="Responsive Tab: Issue Tracker"
+     track-type="navMenu"
+     track-metadata-eventDetail="globalMenu"
+     track-metadata-position="nav">
+  
+    <span class="devsite-nav-text" tooltip >
+      Issue Tracker
+   </span>
+    
+  
+  </a>
+  
+
+</li>
+
+            
+          
+        
+      </ul>
+    
+  
+        
+        
+          
+    
+  
+    
+  
+    
+  
+        
+      </div>
+    
+  </div>
+</nav>
+        
+      </devsite-book-nav>
+      <section id="gc-wrapper">
+        <main role="main" id="main-content" class="devsite-main-content"
+            
+              has-book-nav
+              has-sidebar
+            >
+          <div class="devsite-sidebar">
+            <div class="devsite-sidebar-content">
+                
+                <devsite-toc class="devsite-nav"
+                            role="navigation"
+                            aria-label="On this page"
+                            depth="2"
+                            scrollbars
+                  ></devsite-toc>
+                <devsite-recommendations-sidebar class="nocontent devsite-nav">
+                </devsite-recommendations-sidebar>
+            </div>
+          </div>
+          <devsite-content>
+            
+              
+
+
+
+
+
+
+
+
+
+
+
+
+<article class="devsite-article"><style>
+      /* Styles inlined from /maps/documentation/local_extensions.css */
+.version {
+  text-align: right;
+}
+
+.code {
+  color: #006000;
+  font-family: "Courier", monospace;
+  font-size: 100%;
+}
+
+.grid td {
+  padding: 4px;
+  border-collapse: collapse;
+  border: 1px solid gray;
+}
+
+.header td {
+  font-weight: bold;
+  background: #EEEEEE;
+}
+
+.encodeBox {
+  width: 550px;
+  height: 40px;
+  font-size: 14px;
+  font-family: Courier;
+}
+
+.inputField {
+  width: 160px;
+}
+
+#pointList {
+  width: 300px;
+  font-size: 12px;
+}
+
+#txtAddress {
+  width: 14em;
+}
+
+ .welcome {
+   border: none;
+ }
+
+ .welcome td{
+   border: none;
+   padding:0 10px 0 10px;
+ }
+
+.number {
+  background-color: #E5ECF9;
+  text-align:center;
+  vertical-align:middle;
+  padding: 0 5px;
+}
+
+.leftpadding {
+  padding: 0 0 0 10px;
+}
+
+.identifier {
+  color: black;
+}
+
+/* List the contents inline to save vertical space */
+.summarylist {
+  margin-right: 4em;
+}
+
+.summarylist li {
+  display: inline;
+  margin: 0em;
+  margin-right: 0.2em;
+  line-height: 1.5em;
+}
+
+/* Self-links for Maps API for Flash */
+a.self-link:link {
+  color: #0000cc;
+  text-decoration: none;
+}
+
+a.self-link:active {
+  color: #0000cc;
+  text-decoration: none;
+}
+
+a.self-link:visited {
+  color: #0000cc;
+  text-decoration: none;
+}
+
+/* Self-links for Maps API */
+.self-link {
+  cursor: pointer;
+}
+
+.blackbg {
+  background: #333;
+}
+
+      </style><style>
+      /* Styles inlined from /maps/styles/common.css */
+/* Enable Billing Modal Dialog Styles */
+.devsite-enable-billing-dialog {
+  left: 50%;
+  margin-left: -274px;
+  top: 25%;
+  width: 548px;
+}
+
+.devsite-dialog-close {
+  color: #747474;
+}
+
+#devsite-dialog-onload-billing-enabled {
+  padding: 0;
+}
+
+#devsite-dialog-onload-billing-enabled .get-key-check {
+  background: no-repeat #8cc152 center/72px url(/maps/images/lhimages/v2/check@2x.png);
+  height: 150px;
+  width: 100%;
+}
+
+#devsite-dialog-onload-billing-enabled .devsite-dialog-contents,
+#devsite-dialog-onload-billing-enabled .devsite-dialog-buttons {
+  margin: 8px;
+}
+
+.devsite-enable-billing-dialog ol {
+  list-style: none;
+  margin: 40px 0;
+  padding: 0;
+}
+
+.devsite-enable-billing-dialog li {
+  counter-increment: step-counter;
+  font-size: 14px;
+  line-height: 16px;
+  margin-bottom: 28px;
+}
+
+.devsite-enable-billing-dialog li::before {
+  border-radius: 50%;
+  border: 2px solid #ececec;
+  color: #00bcd4;
+  content: counter(step-counter);
+  font-size: 14px;
+  font-weight: 500;
+  margin-right: 22px;
+  padding: 6px 10px;
+}
+
+/* Style Wizard introduction */
+.styleWizardIntroMain {
+  border-radius: 3px;
+  height: 500;
+  width: 640;
+}
+.styleWizardIntroSixMapSamples {
+  left: calc(50% - (500px / 2));
+  line-height: 1;
+  position: relative;
+  text-align: center;
+  width: 500px;
+}
+.styleWizardIntroSample {
+  border: 1px solid rgba(0,0,0,0.07);
+  border-radius: 3px;
+  box-shadow: 0 1px 12px 0 rgba(0,0,0,0.10);
+  display: inline-block;
+  height: 140px;
+  margin: 10px;
+  overflow: hidden;
+  width: 140px;
+}
+.styleWizardIntroCaption {
+  text-align: center;
+}
+
+/* TODO(cl/330601385) waiting on fix to be deployed */
+.devsite-jsfiddle-hide {
+  position:absolute;
+  top: -99999px;
+  left: -99999px;
+  display:block;
+}
+
+/* Styles for /maps/solutions best practices content */
+#bp-background {
+  border-radius: 25px;
+  background: #e8eaed;
+}
+#bp-heading span {
+  float:left;
+  margin-right:10px;
+  position:relative;
+  padding: 10px;
+}
+/* Use as <ul id="bp-bullet><li>{{ [bp|add]_bullet }}Text here... to have icons serve as the bullet symbol. */
+#bp-bullet {
+  list-style-type: none;
+  text-indent: -20px;
+  margin-left: 50px;
+}
+#platform-box {
+  float: right;
+  position: relative;
+  width: 35%;
+  padding: 20px 20px 0 20px;
+  margin-left: 30px;
+  margin-bottom: 30px;
+  background-color: #ceead6;
+  border-color: #e8eaed;
+  border-style: solid;
+}
+#sb-box {
+  float: right;
+  position: relative;
+  width: 25%;
+  padding: 20px 20px 0 20px;
+  margin-left: 30px;
+  margin-bottom: 30px;
+  background-color: #d2e3fc;
+  border-color: #e8eaed;
+  border-style: solid;
+}
+
+/** Table formatting used in the How to use, How to access, and Inputs and
+ * outputs sections of the API overviews. You can leave the first column blank,
+ * as shown in the How to access sections. For questions, contact @prose or @wildwood **/
+
+.implementation-path tr td:first-of-type {
+  background: var(--tenant-background-1) !important;
+  max-width: 48px;
+  vertical-align: top;
+}
+
+.implementation-path tr td:nth-of-type(2) {
+  background: var(--tenant-background-1) !important;
+  color: var(--tenant-primary-text-color);
+  min-width: 200px;
+  text-align: left;
+  vertical-align: top;
+}
+
+.implementation-path tr td {
+  color: var(--tenant-secondary-text-color);
+  padding: 24px;
+  /* nth-child(1) = the first td in each tr */
+}
+
+.implementation-path  td:nth-child(1) {
+  width: 25px;
+  }
+
+/* the second */
+.implementation-path  td:nth-child(2) {
+  width: 75px;
+}
+
+/* the third */
+.implementation-path  td:nth-child(3) {
+  width: auto;
+  }
+
+.implementation-path th {
+  padding: 24px;
+}
+
+.implementation-path tr {
+  border-top: var(--tenant-primary-border);
+  vertical-align: top;
+}
+
+/** From docs-intro.css - This forms the bubbles with numbers in the above table. **/
+
+.implementation-path .numbered {
+  background: var(--tenant-numbered-row-background-color, #BDBDBD);
+  border-radius: 50%;
+  color: var(--tenant-inverted-text-color);
+  display: inline-block;
+  font-size: 20px;
+  height: 36px;
+  line-height: 36px;
+  margin-right: 20px;
+  text-align: center;
+  vertical-align: top;
+  width: 36px;
+  position: relative;
+  top:-8px;
+}
+      </style>
+  
+  
+  
+  
+  
+
+  <div class="devsite-article-meta nocontent" role="navigation">
+    
+    
+    <ul class="devsite-breadcrumb-list"
+  
+    aria-label="Breadcrumb">
+  
+  <li class="devsite-breadcrumb-item
+             ">
+    
+    
+    
+      
+        
+  <a href="https://developers.google.com/"
+      
+        class="devsite-breadcrumb-link gc-analytics-event"
+      
+        data-category="Site-Wide Custom Events"
+      
+        data-label="Breadcrumbs"
+      
+        data-value="1"
+      
+        track-type="globalNav"
+      
+        track-name="breadcrumb"
+      
+        track-metadata-position="1"
+      
+        track-metadata-eventdetail=""
+      
+    >
+    
+          Home
+        
+  </a>
+  
+      
+    
+  </li>
+  
+  <li class="devsite-breadcrumb-item
+             ">
+    
+      
+      <div class="devsite-breadcrumb-guillemet material-icons" aria-hidden="true"></div>
+    
+    
+    
+      
+        
+  <a href="https://developers.google.com/products"
+      
+        class="devsite-breadcrumb-link gc-analytics-event"
+      
+        data-category="Site-Wide Custom Events"
+      
+        data-label="Breadcrumbs"
+      
+        data-value="2"
+      
+        track-type="globalNav"
+      
+        track-name="breadcrumb"
+      
+        track-metadata-position="2"
+      
+        track-metadata-eventdetail=""
+      
+    >
+    
+          Products
+        
+  </a>
+  
+      
+    
+  </li>
+  
+  <li class="devsite-breadcrumb-item
+             ">
+    
+      
+      <div class="devsite-breadcrumb-guillemet material-icons" aria-hidden="true"></div>
+    
+    
+    
+      
+        
+  <a href="https://developers.google.com/maps"
+      
+        class="devsite-breadcrumb-link gc-analytics-event"
+      
+        data-category="Site-Wide Custom Events"
+      
+        data-label="Breadcrumbs"
+      
+        data-value="3"
+      
+        track-type="globalNav"
+      
+        track-name="breadcrumb"
+      
+        track-metadata-position="3"
+      
+        track-metadata-eventdetail="Google Maps Platform"
+      
+    >
+    
+          Google Maps Platform
+        
+  </a>
+  
+      
+    
+  </li>
+  
+  <li class="devsite-breadcrumb-item
+             ">
+    
+      
+      <div class="devsite-breadcrumb-guillemet material-icons" aria-hidden="true"></div>
+    
+    
+    
+      
+        
+  <a href="https://developers.google.com/maps/documentation"
+      
+        class="devsite-breadcrumb-link gc-analytics-event"
+      
+        data-category="Site-Wide Custom Events"
+      
+        data-label="Breadcrumbs"
+      
+        data-value="4"
+      
+        track-type="globalNav"
+      
+        track-name="breadcrumb"
+      
+        track-metadata-position="4"
+      
+        track-metadata-eventdetail=""
+      
+    >
+    
+          Documentation
+        
+  </a>
+  
+      
+    
+  </li>
+  
+  <li class="devsite-breadcrumb-item
+             ">
+    
+      
+      <div class="devsite-breadcrumb-guillemet material-icons" aria-hidden="true"></div>
+    
+    
+    
+      
+        
+  <a href="https://developers.google.com/maps/documentation/earth"
+      
+        class="devsite-breadcrumb-link gc-analytics-event"
+      
+        data-category="Site-Wide Custom Events"
+      
+        data-label="Breadcrumbs"
+      
+        data-value="5"
+      
+        track-type="globalNav"
+      
+        track-name="breadcrumb"
+      
+        track-metadata-position="5"
+      
+        track-metadata-eventdetail="Google Earth"
+      
+    >
+    
+          Google Earth
+        
+  </a>
+  
+      
+    
+  </li>
+  
+  <li class="devsite-breadcrumb-item
+             ">
+    
+      
+      <div class="devsite-breadcrumb-guillemet material-icons" aria-hidden="true"></div>
+    
+    
+    
+      
+        
+  <a href="https://developers.google.com/maps/documentation/earth/support"
+      
+        class="devsite-breadcrumb-link gc-analytics-event"
+      
+        data-category="Site-Wide Custom Events"
+      
+        data-label="Breadcrumbs"
+      
+        data-value="6"
+      
+        track-type="globalNav"
+      
+        track-name="breadcrumb"
+      
+        track-metadata-position="6"
+      
+        track-metadata-eventdetail=""
+      
+    >
+    
+          Resources
+        
+  </a>
+  
+      
+    
+  </li>
+  
+</ul>
+    
+      
+    <devsite-thumb-rating position="header">
+    </devsite-thumb-rating>
+  
+    
+  </div>
+  
+    <devsite-feedback
+  position="header"
+  project-name="Google Earth"
+  product-id="81777"
+  bucket=""
+  context="Google Earth"
+  version="t-devsite-webserver-20251204-r00-rc00.473843648832388237"
+  data-label="Send Feedback Button"
+  track-type="feedback"
+  track-name="sendFeedbackLink"
+  track-metadata-position="header"
+  class="nocontent"
+  
+  
+  
+    project-icon="https://www.gstatic.com/devrel-devsite/prod/v9de0f443992d54ad799f913d3a82969ff613e39ab9e3e056983c556b3c2ef1f8/developers/images/touchicon-180-new.png"
+  
+  
+    project-support-url="https://developers.google.com/maps/documentation/earth/support"
+  
+  
+  >
+
+  <button>
+  
+    
+    Send feedback
+  
+  </button>
+</devsite-feedback>
+  
+    <h1 class="devsite-page-title" tabindex="-1">
+      Google Earth content policy<devsite-actions hidden data-nosnippet><devsite-feature-tooltip
+      ack-key="AckCollectionsBookmarkTooltipDismiss"
+      analytics-category="Site-Wide Custom Events"
+      analytics-action-show="Callout Profile displayed"
+      analytics-action-close="Callout Profile dismissed"
+      analytics-label="Create Collection Callout"
+      class="devsite-page-bookmark-tooltip nocontent"
+      dismiss-button="true"
+      id="devsite-collections-dropdown"
+      
+      dismiss-button-text="Dismiss"
+
+      
+      close-button-text="Got it">
+
+    
+    
+      <devsite-bookmark></devsite-bookmark>
+    
+
+    <span slot="popout-heading">
+      
+      Stay organized with collections
+    </span>
+    <span slot="popout-contents">
+      
+      Save and categorize content based on your preferences.
+    </span>
+  </devsite-feature-tooltip></devsite-actions>
+  
+      
+    </h1>
+  <div class="devsite-page-title-meta"><devsite-view-release-notes></devsite-view-release-notes></div>
+  
+
+  <devsite-toc class="devsite-nav"
+    depth="2"
+    devsite-toc-embedded
+    >
+  </devsite-toc>
+  <div class="devsite-article-body clearfix
+  ">
+
+  
+    
+    
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<style>
+  .center { text-align: center }
+</style>
+
+
+<aside class="note"><strong>Note:</strong><span> The Google Earth content policy applies to all Google Earth users.</span></aside>
+<h2 id="dangerous_content" data-text="Dangerous content" tabindex="-1">Dangerous content</h2>
+
+<p>We don&#39;t permit users to share dangerous content on Google Earth.</p>
+
+<ul>
+<li>We don&#39;t allow content that facilitates or encourages serious physical harm
+to health, safety, property, animals, or the environment.</li>
+<li>We don&#39;t allow content that promotes dangerous activities intentionally done
+in a manner likely to result in serious physical harm to the person
+committing the act, those around them, or animals.</li>
+<li>We don&#39;t allow content encouraging minors to participate in dangerous
+activities or use dangerous items.</li>
+<li>We don&#39;t allow content that facilitates or encourages the misuse of
+inherently dangerous items.</li>
+<li>We don&#39;t allow instructional content for creation or preparation of
+dangerous items.</li>
+</ul>
+
+<p>We do allow general content about activities that could be harmful or dangerous
+as long as the content doesn&#39;t directly facilitate harm, or include promotion
+of or directions for its harmful use.</p>
+
+<p>We might allow content that is otherwise considered dangerous for an
+educational, documentary, scientific, or artistic purpose.</p>
+
+<h2 id="legal_removals" data-text="Legal removals" tabindex="-1">Legal removals</h2>
+
+<p>We have a team that answers requests to remove content on legal grounds. If you
+see content that you believe violates the law, <a href="https://support.google.com/legal/answer/3110420">report content for legal
+reasons</a>.</p>
+
+<h2 id="intellectual_property" data-text="Intellectual property" tabindex="-1">Intellectual property</h2>
+
+<p>Don&#39;t infringe on the intellectual property rights of others, including patent,
+trademark, trade secret, or other proprietary rights. This includes sharing
+content that someone else owns the copyright to without the necessary
+authorizations.</p>
+
+<p>We&#39;ll respond to clear notices of alleged copyright infringement and take
+appropriate action. For more information or to file a Digital Millennium
+Copyright Act (DMCA) request, see <a href="https://support.google.com/legal/troubleshooter/1114905#ts=9723198">Report Content On
+Google</a>.</p>
+
+<p>If you&#39;re a trademark owner and you believe there&#39;s content on Google Earth that
+infringes on your trademark rights, submit a <a href="https://support.google.com/legal/contact/lr_trademark?product=googleplay&amp;vid=null">Google Trademark complaint
+form</a>.</p>
+
+<h2 id="child_safety" data-text="Child safety" tabindex="-1">Child safety</h2>
+
+<p>Don&#39;t create, post or distribute content that
+<a href="https://support.google.com/contributionpolicy/answer/11411082">exploits</a> or
+<a href="https://support.google.com/contributionpolicy/answer/11410565">abuses</a> children
+or use Google products or services to
+<a href="https://support.google.com/contributionpolicy/answer/11412394">endanger</a>
+children.</p>
+
+<p><strong>This includes:</strong></p>
+
+<ul>
+<li>Content that sexually exploits or presents children in a sexual manner.</li>
+<li>Content that contains predatory behavior, condones, glorifies, or presents
+predatory behavior in a positive light.</li>
+<li>Content that contains depictions of abuse of minors or condones, glorifies,
+or presents abuse of minors in a positive light.</li>
+<li>Content that depicts nudity of apparent minors, even if it doesn&#39;t fall
+within the above categories.</li>
+</ul>
+
+<p>We&#39;ll remove content that violates and take appropriate action, which might
+include reporting to relevant authorities or law enforcement, limit access to
+product features, and disable accounts.</p>
+
+<h3 id="report_violations" data-text="Report violations" tabindex="-1">Report violations</h3>
+
+<p>To report content on a Google product that might exploit children, go to <a href="https://support.google.com/websearch/answer/148666">Report
+abuse</a>. If you find content
+elsewhere on the internet, contact <a href="https://support.google.com/websearch/answer/148666">the appropriate agency in your
+country</a>.</p>
+
+<p>If you believe a child is in danger or is a subject to abuse, exploitation, or
+trafficking, contact the police immediately. If you&#39;ve already made a report to
+the police and still need help, or have concerns like a child is endangered on
+our products or services, you can <a href="https://support.google.com/families/contact/report_child_grooming">Report Child Endangerment on Google
+Products</a>.</p>
+
+<h2 id="harassment" data-text="Harassment" tabindex="-1">Harassment</h2>
+
+<p>We don&#39;t allow users to share content or use Google Earth to harass other people
+or businesses, or encourage others to participate in
+<a href="https://support.google.com/contributionpolicy/answer/11411386">harassment</a>.</p>
+
+<p><strong>This includes:</strong></p>
+
+<ul>
+<li>Content that contains a specific threat of harm against individuals or
+defined groups of people that would make a reasonable person fear for their
+mental or physical safety or well being.</li>
+<li><a href="https://support.google.com/contributionpolicy/answer/11416422">Doxxing</a>.</li>
+<li>Content that results in unwanted sexualization or objectification of a
+person, including claims about a person&#39;s sexual activities, sexual
+orientation, or gender identity.</li>
+</ul>
+
+<h2 id="hate_speech" data-text="Hate speech" tabindex="-1">Hate speech</h2>
+
+<p>Don&#39;t post or share content that includes any form of <a href="https://support.google.com/contributionpolicy/answer/11412392">hate
+speech</a>.</p>
+
+<p><strong>This includes:</strong></p>
+
+<ul>
+<li>Direct calls to action to commit violence against protected individuals or
+groups.</li>
+<li>Content that&#39;s dehumanizing, belittling, or vilifies individuals or groups
+based on a protected characteristic.</li>
+</ul>
+
+<p>We do allow content that includes a reference to a protected individual or group
+in a positive manner.</p>
+
+<h2 id="impersonation" data-text="Impersonation" tabindex="-1">Impersonation</h2>
+
+<p>We don&#39;t allow users to use Google Earth to
+<a href="https://support.google.com/contributionpolicy/answer/11412393">impersonate</a> any
+person, group, or organization.</p>
+
+<p><strong>This includes:</strong></p>
+
+<ul>
+<li>Content posted or shared seeking to impersonate any person, group, or
+organization.</li>
+<li>Content that&#39;s pretending to be a verified authoritative source.</li>
+</ul>
+
+<p>We do allow content that contains alternative names for a person or organization
+where the content doesn&#39;t mislead others.</p>
+
+<h2 id="misinformation" data-text="Misinformation" tabindex="-1">Misinformation</h2>
+
+<p>We don&#39;t allow users to share content that contains and spreads
+<a href="https://support.google.com/contributionpolicy/answer/11411081">misinformation</a>
+or to create content with the purpose of spreading misinformation.</p>
+
+<p><strong>This includes:</strong></p>
+
+<ul>
+<li>Harmful content that contains deceptive or misleading health or medical
+information.</li>
+<li>Harmful content that contains deceptive or misleading information about
+civic processes.</li>
+<li>Harmful content of newsworthy events or civil discourse that has been
+manipulated to deceive or mislead users.</li>
+</ul>
+
+<p>We do allow content from verifiable authoritative sources.</p>
+
+<h2 id="misrepresentation" data-text="Misrepresentation" tabindex="-1">Misrepresentation</h2>
+
+<p>We don&#39;t allow individuals to use Google Earth to mislead or deceive others, or
+make
+<a href="https://support.google.com/contributionpolicy/answer/11409462">misrepresentations</a>.</p>
+
+<p><strong>This includes:</strong></p>
+
+<ul>
+<li>False or misleading accounts of the description or quality of a good or
+service.</li>
+<li>Distorting or omitting facts to scam other users.</li>
+<li>Distorting or omitting information that could have an undue impact on user
+decision making.</li>
+<li>Content that tricks users into revealing confidential information,
+downloading unwanted or malicious software, or subjects them to phishing or
+baiting.</li>
+</ul>
+
+<h2 id="personal_information" data-text="Personal information" tabindex="-1">Personal information</h2>
+
+<p>Don&#39;t distribute or post <a href="https://support.google.com/contributionpolicy/answer/11411387">personal
+information</a>
+without consent. Personal information is defined as information that applies to
+a living identifiable person and disclosure could result in risk of harm if it
+is compromised or misused.</p>
+
+<p><strong>This includes:</strong></p>
+
+<ul>
+<li>Content which contains personal information of another posted without their
+consent such as: full name or last name, their face in a photograph or a
+video, or other information which has been reported as having been posted
+without consent.</li>
+<li>Personally identifiable information (PII) and other personal information
+about yourself or others including financial information, medical
+information or personal identification information.</li>
+</ul>
+
+<p>We do allow an individual&#39;s full name if it&#39;s part of the commonly known or
+advertised business entity or if they&#39;re a public-facing professional that
+conducts business under their name.</p>
+
+<h2 id="sexually_explicit_content" data-text="Sexually explicit content" tabindex="-1">Sexually explicit content</h2>
+
+<p>We don&#39;t allow <a href="https://support.google.com/contributionpolicy/answer/11411185">sexually explicit
+content</a>
+to be shared on Google Earth.</p>
+
+<p><strong>This includes:</strong></p>
+
+<ul>
+<li>Pornography or the depiction of sexual acts, genitals, or fetishes intended
+to be sexually gratifying.</li>
+<li>Content that includes nude genitalia.</li>
+<li>Content that glorifies or promotes bestiality.</li>
+<li>Content that glorifies or promotes sexually explicit content or behavior.</li>
+</ul>
+
+<p>We might allow content that&#39;s otherwise considered sexually explicit for an
+educational, documentary, scientific, or artistic purpose if the content is
+related to the point of interest and sufficient information is provided for
+users to understand the context.</p>
+
+<h2 id="terrorist_content" data-text="Terrorist content" tabindex="-1">Terrorist content</h2>
+
+<p>We don&#39;t allow <a href="https://support.google.com/contributionpolicy/answer/11410566">terrorist
+content</a> or the
+use of Google Earth by terrorist organizations for any purpose, including
+recruitment.</p>
+
+<p><strong>This includes:</strong></p>
+
+<ul>
+<li>Content that incites violence, promotes terrorist acts or celebrates
+terrorist attacks.</li>
+<li>Content produced by or on behalf of terrorist groups.</li>
+</ul>
+
+<p>We may allow content related to terrorism for an educational, documentary,
+scientific, or artistic purpose if sufficient information is provided for users
+to understand the context.</p>
+
+<h2 id="violence_and_gore" data-text="Violence and gore" tabindex="-1">Violence and gore</h2>
+
+<p>We don&#39;t allow <a href="https://support.google.com/contributionpolicy/answer/11411186">violent or gory
+content</a>
+that involves people or animals in Google Earth.</p>
+
+<p><strong>This includes:</strong></p>
+
+<ul>
+<li>Violent or gory content that involves people or animals intends to shock,
+sensational, or gratuitous.</li>
+<li>Graphic violence that includes material amounts of blood, serious injuries,
+or death to animals or people.</li>
+<li>Content that contains animal cruelty.</li>
+</ul>
+
+<h2 id="spam" data-text="Spam" tabindex="-1">Spam</h2>
+
+<p>We don&#39;t allow spam, including unwanted promotional or commercial content,
+content that is created by an automated program, repetitive content, or anything
+that appears to be mass solicitation.</p>
+
+<h2 id="malicious_content" data-text="Malicious content" tabindex="-1">Malicious content</h2>
+
+<p>We don&#39;t allow content that transmits viruses, malware, or any other malicious
+or harmful code. don&#39;t distribute or link to content that harms or interferes
+with the operation of networks, servers, or other infrastructure.</p>
+
+  
+
+  
+    <devsite-hats-survey class="nocontent"
+      hats-id="XkBWMmMFw0ji3Z11gVm0WEFX1sxN"
+      listnr-id="5133444"></devsite-hats-survey>
+  
+</div>
+
+  
+    
+      <devsite-recommendations display="in-page" hidden yield>
+      </devsite-recommendations>
+    
+    
+      
+    <devsite-thumb-rating position="footer">
+    </devsite-thumb-rating>
+  
+       
+         <devsite-feedback
+  position="footer"
+  project-name="Google Earth"
+  product-id="81777"
+  bucket=""
+  context="Google Earth"
+  version="t-devsite-webserver-20251204-r00-rc00.473843648832388237"
+  data-label="Send Feedback Button"
+  track-type="feedback"
+  track-name="sendFeedbackLink"
+  track-metadata-position="footer"
+  class="nocontent"
+  
+  
+  
+    project-icon="https://www.gstatic.com/devrel-devsite/prod/v9de0f443992d54ad799f913d3a82969ff613e39ab9e3e056983c556b3c2ef1f8/developers/images/touchicon-180-new.png"
+  
+  
+    project-support-url="https://developers.google.com/maps/documentation/earth/support"
+  
+  
+  >
+
+  <button>
+  
+    
+    Send feedback
+  
+  </button>
+</devsite-feedback>
+       
+    
+    
+      <devsite-recommendations id="recommendations-link" yield></devsite-recommendations>
+    
+  
+
+  <div class="devsite-floating-action-buttons"></div></article>
+
+
+<devsite-content-footer class="nocontent">
+  <p>Except as otherwise noted, the content of this page is licensed under the <a href="https://creativecommons.org/licenses/by/4.0/">Creative Commons Attribution 4.0 License</a>, and code samples are licensed under the <a href="https://www.apache.org/licenses/LICENSE-2.0">Apache 2.0 License</a>. For details, see the <a href="https://developers.google.com/site-policies">Google Developers Site Policies</a>. Java is a registered trademark of Oracle and/or its affiliates.</p>
+  <p>Last updated 2025-12-08 UTC.</p>
+</devsite-content-footer>
+
+
+<devsite-notification
+>
+</devsite-notification>
+
+
+  
+<div class="devsite-content-data">
+  
+    
+    
+    <template class="devsite-thumb-rating-feedback">
+      <devsite-feedback
+  position="thumb-rating"
+  project-name="Google Earth"
+  product-id="81777"
+  bucket=""
+  context="Google Earth"
+  version="t-devsite-webserver-20251204-r00-rc00.473843648832388237"
+  data-label="Send Feedback Button"
+  track-type="feedback"
+  track-name="sendFeedbackLink"
+  track-metadata-position="thumb-rating"
+  class="nocontent"
+  
+  
+  
+    project-icon="https://www.gstatic.com/devrel-devsite/prod/v9de0f443992d54ad799f913d3a82969ff613e39ab9e3e056983c556b3c2ef1f8/developers/images/touchicon-180-new.png"
+  
+  
+    project-support-url="https://developers.google.com/maps/documentation/earth/support"
+  
+  
+  >
+
+  <button>
+  
+    Need to tell us more?
+  
+  </button>
+</devsite-feedback>
+    </template>
+  
+  
+    <template class="devsite-content-data-template">
+      [[["Easy to understand","easyToUnderstand","thumb-up"],["Solved my problem","solvedMyProblem","thumb-up"],["Other","otherUp","thumb-up"]],[["Missing the information I need","missingTheInformationINeed","thumb-down"],["Too complicated / too many steps","tooComplicatedTooManySteps","thumb-down"],["Out of date","outOfDate","thumb-down"],["Samples / code issue","samplesCodeIssue","thumb-down"],["Other","otherDown","thumb-down"]],["Last updated 2025-12-08 UTC."],[],[]]
+    </template>
+  
+</div>
+            
+          </devsite-content>
+        </main>
+        <devsite-footer-promos class="devsite-footer">
+          
+            
+
+<nav class="devsite-footer-promos nocontent" aria-label="Promotions">
+  <ul class="devsite-footer-promos-list">
+    
+    <li class="devsite-footer-promo">
+      <a href="/maps/support#stackoverflow"
+         class="devsite-footer-promo-title gc-analytics-event"
+         data-category="Site-Wide Custom Events"
+       
+         
+         data-label="Footer Promo Link (index 1)"
+       
+       >
+        
+        
+        <picture>
+          
+          <img class="devsite-footer-promo-icon"
+                src="/static/site-assets/logo-stack-overflow.svg"
+                loading="lazy"
+                alt="Stack Overflow">
+        </picture>
+        
+        <span class="devsite-footer-promo-label">
+          Stack Overflow
+        </span>
+      </a>
+      <div class="devsite-footer-promo-description">Ask a question under the google-maps tag.</div>
+    </li>
+    
+    <li class="devsite-footer-promo">
+      <a href="https://github.com/googlemaps/"
+         class="devsite-footer-promo-title gc-analytics-event"
+         data-category="Site-Wide Custom Events"
+       
+         
+         data-label="Footer Promo Link (index 2)"
+       
+       >
+        
+        
+        <picture>
+          
+          <img class="devsite-footer-promo-icon"
+                src="/static/site-assets/logo-github.svg"
+                loading="lazy"
+                alt="GitHub">
+        </picture>
+        
+        <span class="devsite-footer-promo-label">
+          GitHub
+        </span>
+      </a>
+      <div class="devsite-footer-promo-description">Fork our samples and try them yourself.</div>
+    </li>
+    
+    <li class="devsite-footer-promo">
+      <a href="https://discord.gg/f4hvx8Rp2q"
+         class="devsite-footer-promo-title gc-analytics-event"
+         data-category="Site-Wide Custom Events"
+       
+         
+         data-label="Footer Promo Link (index 3)"
+       
+       >
+        
+        
+        <picture>
+          
+          <img class="devsite-footer-promo-icon"
+                src="/static/maps/images/discord-color.png"
+                loading="lazy"
+                alt="Discord">
+        </picture>
+        
+        <span class="devsite-footer-promo-label">
+          Discord
+        </span>
+      </a>
+      <div class="devsite-footer-promo-description">Chat with fellow developers about Google Maps Platform.</div>
+    </li>
+    
+    <li class="devsite-footer-promo">
+      <a href="/maps/support#issue_tracker"
+         class="devsite-footer-promo-title gc-analytics-event"
+         data-category="Site-Wide Custom Events"
+       
+         
+         data-label="Footer Promo Link (index 4)"
+       
+       >
+        
+        
+        <picture>
+          
+          <img class="devsite-footer-promo-icon"
+                src="/static/site-assets/developers_64dp.png"
+                loading="lazy"
+                alt="Issue Tracker">
+        </picture>
+        
+        <span class="devsite-footer-promo-label">
+          Issue Tracker
+        </span>
+      </a>
+      <div class="devsite-footer-promo-description">Something wrong? Send us a bug report!</div>
+    </li>
+    
+  </ul>
+</nav>
+
+          
+        </devsite-footer-promos>
+        <devsite-footer-linkboxes class="devsite-footer">
+          
+            
+<nav class="devsite-footer-linkboxes nocontent" aria-label="Footer links">
+  
+  <ul class="devsite-footer-linkboxes-list">
+    
+    <li class="devsite-footer-linkbox ">
+    <h3 class="devsite-footer-linkbox-heading no-link">Learn More</h3>
+      <ul class="devsite-footer-linkbox-list">
+        
+        <li class="devsite-footer-linkbox-item">
+          
+          <a href="/maps/faq"
+             class="devsite-footer-linkbox-link gc-analytics-event"
+             data-category="Site-Wide Custom Events"
+            
+             data-label="Footer Link (index 1)"
+            >
+            
+          
+            FAQ
+          
+          </a>
+          
+          
+        </li>
+        
+        <li class="devsite-footer-linkbox-item">
+          
+          <a href="/maps/documentation/capabilities-explorer"
+             class="devsite-footer-linkbox-link gc-analytics-event"
+             data-category="Site-Wide Custom Events"
+            
+             data-label="Footer Link (index 2)"
+            >
+            
+          
+            Capabilities Explorer
+          
+          </a>
+          
+          
+        </li>
+        
+        <li class="devsite-footer-linkbox-item">
+          
+          <a href="/maps/api-security-best-practices"
+             class="devsite-footer-linkbox-link gc-analytics-event"
+             data-category="Site-Wide Custom Events"
+            
+             data-label="Footer Link (index 3)"
+            >
+            
+          
+            API security best practices
+          
+          </a>
+          
+          
+        </li>
+        
+        <li class="devsite-footer-linkbox-item">
+          
+          <a href="/maps/optimize-web-services"
+             class="devsite-footer-linkbox-link gc-analytics-event"
+             data-category="Site-Wide Custom Events"
+            
+             data-label="Footer Link (index 4)"
+            >
+            
+              
+              
+            
+          
+            Optimizing Web Service Usage
+          
+          </a>
+          
+          
+        </li>
+        
+      </ul>
+    </li>
+    
+    <li class="devsite-footer-linkbox ">
+    <h3 class="devsite-footer-linkbox-heading no-link">Platforms</h3>
+      <ul class="devsite-footer-linkbox-list">
+        
+        <li class="devsite-footer-linkbox-item">
+          
+          <a href="/maps/android"
+             class="devsite-footer-linkbox-link gc-analytics-event"
+             data-category="Site-Wide Custom Events"
+            
+             data-label="Footer Link (index 1)"
+            >
+            
+          
+            Android
+          
+          </a>
+          
+          
+        </li>
+        
+        <li class="devsite-footer-linkbox-item">
+          
+          <a href="/maps/ios"
+             class="devsite-footer-linkbox-link gc-analytics-event"
+             data-category="Site-Wide Custom Events"
+            
+             data-label="Footer Link (index 2)"
+            >
+            
+          
+            iOS
+          
+          </a>
+          
+          
+        </li>
+        
+        <li class="devsite-footer-linkbox-item">
+          
+          <a href="/maps/web"
+             class="devsite-footer-linkbox-link gc-analytics-event"
+             data-category="Site-Wide Custom Events"
+            
+             data-label="Footer Link (index 3)"
+            >
+            
+          
+            Web
+          
+          </a>
+          
+          
+        </li>
+        
+        <li class="devsite-footer-linkbox-item">
+          
+          <a href="/maps/web-services"
+             class="devsite-footer-linkbox-link gc-analytics-event"
+             data-category="Site-Wide Custom Events"
+            
+             data-label="Footer Link (index 4)"
+            >
+            
+              
+              
+            
+          
+            Web Services
+          
+          </a>
+          
+          
+        </li>
+        
+      </ul>
+    </li>
+    
+    <li class="devsite-footer-linkbox ">
+    <h3 class="devsite-footer-linkbox-heading no-link">Product Info</h3>
+      <ul class="devsite-footer-linkbox-list">
+        
+        <li class="devsite-footer-linkbox-item">
+          
+          <a href="/maps/pricing-and-plans"
+             class="devsite-footer-linkbox-link gc-analytics-event"
+             data-category="Site-Wide Custom Events"
+            
+            data-action="linkClick"data-label="footerMenu"data-category="pricingAndPlans">
+            
+          
+            Pricing and Plans
+          
+          </a>
+          
+          
+        </li>
+        
+        <li class="devsite-footer-linkbox-item">
+          
+          <a href="https://cloud.google.com/contact-maps"
+             class="devsite-footer-linkbox-link gc-analytics-event"
+             data-category="Site-Wide Custom Events"
+            
+            data-action="linkClick"data-label="footerMenu"data-category="contactSales">
+            
+          
+            Contact Sales
+          
+          </a>
+          
+          
+        </li>
+        
+        <li class="devsite-footer-linkbox-item">
+          
+          <a href="https://developers.google.com/maps/support/"
+             class="devsite-footer-linkbox-link gc-analytics-event"
+             data-category="Site-Wide Custom Events"
+            
+             data-label="Footer Link (index 3)"
+            >
+            
+          
+            Support
+          
+          </a>
+          
+          
+        </li>
+        
+        <li class="devsite-footer-linkbox-item">
+          
+          <a href="https://cloud.google.com/maps-platform/terms"
+             class="devsite-footer-linkbox-link gc-analytics-event"
+             data-category="Site-Wide Custom Events"
+            
+             data-label="Footer Link (index 4)"
+            >
+            
+              
+              
+            
+          
+            Terms of Service
+          
+          </a>
+          
+          
+        </li>
+        
+      </ul>
+    </li>
+    
+  </ul>
+  
+</nav>
+          
+        </devsite-footer-linkboxes>
+        <devsite-footer-utility class="devsite-footer">
+          
+            
+
+<div class="devsite-footer-utility nocontent">
+  
+  
+  <nav class="devsite-footer-sites" aria-label="Other Google Developers websites">
+    <a href="https://developers.google.com/"
+       class="devsite-footer-sites-logo-link gc-analytics-event"
+       data-category="Site-Wide Custom Events"
+       data-label="Footer Google Developers Link">
+      <picture>
+        
+        <img class="devsite-footer-sites-logo"
+             src="https://www.gstatic.com/devrel-devsite/prod/v9de0f443992d54ad799f913d3a82969ff613e39ab9e3e056983c556b3c2ef1f8/developers/images/lockup-google-for-developers.svg"
+             loading="lazy"
+             alt="Google Developers">
+      </picture>
+    </a>
+    <ul class="devsite-footer-sites-list">
+      
+      <li class="devsite-footer-sites-item">
+        <a href="//developer.android.com"
+           class="devsite-footer-sites-link
+                  gc-analytics-event"
+           data-category="Site-Wide Custom Events"
+         
+           data-label="Footer Android Link"
+         
+         >
+          Android
+        </a>
+      </li>
+      
+      <li class="devsite-footer-sites-item">
+        <a href="//developer.chrome.com/home"
+           class="devsite-footer-sites-link
+                  gc-analytics-event"
+           data-category="Site-Wide Custom Events"
+         
+           data-label="Footer Chrome Link"
+         
+         >
+          Chrome
+        </a>
+      </li>
+      
+      <li class="devsite-footer-sites-item">
+        <a href="//firebase.google.com"
+           class="devsite-footer-sites-link
+                  gc-analytics-event"
+           data-category="Site-Wide Custom Events"
+         
+           data-label="Footer Firebase Link"
+         
+         >
+          Firebase
+        </a>
+      </li>
+      
+      <li class="devsite-footer-sites-item">
+        <a href="//cloud.google.com"
+           class="devsite-footer-sites-link
+                  gc-analytics-event"
+           data-category="Site-Wide Custom Events"
+         
+           data-label="Footer Google Cloud Platform Link"
+         
+         >
+          Google Cloud Platform
+        </a>
+      </li>
+      
+      <li class="devsite-footer-sites-item">
+        <a href="//ai.google.dev/"
+           class="devsite-footer-sites-link
+                  gc-analytics-event"
+           data-category="Site-Wide Custom Events"
+         
+           data-label="Footer Google AI Link"
+         
+         >
+          Google AI
+        </a>
+      </li>
+      
+      <li class="devsite-footer-sites-item">
+        <a href="/products"
+           class="devsite-footer-sites-link
+                  gc-analytics-event"
+           data-category="Site-Wide Custom Events"
+         
+           data-label="Footer All products Link"
+         
+         >
+          All products
+        </a>
+      </li>
+      
+    </ul>
+  </nav>
+  
+
+  
+  <nav class="devsite-footer-utility-links" aria-label="Utility links">
+    
+    <ul class="devsite-footer-utility-list">
+      
+      <li class="devsite-footer-utility-item
+                 ">
+        
+        
+        <a class="devsite-footer-utility-link gc-analytics-event"
+           href="/terms/site-terms"
+           data-category="Site-Wide Custom Events"
+           data-label="Footer Terms link"
+         >
+          Terms
+        </a>
+        
+      </li>
+      
+      <li class="devsite-footer-utility-item
+                 ">
+        
+        
+        <a class="devsite-footer-utility-link gc-analytics-event"
+           href="//policies.google.com/privacy"
+           data-category="Site-Wide Custom Events"
+           data-label="Footer Privacy link"
+         >
+          Privacy
+        </a>
+        
+      </li>
+      
+      <li class="devsite-footer-utility-item
+                 glue-cookie-notification-bar-control">
+        
+        
+        <a class="devsite-footer-utility-link gc-analytics-event"
+           href="#"
+           data-category="Site-Wide Custom Events"
+           data-label="Footer Manage cookies link"
+         
+           aria-hidden="true"
+         >
+          Manage cookies
+        </a>
+        
+      </li>
+      
+    </ul>
+    
+    
+<devsite-language-selector>
+  <ul role="presentation">
+    
+    
+    <li role="presentation">
+      <a role="menuitem" lang="en"
+        >English</a>
+    </li>
+    
+    <li role="presentation">
+      <a role="menuitem" lang="de"
+        >Deutsch</a>
+    </li>
+    
+    <li role="presentation">
+      <a role="menuitem" lang="es"
+        >Español</a>
+    </li>
+    
+    <li role="presentation">
+      <a role="menuitem" lang="es_419"
+        >Español – América Latina</a>
+    </li>
+    
+    <li role="presentation">
+      <a role="menuitem" lang="fr"
+        >Français</a>
+    </li>
+    
+    <li role="presentation">
+      <a role="menuitem" lang="id"
+        >Indonesia</a>
+    </li>
+    
+    <li role="presentation">
+      <a role="menuitem" lang="it"
+        >Italiano</a>
+    </li>
+    
+    <li role="presentation">
+      <a role="menuitem" lang="pl"
+        >Polski</a>
+    </li>
+    
+    <li role="presentation">
+      <a role="menuitem" lang="pt_br"
+        >Português – Brasil</a>
+    </li>
+    
+    <li role="presentation">
+      <a role="menuitem" lang="vi"
+        >Tiếng Việt</a>
+    </li>
+    
+    <li role="presentation">
+      <a role="menuitem" lang="tr"
+        >Türkçe</a>
+    </li>
+    
+    <li role="presentation">
+      <a role="menuitem" lang="ru"
+        >Русский</a>
+    </li>
+    
+    <li role="presentation">
+      <a role="menuitem" lang="he"
+        >עברית</a>
+    </li>
+    
+    <li role="presentation">
+      <a role="menuitem" lang="ar"
+        >العربيّة</a>
+    </li>
+    
+    <li role="presentation">
+      <a role="menuitem" lang="fa"
+        >فارسی</a>
+    </li>
+    
+    <li role="presentation">
+      <a role="menuitem" lang="hi"
+        >हिंदी</a>
+    </li>
+    
+    <li role="presentation">
+      <a role="menuitem" lang="bn"
+        >বাংলা</a>
+    </li>
+    
+    <li role="presentation">
+      <a role="menuitem" lang="th"
+        >ภาษาไทย</a>
+    </li>
+    
+    <li role="presentation">
+      <a role="menuitem" lang="zh_cn"
+        >中文 – 简体</a>
+    </li>
+    
+    <li role="presentation">
+      <a role="menuitem" lang="zh_tw"
+        >中文 – 繁體</a>
+    </li>
+    
+    <li role="presentation">
+      <a role="menuitem" lang="ja"
+        >日本語</a>
+    </li>
+    
+    <li role="presentation">
+      <a role="menuitem" lang="ko"
+        >한국어</a>
+    </li>
+    
+  </ul>
+</devsite-language-selector>
+
+  </nav>
+</div>
+          
+        </devsite-footer-utility>
+        <devsite-panel>
+          
+        </devsite-panel>
+        
+          <devsite-concierge
+  
+  
+    data-info-panel
+  
+  
+    data-ai-panel
+  
+  
+  
+  
+    data-api-explorer-panel
+  >
+</devsite-concierge>
+        
+      </section></section>
+    <devsite-sitemask></devsite-sitemask>
+    <devsite-snackbar></devsite-snackbar>
+    <devsite-tooltip ></devsite-tooltip>
+    <devsite-heading-link></devsite-heading-link>
+    <devsite-analytics>
+      
+        <script type="application/json" analytics>[{&#34;dimensions&#34;: {&#34;dimension4&#34;: &#34;Google Earth&#34;, &#34;dimension3&#34;: false, &#34;dimension5&#34;: &#34;en&#34;, &#34;dimension1&#34;: &#34;Signed out&#34;, &#34;dimension11&#34;: false, &#34;dimension6&#34;: &#34;en&#34;}, &#34;gaid&#34;: &#34;UA-24532603-1&#34;, &#34;metrics&#34;: {&#34;ratings_value&#34;: &#34;metric1&#34;, &#34;ratings_count&#34;: &#34;metric2&#34;}, &#34;purpose&#34;: 1}]</script>
+<script type="application/json" tag-management>{&#34;at&#34;: &#34;True&#34;, &#34;ga4&#34;: [{&#34;id&#34;: &#34;G-272J68FCRF&#34;, &#34;purpose&#34;: 1}], &#34;ga4p&#34;: [{&#34;id&#34;: &#34;G-272J68FCRF&#34;, &#34;purpose&#34;: 1}], &#34;gtm&#34;: [{&#34;id&#34;: &#34;GTM-T98GCPGN&#34;, &#34;purpose&#34;: 1}, {&#34;id&#34;: &#34;GTM-W2H69MN&#34;, &#34;purpose&#34;: 0}], &#34;parameters&#34;: {&#34;internalUser&#34;: &#34;False&#34;, &#34;language&#34;: {&#34;machineTranslated&#34;: &#34;False&#34;, &#34;requested&#34;: &#34;en&#34;, &#34;served&#34;: &#34;en&#34;}, &#34;pageType&#34;: &#34;article&#34;, &#34;projectName&#34;: &#34;Google Earth&#34;, &#34;signedIn&#34;: &#34;False&#34;, &#34;tenant&#34;: &#34;developers&#34;, &#34;recommendations&#34;: {&#34;sourcePage&#34;: &#34;&#34;, &#34;sourceType&#34;: 0, &#34;sourceRank&#34;: 0, &#34;sourceIdenticalDescriptions&#34;: 0, &#34;sourceTitleWords&#34;: 0, &#34;sourceDescriptionWords&#34;: 0, &#34;experiment&#34;: &#34;&#34;}, &#34;experiment&#34;: {&#34;ids&#34;: &#34;&#34;}}}</script>
+      
+    </devsite-analytics>
+    
+      <devsite-badger></devsite-badger>
+    
+    
+    
+    
+<script nonce="+yN4GB8c3jGnnBE92dQRarbOvvzxNU">
+  
+  (function(d,e,v,s,i,t,E){d['GoogleDevelopersObject']=i;
+    t=e.createElement(v);t.async=1;t.src=s;E=e.getElementsByTagName(v)[0];
+    E.parentNode.insertBefore(t,E);})(window, document, 'script',
+    'https://www.gstatic.com/devrel-devsite/prod/v9de0f443992d54ad799f913d3a82969ff613e39ab9e3e056983c556b3c2ef1f8/developers/js/app_loader.js', '[1,"en",null,"/js/devsite_app_module.js","https://www.gstatic.com/devrel-devsite/prod/v9de0f443992d54ad799f913d3a82969ff613e39ab9e3e056983c556b3c2ef1f8","https://www.gstatic.com/devrel-devsite/prod/v9de0f443992d54ad799f913d3a82969ff613e39ab9e3e056983c556b3c2ef1f8/developers","https://developers-dot-devsite-v2-prod.appspot.com",null,null,["/_pwa/developers/manifest.json","https://www.gstatic.com/devrel-devsite/prod/v9de0f443992d54ad799f913d3a82969ff613e39ab9e3e056983c556b3c2ef1f8/images/video-placeholder.svg","https://www.gstatic.com/devrel-devsite/prod/v9de0f443992d54ad799f913d3a82969ff613e39ab9e3e056983c556b3c2ef1f8/developers/images/favicon-new.png","https://fonts.googleapis.com/css?family=Google+Sans:400,500|Roboto:400,400italic,500,500italic,700,700italic|Roboto+Mono:400,500,700&display=swap"],1,null,[1,6,8,12,14,17,21,25,50,52,63,70,75,76,80,87,91,92,93,97,98,100,101,102,103,104,105,107,108,109,110,112,113,117,118,120,122,124,125,126,127,129,130,131,132,133,134,135,136,138,140,141,147,148,149,151,152,156,157,158,159,161,163,164,168,169,170,179,180,182,183,186,191,193,196],"AIzaSyAP-jjEJBzmIyKR4F-3XITp8yM9T1gEEI8","AIzaSyB6xiKGDR5O3Ak2okS4rLkauxGUG7XP0hg","developers.google.com","AIzaSyAQk0fBONSGUqCNznf6Krs82Ap1-NV6J4o","AIzaSyCCxcqdrZ_7QMeLCRY20bh_SXdAYqy70KY",null,null,null,["Cloud__enable_legacy_calculator_redirect","TpcFeatures__proxy_prod_host","DevPro__enable_cloud_innovators_plus","Cloud__enable_cloud_dlp_service","Analytics__enable_clearcut_logging","Profiles__enable_awarding_url","Concierge__enable_actions_menu","Profiles__enable_complete_playlist_endpoint","DevPro__enable_embed_profile_creation","MiscFeatureFlags__enable_explicit_template_dependencies","Profiles__enable_developer_profile_pages_as_content","DevPro__enable_code_assist","Profiles__require_profile_eligibility_for_signin","DevPro__enable_devpro_offers","Concierge__enable_key_takeaways_new_ui","MiscFeatureFlags__gdp_dashboard_reskin_enabled","DevPro__enable_developer_subscriptions","BookNav__enable_tenant_cache_key","MiscFeatureFlags__enable_variable_operator_index_yaml","MiscFeatureFlags__developers_footer_image","MiscFeatureFlags__enable_view_transitions","Cloud__enable_cloud_shell_fte_user_flow","CloudShell__cloud_code_overflow_menu","MiscFeatureFlags__enable_framebox_badge_methods","DevPro__enable_google_payments_buyflow","DevPro__enable_enterprise","Cloud__enable_llm_concierge_chat","Concierge__enable_pushui","Cloud__fast_free_trial","Profiles__enable_dashboard_curated_recommendations","Cloud__enable_cloudx_experiment_ids","DevPro__enable_google_one_card","Profiles__enable_profile_collections","Significatio__enable_by_tenant","Profiles__enable_stripe_subscription_management","MiscFeatureFlags__enable_project_variables","MiscFeatureFlags__enable_firebase_utm","DevPro__enable_firebase_workspaces_card","CloudShell__cloud_shell_button","Search__enable_ai_search_summaries","DevPro__enable_free_benefits","DevPro__remove_eu_tax_intake_form","Profiles__enable_purchase_prompts","MiscFeatureFlags__emergency_css","TpcFeatures__enable_unmirrored_page_left_nav","Search__enable_suggestions_from_borg","Profiles__enable_recognition_badges","Concierge__enable_concierge","Profiles__enable_callout_notifications","Profiles__enable_playlist_community_acl","Profiles__enable_auto_apply_credits","DevPro__enable_payments_first_batch","Search__enable_ai_search_summaries_restricted","Experiments__reqs_query_experiments","Cloud__cache_serialized_dynamic_content","Search__enable_page_map","Profiles__enable_public_developer_profiles","Profiles__enable_developer_profiles_callout","Profiles__enable_user_type","MiscFeatureFlags__enable_explain_this_code","Cloud__enable_cloud_shell","EngEduTelemetry__enable_engedu_telemetry","DevPro__enable_nvidia_credits_card","MiscFeatureFlags__enable_appearance_cookies","Profiles__enable_completequiz_endpoint","MiscFeatureFlags__developers_footer_dark_image","Concierge__enable_concierge_restricted","Search__enable_dynamic_content_confidential_banner","MiscFeatureFlags__enable_variable_operator","Search__enable_ai_search_summaries_for_all","Search__enable_ai_eligibility_checks","Concierge__enable_devsite_llm_tools","SignIn__enable_l1_signup_flow","Profiles__enable_join_program_group_endpoint","Concierge__enable_key_takeaways","Profiles__enable_release_notes_notifications","Concierge__enable_tutorial_this_code","DevPro__enable_vertex_credit_card","Profiles__enable_developer_profile_benefits_ui_redesign","Concierge__enable_remove_info_panel_tags","Cloud__enable_free_trial_server_call","Profiles__enable_page_saving","Profiles__enable_completecodelab_endpoint"],null,null,"AIzaSyBLEMok-5suZ67qRPzx0qUtbnLmyT_kCVE","https://developerscontentserving-pa.clients6.google.com","AIzaSyCM4QpTRSqP5qI4Dvjt4OAScIN8sOUlO-k","https://developerscontentsearch-pa.clients6.google.com",1,4,null,"https://developerprofiles-pa.clients6.google.com",[1,"developers","Google for Developers","developers.google.com",null,"developers-dot-devsite-v2-prod.appspot.com",null,null,[1,1,[1],null,null,null,null,null,null,null,null,[1],null,null,null,null,null,null,[1],[1,null,null,[1,20],"/recommendations/information"],null,null,null,[1,1,1],[1,1,null,1,1,null,null,["/meridian"]],[1],null,[null,["/meridian","/youtube/devices/"]],1,null,[1]],null,[null,null,null,null,null,null,"/images/lockup-new.svg","/images/touchicon-180-new.png",null,null,null,null,1,null,null,null,null,null,null,null,null,1,null,null,null,"/images/lockup-dark-theme-new.svg",[]],[],null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,[6,1,14,15,20,22,23,29,32,36],null,[[null,null,null,[3,7,10,2,39,17,4,32,24,11,12,13,34,15,25],null,null,[1,[["docType","Choose a content type",[["Tutorial",null,null,null,null,null,null,null,null,"Tutorial"],["Guide",null,null,null,null,null,null,null,null,"Guide"],["Sample",null,null,null,null,null,null,null,null,"Sample"]]],["product","Choose a product",[["Android",null,null,null,null,null,null,null,null,"Android"],["ARCore",null,null,null,null,null,null,null,null,"ARCore"],["ChromeOS",null,null,null,null,null,null,null,null,"ChromeOS"],["Firebase",null,null,null,null,null,null,null,null,"Firebase"],["Flutter",null,null,null,null,null,null,null,null,"Flutter"],["Assistant",null,null,null,null,null,null,null,null,"Google Assistant"],["GoogleCloud",null,null,null,null,null,null,null,null,"Google Cloud"],["GoogleMapsPlatform",null,null,null,null,null,null,null,null,"Google Maps Platform"],["GooglePay",null,null,null,null,null,null,null,null,"Google Pay & Google Wallet"],["GooglePlay",null,null,null,null,null,null,null,null,"Google Play"],["Tensorflow",null,null,null,null,null,null,null,null,"TensorFlow"]]],["category","Choose a topic",[["AiAndMachineLearning",null,null,null,null,null,null,null,null,"AI and Machine Learning"],["Data",null,null,null,null,null,null,null,null,"Data"],["Enterprise",null,null,null,null,null,null,null,null,"Enterprise"],["Gaming",null,null,null,null,null,null,null,null,"Gaming"],["Mobile",null,null,null,null,null,null,null,null,"Mobile"],["Web",null,null,null,null,null,null,null,null,"Web"]]]]]],[1,1],null,1],[[["UA-24532603-1"],["UA-22084204-5"],null,null,["UA-24532603-5"],["GTM-T98GCPGN"],null,[["G-272J68FCRF"],null,null,[["G-272J68FCRF",2]]],[["UA-24532603-1",2]],null,[["UA-24532603-5",2]],[["GTM-T98GCPGN",2]],1],[[16,13],[1,1],[12,9],[13,10],[11,8],[6,5],[4,3],[15,12],[3,2],[14,11],[5,4]],[[1,1],[2,2]]],null,4,null,null,null,null,null,null,null,null,null,null,null,null,null,"developers.devsite.google",null,null,null,null,null,[]],null,"pk_live_5170syrHvgGVmSx9sBrnWtA5luvk9BwnVcvIi7HizpwauFG96WedXsuXh790rtij9AmGllqPtMLfhe2RSwD6Pn38V00uBCydV4m",1,1,"https://developerscontentinsights-pa.clients6.google.com","AIzaSyCg-ZUslalsEbXMfIo9ZP8qufZgo3LSBDU","AIzaSyDxT0vkxnY_KeINtA4LSePJO-4MAZPMRsE","https://developers.clients6.google.com",["https://codeassist.google.com","https://code-assist-free-tier.corp.google.com"],null,"AIzaSyBQom12tzI-rybN7Sf-KfeL4nwm-Rf7PmI\n",null,"https://developerslogging.clients6.google.com"]')
+  
+</script>
+
+    <devsite-a11y-announce></devsite-a11y-announce>
+  </body>
+</html>
