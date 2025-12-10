@@ -1,0 +1,3254 @@
+
+<!DOCTYPE HTML>
+<html lang="en-GB" data-i18n-dictionary-src="https://www.logitech.com/en-gb.i18n.json">
+    <head>
+   <meta charset="UTF-8"/>
+   
+   
+
+    
+
+   
+   
+   <link href="https://www.logitech.com/en-gb.manifest.json" crossorigin="use-credentials" rel="manifest"/>
+   
+	
+	
+		 
+			
+			<script type="module">
+				import {Workbox} from 'https://storage.googleapis.com/workbox-cdn/releases/6.4.1/workbox-window.prod.mjs';
+				(function() {
+					'use strict';
+
+					const log = (msg) => {
+						if (localStorage['PANGEA_DEBUG'] === 'true'){
+							console.log(msg);
+						}
+					}
+					class ServiceWorker {
+						constructor(options) {
+							this.options = this.getOptions(options);
+						}
+
+						async init() {
+							const {path, scope} = this.options;
+							this.serviceWorker = new Workbox(path, {
+								scope,
+								updateViaCache: 'none'
+							});
+
+							this.serviceWorker.addEventListener('activated', async (event) => {
+								if (!event.isUpdate) {
+									this.serviceWorker.messageSW({ type: 'CLIENTS_CLAIM' });
+								}
+							});
+
+							this.serviceWorker.addEventListener('waiting', () => {
+								this.serviceWorker.addEventListener('controlling', () => {
+									window.location.reload();
+								});
+								this.serviceWorker.messageSW({ type: 'SKIP_WAITING' });
+							});
+
+							try {
+								await this.serviceWorker.register();
+								log('SW -- REGISTER SERVICE WORKER');
+							} catch (e) {
+								console.error('SW -- error registering service worker', e);
+							}
+						}
+
+						getOptions(options) {
+							let path;
+							let scope;
+							const {dispatcherPath, dispatcherScope, localPath, localScope} = options;
+
+							path = localPath;
+							scope = localScope;
+
+							if (this.isDispatcher()) {
+								path = dispatcherPath;
+								scope = dispatcherScope;
+							}
+
+							return {
+								path,
+								scope
+							};
+						}
+
+						isDispatcher() {
+							return !location.origin.match(/4502|4503|author|publish/);
+						}
+					}
+
+					if ('serviceWorker' in navigator) {
+						window.addEventListener('load', async () => {
+							const serviceWorker = new ServiceWorker(
+								{
+									localPath: "/content/serviceWorkerLogitech.js",
+									localScope: "/content/logitech",
+									dispatcherPath: "/sw-logitech.js",
+									dispatcherScope: '/'
+								}
+							);
+							log('SW -- INIT SERVICE WORKER');
+							await serviceWorker.init();
+						});
+					}
+				})();
+			</script>
+		
+	
+
+
+   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+   <link rel="shortcut icon" href="/etc.clientlibs/logitech/clientlibs/common/resources/images/favicon.ico" type="image/x-icon"/>
+   <title>Terms of Use - Logitech Website</title>
+   
+  
+      
+  
+
+   
+      <meta name="title" content="Terms of Use"/>
+      
+   
+      <meta name="h1Header" content="Terms of Use"/>
+      
+   
+      <meta name="description" content="View the legal agreement between you and Logitech that governs your use of this website either as a visitor, content contributor, or as a registered user"/>
+      
+   
+      <meta name="country" content="GB"/>
+      
+   
+      <meta name="language" content="EN"/>
+      
+   
+      <meta name="Search_title" content="Terms of Use - Logitech Website"/>
+      
+   
+      <meta name="Search_intro" content="View the legal agreement between you and Logitech that governs your use of this website either as a visitor, content contributor, or as a registered user"/>
+      
+   
+      <meta name="Search_pagetype" content="content"/>
+      
+   
+      <meta name="twitter:card" content="summary_large_image"/>
+      
+   
+      <meta name="twitter:title" content="Terms of Use - Logitech Website"/>
+      
+   
+      <meta name="twitter:description" content="View the legal agreement between you and Logitech that governs your use of this website either as a visitor, content contributor, or as a registered user"/>
+      
+   
+      <meta name="twitter:image" content="https://resource.logitech.com/w_1200,h_630,c_limit,q_auto,f_auto,dpr_1.0/d_transparent.gif/content/dam/logitech/common/og-generic/og-image-electrico.png?v=1"/>
+      
+   
+      <meta property="og:title" content="Terms of Use - Logitech Website"/>
+      
+   
+      <meta property="og:description" content="View the legal agreement between you and Logitech that governs your use of this website either as a visitor, content contributor, or as a registered user"/>
+      
+   
+      <meta property="og:type" content="website"/>
+      
+   
+      <meta property="og:url" content="https://www.logitech.com/en-gb/tos/terms.html"/>
+      
+   
+      <meta property="og:locale" content="en_GB"/>
+      
+   
+      <meta name="google-site-verification" content="wtV3OTVkOcuXsBS2wGLY8ekHymEOksO7qzdC3gXTYtk"/>
+      
+   
+      <meta name="verify-v1" content="rmiwlt+qKaRvqWZX6I21JeJbUZLzIM62+DRF6IsTpDc="/>
+      
+   
+      <meta name="msvalidate.01" content="9661B514941ED0F98B50A3201DB2FDD7"/>
+      
+   
+      <meta name="yandex-verification" content="4ca6d5482fcc8879"/>
+      
+   
+      
+      <link rel="canonical" href="https://www.logitech.com/en-gb/tos/terms.html"/>
+   
+      
+      <link hreflang="en-gb" rel="alternate" href="https://www.logitech.com/en-gb/tos/terms.html"/>
+   
+      
+      <link hreflang="es-ar" rel="alternate" href="https://www.logitech.com/es-ar/tos/terms.html"/>
+   
+      
+      <link hreflang="pt-br" rel="alternate" href="https://www.logitech.com/pt-br/tos/terms.html"/>
+   
+      
+      <link hreflang="fr-ca" rel="alternate" href="https://www.logitech.com/fr-ca/tos/terms.html"/>
+   
+      
+      <link hreflang="en-ca" rel="alternate" href="https://www.logitech.com/en-ca/tos/terms.html"/>
+   
+      
+      <link hreflang="es-mx" rel="alternate" href="https://www.logitech.com/es-mx/tos/terms.html"/>
+   
+      
+      <link hreflang="en-us" rel="alternate" href="https://www.logitech.com/en-us/tos/terms.html"/>
+   
+      
+      <link hreflang="fr-fr" rel="alternate" href="https://www.logitech.com/fr-fr/tos/terms.html"/>
+   
+      
+      <link hreflang="da-dk" rel="alternate" href="https://www.logitech.com/da-dk/tos/terms.html"/>
+   
+      
+      <link hreflang="es-es" rel="alternate" href="https://www.logitech.com/es-es/tos/terms.html"/>
+   
+      
+      <link hreflang="cs-cz" rel="alternate" href="https://www.logitech.com/cs-cz/tos/terms.html"/>
+   
+      
+      <link hreflang="fr-ch" rel="alternate" href="https://www.logitech.com/fr-ch/tos/terms.html"/>
+   
+      
+      <link hreflang="it-ch" rel="alternate" href="https://www.logitech.com/it-ch/tos/terms.html"/>
+   
+      
+      <link hreflang="it-it" rel="alternate" href="https://www.logitech.com/it-it/tos/terms.html"/>
+   
+      
+      <link hreflang="fr-be" rel="alternate" href="https://www.logitech.com/fr-be/tos/terms.html"/>
+   
+      
+      <link hreflang="de-at" rel="alternate" href="https://www.logitech.com/de-at/tos/terms.html"/>
+   
+      
+      <link hreflang="fi-fi" rel="alternate" href="https://www.logitech.com/fi-fi/tos/terms.html"/>
+   
+      
+      <link hreflang="sv-se" rel="alternate" href="https://www.logitech.com/sv-se/tos/terms.html"/>
+   
+      
+      <link hreflang="de-ch" rel="alternate" href="https://www.logitech.com/de-ch/tos/terms.html"/>
+   
+      
+      <link hreflang="nl-be" rel="alternate" href="https://www.logitech.com/nl-be/tos/terms.html"/>
+   
+      
+      <link hreflang="no-no" rel="alternate" href="https://www.logitech.com/no-no/tos/terms.html"/>
+   
+      
+      <link hreflang="nl-nl" rel="alternate" href="https://www.logitech.com/nl-nl/tos/terms.html"/>
+   
+      
+      <link hreflang="pl-pl" rel="alternate" href="https://www.logitech.com/pl-pl/tos/terms.html"/>
+   
+      
+      <link hreflang="tr-tr" rel="alternate" href="https://www.logitech.com/tr-tr/tos/terms.html"/>
+   
+      
+      <link hreflang="en-za" rel="alternate" href="https://www.logitech.com/en-za/tos/terms.html"/>
+   
+      
+      <link hreflang="en-pt" rel="alternate" href="https://www.logitech.com/en-eu/tos/terms.html"/>
+   
+      
+      <link hreflang="en-bg" rel="alternate" href="https://www.logitech.com/en-eu/tos/terms.html"/>
+   
+      
+      <link hreflang="en-lv" rel="alternate" href="https://www.logitech.com/en-eu/tos/terms.html"/>
+   
+      
+      <link hreflang="en-lt" rel="alternate" href="https://www.logitech.com/en-eu/tos/terms.html"/>
+   
+      
+      <link hreflang="en-ro" rel="alternate" href="https://www.logitech.com/en-eu/tos/terms.html"/>
+   
+      
+      <link hreflang="en-sk" rel="alternate" href="https://www.logitech.com/en-eu/tos/terms.html"/>
+   
+      
+      <link hreflang="en-hr" rel="alternate" href="https://www.logitech.com/en-eu/tos/terms.html"/>
+   
+      
+      <link hreflang="en-ua" rel="alternate" href="https://www.logitech.com/en-eu/tos/terms.html"/>
+   
+      
+      <link hreflang="en-si" rel="alternate" href="https://www.logitech.com/en-eu/tos/terms.html"/>
+   
+      
+      <link hreflang="en-ie" rel="alternate" href="https://www.logitech.com/en-eu/tos/terms.html"/>
+   
+      
+      <link hreflang="el-gr" rel="alternate" href="https://www.logitech.com/el-gr/tos/terms.html"/>
+   
+      
+      <link hreflang="en-ch" rel="alternate" href="https://www.logitech.com/en-ch/tos/terms.html"/>
+   
+      
+      <link hreflang="hu-hu" rel="alternate" href="https://www.logitech.com/hu-hu/tos/terms.html"/>
+   
+      
+      <link hreflang="de-de" rel="alternate" href="https://www.logitech.com/de-de/tos/terms.html"/>
+   
+      
+      <link hreflang="en-ph" rel="alternate" href="https://www.logitech.com/en-ph/tos/terms.html"/>
+   
+      
+      <link hreflang="en-my" rel="alternate" href="https://www.logitech.com/en-my/tos/terms.html"/>
+   
+      
+      <link hreflang="zh-cn" rel="alternate" href="https://www.logitech.com/zh-cn/tos/terms.html"/>
+   
+      
+      <link hreflang="en-nz" rel="alternate" href="https://www.logitech.com/en-nz/tos/terms.html"/>
+   
+      
+      <link hreflang="ja-jp" rel="alternate" href="https://www.logicool.co.jp/ja-jp/tos/terms.html"/>
+   
+      
+      <link hreflang="in-id" rel="alternate" href="https://www.logitech.com/id-id/tos/terms.html"/>
+   
+      
+      <link hreflang="zh-tw" rel="alternate" href="https://www.logitech.com/zh-tw/tos/terms.html"/>
+   
+      
+      <link hreflang="th-th" rel="alternate" href="https://www.logitech.com/th-th/tos/terms.html"/>
+   
+      
+      <link hreflang="en-au" rel="alternate" href="https://www.logitech.com/en-au/tos/terms.html"/>
+   
+      
+      <link hreflang="en-in" rel="alternate" href="https://www.logitech.com/en-in/tos/terms.html"/>
+   
+      
+      <link hreflang="ko-kr" rel="alternate" href="https://www.logitech.com/ko-kr/tos/terms.html"/>
+   
+      
+      <link hreflang="en-sg" rel="alternate" href="https://www.logitech.com/en-sg/tos/terms.html"/>
+   
+      
+      <link hreflang="vi-vn" rel="alternate" href="https://www.logitech.com/vi-vn/tos/terms.html"/>
+   
+      
+      <link hreflang="zh-hk" rel="alternate" href="https://www.logitech.com/zh-hk/tos/terms.html"/>
+   
+      
+      <link hreflang="en-hk" rel="alternate" href="https://www.logitech.com/en-hk/tos/terms.html"/>
+   
+   <meta property="og:image" content="https://resource.logitech.com/w_1200,h_630,c_limit,q_auto,f_auto,dpr_1.0/d_transparent.gif/content/dam/logitech/common/og-generic/og-image-electrico.png?v=1"/>
+   <meta property="Search_image" content="https://resource.logitech.com/w_1800,h_1800,c_limit,q_auto,f_auto,dpr_1.0/d_transparent.gif/content/dam/logitech/common/og-generic/og-image-electrico.png?v=1"/>
+   
+   
+   <meta name="template" content="commerce-content-page"/>
+   
+
+   
+
+
+
+    
+
+
+
+
+
+
+
+    
+<script src="/etc.clientlibs/logitech-common/clientlibs/clientlib-jquery.min.415acd7e2003a7d002f131aaf031720d.js"></script>
+<script src="/etc.clientlibs/logitech-common/clientlibs/clientlib-utils.min.3b86602c4e1e0b41d9673f674a75cd4b.js"></script>
+
+
+
+   
+    
+    
+
+    
+
+    
+    
+    
+<link rel="stylesheet" href="/etc.clientlibs/logitech/clientlibs/main-editable-sfcc.min.41a80e1528fd53f94b0f7bed8abc3d08.css" type="text/css">
+
+
+
+    
+
+   
+
+   
+      
+
+   
+   <script>
+   function targetPageParams() {
+         return {
+            "at_property": "d097d61e-3d55-77b3-cbe6-8670ec77480c"
+         }
+      }  
+   </script>
+   
+
+   
+
+    <!-- OneTrust Cookies Consent Notice start for Logi -->
+    
+
+    	<script src="https://cdn.cookielaw.org/scripttemplates/otSDKStub.js" data-document-language="true" type="text/javascript" charset="UTF-8" data-domain-script="a5d4a538-21e6-485f-9f0b-0bab76c31f5c"></script>
+
+	
+
+    
+    
+<script src="/etc.clientlibs/logitech-common/clientlibs/onetrust.min.41ac4cd8610e597df080b70136957dff.js"></script>
+
+
+
+    
+</head>
+	
+    
+    
+    <body class="contentpage basepage page basicpage wcm-publish " data-analytics-section="body">
+
+		
+    
+        
+            <script type="text/javascript">
+                var utag_data = {
+  "customer_type": "Not Logged In",
+  "page_category_name": "tos",
+  "page_name": "terms",
+  "page_subcategory_name": "terms",
+  "page_type": "content",
+  "site_country": "GB",
+  "site_environment": "production",
+  "site_id": "logi",
+  "site_language": "en",
+  "site_locale": "en-gb"
+};
+            </script>
+            <script src="https://webtags.logitech.com/main/prod/utag.sync.js"></script>
+            <script src="//cdn.evgnet.com/beacon/logitecheurope/logitech_prod/scripts/evergage.min.js"></script>
+            <script type="text/javascript">
+                window.logitech = window.logitech || {};
+
+                window.logitech.initUtagAsync = function() {
+                    let script = document.createElement('script');
+                    script.src = 'https://webtags.logitech.com/main/prod/utag.js';
+                    script.type = 'text/javascript';
+                    script.defer = true;
+                    document.querySelector('body').appendChild(script);
+                };
+            </script>
+         
+    
+ 
+
+        
+        <div class="commerce-config" data-page-url-suffix="/en-gb" data-page-path="/content/logitech/emea/live/en_gb/tos/terms" data-hcaptcha-site-key="205e3f6b-2d35-44d7-9097-93cbf63229c0" data-typesense-nodes="https://jh0mxir289nweul5p-1.a1.typesense.net,https://jh0mxir289nweul5p-2.a1.typesense.net,https://jh0mxir289nweul5p-3.a1.typesense.net" data-enable-candyrack="false" data-show-bringg-tracking="false" data-enable-amazonpay="false" data-typesense-api-key="5JDnogTjkZhd7jDhjZLRrINi3CgJG9IL" data-ocapi-version="v24_5" sfccapi-ocapi-proxyuri-prefix="/api/commerce" data-price-disclaimer-pos="below" data-payment-env="production" data-enable-time-to-ship="false" data-klarna-enabled="true" data-docked-cart-enabled="false" data-session-set="/content/logitech/emea/live/en_gb/tos/terms.logitechtoken.json" data-currency-code="GBP" data-basket-exp-time-aut="2592000" data-cloudinary-path-plp-search-product-shot="https://www.logitech.com/w_386,ar_1.0,c_limit,f_auto,q_auto,dpr_2.0/d_transparent.gif/content/dam?v=1" data-place-order-stage="placeOrder#placeOrder" data-loqate-public-key="YH94-TX99-NC71-WA87" data-country-code="GB" data-enable-paypal="false" data-enable-esw="false" data-commerce-provider="sfcc" data-toaster-api-url="/en-gb/api/promotions/toaster" data-cloudinary-path-mini-cart-thumbnail="https://www.logitech.com/w_150,h_150,c_fit,q_auto,f_auto,dpr_1.0/d_transparent.gif/content/dam//content/dam/logitech?v=1" data-enable-googlepay="false" data-default-shipping-time="5" data-ccapi-version="v1" data-dr-public-key="pk_cfc2db9d66954709bcb9ea85b3ad7b21" data-enable-checkout-app="false" data-access-token-expiry="1800" data-typesense-nearest-node="https://jh0mxir289nweul5p.a1.typesense.net" data-organization-id-ocapi="f_ecom_bjdd_prd" sfcc-ccapi-proxy-shopper-basket="/api/commerce/checkout/shopper-baskets" data-site-notifications-endpoint="/en-gb/site-notifications/master/master.notifications.en-gb.json" data-productinfo-path="/bin/logitech/productinfo.json" data-ccapi-clientId="a65e74be-900e-458d-ac3b-675eae9bbc5a" data-basket-exp-time-ano="604800" data-ccapi-environment=".api.commercecloud.salesforce.com" data-cart-overrideurl="/en-gb/cart" data-commerce-cartpage="/checkout" data-free-shipping-threshold="39" data-show-filters="false" sfccapi-ccapi-proxyuri-prefix="/api/commerce/shopper-products" data-locale="en-GB" data-ocapi-clientId="a65e74be-900e-458d-ac3b-675eae9bbc5a" data-enable-applepay="false" data-commerce-checkoutpage="/checkout" data-ocapi-environment="commerce-prd.logitech.com" data-shortCode-ccapi="4xvng64b" data-session-get="https://buy.logitech.com/store/logib2c/SessionToken?format=json" data-customer-id-expiry="5256000" data-cloudinary-domain="https://resource.logitech.com/" data-dr-locale="en-gb" data-refresh-token-expiry="5256000" data-organization-id-ccapi="f_ecom_bjdd_prd" data-sfcc-promotion-id-prefixes="employee,special,member,partner,student,business" data-currency-symbol="£"></div>
+
+        
+    	<div class="lids-config" data-domain="logitech" data-api-endpoint="https://accounts.logi.com" data-client-id="6dc58bae-28c8-f4e3-ade8-73d0deb8e76d" data-websso-url="https://id.logi.com" data-brand-theme-id="29753D92-34CC-4706-9973-1832CFA11E78" data-websso-locale="en-gb" data-drsession-logout="https://buy.logitech.com/store/logib2c/LogoutSSO" data-page-path="/content/logitech/emea/live/en_gb/tos/terms" data-logout-path="/en-gb/my-account.html" data-locale="en_gb" data-fb-sdk="https://connect.facebook.net/en_US/sdk.js" data-amazon-sdk="https://api-cdn.amazon.com/sdk/login1.js" data-google-sdk="https://apis.google.com/js/platform.js?onload=initializeGoogleApi" data-google-captcha-sdk="https://www.google.com/recaptcha/api.js?onload=captchaLibsReady&amp;render=explicit" data-myorders-url="/en-gb/my-account/my-orders.html" data-orderstatus-url="/en-gb/order-status.html"></div>
+  		
+
+        
+        
+            
+
+
+
+            <div class="site-wrapper" role="region" aria-label="Logitech">
+	            <h1 class="seo-pagetitle">Terms of Use</h1>
+				<div id="skiptocontent"><a href="#maincontent">SKIP TO MAIN CONTENT</a></div>
+	              
+  <header class="main-header js-main-header" data-analytics-section="header" data-theme-desktop="theme-dark" data-theme-tablet="theme-dark" data-theme-mobile="theme-dark">
+	  <!-- This is to include and override brand nav using page properties XF path - Starts -->
+	  
+	  
+	  <div class="xfpage page basicpage">
+
+    
+
+
+
+         
+
+
+
+
+
+
+    
+    
+    
+    
+</div>
+
+     
+	  <!-- This is to include and override brand nav using page properties XF path - Ends -->
+
+      <!-- This is to include and override private store eligible banner using page properties XF path - Starts -->
+      
+      <!-- This is to include and override  private store eligible banner using page properties XF path - Ends -->
+
+     <!-- This is to include and override promo using page properties XF path - Starts -->
+      
+  	<!-- This is to include and override promo using page properties XF path - Ends -->
+
+	<!-- This is to include and override prime nav using page properties XF path - Starts -->
+     
+     
+     <div class="xfpage page basicpage">
+
+    
+
+
+
+         
+
+
+
+
+
+
+    
+    
+    
+
+
+
+
+
+
+
+
+
+
+	
+    <div id="i1ad9255a088e8d76dc3dfedc1ac9ddd9" data-aem-id="i1ad9255a088e8d76dc3dfedc1ac9ddd9" class="aem-margin-options ">
+        
+		
+	
+
+	
+
+
+		
+		
+		
+	
+		<style>
+			.LMz3s7PE {
+    			display: none;
+			}
+		</style>
+        
+        
+
+
+        <style>
+            /* CSS */
+body.docked-cart-open {
+    overflow: visible;
+}
+.brand-logos {
+    background-color: #F2F2F2;
+}
+.brand-logos ul {
+    margin: 0;
+    padding-top: 8px;
+    padding-bottom: 10px;
+    gap: 8px;
+}
+.brand-logos ul li {
+    border-right: 1px solid #8F8F8F;
+}
+.brand-logos ul li a {
+    padding-right: 16px;
+    padding-left: 12px;
+    line-height: 10px;
+    font-size: 16px;
+    color: #8F8F8F;
+    display: block;
+}
+.brand-logos ul li:first-child a {
+    padding-left: 0;
+}
+.brand-logos ul li:last-child {
+    border: none;
+}
+.brand-logos ul li a img:nth-child(2) {
+    display: none;
+}
+.brand-logos ul li a:hover img:first-child {
+    display: none;
+}
+.brand-logos ul li a:hover img:last-child {
+    display: block;
+}
+.brand-logos .container .content {
+    justify-content: space-between;
+}
+.brand-logos .support-locale-container {
+    padding-top: 8px;
+    padding-bottom: 10px;
+    gap: 12px;
+}
+.brand-logos .support-locale-container .support-link {
+    border-right: 2px solid #D7D7D7;
+    font-weight: 700;
+    font-size: 13px;
+    line-height: 1.5;
+    padding-right: 12px;
+    color: #8F8F8F;
+}
+.locale-selector-container {
+    gap: 8px;
+}
+.locale-selector-container img {
+    width: 13px;
+    filter: brightness(0.5);
+}
+.kepler.main-nav .locale-selector-container .locale-selector {
+    font-size: 13px;
+    text-transform: uppercase;
+    line-height: 1.5;
+    font-weight: 700;
+    color: #6E6E6E;
+    margin-left: 0;
+    width: 100%;
+    margin-right: 0;
+}
+.kepler .utility-nav a, .kepler .utility-nav button {
+    height: auto;
+}
+.kepler.main-nav .main-nav-item-trigger, .kepler.main-nav .utility-nav button:after, .kepler.main-nav .utility-nav a:after, .kepler.main-nav .main-nav-items h5 {
+    color: #1B1B1B;
+}
+.kepler.main-nav .utility-nav a.cart-icon .quantity {
+    background-color: #00FDCF;
+    height: 14px;
+    width: 14px;
+    color: #1B1B1B;
+    right: -10px;
+    top: -10px;
+}
+.kepler.main-nav .desktop-nav {
+    padding-bottom: 40px;
+}
+.kepler.main-nav .main-nav-items h5 {
+    margin-top: 0;
+    margin-bottom: 24px;
+    font-weight: 400;
+    text-transform: none;
+    font-size: 16px;
+    line-height: 18.4px;
+}
+.kepler.main-nav .nav-items-images a {
+    text-align: center;
+    text-decoration: none;
+    font-weight: 400;
+    font-size: 14px;
+}
+.kepler.main-nav .shop-sub-category .nav-items-images a {
+    text-align: left;
+}
+.main-header.subnav-too-tall .kepler.main-nav .nav-tabs {
+    max-height: calc(100vh - var(--main-nav-height) - 16px);
+    overflow-y: hidden;
+}
+.kepler.main-nav .nav-tabs a:hover {
+    text-decoration: underline;
+    cursor: pointer;
+}
+.kepler.main-nav .nav-items-images a div {
+    aspect-ratio: 1;
+    background-color: #fff;
+    border-radius: 16px;
+    display: flex;
+}
+.kepler.main-nav .nav-items-images a div img {
+    border-radius: 16px;
+    width: 100%;
+}
+.kepler.main-nav .nav-items-images span {
+    display: block;
+    padding-top: 24px;
+    font-size: 14px;
+}
+.kepler.main-nav .nav-items-images .nav-item-links span {
+    color: #1B1B1B;
+    font-size: 14px;
+    text-align: left;
+    padding-bottom: 24px;
+    font-weight: 700;
+}
+.kepler.main-nav .nav-items-images .nav-item-links ul {
+    margin: 0;
+}
+.kepler.main-nav .nav-item-links.nav-links {
+    margin-bottom: 0;
+}
+.kepler.main-nav .nav-links {
+    margin-top: 40px;
+    margin-bottom: 70px;
+}
+.kepler.main-nav .nav-item-links ul li:last-child {
+    padding-bottom: 0;
+}
+.kepler.main-nav .nav-item-links ul li {
+    padding-bottom: 24px;
+}
+.kepler.main-nav .nav-item-links ul li a {
+    text-decoration: none;
+    font-weight: 400;
+    font-size: 14px;
+}
+/*.kepler.main-nav .nav-item-links ul li:last-child a {*/
+/*    text-decoration: underline;*/
+/*    font-weight: 700;*/
+/*}*/
+.kepler.main-nav .divider {
+    border-right: 1px solid #BEBEBE;
+    margin: 0 auto;
+}
+.kepler.main-nav .shop-sub-category ul {
+    margin: 0;
+}
+.kepler.main-nav .utility-nav {
+    margin-right: 0;
+    gap: 32px;
+    padding-top: 12px;
+    padding-bottom: 11px;
+}
+.kepler.main-nav .utility-nav a:last-child {
+    margin-right: 0;
+}
+.kepler.main-nav .main-nav-item-trigger {
+    line-height: 23.4px;
+    padding: 14px 0 18px 0;
+    border-radius: 0;
+    font-size: 18px;
+    font-weight: 400;
+    text-transform: capitalize;
+}
+.kepler.main-nav .grid {    
+    display: grid;
+    margin-right: 0;
+    width: 100%;
+}
+.kepler.main-nav {
+    background-color: #fff;
+    font-family: Brown,ui-sans-serif,system-ui,sans-serif,"Apple Color Emoji","Segoe UI Emoji",Segoe UI Symbol,"Noto Color Emoji";
+    color: #5C5C5C;
+    height: auto;
+}
+.kepler.main-nav .navigation {
+    border-bottom: 2px solid #F2F2F2;
+}
+.main-nav ul {
+    list-style: none;
+}
+.kepler.main-nav .search-trigger {
+    background-color: rgba(0, 0, 0, 8.7%);
+    border-radius: 60px;
+    padding-left: 158px;
+    padding-right: 22px;
+    height: auto;
+    padding-top: 8px;
+    padding-bottom: 8px;
+}
+.kepler.main-nav .nav-main-logo-anim {
+    background-image: url(https://resource.logitech.com/f_auto,q_auto/content/dam/logitech/en/nav/logi-logo-anim-dark.png);
+    top: 8px;
+    position: relative;
+    display: block;
+    background-repeat: no-repeat;
+    width: 75px;
+    height: 36px;
+    margin-right: 40px;
+    background-size: 75px 1298px;
+    transform: translate(0, 0) rotate(0) skew(0) skewY(0) scaleX(1.1) scaleY(0.70);
+    left: 4px;
+}
+.main-nav .nav-tabs .desktop-close-btn {
+    right: 0px;
+}
+.main-nav .nav-tabs .desktop-close-btn svg {
+    color: #5C5C5C;
+    width: 18px;
+    height: 18px;
+}
+.main-nav .nav-tabs .desktop-close-btn::after{
+    display: none;
+}
+.kepler.main-nav .nav-main-logo-anim.stopped {
+    background-position: -1px -1261px;
+    animation: none;
+}
+.kepler.main-nav .nav-main-logo-anim.play {
+    background-position: -1px -1px;
+    animation: play-logo-animation 1.2s steps(34) 0s forwards;
+}
+.main-nav .nav-tabs {
+    background-color: #EEEEEE;
+    top: 94px;
+    padding: 48px 0;
+}
+.main-nav .nav-items[data-align=center] {
+    gap: 20px;
+    padding: 0;
+}
+.main-nav .no-icon::after {
+    content: '' !important;
+}
+.main-nav .mobile-nav-toggle {
+    right: 0;
+    left: auto !important;
+}
+.kepler.main-nav .mobile-nav-toggle span {
+    background: #2f3132 !important;
+}
+.kepler.main-nav.mobile-open .mobile-nav-toggle.open {
+    height: 66px;
+    background-color: #1b1b1b80;
+}
+.kepler.main-nav.mobile-open .mobile-nav-toggle.open span {
+    background: #fff !important;
+}
+.kepler.main-nav .main-nav-items-ctn .mobile-back-btn {
+    min-height: 66px;
+}
+.main-nav a {
+    text-decoration: none;
+}
+body.noscroll .site-wrapper.dim:after {
+    opacity: 0.4;
+}
+.block {
+    display: block;
+}
+.overflow-y-auto {
+    overflow-y: auto;
+}
+.justify-left {
+    justify-content: left !important;
+}
+.flex {
+    display: flex;
+}
+.flex-col {
+    flex-direction: column;
+}
+.grid-cols-12 {
+    grid-template-columns: repeat(12,minmax(0,1fr));
+}
+.grid-cols-3 {
+    grid-template-columns: repeat(3,minmax(0,1fr));
+}
+.grid-cols-2 {
+    grid-template-columns: repeat(2,minmax(0,1fr));
+}
+.col-span-5 {
+    grid-column: span 5 / span 5;
+}
+.col-span-3 {
+    grid-column: span 3 / span 3;
+}
+.gap {
+    gap: 24px;
+}
+.gap-2 {
+    gap: 8px;
+}
+.gap-x-16 {
+    column-gap: 64px;
+}
+.gap-y-6 {
+    row-gap: 24px;
+}
+@media(max-width: 1024px) {
+    .kepler.main-nav .main-nav-item.locale-selector {
+        padding: 24px;
+    }
+    .kepler.main-nav .locale-selector-container {
+        align-items: center;
+        justify-content: center;
+    }
+    .kepler.main-nav .locale-selector-container .locale-selector {
+        padding-bottom: 0;
+        padding-top: 0;
+    }
+    .kepler.main-nav .nav-main-logo-anim {
+        margin-right: 0;
+    }
+    .support-link {
+        padding: 0 20px;
+    }
+    .support-link .support {
+        padding: 12px 0px;
+        display: block;
+        border-top: 1px solid #D7D7D7;
+        border-bottom: 1px solid #D7D7D7;
+        font-size: 13px;
+        font-weight: 700 !important;
+        color: #8F8F8F;
+        line-height: 1.5;
+    }
+    .kepler.main-nav {
+        height: 54px;
+    }
+    .kepler .utility-nav {
+        right: 46px !important;
+        align-items: center;
+    }
+    .kepler.main-nav .search-trigger {
+        background-color: transparent;
+        padding-right: 0;
+        margin-right: 0;
+    }
+    .kepler.main-nav .main-nav-item-trigger {
+        background-color: #fff;
+        text-transform: capitalize !important;
+        font-weight: 400 !important;
+        font-size: 16px !important;
+    }
+    .kepler.main-nav .lg\:hidden .main-nav-item-trigger {
+        background-color: #f4f4f4;
+    }
+    .my-account-trigger {
+        display: none !important;
+    }
+    .kepler.main-nav .main-nav-logo-container {
+        width: 32% !important;
+        left: 0;
+        transform: translateY(10px);
+        top: 0;
+    }
+    .kepler .utility-nav {
+        right: 46px !important;
+        align-items: center;
+    }
+    .main-nav-items-ctn.js-mobile-nav-ctn {
+        right: 0;
+        left: auto !important;
+    }
+    .brand-logos ul {
+        padding: 8px 20px 10px 20px !important;
+    }
+    .brand-logos ul li {
+        padding: 8px 12px 8px 0px;
+        border: none;
+    }
+    .brand-logos ul li a {
+        display: inline-block;
+    }
+    .kepler.main-nav .my-account-mobile {
+        border-top: 1px solid #D7D7D7;
+        padding: 20px;
+    }
+    .kepler.main-nav .my-account-mobile a {
+        justify-content: space-between;
+    }
+    .main-nav-item.locale-selector.lg\:hidden {
+        display: flex;
+    }
+    .mobile-sub-category .sub-category ul li {
+        padding: 16px 24px;
+        display: flex;
+        align-items: center;
+    }
+    .mobile-sub-category .sub-category ul li .nav-items-img {
+        display: block;
+    }
+    .mobile-sub-category .sub-category ul li a {
+        margin-left: 10px;
+    }
+    .mobile-sub-category .sub-category ul li.nav-image-items a {
+        color: #1B1B1B;
+    }
+    .mobile-sub-interest .interest .category-interest {
+        padding: 16px 24px;
+    }
+    .mobile-sub-interest .interest .category-interest p {
+        font-weight: 400;
+        color: #1B1B1B;
+        line-height: 20.8px;
+    }
+    .mobile-sub-interest .interest .category-interest .sub-category-interest li {
+        padding: 16px;
+        display: flex;
+        align-items: center;
+    }
+    .kepler.main-nav  ul.mobile-nav-page li:last-child.main-nav-item.locale-selector {
+        display: none;
+    }
+}
+@media(min-width: 1025px) {
+    .lg\:hidden {
+        display: none !important;
+    }
+    .lg\:block {
+        display: block !important;
+    }
+    .kepler .main-nav-items {
+        gap: 40px;
+        display: flex;
+    }
+    .kepler.main-nav .container {
+        max-width: 1568px;
+        padding-left: 64px;
+        padding-right: 64px;
+    }
+}
+img {
+    height: auto;
+    max-width: 100%;
+}
+.kepler.global-header {
+    height: auto;
+}
+.main-nav-item-trigger:hover, .main-nav-item-trigger.active {
+    border-bottom: 6px solid #00FDCF;
+    padding-bottom: 12px !important;
+    background-color: transparent !important;
+    color: #1B1B1B !important;
+}
+
+.grid-template-areas {
+    grid-template-areas: "A A A A A B B C D D D";
+}
+
+@keyframes play-logo-animation {
+   0% {
+      background-position: -1px -1px;
+   }
+
+   100% {
+      background-position: -1px -1261px;
+   }
+}
+        </style>
+
+		<div class="aem-content-ctn no-container">
+        	<div class="aem-padding-options " id="i1ad9255a088e8d76dc3dfedc1ac9ddd9-padding-options" data-aem-id="i1ad9255a088e8d76dc3dfedc1ac9ddd9-padding-options">
+            <!-- HTML -->
+<div class="js-search-icon-trigger"></div>
+<nav class="kepler main-nav cmp-accordion js-main-nav inited" data-cmp-is="accordion" id="main_nav-" aria-label="Primary" data-analytics-section="global-nav">
+   <div class="stickySentinelTop" style="position: relative; top: 0px; border: 1px solid rgb(242, 242, 242);"></div>
+   <div class="brand-logos hidden lg:block">
+      <div class="container">
+          <div class="content flex">
+         <ul class="flex">
+            <li>
+               <a href="/en-gb" aria-label="logitech" data-analytics-title="logitech">
+                  <img src="/content/dam/logitech/en/nav/brand-logos/logitech-black-1.svg" />
+               </a>
+            </li>
+            <li>
+               <a href="https://www.logitechg.com/en-gb/" target="_blank" aria-label="logitechG" data-analytics-title="logitechG">
+                  <img src="/content/dam/logitech/en/brand-logos/logig.svg" />
+                  <img src="/content/dam/logitech/en/brand-logos/logig-dark.svg" />
+               </a>
+            </li>
+            <li>
+               <a href="/en-gb/business.html/" aria-label="business" data-analytics-title="business">
+                  <img src="/content/dam/logitech/en/brand-logos/business.svg" />
+                  <img src="/content/dam/logitech/en/brand-logos/business-dark.svg" />
+               </a>
+            </li>
+            <li>
+               <a href="/en-gb/education.html/" aria-label="education" data-analytics-title="education">
+                  <img src="/content/dam/logitech/en/brand-logos/education.svg" />
+                  <img src="/content/dam/logitech/en/brand-logos/education-dark.svg" />
+               </a>
+            </li>
+         </ul>
+         <div class="flex support-locale-container">
+            <a href="https://support.logi.com/hc/en-gb" target="_blank" aria-label="Support" class="support-link" data-analytics-title="support">Support</a>
+            <div class="flex locale-selector-container">
+                <img src="/content/dam/logitech/en/brand-logos/world.svg" />
+                <a href="/en-gb/change-location.html" aria-label="Locale Selector" class="locale-selector" data-analytics-title="locale-selector - GB,en" data-sveltekit-reload="">GB,en</a>
+            </div>
+        </div>
+        </div>
+      </div>
+   </div>
+   <div class="navigation">
+      <div class="container">
+         <div class="flex">
+            <button class="mobile-nav-toggle js-mobile-nav-toggle" title="Toggle Primary Navigation" aria-label="Toggle Primary Navigation" tabindex="-1" aria-hidden="true" aria-expanded="false" aria-controls="main_nav-">
+               <span></span>
+               <span></span>
+               <span></span>
+            </button>
+            <a class="nav-main-logo-anim stopped" href="https://www.logitech.com/en-gb"></a>
+            <div class="main-nav-items-ctn js-mobile-nav-ctn">
+               <div class="main-nav-items-ctn-inner js-mobile-nav-horz-scroller">
+                  <ul class="main-nav-items mobile-nav-page mobile-vert-scroll js-main-nav-items js-mobile-page justify-left" data-mobile-nav-depth="0" role="tablist">
+                     <li class="main-nav-item js-main-nav-item" role="none">
+                        <a class="main-nav-item-trigger js-main-nav-item-trigger js-mobile-folder-trigger no-icon hidden lg:block" id="main-nav-item-1" role="button" data-analytics-title="shop" data-analytics-id="main-nav-item-1" aria-haspopup="true" aria-controls="main-nav-item-menu-1" aria-expanded="false" aria-selected="false" aria-label="shop" tabindex="0">
+                           shop
+                        </a>
+                        <p class="main-nav-item-trigger no-icon lg:hidden" id="main-nav-item-1" role="button" data-analytics-title="shop" data-analytics-id="main-nav-item-1" aria-haspopup="true" aria-controls="main-nav-item-menu-1" aria-expanded="false" aria-selected="false" aria-label="shop" tabindex="0">
+                           shop
+                        </p>
+                        <div class="nav-tabs mobile-nav-page js-main-subnav js-mobile-page cmp-accordion__item panel" role="menu" id="main-nav-item-menu-1" data-mobile-nav-depth="1" data-cmp-hook-accordion="item" data-title="shop" aria-labelledby="main-nav-item-1" data-panel-name="custom-panel-name-0">
+                           <div class="container" data-cmp-hook-accordion="panel">
+                              <div class="grid">
+                                 <button class="mobile-back-btn js-mobile-back-btn" disabled="" aria-label="Go Back">shop</button>
+                                 <button class="desktop-close-btn js-desktop-close-btn">
+                                     <svg width="18px" height="18px" viewBox="0 0 16 16"><path fill="currentColor" fill-rule="evenodd" d="m1.613.21.094.083L8 6.585 14.293.293a1 1 0 011.497 1.32l-.083.094L9.415 8l6.292 6.293a1 1 0 01-1.32 1.497l-.094-.083L8 9.415l-6.293 6.292a1 1 0 01-1.497-1.32l.083-.094L6.585 8 .293 1.707A1 1 0 011.613.21Z" clip-rule="evenodd"></path></svg>
+                                 </button>
+                                 <div class="max-width-padding gap grid-template-areas top-18 grid grid-cols-12 overflow-y-auto desktop-nav" style="max-height: calc(-42px + 80vh);">
+                                    <div style="grid-area: A">
+                                       <h5>Shop by category</h5>
+                                       <div class="grid gap-x-16 col-span-5 gap-y-6 grid-cols-3 nav-items-images">
+                                          <div>
+                                             <a href="/en-gb/shop/c/mice.html">
+                                                <div>
+                                                   <img src="https://resource.logitech.com/d_transparent.gif/content/dam/logitech/en/navigation/logi/logi-nav/logitech-navigation-mice-mx-master-4.png" alt="Mice" srcset="https://resource.logitech.com/d_transparent.gif/content/dam/logitech/en/navigation/logi/logi-nav/logitech-navigation-mice-mx-master-4.png, https://resource.logitech.com/d_transparent.gif/content/dam/logitech/en/navigation/logi/logi-nav/logitech-navigation-mice-mx-master-4.png 2x" loading="lazy" width="135" />
+                                                </div>
+                                                <span>Mice</span>
+                                             </a>
+                                          </div>
+                                          <div>
+                                             <a href="/en-gb/shop/c/keyboards.html">
+                                                <div>
+                                                   <img src="https://resource.logitech.com/d_transparent.gif/content/dam/logitech/en/navigation/logi/keyboards-2.png" alt="Keyboards" srcset="https://resource.logitech.com/d_transparent.gif/content/dam/logitech/en/navigation/logi/keyboards-2.png, https://resource.logitech.com/d_transparent.gif/content/dam/logitech/en/navigation/logi/keyboards-2.png 2x" loading="lazy" width="135" />
+                                                </div>
+                                                <span>Keyboards</span>
+                                             </a>
+                                          </div>
+                                          <div>
+                                             <a href="/en-gb/shop/c/combos.html">
+                                                <div>
+                                                   <img src="https://resource.logitech.com/d_transparent.gif/content/dam/logitech/en/navigation/logi/combos-2.png" alt="Combos" srcset="https://resource.logitech.com/d_transparent.gif/content/dam/logitech/en/navigation/logi/combos-2.png, https://resource.logitech.com/d_transparent.gif/content/dam/logitech/en/navigation/logi/combos-2.png 2x" loading="lazy" width="135" />
+                                                </div>
+                                                <span>Combos</span>
+                                             </a>
+                                          </div>
+                                          <div>
+                                             <a href="/en-gb/shop/c/headsets.html">
+                                                <div>
+                                                   <img src="https://resource.logitech.com/d_transparent.gif/content/dam/logitech/en/navigation/logi/headsets-earbuds-2.png" alt="Headsets & Earbuds" srcset="https://resource.logitech.com/d_transparent.gif/content/dam/logitech/en/navigation/logi/headsets-earbuds-2.png, https://resource.logitech.com/d_transparent.gif/content/dam/logitech/en/navigation/logi/headsets-earbuds-2.png 2x" loading="lazy" width="135" />
+                                                </div>
+                                                <span>Headsets & Earbuds</span>
+                                             </a>
+                                          </div>
+                                          <div>
+                                             <a href="/en-gb/shop/c/webcams.html">
+                                                <div>
+                                                   <img src="https://resource.logitech.com/d_transparent.gif/content/dam/logitech/en/navigation/logi/webcams-2.png" alt="Webcams" srcset="https://resource.logitech.com/d_transparent.gif/content/dam/logitech/en/navigation/logi/webcams-2.png, https://resource.logitech.com/d_transparent.gif/content/dam/logitech/en/navigation/logi/webcams-2.png 2x" loading="lazy" width="135" />
+                                                </div>
+                                                <span>Webcams</span>
+                                             </a>
+                                          </div>
+                                          <div>
+                                             <a href="/en-gb/shop/c/ipad-keyboards.html">
+                                                <div>
+                                                   <img src="https://resource.logitech.com/d_transparent.gif/content/dam/logitech/en/navigation/logi/logi-nav/logitech-navigation-ipad-pro-keyboard-cases-230-0.png" alt="iPad Keyboard Cases" srcset="https://resource.logitech.com/d_transparent.gif/content/dam/logitech/en/navigation/logi/logi-nav/logitech-navigation-ipad-pro-keyboard-cases-230-0.png, https://resource.logitech.com/d_transparent.gif/content/dam/logitech/en/navigation/logi/logi-nav/logitech-navigation-ipad-pro-keyboard-cases-230-0.png 2x" loading="lazy" width="135" />
+                                                </div>
+                                                <span>iPad Keyboard Cases</span>
+                                             </a>
+                                          </div>
+                                       </div>
+                                    </div>
+                                    <div class="nav-item-links nav-links" style="grid-area: B">
+                                       <ul>
+                                          <li>
+                                             <a href="/en-gb/shop/c/microphones.html">Microphones</a>
+                                          </li>
+                                          <li>
+                                             <a href="/en-gb/shop/c/speakers.html">Speakers</a>
+                                          </li>
+                                          <li>
+                                             <a href="/en-gb/shop/c/streaming.html">Streaming</a>
+                                          </li>
+                                          <li>
+                                             <a href="/en-gb/shop/c/driving.html">Racing</a>
+                                          </li>
+                                          <li>
+                                             <a href="/en-gb/shop/c/simulation.html">Simulation Gear</a>
+                                          </li>
+                                          <li>
+                                             <a href="/en-gb/shop/c/presenters-and-digital-pens.html">Presentation Remotes</a>
+                                          </li>
+                                          <li>
+                                             <a href="/en-gb/shop/c/gaming-mouse-pads.html">Mouse pads</a>
+                                          </li>
+                                          <li>
+                                             <a href="/en-gb/shop/c/accessories.html">Accessories</a>
+                                          </li>
+                                          <li>
+                                             <a href="/en-gb/shop/c/best-sellers.html">Best Sellers</a>
+                                          </li>
+                                       </ul>
+                                    </div>
+                                    <div class="divider" style="grid-area: C"></div>
+                                    <div class="shop-sub-category" style="grid-area: D">
+                                       <h5>Shop by interest</h5>
+                                       <div class="grid gap-x-16 col-span-3 gap-y-6 grid-cols-2 nav-items-images">
+                                          <div class="nav-item-links">
+                                            <div>
+                                               <img src="https://resource.logitech.com/d_transparent.gif/content/dam/logitech/en/navigation/logi/logi-nav/work-lifestyle-new.png" alt="Work" srcset="https://resource.logitech.com/d_transparent.gif/content/dam/logitech/en/navigation/logi/logi-nav/work-lifestyle-new.png, https://resource.logitech.com/d_transparent.gif/content/dam/logitech/en/navigation/logi/logi-nav/work-lifestyle-new.png 2x" loading="lazy" width="135">
+                                            </div>
+                                            <span>Work</span>
+                                             <ul>
+                                                <li><a href="/en-gb/discover/c/apple.html">Made for Apple</a> </li>
+                                                <li><a href="/en-gb/discover/c/master-series.html">MX Master Series</a> </li>
+                                                <li><a href="/en-gb/mx/mx-creatives.html">MX for Creatives</a> </li>
+                                                <li><a href="/en-gb/mx/mx-coders.html">MX for Coders</a> </li>
+                                                <li><a href="/en-gb/discover/c/ergo-series.html">Ergo Series</a> </li>
+                                                <li><a href="/en-gb/mobility/mobile-solutions.html">On The Go</a> </li>
+                                             </ul>
+                                          </div>
+                                          <div class="nav-item-links">
+                                            <div>
+                                               <img src="https://resource.logitech.com/d_transparent.gif/content/dam/logitech/en/navigation/logi/logi-nav/play-lifestyle-new1.png" alt="Play" srcset="https://resource.logitech.com/d_transparent.gif/content/dam/logitech/en/navigation/logi/logi-nav/play-lifestyle-new1.png, https://resource.logitech.com/d_transparent.gif/content/dam/logitech/en/navigation/logi/logi-nav/play-lifestyle-new1.png 2x" loading="lazy" width="138">
+                                            </div>
+                                            <span>Play</span>
+                                             <ul>
+                                                <li><a href="/en-gb/shop/c/gaming-mice.html">Gaming Mice</a> </li>
+                                                <li><a href="/en-gb/shop/c/gaming-keyboards.html">Gaming Keyboards</a> </li>
+                                                <li><a href="/en-gb/shop/c/gaming-audio.html">Gaming Audio</a> </li>
+                                                <li><a href="/en-gb/discover/c/ultimate-ears.html">Ultimate Ears Speakers</a> </li>
+                                             </ul>
+                                          </div>
+                                       </div>
+                                    </div>
+                                 </div>
+                              </div>
+                           </div>
+                        </div>
+                     </li>
+                     <li class="main-nav-item js-main-nav-item mobile-sub-category lg:hidden" role="none">
+                        <a class="main-nav-item-trigger js-main-nav-item-trigger js-mobile-folder-trigger" id="main-nav-item-2" role="button" data-analytics-title="discover" data-analytics-id="main-nav-item-2" aria-haspopup="true" aria-controls="main-nav-item-menu-2" aria-expanded="false" aria-selected="false" aria-label="Categories" tabindex="0">
+                        Categories
+                        </a>
+                        <div class="nav-tabs mobile-nav-page js-main-subnav js-mobile-page cmp-accordion__item panel" id="main-nav-item-menu-2" data-mobile-nav-depth="1" data-cmp-hook-accordion="item" data-title="Categories" aria-labelledby="main-nav-item-2" data-panel-name="custom-panel-name-1" style="display: none;">
+                           <div class="container" data-cmp-hook-accordion="panel">
+                              <div class="grid">
+                                 <button class="mobile-back-btn js-mobile-back-btn" aria-label="Go Back">Categories</button>
+                                 <button class="desktop-close-btn js-desktop-close-btn" disabled=""><span>Close</span></button>
+                                 <ul id="nav-tabs-197dca1b10" data-num-tabs="1" data-cmp-is="tabs" class="cmp-tabs nav-tabs-list mobile-vert-scroll js-nav-tabs-list sub-category">
+                                    <li class="nav-tab js-nav-tab cmp-tabs__tab active" data-cmp-hook-tabs="tab" role="none">
+                                       <ul>
+                                          <li class="nav-image-items">
+                                             <img class="nav-items-img" src="https://resource.logitech.com/d_transparent.gif/content/dam/logitech/en/navigation/logi/logi-nav/logitech-navigation-mice-mx-master-4.png" srcset="https://resource.logitech.com/d_transparent.gif/content/dam/logitech/en/navigation/logi/logi-nav/logitech-navigation-mice-mx-master-4.png 2x, https://resource.logitech.com/d_transparent.gif/content/dam/logitech/en/navigation/logi/logi-nav/logitech-navigation-mice-mx-master-4.png 1x" alt="Mice" width="40" />
+                                             <a href="/en-gb/shop/c/mice.html" aria-label="Mice" target="_self" data-analytics-title="Mice" role="none">
+                                                Mice
+                                             </a>
+                                          </li>
+                                          <li class="nav-image-items">
+                                             <img class="nav-items-img" src="https://resource.logitech.com/d_transparent.gif/content/dam/logitech/en/navigation/logi/keyboards-2.png" srcset="https://resource.logitech.com/d_transparent.gif/content/dam/logitech/en/navigation/logi/keyboards-2.png 2x, https://resource.logitech.com/d_transparent.gif/content/dam/logitech/en/navigation/logi/keyboards-2.png 1x" alt="Keyboards" width="40" />
+                                             <a href="/en-gb/shop/c/keyboards.html" aria-label="Keyboards" target="_self" data-analytics-title="Keyboards" role="none">
+                                                Keyboards
+                                             </a>
+                                          </li>
+                                          <li class="nav-image-items">
+                                             <img class="nav-items-img" src="https://resource.logitech.com/d_transparent.gif/content/dam/logitech/en/navigation/logi/combos-2.png" srcset="https://resource.logitech.com/d_transparent.gif/content/dam/logitech/en/navigation/logi/combos-2.png 2x, https://resource.logitech.com/d_transparent.gif/content/dam/logitech/en/navigation/logi/combos-2.png 1x" alt="Combos" width="40" />
+                                             <a href="/en-gb/shop/c/combos.html" aria-label="Combos" target="_self" data-analytics-title="Combos" role="none">
+                                                Combos
+                                             </a>
+                                          </li>
+                                          <li class="nav-image-items">
+                                             <img class="nav-items-img" src="https://resource.logitech.com/d_transparent.gif/content/dam/logitech/en/navigation/logi/headsets-earbuds-2.png" srcset="https://resource.logitech.com/d_transparent.gif/content/dam/logitech/en/navigation/logi/headsets-earbuds-2.png 2x, https://resource.logitech.com/d_transparent.gif/content/dam/logitech/en/navigation/logi/headsets-earbuds-2.png 1x" alt="Headsets & Earbuds" width="40" />
+                                             <a href="/en-gb/shop/c/headsets.html" aria-label="Headsets & Earbuds" target="_self" data-analytics-title="Headsets & Earbuds" role="none">
+                                                Headsets & Earbuds
+                                             </a>
+                                          </li>
+                                          <li class="nav-image-items">
+                                             <img class="nav-items-img" src="https://resource.logitech.com/d_transparent.gif/content/dam/logitech/en/navigation/logi/webcams-2.png" srcset="https://resource.logitech.com/d_transparent.gif/content/dam/logitech/en/navigation/logi/webcams-2.png 2x, https://resource.logitech.com/d_transparent.gif/content/dam/logitech/en/navigation/logi/webcams-2.png 1x" alt="Webcams" width="40" />
+                                             <a href="/en-gb/shop/c/webcams.html" aria-label="Webcams" target="_self" data-analytics-title="Webcams" role="none">
+                                                Webcams
+                                             </a>
+                                          </li>
+                                          <li class="nav-image-items">
+                                             <img class="nav-items-img" src="https://resource.logitech.com/d_transparent.gif/content/dam/logitech/en/navigation/logi/logi-nav/logitech-navigation-ipad-pro-keyboard-cases-230-0.png" srcset="https://resource.logitech.com/d_transparent.gif/content/dam/logitech/en/navigation/logi/logi-nav/logitech-navigation-ipad-pro-keyboard-cases-230-0.png 2x, https://resource.logitech.com/d_transparent.gif/content/dam/logitech/en/navigation/logi/logi-nav/logitech-navigation-ipad-pro-keyboard-cases-230-0.png 1x" alt="iPad Keyboard Cases" width="40" />
+                                             <a href="/en-gb/shop/c/ipad-keyboards.html" aria-label="iPad Keyboard Cases" target="_self" data-analytics-title="iPad Keyboard Cases" role="none">
+                                                iPad Keyboard Cases
+                                             </a>
+                                          </li>
+                                          <li>
+                                             <a href="/en-gb/shop/c/microphones.html" aria-label="Microphones" target="_self" data-analytics-title="Microphones" role="none">
+                                                Microphones
+                                             </a>
+                                          </li>
+                                          <li>
+                                             <a href="/en-gb/shop/c/speakers.html" aria-label="Speakers" target="_self" data-analytics-title="Speakers" role="none">
+                                                Speakers
+                                             </a>
+                                          </li>
+                                          <li>
+                                             <a href="/en-gb/shop/c/streaming.html" aria-label="Streaming" target="_self" data-analytics-title="Streaming" role="none">
+                                                Streaming
+                                             </a>
+                                          </li>
+                                          <li>
+                                             <a href="/en-gb/shop/c/driving.html" aria-label="Racing" target="_self" data-analytics-title="Racing" role="none">
+                                                Racing
+                                             </a>
+                                          </li>
+                                          <li>
+                                             <a href="/en-gb/shop/c/simulation.html" aria-label="Simulation Gear" target="_self" data-analytics-title="Simulation Gear" role="none">
+                                                Simulation Gear
+                                             </a>
+                                          </li>
+                                          <li>
+                                             <a href="/en-gb/shop/c/presenters-and-digital-pens.html" aria-label="Presentation Remotes" target="_self" data-analytics-title="Presentation Remotes" role="none">
+                                                Presentation Remotes
+                                             </a>
+                                          </li>
+                                          <li>
+                                             <a href="/en-gb/shop/c/gaming-mouse-pads.html" aria-label="Mouse pads" target="_self" data-analytics-title="Mouse pads" role="none">
+                                                Mouse pads
+                                             </a>
+                                          </li>
+                                          <li>
+                                             <a href="/en-gb/shop/c/accessories.html" aria-label="Accessories" target="_self" data-analytics-title="Accessories" role="none">
+                                                Accessories
+                                             </a>
+                                          </li>
+                                           <li>
+                                             <a href="/en-gb/shop/c/best-sellers.html" aria-label="Best Sellers" target="_self" data-analytics-title="Best Sellers" role="none">
+                                                Best Sellers
+                                             </a>
+                                          </li>
+                                       </ul>
+                                    </li>
+                                 </ul>
+                              </div>
+                           </div>
+                        </div>
+                     </li>
+                     <li class="main-nav-item js-main-nav-item mobile-sub-interest lg:hidden" role="none">
+                        <a class="main-nav-item-trigger js-main-nav-item-trigger js-mobile-folder-trigger" id="main-nav-item-4" role="button" data-analytics-title="support" data-analytics-id="main-nav-item-4" aria-haspopup="true" aria-controls="main-nav-item-menu-4" aria-expanded="false" aria-selected="false" aria-label="Support" tabindex="0">
+                        Interest
+                        </a>
+                        <div class="nav-tabs mobile-nav-page js-main-subnav js-mobile-page cmp-accordion__item panel" id="main-nav-item-menu-2" data-mobile-nav-depth="1" data-cmp-hook-accordion="item" data-title="Categories" aria-labelledby="main-nav-item-2" data-panel-name="custom-panel-name-1" style="display: none;">
+                           <div class="container" data-cmp-hook-accordion="panel">
+                              <div class="grid">
+                                 <button class="mobile-back-btn js-mobile-back-btn" aria-label="Go Back">Interest</button>
+                                 <button class="desktop-close-btn js-desktop-close-btn" disabled=""><span>Close</span></button>
+                                 <ul id="nav-tabs-197dca1b10" data-num-tabs="1" data-cmp-is="tabs" class="cmp-tabs nav-tabs-list mobile-vert-scroll js-nav-tabs-list interest">
+                                    <li class="nav-tab js-nav-tab cmp-tabs__tab active" data-cmp-hook-tabs="tab" role="none">
+                                       <ul>
+                                          <li class="category-interest">
+                                             <p>Work</p>
+                                             <ul class="sub-category-interest">
+                                                <li>
+                                                   <a href="/en-gb/discover/c/apple.html" aria-label="Made for Apple" data-analytics-title="Made for Apple">
+                                                      Made for Apple
+                                                   </a>
+                                                </li>
+                                                <li>
+                                                   <a href="/en-gb/discover/c/master-series.html" aria-label="MX Master Series" data-analytics-title="MX Master Series">
+                                                      MX Master Series
+                                                   </a>
+                                                </li>
+                                                <li>
+                                                   <a href="/en-gb/mx/mx-creatives.html" aria-label="MX for Creatives" data-analytics-title="MX for Creatives">
+                                                      MX for Creatives
+                                                   </a>
+                                                </li>
+                                                <li>
+                                                   <a href="/en-gb/mx/mx-coders.html" aria-label="MX for Coders" data-analytics-title="MX for Coders">
+                                                      MX for Coders
+                                                   </a>
+                                                </li>
+                                                <li>
+                                                   <a href="/en-gb/discover/c/ergo-series.html" aria-label="Ergo Series" data-analytics-title="Ergo Series">
+                                                      Ergo Series
+                                                   </a>
+                                                </li>
+                                                <li>
+                                                   <a href="/en-gb/mobility/mobile-solutions.html" aria-label="On The Go" data-analytics-title="On The Go">
+                                                      On The Go
+                                                   </a>
+                                                </li>
+                                             </ul>
+                                          </li>
+                                          <li class="category-interest">
+                                             <p>Play</p>
+                                             <ul class="sub-category-interest">
+                                                <li>
+                                                   <a href="/en-gb/shop/c/gaming-mice.html" aria-label="Gaming Mice" data-analytics-title="Gaming Mice">
+                                                      Gaming Mice
+                                                   </a>
+                                                </li>
+                                                <li>
+                                                   <a href="/en-gb/shop/c/gaming-keyboards.html" aria-label="Gaming Keyboards" data-analytics-title="Gaming Keyboards">
+                                                      Gaming Keyboards
+                                                   </a>
+                                                </li>
+                                                <li>
+                                                   <a href="/en-gb/shop/c/gaming-audio.html" aria-label="Gaming Audio" data-analytics-title="Gaming Audio">
+                                                      Gaming Audio
+                                                   </a>
+                                                </li>
+                                                <li>
+                                                   <a href="/en-gb/discover/c/ultimate-ears.html" aria-label="Ultimate Ears Speakers" data-analytics-title="Ultimate Ears Speakers">
+                                                      Ultimate Ears Speakers
+                                                   </a>
+                                                </li>
+                                             </ul>
+                                          </li>
+                                       </ul>
+                                    </li>
+                                 </ul>
+                              </div>
+                           </div>
+                        </div>
+                     </li>
+                     <li class="main-nav-item" role="none">
+                        <a class="main-nav-item-trigger js-main-nav-item-trigger js-mobile-folder-trigger no-icon" id="main-nav-item-1" role="button" data-analytics-title="Planet" data-analytics-id="main-nav-item-1" aria-haspopup="true" aria-controls="main-nav-item-menu-1" aria-expanded="false" aria-selected="false" aria-label="Planet" href="https://www.logitech.com/en-gb/planet-and-people/everything-matters" tabindex="0">
+                           Planet
+                        </a>
+                     </li>
+                     <li class="main-nav-item" role="none">
+                        <a class="main-nav-item-trigger js-main-nav-item-trigger js-mobile-folder-trigger no-icon" id="main-nav-item-1" role="button" data-analytics-title="Software" data-analytics-id="main-nav-item-1" aria-haspopup="true" aria-controls="main-nav-item-menu-1" aria-expanded="false" aria-selected="false" aria-label="Software" href="https://www.logitech.com/en-gb/software" tabindex="0">
+                           Software
+                        </a>
+                     </li>
+                     <li class="main-nav-item" role="none">
+                        <a class="main-nav-item-trigger js-main-nav-item-trigger js-mobile-folder-trigger no-icon" id="main-nav-item-1" role="button" data-analytics-title="Deals" data-analytics-id="main-nav-item-1" aria-haspopup="true" aria-controls="main-nav-item-menu-1" aria-expanded="false" aria-selected="false" aria-label="Deals" href="https://www.logitech.com/en-gb/shop/deals" tabindex="0">
+                           Deals
+                        </a>
+                     </li>
+                     <li class="brand-logos lg:hidden">
+                        <ul class="flex gap-2 flex-col">
+                           <li>
+                              <a href="/en-gb" aria-label="logitech" data-analytics-title="logitech">
+                                 <img src="/content/dam/logitech/en/nav/brand-logos/logitech-black-1.svg" />
+                              </a>
+                           </li>
+                           <li>
+                              <a href="https://www.logitechg.com/en-gb/" target="_blank" aria-label="logitechG" data-analytics-title="logitechG">
+                                 <img src="/content/dam/logitech/en/brand-logos/logig.svg" />
+                              </a>
+                           </li>
+                           <li>
+                              <a href="/en-gb/business.html" aria-label="business" data-analytics-title="business">
+                                 <img src="/content/dam/logitech/en/brand-logos/business.svg" />
+                              </a>
+                           </li>
+                           <li>
+                              <a href="/en-gb/education.html" aria-label="education" data-analytics-title="education">
+                                 <img src="/content/dam/logitech/en/brand-logos/education.svg" />
+                              </a>
+                           </li>
+                        </ul>
+                     </li>
+                     <li class="support-link lg:hidden">
+                        <a class="support" href="https://support.logi.com/hc/en-gb" data-analytics-title="support" target="_blank" aria-label="https://support.logi.com/hc/en-gb">
+                           Support
+                        </a>
+                     </li>
+                     <li class="main-nav-item locale-selector lg:hidden">
+                        <div class="flex locale-selector-container">
+                            <img src="/content/dam/logitech/en/brand-logos/world.svg" />
+                            <a href="https://logitech.com/en-gb/change-location.html" target="_blank" aria-label="Locale Selector - CA,en" class="locale-selector" data-analytics-title="locale-selector" data-sveltekit-reload="">CA,en</a>
+                        </div>
+                     </li>
+                     <li class="my-account-mobile lg:hidden">
+                        <a href="https://www.logitech.com/en-gb/my-account.html" class="flex">
+                           <span>My Account</span> 
+                           <svg width="0.95em" height="1em" viewBox="0 0 17 18">
+                              <g fill="none" stroke="currentColor" stroke-linejoin="round" stroke-width="2">
+                                 <path d="M11.266 4.625a3.125 3.125 0 10-6.25 0 3.125 3.125 0 006.25 0Z" clip-rule="evenodd"></path>
+                                 <path d="M15.016 17.75c0-3.452-3.079-6.25-6.875-6.25-3.797 0-6.875 2.798-6.875 6.25"></path>
+                              </g>
+                           </svg>
+                        </a>
+                     </li>
+                  </ul>
+               </div>
+            </div>
+            <div class="utility-nav js-main-nav-util-bar">
+               <button class="search-trigger js-search-trigger" data-analytics-title="Search" aria-expanded="false" aria-label="Search">Search</button>
+               <a href="https://www.logitech.com/en-gb/my-account.html" class="my-account-trigger js-my-account-trigger" data-analytics-title="My Account" aria-label="My Account">My Account</a>
+               <a aria-label="Shopping Cart" class="pangea-cmp nav-cart cart-icon js-cart-icon" data-analytics-title="shopping-cart" href="https://www.logitech.com/en-gb/cart" target="_self">
+                  <span class="icon"></span>
+                  <span class="quantity"></span>
+               </a>
+            </div>
+         </div>
+      </div>
+   </div>
+   <form action="/en-gb/search.html" method="get" class="search-form js-search-form" aria-hidden="true" role="search" data-autocomplete-api="https://www.logitech.com/utilities/search/search.cfm?s=l&amp;f=x&amp;m=10&amp;st=1&amp;type=sayt2&amp;q=" __bizdiag="113" __biza="WJ__">
+      <div class="container">
+         <input type="text" class="search-input" id="searchInput" name="q" placeholder="Search" tabindex="-1" aria-label="Search input" autocomplete="off" autocapitalize="none" role="combobox" aria-expanded="false" aria-haspopup="listbox" aria-controls="autocomplete-item-list" aria-activedescendant="autocomplete-item-list">
+         <div class="typeahead-ctn js-typeahead-ctn"></div>
+         <button type="submit" class="search-submit js-search-submit" tabindex="-1">SUBMIT</button>
+         <button class="close-search js-close-search-btn" aria-label="Cancel Search" tabindex="-1"></button>
+      </div>
+   </form>
+   <div class="main-nav-stickiness-trigger js-main-nav-stickiness-trigger"></div>
+</nav>
+            
+
+
+    
+    
+    
+    
+
+            </div>
+        </div>
+
+        <script>
+            // JavaScript
+$(document).ready(function() {
+    $('.main-nav-items .js-main-nav-item:first-child').hover(function() {
+        $('body').removeClass('noscroll');
+    })
+    $(window).scroll(function(e) {
+        $('.main-nav-items .js-main-nav-item:first-child').removeClass('open');
+        $('.main-nav-items .js-main-nav-item:first-child .js-main-nav-item-trigger').removeClass('open');
+    })
+    $('.kepler.main-nav .nav-cart').click(function(e) {
+        window.location.href = $(this).attr('href');
+    })
+    $('.js-mobile-nav-toggle').click(function() {
+        $('.site-wrapper').css('left', '0px');
+        setTimeout(function() {
+            $('.site-wrapper.dim').css('left', '-'+$('.js-mobile-nav-ctn').css('width'));
+        }, 10)
+    })
+    
+    $('.nav-main-logo-anim').hover(function() {
+        $(this).removeClass('stopped');
+        $(this).addClass('play');
+    }, function() {
+        $(this).removeClass('play');
+        $(this).addClass('stopped');
+    })
+})
+
+        </script>
+    </div>
+
+    
+    
+
+
+
+    
+</div>
+
+     
+	<!-- This is to include and override prime nav using page properties XF path - Ends -->
+
+     <!-- This is to include and override secondary Navigation using page properties XF path - Starts -->
+      
+  	<!-- This is to include and override secondary Navigation using page properties XF path - Ends -->
+  </header>
+  <main id="maincontent" class="site-content">
+     <!-- This is to include HTML Hack using page properties XF path - Starts -->
+  	 <div class="xfpage page basicpage">
+
+    
+
+
+
+         
+
+
+
+
+
+
+    
+    
+    
+
+
+
+
+
+
+
+
+	
+    <div id="i6c303b2750c62d77d90296e1ab3a4e57" data-aem-id="i6c303b2750c62d77d90296e1ab3a4e57" class="aem-margin-options ">
+        
+		
+	
+
+	
+
+
+		
+        <style>
+            /* CSS */
+
+/* No ticket. Found during release. PLP is missing CSS/JS for notify me */
+.notify-me-modal:not(.pangea-inited) {
+    display: none;
+}
+
+
+/* @TODO: CODE TO BE REMOVED WHEN NEW KEPLER SEC NAV IS DEPLOYED*/
+/* https://jira.logitech.com/browse/LOGIWEB-2145 */
+/*@media (min-width: 1025px) {*/
+/*    .secondary-nav-container.theme-light .component-secondary-nav.fixed-nav a.btn-compact-dark {*/
+/*        color: white !important;*/
+/*    }*/
+/*    .secondary-nav-container.theme-light .component-secondary-nav.fixed-nav a.btn-compact-dark :hover {*/
+/*        color: #2f3132 !important;*/
+/*    }*/
+/*    .secondary-nav-container.theme-light .component-secondary-nav.fixed-nav a:not(.navBtn):not(.btn-compact-dark):not(.btn-compact):not(.cta) {*/
+/*        color: #2f3132;*/
+/*    }*/
+/*}*/
+
+
+
+/* @TODO: CODE TO BE REMOVED WHEN NEW KEPLER SEC NAV IS DEPLOYED*/
+/* Semi-permanent fix. No code-fix planned until the secondary nav gets re-built.
+This is to force buttons in the secondary nav to have a black background and white text
+when the secnav is in its sticky state. This allows the author to style the button
+however they like for when it's at the top of the screen without worrying about what
+happens when the secnav background becomes opaque.
+https://jira.logitech.com/browse/LOGIWEB-2654
+*/
+/*.secondary-nav-container .fixed-nav .pangea-cmp.ctas-ctn .cta {*/
+/*    background-color: black;*/
+/*    color: white;*/
+/*}*/
+/*.secondary-nav-container .fixed-nav .pangea-cmp.ctas-ctn .cta:hover {*/
+/*    background-color: transparent;*/
+/*    color: black;*/
+/*}*/
+/*.secondary-nav-container .fixed-nav .pangea-cmp.ctas-ctn .cta:hover:before {*/
+/*    border-color: black;*/
+/*}*/
+
+
+/* @TODO: CODE TO BE REMOVED WHEN NEW KEPLER SEC NAV IS DEPLOYED*/
+
+/*@media (max-width: 1024px) {*/
+/*    .component-secondary-nav ul {*/
+/*        top: 50px;*/
+/*    }*/
+    
+/*    .secondary-nav-container .pangea-cmp.ctas-ctn .cta {*/
+/*        background-color: black !important;*/
+/*        color: white !important;*/
+/*    }*/
+/*    .secondary-nav-container .pangea-cmp.ctas-ctn .cta:hover {*/
+/*        background-color: transparent !important;*/
+/*        color: black !important;*/
+/*    }*/
+/*    .secondary-nav-container .pangea-cmp.ctas-ctn .cta:hover:before {*/
+/*        content: "";*/
+/*        position: absolute;*/
+/*        left: 0;*/
+/*        top: 0;*/
+/*        right: 0;*/
+/*        bottom: 0;*/
+/*        border: 2px solid black !important;*/
+/*        pointer-events: none;*/
+/*    }*/
+/*}*/
+
+/*
+https://jira.logitech.com/browse/LOGIB2B-1264
+Kepler search not working in Safari
+*/
+/*@media(min-width: 1025px) {
+    .kepler .search-form .search-submit {
+        display: block;
+		visibility: hidden;
+		width: 0px;
+		padding: 0;
+    }
+
+	html[data-whatinput="keyboard"] .kepler .search-form .search-submit {
+		visibility: visible;
+		width: auto;
+		padding: 0 20px;
+	}
+}*/
+
+
+/* @TODO: CODE TO BE REMOVED WHEN NEW KEPLER SEC NAV IS DEPLOYED*/
+/* https://jira.logitech.com/browse/LOGIWEB-4785 
+breadcrumbs not clickable
+*/
+/*.component-secondary-nav {*/
+/*    pointer-events: none; */
+/*}*/
+/*.component-secondary-nav a,*/
+/*.component-secondary-nav button {*/
+/*    pointer-events: all; */
+/*}*/
+
+body {
+    font-weight : 300 !important;
+}
+
+
+/*fixes clear filter button x */
+.pangea-cmp .plp-current-filters button .filter-close:after {
+	line-height: 18px !important;
+	font-size: 7px !important;
+	font-weight: var(--p-font-weight-extra-bold) !important;
+}
+
+/*fixes funny rendered color filters*/
+.plp .filters [data-filter-id=colors] .option .swatch.selected:after {
+    box-sizing: border-box;
+}
+/*home page recomended products fix*/
+/* https://jira.logitech.com/browse/LOGIWEB-5582 */
+.pangea-cmp.recommended-products a{
+    color: inherit;
+}
+.pangea-cmp.recommended-products a:hover{
+    color: inherit;
+}
+
+/* https://jira.logitech.com/browse/NSTAR-5517 */
+/* Price display overrides for search results in non-commerce locales */
+/*:lang(el-GR) > .pangea-search-results .product-price, 
+:lang(ru-RU) > .pangea-search-results .product-price, 
+:lang(tr-TR) > .pangea-search-results .product-price, 
+:lang(pt-BR) > .pangea-search-results .product-price, 
+:lang(es-AR) > .pangea-search-results .product-price, 
+:lang(es-ROAM) > .pangea-search-results .product-price, 
+:lang(en-ZA) > .pangea-search-results .product-price, 
+:lang(en-QA) > .pangea-search-results .product-price, 
+:lang(en-KW) > .pangea-search-results .product-price, 
+:lang(en-SA) > .pangea-search-results .product-price, 
+:lang(en-AE) > .pangea-search-results .product-price, 
+:lang(en-PH) > .pangea-search-results .product-price, 
+:lang(en-HK) > .pangea-search-results .product-price, 
+:lang(zh-HK) > .pangea-search-results .product-price, 
+:lang(zh-TW) > .pangea-search-results .product-price, 
+:lang(ko-KR) > .pangea-search-results .product-price, 
+:lang(en-IN) > .pangea-search-results .product-price, 
+:lang(zh-CN) > .pangea-search-results .product-price, 
+:lang(en-IE) > .pangea-search-results .product-price, 
+:lang(th-TH) > .pangea-search-results .product-price, 
+:lang(en-AE) > .pangea-search-results .product-price,
+:lang(en-MY) > .pangea-search-results .product-price, 
+:lang(en-SG) > .pangea-search-results .product-price, 
+:lang(id-ID) > .pangea-search-results .product-price, 
+:lang(vi-VN) > .pangea-search-results .product-price{
+    display: none !important;
+}
+
+/* https://jira.logitech.com/browse/LOGIWEB-6017 */
+/* Price display overrides for comparison chart in non-commerce locales */
+/*:lang(el-GR) > .compare-chart .product-price, 
+:lang(ru-RU) > .compare-chart .product-price, 
+:lang(tr-TR) > .compare-chart .product-price, 
+:lang(pt-BR) > .compare-chart .product-price, 
+:lang(es-AR) > .compare-chart .product-price, 
+:lang(es-ROAM) > .compare-chart .product-price, 
+:lang(en-ZA) > .compare-chart .product-price, 
+:lang(en-QA) > .compare-chart .product-price, 
+:lang(en-KW) > .compare-chart .product-price, 
+:lang(en-SA) > .compare-chart .product-price, 
+:lang(en-AE) > .compare-chart .product-price, 
+:lang(en-PH) > .compare-chart .product-price, 
+:lang(en-HK) > .compare-chart .product-price, 
+:lang(zh-HK) > .compare-chart .product-price, 
+:lang(zh-TW) > .compare-chart .product-price, 
+:lang(ko-KR) > .compare-chart .product-price, 
+:lang(en-IN) > .compare-chart .product-price, 
+:lang(zh-CN) > .compare-chart .product-price, 
+:lang(en-IE) > .compare-chart .product-price, 
+:lang(th-TH) > .compare-chart .product-price,
+:lang(en-AE) > .compare-chart .product-price,
+:lang(en-MY) > .compare-chart .product-price, 
+:lang(en-SG) > .compare-chart .product-price, 
+:lang(id-ID) > .compare-chart .product-price,
+:lang(vi-VN) > .compare-chart .product-price{
+    display: none !important;
+}*/
+
+
+/* Hide prices on pages. Uses JS hack */
+/*body.hide-prices .price-atc-ctn {
+    display: none !important;
+}*/
+
+/* Avoid long URLs pushing over the next column in Tech Specs */
+/* Remove when LOGIB2B-1813 is complete */
+ul.tech-specs ul.specs-description-list,
+ul.tech-specs ul.dotted {
+    overflow-wrap: anywhere;
+}
+
+/* https://jira.logitech.com/browse/LOGIWEB-6564 */
+.pangea-grid-layout .layout-item {
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: var(--halign);
+}
+
+        </style>
+		<div class="aem-content-ctn ">
+        	<div class="aem-padding-options " data-aem-id="i6c303b2750c62d77d90296e1ab3a4e57-padding-options">
+            <!-- HTML -->
+<div class="author-instructions">Pangea temporary hotfixes here</div>
+
+            
+
+
+    
+    
+    
+    
+
+            </div>
+        </div>
+
+        <script>
+            // JavaScript
+(function() {
+    function init() {
+
+
+        // To make legacy nav change theme when banner carousel changes
+        // no ticket
+        // can be removed once Kepler is released and goes live across the board
+//         const legacyNav = document.querySelector('.primary-nav-container');
+// 		const secondaryNav = document.querySelector('.secondary-nav-container');
+// 		if (legacyNav) {
+// 			window.addEventListener('window-update-nav-theme', (e) => {
+// 				const themeDesktop = e.detail.desktop === 'theme-light' ? 'theme-dark' : 'theme-light';
+// 				const themeTablet = e.detail.tablet === 'theme-light' ? 'theme-dark' : 'theme-light';
+// 				const themeMobile = e.detail.mobile === 'theme-light' ? 'theme-dark' : 'theme-light';
+
+// 				legacyNav.setAttribute('data-theme-desktop', themeDesktop);
+// 				legacyNav.setAttribute('data-theme-tablet', themeTablet);
+// 				legacyNav.setAttribute('data-theme-mobile', themeMobile);
+
+// 				if (secondaryNav) {
+// 					secondaryNav.setAttribute('data-theme-desktop', themeDesktop);
+// 					secondaryNav.setAttribute('data-theme-tablet', themeTablet);
+// 					secondaryNav.setAttribute('data-theme-mobile', themeMobile);
+// 				}
+// 			});
+// 		}
+        // Fall for Empty Target addons
+        const addons = document.querySelector('.js-pangea-target-addons');
+        if(addons) {
+            addons.querySelector('.addons-addon') ?  null : addons.innerHTML = '';
+        }
+        
+        // On the Room Configurator page, adjust the z-index of the maincontent element to fix an issue
+        const roomConfigHeader = document.querySelector('.js-room-configurator-header');
+        if (roomConfigHeader) {
+            const mainContent = document.getElementById('maincontent');
+            if (mainContent) {
+                mainContent.style.position = 'relative';
+                mainContent.style.zIndex = '2';
+            }
+        }
+    }
+ 
+    // Wait until DOM is ready
+    function waitUntilReady(callback) {
+        if(document.readyState != 'loading') {
+            callback.call(this);
+        } else {
+            document.addEventListener('DOMContentLoaded', callback.bind(this));
+        }
+    }
+ 
+    waitUntilReady(init);
+})();
+
+
+        </script>
+    </div>
+
+    
+    
+
+
+
+    
+</div>
+
+     <!-- This is to include HTML Hack using page properties XF path - Ends -->
+
+     <!--        content start -->
+     
+
+
+    
+    
+    
+
+
+    
+    
+    
+
+
+
+     
+		
+			
+			<div class="xfpage page basicpage">
+
+    
+
+
+
+         
+
+
+
+
+
+
+    
+    
+    
+
+
+
+
+
+
+   
+   
+   
+   
+   <div class="section-container-wrapper">
+   <div class="pangea-cmp section-container js-pangea-section-container aem-margin-options 
+       dbgsize-cover tbgsize-cover mbgsize-cover dbgpos-center tbgpos-center mbgpos-center " data-aem-id="section-i0e13cdd6f05530a0b5c657a5d65dd6fe">
+
+      
+
+      
+      
+      
+
+ 
+	
+
+      
+		
+	
+
+	
+
+
+		
+      <div class="content-ctn aem-content-ctn container">
+      	<div class="aem-padding-options dptxl tptxl mptxl" data-aem-id="section-i0e13cdd6f05530a0b5c657a5d65dd6fe-padding-options">
+	        <!-- /* Checking for the hideTitle */ -->
+	        
+	
+
+	        <!-- /* Checking for hideTitle ends */ -->
+	         
+
+
+    
+    
+    
+
+
+
+
+
+
+
+<div class="pangea-cmp body-copy js-pangea-body-copy aem-margin-options  font-size-normal font-brown-light dc-kohle tc-kohle mc-kohle" data-aem-id="text_editable_copy_c-i6ce0d0186584737867d999cbc99c73a6" data-align-desktop="left" data-align-tablet="left" data-align-mobile="left" data-body-size="font-size-normal">
+
+	
+	
+	
+
+	
+
+
+	
+
+	
+    
+
+
+
+	
+
+	<div class="aem-content-ctn no-container ">
+		<div class="aem-padding-options dpbm tpbm mpbm" data-aem-id="text_editable_copy_c-i6ce0d0186584737867d999cbc99c73a6-padding-options">
+			<div class="content-ctn rte-field text-width-normal">
+				
+				
+				
+			</div>
+			
+		     	
+
+
+	
+   	
+     <div class="pangea-cmp ctas-ctn js-pangea-ctas-ctn aem-margin-options  " role="group" data-match-widths="false" data-display-inline="false" data-aem-id="cta-i9e98eca8e77b7480a7e1e0e3c964cc1d-cta">
+
+      <div class="aem-content-ctn ">
+      	<div class="aem-padding-options " data-aem-id="cta-i9e98eca8e77b7480a7e1e0e3c964cc1d-cta-padding-options">
+            <div class="content-ctn">
+       		
+			
+	
+
+	
+
+
+			
+			
+				
+			        <a href="/en-gb/tos/terms.html" class="cta cta-anchor cta-icon-page-link " data-analytics-title="terms-of-use" aria-label="Link to Terms of Use"><span>Terms of Use</span>
+					</a>
+				
+				
+				
+			
+				
+			        <a href="/en-gb/tos/trademark-guidelines.html" class="cta cta-anchor cta-icon-page-link " data-analytics-title="logitech-trademark-guidelines" aria-label="Link to Logitech trademark guidelines"><span>Logitech trademark guidelines</span>
+					</a>
+				
+				
+				
+			
+				
+			        <a href="/en-gb/tos/limited-hardware-warranty.html" class="cta cta-anchor cta-icon-page-link " data-analytics-title="limited-hardware-warranty" aria-label="Link to Limited Hardware Warranty"><span>Limited Hardware Warranty</span>
+					</a>
+				
+				
+				
+			
+				
+			        <a href="/en-gb/tos/b2b-extended-warranty.html" class="cta cta-anchor cta-icon-page-link " data-analytics-title="b2b-extended-warranty" aria-label="Link to B2B Extended Warranty"><span>B2B Extended Warranty</span>
+					</a>
+				
+				
+				
+			
+				
+			        <a href="/en-gb/tos/unsolicited-submissions-policy.html" class="cta cta-anchor cta-icon-page-link " data-analytics-title="contacting-logitech-regarding-product-support-and-unsolicited-submissions" aria-label="CONTACTING LOGITECH REGARDING PRODUCT SUPPORT AND UNSOLICITED SUBMISSIONS"><span>CONTACTING LOGITECH REGARDING PRODUCT SUPPORT AND UNSOLICITED SUBMISSIONS</span>
+					</a>
+				
+				
+				
+			
+				
+			        <a href="/en-gb/tos/custom-in-ear-monitor-warranty.html" class="cta cta-anchor cta-icon-page-link " data-analytics-title="ultimate-ears-custom-in-ear-monitor-limited-warranty" aria-label="Link to Ultimate Ears Custom In-Ear Monitor Limited Warranty"><span>Ultimate Ears Custom In-Ear Monitor Limited Warranty</span>
+					</a>
+				
+				
+				
+			
+				
+			        <a href="/en-gb/tos/jumpstart.html" class="cta cta-anchor cta-icon-page-link " data-analytics-title="logitech-jumpstart-terms-of-service" aria-label="Link to Logitech Jumpstart Terms of Service"><span>Logitech Jumpstart Terms of Service</span>
+					</a>
+				
+				
+				
+			
+				
+			        <a href="/en-gb/tos/online-communities-guidelines.html" class="cta cta-anchor cta-icon-page-link " data-analytics-title="online-communities-guidelines" aria-label="Link to Online Communities Guidelines"><span>Online Communities Guidelines</span>
+					</a>
+				
+				
+				
+			
+				
+			        <a href="/en-gb/tos/select-service-terms-conditions.html" class="cta cta-anchor cta-icon-page-link " data-analytics-title="terms-and-conditions-for-logitech-services" aria-label="Terms and Conditions for Logitech Services"><span>Terms and Conditions for Logitech Services</span>
+					</a>
+				
+				
+				
+			
+				
+			        <a href="/en-gb/tos/logi-circle.html" class="cta cta-anchor cta-icon-page-link " data-analytics-title="logi-circle-terms-of-service" aria-label="Logi Circle Terms of Service"><span>Logi Circle Terms of Service</span>
+					</a>
+				
+				
+				
+			
+				
+			        <a href="/en-gb/tos/software-license-agreement.html" class="cta cta-anchor cta-icon-page-link " data-analytics-title="software-licence-agreement" aria-label="Software Licence Agreement"><span>Software Licence Agreement</span>
+					</a>
+				
+				
+				
+			
+				
+			        <a href="/en-gb/legal/purchase-terms-and-conditions.html" class="cta cta-anchor cta-icon-page-link " data-analytics-title="terms-and-conditions-of-purchase" aria-label="Link to Terms and Conditions of Purchase"><span>Terms and Conditions of Purchase</span>
+					</a>
+				
+				
+				
+			
+				
+			        <a href="/en-gb/tos/logitech-review-verification.html" class="cta cta-anchor cta-icon-page-link " data-analytics-title="logitech-review-verification" aria-label="Logitech review verification"><span>Logitech review verification</span>
+					</a>
+				
+				
+				
+			
+				
+			        <a href="/en-gb/tos/logitech-assets-license.html" class="cta cta-anchor cta-icon-page-link " data-analytics-title="limited-license-to-logitech-assets" aria-label="Limited License to Logitech Assets"><span>Limited License to Logitech Assets</span>
+					</a>
+				
+				
+				
+			
+        </div>
+      </div>
+    </div>
+    </div>
+     
+   
+
+
+		    
+		    
+		</div>
+	</div>
+</div>
+
+
+
+
+
+	
+    <div class="pangea-cmp divider-wrapper aem-margin-options dc-marin tc-marin  mc-marin" data-theme-desktop="theme-light" data-theme-tablet="theme-light" data-theme-mobile="theme-light" data-style-desktop="standard" data-style-tablet="standard" data-style-mobile="standard" data-direction-desktop="horizontal-left" data-direction-tablet="horizontal-left" data-direction-mobile="horizontal-left" data-aem-id="divider-i0b324d556b6c26e9693690a6d462984b">
+        
+	
+
+	
+
+
+		
+		<div class="aem-content-ctn no-container">
+        	<div class="aem-padding-options dpbs tpbs mpbs" data-aem-id="divider-i0b324d556b6c26e9693690a6d462984b-padding-options">
+        		<div class="divider"></div>
+	        </div>
+	    </div>
+    </div>
+
+    
+
+	    </div>
+      </div>
+      
+   </div>
+   </div>
+   
+   
+   
+
+    
+</div>
+
+		
+    	
+
+
+
+
+
+     
+		
+			
+			<div class="xfpage page basicpage">
+
+    
+
+
+
+         
+
+
+
+
+
+
+    
+    
+    
+
+
+
+
+
+
+   
+   
+   
+   
+   <div class="section-container-wrapper">
+   <div class="pangea-cmp section-container js-pangea-section-container aem-margin-options 
+       dbgsize-cover tbgsize-cover mbgsize-cover dbgpos-center tbgpos-center mbgpos-center " data-aem-id="section-i77bfd11c0a5f950360367df82bb8bf86">
+
+      
+
+      
+      
+      
+
+ 
+	
+
+      
+		
+	
+
+	
+
+
+		
+      <div class="content-ctn aem-content-ctn container">
+      	<div class="aem-padding-options dpbm tpbm mpbm" data-aem-id="section-i77bfd11c0a5f950360367df82bb8bf86-padding-options">
+	        <!-- /* Checking for the hideTitle */ -->
+	        
+	
+
+	        <!-- /* Checking for hideTitle ends */ -->
+	         
+
+
+    
+    
+    
+
+
+
+
+
+
+
+<div class="pangea-cmp body-copy js-pangea-body-copy aem-margin-options dmbs tmbs mmbs font-size-normal font-brown-bold dc-black tc-black mc-black" data-aem-id="text_editable_copy_c_723814767-ic003df7cbcfa239598ca8edc97933432" data-align-desktop="left" data-align-tablet="left" data-align-mobile="left" data-body-size="font-size-normal">
+
+	
+	
+	
+
+	
+
+
+	
+
+	
+    
+
+
+
+	
+
+	<div class="aem-content-ctn container ">
+		<div class="aem-padding-options " data-aem-id="text_editable_copy_c_723814767-ic003df7cbcfa239598ca8edc97933432-padding-options">
+			<div class="content-ctn rte-field text-width-normal">
+				
+				
+				<h1>Terms of Use</h1>
+
+			</div>
+			
+		     	
+
+
+	
+   	
+     
+     
+   
+
+
+		    
+		    
+		</div>
+	</div>
+</div>
+
+
+
+
+
+
+
+
+<div class="pangea-cmp body-copy js-pangea-body-copy aem-margin-options  font-size-normal font-brown-light dc-black tc-black mc-black" data-aem-id="text_editable_copy_c_1403086449-i16d4caa30a8163e2359e9465182d0b90" data-align-desktop="left" data-align-tablet="left" data-align-mobile="left" data-body-size="font-size-normal">
+
+	
+	
+	
+
+	
+		<style>
+        	@media(min-width: 1025px){#text_editable_copy_c_1403086449-i16d4caa30a8163e2359e9465182d0b90-padding-options, [data-aem-id=text_editable_copy_c_1403086449-i16d4caa30a8163e2359e9465182d0b90-padding-options]{padding-bottom:20px;}}
+        	@media(min-width: 1025px){#text_editable_copy_c_1403086449-i16d4caa30a8163e2359e9465182d0b90,[data-aem-id=text_editable_copy_c_1403086449-i16d4caa30a8163e2359e9465182d0b90] {}}
+            
+            
+            
+            
+		</style>
+	
+
+
+	
+
+	
+    
+
+
+
+	
+
+	<div class="aem-content-ctn no-container ">
+		<div class="aem-padding-options " data-aem-id="text_editable_copy_c_1403086449-i16d4caa30a8163e2359e9465182d0b90-padding-options">
+			<div class="content-ctn rte-field ">
+				
+				
+				<p><em><strong>Last updated:</strong> January 2022<br />
+ For Archive of previous versions please click <a href="/en-gb/tos/terms/archive.html"><strong>here</strong></a>.</em></p>
+
+			</div>
+			
+		     	
+
+
+	
+   	
+     
+     
+   
+
+
+		    
+		    
+		</div>
+	</div>
+</div>
+
+
+
+
+
+
+
+
+<div class="pangea-cmp body-copy js-pangea-body-copy aem-margin-options  font-size-normal font-brown-light dc-black tc-black mc-black" data-aem-id="text_editable_copy_c-iddc48273ebc6d50e28548cb075a4d1a3" data-align-desktop="left" data-align-tablet="left" data-align-mobile="left" data-body-size="font-size-normal">
+
+	
+	
+	
+
+	
+
+
+	
+
+	
+    
+
+
+
+	
+
+	<div class="aem-content-ctn no-container ">
+		<div class="aem-padding-options " data-aem-id="text_editable_copy_c-iddc48273ebc6d50e28548cb075a4d1a3-padding-options">
+			<div class="content-ctn rte-field ">
+				
+				
+				<p>These Terms of Use (“Terms”) are a legal agreement between you and Logitech and govern your use of this Website either as a visitor, content contributor, or as a registered user. Use of, posting of information to, and access to this Website are subject to your compliance with these Terms, so please read them carefully before using this Website. Logitech reserves the right to limit or terminate your access to this Website or terminate or suspend your registration for failure to comply with the terms and policies posted on this Website, including these Terms, or for any reason at any time.</p>
+<p>BY ACCESSING AND USING THIS WEBSITE IN ANY WAY, YOU AGREE TO BE BOUND BY THESE TERMS. IF YOU DO NOT AGREE TO ALL OF THE TERMS AND CONDITIONS, DO NOT USE OR POST INFORMATION ON THIS WEBSITE IN ANY MANNER.</p>
+<h5><br />
+Modifications to these terms</h5>
+<p>Logitech may change, modify, update, add, or remove portions of these Terms at any time. Please check these Terms periodically for changes. Your continued use of this Website, following the posting of any changes, will signify your acceptance of those changes.</p>
+<h5><br />
+Changes to this website</h5>
+<p>In an effort to continually improve this Website and its usefulness to you, we may add additional services or make changes to existing services. In the event that Logitech makes such changes, these Terms shall apply to the new services and to any changes to existing services.</p>
+<h5><br />
+User information</h5>
+<p>To use certain parts of this Website, you will be asked to provide information about yourself, such as your first name, e-mail address, password, city, state, country zip code, or postal code. You are entirely responsible for maintaining the confidentiality of your account information, including your password, and for any and all activity that occurs under your account. You agree to notify Logitech immediately of any unauthorized use of your account or password, or any other breach of security. You may be held liable for losses incurred by Logitech or any other user of or visitor to this Website due to the use of your Logitech ID, password, or account by another person.</p>
+<p>You may not use anyone else’s Logitech ID, password, or account at any time without the express permission and consent of the holder of that Logitech ID, password, or account. Logitech cannot and will not be liable for any loss or damage arising from your failure to comply with these obligations.</p>
+<h5><br />
+Privacy policy</h5>
+<p>Logitech respects your desire for privacy and takes care to protect the personal information you provide us. Logitech’s privacy policy can be found at <a href="http://www.logitech.com/privacy">www.logitech.com/privacy</a>. By using this Website, you are consenting to the terms of our privacy policy.</p>
+<p>Logitech has security measures in place to protect the loss, misuse, and alteration of the information under Logitech's control. These security measures are described in our privacy policy.</p>
+<p>Although Logitech has taken the steps described in our privacy policy to ensure that your personal information is delivered and disclosed only in accordance with our privacy policy, Logitech does not guarantee that the personal information you provide will not be intercepted by others and decrypted.</p>
+<h5><br />
+Support Forums, Blogs and Ratings &amp; Reviews</h5>
+<p>Logitech has created support forums, blogs, community areas and group discussions, in the English language (at this time), so you can share your experiences, ask and/or answer questions, share reviews of Logitech products and services, and more (collectively referred to as “ Online Communities”). We appreciate that Logitech’s Online Communities reflect the diversity of its users and is an interesting place to share, learn, and interact. In keeping with this spirit of community, we have a core set of principles and guidelines in English that must be followed by all members, participants, content contributors and users. These guidelines are incorporated into these Terms, and may be reviewed at <a href="/en-gb/tos/online-communities-guidelines.html">www.logitech.com/support/guidelines</a>.</p>
+<h5><br />
+Content</h5>
+<p>All text, graphics, user or visual interfaces, trademarks, logos, music, sounds, artwork, photographs, and computer code (“Content”), including but not limited to the design, structure, selection, coordination, expression, “look and feel,” and the arrangement of such Content, contained on this Website is owned, controlled, or licensed by Logitech. All such Content is protected by trade dress, copyright, patent and trademark laws, and various other intellectual property rights and unfair competition laws. Unless another agreement applies to particular Content (e.g., Software License Agreement, Terms of Service, etc.), Logitech hereby grants you limited permission to use the Content subject to these Terms, as long as the use of such Content is solely for your personal, non-commercial informational use.</p>
+<p>Unless expressly permitted in an applicable agreement or on the Content itself, none of the Content may be copied, reproduced, distributed, republished, downloaded, displayed, posted, or transmitted in any form or by any means, including but not limited to electronic, mechanical, photocopying, recording, or other means, without the prior express written permission of Logitech and/or the appropriate owner. Also, you may not “mirror” any Content contained on this Website or any other server without Logitech’s express prior written consent.</p>
+<h5><br />
+Posting of user content</h5>
+<p>Certain areas of this Website may allow you to post content, including your experiences, advice, recommendations, opinions, information, messages, or other material (“Your Content”). Please be aware that these areas are public and not confidential. You may only post Your Content to public areas and where you have permission to post. You may not post any content that violates these Terms or any third party rights.</p>
+<p>Logitech does not claim ownership of any of Your Content that you may post. However, by posting Your Content to public areas on the Website, you grant Logitech, its affiliates, partners, and distributors the perpetual, irrevocable, royalty-free right to use, copy, display, perform, distribute, adapt, create derivative works, sublicense, and promote Your Content in any medium and any manner whatsoever, and to use and sublicense your name, likeness, biography, voice, video, and photograph (if applicable) to attribute your postings to you. In addition to Your Content, we encourage you to provide us with feedback. You agree that we may use in any manner and without limitation all comments, advice, recommendations, suggestions, complaints, and other feedback you provide relating to this Website, Logitech products and/or services, and that Logitech will own all intellectual property that we create based upon or incorporating your feedback.</p>
+<h5><br />
+No unlawful or prohibited use</h5>
+<p><strong>While using this Website, you may NOT do the following:</strong></p>
+<ul>
+<li>Restrict or inhibit any other user from using and enjoying this Website</li>
+<li>Post or transmit any unlawful, fraudulent, libelous, defamatory, racist, sexist, obscene, pornographic, profane, threatening, abusive, hateful, offensive, or otherwise objectionable information of any kind</li>
+<li>Post or transmit any information constituting or encouraging conduct that would constitute a criminal offense, give rise to civil liability, constitute unauthorized practice of a professional service, or otherwise violate any local, state, national, or foreign law, including without limitation U.S. export control laws and regulations</li>
+<li>Use the “Logitech” or “Logi” names, domain names, trademarks, logos, or insignia in your user or screen name, or in any other manner, that would imply that you work with or are affiliated with Logitech</li>
+<li> Pretend that you are, or that you represent, someone else or impersonate any other person or entity</li>
+<li>Invade the privacy or violate any personal or proprietary right of any person or entity</li>
+<li>Post or transmit any advertisements, solicitations, chain letters, pyramid or Ponzi schemes, investment opportunities or schemes, or other unsolicited commercial communication (except as otherwise expressly permitted by Logitech), or engage in spamming, phishing, or denial of service attacks</li>
+<li>Post, publish, transmit, reproduce, distribute, or in any way exploit any information, software, or other material obtained through this Website for commercial purposes (other than as expressly permitted by the provider of such information, software, or other material)</li>
+<li>Use the Website to generate traffic for other sites</li>
+<li>Infringe the intellectual property rights or similar rights, including but not limited to copyrights, trademarks, and patents, of any person or entity</li>
+<li>Upload, post, publish, transmit, reproduce, or distribute in any way information, software, or other material obtained through this Website, which is protected by copyright or other proprietary right, or derivative works with respect thereto, without obtaining permission of the copyright owner or right holder </li>
+<li>Upload, post, publish, reproduce, transmit, or distribute in any way any component of this Website itself or derivative works with respect thereto without Logitech’s prior written consent, as this Website is protected under U.S. and international copyright laws</li>
+<li>Take any action that imposes an unreasonable or disproportionately large load on the infrastructure of this Website or Logitech’s systems or networks, or any systems or networks connected to this Website or to Logitech</li>
+<li>Forge headers (headings) or otherwise manipulate identifiers in order to disguise the origin of any message or transmittal you send to Logitech on or through this Website or any service offered on or through this Website</li>
+<li>Use any robot, spider, scraper, or other automated means to access this Website or services for any purpose without our express written permission; however, this provision shall not apply to the indexing or updating of search engines</li>
+<li>Post or transmit any information or software that contains a virus, Trojan horse, worm, or other harmful component</li>
+<li>Post or transmit any information, file, or software that contains, but not limited to, a virus, Trojan horse, worm, adware, spyware, crimeware, online graffiti tagger, dropper, rootkit, keylogger, bot, or any other harmful software program or program element</li>
+</ul>
+<h5><br />
+Links to third party websites and services</h5>
+<p>In attempting to provide you with comprehensive and useful resources, this Website may contain links to third-party websites, which are not under the control of Logitech. Logitech is not responsible for the content of or products provided by any linked site or any link contained in a linked site, or any changes or updates to such sites. Logitech is providing these links to you only as a convenience, and the inclusion of any link does not imply that Logitech endorses, guarantees, or accepts any responsibility for the content or products on such a third-party site.</p>
+<p>In connection with your use of this Website, you may be made aware of services, products, offers, and promotions provided by third parties, and not by Logitech. If you decide to use third-party services or products, you are responsible for reviewing and understanding the terms and conditions governing any third-party service or product. You agree that the third party, and not Logitech, is responsible for the performance of the third-party services or products. For instance, Logitech uses YouTube as a hosting platform for our videos and, as a result, you are subject to the YouTube Terms of Service (available at https://www.youtube.com/t/terms) including the Google Privacy Policy (available at https://www.google.com/policies/privacy).</p>
+<h5><br />
+No duty to monitor</h5>
+<p>Logitech shall have the right, but not the responsibility, to monitor and/or remove Website content that is provided by others. While some community and other areas may be monitored for relevance, we have no obligation to prescreen any content and are not responsible for the posting of such content. We reserve the right to refuse to post, to edit submitted content, and to remove content for any reason. Further, Logitech is not responsible for any failure or delay in removing content.</p>
+<h5><br />
+Procedure for making claims of copyright infringement</h5>
+<p>At Logitech, we respect the intellectual property of others. If you believe that your copyrighted work has been copied and is accessible on the Website in a way that constitutes copyright infringement, please contact us to report possible copyright infringement. When contacting us, please provide Logitech’s copyright agent with the following information:</p>
+<ul>
+<li>A full description of the copyrighted work or other intellectual property that you claim has been infringed</li>
+<li>An electronic or physical signature of the person authorized to act on behalf of the owner of the copyright or other intellectual property interest</li>
+<li>A description of where the material that you claim is infringing is located on this Website </li>
+<li>Your name, address, telephone number, and e-mail address</li>
+<li>A statement by you that you have a good-faith belief that the disputed use is not authorized by the copyright owner, its agent, or the law</li>
+<li>A statement signed by you, made under penalty of perjury, that the above information in your notice is accurate and that you are the copyright or intellectual property owner or are authorized to act on the copyright or intellectual property owner’s behalf</li>
+</ul>
+<p> </p>
+<p><strong>Logitech’s agent can be reached through any of the contacts listed below:</strong></p>
+<p><strong>In the U.S.</strong><br />
+<em>Logitech Copyright Agent<br />
+ c/o Logitech Inc.<br />
+ 3930 North First Street<br />
+ San Jose, CA 95134</em></p>
+<p><strong>Outside of the U.S.</strong><br />
+<em>Logitech Copyright Agent<br />
+ c/o Logitech Europe S.A.<br />
+ EPFL - Quartier de l'Innovation<br />
+ Daniel Borel Innovation Center<br />
+ CH - 1015 Lausanne</em></p>
+<p><strong>By e-mail </strong><br />
+http://support.logitech.com/response-center</p>
+<p>Inquiries that are not relevant to the claim of copyright infringement will not receive a response.</p>
+<h5><br />
+WARRANTY DISCLAIMER</h5>
+<p>EXCEPT AS EXPRESSLY PROVIDED OTHERWISE AND TO THE MAXIMUM EXTENT PERMITTED BY LAW, THIS WEBSITE AND ALL MATERIALS, INFORMATION, POSTINGS, OPINIONS OR SERVICES ON THIS WEBSITE OR LINKED FROM THIS WEBSITE ARE PROVIDED “AS IS” AND “AS AVAILABLE” WITHOUT WARRANTY OF ANY KIND, AND LOGITECH AND ITS SUPPLIERS, THIRD PARTY SERVICE PROVIDERS, AND PARTNERS (HEREINAFTER COLLECTIVELY REFERRED TO AS “SUPPLIERS”) HEREBY EXPRESSLY DISCLAIM ALL WARRANTIES OF ANY KIND, WHETHER EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO IMPLIED WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE, NON-INFRINGEMENT, AND TITLE. LOGITECH DOES NOT REPRESENT OR ENDORSE THE ACCURACY, CURRENTNESS, OR RELIABILITY OF ANY ADVICE, OPINION, STATEMENT, OR OTHER INFORMATION DISPLAYED, UPLOADED, OR DISTRIBUTED THROUGH THE WEBSITE. LOGITECH AND ITS SUPPLIERS MAKE NO WARRANTY THAT THIS WEBSITE WILL MEET YOUR REQUIREMENTS OR EXPECTATIONS; THAT ACCESS TO THIS WEBSITE OR ANY INFORMATION, POSTINGS, OPINIONS, OR SERVICES LINKED FROM THIS WEBSITE WILL BE UNINTERRUPTED, TIMELY, SECURE, OR ERROR-FREE; OR THAT RESULTS FROM SUCH USE WILL BE ACCURATE OR RELIABLE, OR WILL BE SUITABLE FOR YOUR PURPOSES. LOGITECH CANNOT ENSURE THAT ANY FILES OR OTHER DATA YOU DOWNLOAD FROM THIS WEBSITE WILL BE FREE OF ALL VIRUSES, MALWARE, CONTAMINATION, OR DESTRUCTIVE FEATURES, INCLUDING BUT NOT LIMITED TO ALL VIRUSES, MALWARE, TROJAN HORSES, WORMS, ADWARE, SPYWARE, CRIMEWARE, ONLINE GRAFFITI TAGGERS, DROPPERS, ROOTKITS, KEYLOGGERS, BOTS, OR OTHER HARMFUL SOFTWARE PROGRAM OR PROGRAM ELEMENTS. IN ADDITION, LOGITECH IS NOT RESPONSIBLE FOR THE CONDUCT OF ANY THIRD PARTY SERVICE PROVIDER, OR PARTNER, WHETHER ONLINE OR OFFLINE. NO ORAL OR WRITTEN INFORMATION RECEIVED BY LOGITECH, ITS SUPPLIERS, OR OBTAINED OTHERWISE WILL CHANGE THIS DISCLAIMER. Some jurisdictions do not allow these limitations, so the above limitations may not apply in your jurisdiction.</p>
+<h5><br />
+LIMITATION OF LIABILITY</h5>
+<p>YOU EXPRESSLY UNDERSTAND AND AGREE THAT LOGITECH (OR LOGITECH’S OFFICERS, DIRECTORS, INVESTORS, SUBSIDIARIES, AGENTS, ASSIGNEES, REPRESENTATIVES, SUPPLIERS, PARTNERS, OR EMPLOYEES) SHALL NOT BE LIABLE FOR ANY DIRECT DAMAGES OR ANY SPECIAL, DIRECT, INDIRECT, INCIDENTAL, CONSEQUENTIAL, OR EXEMPLARY DAMAGES, INCLUDING BUT NOT LIMITED TO ANY DAMAGES WHATSOEVER RESULTING FROM LOSS OF USE, DATA, PROFITS, OR OTHER INTANGIBLE LOSSES (EVEN IF LOGITECH HAS BEEN ADVISED OF THE POSSIBILITY OF SUCH DAMAGES), RESULTING FROM THE USE OF OR THE INABILITY TO USE THIS WEBSITE, REMOVAL OR TERMINATION OF THIS WEBSITE, UNAUTHORIZED ACCESS TO OR ALTERATION OF YOUR TRANSMISSIONS OR DATA, ERRORS OR OMISSIONS IN CONTENT ON THIS WEBSITE, STATEMENTS OR CONDUCT OF ANY THIRD PARTY ON THIS WEBSITE, INSTRUCTION, INFORMATION OR SERVICES PROVIDED BY OR LINKED FROM THIS WEBSITE, OR ANY OTHER MATTER RELATING TO THIS WEBSITE. IN NO EVENT SHALL LOGITECH’S AND ITS SUPPLIERS’ CUMULATIVE LIABILITY FOR ANY AND ALL CLAIMS RELATING TO THE USE OF THIS WEBSITE EXCEED THE TOTAL AMOUNT OF FEES, IF ANY, THAT YOU PAID TO LOGITECH DURING THE PRIOR YEAR FOR THE SPECIFIC SERVICE AT ISSUE, OR $100.00, WHICHEVER AMOUNT IS LESS. Some jurisdictions, such as New Jersey, do not allow these limitations, so the above limitations do not apply in New Jersey and may not apply in your jurisdiction.</p>
+<h5><br />
+Indemnification</h5>
+<p>You shall indemnify, defend, and hold harmless Logitech, its affiliates, and their respective officers, employees, and agents from any and all claims, demands, damages, costs, and liabilities, including reasonable attorneys’ fees, made by any third party due to or arising out of your acts or omissions that arise from your wrongful use of this Website in violation of its terms. Logitech reserves the right to assume the exclusive defense and control of any matter otherwise subject to indemnification by you, and you agree to cooperate as fully as reasonably required in the defense of any claim. The foregoing indemnification provision shall not apply to the extent that any claims, demands, damages, costs, or liabilities, are the result of Logitech’s own negligence, fraud, willful injury or willful violation of law.</p>
+<h5><br />
+Disclosure of use</h5>
+<p>Logitech may disclose any information we have about you (including your identity), any transmittals or communications by you, and your use of this Website or any services made available on this Website if we determine that such disclosure is necessary to (1) comply with legal process, (2) comply with any investigation or complaint regarding your use of this Website, (3) enforce these Terms of Use, (4) respond to claims that any such data violated the rights of others, or (5) protect the rights, property, or personal safety of Logitech, its employees, and visitors to or users of this Website, including Logitech’s customers, and the public.</p>
+<p>Logitech reserves the right at all times to disclose any information that Logitech deems necessary to comply with any applicable law, regulation, legal process, or governmental request. Logitech may also disclose your information when Logitech determines that applicable law requires or permits such disclosure, including exchanging information with other companies and organizations for fraud protection purposes.</p>
+<h5><br />
+Termination</h5>
+<p>You agree that Logitech may, in its sole discretion and without prior notice, terminate your access to the Website and/or block your future access to the Website if we determine that you have violated these Terms of Use or other agreements or guidelines that may be associated with your use of the Website, or for other reasons that may include but are not limited to (1) requests by law enforcement or other government agencies, (2) a request by you to remove your account, (3) discontinuance or material modification of the Website or any service offered on or through the Website, or (4) unexpected technical issues or problems.</p>
+<p>In the event this agreement is terminated, the restrictions regarding Content or materials appearing on the Website, and the representations and warranties, indemnities, and limitations of liabilities set forth in these Terms of Use will survive termination. In the event that you are unsatisfied with the Website or any services that may be provided by Logitech, your sole remedy is to terminate this agreement.</p>
+<p>If Logitech does take any legal action against you as a result of your violation of these Terms of Use, Logitech will be entitled to recover from you, and you agree to pay, all reasonable attorneys’ fees and costs of such action, in addition to any injunctive or equitable relief granted to Logitech. You agree that Logitech will not be liable to you or to any third party for termination of your access to the Website.</p>
+<h5><br />
+Governing law</h5>
+<p>These Terms and your use of this Website will be governed by the laws of the United States and by the laws of the State of California, without regard to conflicts of law provisions; all claims and actions must be brought in the appropriate state or federal court located in Santa Clara County, California; and, you agree and submit to the exercise of personal jurisdiction of such courts for the purpose of litigating any such claim or action. You waive all defenses of lack of personal jurisdiction and venue.</p>
+<h5><br />
+Miscellaneous</h5>
+<p>Logitech may assign these Terms at any time to any subsidiary, or any affiliated company, or as part of the sale to, merger with, or other transfer of Logitech to another entity. You may not assign this agreement. These Terms constitute the entire agreement between you and Logitech regarding this subject matter, and they govern your use of this Website. The failure of Logitech to exercise or enforce any right or provision of these Terms does not constitute a waiver of such right or provision. If any provision of these Terms is found to be invalid, the parties nevertheless agree that the parties’ intentions as reflected in the provision, and the other provisions of these Terms shall remain in full force and effect. Regardless of any statute or law to the contrary, except in New Jersey, any claim or cause of action arising out of or related to use of the Website or these Terms must be filed within one (1) year after such claim or cause of action arose or be forever barred.</p>
+<h5><br />
+This site is owned and operated by Logitech.</h5>
+<p>Logitech revised these Terms on January 2022.</p>
+
+			</div>
+			
+		     	
+
+
+	
+   	
+     
+     
+   
+
+
+		    
+		    
+		</div>
+	</div>
+</div>
+
+    
+
+	    </div>
+      </div>
+      
+   </div>
+   </div>
+   
+   
+   
+
+    
+</div>
+
+		
+    	
+
+
+    
+
+    
+
+     <!--        content end -->
+  </main>
+  <div class="par iparys_inherited">
+     <!--        FOOTER -->
+	  <!-- This is to include and override footer using page properties XF path - Starts -->
+     
+     <div class="xfpage page basicpage">
+
+    
+
+
+
+         
+
+
+
+
+
+
+    
+    
+    
+
+
+
+	<!--googleoff: all-->
+	<!-- stopindex -->
+	<footer class="kepler logi-footer" data-analytics-section="footer">
+		<div class="container">
+			<div class="footer-links-ctn">
+				
+
+
+    
+    
+    
+
+
+
+	<div class="nav-items">
+		<h2 class="nav-items-title js-nav-items-title js-mobile-folder-trigger ">
+			
+				About
+			
+		</h2>
+
+		
+
+		<div class="nav-items-links-ctn mobile-nav-page js-mobile-page" data-mobile-nav-depth="2">
+			<button class="mobile-back-btn js-mobile-back-btn " disabled aria-label="Go Back">About</button>
+			<ul class="nav-items-links mobile-vert-scroll">
+				
+					<li class="nav-item-link-item">
+						<a href="/en-gb/about.html" class="nav-item-link js-nav-item-link " data-style="standard" target="_self" data-analytics-title="logitech-story">
+							<span class="default">Logitech Story</span>
+							
+						</a>
+					</li>
+				
+					<li class="nav-item-link-item">
+						<a href="https://www.logitech.com/en-gb/careers" class="nav-item-link js-nav-item-link " data-style="standard" target="_self" data-analytics-title="careers">
+							<span class="default">Careers</span>
+							
+						</a>
+					</li>
+				
+					<li class="nav-item-link-item">
+						<a href="https://ir.logitech.com/" class="nav-item-link js-nav-item-link " data-style="standard" target="_blank" rel="noopener noreferrer" data-analytics-title="investors">
+							<span class="default">Investors</span>
+							
+						</a>
+					</li>
+				
+					<li class="nav-item-link-item">
+						<a href="https://blog.logitech.com/" class="nav-item-link js-nav-item-link " data-style="standard" target="_blank" rel="noopener noreferrer" data-analytics-title="blog">
+							<span class="default">Blog</span>
+							
+						</a>
+					</li>
+				
+					<li class="nav-item-link-item">
+						<a href="https://press.logitech.eu/en-gb/" class="nav-item-link js-nav-item-link " data-style="standard" target="_blank" rel="noopener noreferrer" data-analytics-title="press">
+							<span class="default">Press</span>
+							
+						</a>
+					</li>
+				
+					<li class="nav-item-link-item">
+						<a href="/en-gb/about/contact.html" class="nav-item-link js-nav-item-link " data-style="standard" target="_self" data-analytics-title="contact-us">
+							<span class="default">Contact Us</span>
+							
+						</a>
+					</li>
+				
+				
+			</ul>
+		</div>
+	</div>
+
+
+
+
+
+	<div class="nav-items">
+		<h2 class="nav-items-title js-nav-items-title js-mobile-folder-trigger ">
+			
+				Values
+			
+		</h2>
+
+		
+
+		<div class="nav-items-links-ctn mobile-nav-page js-mobile-page" data-mobile-nav-depth="2">
+			<button class="mobile-back-btn js-mobile-back-btn " disabled aria-label="Go Back">Values</button>
+			<ul class="nav-items-links mobile-vert-scroll">
+				
+					<li class="nav-item-link-item">
+						<a href="https://www.logitech.com/en-gb/sustainability" aria-label="Sustainability" class="nav-item-link js-nav-item-link " data-style="standard" target="_self" data-analytics-title="planet">
+							<span class="default">Sustainability</span>
+							
+						</a>
+					</li>
+				
+					<li class="nav-item-link-item">
+						<a href="/en-gb/sustainability/recycling.html" class="nav-item-link js-nav-item-link " data-style="standard" target="_self" data-analytics-title="recycling">
+							<span class="default">Recycling</span>
+							
+						</a>
+					</li>
+				
+					<li class="nav-item-link-item">
+						<a href="https://www.logitech.com/en-gb/accessibility" aria-label="Accessibility" class="nav-item-link js-nav-item-link " data-style="standard" target="_self" data-analytics-title="accessibility">
+							<span class="default">Accessibility</span>
+							
+						</a>
+					</li>
+				
+				
+			</ul>
+		</div>
+	</div>
+
+
+
+
+
+	<div class="nav-items">
+		<h2 class="nav-items-title js-nav-items-title js-mobile-folder-trigger ">
+			
+				Partners
+			
+		</h2>
+
+		
+
+		<div class="nav-items-links-ctn mobile-nav-page js-mobile-page" data-mobile-nav-depth="2">
+			<button class="mobile-back-btn js-mobile-back-btn " disabled aria-label="Go Back">Partners</button>
+			<ul class="nav-items-links mobile-vert-scroll">
+				
+					<li class="nav-item-link-item">
+						<a href="/en-gb/resellers/find-a-reseller.html" aria-label="Find a reseller" class="nav-item-link js-nav-item-link " data-style="standard" target="_self" data-analytics-title="find-a-reseller">
+							<span class="default">Find a reseller</span>
+							
+						</a>
+					</li>
+				
+					<li class="nav-item-link-item">
+						<a href="/en-gb/business/partner-program.html" aria-label="Become a Partner" class="nav-item-link js-nav-item-link " data-style="standard" target="_self" data-analytics-title="become-a-partner">
+							<span class="default">Become a Partner</span>
+							
+						</a>
+					</li>
+				
+					<li class="nav-item-link-item">
+						<a href="/en-gb/business/partners.html" aria-label="Become an Alliance Partner" class="nav-item-link js-nav-item-link " data-style="standard" target="_self" data-analytics-title="become-an-alliance-partner">
+							<span class="default">Become an Alliance Partner</span>
+							
+						</a>
+					</li>
+				
+					<li class="nav-item-link-item">
+						<a href="https://partners.logitech.com/english_uk/" aria-label="Partner Portal" class="nav-item-link js-nav-item-link " data-style="standard" target="_blank" rel="noopener noreferrer" data-analytics-title="partner-portal">
+							<span class="default">Partner Portal</span>
+							
+						</a>
+					</li>
+				
+				
+			</ul>
+		</div>
+	</div>
+
+
+
+
+
+	<div class="nav-items">
+		<h2 class="nav-items-title js-nav-items-title js-mobile-folder-trigger ">
+			
+				CUSTOMERS
+			
+		</h2>
+
+		
+
+		<div class="nav-items-links-ctn mobile-nav-page js-mobile-page" data-mobile-nav-depth="2">
+			<button class="mobile-back-btn js-mobile-back-btn " disabled aria-label="Go Back">CUSTOMERS</button>
+			<ul class="nav-items-links mobile-vert-scroll">
+				
+					<li class="nav-item-link-item">
+						<a href="/en-gb/my-account/order-faqs.html#returns-cancellations" class="nav-item-link js-nav-item-link " data-style="standard" target="_self" data-analytics-title="return-policy">
+							<span class="default">Return Policy</span>
+							
+						</a>
+					</li>
+				
+					<li class="nav-item-link-item">
+						<a href="/en-gb/my-account/email-preferences.html" class="nav-item-link js-nav-item-link " data-style="standard" target="_self" data-analytics-title="email-preferences">
+							<span class="default">Email Preferences</span>
+							
+						</a>
+					</li>
+				
+					<li class="nav-item-link-item">
+						<a href="https://connect.studentbeans.com/v4/hosted/logitech/UK" class="nav-item-link js-nav-item-link " data-style="standard" target="_blank" rel="noopener noreferrer" data-analytics-title="student-discount">
+							<span class="default">Student Discount</span>
+							
+						</a>
+					</li>
+				
+					<li class="nav-item-link-item">
+						<a href="/en-gb/legal/uk-psti-act-2022.html" class="nav-item-link js-nav-item-link " data-style="standard" target="_self">
+							<span class="default">UK PSTI ACT 2022 Information</span>
+							
+						</a>
+					</li>
+				
+					<li class="nav-item-link-item">
+						<a href="https://www.logitech.com/en-gb/shop/spare-parts-store" aria-label="Spare Parts" class="nav-item-link js-nav-item-link " data-style="standard" target="_self">
+							<span class="default">Spare Parts</span>
+							
+						</a>
+					</li>
+				
+				
+			</ul>
+		</div>
+	</div>
+
+
+    
+
+			</div>
+
+			
+
+			<div class="social-email-row">
+				<div class="social-and-support-row">
+					<div class="social-ctn">
+						<div class="xfpage page basicpage">
+
+    
+
+
+
+         
+
+
+
+
+
+
+    
+    
+    
+
+
+
+    <div class="pangea-cmp pangea-social-icons ">
+        <a href="http://www.facebook.com/Logitech" class="p-social-icon-link " aria-label="Like us on Facebook" data-analytics-title="like-us-on-facebook" target="_blank" rel="noopener noreferrer">
+            <img src="/content/dam/logitech/common/facebook.svg" class="p-social-icon-img" alt="" loading="lazy"/>
+            
+        </a>
+    
+        <a href="http://www.twitter.com/Logitech" class="p-social-icon-link " aria-label="Follow on Twitter" data-analytics-title="follow-on-twitter" target="_blank" rel="noopener noreferrer">
+            <img src="/content/dam/logitech/common/twitter-new.svg" class="p-social-icon-img" alt="" loading="lazy"/>
+            
+        </a>
+    
+        <a href="http://instagram.com/logitech?ref=badge" class="p-social-icon-link " aria-label="Follow us on Instagram" data-analytics-title="follow-us-on-instagram" target="_blank" rel="noopener noreferrer">
+            <img src="/content/dam/logitech/common/instagram-logo.svg" class="p-social-icon-img" alt="" loading="lazy"/>
+            
+        </a>
+    </div>
+
+
+    
+</div>
+
+					</div>
+					<div class="support-id-row" id="support-id-row" style="display: none;">
+						<span class="support-id-label">Support ID:</span>
+						<span class="support-id-value" id="supportid"></span>
+						<div class="support-tooltip">
+							<div class="support-tooltip-row">
+								<button aria-label="Support ID info" id="tooltipIcon" data-analytics-title="info-support-id" class="support-icon">
+									<svg width="14" height="14" viewBox="0 0 14 14" fill="none" xmlns="http://www.w3.org/2000/svg">
+										<path d="M7 10.5064C7.18889 10.5064 7.34723 10.4425 7.475 10.3148C7.60278 10.187 7.66667 10.0286 7.66667 9.83976V7.17309C7.66667 6.9842 7.60278 6.82587 7.475 6.69809C7.34723 6.57031 7.18889 6.50642 7 6.50642C6.81111 6.50642 6.65278 6.57031 6.525 6.69809C6.39722 6.82587 6.33334 6.9842 6.33334 7.17309V9.83976C6.33334 10.0286 6.39722 10.187 6.525 10.3148C6.65278 10.4425 6.81111 10.5064 7 10.5064ZM7 5.17309C7.18889 5.17309 7.34723 5.1092 7.475 4.98142C7.60278 4.85365 7.66667 4.69531 7.66667 4.50642C7.66667 4.31754 7.60278 4.1592 7.475 4.03142C7.34723 3.90365 7.18889 3.83976 7 3.83976C6.81111 3.83976 6.65278 3.90365 6.525 4.03142C6.39722 4.1592 6.33334 4.31754 6.33334 4.50642C6.33334 4.69531 6.39722 4.85365 6.525 4.98142C6.65278 5.1092 6.81111 5.17309 7 5.17309ZM7 13.8398C6.07778 13.8398 5.21111 13.6648 4.4 13.3148C3.58889 12.9648 2.88334 12.4898 2.28334 11.8898C1.68334 11.2898 1.20834 10.5842 0.858336 9.77309C0.508336 8.96198 0.333336 8.09531 0.333336 7.17309C0.333336 6.25087 0.508336 5.3842 0.858336 4.57309C1.20834 3.76198 1.68334 3.05642 2.28334 2.45642C2.88334 1.85642 3.58889 1.38142 4.4 1.03142C5.21111 0.681424 6.07778 0.506424 7 0.506424C7.92222 0.506424 8.78889 0.681424 9.6 1.03142C10.4111 1.38142 11.1167 1.85642 11.7167 2.45642C12.3167 3.05642 12.7917 3.76198 13.1417 4.57309C13.4917 5.3842 13.6667 6.25087 13.6667 7.17309C13.6667 8.09531 13.4917 8.96198 13.1417 9.77309C12.7917 10.5842 12.3167 11.2898 11.7167 11.8898C11.1167 12.4898 10.4111 12.9648 9.6 13.3148C8.78889 13.6648 7.92222 13.8398 7 13.8398ZM7 12.5064C8.48889 12.5064 9.75 11.9898 10.7833 10.9564C11.8167 9.92309 12.3333 8.66198 12.3333 7.17309C12.3333 5.6842 11.8167 4.42309 10.7833 3.38976C9.75 2.35642 8.48889 1.83976 7 1.83976C5.51111 1.83976 4.25 2.35642 3.21667 3.38976C2.18334 4.42309 1.66667 5.6842 1.66667 7.17309C1.66667 8.66198 2.18334 9.92309 3.21667 10.9564C4.25 11.9898 5.51111 12.5064 7 12.5064Z" fill="white"/>
+									</svg>
+								</button>
+								<div class="support-tooltip" id="tooltipText">
+									We use your Support ID to provide faster resolution to issues experienced while on our website. Please provide this ID when contacting support via phone, email or chat. See our <a href="/legal/cookie-policy.html#manage-cookies" data-analytics-title="cookie-policy">cookie policy.</a>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="email-ctn">
+					
+
+
+
+
+
+
+
+
+
+    <div class="email-subscription js-email-subscription">
+        <div class="email-subscription-content">
+            <form class="email-subscription-form js-email-subscription-form" name="email-subscription" action="/content/logitech/emea/live/en_gb/tos/terms.usersubscribeservice.json" method="post" novalidate data-error-unauthorised="The Request is not authorised" data-error-servlet-not-found="Sorry, service is currently not available. Please try after some time">
+                <!-- Form Body -->
+                <div class="form-body js-form-body">
+					
+                    <input type="hidden" name="locale" value="en-gb" data-rule="required"/>
+                    <input type="hidden" name="domain" value="logitech" data-rule="required"/>
+					<input type="hidden" name="originInfo" value="footer:terms" data-rule="required"/>
+                    <input type="hidden" name="subscriptionId" value="promo,news,updates-suggestions" data-rule="required"/>
+                    <input type="hidden" name="communicationType" value="promo,news,updates-suggestions"/>
+                    <div class="form-field">
+                        <div class="input-field-wrapper">
+                            
+                            <div class="input-grp">
+                                <input type="email" name="emailId" aria-label="ENTER EMAIL ADDRESS" placeholder="ENTER EMAIL ADDRESS" data-rule="required" data-error-default="Please enter a valid email address"/>
+                                <button type="submit" name="email-subscription-submit" class="btn btn-large" aria-label="Subscribe" data-analytics-title="footer-email-subscribe-submit">
+                                    <div class="submit-label">
+                                        <span class="submit-label-icon"></span>
+                                    </div>
+                                    <div class="submit-loader">
+                                        <div class="loading-dots"><div></div><div></div><div></div><div></div></div>
+                                    </div>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="email-subscription-message form-message js-form-message error"></div>
+                    <div class="form-field">
+                        <div class="input-field-wrapper">
+                            <div class="email-subscription-disclaimer js-email-subscription-disclaimer">
+                                <label>
+                                    <input type="checkbox" name="subscription-disclaimer" data-rule="required submitOnce" data-error-default="Please accept the terms and conditions"/>
+                                    <span class="checkmark"></span>
+                                    <span class="checkmark-label">I want personalized marketing from Logitech. You can unsubscribe anytime. See our <a rel="noopener noreferrer" href="https://www.logitech.com/legal/web-privacy-policy.html" target="_blank">privacy policy</a>.</span>
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- END Form Body -->
+                <div class="email-subscription-success form-success js-form-success" style="display:none;">
+                    
+                        Thank you. Your subscription is successful
+                    
+                </div>
+            </form>
+        </div>
+    </div>
+
+
+
+
+				</div>
+			</div>
+			<div class="copyright-locale-row">
+				<div class="copyright-links-container">
+					<div class="copyright-ctn">
+						&copy;2025 Logitech. All rights reserved
+					</div>
+					<ul class="copyright-links-list">
+						<li class="copyright-links-item">
+							<a class="copyright-link" href="/en-gb/tos/terms.html" target="_self" data-analytics-title="terms-of-use">
+								Terms of Use
+							</a>
+						</li>
+					
+						<li class="copyright-links-item">
+							<a class="copyright-link" href="/en-gb/legal/privacy-policy.html" target="_self" data-analytics-title="privacy-policy">
+								Privacy Policy
+							</a>
+						</li>
+					
+						<li class="copyright-links-item">
+							<a class="copyright-link" href="https://www.logitech.com/legal/cookie-policy.html#manage-cookies" target="_self" data-analytics-title="cookie-settings">
+								Cookie Settings
+							</a>
+						</li>
+					
+						<li class="copyright-links-item">
+							<a class="copyright-link" href="/en-gb/sitemap.html" target="_self" data-analytics-title="sitemap">
+								Sitemap
+							</a>
+						</li>
+					</ul>
+				</div>
+				<div class="locale-selector-ctn">
+					
+
+
+<div class="locale-selector">
+	<a class="flag-link" href="/en-gb/change-location.html" data-analytics-title="locale-selector">
+		
+		<span class="logi-icon-2-world-emea"></span>
+		<span class="lang-code">United Kingdom</span>
+	</a>
+</div>
+
+
+				</div>
+			</div>
+			
+		</div>
+	</footer>
+
+    
+</div>
+
+	  <!-- This is to include and override footer using page properties XF path - Ends -->
+     <div class="html">
+        <div class="component-background  transparent-bgs">
+           <div class="container">
+              <!-- HTML -->
+              <style>
+                 .iparys_inherited:last-child {
+                 z-index: auto !important;
+                 }
+              </style>
+           </div>
+        </div>
+     </div>
+  </div>
+
+	        </div>
+            
+            
+            
+    
+    
+<script src="/etc.clientlibs/logitech/clientlibs/dependencies.min.cfa1c7e0057b97fcfa12873b8cfd7209.js"></script>
+<script src="/etc.clientlibs/clientlibs/granite/jquery/granite/csrf.min.56934e461ff6c436f962a5990541a527.js"></script>
+<script src="/etc.clientlibs/logitech/clientlibs/main-editable-sfcc.min.819457ea9068736a7e0a519c40edaf84.js"></script>
+
+
+
+    
+
+ <!-- This is add the modal pop up for email subscription (yieldify replacement) -->
+
+ 
+
+    
+
+
+
+         
+
+
+
+
+
+
+    
+    
+    
+
+
+
+
+
+
+    <div class="email-subscription-modal js-email-subscription-modal" data-modal-load-delay="10" data-page-visit-count="1">
+        <main class="email-subscription-modal-wrapper" aria-label="Modal Popup for Email subscription" role="dialog" tabindex="0">
+            <div class="email-subscription-modal-content">
+                <div class="modal-default-view js-modal-default-view">
+                    <h3 class="modal-title"><span style=""><h3>SUBSCRIBE NOW AND GET AN INSTANT OFFER!</h3><h6>Receive access to exclusive deals and be the first to know about the latest product launches &amp; how-to tips.</h6></span></h3>
+                    <div class="modal-img">
+                        <img src="https://resource.logitech.com/w_500,c_limit,f_auto,q_auto,dpr_2.0,dpr_1.0/d_transparent.gif/content/dam/logitech/en/email-subscription/email-subscription-pop-up.png?v=1" alt="Email Subscription"/>
+                    </div>
+                    <div class="email-subscription">
+                        <div class="email-subscription-ctn">
+                            <form class="email-subscription-form js-email-subscription-form" name="email-subscription" action="/content/logitech/emea/live/en_gb/tos/terms.usersubscribeservice.json" method="post" novalidate data-error-unauthorised="Request an Unauthorised error message." data-error-servlet-not-found="An Invalid Subscription ID is authored." data-error-form-default="Subscription ID is not authored properly.">
+                                <!-- Form Body -->
+                                <div class="form-body js-form-body">
+									
+                                    <input type="hidden" name="locale" value="en-gb" data-rule="required"/>
+									<input type="hidden" name="domain" value="logitech" data-rule="required"/>
+									<input type="hidden" name="originInfo" value="popupModal:terms" data-rule="required"/>
+									<input type="hidden" name="subscriptionId" value="promo,news,updates-suggestions" data-rule="required"/>
+									<input type="hidden" name="communicationType" value="promo,news,updates-suggestions"/>
+                                    <div class="form-field">
+										<div class="input-field-wrapper">
+                                            <div class="input-grp">
+												<input type="email" name="emailId" aria-label="Enter email address" placeholder="Enter email address" data-rule="required" data-error-default="Please enter a valid email address."/>
+												<button type="submit" name="email-subscription-submit" class="btn btn-large" aria-label="Subscribe" data-analytics-title="modal-email-subscribe-submit">
+													<div class="submit-label"><span class="submit-label-icon"></span></div>
+													<div class="submit-loader">
+														<div class="loading-dots"><div></div><div></div><div></div><div></div></div>
+													</div>
+												</button>
+											</div>
+										</div>
+									</div>
+									<div class="email-subscription-message form-message js-form-message error"></div>
+									<div class="form-field">
+										<div class="input-field-wrapper">
+											<div class="email-subscription-disclaimer js-email-subscription-disclaimer">
+												<label>
+													<input type="checkbox" name="subscription-disclaimer" data-rule="required submitOnce" data-error-default="Please agree to receive emails."/>
+													<span class="checkmark"></span>
+													<span class="checkmark-label">I want personalized marketing from Logitech. You can unsubscribe anytime. See our <a rel="noopener noreferrer" href="https://www.logitech.com/legal/web-privacy-policy.html" target="_blank">privacy policy</a>.</span>
+												</label>
+											</div>
+										</div>
+									</div>
+								</div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-success-view js-modal-success-view" style="display: none; background-image: url(https://resource.logitech.com/w_600,c_limit,f_auto,q_auto,dpr_2.0,dpr_1.0/d_transparent.gif/content/dam/logitech/en/email-subscription/logi-email-subscription-success.png?v=1)">
+                   <h3>We're Glad to Have You</h3>
+<p>You are now subscribed to our Logitech Newsletter</p>
+                   
+                </div>
+            </div>
+            <button tabindex="0" class="close-modal js-close-modal" aria-label="Close modal">
+                <i class="aem-logi-icon-modal-close" aria-hidden="true"></i>
+            </button>
+        </main>
+    </div>
+
+
+
+
+
+
+
+    
+
+ 
+
+<!-- This is add the modal pop up for Notify Me feature - Starts -->
+
+
+
+    
+
+
+
+         
+
+
+
+
+
+
+    
+    
+    
+
+
+
+
+
+	<div class="notify-me-modal js-notify-me-modal">
+		<main class="notify-me-modal-wrapper" aria-label="Modal Popup for Email subscription" aria-hidden="true" role="dialog" tabindex="0">
+			<div class="notify-me-modal-content">
+				<div class="modal-default-view js-modal-default-view">
+					<h3 class="modal-title">NOTIFY ME </h3>
+					<p class="modal-subtitle">We'll email you when this product becomes available for purchase</p>
+
+					<div class="notify-me">
+						<div class="notify-me-ctn">
+							<form class="notify-me js-notify-me" name="notify-me" action="/content/logitech/emea/live/en_gb/tos/terms.usernotifymeservice.json" method="post" novalidate data-error-form-default="Something wrong happened. Please try after some time or contact the customer care for further assistance. " data-error-fields-default="Please enter a valid email address">
+
+								<!-- Form Body -->
+								<div class="form-body js-form-body">
+									<input type="hidden" name="locale" value="en-gb" data-rule="required"/>
+									<input type="hidden" name="drLocale" value="en_gb" data-rule="required"/>
+									<input type="hidden" name="domain" value="logitech" data-rule="required"/>
+									<input type="hidden" name="originInfo" value="notifyMe:terms" data-rule="required"/>
+									<input type="hidden" name="cusResourceType" value="" data-rule="required"/>
+									<input type="hidden" name="productId" value="" data-rule="required"/>
+									<input type="hidden" name="skuId" value="" data-rule="required"/>
+									<div class="form-field">
+										<div class="input-field-wrapper">
+											<div class="input-grp">
+												<input type="email" name="emailId" aria-label="email" placeholder="Email Address" data-rule="required"/>
+												<button type="submit" name="notify-me-submit" class="btn btn-large">
+													<div class="submit-label">SUBMIT</div>
+													<div class="submit-loader">
+														<div class="loading-dots">
+															<div></div><div></div><div></div><div></div>
+														</div>
+													</div>
+												</button>
+											</div>
+										</div>
+									</div>
+
+									<div class="notify-me-message form-message js-form-message error"></div>
+
+									<div class="notify-me-disclaimer js-notify-me-disclaimer">
+										<h4 class="disclaimer-title">Get the latest from Logitech</h4>
+										<label>
+											<input type="checkbox" name="subscriptionId" value="promo,news,updates-suggestions" data-rule="submitOnce"/>
+											<span class="checkmark"></span>
+											<span class="checkmark-label"><p>I want personalized marketing from Logitech. You can unsubscribe anytime. See our <a rel="noopener noreferrer" href="/en-gb/legal/web-privacy-policy.html" target="_blank">privacy policy</a></p></span>
+										</label>
+									</div>
+								</div>
+								<!-- END Form Body-->
+							</form>
+						</div>
+					</div>
+				</div>
+				<div class="modal-success-view js-modal-success-view" style="display: none;">
+					<div><h3 class="modal-title">Success!</h3>
+<p class="modal-subtitle">Thank you for signing up.</p></div>
+					
+				</div>
+			</div>
+			<button tabindex="0" class="close-modal js-close-modal icon-x"></button>
+		</main>
+	</div>
+
+
+    
+
+
+<!-- This is add the modal pop up for Notify Me feature - Ends -->
+
+
+
+    
+
+    
+
+    
+    
+    
+
+            
+
+        
+
+  <div class="grid-guide">
+  <div class="container mobile">
+    <div class="grid">
+      <div class="col"><span></span></div>
+      <div class="col"><span></span></div>
+      <div class="col"><span></span></div>
+      <div class="col"><span></span></div>
+    </div>
+  </div>
+  <div class="container tablet">
+    <div class="grid">
+      <div class="col"><span></span></div>
+      <div class="col"><span></span></div>
+      <div class="col"><span></span></div>
+      <div class="col"><span></span></div>
+      <div class="col"><span></span></div>
+      <div class="col"><span></span></div>
+      <div class="col"><span></span></div>
+      <div class="col"><span></span></div>
+    </div>
+  </div>
+  <div class="container desktop">
+    <div class="grid">
+      <div class="col"><span></span></div>
+      <div class="col"><span></span></div>
+      <div class="col"><span></span></div>
+      <div class="col"><span></span></div>
+      <div class="col"><span></span></div>
+      <div class="col"><span></span></div>
+      <div class="col"><span></span></div>
+      <div class="col"><span></span></div>
+      <div class="col"><span></span></div>
+      <div class="col"><span></span></div>
+      <div class="col"><span></span></div>
+      <div class="col"><span></span></div>
+    </div>
+  </div>
+  <div class="container-xl desktop-xl">
+    <div class="grid">
+      <div class="col"><span></span></div>
+      <div class="col"><span></span></div>
+      <div class="col"><span></span></div>
+      <div class="col"><span></span></div>
+      <div class="col"><span></span></div>
+      <div class="col"><span></span></div>
+      <div class="col"><span></span></div>
+      <div class="col"><span></span></div>
+      <div class="col"><span></span></div>
+      <div class="col"><span></span></div>
+      <div class="col"><span></span></div>
+      <div class="col"><span></span></div>
+      <div class="col"><span></span></div>
+      <div class="col"><span></span></div>
+    </div>
+  </div>
+</div>
+
+	<!-- begin Modal component -->
+	<!-- ================================ -->
+
+	<!-- ================================ -->
+	<!-- end Modal component -->
+    </body>
+</html>
