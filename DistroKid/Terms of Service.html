@@ -24,7 +24,7 @@
 <meta name="msapplication-TileImage" content="/ms-icon-144x144.png">
 <meta name="theme-color" content="#ffffff">
 <script>
-serverTime = new Date('2025-12-11 12:36:09 GMT');
+serverTime = new Date('2025-12-12 12:36:10 GMT');
 </script>
 <title>Upload &amp; sell your music on Apple, Spotify, Amazon and YouTube Music | DistroKid</title>
 <meta property="og:title" content="DistroKid is the easiest way for musicians to get their music into Spotify, Apple, Apple Music, Amazon, TikTok, YouTube Music, and more"/> 
@@ -56,9 +56,9 @@ serverTime = new Date('2025-12-11 12:36:09 GMT');
 captchaSiteKey = "6Ld_vDcUAAAAABBf4b4MfIPqz5XA53JWQyOh6MX0";
 turnstileSiteKey = "0x4AAAAAAAwjnOrGSKrIkAR9";
 </script>
-<script src="/js/header.js?cacheHash=18a196a1611c6804" 1765456566570></script>
-<script src="/js/distro.js?cacheHash=d493fc847a81ff4" 1765456566570></script>
-<script src="/js/fixCaps.js?cacheHash=4d712b9355dbb337" 1765456566570></script>
+<script src="/js/header.js?cacheHash=18a196a1611c6804" 1765499769944></script>
+<script src="/js/distro.js?cacheHash=d493fc847a81ff4" 1765499769944></script>
+<script src="/js/fixCaps.js?cacheHash=4d712b9355dbb337" 1765499769944></script>
 <script src="/js/jquery.kenburns-0.1.js"></script>
 <script src="/js/lazysizes.min.js"></script>
 <script>
@@ -442,7 +442,7 @@ return String(input);
 <div style="position:relative;" class="outer2 navNotLoggedIn">
 <div class="headerLoggedOutNav nav inner2">
 <div class="navInner">
-<input type="hidden" id="forgotPasswordSessionID" name="forgotPasswordSessionID" value="distrokid_0935be2f-5c3d-4e01-aaa8-f4b8585bcfe5_0">
+<input type="hidden" id="forgotPasswordSessionID" name="forgotPasswordSessionID" value="distrokid_366c21b4-27f3-43b7-a1e6-64e0027b33d9_0">
 <script type="text/template" id="templateForgotPassword">
 <div class="signinBoxNotification">
 Done! Instructions to reset your password have been emailed.
@@ -621,7 +621,7 @@ Copyright Agent
 DistroKid LLC
 34 Third Ave #183
 New York, NY 10003
-Email: <a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="b0dcd5d7d1dcf0d4d9c3c4c2dfdbd9d49ed3dfdd">[email&#160;protected]</a> <br>
+Email: <a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="afc3cac8cec3efcbc6dcdbddc0c4c6cb81ccc0c2">[email&#160;protected]</a> <br>
 In accordance with the DMCA and other applicable law, DistroKid has adopted a policy of terminating, in appropriate circumstances and in DistroKid's sole discretion, users who are deemed to be repeat infringers. For the avoidance of doubt, the foregoing sentence in no way limits DistroKid's right to limit access to the Services and/or terminate the Accounts of any users for any reason, in DistroKid's sole discretion, including, without limitation, in the case of users who infringe, or allegedly infringe, any Intellectual Property Rights of others, whether or not there is any repeat infringement. <br>
 Please be advised that pursuant to federal law you may be held liable for damages if you make material misrepresentations in a Notice. Thus, if you are not sure that material located on or linked to by the infringes your copyright, you should consider first contacting an attorney. <br>
 <strong>Links to Third-Party Websites or Services</strong><br>
@@ -662,11 +662,14 @@ These Terms and the Privacy Policy constitute the entire agreement between you a
 <div class="siteTran-wrapper">
 <div id="sitetran_translate_element"></div>
 <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
-function onLanguageChange(languageCode) {
+function onLanguageChange(languageCode, languageChangeReason) {
 const currentLanguage = document.documentElement.getAttribute('lang');
 if (window && window.dataLayer) {
 window.dataLayer.push({ 'event' : 'sitetran-language', 'language-code' : languageCode });
 }
+// Only update user language preference for explicit user actions
+const shouldUpdatePreferredLanguage = languageChangeReason === 'UA-SELECT' || languageChangeReason === 'UA-LIST';
+if (shouldUpdatePreferredLanguage) {
 // If user is not logged in, do not update their language
 if (typeof me !== 'undefined' && currentLanguage !== languageCode) {
 fetch('/api/v1/user/updateLanguage/', {
@@ -674,10 +677,11 @@ method: 'POST',
 credentials: 'same-origin',
 headers: {
 'Content-Type': 'application/json',
-'Authorization': 'Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJjbGkiOjEsImlhdCI6MTc2NTQ1NjU2OSwiaXNzIjoiaHR0cHM6Ly9kaXN0cm9raWQuY29tIiwic3ViIjowLCJleHAiOjE3NjU0NjAxNjksImRldiI6IiIsInNjb3BlIjoicmVhZC1wcm9maWxlIiwiYXVkIjoiIn0.GwQqCbugimRql50FPdAHI_oq9dc005ae-lOrJEiUKy8'
+'Authorization': 'Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJjbGkiOjEsImlhdCI6MTc2NTQ5OTc3MCwiaXNzIjoiaHR0cHM6Ly9kaXN0cm9raWQuY29tIiwic3ViIjowLCJleHAiOjE3NjU1MDMzNzAsImRldiI6IiIsInNjb3BlIjoicmVhZC1wcm9maWxlIiwiYXVkIjoiIn0.-YsVwuzYeg1qcjfDlIOOTquR53WOGwN86gYWEfjLD3Q'
 },
 body: JSON.stringify({ languageCode: languageCode })
 });
+}
 }
 }
 var sitetran = JSON.parse('{"url_type":"none","auto_switch_from_browser_lang":true,"refresh_translation_seconds":0.1,"site_default_language_code":"en","phrase_discovery_enabled":true,"preferredLanguage":"en","zendeskLanguageCode":"en-us","site_id":1566,"static_url_language_code_lookup":{},"update_direction":false,"widget_type":"styled-select"}'); 
