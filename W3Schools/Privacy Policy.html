@@ -29,8 +29,8 @@
 <link rel="preload" href="/lib/fonts/source-sans-pro-v14-latin-600.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="preload" href="/lib/fonts/SourceSansPro-Regular.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="preload" href="/lib/fonts/freckle-face-v9-latin-regular.woff2" as="font" type="font/woff2" crossorigin> 
-<link rel="stylesheet" href="/lib/topnav/main.css?v=1.0.67">
-<link rel="stylesheet" href="/lib/my-learning/main.css?v=1.0.52">
+<link rel="stylesheet" href="/lib/topnav/main.css?v=1.0.76">
+<link rel="stylesheet" href="/lib/my-learning/main.css?v=1.0.58">
 <link rel="stylesheet" href="/lib/pathfinder/main.css?v=1.0.8">
 <link rel="stylesheet" href="/lib/w3schools.css?v=1.0.1">
 <link rel="stylesheet" href="/plus/plans/main.css">
@@ -63,7 +63,7 @@ if (subjectFolder.startsWith("python/") == true ) {
 subjectFolder = subjectFolder.substr(0, subjectFolder.indexOf("/"));
 </script>
 <!-- End Google Tag Manager -->
-<script src="/lib/uic.js?v=1.0.9"></script>
+<script src="/lib/uic.js?v=1.0.11"></script>
 <script src="/lib/uic_prov.js?v=1.4.6"></script>
 
 <script data-cfasync="false" type="text/javascript">
@@ -130,11 +130,12 @@ function w3_getStyleValue(elmnt,style) {
 }
 </script>
 
-<script src="/lib/common-deps/main.js?v=1.0.11"></script>
-<script src="/lib/user-session/main.js?v=1.0.41"></script>
-<script src="/lib/my-learning/main.js?v=1.0.52"></script>
+<script src="/lib/common-deps/main.js?v=1.0.14"></script>
+<script src="/lib/user-session/main.js?v=1.0.44"></script>
+<script src="/lib/my-learning/main.js?v=1.0.58"></script>
 
 </head><body>
+
 <div id="tnb-search-suggestions"></div>
 
 <div id="top-nav-bar" class="classic">
@@ -391,7 +392,7 @@ function w3_getStyleValue(elmnt,style) {
 
       <!-- < user-authenticated -->
       <a
-        
+        id="tnb-user-profile"
         href="https://profile.w3schools.com/log-in"
         class="user-authenticated user-profile-btn w3-alt-btn w3-hide ga-top ga-top-profile"
         title="Your W3Schools Profile"
@@ -541,7 +542,7 @@ function w3_getStyleValue(elmnt,style) {
             d="M622.34 153.2L343.4 67.5c-15.2-4.67-31.6-4.67-46.79 0L17.66 153.2c-23.54 7.23-23.54 38.36 0 45.59l48.63 14.94c-10.67 13.19-17.23 29.28-17.88 46.9C38.78 266.15 32 276.11 32 288c0 10.78 5.68 19.85 13.86 25.65L20.33 428.53C18.11 438.52 25.71 448 35.94 448h56.11c10.24 0 17.84-9.48 15.62-19.47L82.14 313.65C90.32 307.85 96 298.78 96 288c0-11.57-6.47-21.25-15.66-26.87.76-15.02 8.44-28.3 20.69-36.72L296.6 284.5c9.06 2.78 26.44 6.25 46.79 0l278.95-85.7c23.55-7.24 23.55-38.36 0-45.6zM352.79 315.09c-28.53 8.76-52.84 3.92-65.59 0l-145.02-44.55L128 384c0 35.35 85.96 64 192 64s192-28.65 192-64l-14.18-113.47-145.03 44.56z"
           ></path>
         </svg>
-        For Teachers
+        Teachers
       </a>
 
       <a
@@ -641,7 +642,7 @@ function w3_getStyleValue(elmnt,style) {
             d="M622.34 153.2L343.4 67.5c-15.2-4.67-31.6-4.67-46.79 0L17.66 153.2c-23.54 7.23-23.54 38.36 0 45.59l48.63 14.94c-10.67 13.19-17.23 29.28-17.88 46.9C38.78 266.15 32 276.11 32 288c0 10.78 5.68 19.85 13.86 25.65L20.33 428.53C18.11 438.52 25.71 448 35.94 448h56.11c10.24 0 17.84-9.48 15.62-19.47L82.14 313.65C90.32 307.85 96 298.78 96 288c0-11.57-6.47-21.25-15.66-26.87.76-15.02 8.44-28.3 20.69-36.72L296.6 284.5c9.06 2.78 26.44 6.25 46.79 0l278.95-85.7c23.55-7.24 23.55-38.36 0-45.6zM352.79 315.09c-28.53 8.76-52.84 3.92-65.59 0l-145.02-44.55L128 384c0 35.35 85.96 64 192 64s192-28.65 192-64l-14.18-113.47-145.03 44.56z"
           ></path>
         </svg>
-        For Teachers
+        Teachers
       </a>
 
       <a
@@ -6311,13 +6312,13 @@ function w3_getStyleValue(elmnt,style) {
               <div class="servicebox">
                 <a
                   
-                  href="/leaderboard/"
+                  href="/league/"
                   class="serviceslink ga-top-drop ga-top-drop-services-mylearn"
-                  title="Earn XP and climb the ranks with our Leaderboard"
-                  aria-label="Leaderboard"
+                  title="Earn XP and climb the ranks with our League"
+                  aria-label="League"
                 >
                   <div class="w3-padding services w3-round services-color-3">
-                    <h4>Leaderboard</h4>
+                    <h4>League</h4>
                     <p>
                       Earn XP and climb the ranks with different challenges
                     </p>
@@ -6780,7 +6781,7 @@ function w3_getStyleValue(elmnt,style) {
                   aria-label="W3Schools Academy / Classroom"
                 >
                   <div class="w3-padding services w3-round services-color-2">
-                    <h4>For Teachers</h4>
+                    <h4>Teachers</h4>
                     <p>
                       Contact us about W3Schools Academy for educational
                       institutions
@@ -8109,7 +8110,7 @@ function w3_getStyleValue(elmnt,style) {
         "W3Schools Spaces",
       ],
       [
-        "Website",
+        "website",
         "/spaces/index.php",
         "Website Hosting with W3Schools Spaces",
       ],
@@ -9491,7 +9492,7 @@ a.track-progress-btn {
     <i class="fa fa-logo"></i>
   </a>
 </div>
-<div class="footerlinks_1"><a href="/plus/index.php" title="Become a PLUS user and unlock powerful features" class="ga-bottom ga-bottom-plus">PLUS</a></div>
+<div class="footerlinks_1"><a href="https://order.w3schools.com/plans" title="Become a PLUS user and unlock powerful features" class="ga-bottom ga-bottom-plus" target="_blank">PLUS</a></div>
 <div class="footerlinks_1"><a href="/spaces/index.php" title="Get your own website with W3Schools Spaces" class="ga-bottom ga-bottom-spaces">SPACES</a></div>
 <div class="footerlinks_1"><a href="https://campus.w3schools.com/collections/certifications" title="Document your knowledge by getting certified" target="_blank" class="ga-bottom ga-bottom-cert">GET CERTIFIED</a></div>
 <div class="footerlinks_1"><a href="/academy/index.php" title="Contact us about W3Schools Academy for educational institutions" target="_blank" class="ga-bottom ga-bottom-teachers">FOR TEACHERS</a></div>
@@ -9633,7 +9634,7 @@ of all content. While using W3Schools, you agree to have read and accepted our <
 
 </div>
 <script src="/lib/topnav/amazon-cognito-identity.min.js"></script>
-<script src="/lib/topnav/main.js?v=1.0.67"></script>
+<script src="/lib/topnav/main.js?v=1.0.76"></script>
 <script src="/lib/w3schools_footer.js?update=20250924"></script>
 <script src="/lib/w3schools_features.js?update=20251208"></script>
 <script src="https://www.google.com/recaptcha/api.js?render=explicit"></script>
