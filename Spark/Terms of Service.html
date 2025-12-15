@@ -121,19 +121,21 @@
 <link rel="apple-touch-icon" type="image/png" href="https://cdn-rdstaticassets.readdle.com/assets/spark/spark3/common/favicon-icons/spark-icon-144x144.png?1664201203" sizes="144x144" />
 <link rel="apple-touch-icon" type="image/png" href="https://cdn-rdstaticassets.readdle.com/assets/spark/spark3/common/favicon-icons/spark-icon-152x152.png?1664201285" sizes="152x152" />
 <link rel="apple-touch-icon" type="image/png" href="https://cdn-rdstaticassets.readdle.com/assets/spark/spark3/common/favicon-icons/spark-icon-180x180.png?1664201236" sizes="180x180" />
-<link rel="stylesheet" href="/css/cache/spark3/style_1765288407767.css?1765288408" type="text/css" />
-<link rel="stylesheet" href="/css/cache/spark3/legal_1765288407767.css?1765288787" type="text/css" />
+<link rel="stylesheet" href="/css/cache/spark3/style_1765801742183.css?1765801742" type="text/css" />
+<link rel="stylesheet" href="/css/cache/spark3/legal_1765801742183.css?1765801742" type="text/css" />
 
 <!-- Cookie Scripts code -->
     <script type="text/javascript" charset="UTF-8" src="//geo.cookie-script.com/s/a3e187820546213725314d60c3ac6ce9.js?country=gb-ch-id-is-il-jp-mx-no-li-kr-sg-br&region=eu"></script>
 
     <script>
         window.addEventListener('CookieScriptLoaded', function () {
+            activateFocusTrap('#cookiescript_injected_wrapper');
+
             ['click', 'keyup'].forEach(function(eventType) {
                 document.querySelector('body').addEventListener(eventType, function(event) {
                     if (isClickOrKeyboardEvent(event)) {
                         if (event.target.matches(['div#cookiescript_manage_wrap, div#cookiescript_manage', '#cookiescript_manage span'])) {
-                            var acceptNecessaryText = document.getElementById('cookieScriptAditionalData').getAttribute('data-accept-necessary-btn-text');
+                            activateFocusTrap('#cookiescript_injected_fsd');
 
                             var acceptNecessaryBtn = document.createElement('div');
                             acceptNecessaryBtn.id = 'cookiescript_custom_accept_necessary';
@@ -154,6 +156,65 @@
                     }
                 });
             });
+
+            function activateFocusTrap(elementSelector) {
+                const root = document.querySelector(elementSelector);
+                
+                if (!root) return () => {};
+
+                const previouslyFocusedElement = document.activeElement;
+
+                const selectors =
+                    'a[href], button:not([disabled]), textarea, input:not([disabled]), ' +
+                    'select:not([disabled]), details, [tabindex]:not([tabindex="-1"])';
+
+                const getFocusableElements = () => root.querySelectorAll(selectors);
+
+                requestAnimationFrame(() => {
+                    requestAnimationFrame(() => {
+                        const focusableElements = getFocusableElements();
+
+                        if (focusableElements.length) {
+                            focusableElements[0].focus({ preventScroll: true });
+                        }
+                    });
+                });
+
+                const handleKeydown = (e) => {
+                    if (e.key !== 'Tab') return;
+
+                    const focusableElements = getFocusableElements();
+
+                    if (!focusableElements.length) return;
+
+                    const firstFocusableElement = focusableElements[0];
+                    const lastFocusableElement = focusableElements[focusableElements.length - 1];
+
+                    if (e.shiftKey) {
+                        if (document.activeElement === firstFocusableElement) {
+                            lastFocusableElement.focus();
+                            e.preventDefault();
+                        }
+                    } else {
+                        if (document.activeElement === lastFocusableElement) {
+                            firstFocusableElement.focus();
+                            e.preventDefault();
+                        }
+                    }
+                };
+
+                root.addEventListener('keydown', handleKeydown);
+
+                function deactivateFocusTrap() {
+                    root.removeEventListener('keydown', handleKeydown);
+
+                    if (previouslyFocusedElement && previouslyFocusedElement.focus) {
+                        previouslyFocusedElement.focus();
+                    }
+                }
+
+                return deactivateFocusTrap;
+            }
 
             function isClickOrKeyboardEvent(event) {
                 const isClick = event.type === 'click';
@@ -1089,7 +1150,7 @@
         </div>
     </footer>
 
-<script  type="text/javascript" src="/js/cache/spark3/legal.min_1765288407744.js?1765288787"></script>
+<script  type="text/javascript" src="/js/cache/spark3/legal.min_1765801742162.js?1765801742"></script>
 
 <script>
     window.page_vars = {
@@ -1114,8 +1175,8 @@
         amplitude.flush()
     });
 
-    amplitude.setSessionId(1765759690594);
-    amplitude.setDeviceId("68512a91-216d-4951-8e9d-96274466f5a2-1765759690594R");
+    amplitude.setSessionId(1765802998393);
+    amplitude.setDeviceId("44370f0c-2949-464d-9345-e13a54a76b30-1765802998393R");
 
     var identify = new amplitude.Identify();
     identify.set('Identity', 'Set');
