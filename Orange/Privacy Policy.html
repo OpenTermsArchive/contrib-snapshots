@@ -37,7 +37,7 @@
       }
 
       a:hover {
-         color: #f15e00;
+         color: #555555;
       }
       a[target="_blank"]::after {
         content: '';
@@ -987,133 +987,197 @@
       </main>
 
       <footer id="elcofooter"></footer>
-      <script>
-      // Wrap table for responsive
-      if (window.matchMedia('(max-width: 735px)').matches) {
-         document.querySelectorAll('.left-container table').forEach((el) => {
-            let wrapper = document.createElement("div")
-            wrapper.classList.add('slider-table')
-            el.parentNode.insertBefore(wrapper, el)
-            wrapper.appendChild(el)
-         })
+<script>
+  // Wrap table for responsive
+  if (window.matchMedia('(max-width: 735px)').matches) {
+    document.querySelectorAll('.left-container table').forEach((el) => {
+      let wrapper = document.createElement('div');
+      wrapper.classList.add('slider-table');
+      el.parentNode.insertBefore(wrapper, el);
+      wrapper.appendChild(el);
+    });
+  }
+
+  // Accordion
+  function handleAccordionClick(event) {
+    // close all others
+    event.currentTarget.parentNode.classList.add('current');
+    document.querySelectorAll('.accordion:not(.current)').forEach((item) => {
+      item.querySelector('.accordion-body').style.maxHeight = 0;
+      item.querySelector('.accordion-body').style.display = 'none';
+      item.classList.remove('isOpened');
+      item
+        .querySelector('.accordion-head')
+        .setAttribute('aria-expanded', 'false');
+    });
+    event.currentTarget.parentNode.classList.remove('current');
+    // toggle content
+    let $thisParent = event.currentTarget.parentNode;
+    let $thisBody = event.currentTarget.nextElementSibling;
+    if ($thisParent.classList.contains('isOpened')) {
+      $thisBody.style.maxHeight = 0;
+      $thisBody.style.display = 'none';
+      $thisParent.classList.remove('isOpened');
+      $thisParent
+        .querySelector('.accordion-head')
+        .setAttribute('aria-expanded', 'false');
+    } else {
+      $thisBody.style.display = 'block';
+      $thisBody.style.maxHeight = $thisBody.scrollHeight + 'px';
+      $thisParent.classList.add('isOpened');
+      $thisParent
+        .querySelector('.accordion-head')
+        .setAttribute('aria-expanded', 'true');
+    }
+  }
+
+  // Accordion responsive setup
+  const accordionMediaQuery = window.matchMedia('(max-width: 959px)');
+  let accordionInitialized = false;
+
+  function setupAccordion(matches) {
+    if (matches && !accordionInitialized) {
+      accordionInitialized = true;
+      document.querySelectorAll('.accordion-head').forEach((el) => {
+        el.setAttribute('tabindex', '0');
+        el.setAttribute('role', 'button');
+        el.addEventListener('click', handleAccordionClick);
+        el.addEventListener('keypress', function (e) {
+          if (e.key === 'Enter' || e.key === ' ') {
+            e.preventDefault();
+            handleAccordionClick(e);
+          }
+        });
+      });
+
+      // open accordion if url hash
+      let hash = window.location.hash;
+      if (hash !== '') {
+        let el = document.querySelector(hash);
+        if (el !== null) {
+          el.click();
+        }
+      }
+    } else if (!matches && accordionInitialized) {
+      // Nettoyer les styles inline quand on passe en mode desktop
+      document.querySelectorAll('.accordion-body').forEach((body) => {
+        body.style.maxHeight = '';
+        body.style.display = '';
+      });
+      document.querySelectorAll('.accordion').forEach((accordion) => {
+        accordion.classList.remove('isOpened');
+      });
+    }
+  }
+
+  // Exécuter au chargement
+  setupAccordion(accordionMediaQuery.matches);
+
+  // Réévaluer lors des changements de viewport
+  accordionMediaQuery.addListener((e) => setupAccordion(e.matches));
+
+  // Smooth scroll to hash
+  document.querySelectorAll('.ancres a').forEach((ancre) => {
+    ancre.addEventListener('click', (event) => {
+      event.preventDefault();
+      let hash = ancre.getAttribute('href');
+      let target = document.querySelector(hash);
+      let targetPosition =
+        target.getBoundingClientRect().top + window.pageYOffset - 70;
+      window.scrollTo({
+        top: targetPosition,
+        behavior: 'smooth',
+      });
+    });
+  });
+
+  // Hightlight menu when section is visible
+  const menuHighlightMediaQuery = window.matchMedia('(min-width: 960px)');
+  let scrollListener = null;
+  let scrollTimeout = null;
+
+  function updateHash(hash) {
+    if (history.pushState) {
+      history.pushState(null, null, '#' + hash);
+    } else {
+      location.hash = '#' + hash;
+    }
+  }
+
+  function handleScrollHighlight() {
+    const srltop = window.scrollY;
+    let currentHash;
+
+    document.querySelectorAll('.donnees-perso h2').forEach(function (item) {
+      if (item.offsetTop <= srltop + 30) {
+        currentHash = item.getAttribute('id');
+        document.querySelectorAll('.ancres a').forEach(function (item) {
+          item.classList.remove('active');
+        });
+        document
+          .querySelector('.ancres a[href="#' + currentHash + '"]')
+          .classList.add('active');
+
+        if (scrollTimeout) {
+          clearTimeout(scrollTimeout);
+        }
+        scrollTimeout = setTimeout(function () {
+          updateHash(currentHash);
+        }, 1000);
+      }
+    });
+  }
+
+  function setupMenuHighlight(matches) {
+    if (matches && !scrollListener) {
+      scrollListener = handleScrollHighlight;
+      window.addEventListener('scroll', scrollListener);
+    } else if (!matches && scrollListener) {
+      window.removeEventListener('scroll', scrollListener);
+      scrollListener = null;
+      // Nettoyer les classes active
+      document.querySelectorAll('.ancres a').forEach(function (item) {
+        item.classList.remove('active');
+      });
+    }
+  }
+
+  // Exécuter au chargement
+  setupMenuHighlight(menuHighlightMediaQuery.matches);
+
+  // Réévaluer lors des changements de viewport
+  menuHighlightMediaQuery.addListener((e) => setupMenuHighlight(e.matches));
+
+  // Elcos ready
+  head.ready(function () {
+    o_footer();
+  });
+
+  // Si title existant, compléter la propriété title avec le suffixe " (nouvelle fenêtre)"
+  // Si title inexistant, reprendre le libellé du lien pour alimenter la propriété title et la compléter du même suffixe" (nouvelle fenêtre)"
+  // Redonder la propriété title obtenue avec la propriété aria-label toujours avec le suffixe "... (nouvelle fenêtre)"
+  const suffix = ' ' + '(nouvelle fenêtre)';
+  document
+    .querySelectorAll('.donnees-perso a[target=_blank]')
+    .forEach((blankLink) => {
+      let attrTitle = blankLink.title;
+      let attrAria = blankLink.getAttribute('aria-label');
+      let attrText = blankLink.text;
+      attrText = attrText.trim(); // remove linebreaks and extra spaces
+      let textSuffix = attrText + suffix;
+
+      if (attrTitle == '') {
+        blankLink.title = textSuffix;
+      } else {
+        blankLink.title += suffix;
       }
 
-      // Accordion
-      if (window.matchMedia('(max-width: 959px)').matches) {
-        function handleAccordionClick(event) {
-            // close all others
-            event.currentTarget.parentNode.classList.add('current')
-            document.querySelectorAll('.accordion:not(.current)').forEach((item) => {
-                item.querySelector('.accordion-body').style.maxHeight = 0
-                item.classList.remove('isOpened')
-                item.querySelector('.accordion-head').setAttribute('aria-expanded', 'false')
-            })
-            event.currentTarget.parentNode.classList.remove('current')
-            // toggle content
-            let $thisParent = event.currentTarget.parentNode
-            let $thisBody = event.currentTarget.nextElementSibling
-            if ($thisParent.classList.contains('isOpened')) {
-                $thisBody.style.maxHeight = 0
-                $thisParent.classList.remove('isOpened')
-                $thisParent.querySelector('.accordion-head').setAttribute('aria-expanded', 'false')
-            } else {
-                $thisBody.style.maxHeight = $thisBody.scrollHeight + "px"
-                $thisParent.classList.add('isOpened')
-                $thisParent.querySelector('.accordion-head').setAttribute('aria-expanded', 'true')
-            }
-        }
-
-        document.querySelectorAll('.accordion-head').forEach((el) => {
-            el.setAttribute('tabindex', '0')
-            el.setAttribute('role', 'button')
-            el.addEventListener('click', handleAccordionClick)
-            el.addEventListener('keypress', function (e) {
-                if (e.key === 'Enter' || e.key === ' ') {
-                    e.preventDefault()
-                    handleAccordionClick(e)
-                }
-            })
-        })
-
-         // open accordion if url hash
-         let hash = window.location.hash
-         if (hash !== '') {
-            let el = document.querySelector(hash)
-            if (el !== null) {
-               el.click()
-            }
-         }
+      if (attrAria == '' || attrAria == null) {
+        blankLink.setAttribute('aria-label', textSuffix);
+      } else {
+        blankLink.setAttribute('aria-label', attrAria + suffix);
       }
-
-      // Smooth scroll to hash
-      document.querySelectorAll('.ancres a').forEach((ancre) => {
-        ancre.addEventListener('click', (event) => {
-            event.preventDefault()
-            let hash = ancre.getAttribute('href')
-            let target = document.querySelector(hash)
-            let targetPosition = target.getBoundingClientRect().top + window.pageYOffset - 70
-            window.scrollTo({
-                top: targetPosition,
-                behavior: 'smooth'
-            })
-        })
-      })
-
-      // Hightlight menu when section is visible
-      function updateHash(hash) {
-         if (history.pushState) {
-            history.pushState(null, null, '#' + hash)
-         } else {
-            location.hash = '#' + hash
-         }
-      }
-
-      var srltop = window.scrollY
-      var currentHash
-      window.addEventListener('scroll', function () {
-         srltop = window.scrollY
-         document.querySelectorAll('.donnees-perso h2').forEach(function (item) {
-            if (item.offsetTop <= srltop + 30) {
-               currentHash = item.getAttribute('id')
-               document.querySelectorAll('.ancres a').forEach(function (item) {
-                  item.classList.remove('active')
-               })
-               document.querySelector('.ancres a[href="#' + currentHash + '"]').classList.add('active')
-               setTimeout(function () {
-                  updateHash(currentHash)
-               }, 1000)
-            }
-         })
-      })
-
-      // Elcos ready
-      head.ready(function () {
-         o_footer()
-      })
-
-    // Si title existant, compléter la propriété title avec le suffixe " (nouvelle fenêtre)"
-    // Si title inexistant, reprendre le libellé du lien pour alimenter la propriété title et la compléter du même suffixe" (nouvelle fenêtre)"
-    // Redonder la propriété title obtenue avec la propriété aria-label toujours avec le suffixe "... (nouvelle fenêtre)"
-    const suffix = ' ' + '(nouvelle fenêtre)'
-    document.querySelectorAll('.donnees-perso a[target=_blank]').forEach( blankLink => {
-        let attrTitle = blankLink.title
-        let attrAria = blankLink.getAttribute('aria-label')
-        let attrText = blankLink.text
-        attrText = attrText.trim() // remove linebreaks and extra spaces
-        let textSuffix = attrText + suffix
-
-        if (attrTitle == '') {
-        blankLink.title = textSuffix
-        } else {
-        blankLink.title += suffix
-        }
-
-        if (attrAria == '' || attrAria == null) {
-        blankLink.setAttribute('aria-label', textSuffix)
-        } else {
-        blankLink.setAttribute('aria-label', attrAria + suffix)
-        }
-    })
-   </script>
+    });
+</script>
    </body>
 </html>
