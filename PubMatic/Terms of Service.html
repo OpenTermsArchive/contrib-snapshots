@@ -81,7 +81,7 @@ window._wpemojiSettings = {"baseUrl":"https:\/\/s.w.org\/images\/core\/emoji\/15
 <link rel='stylesheet' id='icons-css' href='https://pubmatic.com/wp-content/themes/pubmatic/css/icons.css?ver=1.0' media='all' />
 <link rel='stylesheet' id='slick-css' href='https://pubmatic.com/wp-content/themes/pubmatic/css/slick.css?ver=1.8.1' media='all' />
 <link rel='stylesheet' id='zoomifyStyle-css' href='https://pubmatic.com/wp-content/themes/pubmatic/css/zoomify.min.css?ver=0.2.5' media='all' />
-<link rel='stylesheet' id='style-css' href='https://pubmatic.com/wp-content/themes/pubmatic/style.css?ver=1764598966' media='all' />
+<link rel='stylesheet' id='style-css' href='https://pubmatic.com/wp-content/themes/pubmatic/style.css?ver=1766411364' media='all' />
 <link rel='stylesheet' id='new-css' href='https://pubmatic.com/wp-content/themes/pubmatic/css/new_styles.css?ver=1753372726' media='all' />
 <script type="text/javascript" src="https://pubmatic.com/wp-content/themes/pubmatic/js/jquery.3.7.1.min.js?ver=3.7.1" id="jquery-js"></script>
 <script type="text/javascript" src="https://pubmatic.com/wp-content/themes/pubmatic/js/slick.min.js?ver=1.8.1" id="slick-js"></script>
@@ -97,7 +97,7 @@ window._wpemojiSettings = {"baseUrl":"https:\/\/s.w.org\/images\/core\/emoji\/15
         })(window,document,'script','dataLayer','GTM-TDPB8VC');</script>
     
     <script>
-        window.ajax_nonce = 'adf3f3bea0';
+        window.ajax_nonce = '4dc40cf853';
     </script>
 
     		<!-- TRACKING STUFF GOES HERE -->
@@ -190,8 +190,10 @@ window._wpemojiSettings = {"baseUrl":"https:\/\/s.w.org\/images\/core\/emoji\/15
     </a>
 
     <div class="form-group">
+        <label for="search-input" class="visually-hidden">What can we help you find?</label>
         <input type="text"
                name="s"
+               id="search-input"
                placeholder="What can we help you find?"
                value=""
                class="form-control input-lg" />
@@ -199,7 +201,7 @@ window._wpemojiSettings = {"baseUrl":"https:\/\/s.w.org\/images\/core\/emoji\/15
         <svg width="668" height="668" viewBox="0 0 668 668" fill="none" xmlns="http://www.w3.org/2000/svg">
             <path d="M460.517 461.037L634 634M534 284C534 422.07 422.07 534 284 534C145.929 534 34 422.07 34 284C34 145.929 145.929 34 284 34C422.07 34 534 145.929 534 284Z" stroke="#B1B1B1" stroke-width="66.6667" stroke-linecap="round" stroke-linejoin="round"/>
         </svg>
-        <input type="submit">
+        <input type="submit" value="Search">
     </div>
 
     
@@ -440,7 +442,8 @@ window._wpemojiSettings = {"baseUrl":"https:\/\/s.w.org\/images\/core\/emoji\/15
             			<li class="list-search">
 				<form method="get" action="/" aria-label="Site search mobile">
 					<div class="">
-						<input type="text" name="s" placeholder="What can we help you find?" class="form-control"/>
+                        <label for="search-input-mobile" class="visually-hidden">What can we help you find?</label>
+                        <input type="text" id="search-input-mobile" name="s" placeholder="What can we help you find?" class="form-control"/>
 						<span class="glyphicon glyphicon-search"></span>
 					</div>
 				</form>
