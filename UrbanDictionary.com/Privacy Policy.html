@@ -40,6 +40,18 @@
       [x-cloak] {
         display: none !important;
       }
+      article.prose h1 {
+        @apply text-2xl mb-4;
+      }
+      article.prose h2 {
+        @apply text-lg mt-6 mb-2;
+      }
+      article.prose p {
+        @apply my-3;
+      }
+      article.prose ul {
+        @apply my-3;
+      }
     </style>
   </head>
   <body class="bg-gray-200 min-h-screen">
@@ -82,7 +94,7 @@
       </a>
 
       
-      <article class="bg-white rounded-2xl p-8 md:p-12 mt-6 prose prose-lg max-w-none">
+      <article class="bg-white rounded-2xl p-6 md:p-8 mt-6 prose max-w-none">
         <h1>Privacy Policy</h1>
 <p>This privacy policy discloses:</p>
 <ul>
@@ -274,6 +286,10 @@ San Francisco, CA 94120</p>
 <p>Updated: July 1, 2023</p>
 
       </article>
+
+      
+      
+      
       
     </div>
     </main>
