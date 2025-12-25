@@ -27,7 +27,21 @@
     <link href="/favicon-16x16.png" rel="icon" sizes="16x16" type="image/png"/>
     <link href="/site.webmanifest" rel="manifest"/>
     <link rel="canonical" href="https://urbandictionary.help/privacy/">
+    <script>
+      document.addEventListener('alpine:init', () => {
+        Alpine.store('ui', {
+          mobileMenu: false,
+          thanks: new URLSearchParams(location.search).has('thanks')
+        })
+        if (Alpine.store('ui').thanks) history.replaceState({}, '', location.pathname)
+      })
+    </script>
     <script src="//unpkg.com/alpinejs" defer></script>
+    <script>!function(e,t,n){function a(){var e=t.getElementsByTagName("script")[0],n=t.createElement("script");n.type="text/javascript",n.async=!0,n.src="https://beacon-v2.helpscout.net",e.parentNode.insertBefore(n,e)}if(e.Beacon=n=function(t,n,a){e.Beacon.readyQueue.push({method:t,options:n,data:a})},n.readyQueue=[],"complete"===t.readyState)return a();e.attachEvent?e.attachEvent("onload",a):e.addEventListener("load",a,!1)}(window,document,window.Beacon||function(){});</script>
+    <script>
+      Beacon('init', '04c1b288-519e-4fd7-b5f7-8509cb8cd770')
+      Beacon('config', { display: { style: 'manual' } })
+    </script>
     <style type="text/tailwindcss">
       html {
         scroll-padding-top: 5rem;
@@ -44,10 +58,10 @@
         display: none !important;
       }
       article.prose h1 {
-        @apply text-2xl mb-4;
+        @apply text-xl mb-4;
       }
       article.prose h2 {
-        @apply text-lg mt-6 mb-2;
+        @apply text-base font-bold mt-6 mb-2;
       }
       article.prose p {
         @apply my-3;
@@ -55,17 +69,24 @@
       article.prose ul {
         @apply my-3;
       }
+      article.prose > :last-child {
+        @apply mb-0;
+      }
     </style>
   </head>
-  <body class="bg-gray-200 min-h-screen">
+  <body x-data class="bg-gray-200 min-h-screen">
+    <!-- Thanks Banner -->
+    <div x-show="$store.ui.thanks" x-cloak class="bg-green-600 text-white text-center py-3 px-6">
+      Thanks! We'll get back to you soon.
+    </div>
     <!-- Header -->
-    <header class="bg-ud-dark text-white py-4 px-6 sticky top-0 z-50 shadow-md" x-data="{ isOpen: false }">
+    <header class="bg-ud-dark text-white py-4 px-6 sticky top-0 z-50 shadow-md">
       <div class="max-w-4xl mx-auto flex justify-between items-center">
         <a href="/" class="flex items-center gap-3 group">
           <img src="/logo.svg" alt="Urban Dictionary Help" height="24" width="94">
         </a>
 
-        <button class="text-white md:hidden" @click="isOpen = !isOpen">
+        <button class="text-white md:hidden" @click="$store.ui.mobileMenu = !$store.ui.mobileMenu">
           <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/>
           </svg>
@@ -74,15 +95,17 @@
         <nav class="hidden md:flex items-center gap-6 text-sm font-medium">
           <a href="/" class="hover:text-ud-yellow transition-colors">Help</a>
           <a href="/legal/" class="hover:text-ud-yellow transition-colors">Legal</a>
+          <button @click="Beacon('open')" class="hover:text-ud-yellow transition-colors">Contact</button>
           <a href="https://urbandictionary.com" class="bg-ud-yellow text-ud-dark px-4 py-1.5 rounded hover:bg-white transition-colors">Dictionary</a>
         </nav>
       </div>
 
       <!-- Mobile menu -->
-      <div class="md:hidden" x-show="isOpen" x-cloak>
+      <div class="md:hidden" x-show="$store.ui.mobileMenu" x-cloak>
         <div class="pt-4 pb-2 space-y-2">
           <a href="/" class="block hover:text-ud-yellow py-2">Help</a>
           <a href="/legal/" class="block hover:text-ud-yellow py-2">Legal</a>
+          <button @click="Beacon('open'); $store.ui.mobileMenu = false" class="block hover:text-ud-yellow py-2 text-left w-full">Contact</button>
           <a href="https://urbandictionary.com" class="block hover:text-ud-yellow py-2">Dictionary</a>
         </div>
       </div>
@@ -92,12 +115,8 @@
     <!-- Article View -->
     <main class="py-12 px-6">
     <div class="max-w-4xl mx-auto">
-      <a href="/" class="text-blue-600 hover:text-blue-800 font-medium mb-8 flex items-center gap-1 group inline-block">
-        <span class="group-hover:-translate-x-1 transition-transform">←</span> Back to Help
-      </a>
-
       
-      <article class="bg-white rounded-2xl p-6 md:p-8 mt-6 prose max-w-none">
+      <article class="bg-white rounded-2xl p-6 md:p-8 prose max-w-none">
         <h1>Privacy Policy</h1>
 <p>This privacy policy discloses:</p>
 <ul>
