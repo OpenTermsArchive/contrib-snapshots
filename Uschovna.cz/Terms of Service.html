@@ -97,7 +97,7 @@
 			min-width: 600px;
 		}
 
-		html	</style>
+		body	{ background: url('/www/images/pozadi_new_dark.jpg') #000000; background-position-x: center; background-repeat: no-repeat; }html	</style>
 	<link href="/www/css/uschovna.css?v1.1.73" rel="stylesheet"/>
 	
 	<script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
@@ -130,16 +130,10 @@
 	<script async defer src="https://cdn.performax.cz/yi/openwrap/openwrap_4228_tiscali.js"></script>
 </head>
 
-<body style="background-color: #000f38">
+<body >
 
 	
 	
-		<input type="hidden" name="branding-size" value="0" />
-		<input type="hidden" name="branding-id" value="8033" />
-		<input type="hidden" name="branding-page" value="vseobecne_podminky_uschovna" />
-		<input type="hidden" name="branding-subpage" value="" />
-		<iframe name="branding-iframe" style="background-color: #000f38; position: absolute; height: 100%; width: 100%; min-height: 1200px; border: none;" display: none;></iframe>
-	<div class="branding-id" advert-template-script="branding" uses-branding="yes" branding-id="8033" style="display: none;"></div>
 	<div class="wrapper_full_width">
 	<div class="wrapper c">
 		<div class="hlavni_menu c">
@@ -414,7 +408,7 @@
 <div id="menu_podpora_bublina" class="c menu_bublina">
 </div>
 
-<div id="vice_wrapper" class="">
+<div id="vice_wrapper" class="reklamy">
 	<div class="igelit close"></div>
 	<div class="vice_vystredeno ">
 		<div class="vice_hlavicka c">
@@ -527,58 +521,6 @@ gemius_pending('gemius_hit'); gemius_pending('gemius_event'); gemius_pending('pp
 
 
 <script type="text/javascript" >var lang="en";</script><script type="text/javascript" src="/www/js/uschovna.js?v1.1.73"></script>
-		<script type="text/javascript">
-			var load_once = 0;
-
-			function resize() {
-				var width = $(window).width();
-				var height = Math.max($(window).height(), $(document).height());
-				
-				var branding_size = $("input[name='branding-size']").val();
-				var branding_id = $("input[name='branding-id']").val();
-				var branding_page = $("input[name='branding-page']").val();
-				var branding_subpage = $("input[name='branding-subpage']").val();
-				
-				var branding_src = "/branding/?branding=" + branding_id + "&page=" + branding_page + "&subpage=" + branding_subpage;
-
-				var new_size;
-
-				iframe = $("iframe[name='branding-iframe']");
-
-				if(width <= 1300) {
-					if(branding_size != 1300) new_size = 1300; else return;
-				} else if(width <= 1600) {
-					if(branding_size != 1600) new_size = 1600; else return;
-				} else {
-					if(branding_size != 1920) new_size = 1920; else return;
-				}
-
-				$("input[name='branding-size']").val(new_size);
-
-				if(!load_once) {
-						load_once=1;
-						iframe.attr({
-						src: branding_src + "&size=" + new_size
-					});
-				}
-
-				iframe.css({
-					height: height + "px",
-					display: "block"
-				});
-
-			}
-
-			$(window).on("resize", function() {
-				resize();
-			});
-
-			$(document).ready(function() {
-				resize();
-			});
-
-		</script>
-	
 
 <script type="text/javascript">
 	$('#homepage_bod_3b a').click(function(event) {
