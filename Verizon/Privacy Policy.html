@@ -681,7 +681,7 @@ extendCookieLife = async () => {
 
     <script type="application/json" data-drupal-selector="drupal-settings-json">{"path":{"baseUrl":"\/about\/privacy\/","scriptPath":null,"pathPrefix":"","currentPath":"node\/8","currentPathIsAdmin":false,"isFront":false,"currentLanguage":"en"},"pluralDelimiter":"\u0003","suppressDeprecationErrors":true,"gtag":{"tagId":"","consentMode":false,"otherIds":[],"events":[],"additionalConfigInfo":[]},"ajaxPageState":{"libraries":"advanced_shortcodes\/accordion-a11y,advanced_shortcodes\/bootstrap,core\/drupal.dialog.ajax,duo_blocks\/blocks,duo_blocks_text\/blocks-text,duo_layouts\/accordion_section,duo_layouts\/threecol_section,google_tag\/gtag,google_tag\/gtag.ajax,paragraphs\/drupal.paragraphs.unpublished,system\/base,vzpp\/accordion,vzpp\/foundation.accordion,vzpp\/global,vzpp\/hero,vzpp\/pulse_insight_js,vzpp\/sbs,vzpp\/slider,vzpp\/tables,vzpp\/topic,vzpp_theme\/analytics-prod,vzpp_theme\/gnav-header-footer-prod,vzpp_theme\/vzc-gdpr-attach-css,vzpp_theme\/vzc-schemaapp-js","theme":"vzpp","theme_token":null},"ajaxTrustedUrl":[],"user":{"uid":0,"permissionsHash":"850a0c870a25d9b5b56c05f8360c6f9a76f793f4f6dbc9152aded01ab49e2533"}}</script>
 <script src="/about/privacy/sites/default/files/js/js_qiOJboP-yBXBXBBhvL2qDO7h1UkXyuHFzC-ny51asMo.js"></script>
-<script src="/about/privacy/modules/contrib/google_tag/js/gtag.js?t68nkh"></script>
+<script src="/about/privacy/modules/contrib/google_tag/js/gtag.js?t8iwyz"></script>
 <script src="https://assets.adobedtm.com/2ea7ee22c8c2/5ede70ac23f6/launch-f9c524bb5e64.min.js"></script>
 <script src="https://cdn.schemaapp.com/javascript/highlight.js" async></script>
 
@@ -5414,10 +5414,12 @@ if (location.href.match(/(\/privacy\/full\-privacy\-policy)/i)) {
     jQuery('.layout__region a:eq(1)').attr('onclick', 'javascript:fnLegalAgreement(2);'); // 2 - business
     jQuery('.layout__region a').attr('href', 'javascript:void(0);');
   }
-//EOOV-14748
-jQuery(window).on('load',function() {
+
+// Onload function
+  jQuery(window).on('load',function() {
 
 if (location.href.match(/(\/full\-privacy\-policy)/i)) {
+  //EOOV-14748
   //Nevada
   if (location.href.indexOf('scrollto=index-3') != -1) {
     //jQuery("html, body").animate({scrollTop: jQuery('#acc-item-55 .paragraph--type--sbs.sbs--accordion-item.sbs.index-3').offset().top-100}, 1200);
@@ -5430,10 +5432,22 @@ if (location.href.match(/(\/full\-privacy\-policy)/i)) {
   else {
     //jQuery("html, body").animate({scrollTop: jQuery('#acc-item-55 .paragraph--type--sbs.sbs--accordion-item.sbs.index-1').offset().top-100}, 1200);
   }
+ //end EOOV-14748
+
+ //EOOV-17309: Fixing global header issue for full-privacy-policy page
+    var l1menu = jQuery('.gnav20-global-nav-list.gnav20-navigation-list');
+    if (l1menu.attr('item-title') == 'L1') {
+    l1menu.show();
+    }
+    var l2menu = jQuery('.gnav20-submenu-column.gnav20-L2');
+    if (l2menu.attr('item-title') == 'L2') {
+    l2menu.show();
+    }
+ //End of EOOV-17309
+
 }
 });
-//end EOOV-14748
-
+//end onload
 jQuery('.menu--cybersecurity-glossary li a').each(function( index2 ) {
   if(window.location.href.toLowerCase().indexOf(jQuery(this).attr('href').toLowerCase())  != -1 || window.location.href.toLowerCase().replace('/privacy', '').indexOf(jQuery(this).attr('href').toLowerCase())  != -1 || window.location.href.toLowerCase().replace('/privacy', '').indexOf(jQuery(this).attr('href').toLowerCase().replace('https://www.verizon.com/about', ''))  != -1) {
     //console.log(jQuery(this).attr('href'));
