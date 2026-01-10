@@ -8,7 +8,7 @@
 
                         
                     <!-- Google Tag Manager -->
-            <script type="text/javascript" async="" src="https://www.googletagmanager.com/gtag/js?id=G-Q9M1FKF558&amp;cx=c&amp;gtm=4e6171h1"></script><script type="text/javascript" async="" src="https://www.googletagmanager.com/gtag/js?id=G-1TDCVM323C&amp;cx=c&amp;gtm=4e6171h1"></script><script type="text/javascript" async="" src="https://cdn.cookielaw.org/scripttemplates/otSDKStub.js?did=3a1b08f6-c13e-4d90-a567-a32677afd4d6&amp;data-document-language=true"></script><script async="" src="https://www.googletagmanager.com/gtm.js?id=GTM-MSC6S5R"></script><script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+            <script type="text/javascript" async="" src="https://www.googletagmanager.com/gtag/js?id=G-Q9M1FKF558&amp;cx=c&amp;gtm=4e6171"></script><script type="text/javascript" async="" src="https://www.googletagmanager.com/gtag/js?id=G-1TDCVM323C&amp;cx=c&amp;gtm=4e6171"></script><script type="text/javascript" async="" src="https://cdn.cookielaw.org/scripttemplates/otSDKStub.js?did=3a1b08f6-c13e-4d90-a567-a32677afd4d6&amp;data-document-language=true"></script><script async="" src="https://www.googletagmanager.com/gtm.js?id=GTM-MSC6S5R"></script><script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
             new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
             j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
             'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
@@ -127,10 +127,10 @@
         }" id="page-wrapper" class="flex flex-col min-h-screen" :style="{
             '--banner-elem-top-bar-height': `calc(${bannerElemHeight}px + var(--navbar-height))`,
             '--banner-elem-top-bar-nav-height': `calc(${bannerElemHeight}px + var(--navbar-height-full))`
-        }" style="--banner-elem-top-bar-height: calc(80px + var(--navbar-height)); --banner-elem-top-bar-nav-height: calc(80px + var(--navbar-height-full));"><a href="#main-content" class="skip-to-content">
+        }" style="--banner-elem-top-bar-height: calc(82px + var(--navbar-height)); --banner-elem-top-bar-nav-height: calc(82px + var(--navbar-height-full));"><a href="#main-content" class="skip-to-content">
             Skip to content
         </a>
-<header class="fixed w-full transition-transform z-[100]" :class="[
+<header class="fixed w-full transition-transform z-[100] headroom headroom--top headroom--not-bottom" :class="[
         navBackground ? navBackground : (headerTheme != 'white' ? 'bg-sea-salt' : ''),
         scrolled &amp;&amp; bannerActive
             ? 'lg:-translate-y-banner-elem-top-bar-height'
@@ -140,7 +140,7 @@
     ]" x-ref="header">
 
         
-<div role="alert" class="w-full bg-lightest-misty " x-show="bannerActive" x-transition:enter="transition ease-out duration-300 transform" x-transition:enter-start="translate-y-[-100%]" x-transition:enter-end="translate-y-0" x-transition:leave="transition ease-in duration-200 transform" x-transition:leave-start="translate-y-0" x-transition:leave-end="translate-y-[-100%]" x-ref="banner" style="display: none;">
+<div role="alert" class="w-full bg-lightest-misty transition ease-out duration-300 transform translate-y-0" x-show="bannerActive" x-transition:enter="transition ease-out duration-300 transform" x-transition:enter-start="translate-y-[-100%]" x-transition:enter-end="translate-y-0" x-transition:leave="transition ease-in duration-200 transform" x-transition:leave-start="translate-y-0" x-transition:leave-end="translate-y-[-100%]" x-ref="banner" style="">
     
 
 
@@ -354,7 +354,214 @@
             
                     </div>
                 </div>
-            </template>
+            </template><div x-data="{
+                        activeSelection: null, // User selectable option from the dropdown
+                        get activeLink() { // If there's no user selection, default to the suggested site
+                            return this.activeSelection ?? {
+                                text: this.suggestedSite?.languageLabel,
+                                url: this.suggestedSite?.baseUrl,
+                            }
+                        },
+                        open: false,
+                        toggle() {
+                            if (this.open) {
+                                return this.close()
+                            }
+                            this.open = true
+                        },
+                        close() {
+                            if (!this.open) return
+                            this.open = false
+                        },
+                        setActive(itemLink) {
+                            this.toggle()
+                            this.activeSelection = itemLink
+
+                            window.dataLayer = window.dataLayer || [];
+                            window.dataLayer.push({
+                                event: 'banner_interaction',
+                                element_name: this.activeLink.text,
+                                element_location: 'header',
+                                element_action: 'language toggle'
+                            });
+                        }
+                    }" x-init="
+                        if(bannerActive) {
+                            window.dataLayer = window.dataLayer || [];
+                            window.dataLayer.push({
+                                event: 'banner_view',
+                                element_name: `Select your preferred language`,
+                                element_location: 'header'
+                            });
+                        }
+                    " @keydown.escape="close($refs.button)" class="flex flex-col gap-1.5 py-3 pr-6 md:flex-row md:gap-8 md:items-center md:py-4 md:pr-0 md:min-h-[75px]">
+                                                                                <svg class="shrink-0 aspect-square size-10 md:size-[50px]" width="50" height="50" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 50 50" fill="none">
+  <g id="Group 338064">
+    <rect id="ymkatizbcz-icon_plus" x="50" y="50" width="50" height="50" rx="8" transform="rotate(-180 50 50)" fill="white"></rect>
+    <g id="ymkatizbcz-Group">
+      <path id="ymkatizbcz-Vector" d="M9 36.8937L19.6188 36.8667V40.4522H20.9619L25.5338 36.8607L29.6559 36.8817V18.8789H9V36.8907V36.8937ZM10.7988 20.6807H27.8542V35.0769L24.9132 35.0619L21.4146 37.8081V35.0649L10.7988 35.0919V20.6807Z" fill="#0372E2"></path>
+      <path id="ymkatizbcz-Vector_2" d="M20.6719 9V17.0825H22.4707V10.7988H39.535V23.3722H34.8672V26.1184L31.4525 23.4351V25.7226L35.3229 28.7625H36.666V25.171H41.3338V9H20.6719Z" fill="#0372E2"></path>
+      <path id="ymkatizbcz-Vector_3" d="M17.0987 24.472C16.8829 25.2185 16.751 26.0788 16.7 26.9692H18.5018C18.6097 25.3623 18.9904 24.337 19.2483 23.9653C19.5031 24.337 19.8838 25.3653 19.9918 26.9692H21.7935C21.7426 26.0908 21.6137 25.2424 21.4038 24.5019C22.2642 25.0625 22.8998 25.9409 23.1366 26.9692H24.9624C24.5307 24.2021 22.1443 22.0766 19.2633 22.0586C19.2573 22.0586 19.2513 22.0586 19.2453 22.0586C19.2453 22.0586 19.2423 22.0586 19.2393 22.0586C19.2363 22.0586 19.2303 22.0586 19.2273 22.0586C16.3283 22.0586 13.9269 24.1931 13.4922 26.9722H15.3179C15.5578 25.9229 16.2143 25.0326 17.0957 24.475L17.0987 24.472Z" fill="#0372E2"></path>
+      <path id="ymkatizbcz-Vector_4" d="M24.9672 28.7695H23.1414C22.9046 29.8008 22.269 30.6792 21.4086 31.2368C21.6185 30.4964 21.7474 29.6479 21.7984 28.7695H19.9966C19.8887 30.3764 19.5079 31.4047 19.2531 31.7765C18.9983 31.4047 18.6175 30.3764 18.5066 28.7695H16.7048C16.7558 29.6599 16.8877 30.5204 17.1035 31.2669C16.2192 30.7092 15.5656 29.8188 15.3258 28.7695H13.5C13.9347 31.5486 16.3361 33.6832 19.2351 33.6832C19.2381 33.6832 19.2441 33.6832 19.2471 33.6832C19.2471 33.6832 19.2501 33.6832 19.2531 33.6832C19.2591 33.6832 19.2651 33.6832 19.2711 33.6832C22.1521 33.6652 24.5355 31.5366 24.9702 28.7695H24.9672Z" fill="#0372E2"></path>
+      <path id="ymkatizbcz-Vector_5" d="M27.7547 15.9945C27.7547 15.251 27.1521 14.6484 26.4086 14.6484C25.6651 14.6484 25.0625 15.251 25.0625 15.9945C25.0625 16.738 25.6651 17.3406 26.4086 17.3406C27.1521 17.3406 27.7547 16.738 27.7547 15.9945Z" fill="#0372E2"></path>
+      <path id="ymkatizbcz-Vector_6" d="M32.4031 15.9945C32.4031 15.251 31.8005 14.6484 31.057 14.6484C30.3135 14.6484 29.7109 15.251 29.7109 15.9945C29.7109 16.738 30.3135 17.3406 31.057 17.3406C31.8005 17.3406 32.4031 16.738 32.4031 15.9945Z" fill="#0372E2"></path>
+      <path id="ymkatizbcz-Vector_7" d="M36.9344 15.9945C36.9344 15.251 36.3318 14.6484 35.5883 14.6484C34.8448 14.6484 34.2422 15.251 34.2422 15.9945C34.2422 16.738 34.8448 17.3406 35.5883 17.3406C36.3318 17.3406 36.9344 16.738 36.9344 15.9945Z" fill="#0372E2"></path>
+    </g>
+  </g>
+</svg>
+
+                            
+                                        <div class="space-y-1">
+                                                    <div class="type-theta" :lang="suggestedSite?.language" x-html="suggestedSite?.bannerText || `Select\u0020your\u0020preferred\u0020language`" lang="en-GB">Select your preferred language</div>
+                                            </div>
+
+                    <div class="flex gap-x-4 items-center md:whitespace-nowrap grow">
+                        <div class="relative md:mr-auto">
+                            <button x-ref="button" @click="
+                                    toggle(),
+                                    window.dataLayer = window.dataLayer || [];
+                                    window.dataLayer.push({
+                                        event: 'banner_interaction',
+                                        element_name: activeLink.text,
+                                        element_location: 'header',
+                                        element_action: 'language dropdown'
+                                    });
+                                " :aria-expanded="open" aria-controls="banner-language" aria-label="click to change language: current language is English" class="text-left pr-10 border-b border-black-ink/30" aria-expanded="false">
+                                <span class="type-s-paragraph" x-text="activeLink.text">English (UK)</span>
+                                <svg class="absolute right-0 top-[9px] transition fill-current w-2.5 h-1.5 rotate-180" viewBox="0 0 14 7" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" :class="open ? 'rotate-0' : 'rotate-180'">
+    <path d="M7 0L13.0622 6.75H0.937822L7 0Z" fill="currentColor"></path>
+</svg>
+
+                            </button>
+
+                            <div x-show="open" id="language" class="overflow-y-auto absolute left-0 bg-white border shadow-lg z-[1] w-[220px] top-[30px] text-black-ink max-h-[calc(100dvh-76px)]" style="display: none;" @click.outside="close($refs.button)">
+                                <ul>
+                                                                            <li x-data="{
+                                                itemLink: {
+                                                    text: `English`,
+                                                    url: 'https://www.thetradedesk.com/'
+                                                }
+                                            }">
+                                            <button class="py-1 px-2 w-full text-left transition hover:bg-half-sea-salt" :class="{ 'bg-half-sea-salt' : activeLink.url == itemLink.url }" @click="setActive(itemLink)">
+                                                <span class="type-iota">English</span>
+                                            </button>
+                                        </li>
+                                                                            <li x-data="{
+                                                itemLink: {
+                                                    text: `English (UK)`,
+                                                    url: 'https://www.thetradedesk.com/uk/'
+                                                }
+                                            }">
+                                            <button class="py-1 px-2 w-full text-left transition hover:bg-half-sea-salt bg-half-sea-salt" :class="{ 'bg-half-sea-salt' : activeLink.url == itemLink.url }" @click="setActive(itemLink)">
+                                                <span class="type-iota">English (uk)</span>
+                                            </button>
+                                        </li>
+                                                                            <li x-data="{
+                                                itemLink: {
+                                                    text: `中文（简体）`,
+                                                    url: 'https://www.thetradedesk.cn/'
+                                                }
+                                            }">
+                                            <button class="py-1 px-2 w-full text-left transition hover:bg-half-sea-salt" :class="{ 'bg-half-sea-salt' : activeLink.url == itemLink.url }" @click="setActive(itemLink)">
+                                                <span class="type-iota">中文（简体）</span>
+                                            </button>
+                                        </li>
+                                                                            <li x-data="{
+                                                itemLink: {
+                                                    text: `中文（繁體）`,
+                                                    url: 'https://www.thetradedesk.com/tw/'
+                                                }
+                                            }">
+                                            <button class="py-1 px-2 w-full text-left transition hover:bg-half-sea-salt" :class="{ 'bg-half-sea-salt' : activeLink.url == itemLink.url }" @click="setActive(itemLink)">
+                                                <span class="type-iota">中文（繁體）</span>
+                                            </button>
+                                        </li>
+                                                                            <li x-data="{
+                                                itemLink: {
+                                                    text: `日本語`,
+                                                    url: 'https://www.thetradedesk.com/jp/'
+                                                }
+                                            }">
+                                            <button class="py-1 px-2 w-full text-left transition hover:bg-half-sea-salt" :class="{ 'bg-half-sea-salt' : activeLink.url == itemLink.url }" @click="setActive(itemLink)">
+                                                <span class="type-iota">日本語</span>
+                                            </button>
+                                        </li>
+                                                                            <li x-data="{
+                                                itemLink: {
+                                                    text: `한국어`,
+                                                    url: 'https://www.thetradedesk.com/kr/'
+                                                }
+                                            }">
+                                            <button class="py-1 px-2 w-full text-left transition hover:bg-half-sea-salt" :class="{ 'bg-half-sea-salt' : activeLink.url == itemLink.url }" @click="setActive(itemLink)">
+                                                <span class="type-iota">한국어</span>
+                                            </button>
+                                        </li>
+                                                                            <li x-data="{
+                                                itemLink: {
+                                                    text: `Deutsch`,
+                                                    url: 'https://www.thetradedesk.com/de/'
+                                                }
+                                            }">
+                                            <button class="py-1 px-2 w-full text-left transition hover:bg-half-sea-salt" :class="{ 'bg-half-sea-salt' : activeLink.url == itemLink.url }" @click="setActive(itemLink)">
+                                                <span class="type-iota">Deutsch</span>
+                                            </button>
+                                        </li>
+                                                                            <li x-data="{
+                                                itemLink: {
+                                                    text: `Français`,
+                                                    url: 'https://www.thetradedesk.com/fr/'
+                                                }
+                                            }">
+                                            <button class="py-1 px-2 w-full text-left transition hover:bg-half-sea-salt" :class="{ 'bg-half-sea-salt' : activeLink.url == itemLink.url }" @click="setActive(itemLink)">
+                                                <span class="type-iota">Français</span>
+                                            </button>
+                                        </li>
+                                                                            <li x-data="{
+                                                itemLink: {
+                                                    text: `Español`,
+                                                    url: 'https://www.thetradedesk.com/es/'
+                                                }
+                                            }">
+                                            <button class="py-1 px-2 w-full text-left transition hover:bg-half-sea-salt" :class="{ 'bg-half-sea-salt' : activeLink.url == itemLink.url }" @click="setActive(itemLink)">
+                                                <span class="type-iota">Español</span>
+                                            </button>
+                                        </li>
+                                                                    </ul>
+                            </div>
+                        </div>
+
+                        <a :href="activeLink.url" class="button-sm button-secondary-black" @click="
+                                window.dataLayer = window.dataLayer || [];
+                                window.dataLayer.push({
+                                    event: 'banner_interaction',
+                                    element_name: 'Continue',
+                                    element_location: 'header',
+                                    element_action: 'button click'
+                                });
+                            " href="https://www.thetradedesk.com/uk/">
+                            Continue
+                        </a>
+                                        <button @click="
+                        dismissBanner(),
+                        window.dataLayer = window.dataLayer || [];
+                        window.dataLayer.push({
+                            event: 'banner_interaction',
+                            element_name: 'Select your preferred language',
+                            element_location: 'header',
+                            element_action: 'dismiss'
+                        });
+                    " class="absolute top-2.5 right-2.5 md:static">
+                    <span class="sr-only">Click to close alert</span>
+                    <svg class="w-[31px] h-[31px] text-white hover:opacity-70" viewBox="0 0 31 31" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+    <circle opacity="0.75" cx="15.5" cy="15.5" r="15.5" fill="currentColor"></circle>
+    <path d="M9.92188 9.91992L21.0819 21.0799" stroke="black" stroke-width="2" stroke-linecap="round"></path>
+    <path d="M21.0819 9.91992L9.92188 21.0799" stroke="black" stroke-width="2" stroke-linecap="round"></path>
+</svg>
+
+                </button>
+            
+                    </div>
+                </div>
 
             <template x-if="!siteMismatch &amp;&amp; alertEnabled">
                 <div class="flex flex-col gap-1.5 py-3 pr-7 md:flex-row md:gap-4 md:items-center md:py-4 md:pr-0 md:min-h-[75px]" x-data="" x-init="
@@ -1139,7 +1346,7 @@
 
 
 <div class="max-w-[1490px] px-4 lg:px-10 box-content mx-auto">
-	                            <div class="flex flex-col gap-10 pb-8 h-[95dvh] md:max-h-dvh pt-navbar" :class="[
+	                            <div class="flex flex-col gap-10 pb-8 h-[95dvh] md:max-h-dvh pt-banner-elem-top-bar-height" :class="[
                                     bannerActive ? 'pt-banner-elem-top-bar-height' : 'pt-navbar'
                                 ]">
                                 <ul class="divide-y">
@@ -1757,7 +1964,7 @@
                                         </nav>
 </header>
 
-        <div id="content-wrapper" class="grow pt-navbar lg:pt-navbar-full" :class="[
+        <div id="content-wrapper" class="grow pt-navbar lg:pt-navbar-full !pt-banner-elem-top-bar-height lg:!pt-banner-elem-top-bar-nav-height" :class="[
                 headerTheme == 'white' &amp;&amp; bannerActive ? '!pt-banner-elem-top-bar-height lg:!pt-banner-elem-top-bar-nav-height' : ''
             ]">
             <main id="main-content">            
@@ -2165,7 +2372,7 @@
         window.dataLayer.push({
             event: 'Initialize_dataLayer',
             ...{"page_seo_title":"Inventory Supplier Agreement | The Trade Desk","resource_title":undefined,"resource_contributor":undefined,"resource_type":undefined,"resource_product":undefined,"resource_publish_date":undefined,"resource_topic":undefined,"resource_industry_vertical":undefined,"resource_channel":undefined,"resouce_video_tag":undefined,"resouce_region":undefined,"resource_section":undefined,"resource_country":undefined}
-        });</script><script defer="" src="https://static.cloudflareinsights.com/beacon.min.js/vcd15cbe7772f49c399c6a5babf22c1241717689176015" integrity="sha512-ZpsOmlRQV6y907TI0dKBHq9Md29nnaEIPlkf84rnaERnq6zvWvPUqr2ft8M1aS28oN72PdrCzSjY4U6VaAw1EQ==" data-cf-beacon="{&quot;rayId&quot;:&quot;9bb830200cb9f0e9&quot;,&quot;serverTiming&quot;:{&quot;name&quot;:{&quot;cfExtPri&quot;:true,&quot;cfEdge&quot;:true,&quot;cfOrigin&quot;:true,&quot;cfL4&quot;:true,&quot;cfSpeedBrain&quot;:true,&quot;cfCacheStatus&quot;:true}},&quot;version&quot;:&quot;2025.9.1&quot;,&quot;token&quot;:&quot;28a5291401254c0d819fd5e73b508002&quot;}" crossorigin="anonymous"></script>
+        });</script><script defer="" src="https://static.cloudflareinsights.com/beacon.min.js/vcd15cbe7772f49c399c6a5babf22c1241717689176015" integrity="sha512-ZpsOmlRQV6y907TI0dKBHq9Md29nnaEIPlkf84rnaERnq6zvWvPUqr2ft8M1aS28oN72PdrCzSjY4U6VaAw1EQ==" data-cf-beacon="{&quot;rayId&quot;:&quot;9bbc50838b2bbf4a&quot;,&quot;serverTiming&quot;:{&quot;name&quot;:{&quot;cfExtPri&quot;:true,&quot;cfEdge&quot;:true,&quot;cfOrigin&quot;:true,&quot;cfL4&quot;:true,&quot;cfSpeedBrain&quot;:true,&quot;cfCacheStatus&quot;:true}},&quot;version&quot;:&quot;2025.9.1&quot;,&quot;token&quot;:&quot;28a5291401254c0d819fd5e73b508002&quot;}" crossorigin="anonymous"></script>
 
 
 <meta name="facebook-domain-verification" content="tx47z8lqvjbfqr7raqj5h4cmniowrl">
