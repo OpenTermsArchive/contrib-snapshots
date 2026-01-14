@@ -1039,7 +1039,7 @@
       accordionInitialized = true;
       document.querySelectorAll('.accordion-head').forEach((el) => {
         el.setAttribute('tabindex', '0');
-        el.setAttribute('role', 'button');
+        // el.setAttribute('role', 'button');
         el.addEventListener('click', handleAccordionClick);
         el.addEventListener('keypress', function (e) {
           if (e.key === 'Enter' || e.key === ' ') {
