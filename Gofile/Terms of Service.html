@@ -38,7 +38,7 @@
     <div id="index_notification" class="fixed top-4 right-4 w-80 max-w-full z-50 space-y-2"></div>
     <div id="index_app" class="min-h-screen flex gap-4 p-1 lg:p-4">
         <div id="index_sidebarOverlay" class="fixed inset-0 bg-gray-900 bg-opacity-50 z-5 hidden lg:hidden"></div>
-        <div id="index_sidebar" class="min-w-64 max-w-72 bg-gray-800 text-white p-4 transform transition-transform lg:translate-x-0 -translate-x-full fixed lg:relative top-0 left-0 h-[calc(100vh-0.5rem)] lg:h-auto shadow-lg overflow-y-auto z-10 rounded-lg mt-1 mb-1 lg:mt-0 lg:mb-0">
+        <div id="index_sidebar" class="min-w-64 max-w-72 bg-gray-800 text-white p-4 transform transition-transform lg:translate-x-0 fixed lg:relative top-0 left-0 h-[calc(100vh-0.5rem)] lg:h-auto shadow-lg overflow-y-auto z-10 rounded-lg mt-1 mb-1 lg:mt-0 lg:mb-0 translate-x-0">
             <div id="index_sidebarHeader" class="flex justify-between items-center mb-6">
                 <a href="/" id="index_branding" class="flex items-center gap-2">
                     <img id="index_logo" src="/dist/img/logo-small-70.png" alt="Gofile Logo" class="h-8">
@@ -49,11 +49,11 @@
                 </button>
             </div>
             <div id="index_accounts" class="flex flex-col items-start mb-6">
-                <div id="index_accountList" class="space-y-2 w-full"><div class="relative account_accountItem border-2 border-blue-500 rounded" data-email="guest2566675813">
+                <div id="index_accountList" class="space-y-2 w-full"><div class="relative account_accountItem border-2 border-blue-500 rounded" data-email="guest5116606827">
             <div class="dropdown-toggle flex items-center justify-between p-2 bg-gray-700 rounded hover:bg-gray-600 transition-colors cursor-pointer">
                 <div class="flex items-center gap-2 truncate">
-                    <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAEAAAABACAYAAACqaXHeAAACYklEQVR4AeyYsU1EMRBErd8EFRAiOkGCiJQyqICIFiAlAokC6AERXkghhyYbPVk3sj7J2Yu00g67O7bXs/Ldbb/PL8c99nW4OJ4ycp/KVWxvPusT3trif9WAxQXQogION4/NLTXs8vOpuXmt/FSvHDfnkj9an/JjAxLBucerAed+g3v3v/m89fyfh+vmxpy0Aa+V/9/53I/WcGOcuEYg3cjs8VKAz4t8vbVuV6/fzc1jPZ8z5rXyezX+P+W4kc9ze77XymeOzuhWCph9xtP5llMAG7Ld3d43t/ePt+bGGeJMkpA41ZOP+eQjTvV+Fvl+VvmlAHZ0NVwK0Fy4aS7cOGNUCOOcYcZZT8z8UT7W+1nk+1nllwJ4A6vhUkC6cc4gMes1V27M98/hPZ/5ziWf6zGfmPnEpQB2ZDVcCtB3ZjcqQHPnxjixc8nnu8x8YuaLw435xL5X+Yw7l/xSADu0Gp5eAelCt/Ruak7cEiH5iJ2r5zOfOK1PTuaTrxTADq2GSwF6K934DlMRKe5c8pnPGSRmvjjcRveT+EoB7OhquBSg38ncOJPEVAi/0zuXfOaPYnG4cT3ycb/EziW/FMAOroZLAXwnqYAU52dvf7Plk28Ui8ON65Ev7ZfxUgA7uBqeTgGjF7jxXeWM8B1lPuOjM8r1eADycb20H/IzvxTAjq+GSwFpxvwNls98zlhSEGeYONVzPe5He3QjP/NLAanjs8dLAemGOTN8R4kT39441yPmftN6pYDUodnjpQC+k+nG9TuaG2eOfMR8x4mZT8z1fC/y0/7JVwpIHZs9fvYK2HtBfwAAAP//Wq+ZsgAAAAZJREFUAwB45nstPJKzRwAAAABJRU5ErkJggg==" alt="Avatar" class="h-7 w-7 rounded-full">
-                    <span class="text-white truncate">guest2566675813</span>
+                    <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAEAAAABACAYAAACqaXHeAAACiUlEQVR4AeyawUkEQRBFhw3BWMQUFPRgEOYh5mEGXjwoGIOYhzfvnpR3+7xZuhgWD06X8KHK+l1dXV2fnsMePh+ffhLfn5c/IyQXe8QlBucUkGME5x5xiZl/WCb/6wZMPgDLagK+Xu+WEc6uH5fE2/nzkvBaNzjXHrPNd77cC9s5zLfv/KsGmLB3vxuw9xuuznewhirfCS8eXpaE4+/3N0vCmrSfXGzny72wHa/qd7wl4A7O5vcEWIO8rSN4QtBpwhq7+rhdEl5vP7nYzpd7YXv9qHZiPm9PgDs4mz/dBPiCV98BJqDDhDXEW5xwHN0lrGn7ycV2vtwL2/GsFdvn8X49Ae7QbH5PgG8c3SQc5+1NWFPmo9OE4/aTi+2498tasM3Ps2A73hPgjszm9wTw1iY8AX5n0WXC8Uqj5ttHxwnnMz9rwXbc58mzYvcEuEOz+T0BvvFKQ9bk1vXmV/5f19MTUN3A3uO7n4DqAlcNsMbzTca2Jvlfwuv5/k5UBSUX2/lyL+yt9Xj/VQNM2LvfDdj7DVfnO6CzhDXF93XCCXMtNt/XI1jT9kdribFHwvVkrdg+T67Fbgm4g7P5PQG+cWuy8r0eXSXQYcJ8+8nFzlzY5lf1Oe71PQHuyGx+T4Dfya0TwNuc8Hq+1xOO208utuO5F7bjle/z9gRUHdt7fHcTsPXCVr8PsEbQWcIb8FYnHOftTmSuY3ZysZ0v98J23Dl9Hn8X9AS4g7P5PQG+cWsEHSYqTTmffXQ7gvn2XZ/ryVqxzXe+ngB3ZDa/J8DvpifAGqs0Zb7zeb1987fmq/g+b0+AOz6b3xPgN9kTUGnUmtrK9/pq/6185/N5ewLcodn8fz8Bp17YLwAAAP//Bkx8mQAAAAZJREFUAwAE34Q1tokXWAAAAABJRU5ErkJggg==" alt="Avatar" class="h-7 w-7 rounded-full">
+                    <span class="text-white truncate">guest5116606827</span>
                 </div>
                 <i class="fas fa-angle-down text-white"></i>
             </div>
