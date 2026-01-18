@@ -13,7 +13,6 @@
     
     <!-- DNS prefetch for external domains -->
     <link rel="dns-prefetch" href="//cdn.schemaapp.com"/>
-    <link rel="dns-prefetch" href="//fonts.googleapis.com"/>
     <link rel="dns-prefetch" href="//www.googletagmanager.com"/>
     <link rel="dns-prefetch" href="//connect.facebook.net"/>
     <link rel="dns-prefetch" href="//www.google-analytics.com"/>
@@ -65,10 +64,21 @@
 
 
     
-<link rel="stylesheet" href="/etc.clientlibs/uefalcon/clientlibs/clientlib-bayberry.min.css" type="text/css">
-<script src="/etc.clientlibs/uefalcon/clientlibs/clientlib-bayberry.min.js"></script>
+        
+            <link rel="preload" href="/etc.clientlibs/uefalcon/clientlibs/clientlib-bayberry.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'"/>
+            <noscript>
+                <link rel="stylesheet" href="/etc.clientlibs/uefalcon/clientlibs/clientlib-bayberry.min.css"/>
+            </noscript>
+        
+        
+        
+        
+            <script src="/etc.clientlibs/uefalcon/clientlibs/clientlib-bayberry.min.js" defer></script>
+        
+        
+        
 
-
+    
 
 
 
@@ -100,7 +110,7 @@
 <meta name="w-uuid" content="ffe50312-bded-45b2-978b-eb3bb9e07729"/>
 
 <script>
-    var digitalData = {"page":{"attributes":{"businessUnit":"trcorp","discipline":"general","taxonomyCategory":"","taxonomySubCategory":"","country":"global","brands":[],"language":"en","customerSegment":"","practiceArea":"","internalBusinessSegment":"general"},"category":{"primaryCategory":"thomson-reuters-corporate"},"pageInfo":{"pageTitle":"Terms of use | Thomson Reuters","pageID":"707c2d98-96dc-41d0-93ad-6b78fe7307a7","pageURL":"https://www.thomsonreuters.com/en/terms-of-use","pageName":"trcorp:terms-of-use","pageTemplate":"TR_legal-notices_template","documentAge":"233","createDate":"2025-05-27","publishDate":"2025-05-27","pageType":"legal-notices"}},"product":{}};
+    var digitalData = {"page":{"attributes":{"businessUnit":"trcorp","discipline":"general","taxonomyCategory":"","taxonomySubCategory":"","country":"global","brands":[],"language":"en","customerSegment":"","practiceArea":"","internalBusinessSegment":"general"},"category":{"primaryCategory":"thomson-reuters-corporate"},"pageInfo":{"pageTitle":"Terms of use | Thomson Reuters","pageID":"707c2d98-96dc-41d0-93ad-6b78fe7307a7","pageURL":"https://www.thomsonreuters.com/en/terms-of-use","pageName":"trcorp:terms-of-use","pageTemplate":"TR_legal-notices_template","documentAge":"235","createDate":"2025-05-27","publishDate":"2025-05-27","pageType":"legal-notices"}},"product":{}};
 </script>
 
 
@@ -133,6 +143,7 @@
 
 
 <meta name="w-thumbnail-image" content="https://www.thomsonreuters.com/content/dam/ewp-m/images/thomsonreuters/en/photography/reuters/rtr1zkvu-luke-macgregor-tr.jpg.transform/rect-768/q90/image.jpg"/>
+
 
 
 
@@ -188,6 +199,7 @@
 
 
 <meta property="twitter:site" content="@thomsonreuters"/>
+
 
 
 
@@ -350,8 +362,8 @@ function targetPageParams() {
     
       
       
-        <link href="https://app-data.gcs.trstatic.net/emcm-ui/bundle/v24.96.0/main.css" rel="stylesheet"/>
-        <script src="https://app-data.gcs.trstatic.net/emcm-ui/bundle/v24.96.0/head.js"></script>
+        <link href="https://app-data.gcs.trstatic.net/emcm-ui/bundle/v24.97.0/main.css" rel="stylesheet"/>
+        <script src="https://app-data.gcs.trstatic.net/emcm-ui/bundle/v24.97.0/head.js"></script>
       
     
     
@@ -3230,7 +3242,7 @@ function OptanonWrapper() {
         
             
             
-                <script src="https://app-data.gcs.trstatic.net/emcm-ui/bundle/v24.96.0/main.js"></script>
+                <script src="https://app-data.gcs.trstatic.net/emcm-ui/bundle/v24.97.0/main.js"></script>
             
         
 
