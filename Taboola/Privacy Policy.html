@@ -12,8 +12,6 @@
         (function() {
             const html = document.documentElement;
             let prefersDark = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
-            let cookieMatch = document.cookie.match(/(?:^|;)\s*theme=(dark|light)/);
-            let cookieTheme = cookieMatch ? cookieMatch[1] : null;
             let savedTheme = null;
 
             try {
@@ -22,23 +20,13 @@
                 savedTheme = null;
             }
 
-            let theme = savedTheme || cookieTheme || (prefersDark ? 'dark' : 'light');
+            let theme = savedTheme || (prefersDark ? 'dark' : 'light');
 
             if (theme === 'dark') {
                 html.setAttribute('data-theme', 'dark');
             } else {
                 html.removeAttribute('data-theme');
             }
-
-            if (cookieTheme !== theme) {
-                document.cookie = 'theme=' + theme + '; path=/; max-age=' + (60 * 60 * 24 * 365) + '; SameSite=Lax';
-            }
-
-            try {
-                if (savedTheme !== theme) {
-                    localStorage.setItem('theme', theme);
-                }
-            } catch (persistError) {}
         })();
     </script>
     <style>
@@ -101,7 +89,7 @@ window._wpemojiSettings = {"baseUrl":"https:\/\/s.w.org\/images\/core\/emoji\/16
 :where(.wp-block-columns.is-layout-flex){gap: 2em;}:where(.wp-block-columns.is-layout-grid){gap: 2em;}
 :root :where(.wp-block-pullquote){font-size: 1.5em;line-height: 1.6;}
 </style>
-<link rel='stylesheet' id='taboola-policies-style-css' href='/wp-content/themes/taboola-policies/dist/css/main.min.css?ver=1764754895' type='text/css' media='all' />
+<link rel='stylesheet' id='taboola-policies-style-css' href='/wp-content/themes/taboola-policies/dist/css/main.min.css?ver=1768379643' type='text/css' media='all' />
 <script type="text/javascript" id="wpml-cookie-js-extra">
 /* <![CDATA[ */
 var wpml_cookies = {"wp-wpml_current_language":{"value":"en","expires":1,"path":"\/"}};
@@ -1010,6 +998,6 @@ The entity maintaining this website is a data broker under Texas law. To conduct
 var taboolaPolicies = {"workerSrc":"\/wp-content\/themes\/taboola-policies\/dist\/assets\/pdf.worker.min.js"};
 /* ]]> */
 </script>
-<script type="module" defer src="/wp-content/themes/taboola-policies/dist/js/main.min.js?ver=1764754895" id="legal-page-js-js"></script>
+<script type="module" defer src="/wp-content/themes/taboola-policies/dist/js/main.min.js?ver=1768379643" id="legal-page-js-js"></script>
 </body>
 </html>
