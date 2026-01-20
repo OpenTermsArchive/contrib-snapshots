@@ -36,6 +36,8 @@
       a {
          color: #000;
          text-decoration: underline;
+         outline-offset: 0.25rem;
+         transition: outline-offset 0.15s ease-in-out;
       }
 
       a:hover {
@@ -43,6 +45,10 @@
       }
       a:active {
       	color: #f15e00;
+      }
+      a:focus {
+         outline: 0.125rem solid #f15e00;
+         outline-offset: 0;
       }
       a[target="_blank"]::after {
         content: '';
@@ -197,6 +203,7 @@
       .ancres li {
          margin-bottom: 2px;
          background: #fff;
+         padding: 2px;
       }
 
       .ancres li a {
