@@ -1,7 +1,9 @@
-# contrib snapshots
+# Contrib snapshots
 
 This repository is to be considered as a database only.
 You can find the documentation by following the link in the “About” section of this page.
+
+Historical data is stored on cold storage, write to `contact@opentermsarchive.org` for historical snapshots access.
 
 # License
 
