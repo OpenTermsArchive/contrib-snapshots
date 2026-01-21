@@ -239,7 +239,7 @@
         
     
     
-        <meta property="og:image" content="https://www.ibm.com/content/dam/adobe-cms/default-images/Leadspace-bg-img-desktop.png/_jcr_content/renditions/cq5dam.web.1280.1280.jpeg"/>
+        <meta property="og:image" content="https://assets.ibm.com/is/image/ibm/ibm-8bar-logo-2560x2560?$original$"/>
     
 
     <script src="https://1.www.s81c.com/common/stats/ibm-common.js" type="text/javascript" fetchpriority="high" async="async"></script>
@@ -252,7 +252,7 @@
     
 <link rel="stylesheet" href="/etc.clientlibs/adobe-cms/clientlibs/clientlib-base.lc-30313e00669f877069f15dd099f23454-lc.min.css" type="text/css">
 <link rel="stylesheet" href="/etc.clientlibs/adobe-cms/clientlibs/clientlib-idlStylesCarbon.lc-51c975149842fd73b597c36670ab3889-lc.min.css" type="text/css">
-<link rel="stylesheet" href="/etc.clientlibs/adobe-cms/clientlibs/clientlib-idlStyles.lc-f696c844f207bf3829379b3cd6e29e6e-lc.min.css" type="text/css">
+<link rel="stylesheet" href="/etc.clientlibs/adobe-cms/clientlibs/clientlib-idlStyles.lc-0ce0afaf93c99c98f206de14a97541c7-lc.min.css" type="text/css">
 
 
 
@@ -492,10 +492,12 @@
                                     
 
 
-
   
+  
+    
     Terms of use
 
+  
 
 
 
@@ -612,10 +614,12 @@
       
 
 
-
   
+  
+    
     Overview
 
+  
 
 
 
@@ -657,10 +661,12 @@
       
 
 
-
   
+  
+    
     General
 
+  
 
 
 
@@ -702,10 +708,12 @@
       
 
 
-
   
+  
+    
     Rules of conduct
 
+  
 
 
 
@@ -749,10 +757,12 @@
       
 
 
-
   
+  
+    
     Disclaimer
 
+  
 
 
 
@@ -793,10 +803,12 @@
       
 
 
-
   
+  
+    
     Forward-looking and cautionary statements
 
+  
 
 
 
@@ -836,10 +848,12 @@
       
 
 
-
   
+  
+    
     Confidential information
 
+  
 
 
 
@@ -879,10 +893,12 @@
       
 
 
-
   
+  
+    
     U.S. government restricted rights
 
+  
 
 
 
@@ -922,10 +938,12 @@
       
 
 
-
   
+  
+    
     Global availability
 
+  
 
 
 
@@ -965,10 +983,12 @@
       
 
 
-
   
+  
+    
     Business relationships
 
+  
 
 
 
@@ -1008,10 +1028,12 @@
       
 
 
-
   
+  
+    
     Linking to this site
 
+  
 
 
 
@@ -1051,10 +1073,12 @@
       
 
 
-
   
+  
+    
     DISCLAIMER OF WARRANTY
 
+  
 
 
 
@@ -1095,10 +1119,12 @@
       
 
 
-
   
+  
+    
     LIMITATION OF LIABILITY
 
+  
 
 
 
@@ -1285,10 +1311,12 @@
                             
 
 
-
   
+  
+    
     Uses
 
+  
 
 
 
@@ -1431,7 +1459,7 @@
 
     
     <script src="/etc.clientlibs/adobe-cms/clientlibs/clientlib-base.lc-c7d8c8a31404fb2a97939ee4096001bf-lc.min.js"></script>
-<script src="/etc.clientlibs/adobe-cms/clientlibs/clientlib-components-main.lc-77f1984f3260f34b267d46b776412fb9-lc.min.js"></script>
+<script src="/etc.clientlibs/adobe-cms/clientlibs/clientlib-components-main.lc-37f486152ad1bd553b6df0986be1efea-lc.min.js"></script>
 <script src="/etc.clientlibs/adobe-cms/clientlibs/clientlib-idlStyles.lc-61ac0fc65e83ce1d2eea97772c148e89-lc.min.js"></script>
 <script src="/etc.clientlibs/adobe-cms/components/content/atoms/image-dm/clientlibs/site.lc-29e16b8b6492a45657744888fb76a272-lc.min.js"></script>
 
@@ -1943,10 +1971,9 @@
                }
         }
 
-        adobeDataLayer.push({
-            "event": "pageLoad",
-            "_ibm": {
-                "page": {
+        var journeyStep = "";
+
+        var pageObj = {
                     utCodes: utCodes,
                     "pageQueryString":{
                             "pageQueryString": getQueryParam('?') || "" ,
@@ -1975,7 +2002,16 @@
                     "siteLanguage": "en",
                     "pageName": "Terms of use ",
                     "siteCountry": "us"
-                },
+        };
+
+        if (journeyStep) {
+            pageObj.journeyStep = journeyStep;
+        }
+
+        adobeDataLayer.push({
+            "event": "pageLoad",
+            "_ibm": {
+                "page": pageObj,
 
                 "siteActivity": {
                     "visitDepth": getVisitDepth()
