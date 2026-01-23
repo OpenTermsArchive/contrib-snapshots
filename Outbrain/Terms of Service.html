@@ -2101,34 +2101,35 @@ button {
 .rTableBody {
   display: table-row-group;
 }
-#contract-versions-10718, #contract-versions-10719, #contract-versions-568780, #contract-versions-568768, #contract-versions-568740, #contract-versions-568775, #contract-versions-568769, #contract-versions-180717, #contract-versions-52760, #contract-versions-11430, #contract-versions-568777 {
+#contract-versions-10718, #contract-versions-10719, #contract-versions-568780, #contract-versions-568768, #contract-versions-568740, #contract-versions-568775, #contract-versions-568769, #contract-versions-180717, #contract-versions-52760, #contract-versions-11430, #contract-versions-568777, #contract-versions-10720, #contract-versions-642078, #contract-versions-642077, #contract-versions-642209, #contract-versions-10721, #contract-versions-10826 {
   display: flex; /* Use flexbox layout */
   flex-direction: row; /* Arrange children in a row */
   align-items: flex-start; /* Align children at the start of the cross axis */
 }
 
-.side-nav-engage {
+.side-nav-engage, .side-nav-amplify {
   flex: 0 0 auto; /* Do not grow or shrink, maintain the size of its content */
   margin-right: 20px; /* Add some space between the navigation and the main content */
+  min-width: 300px;
 }
 
-.side-nav-engage ul {
+.side-nav-engage ul, .side-nav-amplify ul {
   list-style: none;
   padding: 0;
   margin: 0;
 }
 
-.side-nav-engage ul li a {
+.side-nav-engage ul li a, .side-nav-amplify ul li a {
   text-decoration: none;
   color: #333;
   padding: 5px 0;
   display: block;
 }
-.side-nav-engage ul li:after {
+.side-nav-engage ul li:after, .side-nav-amplify ul li:after {
   display: none;
 }
 
-.side-nav-engage ul li a:hover {
+.side-nav-engage ul li a:hover, .side-nav-amplify ul li a:hover {
   color: #007bff;
 }
 
@@ -6312,201 +6313,729 @@ attachReadyHandlers();
 <!-- footer_script -->
   <script>
       try {
-        var updateEngageSelectorToHash = function (e) {
-    if (window.location.hash) for (var o = document.getElementsByClassName("engage-billing-picker"), a = 0; a < o.length; a++) for (var t = 0, n = o[a].options.length; t < n; t++) if (o[a].options[t].value == window.location.hash) {
-        (o[a].selectedIndex = t), (o[a].options[t].selected = !0);
-        break;
-    }
-}, updateEngageMSASelectorToHash = function (e) {
-    if (window.location.hash) for (var o = document.getElementsByClassName("engage-msa-billing-picker"), a = 0; a < o.length; a++) for (var t = 0, n = o[a].options.length; t < n; t++) if (o[a].options[t].value == window.location.hash) {
-        (o[a].selectedIndex = t), (o[a].options[t].selected = !0);
-        break;
-    }
-}, updateAmplifySelectorToHash = function (e) {
-    if (window.location.hash) for (var o = document.getElementsByClassName("amplify-billing-picker"), a = 0; a < o.length; a++) for (var t = 0, n = o[a].options.length; t < n; t++) if (o[a].options[t].value == window.location.hash) {
-        (o[a].selectedIndex = t), (o[a].options[t].selected = !0);
-        break;
-    }
-}, updateEngageBilling = function (e) {
-    if (e && e.target && hasClass(e.target, "engage-billing-picker")) for (var o = document.getElementsByClassName("engage-billing-picker"), a = (e.target.value, 0); a < o.length; a++) o[a] != e.target && ((o[a].selectedIndex = e.target.selectedIndex), (o[a].options[e.target.selectedIndex].selected = !0));
-};
-listenTo(document, "change", updateEngageBilling);
-var updateAmplifyBilling = function (e) {
-    if (e && e.target && hasClass(e.target, "amplify-billing-picker")) for (var o = document.getElementsByClassName("amplify-billing-picker"), a = (e.target.value, 0); a < o.length; a++) o[a] != e.target && ((o[a].selectedIndex = e.target.selectedIndex), (o[a].options[e.target.selectedIndex].selected = !0));
-};
-listenTo(document, "change", updateAmplifyBilling);
-var updateEngageMSABilling = function (e) {
-    if (e && e.target && hasClass(e.target, "engage-msa-billing-picker")) for (var o = document.getElementsByClassName("engage-msa-billing-picker"), a = (e.target.value, 0); a < o.length; a++) o[a] != e.target && ((o[a].selectedIndex = e.target.selectedIndex), (o[a].options[e.target.selectedIndex].selected = !0));
-};
-listenTo(document, "change", updateEngageMSABilling);
-var addDropdown = function () {
-    var e = document.getElementsByClassName("engage-country-dropdown");
-    [].slice.call(e).forEach(function (e) {
-        e.innerHTML = '<div class="row"><div class="columns twelve"><p style="padding-bottom: 15px;">The Engage Terms vary according to the country where your billing address is located. Please use your billing country below to view the applicable Engage Terms.</p><p>My billing address is located in:</p><select onchange="this.options[this.selectedIndex].value && (window.location = this.options[this.selectedIndex].value);" class="engage-billing-picker picker" action="dynamic-content-picker"><option value="#engage-terms-msa" selected="">United States of America</option><option value="#engage-terms-msa">Afghanistan</option><option value="#engage-terms-msa">Albania</option><option value="#engage-terms-msa">Algeria</option><option value="#engage-terms-msa">American Samoa</option><option value="#engage-terms-msa">Andorra</option><option value="#engage-terms-msa">Angola</option><option value="#engage-terms-msa">Anguilla</option><option value="#engage-terms-msa">Antigua & Barbuda</option><option value="#engage-terms-msa">Argentina</option><option value="#engage-terms-msa">Armenia</option><option value="#engage-terms-msa">Aruba</option><option value="#engage-terms-msa">Australia</option><option value="#engage-terms-msa-eu">Austria</option><option value="#engage-terms-msa">Azerbaijan</option><option value="#engage-terms-msa">Bahamas</option><option value="#engage-terms-msa">Bahrain</option><option value="#engage-terms-msa">Bangladesh</option><option value="#engage-terms-msa">Barbados</option><option value="#engage-terms-msa-eu">Belgium</option><option value="#engage-terms-msa">Belize</option><option value="#engage-terms-msa">Benin</option><option value="#engage-terms-msa">Bermuda</option><option value="#engage-terms-msa">Bhutan</option><option value="#engage-terms-msa">Bolivia</option><option value="#engage-terms-msa">Bonaire</option><option value="#engage-terms-msa">Bosnia & Herzegovina</option><option value="#engage-terms-msa">Botswana</option><option value="#engage-terms-br">Brazil</option><option value="#engage-terms-msa">British Indian Ocean Ter</option><option value="#engage-terms-msa">Brunei</option><option value="#engage-terms-msa-eu">Bulgaria</option><option value="#engage-terms-msa">Burkina Faso</option><option value="#engage-terms-msa">Burundi</option><option value="#engage-terms-msa">Cambodia</option><option value="#engage-terms-msa">Cameroon</option><option value="#engage-terms-msa">Canada</option><option value="#engage-terms-msa">Canary Islands</option><option value="#engage-terms-msa">Cape Verde</option><option value="#engage-terms-msa">Cayman Islands</option><option value="#engage-terms-msa">Central African Republic</option><option value="#engage-terms-msa">Chad</option><option value="#engage-terms-msa">Channel Islands</option><option value="#engage-terms-msa">Chile</option><option value="#engage-terms-msa">China</option><option value="#engage-terms-msa">Christmas Island</option><option value="#engage-terms-msa">Cocos Island</option><option value="#engage-terms-msa">Colombia</option><option value="#engage-terms-msa">Comoros</option><option value="#engage-terms-msa">Cook Islands</option><option value="#engage-terms-msa">Costa Rica</option><option value="#engage-terms-msa-eu">Croatia</option><option value="#engage-terms-msa">Curacao</option><option value="#engage-terms-msa-eu">Cyprus</option><option value="#engage-terms-msa-eu">Czech Republic</option><option value="#engage-terms-msa-eu">Denmark</option><option value="#engage-terms-msa">Djibouti</option><option value="#engage-terms-msa">Dominica</option><option value="#engage-terms-msa">Dominican Republic</option><option value="#engage-terms-msa">East Timor</option><option value="#engage-terms-msa">Ecuador</option><option value="#engage-terms-msa">Egypt</option><option value="#engage-terms-msa">El Salvador</option><option value="#engage-terms-msa">Equatorial Guinea</option><option value="#engage-terms-msa">Eritrea</option><option value="#engage-terms-msa-eu">Estonia</option><option value="#engage-terms-msa">Ethiopia</option><option value="#engage-terms-msa">Falkland Islands</option><option value="#engage-terms-msa">Faroe Islands</option><option value="#engage-terms-msa">Fiji</option><option value="#engage-terms-msa-eu">Finland</option><option value="#engage-terms-msa-eu">France</option><option value="#engage-terms-msa">French Guiana</option><option value="#engage-terms-msa">French Polynesia</option><option value="#engage-terms-msa">French Southern Ter</option><option value="#engage-terms-msa">Gabon</option><option value="#engage-terms-msa">Gambia</option><option value="#engage-terms-msa">Georgia</option><option value="#engage-terms-msa-eu">Germany</option><option value="#engage-terms-msa">Ghana</option><option value="#engage-terms-msa">Gibraltar</option><option value="#engage-terms-msa">Great Britain</option><option value="#engage-terms-msa-eu">Greece</option><option value="#engage-terms-msa">Greenland</option><option value="#engage-terms-msa">Grenada</option><option value="#engage-terms-msa">Guadeloupe</option><option value="#engage-terms-msa">Guam</option><option value="#engage-terms-msa">Guatemala</option><option value="#engage-terms-msa">Guinea</option><option value="#engage-terms-msa">Guyana</option><option value="#engage-terms-msa">Haiti</option><option value="#engage-terms-msa">Hawaii</option><option value="#engage-terms-msa">Honduras</option><option value="#engage-terms-msa">Hong Kong</option><option value="#engage-terms-msa-eu">Hungary</option><option value="#engage-terms-msa">Iceland</option><option value="#engage-terms-msa">India</option><option value="#engage-terms-msa">Indonesia</option><option value="#engage-terms-msa-eu">Ireland</option><option value="#engage-terms-msa">Isle of Man</option><option value="#engage-terms-msa">Israel</option><option value="#engage-terms-msa-eu">Italy</option><option value="#engage-terms-msa">Jamaica</option><option value="#engage-terms-jp">Japan</option><option value="#engage-terms-msa">Jordan</option><option value="#engage-terms-msa">Kazakhstan</option><option value="#engage-terms-msa">Kenya</option><option value="#engage-terms-msa">Kiribati</option><option value="#engage-terms-msa">Korea South</option><option value="#engage-terms-msa">Kuwait</option><option value="#engage-terms-msa">Kyrgyzstan</option><option value="#engage-terms-msa">Laos</option><option value="#engage-terms-msa-eu">Latvia</option><option value="#engage-terms-msa">Lesotho</option><option value="#engage-terms-msa">Liechtenstein</option><option value="#engage-terms-msa-eu">Lithuania</option><option value="#engage-terms-msa-eu">Luxembourg</option><option value="#engage-terms-msa">Macau</option><option value="#engage-terms-msa">Macedonia</option><option value="#engage-terms-msa">Madagascar</option><option value="#engage-terms-msa">Malaysia</option><option value="#engage-terms-msa">Malawi</option><option value="#engage-terms-msa">Maldives</option><option value="#engage-terms-msa">Mali</option><option value="#engage-terms-msa-eu">Malta</option><option value="#engage-terms-msa">Marshall Islands</option><option value="#engage-terms-msa">Martinique</option><option value="#engage-terms-msa">Mauritania</option><option value="#engage-terms-msa">Mauritius</option><option value="#engage-terms-msa">Mayotte</option><option value="#engage-terms-msa">Mexico</option><option value="#engage-terms-msa">Midway Islands</option><option value="#engage-terms-msa">Moldova</option><option value="#engage-terms-msa">Monaco</option><option value="#engage-terms-msa">Mongolia</option><option value="#engage-terms-msa">Montserrat</option><option value="#engage-terms-msa">Morocco</option><option value="#engage-terms-msa">Mozambique</option><option value="#engage-terms-msa">Nambia</option><option value="#engage-terms-msa">Nauru</option><option value="#engage-terms-msa">Nepal</option><option value="#engage-terms-msa">Netherland Antilles</option><option value="#engage-terms-msa-eu">Netherlands (Holland, Europe)</option><option value="#engage-terms-msa">Nevis</option><option value="#engage-terms-msa">New Caledonia</option><option value="#engage-terms-msa">New Zealand</option><option value="#engage-terms-msa">Nicaragua</option><option value="#engage-terms-msa">Niger</option><option value="#engage-terms-msa">Nigeria</option><option value="#engage-terms-msa">Niue</option><option value="#engage-terms-msa">Norfolk Island</option><option value="#engage-terms-msa">Norway</option><option value="#engage-terms-msa">Oman</option><option value="#engage-terms-msa">Pakistan</option><option value="#engage-terms-msa">Palau Island</option><option value="#engage-terms-msa">Palestine</option><option value="#engage-terms-msa">Panama</option><option value="#engage-terms-msa">Papua New Guinea</option><option value="#engage-terms-msa">Paraguay</option><option value="#engage-terms-msa">Peru</option><option value="#engage-terms-msa">Philippines</option><option value="#engage-terms-msa">Pitcairn Island</option><option value="#engage-terms-msa-eu">Poland</option><option value="#engage-terms-msa-eu">Portugal</option><option value="#engage-terms-msa">Puerto Rico</option><option value="#engage-terms-msa">Qatar</option><option value="#engage-terms-msa">Republic of Montenegro</option><option value="#engage-terms-msa">Republic of Serbia</option><option value="#engage-terms-msa">Reunion</option><option value="#engage-terms-msa-eu">Romania</option><option value="#engage-terms-msa">Russia</option><option value="#engage-terms-msa">Rwanda</option><option value="#engage-terms-msa">St Barthelemy</option><option value="#engage-terms-msa">St Eustatius</option><option value="#engage-terms-msa">St Helena</option><option value="#engage-terms-msa">St Kitts-Nevis</option><option value="#engage-terms-msa">St Lucia</option><option value="#engage-terms-msa">St Maarten</option><option value="#engage-terms-msa">St Pierre & Miquelon</option><option value="#engage-terms-msa">St Vincent & Grenadines</option><option value="#engage-terms-msa">Saipan</option><option value="#engage-terms-msa">Samoa</option><option value="#engage-terms-msa">Samoa American</option><option value="#engage-terms-msa">San Marino</option><option value="#engage-terms-msa">Sao Tome & Principe</option><option value="#engage-terms-msa">Saudi Arabia</option><option value="#engage-terms-msa">Senegal</option><option value="#engage-terms-msa">Serbia</option><option value="#engage-terms-msa">Seychelles</option><option value="#engage-terms-msa">Sierra Leone</option><option value="#engage-terms-msa">Singapore</option><option value="#engage-terms-msa-eu">Slovakia</option><option value="#engage-terms-msa-eu">Slovenia</option><option value="#engage-terms-msa">Solomon Islands</option><option value="#engage-terms-msa">South Africa</option><option value="#engage-terms-msa-eu">Spain</option><option value="#engage-terms-msa">Sri Lanka</option><option value="#engage-terms-msa">Sudan</option><option value="#engage-terms-msa">Suriname</option><option value="#engage-terms-msa">Swaziland</option><option value="#engage-terms-msa-eu">Sweden</option><option value="#engage-terms-msa">Switzerland</option><option value="#engage-terms-msa">Tahiti</option><option value="#engage-terms-msa">Taiwan</option><option value="#engage-terms-msa">Tajikistan</option><option value="#engage-terms-msa">Tanzania</option><option value="#engage-terms-msa">Thailand</option><option value="#engage-terms-msa">Togo</option><option value="#engage-terms-msa">Tokelau</option><option value="#engage-terms-msa">Tonga</option><option value="#engage-terms-msa">Trinidad & Tobago</option><option value="#engage-terms-msa">Tunisia</option><option value="#engage-terms-msa">Turkey</option><option value="#engage-terms-msa">Turkmenistan</option><option value="#engage-terms-msa">Turks & Caicos Is</option><option value="#engage-terms-msa">Tuvalu</option><option value="#engage-terms-msa">Uganda</option><option value="#engage-terms-msa">Ukraine</option><option value="#engage-terms-msa">United Arab Emirates</option><option value="#engage-terms-msa-eu">United Kingdom</option><option value="#engage-terms-msa">Uruguay</option><option value="#engage-terms-msa">Uzbekistan</option><option value="#engage-terms-msa">Vanuatu</option><option value="#engage-terms-msa">Vatican City State</option><option value="#engage-terms-msa">Venezuela</option><option value="#engage-terms-msa">Vietnam</option><option value="#engage-terms-msa">Virgin Islands (Brit)</option><option value="#engage-terms-msa">Virgin Islands (USA)</option><option value="#engage-terms-msa">Wake Island</option><option value="#engage-terms-msa">Wallis & Futana Is</option><option value="#engage-terms-msa">Yemen</option><option value="#engage-terms-msa">Zaire</option><option value="#engage-terms-msa">Zambia</option></select></div></div>';
-    });
-    var o = document.getElementsByClassName("engage-msa-country-dropdown");
-    [].slice.call(o).forEach(function (e) {
-        e.innerHTML = '<div class="row"><div class="columns twelve"><p style="padding-bottom: 15px;">The Engage Terms vary according to the country where your billing address is located. Please use your billing country below to view the applicable Engage Terms.</p><p>My billing address is located in:</p><select onchange="this.options[this.selectedIndex].value && (window.location = this.options[this.selectedIndex].value);" class="engage-billing-picker picker" action="dynamic-content-picker"><option value="#engage-terms-msa" selected="">United States of America</option><option value="#engage-terms-msa">Afghanistan</option><option value="#engage-terms-msa">Albania</option><option value="#engage-terms-msa">Algeria</option><option value="#engage-terms-msa">American Samoa</option><option value="#engage-terms-msa">Andorra</option><option value="#engage-terms-msa">Angola</option><option value="#engage-terms-msa">Anguilla</option><option value="#engage-terms-msa">Antigua & Barbuda</option><option value="#engage-terms-msa">Argentina</option><option value="#engage-terms-msa">Armenia</option><option value="#engage-terms-msa">Aruba</option><option value="#engage-terms-msa">Australia</option><option value="#engage-terms-msa-eu">Austria</option><option value="#engage-terms-msa">Azerbaijan</option><option value="#engage-terms-msa">Bahamas</option><option value="#engage-terms-msa">Bahrain</option><option value="#engage-terms-msa">Bangladesh</option><option value="#engage-terms-msa">Barbados</option><option value="#engage-terms-msa-eu">Belgium</option><option value="#engage-terms-msa">Belize</option><option value="#engage-terms-msa">Benin</option><option value="#engage-terms-msa">Bermuda</option><option value="#engage-terms-msa">Bhutan</option><option value="#engage-terms-msa">Bolivia</option><option value="#engage-terms-msa">Bonaire</option><option value="#engage-terms-msa">Bosnia & Herzegovina</option><option value="#engage-terms-msa">Botswana</option><option value="#engage-terms-br">Brazil</option><option value="#engage-terms-msa">British Indian Ocean Ter</option><option value="#engage-terms-msa">Brunei</option><option value="#engage-terms-msa-eu">Bulgaria</option><option value="#engage-terms-msa">Burkina Faso</option><option value="#engage-terms-msa">Burundi</option><option value="#engage-terms-msa">Cambodia</option><option value="#engage-terms-msa">Cameroon</option><option value="#engage-terms-msa">Canada</option><option value="#engage-terms-msa">Canary Islands</option><option value="#engage-terms-msa">Cape Verde</option><option value="#engage-terms-msa">Cayman Islands</option><option value="#engage-terms-msa">Central African Republic</option><option value="#engage-terms-msa">Chad</option><option value="#engage-terms-msa">Channel Islands</option><option value="#engage-terms-msa">Chile</option><option value="#engage-terms-msa">China</option><option value="#engage-terms-msa">Christmas Island</option><option value="#engage-terms-msa">Cocos Island</option><option value="#engage-terms-msa">Colombia</option><option value="#engage-terms-msa">Comoros</option><option value="#engage-terms-msa">Cook Islands</option><option value="#engage-terms-msa">Costa Rica</option><option value="#engage-terms-msa-eu">Croatia</option><option value="#engage-terms-msa">Curacao</option><option value="#engage-terms-msa-eu">Cyprus</option><option value="#engage-terms-msa-eu">Czech Republic</option><option value="#engage-terms-msa-eu">Denmark</option><option value="#engage-terms-msa">Djibouti</option><option value="#engage-terms-msa">Dominica</option><option value="#engage-terms-msa">Dominican Republic</option><option value="#engage-terms-msa">East Timor</option><option value="#engage-terms-msa">Ecuador</option><option value="#engage-terms-msa">Egypt</option><option value="#engage-terms-msa">El Salvador</option><option value="#engage-terms-msa">Equatorial Guinea</option><option value="#engage-terms-msa">Eritrea</option><option value="#engage-terms-msa-eu">Estonia</option><option value="#engage-terms-msa">Ethiopia</option><option value="#engage-terms-msa">Falkland Islands</option><option value="#engage-terms-msa">Faroe Islands</option><option value="#engage-terms-msa">Fiji</option><option value="#engage-terms-msa-eu">Finland</option><option value="#engage-terms-msa-eu">France</option><option value="#engage-terms-msa">French Guiana</option><option value="#engage-terms-msa">French Polynesia</option><option value="#engage-terms-msa">French Southern Ter</option><option value="#engage-terms-msa">Gabon</option><option value="#engage-terms-msa">Gambia</option><option value="#engage-terms-msa">Georgia</option><option value="#engage-terms-msa-eu">Germany</option><option value="#engage-terms-msa">Ghana</option><option value="#engage-terms-msa">Gibraltar</option><option value="#engage-terms-msa">Great Britain</option><option value="#engage-terms-msa-eu">Greece</option><option value="#engage-terms-msa">Greenland</option><option value="#engage-terms-msa">Grenada</option><option value="#engage-terms-msa">Guadeloupe</option><option value="#engage-terms-msa">Guam</option><option value="#engage-terms-msa">Guatemala</option><option value="#engage-terms-msa">Guinea</option><option value="#engage-terms-msa">Guyana</option><option value="#engage-terms-msa">Haiti</option><option value="#engage-terms-msa">Hawaii</option><option value="#engage-terms-msa">Honduras</option><option value="#engage-terms-msa">Hong Kong</option><option value="#engage-terms-msa-eu">Hungary</option><option value="#engage-terms-msa">Iceland</option><option value="#engage-terms-msa">India</option><option value="#engage-terms-msa">Indonesia</option><option value="#engage-terms-msa-eu">Ireland</option><option value="#engage-terms-msa">Isle of Man</option><option value="#engage-terms-msa">Israel</option><option value="#engage-terms-msa-eu">Italy</option><option value="#engage-terms-msa">Jamaica</option><option value="#engage-terms-jp">Japan</option><option value="#engage-terms-msa">Jordan</option><option value="#engage-terms-msa">Kazakhstan</option><option value="#engage-terms-msa">Kenya</option><option value="#engage-terms-msa">Kiribati</option><option value="#engage-terms-msa">Korea South</option><option value="#engage-terms-msa">Kuwait</option><option value="#engage-terms-msa">Kyrgyzstan</option><option value="#engage-terms-msa">Laos</option><option value="#engage-terms-msa-eu">Latvia</option><option value="#engage-terms-msa">Lesotho</option><option value="#engage-terms-msa">Liechtenstein</option><option value="#engage-terms-msa-eu">Lithuania</option><option value="#engage-terms-msa-eu">Luxembourg</option><option value="#engage-terms-msa">Macau</option><option value="#engage-terms-msa">Macedonia</option><option value="#engage-terms-msa">Madagascar</option><option value="#engage-terms-msa">Malaysia</option><option value="#engage-terms-msa">Malawi</option><option value="#engage-terms-msa">Maldives</option><option value="#engage-terms-msa">Mali</option><option value="#engage-terms-msa-eu">Malta</option><option value="#engage-terms-msa">Marshall Islands</option><option value="#engage-terms-msa">Martinique</option><option value="#engage-terms-msa">Mauritania</option><option value="#engage-terms-msa">Mauritius</option><option value="#engage-terms-msa">Mayotte</option><option value="#engage-terms-msa">Mexico</option><option value="#engage-terms-msa">Midway Islands</option><option value="#engage-terms-msa">Moldova</option><option value="#engage-terms-msa">Monaco</option><option value="#engage-terms-msa">Mongolia</option><option value="#engage-terms-msa">Montserrat</option><option value="#engage-terms-msa">Morocco</option><option value="#engage-terms-msa">Mozambique</option><option value="#engage-terms-msa">Nambia</option><option value="#engage-terms-msa">Nauru</option><option value="#engage-terms-msa">Nepal</option><option value="#engage-terms-msa">Netherland Antilles</option><option value="#engage-terms-msa-eu">Netherlands (Holland, Europe)</option><option value="#engage-terms-msa">Nevis</option><option value="#engage-terms-msa">New Caledonia</option><option value="#engage-terms-msa">New Zealand</option><option value="#engage-terms-msa">Nicaragua</option><option value="#engage-terms-msa">Niger</option><option value="#engage-terms-msa">Nigeria</option><option value="#engage-terms-msa">Niue</option><option value="#engage-terms-msa">Norfolk Island</option><option value="#engage-terms-msa">Norway</option><option value="#engage-terms-msa">Oman</option><option value="#engage-terms-msa">Pakistan</option><option value="#engage-terms-msa">Palau Island</option><option value="#engage-terms-msa">Palestine</option><option value="#engage-terms-msa">Panama</option><option value="#engage-terms-msa">Papua New Guinea</option><option value="#engage-terms-msa">Paraguay</option><option value="#engage-terms-msa">Peru</option><option value="#engage-terms-msa">Philippines</option><option value="#engage-terms-msa">Pitcairn Island</option><option value="#engage-terms-msa-eu">Poland</option><option value="#engage-terms-msa-eu">Portugal</option><option value="#engage-terms-msa">Puerto Rico</option><option value="#engage-terms-msa">Qatar</option><option value="#engage-terms-msa">Republic of Montenegro</option><option value="#engage-terms-msa">Republic of Serbia</option><option value="#engage-terms-msa">Reunion</option><option value="#engage-terms-msa-eu">Romania</option><option value="#engage-terms-msa">Russia</option><option value="#engage-terms-msa">Rwanda</option><option value="#engage-terms-msa">St Barthelemy</option><option value="#engage-terms-msa">St Eustatius</option><option value="#engage-terms-msa">St Helena</option><option value="#engage-terms-msa">St Kitts-Nevis</option><option value="#engage-terms-msa">St Lucia</option><option value="#engage-terms-msa">St Maarten</option><option value="#engage-terms-msa">St Pierre & Miquelon</option><option value="#engage-terms-msa">St Vincent & Grenadines</option><option value="#engage-terms-msa">Saipan</option><option value="#engage-terms-msa">Samoa</option><option value="#engage-terms-msa">Samoa American</option><option value="#engage-terms-msa">San Marino</option><option value="#engage-terms-msa">Sao Tome & Principe</option><option value="#engage-terms-msa">Saudi Arabia</option><option value="#engage-terms-msa">Senegal</option><option value="#engage-terms-msa">Serbia</option><option value="#engage-terms-msa">Seychelles</option><option value="#engage-terms-msa">Sierra Leone</option><option value="#engage-terms-msa">Singapore</option><option value="#engage-terms-msa-eu">Slovakia</option><option value="#engage-terms-msa-eu">Slovenia</option><option value="#engage-terms-msa">Solomon Islands</option><option value="#engage-terms-msa">South Africa</option><option value="#engage-terms-msa-eu">Spain</option><option value="#engage-terms-msa">Sri Lanka</option><option value="#engage-terms-msa">Sudan</option><option value="#engage-terms-msa">Suriname</option><option value="#engage-terms-msa">Swaziland</option><option value="#engage-terms-msa-eu">Sweden</option><option value="#engage-terms-msa">Switzerland</option><option value="#engage-terms-msa">Tahiti</option><option value="#engage-terms-msa">Taiwan</option><option value="#engage-terms-msa">Tajikistan</option><option value="#engage-terms-msa">Tanzania</option><option value="#engage-terms-msa">Thailand</option><option value="#engage-terms-msa">Togo</option><option value="#engage-terms-msa">Tokelau</option><option value="#engage-terms-msa">Tonga</option><option value="#engage-terms-msa">Trinidad & Tobago</option><option value="#engage-terms-msa">Tunisia</option><option value="#engage-terms-msa">Turkey</option><option value="#engage-terms-msa">Turkmenistan</option><option value="#engage-terms-msa">Turks & Caicos Is</option><option value="#engage-terms-msa">Tuvalu</option><option value="#engage-terms-msa">Uganda</option><option value="#engage-terms-msa">Ukraine</option><option value="#engage-terms-msa">United Arab Emirates</option><option value="#engage-terms-msa-eu">United Kingdom</option><option value="#engage-terms-msa">Uruguay</option><option value="#engage-terms-msa">Uzbekistan</option><option value="#engage-terms-msa">Vanuatu</option><option value="#engage-terms-msa">Vatican City State</option><option value="#engage-terms-msa">Venezuela</option><option value="#engage-terms-msa">Vietnam</option><option value="#engage-terms-msa">Virgin Islands (Brit)</option><option value="#engage-terms-msa">Virgin Islands (USA)</option><option value="#engage-terms-msa">Wake Island</option><option value="#engage-terms-msa">Wallis & Futana Is</option><option value="#engage-terms-msa">Yemen</option><option value="#engage-terms-msa">Zaire</option><option value="#engage-terms-msa">Zambia</option></select></div></div>';
-    }), updateEngageMSASelectorToHash();
-    var o = document.getElementsByClassName("engage-terms-dropdown");
-    [].slice.call(o).forEach(function (e) {
-        e.innerHTML = '<div class="row"><div class="columns twelve"><p style="padding-bottom: 15px;">The Engage Terms vary according to the country where your billing address is located. Please use your billing country below to view the applicable Engage Terms.</p><p>My billing address is located in:</p><select onchange="this.options[this.selectedIndex].value && (window.location = this.options[this.selectedIndex].value);" class="engage-billing-picker picker" action="dynamic-content-picker"><option value="#engage-terms-msa" selected="">United States of America</option><option value="#engage-terms-msa">Afghanistan</option><option value="#engage-terms-msa">Albania</option><option value="#engage-terms-msa">Algeria</option><option value="#engage-terms-msa">American Samoa</option><option value="#engage-terms-msa">Andorra</option><option value="#engage-terms-msa">Angola</option><option value="#engage-terms-msa">Anguilla</option><option value="#engage-terms-msa">Antigua & Barbuda</option><option value="#engage-terms-msa">Argentina</option><option value="#engage-terms-msa">Armenia</option><option value="#engage-terms-msa">Aruba</option><option value="#engage-terms-msa">Australia</option><option value="#engage-terms-eu">Austria</option><option value="#engage-terms-msa">Azerbaijan</option><option value="#engage-terms-msa">Bahamas</option><option value="#engage-terms-msa">Bahrain</option><option value="#engage-terms-msa">Bangladesh</option><option value="#engage-terms-msa">Barbados</option><option value="#engage-terms-eu">Belgium</option><option value="#engage-terms-msa">Belize</option><option value="#engage-terms-msa">Benin</option><option value="#engage-terms-msa">Bermuda</option><option value="#engage-terms-msa">Bhutan</option><option value="#engage-terms-msa">Bolivia</option><option value="#engage-terms-msa">Bonaire</option><option value="#engage-terms-msa">Bosnia & Herzegovina</option><option value="#engage-terms-msa">Botswana</option><option value="#engage-terms-br">Brazil</option><option value="#engage-terms-msa">British Indian Ocean Ter</option><option value="#engage-terms-msa">Brunei</option><option value="#engage-terms-eu">Bulgaria</option><option value="#engage-terms-msa">Burkina Faso</option><option value="#engage-terms-msa">Burundi</option><option value="#engage-terms-msa">Cambodia</option><option value="#engage-terms-msa">Cameroon</option><option value="#engage-terms-msa">Canada</option><option value="#engage-terms-msa">Canary Islands</option><option value="#engage-terms-msa">Cape Verde</option><option value="#engage-terms-msa">Cayman Islands</option><option value="#engage-terms-msa">Central African Republic</option><option value="#engage-terms-msa">Chad</option><option value="#engage-terms-msa">Channel Islands</option><option value="#engage-terms-msa">Chile</option><option value="#engage-terms-msa">China</option><option value="#engage-terms-msa">Christmas Island</option><option value="#engage-terms-msa">Cocos Island</option><option value="#engage-terms-msa">Colombia</option><option value="#engage-terms-msa">Comoros</option><option value="#engage-terms-msa">Cook Islands</option><option value="#engage-terms-msa">Costa Rica</option><option value="#engage-terms-eu">Croatia</option><option value="#engage-terms-msa">Curacao</option><option value="#engage-terms-eu">Cyprus</option><option value="#engage-terms-msa-eu">Czech Republic</option><option value="#engage-terms-eu">Denmark</option><option value="#engage-terms-msa">Djibouti</option><option value="#engage-terms-msa">Dominica</option><option value="#engage-terms-msa">Dominican Republic</option><option value="#engage-terms-msa">East Timor</option><option value="#engage-terms-msa">Ecuador</option><option value="#engage-terms-msa">Egypt</option><option value="#engage-terms-msa">El Salvador</option><option value="#engage-terms-msa">Equatorial Guinea</option><option value="#engage-terms-msa">Eritrea</option><option value="#engage-terms-eu">Estonia</option><option value="#engage-terms-msa">Ethiopia</option><option value="#engage-terms-msa">Falkland Islands</option><option value="#engage-terms-msa">Faroe Islands</option><option value="#engage-terms-msa">Fiji</option><option value="#engage-terms-eu">Finland</option><option value="#engage-terms-eu">France</option><option value="#engage-terms-msa">French Guiana</option><option value="#engage-terms-msa">French Polynesia</option><option value="#engage-terms-msa">French Southern Ter</option><option value="#engage-terms-msa">Gabon</option><option value="#engage-terms-msa">Gambia</option><option value="#engage-terms-msa">Georgia</option><option value="#engage-terms-eu">Germany</option><option value="#engage-terms-msa">Ghana</option><option value="#engage-terms-msa">Gibraltar</option><option value="#engage-terms-msa">Great Britain</option><option value="#engage-terms-eu">Greece</option><option value="#engage-terms-msa">Greenland</option><option value="#engage-terms-msa">Grenada</option><option value="#engage-terms-msa">Guadeloupe</option><option value="#engage-terms-msa">Guam</option><option value="#engage-terms-msa">Guatemala</option><option value="#engage-terms-msa">Guinea</option><option value="#engage-terms-msa">Guyana</option><option value="#engage-terms-msa">Haiti</option><option value="#engage-terms-msa">Hawaii</option><option value="#engage-terms-msa">Honduras</option><option value="#engage-terms-msa">Hong Kong</option><option value="#engage-terms-eu">Hungary</option><option value="#engage-terms-msa">Iceland</option><option value="#engage-terms-msa">India</option><option value="#engage-terms-msa">Indonesia</option><option value="#engage-terms-eu">Ireland</option><option value="#engage-terms-msa">Isle of Man</option><option value="#engage-terms-msa">Israel</option><option value="#engage-terms-eu">Italy</option><option value="#engage-terms-msa">Jamaica</option><option value="#engage-terms-jp">Japan</option><option value="#engage-terms-msa">Jordan</option><option value="#engage-terms-msa">Kazakhstan</option><option value="#engage-terms-msa">Kenya</option><option value="#engage-terms-msa">Kiribati</option><option value="#engage-terms-msa">Korea South</option><option value="#engage-terms-msa">Kuwait</option><option value="#engage-terms-msa">Kyrgyzstan</option><option value="#engage-terms-msa">Laos</option><option value="#engage-terms-eu">Latvia</option><option value="#engage-terms-msa">Lesotho</option><option value="#engage-terms-msa">Liechtenstein</option><option value="#engage-terms-eu">Lithuania</option><option value="#engage-terms-eu">Luxembourg</option><option value="#engage-terms-msa">Macau</option><option value="#engage-terms-msa">Macedonia</option><option value="#engage-terms-msa">Madagascar</option><option value="#engage-terms-msa">Malaysia</option><option value="#engage-terms-msa">Malawi</option><option value="#engage-terms-msa">Maldives</option><option value="#engage-terms-msa">Mali</option><option value="#engage-terms-eu">Malta</option><option value="#engage-terms-msa">Marshall Islands</option><option value="#engage-terms-msa">Martinique</option><option value="#engage-terms-msa">Mauritania</option><option value="#engage-terms-msa">Mauritius</option><option value="#engage-terms-msa">Mayotte</option><option value="#engage-terms-msa">Mexico</option><option value="#engage-terms-msa">Midway Islands</option><option value="#engage-terms-msa">Moldova</option><option value="#engage-terms-msa">Monaco</option><option value="#engage-terms-msa">Mongolia</option><option value="#engage-terms-msa">Montserrat</option><option value="#engage-terms-msa">Morocco</option><option value="#engage-terms-msa">Mozambique</option><option value="#engage-terms-msa">Nambia</option><option value="#engage-terms-msa">Nauru</option><option value="#engage-terms-msa">Nepal</option><option value="#engage-terms-msa">Netherland Antilles</option><option value="#engage-terms-eu">Netherlands (Holland, Europe)</option><option value="#engage-terms-msa">Nevis</option><option value="#engage-terms-msa">New Caledonia</option><option value="#engage-terms-msa">New Zealand</option><option value="#engage-terms-msa">Nicaragua</option><option value="#engage-terms-msa">Niger</option><option value="#engage-terms-msa">Nigeria</option><option value="#engage-terms-msa">Niue</option><option value="#engage-terms-msa">Norfolk Island</option><option value="#engage-terms-msa">Norway</option><option value="#engage-terms-msa">Oman</option><option value="#engage-terms-msa">Pakistan</option><option value="#engage-terms-msa">Palau Island</option><option value="#engage-terms-msa">Palestine</option><option value="#engage-terms-msa">Panama</option><option value="#engage-terms-msa">Papua New Guinea</option><option value="#engage-terms-msa">Paraguay</option><option value="#engage-terms-msa">Peru</option><option value="#engage-terms-msa">Philippines</option><option value="#engage-terms-msa">Pitcairn Island</option><option value="#engage-terms-eu">Poland</option><option value="#engage-terms-eu">Portugal</option><option value="#engage-terms-msa">Puerto Rico</option><option value="#engage-terms-msa">Qatar</option><option value="#engage-terms-msa">Republic of Montenegro</option><option value="#engage-terms-msa">Republic of Serbia</option><option value="#engage-terms-msa">Reunion</option><option value="#engage-terms-eu">Romania</option><option value="#engage-terms-msa">Russia</option><option value="#engage-terms-msa">Rwanda</option><option value="#engage-terms-msa">St Barthelemy</option><option value="#engage-terms-msa">St Eustatius</option><option value="#engage-terms-msa">St Helena</option><option value="#engage-terms-msa">St Kitts-Nevis</option><option value="#engage-terms-msa">St Lucia</option><option value="#engage-terms-msa">St Maarten</option><option value="#engage-terms-msa">St Pierre & Miquelon</option><option value="#engage-terms-msa">St Vincent & Grenadines</option><option value="#engage-terms-msa">Saipan</option><option value="#engage-terms-msa">Samoa</option><option value="#engage-terms-msa">Samoa American</option><option value="#engage-terms-msa">San Marino</option><option value="#engage-terms-msa">Sao Tome & Principe</option><option value="#engage-terms-msa">Saudi Arabia</option><option value="#engage-terms-msa">Senegal</option><option value="#engage-terms-msa">Serbia</option><option value="#engage-terms-msa">Seychelles</option><option value="#engage-terms-msa">Sierra Leone</option><option value="#engage-terms-msa">Singapore</option><option value="#engage-terms-eu">Slovakia</option><option value="#engage-terms-eu">Slovenia</option><option value="#engage-terms-msa">Solomon Islands</option><option value="#engage-terms-msa">South Africa</option><option value="#engage-terms-eu">Spain</option><option value="#engage-terms-msa">Sri Lanka</option><option value="#engage-terms-msa">Sudan</option><option value="#engage-terms-msa">Suriname</option><option value="#engage-terms-msa">Swaziland</option><option value="#engage-terms-eu">Sweden</option><option value="#engage-terms-msa">Switzerland</option><option value="#engage-terms-msa">Tahiti</option><option value="#engage-terms-msa">Taiwan</option><option value="#engage-terms-msa">Tajikistan</option><option value="#engage-terms-msa">Tanzania</option><option value="#engage-terms-msa">Thailand</option><option value="#engage-terms-msa">Togo</option><option value="#engage-terms-msa">Tokelau</option><option value="#engage-terms-msa">Tonga</option><option value="#engage-terms-msa">Trinidad & Tobago</option><option value="#engage-terms-msa">Tunisia</option><option value="#engage-terms-msa">Turkey</option><option value="#engage-terms-msa">Turkmenistan</option><option value="#engage-terms-msa">Turks & Caicos Is</option><option value="#engage-terms-msa">Tuvalu</option><option value="#engage-terms-msa">Uganda</option><option value="#engage-terms-msa">Ukraine</option><option value="#engage-terms-msa">United Arab Emirates</option><option value="#engage-terms-eu">United Kingdom</option><option value="#engage-terms-msa">Uruguay</option><option value="#engage-terms-msa">Uzbekistan</option><option value="#engage-terms-msa">Vanuatu</option><option value="#engage-terms-msa">Vatican City State</option><option value="#engage-terms-msa">Venezuela</option><option value="#engage-terms-msa">Vietnam</option><option value="#engage-terms-msa">Virgin Islands (Brit)</option><option value="#engage-terms-msa">Virgin Islands (USA)</option><option value="#engage-terms-msa">Wake Island</option><option value="#engage-terms-msa">Wallis & Futana Is</option><option value="#engage-terms-msa">Yemen</option><option value="#engage-terms-msa">Zaire</option><option value="#engage-terms-msa">Zambia</option></select></div></div>';
-    }), updateEngageMSASelectorToHash();
-    var a = document.getElementsByClassName("amplify-country-dropdown");
-    [].slice.call(a).forEach(function (e) {
-        e.innerHTML = '<div class="row"><div class="columns twelve"><p style="padding-bottom: 15px;">The Amplify Terms vary according to the country where your billing address is located. Please use your billing country below to view the applicable Amplify Terms.</p><p>My billing address is located in:</p><select onchange="this.options[this.selectedIndex].value && (window.location = this.options[this.selectedIndex].value);" class="amplify-billing-picker picker" action="dynamic-content-picker"><option value="#amplify-terms-us" selected="">United States of America</option><option value="#amplify-terms-us">Afghanistan</option><option value="#amplify-terms-us">Albania</option><option value="#amplify-terms-us">Algeria</option><option value="#amplify-terms-us">American Samoa</option><option value="#amplify-terms-us">Andorra</option><option value="#amplify-terms-us">Angola</option><option value="#amplify-terms-us">Anguilla</option><option value="#amplify-terms-us">Antigua & Barbuda</option><option value="#amplify-terms-us">Argentina</option><option value="#amplify-terms-us">Armenia</option><option value="#amplify-terms-us">Aruba</option><option value="#amplify-terms-us">Australia</option><option value="#amplify-terms-eu">Austria</option><option value="#amplify-terms-us">Azerbaijan</option><option value="#amplify-terms-us">Bahamas</option><option value="#amplify-terms-us">Bahrain</option><option value="#amplify-terms-us">Bangladesh</option><option value="#amplify-terms-us">Barbados</option><option value="#amplify-terms-eu">Belgium</option><option value="#amplify-terms-us">Belize</option><option value="#amplify-terms-us">Benin</option><option value="#amplify-terms-us">Bermuda</option><option value="#amplify-terms-us">Bhutan</option><option value="#amplify-terms-us">Bolivia</option><option value="#amplify-terms-us">Bonaire</option><option value="#amplify-terms-us">Bosnia & Herzegovina</option><option value="#amplify-terms-us">Botswana</option><option value="#amplify-terms-br">Brazil</option><option value="#amplify-terms-us">British Indian Ocean Ter</option><option value="#amplify-terms-us">Brunei</option><option value="#amplify-terms-eu">Bulgaria</option><option value="#amplify-terms-us">Burkina Faso</option><option value="#amplify-terms-us">Burundi</option><option value="#amplify-terms-us">Cambodia</option><option value="#amplify-terms-us">Cameroon</option><option value="#amplify-terms-us">Canada</option><option value="#amplify-terms-us">Canary Islands</option><option value="#amplify-terms-us">Cape Verde</option><option value="#amplify-terms-us">Cayman Islands</option><option value="#amplify-terms-us">Central African Republic</option><option value="#amplify-terms-us">Chad</option><option value="#amplify-terms-us">Channel Islands</option><option value="#amplify-terms-us">Chile</option><option value="#amplify-terms-us">China</option><option value="#amplify-terms-us">Christmas Island</option><option value="#amplify-terms-us">Cocos Island</option><option value="#amplify-terms-us">Colombia</option><option value="#amplify-terms-us">Comoros</option><option value="#amplify-terms-us">Cook Islands</option><option value="#amplify-terms-us">Costa Rica</option><option value="#amplify-terms-eu">Croatia</option><option value="#amplify-terms-us">Curacao</option><option value="#amplify-terms-eu">Cyprus</option><option value="#amplify-terms-eu">Czech Republic</option><option value="#amplify-terms-eu">Denmark</option><option value="#amplify-terms-us">Djibouti</option><option value="#amplify-terms-us">Dominica</option><option value="#amplify-terms-us">Dominican Republic</option><option value="#amplify-terms-us">East Timor</option><option value="#amplify-terms-us">Ecuador</option><option value="#amplify-terms-us">Egypt</option><option value="#amplify-terms-us">El Salvador</option><option value="#amplify-terms-us">Equatorial Guinea</option><option value="#amplify-terms-us">Eritrea</option><option value="#amplify-terms-eu">Estonia</option><option value="#amplify-terms-us">Ethiopia</option><option value="#amplify-terms-us">Falkland Islands</option><option value="#amplify-terms-us">Faroe Islands</option><option value="#amplify-terms-us">Fiji</option><option value="#amplify-terms-eu">Finland</option><option value="#amplify-terms-eu">France</option><option value="#amplify-terms-us">French Guiana</option><option value="#amplify-terms-us">French Polynesia</option><option value="#amplify-terms-us">French Southern Ter</option><option value="#amplify-terms-us">Gabon</option><option value="#amplify-terms-us">Gambia</option><option value="#amplify-terms-us">Georgia</option><option value="#amplify-terms-eu">Germany</option><option value="#amplify-terms-us">Ghana</option><option value="#amplify-terms-us">Gibraltar</option><option value="#amplify-terms-us">Great Britain</option><option value="#amplify-terms-eu">Greece</option><option value="#amplify-terms-us">Greenland</option><option value="#amplify-terms-us">Grenada</option><option value="#amplify-terms-us">Guadeloupe</option><option value="#amplify-terms-us">Guam</option><option value="#amplify-terms-us">Guatemala</option><option value="#amplify-terms-us">Guinea</option><option value="#amplify-terms-us">Guyana</option><option value="#amplify-terms-us">Haiti</option><option value="#amplify-terms-us">Hawaii</option><option value="#amplify-terms-us">Honduras</option><option value="#amplify-terms-us">Hong Kong</option><option value="#amplify-terms-eu">Hungary</option><option value="#amplify-terms-us">Iceland</option><option value="#amplify-terms-us">India</option><option value="#amplify-terms-us">Indonesia</option><option value="#amplify-terms-eu">Ireland</option><option value="#amplify-terms-us">Isle of Man</option><option value="#amplify-terms-us">Israel</option><option value="#amplify-terms-eu">Italy</option><option value="#amplify-terms-us">Jamaica</option><option value="#amplify-terms-jp">Japan</option><option value="#amplify-terms-us">Jordan</option><option value="#amplify-terms-us">Kazakhstan</option><option value="#amplify-terms-us">Kenya</option><option value="#amplify-terms-us">Kiribati</option><option value="#amplify-terms-us">Korea South</option><option value="#amplify-terms-us">Kuwait</option><option value="#amplify-terms-us">Kyrgyzstan</option><option value="#amplify-terms-us">Laos</option><option value="#amplify-terms-eu">Latvia</option><option value="#amplify-terms-us">Lesotho</option><option value="#amplify-terms-us">Liechtenstein</option><option value="#amplify-terms-eu">Lithuania</option><option value="#amplify-terms-eu">Luxembourg</option><option value="#amplify-terms-us">Macau</option><option value="#amplify-terms-us">Macedonia</option><option value="#amplify-terms-us">Madagascar</option><option value="#amplify-terms-us">Malaysia</option><option value="#amplify-terms-us">Malawi</option><option value="#amplify-terms-us">Maldives</option><option value="#amplify-terms-us">Mali</option><option value="#amplify-terms-eu">Malta</option><option value="#amplify-terms-us">Marshall Islands</option><option value="#amplify-terms-us">Martinique</option><option value="#amplify-terms-us">Mauritania</option><option value="#amplify-terms-us">Mauritius</option><option value="#amplify-terms-us">Mayotte</option><option value="#amplify-terms-us">Mexico</option><option value="#amplify-terms-us">Midway Islands</option><option value="#amplify-terms-us">Moldova</option><option value="#amplify-terms-us">Monaco</option><option value="#amplify-terms-us">Mongolia</option><option value="#amplify-terms-us">Montserrat</option><option value="#amplify-terms-us">Morocco</option><option value="#amplify-terms-us">Mozambique</option><option value="#amplify-terms-us">Nambia</option><option value="#amplify-terms-us">Nauru</option><option value="#amplify-terms-us">Nepal</option><option value="#amplify-terms-us">Netherland Antilles</option><option value="#amplify-terms-eu">Netherlands (Holland, Europe)</option><option value="#amplify-terms-us">Nevis</option><option value="#amplify-terms-us">New Caledonia</option><option value="#amplify-terms-us">New Zealand</option><option value="#amplify-terms-us">Nicaragua</option><option value="#amplify-terms-us">Niger</option><option value="#amplify-terms-us">Nigeria</option><option value="#amplify-terms-us">Niue</option><option value="#amplify-terms-us">Norfolk Island</option><option value="#amplify-terms-eu">Norway</option><option value="#amplify-terms-us">Oman</option><option value="#amplify-terms-us">Pakistan</option><option value="#amplify-terms-us">Palau Island</option><option value="#amplify-terms-us">Palestine</option><option value="#amplify-terms-us">Panama</option><option value="#amplify-terms-us">Papua New Guinea</option><option value="#amplify-terms-us">Paraguay</option><option value="#amplify-terms-us">Peru</option><option value="#amplify-terms-us">Philippines</option><option value="#amplify-terms-us">Pitcairn Island</option><option value="#amplify-terms-eu">Poland</option><option value="#amplify-terms-eu">Portugal</option><option value="#amplify-terms-us">Puerto Rico</option><option value="#amplify-terms-us">Qatar</option><option value="#amplify-terms-us">Republic of Montenegro</option><option value="#amplify-terms-us">Republic of Serbia</option><option value="#amplify-terms-us">Reunion</option><option value="#amplify-terms-eu">Romania</option><option value="#amplify-terms-us">Russia</option><option value="#amplify-terms-us">Rwanda</option><option value="#amplify-terms-us">St Barthelemy</option><option value="#amplify-terms-us">St Eustatius</option><option value="#amplify-terms-us">St Helena</option><option value="#amplify-terms-us">St Kitts-Nevis</option><option value="#amplify-terms-us">St Lucia</option><option value="#amplify-terms-us">St Maarten</option><option value="#amplify-terms-us">St Pierre & Miquelon</option><option value="#amplify-terms-us">St Vincent & Grenadines</option><option value="#amplify-terms-us">Saipan</option><option value="#amplify-terms-us">Samoa</option><option value="#amplify-terms-us">Samoa American</option><option value="#amplify-terms-us">San Marino</option><option value="#amplify-terms-us">Sao Tome & Principe</option><option value="#amplify-terms-us">Saudi Arabia</option><option value="#amplify-terms-us">Senegal</option><option value="#amplify-terms-us">Serbia</option><option value="#amplify-terms-us">Seychelles</option><option value="#amplify-terms-us">Sierra Leone</option><option value="#amplify-terms-us">Singapore</option><option value="#amplify-terms-eu">Slovakia</option><option value="#amplify-terms-eu">Slovenia</option><option value="#amplify-terms-us">Solomon Islands</option><option value="#amplify-terms-us">South Africa</option><option value="#amplify-terms-eu">Spain</option><option value="#amplify-terms-us">Sri Lanka</option><option value="#amplify-terms-us">Sudan</option><option value="#amplify-terms-us">Suriname</option><option value="#amplify-terms-us">Swaziland</option><option value="#amplify-terms-eu">Sweden</option><option value="#amplify-terms-us">Switzerland</option><option value="#amplify-terms-us">Tahiti</option><option value="#amplify-terms-us">Taiwan</option><option value="#amplify-terms-us">Tajikistan</option><option value="#amplify-terms-us">Tanzania</option><option value="#amplify-terms-us">Thailand</option><option value="#amplify-terms-us">Togo</option><option value="#amplify-terms-us">Tokelau</option><option value="#amplify-terms-us">Tonga</option><option value="#amplify-terms-us">Trinidad & Tobago</option><option value="#amplify-terms-us">Tunisia</option><option value="#amplify-terms-us">Turkey</option><option value="#amplify-terms-us">Turkmenistan</option><option value="#amplify-terms-us">Turks & Caicos Is</option><option value="#amplify-terms-us">Tuvalu</option><option value="#amplify-terms-us">Uganda</option><option value="#amplify-terms-us">Ukraine</option><option value="#amplify-terms-us">United Arab Emirates</option><option value="#amplify-terms-eu">United Kingdom</option><option value="#amplify-terms-us">Uruguay</option><option value="#amplify-terms-us">Uzbekistan</option><option value="#amplify-terms-us">Vanuatu</option><option value="#amplify-terms-us">Vatican City State</option><option value="#amplify-terms-us">Venezuela</option><option value="#amplify-terms-us">Vietnam</option><option value="#amplify-terms-us">Virgin Islands (Brit)</option><option value="#amplify-terms-us">Virgin Islands (USA)</option><option value="#amplify-terms-us">Wake Island</option><option value="#amplify-terms-us">Wallis & Futana Is</option><option value="#amplify-terms-us">Yemen</option><option value="#amplify-terms-us">Zaire</option><option value="#amplify-terms-us">Zambia</option></select></div></div>';
-    }), updateAmplifySelectorToHash();
-};
-addDropdown(), listenTo(window, "hashchange", addDropdown()), -1 != window.location.pathname.indexOf("/de") && (document.getElementById("impressum-link").style.display = "inline");
-var showhide = function (e, o) {
-    document.getElementsByClassName("link-accordion-" + o)[e].addEventListener("click", function () {
-        this.classList.toggle("active");
-        var a = document.getElementById("panel" + e + "-" + o);
-        "block" === a.style.display ? (a.style.display = "none") : (a.style.display = "block");
-    });
-}, setLinkTo = function (e, o, a, t) {
-    var n;
-    for (n = 0; n < document.getElementsByClassName(e).length; n++) document.getElementsByClassName(e)[n].addEventListener("click", function () {
-        (document.getElementsByClassName("panel")[o].style.display = "block"), t && (console.log(t), console.log(document.getElementById(t).style.display), (document.getElementById(t).style.display = "block")), document.getElementById(a).scrollIntoView(!0);
-    });
-}, acc = document.getElementsByClassName("accordion");
-for (i = 0; i < acc.length; i++) acc[i].addEventListener("click", function () {
-    this.classList.toggle("active");
-    var e = this.nextElementSibling;
-    "block" === e.style.display ? (this.querySelectorAll(".plus")[0].innerHTML = "+") : (this.querySelectorAll(".plus")[0].innerHTML = "-"), "block" === e.style.display ? (e.style.display = "none") : (e.style.display = "block");
-});
-showhide(0, "en"), showhide(1, "en"), showhide(2, "en"), showhide(0, "de"), showhide(1, "de"), showhide(2, "de"), showhide(0, "fr"), showhide(1, "fr"), showhide(2, "fr"), showhide(0, "es"), showhide(1, "es"), showhide(2, "es"), showhide(0, "it"), showhide(1, "it"), showhide(2, "it"), showhide(0, "br"), showhide(1, "br"), showhide(2, "br"), showhide(0, "jp"), showhide(1, "jp"), showhide(2, "jp"), setLinkTo("expand-sharing", 2, "sharing"), setLinkTo("expand-opt-out", 1, "opt-out-language", "panel1-en"), setLinkTo("expand-european", 4, "european-territories"), setLinkTo("expand-widget", 2, "widget"), setLinkTo("expand-sharing-de", 10, "sharing-de"), setLinkTo("expand-opt-out-de", 9, "opt-out-language-de", "panel1-de"), setLinkTo("expand-european-de", 12, "european-territories-de"), setLinkTo("expand-widget-de", 10, "widget-de"), setLinkTo("expand-sharing-fr", 26, "sharing-fr"), setLinkTo("expand-opt-out-fr", 25, "opt-out-language-fr", "panel1-fr"), setLinkTo("expand-european-fr", 28, "european-territories-fr"), setLinkTo("expand-widget-fr", 26, "widget-fr"), setLinkTo("expand-sharing-es", 18, "sharing-es"), setLinkTo("expand-opt-out-es", 17, "opt-out-language-es", "panel1-es"), setLinkTo("expand-european-es", 20, "european-territories-es"), setLinkTo("expand-widget-es", 18, "widget-es"), setLinkTo("expand-sharing-it", 34, "sharing-it"), setLinkTo("expand-opt-out-it", 33, "opt-out-language-it", "panel1-it"), setLinkTo("expand-european-it", 36, "european-territories-it"), setLinkTo("expand-widget-it", 34, "widget-it"), setLinkTo("expand-sharing-br", 42, "sharing-br"), setLinkTo("expand-opt-out-br", 41, "opt-out-language-br", "panel1-br"), setLinkTo("expand-european-br", 44, "european-territories-br"), setLinkTo("expand-widget-br", 42, "widget-br"), setLinkTo("expand-sharing-jp", 42, "sharing-jp"), setLinkTo("expand-opt-out-jp", 41, "opt-out-language-jp", "panel1-jp"), setLinkTo("expand-european-jp", 44, "european-territories-jp"), setLinkTo("expand-widget-jp", 42, "widget-jp");
-var subPanels = [{
-    panelSection: "outbrain-cookies",
-    languages: ["en", "de", "fr", "es", "it", "br", "jp"]
-}, {
-    panelSection: "outbrain-pixels",
-    languages: ["en", "de", "fr", "es", "it", "br", "jp"]
-}, {
-    panelSection: "outbrain-party",
-    languages: ["en", "de", "fr", "es", "it", "br", "jp"]
-}, {
-    panelSection: "outbrain-security",
-    languages: ["en", "de", "fr", "es", "it", "br", "jp"]
-}, {
-    panelSection: "outbrain-transfers",
-    languages: ["en", "de", "fr", "es", "it", "br", "jp"]
-}, {
-    panelSection: "outbrain-sharing",
-    languages: ["en", "de", "fr", "es", "it", "br", "jp"]
-}, {panelSection: "outbrain-retention", languages: ["en", "de", "fr", "es", "it", "br", "jp"]},];
+        /**
+ * Legal Page JavaScript - Refactored
+ * Manages billing dropdowns, accordions, and navigation for legal pages
+ */
 
-function showHideSubPanel(e, o) {
-    var a = document.getElementById(e + "-" + o);
-    a && (a.style.display = "none");
-    var t = document.getElementsByClassName(e + "-" + o);
-    t && 0 != t.length && t[0].addEventListener("click", function () {
-        this.classList.toggle("active"), "block" === a.style.display ? (a.style.display = "none") : (a.style.display = "block");
-    });
-}
+(function () {
+    'use strict';
 
-function showHideSubpanels(e) {
-    for (var o = 0; o < subPanels.length; o++) try {
-        for (var a = subPanels[o], t = a.languages, n = 0; n < t.length; n++) {
-            var i = t[n], p = document.getElementsByClassName(a.panelSection + "-" + i);
-            if (p.length > 0) {
-                var s = p[0];
-                s.style.display = e ? "block" : "none";
+    // ========================================
+    // CONSTANTS & CONFIGURATION
+    // ========================================
+
+    const CONFIG = {
+        selectors: {
+            engageBillingPicker: 'engage-billing-picker',
+            engageMSABillingPicker: 'engage-msa-billing-picker',
+            amplifyBillingPicker: 'amplify-billing-picker',
+            accordion: 'accordion',
+            panel: 'panel',
+            expandAll: 'expand-all',
+            collapseAll: 'collapse-all',
+            selectLanguageMain: 'select-language-main'
+        },
+        ids: {
+            engage: [
+                '#contract-versions-642077', '#contract-versions-10719', '#contract-versions-568780',
+                '#contract-versions-568768', '#contract-versions-568740', '#contract-versions-568775',
+                '#contract-versions-568769', '#contract-versions-180717', '#contract-versions-52760',
+                '#contract-versions-568777', '#contract-versions-642209', '#contract-versions-10718'
+            ],
+            amplify: [
+                '#contract-versions-10720', '#contract-versions-642078', '#contract-versions-642206', '#contract-versions-10721', '#contract-versions-10826'
+            ],
+            engageJP: [
+                '#contract-versions-11430', '#contract-versions-574436', '#contract-versions-574440',
+                '#contract-versions-574441', '#contract-versions-574443', '#contract-versions-574442'
+            ]
+        },
+        languages: ['en', 'de', 'fr', 'es', 'it', 'br', 'jp'],
+        subPanelSections: [
+            'outbrain-cookies', 'outbrain-pixels', 'outbrain-party',
+            'outbrain-security', 'outbrain-transfers', 'outbrain-sharing',
+            'outbrain-retention'
+        ]
+    };
+
+    const NAV_LINKS = {
+        engage: [
+            { title: 'Teads Engage Master Services Agreement', href: 'https://www.outbrain.com/legal#engage-terms-msa' },
+            { title: 'Teads Engage Master Services Agreement (EU)', href: 'https://www.outbrain.com/legal#engage-terms-msa-eu' },
+            { title: 'Teads Engage Code on Page Terms', href: 'https://www.outbrain.com/legal#engage-code-page-terms' },
+            { title: 'Teads Engage Header Bidding Terms', href: 'https://www.outbrain.com/legal#engage-bidding-terms' },
+            { title: 'Supply Side Platform Terms', href: 'https://www.outbrain.com/legal#engage-supply-side-terms' },
+            { title: 'Teads Engage Video Terms', href: 'https://www.outbrain.com/legal#engage-video-terms' },
+            { title: 'Teads Supply Side Platform Terms', href: 'https://www.outbrain.com/legal#engage-supply-side-terms' },
+            { title: 'Teads Engage Terms', href: 'https://www.outbrain.com/legal#engage-terms' },
+            { title: 'Teads Publisher T&C', href: 'https://www.outbrain.com/legal#teads-publisher-t-c-june25' },
+            { title: 'Teads Publisher DSA', href: 'https://www.outbrain.com/legal#teads-publisher-dsa' }
+        ],
+        amplify: [
+            { title: 'Amplify Terms', href: 'https://www.outbrain.com/legal#amplify-terms-us' },
+            // { title: 'Teads Ad Manager T&C', href: 'https://www.outbrain.com/legal#tam-tc-june-25' },
+            { title: 'Teads Advertiser DSA', href: 'https://www.outbrain.com/legal#teads-advertiser-dsa' }
+        ],
+        engageJP: [
+            { title: 'Code on Page', href: 'https://www.outbrain.com/legal#template-vslijwyon' },
+            { title: 'MSA Terms', href: 'https://www.outbrain.com/legal#template-arkrxeung' },
+            { title: 'HB Terms', href: 'https://www.outbrain.com/legal#template-7vav4uelk' },
+            { title: 'Video Terms', href: 'https://www.outbrain.com/legal#template-bcxf-qium' },
+            { title: 'SSP Terms', href: 'https://www.outbrain.com/legal#template-7c8w0tt0s' }
+        ]
+    };
+
+    // ========================================
+    // UTILITY FUNCTIONS
+    // ========================================
+
+    /**
+     * Checks if an element has a specific class
+     */
+    function hasClass(element, className) {
+        if (!element || !element.classList) return false;
+        return element.classList.contains(className);
+    }
+
+    /**
+     * Adds an event listener to an element
+     */
+    function listenTo(element, eventType, handler) {
+        if (!element || !eventType || !handler) return;
+        if (element.addEventListener) {
+            element.addEventListener(eventType, handler);
+        }
+    }
+
+    /**
+     * Gets all elements by class name and converts to array
+     */
+    function getElementsArray(className) {
+        return Array.from(document.getElementsByClassName(className));
+    }
+
+    /**
+     * Safely query a single element
+     */
+    function querySelector(selector) {
+        try {
+            return document.querySelector(selector);
+        } catch (error) {
+            console.error(`Error querying selector ${selector}:`, error);
+            return null;
+        }
+    }
+
+    /**
+     * Safely query multiple elements
+     */
+    function querySelectorAll(selector) {
+        try {
+            return Array.from(document.querySelectorAll(selector));
+        } catch (error) {
+            console.error(`Error querying selector ${selector}:`, error);
+            return [];
+        }
+    }
+
+    // ========================================
+    // DROPDOWN HTML GENERATION
+    // ========================================
+
+    /**
+     * Generates country dropdown HTML
+     */
+    function generateCountryDropdown(type, productName) {
+        const options = generateCountryOptions(type);
+        const pickerClass = type === 'amplify' ? 'amplify-billing-picker' : 'engage-billing-picker';
+        const termsPrefix = type === 'amplify' ? 'amplify-terms' : 'engage-terms';
+
+        return `
+            <div class="row">
+                <div class="columns twelve">
+                    <p style="padding-bottom: 15px;">
+                        The ${productName} Terms vary according to the country where your billing address is located. 
+                        Please use your billing country below to view the applicable ${productName} Terms.
+                    </p>
+                    <p>My billing address is located in:</p>
+                    <select 
+                        onchange="this.options[this.selectedIndex].value && (window.location = this.options[this.selectedIndex].value);" 
+                        class="${pickerClass} picker" 
+                        action="dynamic-content-picker">
+                        ${options}
+                    </select>
+                </div>
+            </div>
+        `;
+    }
+
+    /**
+     * Generates country option elements
+     */
+    function generateCountryOptions(type) {
+        const countries = getCountryList();
+        const termsPrefix = type === 'amplify' ? 'amplify-terms' : 'engage-terms';
+
+        return countries.map(country => {
+            const termsSuffix = getTermsSuffix(country.name, type);
+            const value = `#${termsPrefix}${termsSuffix}`;
+            const selected = country.name === 'United States of America' ? ' selected=""' : '';
+            return `<option value="${value}"${selected}>${country.name}</option>`;
+        }).join('');
+    }
+
+    /**
+     * Determines the terms suffix based on country
+     */
+    function getTermsSuffix(countryName, type) {
+        // EU countries
+        const euCountries = [
+            'Austria', 'Belgium', 'Bulgaria', 'Croatia', 'Cyprus', 'Czech Republic',
+            'Denmark', 'Estonia', 'Finland', 'France', 'Germany', 'Greece',
+            'Hungary', 'Ireland', 'Italy', 'Latvia', 'Lithuania', 'Luxembourg',
+            'Malta', 'Netherlands (Holland, Europe)', 'Poland', 'Portugal',
+            'Romania', 'Slovakia', 'Slovenia', 'Spain', 'Sweden', 'United Kingdom'
+        ];
+
+        if (type === 'engage') {
+            if (countryName === 'Brazil') return '-br';
+            if (countryName === 'Japan') return '-jp';
+            if (euCountries.includes(countryName)) return '-msa-eu';
+            return '-msa';
+        } else if (type === 'amplify') {
+            if (countryName === 'Brazil') return '-br';
+            if (countryName === 'Japan') return '-jp';
+            if (euCountries.includes(countryName)) return '-eu';
+            return '-us';
+        }
+
+        return '-msa';
+    }
+
+    /**
+     * Returns a list of countries
+     */
+    function getCountryList() {
+        return [
+            { name: 'United States of America' },
+            { name: 'Afghanistan' }, { name: 'Albania' }, { name: 'Algeria' },
+            { name: 'American Samoa' }, { name: 'Andorra' }, { name: 'Angola' },
+            { name: 'Anguilla' }, { name: 'Antigua & Barbuda' }, { name: 'Argentina' },
+            { name: 'Armenia' }, { name: 'Aruba' }, { name: 'Australia' },
+            { name: 'Austria' }, { name: 'Azerbaijan' }, { name: 'Bahamas' },
+            { name: 'Bahrain' }, { name: 'Bangladesh' }, { name: 'Barbados' },
+            { name: 'Belgium' }, { name: 'Belize' }, { name: 'Benin' },
+            { name: 'Bermuda' }, { name: 'Bhutan' }, { name: 'Bolivia' },
+            { name: 'Bonaire' }, { name: 'Bosnia & Herzegovina' }, { name: 'Botswana' },
+            { name: 'Brazil' }, { name: 'British Indian Ocean Ter' }, { name: 'Brunei' },
+            { name: 'Bulgaria' }, { name: 'Burkina Faso' }, { name: 'Burundi' },
+            { name: 'Cambodia' }, { name: 'Cameroon' }, { name: 'Canada' },
+            { name: 'Canary Islands' }, { name: 'Cape Verde' }, { name: 'Cayman Islands' },
+            { name: 'Central African Republic' }, { name: 'Chad' }, { name: 'Channel Islands' },
+            { name: 'Chile' }, { name: 'China' }, { name: 'Christmas Island' },
+            { name: 'Cocos Island' }, { name: 'Colombia' }, { name: 'Comoros' },
+            { name: 'Cook Islands' }, { name: 'Costa Rica' }, { name: 'Croatia' },
+            { name: 'Curacao' }, { name: 'Cyprus' }, { name: 'Czech Republic' },
+            { name: 'Denmark' }, { name: 'Djibouti' }, { name: 'Dominica' },
+            { name: 'Dominican Republic' }, { name: 'East Timor' }, { name: 'Ecuador' },
+            { name: 'Egypt' }, { name: 'El Salvador' }, { name: 'Equatorial Guinea' },
+            { name: 'Eritrea' }, { name: 'Estonia' }, { name: 'Ethiopia' },
+            { name: 'Falkland Islands' }, { name: 'Faroe Islands' }, { name: 'Fiji' },
+            { name: 'Finland' }, { name: 'France' }, { name: 'French Guiana' },
+            { name: 'French Polynesia' }, { name: 'French Southern Ter' }, { name: 'Gabon' },
+            { name: 'Gambia' }, { name: 'Georgia' }, { name: 'Germany' },
+            { name: 'Ghana' }, { name: 'Gibraltar' }, { name: 'Great Britain' },
+            { name: 'Greece' }, { name: 'Greenland' }, { name: 'Grenada' },
+            { name: 'Guadeloupe' }, { name: 'Guam' }, { name: 'Guatemala' },
+            { name: 'Guinea' }, { name: 'Guyana' }, { name: 'Haiti' },
+            { name: 'Hawaii' }, { name: 'Honduras' }, { name: 'Hong Kong' },
+            { name: 'Hungary' }, { name: 'Iceland' }, { name: 'India' },
+            { name: 'Indonesia' }, { name: 'Ireland' }, { name: 'Isle of Man' },
+            { name: 'Israel' }, { name: 'Italy' }, { name: 'Jamaica' },
+            { name: 'Japan' }, { name: 'Jordan' }, { name: 'Kazakhstan' },
+            { name: 'Kenya' }, { name: 'Kiribati' }, { name: 'Korea South' },
+            { name: 'Kuwait' }, { name: 'Kyrgyzstan' }, { name: 'Laos' },
+            { name: 'Latvia' }, { name: 'Lesotho' }, { name: 'Liechtenstein' },
+            { name: 'Lithuania' }, { name: 'Luxembourg' }, { name: 'Macau' },
+            { name: 'Macedonia' }, { name: 'Madagascar' }, { name: 'Malaysia' },
+            { name: 'Malawi' }, { name: 'Maldives' }, { name: 'Mali' },
+            { name: 'Malta' }, { name: 'Marshall Islands' }, { name: 'Martinique' },
+            { name: 'Mauritania' }, { name: 'Mauritius' }, { name: 'Mayotte' },
+            { name: 'Mexico' }, { name: 'Midway Islands' }, { name: 'Moldova' },
+            { name: 'Monaco' }, { name: 'Mongolia' }, { name: 'Montserrat' },
+            { name: 'Morocco' }, { name: 'Mozambique' }, { name: 'Nambia' },
+            { name: 'Nauru' }, { name: 'Nepal' }, { name: 'Netherland Antilles' },
+            { name: 'Netherlands (Holland, Europe)' }, { name: 'Nevis' }, { name: 'New Caledonia' },
+            { name: 'New Zealand' }, { name: 'Nicaragua' }, { name: 'Niger' },
+            { name: 'Nigeria' }, { name: 'Niue' }, { name: 'Norfolk Island' },
+            { name: 'Norway' }, { name: 'Oman' }, { name: 'Pakistan' },
+            { name: 'Palau Island' }, { name: 'Palestine' }, { name: 'Panama' },
+            { name: 'Papua New Guinea' }, { name: 'Paraguay' }, { name: 'Peru' },
+            { name: 'Philippines' }, { name: 'Pitcairn Island' }, { name: 'Poland' },
+            { name: 'Portugal' }, { name: 'Puerto Rico' }, { name: 'Qatar' },
+            { name: 'Republic of Montenegro' }, { name: 'Republic of Serbia' }, { name: 'Reunion' },
+            { name: 'Romania' }, { name: 'Russia' }, { name: 'Rwanda' },
+            { name: 'St Barthelemy' }, { name: 'St Eustatius' }, { name: 'St Helena' },
+            { name: 'St Kitts-Nevis' }, { name: 'St Lucia' }, { name: 'St Maarten' },
+            { name: 'St Pierre & Miquelon' }, { name: 'St Vincent & Grenadines' }, { name: 'Saipan' },
+            { name: 'Samoa' }, { name: 'Samoa American' }, { name: 'San Marino' },
+            { name: 'Sao Tome & Principe' }, { name: 'Saudi Arabia' }, { name: 'Senegal' },
+            { name: 'Serbia' }, { name: 'Seychelles' }, { name: 'Sierra Leone' },
+            { name: 'Singapore' }, { name: 'Slovakia' }, { name: 'Slovenia' },
+            { name: 'Solomon Islands' }, { name: 'South Africa' }, { name: 'Spain' },
+            { name: 'Sri Lanka' }, { name: 'Sudan' }, { name: 'Suriname' },
+            { name: 'Swaziland' }, { name: 'Sweden' }, { name: 'Switzerland' },
+            { name: 'Tahiti' }, { name: 'Taiwan' }, { name: 'Tajikistan' },
+            { name: 'Tanzania' }, { name: 'Thailand' }, { name: 'Togo' },
+            { name: 'Tokelau' }, { name: 'Tonga' }, { name: 'Trinidad & Tobago' },
+            { name: 'Tunisia' }, { name: 'Turkey' }, { name: 'Turkmenistan' },
+            { name: 'Turks & Caicos Is' }, { name: 'Tuvalu' }, { name: 'Uganda' },
+            { name: 'Ukraine' }, { name: 'United Arab Emirates' }, { name: 'United Kingdom' },
+            { name: 'Uruguay' }, { name: 'Uzbekistan' }, { name: 'Vanuatu' },
+            { name: 'Vatican City State' }, { name: 'Venezuela' }, { name: 'Vietnam' },
+            { name: 'Virgin Islands (Brit)' }, { name: 'Virgin Islands (USA)' }, { name: 'Wake Island' },
+            { name: 'Wallis & Futana Is' }, { name: 'Yemen' }, { name: 'Zaire' },
+            { name: 'Zambia' }
+        ];
+    }
+
+    // ========================================
+    // SELECTOR UPDATE FUNCTIONS
+    // ========================================
+
+    /**
+     * Updates selector to match URL hash
+     */
+    function updateSelectorToHash(className) {
+        if (!window.location.hash) return;
+
+        const selectors = getElementsArray(className);
+        selectors.forEach(selector => {
+            const options = selector.options;
+            for (let i = 0; i < options.length; i++) {
+                if (options[i].value === window.location.hash) {
+                    selector.selectedIndex = i;
+                    options[i].selected = true;
+                    break;
+                }
+            }
+        });
+    }
+
+    /**
+     * Syncs all billing pickers when one changes
+     */
+    function syncBillingPickers(event, className) {
+        if (!event || !event.target || !hasClass(event.target, className)) return;
+
+        const allPickers = getElementsArray(className);
+        const selectedIndex = event.target.selectedIndex;
+
+        allPickers.forEach(picker => {
+            if (picker !== event.target) {
+                picker.selectedIndex = selectedIndex;
+                picker.options[selectedIndex].selected = true;
+            }
+        });
+    }
+
+    // ========================================
+    // DROPDOWN INITIALIZATION
+    // ========================================
+
+    /**
+     * Initializes all dropdowns
+     */
+    function initializeDropdowns() {
+        // Engage country dropdown
+        const engageDropdowns = getElementsArray('engage-country-dropdown');
+        engageDropdowns.forEach(element => {
+            element.innerHTML = generateCountryDropdown('engage', 'Engage');
+        });
+
+        // Engage MSA country dropdown
+        const engageMSADropdowns = getElementsArray('engage-msa-country-dropdown');
+        engageMSADropdowns.forEach(element => {
+            element.innerHTML = generateCountryDropdown('engage', 'Engage');
+        });
+        updateSelectorToHash(CONFIG.selectors.engageMSABillingPicker);
+
+        // Engage terms dropdown
+        const engageTermsDropdowns = getElementsArray('engage-terms-dropdown');
+        engageTermsDropdowns.forEach(element => {
+            element.innerHTML = generateCountryDropdown('engage', 'Engage');
+        });
+        updateSelectorToHash(CONFIG.selectors.engageMSABillingPicker);
+
+        // Amplify country dropdown
+        const amplifyDropdowns = getElementsArray('amplify-country-dropdown');
+        amplifyDropdowns.forEach(element => {
+            element.innerHTML = generateCountryDropdown('amplify', 'Amplify');
+        });
+        updateSelectorToHash(CONFIG.selectors.amplifyBillingPicker);
+    }
+
+    // ========================================
+    // ACCORDION FUNCTIONS
+    // ========================================
+
+    /**
+     * Initializes accordion functionality
+     */
+    function initializeAccordions() {
+        const accordions = getElementsArray(CONFIG.selectors.accordion);
+
+        accordions.forEach(accordion => {
+            listenTo(accordion, 'click', function () {
+                this.classList.toggle('active');
+                const panel = this.nextElementSibling;
+
+                if (panel) {
+                    const plusElements = this.querySelectorAll('.plus');
+                    if (plusElements.length > 0) {
+                        plusElements[0].innerHTML = panel.style.display === 'block' ? '+' : '-';
+                    }
+                    panel.style.display = panel.style.display === 'block' ? 'none' : 'block';
+                }
+
+                // Trigger window resize event
+                window.dispatchEvent(new Event('resize'));
+            });
+        });
+    }
+
+    /**
+     * Sets up show/hide functionality for specific language panels
+     */
+    function setupShowHide(index, language) {
+        const className = `link-accordion-${language}`;
+        const elements = getElementsArray(className);
+
+        if (elements[index]) {
+            listenTo(elements[index], 'click', function () {
+                this.classList.toggle('active');
+                const panel = document.getElementById(`panel${index}-${language}`);
+                if (panel) {
+                    panel.style.display = panel.style.display === 'block' ? 'none' : 'block';
+                }
+            });
+        }
+    }
+
+    /**
+     * Sets up link-to functionality
+     */
+    function setupLinkTo(className, panelIndex, targetId, additionalPanelId) {
+        const elements = getElementsArray(className);
+
+        elements.forEach(element => {
+            listenTo(element, 'click', function () {
+                const panels = getElementsArray(CONFIG.selectors.panel);
+                if (panels[panelIndex]) {
+                    panels[panelIndex].style.display = 'block';
+                }
+
+                if (additionalPanelId) {
+                    const additionalPanel = document.getElementById(additionalPanelId);
+                    if (additionalPanel) {
+                        additionalPanel.style.display = 'block';
+                    }
+                }
+
+                const targetElement = document.getElementById(targetId);
+                if (targetElement) {
+                    targetElement.scrollIntoView(true);
+                }
+            });
+        });
+    }
+
+    /**
+     * Initializes all accordion and panel controls
+     */
+    function initializeAccordionControls() {
+        // Setup show/hide for each language
+        CONFIG.languages.forEach(lang => {
+            for (let i = 0; i < 3; i++) {
+                setupShowHide(i, lang);
+            }
+        });
+
+        // Setup link-to functions
+        const linkToConfigs = [
+            ['expand-sharing', 2, 'sharing'],
+            ['expand-opt-out', 1, 'opt-out-language', 'panel1-en'],
+            ['expand-european', 4, 'european-territories'],
+            ['expand-widget', 2, 'widget'],
+            ['expand-sharing-de', 10, 'sharing-de'],
+            ['expand-opt-out-de', 9, 'opt-out-language-de', 'panel1-de'],
+            ['expand-european-de', 12, 'european-territories-de'],
+            ['expand-widget-de', 10, 'widget-de'],
+            ['expand-sharing-fr', 26, 'sharing-fr'],
+            ['expand-opt-out-fr', 25, 'opt-out-language-fr', 'panel1-fr'],
+            ['expand-european-fr', 28, 'european-territories-fr'],
+            ['expand-widget-fr', 26, 'widget-fr'],
+            ['expand-sharing-es', 18, 'sharing-es'],
+            ['expand-opt-out-es', 17, 'opt-out-language-es', 'panel1-es'],
+            ['expand-european-es', 20, 'european-territories-es'],
+            ['expand-widget-es', 18, 'widget-es'],
+            ['expand-sharing-it', 34, 'sharing-it'],
+            ['expand-opt-out-it', 33, 'opt-out-language-it', 'panel1-it'],
+            ['expand-european-it', 36, 'european-territories-it'],
+            ['expand-widget-it', 34, 'widget-it'],
+            ['expand-sharing-br', 42, 'sharing-br'],
+            ['expand-opt-out-br', 41, 'opt-out-language-br', 'panel1-br'],
+            ['expand-european-br', 44, 'european-territories-br'],
+            ['expand-widget-br', 42, 'widget-br'],
+            ['expand-sharing-jp', 42, 'sharing-jp'],
+            ['expand-opt-out-jp', 41, 'opt-out-language-jp', 'panel1-jp'],
+            ['expand-european-jp', 44, 'european-territories-jp'],
+            ['expand-widget-jp', 42, 'widget-jp']
+        ];
+
+        linkToConfigs.forEach(config => {
+            setupLinkTo(...config);
+        });
+    }
+
+    // ========================================
+    // SUB-PANEL FUNCTIONS
+    // ========================================
+
+    /**
+     * Sets up show/hide for sub-panels
+     */
+    function setupSubPanelShowHide(section, language) {
+        const panelId = `${section}-${language}`;
+        const panel = document.getElementById(panelId);
+
+        if (!panel) return;
+
+        panel.style.display = 'none';
+
+        const toggleElements = getElementsArray(panelId);
+        if (toggleElements.length > 0) {
+            listenTo(toggleElements[0], 'click', function () {
+                this.classList.toggle('active');
+                panel.style.display = panel.style.display === 'block' ? 'none' : 'block';
+            });
+        }
+    }
+
+    /**
+     * Show or hide all sub-panels
+     */
+    function toggleAllSubPanels(show) {
+        CONFIG.subPanelSections.forEach(section => {
+            CONFIG.languages.forEach(language => {
+                const panels = getElementsArray(`${section}-${language}`);
+                panels.forEach(panel => {
+                    panel.style.display = show ? 'block' : 'none';
+                });
+            });
+        });
+    }
+
+    /**
+     * Initializes all sub-panel controls
+     */
+    function initializeSubPanels() {
+        CONFIG.subPanelSections.forEach(section => {
+            CONFIG.languages.forEach(language => {
+                setupSubPanelShowHide(section, language);
+            });
+        });
+    }
+
+    // ========================================
+    // EXPAND/COLLAPSE ALL
+    // ========================================
+
+    /**
+     * Initializes expand/collapse all buttons
+     */
+    function initializeExpandCollapse() {
+        // Expand all
+        const expandButtons = getElementsArray(CONFIG.selectors.expandAll);
+        expandButtons.forEach((button, index) => {
+            listenTo(button, 'click', function () {
+                // Show all panels
+                const panels = getElementsArray(CONFIG.selectors.panel);
+                panels.forEach(panel => {
+                    panel.style.display = 'block';
+                });
+
+                // Show language panels
+                CONFIG.languages.forEach(lang => {
+                    for (let i = 0; i < 3; i++) {
+                        const panel = document.getElementById(`panel${i}-${lang}`);
+                        if (panel) {
+                            panel.style.display = 'block';
+                        }
+                    }
+                });
+
+                this.style.display = 'none';
+                toggleAllSubPanels(true);
+            });
+        });
+
+        // Collapse all
+        const collapseButtons = getElementsArray(CONFIG.selectors.collapseAll);
+        collapseButtons.forEach((button, index) => {
+            listenTo(button, 'click', function () {
+                // Hide all panels
+                const panels = getElementsArray(CONFIG.selectors.panel);
+                panels.forEach(panel => {
+                    panel.style.display = 'none';
+                });
+
+                // Hide specific panels
+                for (let i = 0; i < 3; i++) {
+                    const panel = document.getElementById(`panel${i}`);
+                    if (panel) {
+                        panel.style.display = 'none';
+                    }
+                }
+
+                this.style.display = 'none';
+
+                if (expandButtons[index]) {
+                    expandButtons[index].style.display = 'block';
+                }
+
+                toggleAllSubPanels(false);
+            });
+        });
+    }
+
+    // ========================================
+    // NAVIGATION FUNCTIONS
+    // ========================================
+
+    /**
+     * Creates navigation HTML
+     */
+    function createNavHTML(links, className) {
+        const navItems = links.map(link =>
+            `<li><a href="${link.href}">${link.title}</a></li>`
+        ).join('');
+
+        return `<div class="${className}"><ul>${navItems}</ul></div>`;
+    }
+
+    /**
+     * Creates sub-navigation for Engage pages
+     */
+    function createSubNavForEngage() {
+        const elements = querySelectorAll(CONFIG.ids.engage.join(', '));
+
+        elements.forEach(element => {
+            if (element.querySelector('.side-nav-engage')) return;
+            const navHTML = createNavHTML(NAV_LINKS.engage, 'side-nav-engage');
+            element.insertAdjacentHTML('afterbegin', navHTML);
+        });
+    }
+
+    /**
+     * Creates sub-navigation for Amplify pages
+     */
+    function createSubNavForAmplify() {
+        const elements = querySelectorAll(CONFIG.ids.amplify.join(', '));
+
+        elements.forEach(element => {
+            if (element.querySelector('.side-nav-amplify')) return;
+            const navHTML = createNavHTML(NAV_LINKS.amplify, 'side-nav-amplify');
+            element.insertAdjacentHTML('afterbegin', navHTML);
+        });
+    }
+
+    /**
+     * Creates sub-navigation for Engage JP pages
+     */
+    function createSubNavForEngageJP() {
+        const elements = querySelectorAll(CONFIG.ids.engageJP.join(', '));
+
+        elements.forEach(element => {
+            if (element.querySelector('.side-nav-engage')) return;
+            const navHTML = createNavHTML(NAV_LINKS.engageJP, 'side-nav-engage');
+            element.insertAdjacentHTML('afterbegin', navHTML);
+        });
+    }
+
+    /**
+     * Initializes appropriate sub-navigation based on page content
+     */
+    function initializeSubNav() {
+        const hasEngage = CONFIG.ids.engage.some(id => querySelector(id));
+        const hasAmplify = CONFIG.ids.amplify.some(id => querySelector(id));
+        const hasEngageJP = CONFIG.ids.engageJP.some(id => querySelector(id));
+
+        if (hasEngage) createSubNavForEngage();
+        if (hasAmplify) createSubNavForAmplify();
+        if (hasEngageJP) createSubNavForEngageJP();
+    }
+
+    // ========================================
+    // EVENT LISTENERS
+    // ========================================
+
+    /**
+     * Sets up all event listeners
+     */
+    function setupEventListeners() {
+        // Billing picker sync
+        listenTo(document, 'change', (e) => {
+            syncBillingPickers(e, CONFIG.selectors.engageBillingPicker);
+            syncBillingPickers(e, CONFIG.selectors.amplifyBillingPicker);
+            syncBillingPickers(e, CONFIG.selectors.engageMSABillingPicker);
+        });
+
+        // Hash change listener
+        listenTo(window, 'hashchange', initializeDropdowns);
+    }
+
+    // ========================================
+    // INITIALIZATION
+    // ========================================
+
+    /**
+     * Main initialization function
+     */
+    function initialize() {
+        // Hide language selector if exists
+        const selectLanguage = document.getElementById(CONFIG.selectors.selectLanguageMain);
+        if (selectLanguage) {
+            selectLanguage.style.display = 'none';
+        }
+
+        // Show impressum link for German pages
+        if (window.location.pathname.indexOf('/de') !== -1) {
+            const impressumLink = document.getElementById('impressum-link');
+            if (impressumLink) {
+                impressumLink.style.display = 'inline';
             }
         }
-    } catch (e) {
-        console.log("Unable to add event listener with error: " + e);
+
+        // Initialize all components
+        initializeDropdowns();
+        initializeAccordions();
+        initializeAccordionControls();
+        initializeSubPanels();
+        initializeExpandCollapse();
+        initializeSubNav();
+        setupEventListeners();
     }
-}
 
-function addShowHideForAllSubPanels() {
-    for (var e = 0; e < subPanels.length; e++) try {
-        for (var o = subPanels[e], a = o.languages, t = 0; t < a.length; t++) {
-            var n = a[t];
-            showHideSubPanel(o.panelSection, n);
-        }
-    } catch (e) {
-        console.log("Unable to add event listener with error: " + e);
+    // Run initialization when DOM is ready
+    if (document.readyState === 'loading') {
+        listenTo(document, 'DOMContentLoaded', initialize);
+    } else {
+        initialize();
     }
-}
 
-addShowHideForAllSubPanels();
-for (var ea = document.getElementsByClassName("expand-all"), eas = 0; eas < ea.length; eas++) ea[eas].addEventListener("click", function () {
-    for (var e = document.getElementsByClassName("panel"), o = 0; o < e.length; o++) e[o].style.display = "block";
-    for (var a = ["en", "de", "fr", "es"], t = 0; t < a.length; t++) for (var n = 0; n < 3; n++) document.getElementById("panel" + n + "-" + a[t]).style.display = "block";
-    (this.style.display = "none"), showHideSubpanels(!0);
-});
-for (var ca = document.getElementsByClassName("collapse-all"), cas = 0; cas < ca.length; cas++) ca[cas].addEventListener("click", function () {
-    for (var e = document.getElementsByClassName("panel"), o = 0; o < e.length; o++) e[o].style.display = "none";
-    for (var a = 0; a < 3; a++) document.getElementById("panel" + a).style.display = "none";
-    (this.style.display = "none"), (document.getElementsByClassName("expand-all")[cas].style.display = "block"), showHideSubpanels(!1);
-});
-for (var accordion = document.getElementsByClassName("accordion"), i = 0; i < acc.length; i++) acc[i].addEventListener("click", function () {
-    window.dispatchEvent(new Event("resize"));
-});
-var selectLanguage = document.getElementById("select-language-main");
-
-function insertAfter(e, o) {
-    o.parentNode.insertBefore(e, o.nextSibling);
-}
-
-function createImageElement(e, o, a) {
-    var t = document.createElement("img");
-    return t.setAttribute("src", e), t.setAttribute("alt", o), t.setAttribute("class", a), t;
-}
-
-function createSubNavForEngage() {
-    const e = document.querySelectorAll("#contract-versions-10718, #contract-versions-10719, #contract-versions-568780, #contract-versions-568768, #contract-versions-568740, #contract-versions-568775, #contract-versions-568769, #contract-versions-180717, #contract-versions-52760, #contract-versions-568777");
-    0 !== e.length ? e.forEach((e) => {
-        if (e.querySelector(".side-nav-engage")) return;
-        let o = '<div class="side-nav-engage"><ul>';
-        [{
-            title: "Teads Engage Master Services Agreement",
-            href: "https://www.outbrain.com/legal#engage-terms-msa"
-        }, {
-            title: "Teads Engage Master Services Agreement (EU)",
-            href: "https://www.outbrain.com/legal#engage-terms-msa-eu"
-        }, {
-            title: "Teads Engage Code on Page Terms",
-            href: "https://www.outbrain.com/legal#engage-code-page-terms"
-        }, {
-            title: "Teads Engage Header Bidding Terms",
-            href: "https://www.outbrain.com/legal#engage-bidding-terms"
-        }, {
-            title: "Supply Side Platform Terms",
-            href: "https://www.outbrain.com/legal#engage-supply-side-terms"
-        }, {
-            title: "Teads Engage Video Terms",
-            href: "https://www.outbrain.com/legal#engage-video-terms"
-        }, {
-            title: "Teads Supply Side Platform Terms",
-            href: "https://www.outbrain.com/legal#engage-supply-side-terms"
-        }, {title: "Teads Engage Terms", href: "https://www.outbrain.com/legal#engage-terms"},].forEach((e) => {
-            o += `<li><a href="${e.href}">${e.title}</a></li>`;
-        }), (o += "</ul></div>"), e.insertAdjacentHTML("afterbegin", o);
-    }) : console.error("No matching elements found.");
-}
-
-selectLanguage && (selectLanguage.style.display = "none"), createSubNavForEngage();
-
-function createSubNavForEngageJP() {
-    const e = document.querySelectorAll("#contract-versions-11430, #contract-versions-574436, #contract-versions-574440, #contract-versions-574441, #contract-versions-574443, #contract-versions-574442");
-    0 !== e.length ? e.forEach((e) => {
-        if (e.querySelector(".side-nav-engage")) return;
-        let o = '<div class="side-nav-engage"><ul>';
-        [{title: "Code on Page", href: "https://www.outbrain.com/legal#template-vslijwyon"}, {
-            title: "MSA Terms",
-            href: "https://www.outbrain.com/legal#template-arkrxeung"
-        }, {title: "HB Terms", href: "https://www.outbrain.com/legal#template-7vav4uelk"}, {
-            title: "Video Terms",
-            href: "https://www.outbrain.com/legal#template-bcxf-qium"
-        }, {title: "SSP Terms", href: "https://www.outbrain.com/legal#template-7c8w0tt0s"},].forEach((e) => {
-            o += `<li><a href="${e.href}">${e.title}</a></li>`;
-        }), (o += "</ul></div>"), e.insertAdjacentHTML("afterbegin", o);
-    }) : console.error("No matching elements found.");
-}
-
-selectLanguage && (selectLanguage.style.display = "JP"), createSubNavForEngageJP();
+})();
       }
       catch(e) { console.error(e) }</script>
 </body>
