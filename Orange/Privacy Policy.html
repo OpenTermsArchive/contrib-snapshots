@@ -1070,8 +1070,16 @@
   function setupAccordion(matches) {
     if (matches && !accordionInitialized) {
       accordionInitialized = true;
+      
+      // Fermer tous les accordéons par défaut en mode mobile
+      document.querySelectorAll('.accordion-body').forEach((body) => {
+        body.style.display = 'none'
+        body.style.maxHeight = '0'
+      })
+               
       document.querySelectorAll('.accordion-head').forEach((el) => {
         el.setAttribute('tabindex', '0');
+        el.setAttribute('aria-expanded', 'false')
         // el.setAttribute('role', 'button');
         el.addEventListener('click', handleAccordionClick);
         el.addEventListener('keypress', function (e) {
