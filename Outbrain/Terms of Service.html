@@ -1578,18 +1578,29 @@ select::-ms-expand {
   padding-bottom: 10px;
 }
 
+.sticky-nav .text-center {
+  text-align: center;
+}
 #sticky-nav-privacy-policy {
   text-align: left !important;
 }
+    .four.columns {
+    width: auto;
+    float: none;
+    display: inline-flex;
+    justify-content: center;
+    text-align: center;
+    margin: 0 auto;
+    }
 
 .menu-item {
-  display: flex;
+  margin-bottom: 20px;
+  display: inline-flex;
+  justify-content: space-evenly;
 }
 
 .menu-item a{
-  padding-left: 10px;
-  padding-top: 15px;
-  padding-bottom: 15px;
+  padding: 15px 30px 0 0;
   text-decoration: underline !important;
   font-size: 20px;
   font-weight: bold;
@@ -1618,6 +1629,12 @@ span.plus {
 
 .link-container a:hover {
   text-decoration: underline;
+}
+.outbrain-footer-terms {
+  text-align: center;
+  text-decoration: underline !important;
+  font-size: 20px;
+  font-weight: bold;
 }
 
 .outbrain-footer {
@@ -1789,10 +1806,10 @@ select::-ms-expand {
 }
 
 .contract-header h2 {
-  padding: 0px;
-  color: #151E41;
-  text-align: left;
-  font-weight: 600;
+    padding: 20px 0 0 0;
+    color: #151E41;
+    text-align: center;
+    font-weight: 600;
 }
 
 .version-container {
@@ -2101,16 +2118,16 @@ button {
 .rTableBody {
   display: table-row-group;
 }
-#contract-versions-10718, #contract-versions-10719, #contract-versions-568780, #contract-versions-568768, #contract-versions-568740, #contract-versions-568775, #contract-versions-568769, #contract-versions-180717, #contract-versions-52760, #contract-versions-11430, #contract-versions-568777, #contract-versions-10720, #contract-versions-642078, #contract-versions-642077, #contract-versions-642209, #contract-versions-10721, #contract-versions-10826 , #contract-versions-642206{
+#contract-versions-10718, #contract-versions-10719, #contract-versions-568780, #contract-versions-568768, #contract-versions-568740, #contract-versions-568775, #contract-versions-568769, #contract-versions-180717, #contract-versions-52760, #contract-versions-11430, #contract-versions-568777, #contract-versions-10720, #contract-versions-642078, #contract-versions-642077, #contract-versions-642209, #contract-versions-10721, #contract-versions-10826 , #contract-versions-642206, #contract-versions-108492{
   display: flex; /* Use flexbox layout */
   flex-direction: row; /* Arrange children in a row */
   align-items: flex-start; /* Align children at the start of the cross axis */
 }
 
 .side-nav-engage, .side-nav-amplify {
-  flex: 0 0 auto; /* Do not grow or shrink, maintain the size of its content */
-  margin-right: 20px; /* Add some space between the navigation and the main content */
-  min-width: 300px;
+  flex: 0 0 auto; 
+  margin-right: 30px; 
+  max-width: 300px;
 }
 
 .side-nav-engage ul, .side-nav-amplify ul {
@@ -2131,6 +2148,12 @@ button {
 
 .side-nav-engage ul li a:hover, .side-nav-amplify ul li a:hover {
   color: #007bff;
+}
+.disclaimer {
+  text-align: center;
+  max-width: 70%;
+  margin: 0 auto;
+      font-style: italic;
 }
 
 </style>
@@ -3551,10 +3574,12 @@ attachReadyHandlers();
     
     <div class="show-for-large-up sticky-nav">
         <dl class="row text-center">
-            <dd id="sticky-nav-engage-terms" data-magellan-arrival="company" class="four columns sticky-4 menu-item privacy-policy"> <a id="engage-terms-sticky-nav-link" href="#engage-terms">Teads Engage Terms</a> </dd>
-                <dd id="sticky-amplify-terms" data-magellan-arrival="leadership" class="columns four sticky-3 menu-item engage-terms"> <a id="amplify-terms-us-sticky-nav-link" href="#amplify-terms-us" class="menu-item-1">Amplify Terms</a> </dd>
-                <dd id="sticky-nav-terms-of-use" data-magellan-arrival="offices" class="columns four sticky-3 menu-item amplify-terms"> <a id="terms-of-use-sticky-nav-link" href="#terms-of-use" current="current" class="menu-item-2">Terms of Use</a> </dd>
+            <dd id="sticky-nav-engage-terms" data-magellan-arrival="company" class="four columns sticky-4 menu-item privacy-policy"> <a id="engage-terms-sticky-nav-link" href="#engage-terms">Supply Partners</a> </dd>
+                <dd id="sticky-amplify-terms" data-magellan-arrival="leadership" class="columns four sticky-3 menu-item engage-terms"> <a id="amplify-terms-us-sticky-nav-link" href="#amplify-terms-us" class="menu-item-1">Demand Partners</a> </dd>
         </dl>
+      <div class="disclaimer">
+  <p>Please note that Outbrain and Teads are operating under the Teads brand, following the acquisition by Outbrain of Teads in February 2025. Your contract will remain with your original contracting Outbrain / Teads entity, until further notice.</p>
+</div>
     </div>
         <div id="contract-id-10718" class="contract-container group-item "  data-id="10718" data-key="engage-terms" data-groups="" style="display: block;">
           <div class="contract-header">
@@ -6334,17 +6359,20 @@ attachReadyHandlers();
 
 </main>
 <!-- footer_html -->
+<div class="outbrain-footer-terms">
+  <div> <a id="terms-of-use-sticky-nav-link" href="#terms-of-use" current="current" class="menu-item-2">Terms of Use</a>
+</div>
 <div class="copy outbrain-footer">
     <div class="row">
       <div class="columns small-12">
-        <div class="copyright five columns">Copyright © 2025 Outbrain Inc. All rights reserved. Outbrain is a trademark
+        <div class="copyright five columns">Copyright © 2026 Outbrain Inc. All rights reserved. Outbrain is a trademark
           of Outbrain Inc. <span id="impressum-link" style="display:none"> - <a style="color:#F08421" href="https://outbrain.pactsafe.io/privacy#impressum" target="_blank">IMPRESSUM</a></span></div>
         <div class="footer-link seven columns"><span class="link-container"><a href="https://my.outbrain.com/recommendations-settings/home">Interest-Based Ads (Opt Out)</a></span><span class="link-container"><a href="https://www.outbrain.com/advertisers/guidelines/">Advertising Guidelines</a></span><span class="link-container"><a href="https://www.outbrain.com/privacy">Privacy Policy</a></span><span class="link-container"><a href="https://www.outbrain.com/privacy/cookies">Cookies</a></span><span class="link-container"><a href="https://www.outbrain.com/security">Security</a></span><span class="link-container"><a href="https://www.outbrain.com/patents">Patents</a></span><span class="link-container"><a href="https://www.outbrain.com/legal/#terms-of-use">Terms of Use</a></span>
 <span class="link-container"><a href="https://my.outbrain.com/recommendations-settings/">Do Not Sell My Personal Information</a></span> <br /> 
 <span class="link-container"><a href="https://www.outbrain.com/pdfs/modern-slavery-statement.pdf">Modern Slavery Statement</a></span> <span class="link-container"><a href="https://www.outbrain.com/legal#dsa-amars-eu">Digital Services Act</a></span>
       </div>
     </div>
-  </div> </div>
+  </div> </div></div>
 <hr class="divider footer-divider" />
 <footer id="footer" class="container">
   <p class="footer-copyright">Copyright &copy; 2026, <a href="https://www.outbrain.com" target="_blank" rel="noopener noreferrer" class="inline-link">Outbrain Inc.</a></p>
@@ -6383,7 +6411,7 @@ attachReadyHandlers();
                 '#contract-versions-568777', '#contract-versions-642209', '#contract-versions-10718'
             ],
             amplify: [
-                '#contract-versions-10720', '#contract-versions-642078', '#contract-versions-642206', '#contract-versions-10721', '#contract-versions-10826'
+                '#contract-versions-10720', '#contract-versions-642078', '#contract-versions-642206', '#contract-versions-10721', '#contract-versions-10826', '#contract-versions-108492'
             ],
             engageJP: [
                 '#contract-versions-11430', '#contract-versions-574436', '#contract-versions-574440',
@@ -6400,21 +6428,27 @@ attachReadyHandlers();
 
     const NAV_LINKS = {
         engage: [
-            { title: 'Teads Engage Master Services Agreement', href: 'https://www.outbrain.com/legal#engage-terms-msa' },
-            { title: 'Teads Engage Master Services Agreement (EU)', href: 'https://www.outbrain.com/legal#engage-terms-msa-eu' },
-            { title: 'Teads Engage Code on Page Terms', href: 'https://www.outbrain.com/legal#engage-code-page-terms' },
-            { title: 'Teads Engage Header Bidding Terms', href: 'https://www.outbrain.com/legal#engage-bidding-terms' },
+            { title: 'Engage Master Services Agreement (NON EU)', href: 'https://www.outbrain.com/legal#engage-terms-msa' },
+            { title: 'Engage Master Services Agreement (EU)', href: 'https://www.outbrain.com/legal#engage-terms-msa-eu' },
+            { title: 'Engage Code on Page Terms', href: 'https://www.outbrain.com/legal#engage-code-page-terms' },
+            { title: 'Engage Header Bidding Terms', href: 'https://www.outbrain.com/legal#engage-bidding-terms' },
             { title: 'Supply Side Platform Terms', href: 'https://www.outbrain.com/legal#engage-supply-side-terms' },
-            { title: 'Teads Engage Video Terms', href: 'https://www.outbrain.com/legal#engage-video-terms' },
-            { title: 'Teads Supply Side Platform Terms', href: 'https://www.outbrain.com/legal#engage-supply-side-terms' },
-            { title: 'Teads Engage Terms', href: 'https://www.outbrain.com/legal#engage-terms' },
-            { title: 'Teads Publisher T&C', href: 'https://www.outbrain.com/legal#teads-publisher-t-c-june25' },
-            { title: 'Teads Publisher DSA', href: 'https://www.outbrain.com/legal#teads-publisher-dsa' }
+            { title: 'Engage Video Terms', href: 'https://www.outbrain.com/legal#engage-video-terms' },
+            { title: 'Partner Enrollment Form Terms', href: 'https://www.outbrain.com/legal#engage-terms' },
+            { title: 'Teads For Publishers T&C', href: 'https://www.outbrain.com/legal#teads-publisher-t-c-june25' }
+        ],
+        engage2: [
+            { title: 'Engage DSA', href: 'https://www.outbrain.com/legal#data-processing-agreement' },
+            { title: 'Teads For Publishers DSA', href: 'https://www.outbrain.com/legal#teads-publisher-dsa' }
+
         ],
         amplify: [
-            { title: 'Amplify Terms', href: 'https://www.outbrain.com/legal#amplify-terms-us' },
-            { title: 'Teads Ad Manager T&C', href: 'https://www.outbrain.com/legal#tam-tc-june-25' },
-            { title: 'Teads Advertiser DSA', href: 'https://www.outbrain.com/legal#teads-advertiser-dsa' }
+            { title: 'Amplify T&C Amplify Data Sharing Agreement', href: 'https://www.outbrain.com/legal#amplify-terms-eu' },
+            { title: 'Teads Ad Manager T&C', href: 'https://www.outbrain.com/legal#tam-tc-june-25' }
+        ],
+        amplify2: [
+            { title: 'Amplify DSA', href: 'https://www.outbrain.com/legal#amplify-dpa-us' },
+            { title: 'Teads  Ad Manager DSA', href: 'https://www.outbrain.com/legal#teads-advertiser-dsa' }
         ],
         engageJP: [
             { title: 'Code on Page', href: 'https://www.outbrain.com/legal#template-vslijwyon' },
@@ -6956,13 +6990,19 @@ attachReadyHandlers();
     /**
      * Creates navigation HTML
      */
-    function createNavHTML(links, className) {
-        const navItems = links.map(link =>
-            `<li><a href="${link.href}">${link.title}</a></li>`
-        ).join('');
+    function createNavHTML(sections, className) {
+        const content = sections.map(section => {
+            const titleHTML = section.header ? `<h4 class="nav-section-title" style="margin-top: 15px; margin-bottom: 10px; font-weight: bold;">${section.header}</h4>` : '';
+            const navItems = section.links.map(link =>
+                `<li><a href="${link.href}">${link.title}</a></li>`
+            ).join('');
+            
+            return `${titleHTML}<ul>${navItems}</ul>`;
+        }).join('');
 
-        return `<div class="${className}"><ul>${navItems}</ul></div>`;
+        return `<div class="${className}">${content}</div>`;
     }
+
 
     /**
      * Creates sub-navigation for Engage pages
@@ -6970,9 +7010,22 @@ attachReadyHandlers();
     function createSubNavForEngage() {
         const elements = querySelectorAll(CONFIG.ids.engage.join(', '));
 
+        const engageSections = [
+            {
+                header: 'Products and Services',
+                links: NAV_LINKS.engage
+            },
+            {
+                header: 'Data Sharing Agreements',
+                links: NAV_LINKS.engage2
+            }
+        ];
+
         elements.forEach(element => {
             if (element.querySelector('.side-nav-engage')) return;
-            const navHTML = createNavHTML(NAV_LINKS.engage, 'side-nav-engage');
+            
+            // Generates ONE div with both sets of titles and links inside
+            const navHTML = createNavHTML(engageSections, 'side-nav-engage');
             element.insertAdjacentHTML('afterbegin', navHTML);
         });
     }
@@ -6983,22 +7036,32 @@ attachReadyHandlers();
     function createSubNavForAmplify() {
         const elements = querySelectorAll(CONFIG.ids.amplify.join(', '));
 
+        const amplifySections = [
+            {
+                header: 'Products and Services',
+                links: NAV_LINKS.amplify
+            },
+            {
+                header: 'Data Sharing Agreements',
+                links: NAV_LINKS.amplify2
+            }
+        ];
+
         elements.forEach(element => {
             if (element.querySelector('.side-nav-amplify')) return;
-            const navHTML = createNavHTML(NAV_LINKS.amplify, 'side-nav-amplify');
+            
+            // Generates ONE div with both sets of titles and links inside
+            const navHTML = createNavHTML(amplifySections, 'side-nav-amplify');
             element.insertAdjacentHTML('afterbegin', navHTML);
         });
     }
 
-    /**
-     * Creates sub-navigation for Engage JP pages
-     */
     function createSubNavForEngageJP() {
         const elements = querySelectorAll(CONFIG.ids.engageJP.join(', '));
-
         elements.forEach(element => {
             if (element.querySelector('.side-nav-engage')) return;
-            const navHTML = createNavHTML(NAV_LINKS.engageJP, 'side-nav-engage');
+            // Wrap links in a section object
+            const navHTML = createNavHTML([{ header: '', links: NAV_LINKS.engageJP }], 'side-nav-engage');
             element.insertAdjacentHTML('afterbegin', navHTML);
         });
     }
