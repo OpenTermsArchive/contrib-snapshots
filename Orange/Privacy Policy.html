@@ -37,11 +37,6 @@
       	outline-offset: 0.25rem;
         transition: outline-offset 0.15s ease-in-out;
       }
-      
-      [tabindex="0"]:focus {
-      	outline: 0.125rem solid #f15e00;
-        outline-offset: 0;
-      }
 
       a {
          color: #000;
@@ -56,8 +51,8 @@
         transition: outline-offset 0.15s ease-in-out;
       }
 
-      [tabindex="0"]:focus,
-      .slider-table:focus {
+      [tabindex="0"]:focus-visible,
+      .slider-table:focus-visible {
         outline: 0.125rem solid #f15e00;
         outline-offset: 0;
       }
@@ -68,7 +63,7 @@
       a:active {
       	color: #f15e00;
       }
-      a:focus {
+      a:focus-visible {
          color: #555;
          outline: 0.125rem solid #f15e00;
          outline-offset: 0;
@@ -245,7 +240,7 @@
       }
 
       .ancres li a:hover,
-      .ancres li a:focus {
+      .ancres li a:focus-visible {
          color: #555;
          text-decoration: underline;
       }
