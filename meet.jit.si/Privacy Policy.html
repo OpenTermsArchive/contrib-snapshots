@@ -42,152 +42,9 @@
 <link rel='dns-prefetch' href='//fonts.googleapis.com' />
 <link rel="alternate" type="application/rss+xml" title="Jitsi &raquo; Feed" href="https://jitsi.org/feed/" />
 <link rel="alternate" type="application/rss+xml" title="Jitsi &raquo; Comments Feed" href="https://jitsi.org/comments/feed/" />
-		<!-- This site uses the Google Analytics by MonsterInsights plugin v7.17.0 - Using Analytics tracking - https://www.monsterinsights.com/ -->
-							<script src="//www.googletagmanager.com/gtag/js?id=UA-319188-1"  type="text/javascript" data-cfasync="false"></script>
-			<script type="text/javascript" data-cfasync="false">
-				var mi_version = '7.17.0';
-				var mi_track_user = true;
-				var mi_no_track_reason = '';
-				
-								var disableStr = 'ga-disable-UA-319188-1';
-
-				/* Function to detect opted out users */
-				function __gtagTrackerIsOptedOut() {
-					return document.cookie.indexOf( disableStr + '=true' ) > - 1;
-				}
-
-				/* Disable tracking if the opt-out cookie exists. */
-				if ( __gtagTrackerIsOptedOut() ) {
-					window[disableStr] = true;
-				}
-
-				/* Opt-out function */
-				function __gtagTrackerOptout() {
-					document.cookie = disableStr + '=true; expires=Thu, 31 Dec 2099 23:59:59 UTC; path=/';
-					window[disableStr] = true;
-				}
-
-				if ( 'undefined' === typeof gaOptout ) {
-					function gaOptout() {
-						__gtagTrackerOptout();
-					}
-				}
-								window.dataLayer = window.dataLayer || [];
-				if ( mi_track_user ) {
-					function __gtagTracker() {dataLayer.push( arguments );}
-					__gtagTracker( 'js', new Date() );
-					__gtagTracker( 'set', {
-						'developer_id.dZGIzZG' : true,
-						                    });
-					__gtagTracker( 'config', 'UA-319188-1', {
-						forceSSL:true,					} );
-										window.gtag = __gtagTracker;										(
-						function () {
-							/* https://developers.google.com/analytics/devguides/collection/analyticsjs/ */
-							/* ga and __gaTracker compatibility shim. */
-							var noopfn = function () {
-								return null;
-							};
-							var newtracker = function () {
-								return new Tracker();
-							};
-							var Tracker = function () {
-								return null;
-							};
-							var p = Tracker.prototype;
-							p.get = noopfn;
-							p.set = noopfn;
-							p.send = function (){
-								var args = Array.prototype.slice.call(arguments);
-								args.unshift( 'send' );
-								__gaTracker.apply(null, args);
-							};
-							var __gaTracker = function () {
-								var len = arguments.length;
-								if ( len === 0 ) {
-									return;
-								}
-								var f = arguments[len - 1];
-								if ( typeof f !== 'object' || f === null || typeof f.hitCallback !== 'function' ) {
-									if ( 'send' === arguments[0] ) {
-										var hitConverted, hitObject = false, action;
-										if ( 'event' === arguments[1] ) {
-											if ( 'undefined' !== typeof arguments[3] ) {
-												hitObject = {
-													'eventAction': arguments[3],
-													'eventCategory': arguments[2],
-													'eventLabel': arguments[4],
-													'value': arguments[5] ? arguments[5] : 1,
-												}
-											}
-										}
-										if ( typeof arguments[2] === 'object' ) {
-											hitObject = arguments[2];
-										}
-										if ( typeof arguments[5] === 'object' ) {
-											Object.assign( hitObject, arguments[5] );
-										}
-										if ( 'undefined' !== typeof (
-											arguments[1].hitType
-										) ) {
-											hitObject = arguments[1];
-										}
-										if ( hitObject ) {
-											action = 'timing' === arguments[1].hitType ? 'timing_complete' : hitObject.eventAction;
-											hitConverted = mapArgs( hitObject );
-											__gtagTracker( 'event', action, hitConverted );
-										}
-									}
-									return;
-								}
-
-								function mapArgs( args ) {
-									var gaKey, hit = {};
-									var gaMap = {
-										'eventCategory': 'event_category',
-										'eventAction': 'event_action',
-										'eventLabel': 'event_label',
-										'eventValue': 'event_value',
-										'nonInteraction': 'non_interaction',
-										'timingCategory': 'event_category',
-										'timingVar': 'name',
-										'timingValue': 'value',
-										'timingLabel': 'event_label',
-									};
-									for ( gaKey in gaMap ) {
-										if ( 'undefined' !== typeof args[gaKey] ) {
-											hit[gaMap[gaKey]] = args[gaKey];
-										}
-									}
-									return hit;
-								}
-
-								try {
-									f.hitCallback();
-								} catch ( ex ) {
-								}
-							};
-							__gaTracker.create = newtracker;
-							__gaTracker.getByName = newtracker;
-							__gaTracker.getAll = function () {
-								return [];
-							};
-							__gaTracker.remove = noopfn;
-							__gaTracker.loaded = true;
-							window['__gaTracker'] = __gaTracker;
-						}
-					)();
-									} else {
-										console.log( "" );
-					( function () {
-							function __gtagTracker() {
-								return null;
-							}
-							window['__gtagTracker'] = __gtagTracker;
-							window['gtag'] = __gtagTracker;
-					} )();
-									}
-			</script>
+		<!-- This site uses the Google Analytics by MonsterInsights plugin v10.0.1 - Using Analytics tracking - https://www.monsterinsights.com/ -->
+		<!-- Note: MonsterInsights is not currently configured on this site. The site owner needs to authenticate with Google Analytics in the MonsterInsights settings panel. -->
+					<!-- No tracking code set -->
 				<!-- / Google Analytics by MonsterInsights -->
 		<link rel='stylesheet' id='wp-block-library-css' href='https://jitsi.org/wp-includes/css/dist/block-library/style.min.css?ver=6.8.3' type='text/css' media='all' />
 <style id='classic-theme-styles-inline-css' type='text/css'>
@@ -203,12 +60,6 @@
 <link rel='stylesheet' id='BOOTSTRAP-css' href='https://jitsi.org/wp-content/plugins/bootstrap/css/bootstrap46.min.css?ver=6.8.3' type='text/css' media='all' />
 <link rel='stylesheet' id='jitsi-style-css' href='https://jitsi.org/wp-content/themes/jitsi/style.css?ver=202405310644' type='text/css' media='all' />
 <link crossorigin="anonymous" rel='stylesheet' id='jitsi-fonts-css' href='https://fonts.googleapis.com/css?family=Roboto%3A300%2C300i%2C400%2C400i%2C700%2C700i&#038;ver=6.8.3' type='text/css' media='all' />
-<script type="text/javascript" id="monsterinsights-frontend-script-js-extra">
-/* <![CDATA[ */
-var monsterinsights_frontend = {"js_events_tracking":"true","download_extensions":"doc,pdf,ppt,zip,xls,docx,pptx,xlsx","inbound_paths":"[]","home_url":"https:\/\/jitsi.org","hash_tracking":"false","ua":"UA-319188-1"};
-/* ]]> */
-</script>
-<script type="text/javascript" src="https://jitsi.org/wp-content/plugins/google-analytics-for-wordpress/assets/js/frontend-gtag.min.js?ver=7.17.0" id="monsterinsights-frontend-script-js"></script>
 <script type="text/javascript" src="https://jitsi.org/wp-includes/js/jquery/jquery.min.js?ver=3.7.1" id="jquery-core-js"></script>
 <script type="text/javascript" src="https://jitsi.org/wp-includes/js/jquery/jquery-migrate.min.js?ver=3.4.1" id="jquery-migrate-js"></script>
 <link rel="EditURI" type="application/rsd+xml" title="RSD" href="https://jitsi.org/xmlrpc.php?rsd" />
@@ -342,7 +193,7 @@ code:not(pre *) {
 <p><strong>How is this information used?</strong></p>
 <p>8&#215;8 is not in the business of selling personal information to third parties.  8&#215;8 uses this information to deliver the meet.jit.si service, to identify and troubleshoot problems with the meet.jit.si service, and to improve the meet.jit.si service.  In addition, 8&#215;8 may use this information to investigate fraud or abuse on the meet.jit.si service.</p>
 <p><strong>How to contact us</strong></p>
-<p>If you have any questions or concerns about our use of your personal information, please contact our data protection officer at: <a href="/cdn-cgi/l/email-protection#07637768473f7f3f2964686a">dpo@8&#215;8.com</a>.</p>
+<p>If you have any questions or concerns about our use of your personal information, please contact our data protection officer at: <a href="/cdn-cgi/l/email-protection#6206120d225a1a5a4c010d0f">dpo@8&#215;8.com</a>.</p>
 <p>&nbsp;</p>
 <p>Use of YouTube livestreaming is governed by Google, by using the livestreaming users are agreeing to be bound by the <a href="https://www.youtube.com/t/terms">YouTube Terms of Service</a>. YouTube API Services are used for retrieving the livestream id. The <a href="https://developers.google.com/youtube/terms/developer-policies#d.-accessing-youtube-api-services">YouTube API Client</a> may directly or indirectly access or collect information from a user&#8217;s device and may also place and access cookies or similar technologies on users&#8217; devices or browsers. 8&#215;8 access to data can be revoked at any time using Google&#8217;s <a href="https://security.google.com/settings/security/permissions">security settings page</a>.</p>
 					</div>
