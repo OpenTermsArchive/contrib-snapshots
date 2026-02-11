@@ -24,7 +24,7 @@
 <meta name="msapplication-TileImage" content="/ms-icon-144x144.png">
 <meta name="theme-color" content="#ffffff">
 <script>
-serverTime = new Date('2026-02-10 12:36:06 GMT');
+serverTime = new Date('2026-02-11 12:36:50 GMT');
 </script>
 <title>Upload &amp; sell your music on Apple, Spotify, Amazon and YouTube Music | DistroKid</title>
 <meta property="og:title" content="DistroKid is the easiest way for musicians to get their music into Spotify, Apple, Apple Music, Amazon, TikTok, YouTube Music, and more"/> 
@@ -56,9 +56,9 @@ serverTime = new Date('2026-02-10 12:36:06 GMT');
 captchaSiteKey = "6Ld_vDcUAAAAABBf4b4MfIPqz5XA53JWQyOh6MX0";
 turnstileSiteKey = "0x4AAAAAAAwjnOrGSKrIkAR9";
 </script>
-<script src="/js/header.js?cacheHash=615d30a615bd9b77" 1770726962904></script>
-<script src="/js/distro.js?cacheHash=aab6ae0522317d4" 1770726962904></script>
-<script src="/js/fixCaps.js?cacheHash=4d712b9355dbb337" 1770726962904></script>
+<script src="/js/header.js?cacheHash=615d30a615bd9b77" 1770770210200></script>
+<script src="/js/distro.js?cacheHash=aab6ae0522317d4" 1770770210200></script>
+<script src="/js/fixCaps.js?cacheHash=4d712b9355dbb337" 1770770210200></script>
 <script src="/js/jquery.kenburns-0.1.js"></script>
 <script src="/js/lazysizes.min.js"></script>
 <script>
@@ -442,7 +442,7 @@ return String(input);
 <div style="position:relative;" class="outer2 navNotLoggedIn">
 <div class="headerLoggedOutNav nav inner2">
 <div class="navInner">
-<input type="hidden" id="forgotPasswordSessionID" name="forgotPasswordSessionID" value="distrokid_b164dd1c-93b9-4566-b8f1-c0f90529ebe5_0">
+<input type="hidden" id="forgotPasswordSessionID" name="forgotPasswordSessionID" value="distrokid_533f5e61-8112-4496-8050-2f26c50a794e_0">
 <script type="text/template" id="templateForgotPassword">
 <div class="signinBoxNotification">
 Done! Instructions to reset your password have been emailed.
@@ -621,7 +621,7 @@ Copyright Agent
 DistroKid LLC
 34 Third Ave #183
 New York, NY 10003
-Email: <a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="2b474e4c4a476b4f42585f594440424f05484446">[email&#160;protected]</a> <br>
+Email: <a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="2e424b494f426e4a475d5a5c4145474a004d4143">[email&#160;protected]</a> <br>
 In accordance with the DMCA and other applicable law, DistroKid has adopted a policy of terminating, in appropriate circumstances and in DistroKid's sole discretion, users who are deemed to be repeat infringers. For the avoidance of doubt, the foregoing sentence in no way limits DistroKid's right to limit access to the Services and/or terminate the Accounts of any users for any reason, in DistroKid's sole discretion, including, without limitation, in the case of users who infringe, or allegedly infringe, any Intellectual Property Rights of others, whether or not there is any repeat infringement. <br>
 Please be advised that pursuant to federal law you may be held liable for damages if you make material misrepresentations in a Notice. Thus, if you are not sure that material located on or linked to by the infringes your copyright, you should consider first contacting an attorney. <br>
 <strong>Links to Third-Party Websites or Services</strong><br>
@@ -667,22 +667,24 @@ const currentLanguage = document.documentElement.getAttribute('lang');
 if (window && window.dataLayer) {
 window.dataLayer.push({ 'event' : 'sitetran-language', 'language-code' : languageCode });
 }
-// Only update user language preference for explicit user actions
-const shouldUpdatePreferredLanguage = languageChangeReason === 'UA-SELECT' || languageChangeReason === 'UA-LIST';
-if (shouldUpdatePreferredLanguage) {
-// If user is not logged in, do not update their language
+// Only handle explicit user actions (not auto-switches from browser/cookie)
+const isUserAction = languageChangeReason === 'UA-SELECT' || languageChangeReason === 'UA-LIST';
+if (!isUserAction) return;
+// Update user language preference in DB for logged-in users
 if (typeof me !== 'undefined' && currentLanguage !== languageCode) {
 fetch('/api/v1/user/updateLanguage/', {
 method: 'POST',
+keepalive: true,
 credentials: 'same-origin',
 headers: {
 'Content-Type': 'application/json',
-'Authorization': 'Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJjbGkiOjEsImlhdCI6MTc3MDcyNjk2NiwiaXNzIjoiaHR0cHM6Ly9kaXN0cm9raWQuY29tIiwic3ViIjowLCJleHAiOjE3NzA3MzA1NjYsImRldiI6IiIsInNjb3BlIjoicmVhZC1wcm9maWxlIiwiYXVkIjoiIn0.4BfGDLvOgWSoOagx3U_zT-2Dl-UVMYlKiu053gVincE'
+'Authorization': 'Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJjbGkiOjEsImlhdCI6MTc3MDc3MDIxMCwiaXNzIjoiaHR0cHM6Ly9kaXN0cm9raWQuY29tIiwic3ViIjowLCJleHAiOjE3NzA3NzM4MTAsImRldiI6IiIsInNjb3BlIjoicmVhZC1wcm9maWxlIiwiYXVkIjoiIn0.v62Z5MvzHJAFo1XKfU9QFx9hVov4Qb8AoGTjPx1VPXI'
 },
 body: JSON.stringify({ languageCode: languageCode })
 });
 }
-}
+// On SEO pages, redirect to the static path for the selected language
+dkSeoRedirect(languageCode);
 }
 var sitetran = JSON.parse('{"url_type":"none","auto_switch_from_browser_lang":true,"refresh_translation_seconds":0.1,"site_default_language_code":"en","phrase_discovery_enabled":true,"preferredLanguage":"en","zendeskLanguageCode":"en-us","site_id":1566,"static_url_language_code_lookup":{},"update_direction":false,"widget_type":"styled-select"}'); 
 sitetran.language_change_function = onLanguageChange;
@@ -690,6 +692,42 @@ const sitetranCommands = JSON.parse('[]');
 sitetran.cmds = sitetran.cmds || [];
 sitetran.cmds.push(...sitetranCommands);
 var zendeskLanguageMapping = JSON.parse('{"ja":"ja","sv":"sv","tr":"tr","es-ES":"es-es","hu":"hu","en-GB":"en-us","da":"da","ro":"ro","ms":"ms","de":"de","cs":"cs","fr":"fr","el":"el","ko":"ko","fi":"fi","pt-BR":"pt-br","pl":"pl","ar":"ar","hi":"hi","th":"th","es":"es","nb":"nb","sw":"sw","nl":"nl","id":"id","he":"he","uk":"uk","it":"it","pt-PT":"pt-pt","fr-CA":"fr-ca","vi":"vi"}');
+// Fallback for SEO pages: even if SiteTran fails to load translation data, we can still redirect
+// to the statically translated path (/{lang}{page}) to avoid JIT translation + flash of English.
+const dkIsSeoPage = false;
+const dkSeoPagePath = '/terms/';
+function dkNormalizeLang(code) {
+if (!code) return '';
+// Normalize "pt-br" -> "pt-BR", "en-gb" -> "en-GB"
+const m = String(code).match(/^([a-z]{2})-([a-z]{2})$/);
+if (m) return `${m[1]}-${m[2].toUpperCase()}`;
+return String(code);
+}
+function dkSeoRedirect(code) {
+if (!dkIsSeoPage) return;
+// Only redirect logged-in users to static translated paths
+// Logged-out users stay on English URL and get normal SiteTran JIT translation
+if (typeof me === 'undefined') return;
+const lang = dkNormalizeLang(code);
+if (!lang) return;
+const target = (lang === 'en') ? dkSeoPagePath : `/${lang}${dkSeoPagePath}`;
+if (location.pathname !== target) {
+location.href = target;
+}
+}
+// Fallback listener for when SiteTran errors prevent its callback from firing
+// The redirect is the critical fallback; DB update is handled by onLanguageChange() when SiteTran works
+try {
+const widgetContainer = document.getElementById('sitetran_translate_element');
+if (widgetContainer) {
+widgetContainer.addEventListener('change', function(ev) {
+const t = ev.target;
+if (t && t.tagName && t.tagName.toLowerCase() === 'select' && t.value) {
+dkSeoRedirect(t.value);
+}
+}, true);
+}
+} catch (e) {}
 </script>
 <script src="//c.sitetran.com/widget/v3.js"></script>
 </div>
@@ -702,7 +740,7 @@ var zendeskLanguageMapping = JSON.parse('{"ja":"ja","sv":"sv","tr":"tr","es-ES":
 </div>
 <div class="footer-column">
 <h4 class="footer-h4">Company</h4>
-<a id="footer-news-link" class="footer-new-link" target="_blank" href="https://distrokid.medium.com">DistroKid News</a>
+<a id="footer-news-link" class="footer-new-link" target="_blank" href="https://news.distrokid.com/">DistroKid News</a>
 <a id="footer-store-link" class="footer-new-link" target="_blank" href="https://store.distrokid.com/">Nail Clippers & More</a>
 <a id="footer-artists-for-change-link" class="footer-new-link" target="_blank" href="/artistsforchange ">Artists For Change</a>
 <!-- We only want to show the Education Discount Program to logged out users -->
