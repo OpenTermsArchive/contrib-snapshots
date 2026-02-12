@@ -468,7 +468,14 @@ window['adrum-start-time'] = new Date().getTime();
             
             
             
-                <script type="text/javascript"> 
+                <script type="text/javascript">
+// Hide OneTrust banner if wcmmode=disabled is present in URL or in PROD preview domain
+if (window.location.search.includes('wcmmode=disabled') || window.location.host.includes('preview-prod-cs.ewp.thomsonreuters.com')) {
+    const style = document.createElement('style');
+    style.textContent = '[id*="onetrust"],[class*="onetrust"],[id*="ot-"],[class*="ot-"]{display:none!important}';
+    document.head.appendChild(style);
+}
+
 // function to pull cookie value
 function getCookie(name) {
     var value = "; " + document.cookie;
