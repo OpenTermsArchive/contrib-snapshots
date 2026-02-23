@@ -159,7 +159,7 @@
     aria-label="Languages"
     @keydown.down.prevent="languageModalOpen = true;$focus.within($refs.language_dropdown).first()"
     @keydown.up.prevent="languageModalOpen = true;$focus.within($refs.language_dropdown).last()"
-    @keydown.escape="languageModalOpen = false"
+    @keydown.escape="languageModalOpen = false;$nextTick(() => $refs.language_button.focus())"
     x-ref="language_button"
     >
         <div>
@@ -173,7 +173,7 @@
     x-show="languageModalOpen" 
     x-cloak 
     @click.outside="languageModalOpen = false" 
-    @keydown.escape="languageModalOpen = false;$focus.within($refs.language_button)" 
+    @keydown.escape="languageModalOpen = false;$nextTick(() => $refs.language_button.focus())" 
     @keydown.down.prevent="$focus.wrap().next()"
     @keydown.up.prevent="$focus.wrap().previous()"
     x-ref="language_dropdown"
