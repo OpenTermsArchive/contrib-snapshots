@@ -24,7 +24,7 @@
 <meta name="msapplication-TileImage" content="/ms-icon-144x144.png">
 <meta name="theme-color" content="#ffffff">
 <script>
-serverTime = new Date('2026-03-04 12:36:17 GMT');
+serverTime = new Date('2026-03-04 12:36:25 GMT');
 </script>
 <title>Upload &amp; sell your music on Apple, Spotify, Amazon and YouTube Music | DistroKid</title>
 <meta property="og:title" content="DistroKid is the easiest way for musicians to get their music into Spotify, Apple, Apple Music, Amazon, TikTok, YouTube Music, and more"/> 
@@ -72,9 +72,9 @@ initializeDKModal();
 captchaSiteKey = "6Ld_vDcUAAAAABBf4b4MfIPqz5XA53JWQyOh6MX0";
 turnstileSiteKey = "0x4AAAAAAAwjnOrGSKrIkAR9";
 </script>
-<script src="/js/header.js?cacheHash=615d30a615bd9b77" 1772584573761></script>
-<script src="/js/distro.js?cacheHash=5ead66da7d8eaab5" 1772584573761></script>
-<script src="/js/fixCaps.js?cacheHash=4d712b9355dbb337" 1772584573761></script>
+<script src="/js/header.js?cacheHash=615d30a615bd9b77" 1772627782730></script>
+<script src="/js/distro.js?cacheHash=5ead66da7d8eaab5" 1772627782730></script>
+<script src="/js/fixCaps.js?cacheHash=4d712b9355dbb337" 1772627782730></script>
 <script src="/js/jquery.kenburns-0.1.js"></script>
 <script src="/js/lazysizes.min.js"></script>
 <script>
@@ -458,7 +458,7 @@ return String(input);
 <div style="position:relative;" class="outer2 navNotLoggedIn">
 <div class="headerLoggedOutNav nav inner2">
 <div class="navInner">
-<input type="hidden" id="forgotPasswordSessionID" name="forgotPasswordSessionID" value="distrokid_b77de735-e2c7-4e1e-8123-12897025a67a_0">
+<input type="hidden" id="forgotPasswordSessionID" name="forgotPasswordSessionID" value="distrokid_20c9adab-14d2-4ee6-be67-742bd9ab2b34_0">
 <script type="text/template" id="templateForgotPassword">
 <div class="signinBoxNotification">
 Done! Instructions to reset your password have been emailed.
@@ -514,10 +514,10 @@ Done. We just emailed instructions to you.
 </form>
 <div class="or-container-sign-up"><hr class="or-hr"><p class="or-sign-up">or</p><hr class="or-hr"></div>
 <div class="social-sign-in-container">
-<button title="Apple" class="sign-in-icon-button" onclick="$j('.signinBox').hide(); popup('https://auth.distrokid.com/oauth2/authorize?identity_provider=SignInWithApple&redirect_uri=https://distrokid.com/signin/social/callback/&response_type=CODE&client_id=3c6i9jhf1n06021b411h4l2ia9&scope=email%20openid%20phone%20profile&state=','DistroKidSocial',500,500)">
+<button title="Apple" class="sign-in-icon-button" onclick="$j('.signinBox').hide(); popup('https://auth.distrokid.com/oauth2/authorize?identity_provider=SignInWithApple&redirect_uri=https%3A%2F%2Fdistrokid%2Ecom%2Fsignin%2Fsocial%2Fcallback%2F&response_type=CODE&client_id=3c6i9jhf1n06021b411h4l2ia9&scope=email%20openid%20phone%20profile&state=','DistroKidSocial',500,500)">
 <img src="/images/apple-sign-in-icon.png" class="sign-in-icon">
 </button>
-<button title="Google" class="sign-in-icon-button" onclick="$j('.signinBox').hide(); popup('https://auth.distrokid.com/oauth2/authorize?identity_provider=Google&redirect_uri=https://distrokid.com/signin/social/callback/&response_type=CODE&client_id=3c6i9jhf1n06021b411h4l2ia9&scope=email%20openid%20phone%20profile&state=','DistroKidSocial',500,500)">
+<button title="Google" class="sign-in-icon-button" onclick="$j('.signinBox').hide(); popup('https://auth.distrokid.com/oauth2/authorize?identity_provider=Google&redirect_uri=https%3A%2F%2Fdistrokid%2Ecom%2Fsignin%2Fsocial%2Fcallback%2F&response_type=CODE&client_id=3c6i9jhf1n06021b411h4l2ia9&scope=email%20openid%20phone%20profile&state=','DistroKidSocial',500,500)">
 <img src="/images/google-sign-in-icon.png" class="sign-in-icon">
 </button>
 </div>
@@ -526,6 +526,20 @@ Done. We just emailed instructions to you.
 </div>
 </div>
 </div>
+<script>
+(function(){
+window.addEventListener('storage', function(e){
+if (e.key !== 'resultSocialLogin' || !e.newValue) return;
+try {
+var st = JSON.parse(e.newValue);
+localStorage.removeItem('resultSocialLogin');
+if (!st.error || st.error === 'no set') {
+window.location.href = st.urlForward || '/';
+}
+} catch (err) {}
+});
+})();
+</script>
 <div style="clear:both;"></div>
 </div>
 </div>
@@ -634,7 +648,7 @@ Copyright Agent
 DistroKid LLC
 34 Third Ave #183
 New York, NY 10003
-Email: <a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="137f7674727f53777a6067617c787a773d707c7e">[email&#160;protected]</a> <br>
+Email: <a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="771b1210161b37131e040305181c1e135914181a">[email&#160;protected]</a> <br>
 In accordance with the DMCA and other applicable law, DistroKid has adopted a policy of terminating, in appropriate circumstances and in DistroKid's sole discretion, users who are deemed to be repeat infringers. For the avoidance of doubt, the foregoing sentence in no way limits DistroKid's right to limit access to the Services and/or terminate the Accounts of any users for any reason, in DistroKid's sole discretion, including, without limitation, in the case of users who infringe, or allegedly infringe, any Intellectual Property Rights of others, whether or not there is any repeat infringement. <br>
 Please be advised that pursuant to federal law you may be held liable for damages if you make material misrepresentations in a Notice. Thus, if you are not sure that material located on or linked to by the infringes your copyright, you should consider first contacting an attorney. <br>
 <strong>Links to Third-Party Websites or Services</strong><br>
@@ -691,7 +705,7 @@ keepalive: true,
 credentials: 'same-origin',
 headers: {
 'Content-Type': 'application/json',
-'Authorization': 'Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJjbGkiOjEsImlhdCI6MTc3MjU4NDU3NywiaXNzIjoiaHR0cHM6Ly9kaXN0cm9raWQuY29tIiwic3ViIjowLCJleHAiOjE3NzI1ODgxNzcsImRldiI6IiIsInNjb3BlIjoicmVhZC1wcm9maWxlIiwiYXVkIjoiIn0.1kCaE01Nxd7DkZBWci-O6ZpidL8W57R3r1sMI2Xs7cQ'
+'Authorization': 'Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJjbGkiOjEsImlhdCI6MTc3MjYyNzc4NSwiaXNzIjoiaHR0cHM6Ly9kaXN0cm9raWQuY29tIiwic3ViIjowLCJleHAiOjE3NzI2MzEzODUsImRldiI6IiIsInNjb3BlIjoicmVhZC1wcm9maWxlIiwiYXVkIjoiIn0.fu9nUCV0cD64k96oy4wYwXTpctk9Nrt7Fujl4HhdkZs'
 },
 body: JSON.stringify({ languageCode: languageCode })
 });
