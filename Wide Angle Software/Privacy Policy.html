@@ -410,74 +410,28 @@ about how Trustpilot process your data, please see their <a href="https://legal.
     <p class="non_mobile_container">We use cookies to provide you the best experience on our website. To find out more, read our <a href="/cookies/" target="_blank" class="bodylink">cookie policy</a>. You may decline non-essential cookies if you prefer.</p>
     <p class="mobile_container">We use <a href="/cookies/" target="_blank" class="bodylink">cookies</a> to track usage and optimize your experience.</p>
     <button id="btn-accept-all" class="cookie-consent-button btn-success">Accept</button>
-    <!-- <button id="btn-accept-some" class="cookie-consent-button btn-outline">Accept Selection</button> -->
     <button id="btn-reject-all" class="cookie-consent-button btn-grayscale">Decline</button>
-    <!-- Block which allows users to select cookies to allow -->
-    <!-- <div class="cookie-consent-options">
-        <label><input id="consent-necessary" type="checkbox" value="Necessary" checked disabled>Necessary</label>
-        <label><input id="consent-analytics" type="checkbox" value="Analytics" checked>Analytics</label>
-        <label><input id="consent-preferences" type="checkbox" value="Preferences" checked>Preferences</label>
-        <label><input id="consent-marketing" type="checkbox" value="Marketing">Marketing</label>
-    </div> -->
 </div>
 
 
-    <!-- Cookie Consent Banner Script -->
-    <script>
+<!-- Cookie Consent Banner Script -->
+<script>
     
-    function hideBanner() {
-        document.getElementById('cookie-consent-banner').style.display = 'none';
+    // Toggle banner visibility
+    function setBannerVisible(isVisible) {
+        const banner = document.getElementById('cookie-consent-banner');
+        banner.style.display = isVisible ? 'block' : 'none';
     }
 
-    if(localStorage.getItem('consentMode') === null) {
-        
-        document.getElementById('btn-accept-all').addEventListener('click', function() {
-        setConsent({
-            necessary: true,
-            analytics: true,
-            preferences: true,
-            marketing: true,
-            gAdPersonalization: true
-        });
-        hideBanner();
-        });
-
-        /* Function for if we apply option for user to choose which cookies to allow */
-        /* document.getElementById('btn-accept-some').addEventListener('click', function() {
-        setConsent({
-            necessary: true,
-            analytics: document.getElementById('consent-analytics').checked,
-            preferences: document.getElementById('consent-preferences').checked,
-            marketing: document.getElementById('consent-marketing').checked
-        });
-        hideBanner();
-        }); */
-
-        document.getElementById('btn-reject-all').addEventListener('click', function() {
-        setConsent({
-            necessary: true,
-            analytics: true,
-            preferences: false,
-            marketing: true,
-            gAdPersonalization: false
-        });
-        hideBanner();
-        });
-
-        document.getElementById('close-banner').addEventListener('click', function() {
-        setConsent({
-            necessary: true,
-            analytics: true,
-            preferences: false,
-            marketing: true,
-            gAdPersonalization: false
-        });
-        hideBanner();
-        });
-
-        document.getElementById('cookie-consent-banner').style.display = 'block';
+    // Helper to read a cookie by name
+    function getCookie(name) {
+        const value = `; ${document.cookie}`;
+        const parts = value.split(`; ${name}=`);
+        if (parts.length === 2) return parts.pop().split(';').shift();
+        return null;
     }
-    
+
+    // Set consent for both Google and Microsoft UET
     function setConsent(consent) {
         const consentMode = {
         'ad_user_data': consent.marketing ? 'granted' : 'denied',
@@ -492,13 +446,74 @@ about how Trustpilot process your data, please see their <a href="https://legal.
         // Update Google consent
         gtag('consent', 'update', consentMode);
         localStorage.setItem('consentMode', JSON.stringify(consentMode));
-
+ 
         // Update Microsoft UET consent
         window.uetq.push('consent', 'update', uetConsentMode);
         localStorage.setItem('uetConsent', JSON.stringify(uetConsentMode));
     }
+
+    // ---- Updated decision logic ----
+    (function initConsentBanner() {
+    const consentAlreadySet = localStorage.getItem('consentMode') !== null;
+    if (consentAlreadySet) {
+        setBannerVisible(false);
+        return;
+    }
+
+    // Read Cloudflare cookie (expects "0" or "1")
+    const isEuCookie = getCookie("is_eu");
+
+    // If Cloudflare reports that the user is in Europe, consent is required.
+    const consentRequired = (getCookie("is_eu") === "1");
+
+    document.getElementById('btn-accept-all').addEventListener('click', function() {
+        setConsent({
+            necessary: true,
+            analytics: true,
+            preferences: true,
+            marketing: true,
+            gAdPersonalization: true
+        });
+        setBannerVisible(false);
+    });
+
+    document.getElementById('btn-reject-all').addEventListener('click', function() {
+        setConsent({
+            necessary: true,
+            analytics: false,
+            preferences: false,
+            marketing: false,
+            gAdPersonalization: false
+        });
+        setBannerVisible(false);
+    });
+
+    document.getElementById('close-banner').addEventListener('click', function() {
+        setConsent({
+            necessary: true,
+            analytics: true,
+            preferences: false,
+            marketing: true,
+            gAdPersonalization: false
+        });
+        setBannerVisible(false);
+    });
+
+    if (consentRequired) {
+        setBannerVisible(true);
+    } else {
+        setConsent({
+        necessary: true,
+        analytics: true,
+        preferences: true,
+        marketing: true,
+        gAdPersonalization: true
+        });
+        setBannerVisible(false);
+    }
+    })();
     
-    </script> <script type="text/javascript">document.getElementById("basket_link").hidden = true;</script><script>
+</script> <script type="text/javascript">document.getElementById("basket_link").hidden = true;</script><script>
     function createLanguageSelection() {
         var a = 0,
             d = 0,
