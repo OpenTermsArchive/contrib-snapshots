@@ -121,15 +121,17 @@
 <link rel="apple-touch-icon" type="image/png" href="https://cdn-rdstaticassets.readdle.com/assets/spark/spark3/common/favicon-icons/spark-icon-144x144.png?1770301849" sizes="144x144" />
 <link rel="apple-touch-icon" type="image/png" href="https://cdn-rdstaticassets.readdle.com/assets/spark/spark3/common/favicon-icons/spark-icon-152x152.png?1770301849" sizes="152x152" />
 <link rel="apple-touch-icon" type="image/png" href="https://cdn-rdstaticassets.readdle.com/assets/spark/spark3/common/favicon-icons/spark-icon-180x180.png?1770301849" sizes="180x180" />
-<link rel="stylesheet" href="/css/cache/spark3/style_1773150768321.css?1773150768" type="text/css" />
-<link rel="stylesheet" href="/css/cache/spark3/legal_1773150768321.css?1773150856" type="text/css" />
+<link rel="stylesheet" href="/css/cache/spark3/style_1773309507443.css?1773309508" type="text/css" />
+<link rel="stylesheet" href="/css/cache/spark3/legal_1773309507443.css?1773309540" type="text/css" />
 
 <!-- Cookie Scripts code -->
     <script type="text/javascript" charset="UTF-8" src="//geo.cookie-script.com/s/a3e187820546213725314d60c3ac6ce9.js?country=gb-ch-id-is-il-jp-mx-no-li-kr-sg-br&region=eu"></script>
 
-    <script  type="text/javascript" src="/js/minimized/common/cookie-script.min.js?1773150768"></script>
+    <script  type="text/javascript" src="/js/minimized/common/cookie-script.min.js?1773309507"></script>
 <!-- End of Cookie Scripts code --><!-- Google Tag Manager -->
 <script>
+    const platform = detectUserPlatform();
+
     window.dataLayer = window.dataLayer || [];
     function gtag() {dataLayer.push(arguments);}
     //Consent mode - connected with cookie script popup
@@ -147,9 +149,10 @@
         'page_name': 'privacy-app',
         'page_route': '/legal/privacy-app',
         'page_locale': 'en',
-        'ios_visit': customIsIOSChecking() ? 'yes' : 'no',
-        'mac_visit': customIsMacChecking() ? 'yes' : 'no',
+        'ios_visit': platform === 'ios' ? 'yes' : 'no',
+        'mac_visit': platform === 'mac' ? 'yes' : 'no',
         'web_version': 'spark3',
+        'event_platform': platform,
                 'utm_campaign': '',
         'utm_source': 'none',
         'utm_medium': 'direct',
@@ -157,18 +160,25 @@
 
     gtag('event', 'ev_page_view', {'event_action': 'view'})
 
-    function customIsMacChecking() {
-        return (window.navigator.userAgent.toLowerCase().indexOf('macintosh') > -1 && customIsIOSChecking() !== true);
-    }
+    function detectUserPlatform() {
+        const userAgent = window.navigator.userAgent.toLowerCase();
 
-    function customIsIOSChecking() {
-        let userAgent = navigator.userAgent.toLowerCase();
         if (userAgent.indexOf('iphone') !== -1 || userAgent.indexOf('ipod') !== -1 || userAgent.indexOf('ipad') !== -1) {
-            return true;
+            return 'ios';
         } else if (userAgent.indexOf('macintosh') > -1) {
-            try {document.createEvent('TouchEvent'); return true} catch (e) {}
+            try {
+                document.createEvent('TouchEvent');
+                return 'ios';
+            } catch (e) {
+                return 'mac';
+            }
+        } else if (userAgent.indexOf('windows') !== -1) {
+            return 'windows';
+        } else if (userAgent.indexOf('android') !== -1) {
+            return 'android';
         }
-        return false;
+
+        return 'unknown';
     }
     //end
     (function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
@@ -1544,7 +1554,7 @@
         </div>
     </footer>
 
-<script  type="text/javascript" src="/js/cache/spark3/legal.min_1773150768319.js?1773150856"></script>
+<script  type="text/javascript" src="/js/cache/spark3/legal.min_1773309507441.js?1773309540"></script>
 
 <script>
     window.page_vars = {
@@ -1569,8 +1579,8 @@
         amplitude.flush()
     });
 
-    amplitude.setSessionId(1773279000644);
-    amplitude.setDeviceId("e6d8634a-6bd9-4263-a812-ded03372500b-1773279000644R");
+    amplitude.setSessionId(1773319683272);
+    amplitude.setDeviceId("2617fa5f-9faf-4158-9d2d-e1c0f637caab-1773319683272R");
 
     var identify = new amplitude.Identify();
     identify.set('Identity', 'Set');
