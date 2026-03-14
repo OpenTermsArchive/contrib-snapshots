@@ -4,7 +4,7 @@
 </script>
     
     <script type="text/javascript" charset="utf-8" id="head_inline_scripts">
-var thryvData = {"env":"live","envs_info":{"US":{"name":"United States","adj":"United States","timezone":"America\/Chicago","url":"https:\/\/www.thryv.com","country_code":"+1"},"AU":{"name":"Australia","adj":"Australian","timezone":"Australia\/Sydney","url":"https:\/\/www.thryv.com.au","country_code":"+61"},"CA":{"name":"Canada","adj":"Canadian","timezone":"America\/Winnipeg","url":"https:\/\/www.thryv.ca","country_code":"+1"},"NZ":{"name":"New Zealand","adj":"New Zealand","timezone":"NZ","url":"https:\/\/www.thryv.co.nz","country_code":"+64"},"TEST":"111"},"thryv_country":"US","thryv_country_alpha2_code":"US","nonce":"8766f26e66","ajax_url":"https:\/\/www.thryv.com\/wp-admin\/admin-ajax.php","site_url":"https:\/\/www.thryv.com","permalink":"https:\/\/www.thryv.com\/terms-of-use\/","current_url":"https:\/\/www.thryv.com\/terms-of-use\/","current_path":"\/terms-of-use\/","current_query":null,"is_front_page":false,"recaptcha":{"invisible_v2_site_key":"6Ldng9YZAAAAADAfRl9_TJrMuqzCazql0pZmOa73"},"geoip":{"country":"IE"},"js_callbacks_queue":[],"tealium_tags_loaded":[],"is_mobile":false,"string_translations":[],"theme_version":"3.20.10","intercom_status":false};
+var thryvData = {"env":"live","envs_info":{"US":{"name":"United States","adj":"United States","timezone":"America\/Chicago","url":"https:\/\/www.thryv.com","country_code":"+1"},"AU":{"name":"Australia","adj":"Australian","timezone":"Australia\/Sydney","url":"https:\/\/www.thryv.com.au","country_code":"+61"},"CA":{"name":"Canada","adj":"Canadian","timezone":"America\/Winnipeg","url":"https:\/\/www.thryv.ca","country_code":"+1"},"NZ":{"name":"New Zealand","adj":"New Zealand","timezone":"NZ","url":"https:\/\/www.thryv.co.nz","country_code":"+64"},"TEST":"111"},"thryv_country":"US","thryv_country_alpha2_code":"US","nonce":"379ccbac59","ajax_url":"https:\/\/www.thryv.com\/wp-admin\/admin-ajax.php","site_url":"https:\/\/www.thryv.com","permalink":"https:\/\/www.thryv.com\/terms-of-use\/","current_url":"https:\/\/www.thryv.com\/terms-of-use\/","current_path":"\/terms-of-use\/","current_query":null,"is_front_page":false,"recaptcha":{"invisible_v2_site_key":"6Ldng9YZAAAAADAfRl9_TJrMuqzCazql0pZmOa73"},"geoip":{"country":"IE"},"js_callbacks_queue":[],"tealium_tags_loaded":[],"is_mobile":false,"string_translations":[],"theme_version":"3.20.10","intercom_status":false};
 function DOMReady(callback){var callbackDelay=arguments.length>1&&void 0!==arguments[1]?arguments[1]:1;"complete"===document.readyState||"interactive"===document.readyState?setTimeout(callback,callbackDelay):document.addEventListener("DOMContentLoaded",function(){setTimeout(callback,callbackDelay)})}window.thryvData=window.thryvData||{},window.TealiumEnrichments=[],window.thryvData=window.thryvData||{},window.thryvData.version="1.0.2",window.thryvData.dispatchAnEvent=function(eventName){var detail,element=arguments.length>2&&void 0!==arguments[2]?arguments[2]:document,CustomEventObject=new CustomEvent(eventName,{detail:arguments.length>1&&void 0!==arguments[1]?arguments[1]:{}});element.dispatchEvent(CustomEventObject)},window.thryvData.clearIntervalAfter=function(callback){var timeoutDelay=arguments.length>1&&void 0!==arguments[1]?arguments[1]:5e3,intervalDelay,intervalID=setInterval(callback,arguments.length>2&&void 0!==arguments[2]?arguments[2]:500);return setTimeout(function(){clearInterval(intervalID)},timeoutDelay),intervalID},window.thryvData.execWhen=function(condition,callback){var timeoutDelay=arguments.length>2&&void 0!==arguments[2]?arguments[2]:1e4,intervalDelay=arguments.length>3&&void 0!==arguments[3]?arguments[3]:200;if(("string"==typeof condition||"function"==typeof condition)&&"function"==typeof callback)var conditionResult,intervalID=window.thryvData.clearIntervalAfter(function(){try{if(conditionResult="function"==typeof condition?condition():eval(condition),"boolean"!=typeof conditionResult)return void clearInterval(intervalID);!0===conditionResult&&(callback(),clearInterval(intervalID))}catch(error){clearInterval(intervalID),console.error("Error evaluating condition:",error)}},timeoutDelay,intervalDelay)},window.thryvData.enqueueScript=function(scripts){var callback=arguments.length>1&&void 0!==arguments[1]&&arguments[1],key,key2,script,scriptId,scriptUrl,scriptElem,scriptExists,scriptsLength,scriptsLoaded,scriptAttributes;for(key in scriptsLoaded=scriptsLength=0,scripts)scriptsLength++;for(key in scripts)if(void 0===scripts[key].id&&(scripts[key].id=key),scriptId=(script=scripts[key]).id,scriptUrl=script.url,scriptAttributes=void 0===script.attributes?{}:script.attributes,scriptExists=document.querySelector("script#"+scriptId))scriptExists&&"function"==typeof script.onload?(script.onload(),scriptsLoaded++):scriptExists&&void 0===script.onload&&scriptsLoaded++;else{for(key2 in(scriptElem=document.createElement("script")).src=scriptUrl,scriptElem.type="text/javascript",scriptElem.id=scriptId,scriptAttributes)scriptElem.setAttribute(key2,scriptAttributes[key2]);if(document.head)document.head.appendChild(scriptElem);else{if(!document.body)return;document.body.appendChild(scriptElem)}scriptElem.onload=function(script){script=scripts[script.target.getAttribute("id")],scriptsLoaded++,"function"==typeof script.onload&&script.onload()}}if("function"==typeof callback)var interval=setInterval(function(){scriptsLength===scriptsLoaded&&(callback(),clearInterval(interval))},100)},window.thryvData.enqueueStyle=function(styles){var key,key2,style,styleId,styleUrl,styleMedia,styleElem,styleExists,stylesLength,stylesLoaded,styleAttributes;for(key in styles)if(void 0===styles[key].id&&(styles[key].id=key),styleId=(style=styles[key]).id,styleUrl=style.url,styleAttributes=void 0===style.attributes?{}:style.attributes,!(styleExists=document.querySelector("link#"+styleId))){for(key2 in(styleElem=document.createElement("link")).id=styleId,styleElem.rel="stylesheet",styleElem.type="text/css",styleElem.media="all",styleElem.href=styleUrl,styleAttributes)styleElem[key2]=styleAttributes[key2];if(document.head)document.head.appendChild(styleElem);else{if(!document.body)return;document.body.appendChild(styleElem)}}},window.thryvData.getUrlParam=function(){var name=arguments.length>0&&void 0!==arguments[0]&&arguments[0],type=arguments.length>1&&void 0!==arguments[1]?arguments[1]:"url",urlParamsStr=window.location.search,hashParamsStr=window.location.hash.replace("#",""),params="url"==type?new URLSearchParams(urlParamsStr):new URLSearchParams(hashParamsStr);return name?params.get(name):Object.fromEntries(params)},window.thryvData=window.thryvData||{},window.thryvData.QueueRunner={queue:[],runningCount:0,add:function add(task){this.queue.push(task),this.run()},run:function run(){var _this=this;if(0!==this.queue.length){var task=this.queue.shift();this.runningCount++,task(function(){_this.runningCount--,_this.run()})}}};
 //# sourceMappingURL=head-inline-scripts.min.js.map
 
@@ -21,9 +21,9 @@ function DOMReady(callback){var callbackDelay=arguments.length>1&&void 0!==argum
     <script data-ot-ignore type="text/javascript" src="https://cdn.optimizely.com/js/745361373.js"></script><link rel="preconnect" href="https://fonts.gstatic.com" />
 
 <link rel="preload" href="https://fonts.gstatic.com/s/opensans/v36/memtYaGs126MiZpBA-UFUIcVXSCEkx2cmqvXlWqWtE6FxZCJgvAQ.woff2" as="font" type="font/woff2" crossorigin />
-<script type="rocketlazyloadscript">const geoip = {"country" :"IE"};</script>
+<script type="text/rocketlazyloadscript">const geoip = {"country" :"IE"};</script>
                 <!-- Google Tag Manager -->
-                <script type="rocketlazyloadscript">(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+                <script type="text/rocketlazyloadscript">(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
                 new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
                 j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
                 'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
@@ -87,7 +87,7 @@ function DOMReady(callback){var callbackDelay=arguments.length>1&&void 0!==argum
 img:is([sizes=auto i],[sizes^="auto," i]){contain-intrinsic-size:3000px 1500px}
 /*# sourceURL=wp-img-auto-sizes-contain-inline-css */
 </style>
-<link data-minify="1" rel='stylesheet' id='thryv-block-business-scan-style-css' href='https://www.thryv.com/wp-content/cache/min/1/wp-content/plugins/thryv-free-tools/build/business-scan/style-index.css?ver=1773347118' type='text/css' media='all' />
+<link data-minify="1" rel='stylesheet' id='thryv-block-business-scan-style-css' href='https://www.thryv.com/wp-content/cache/min/1/wp-content/plugins/thryv-free-tools/build/business-scan/style-index.css?ver=1773443272' type='text/css' media='all' />
 <style id='thryv-block-content-section-style-inline-css' type='text/css'>
 /*!*******************************************************************************************************************************************************************************************************************************************************!*\
   !*** css ./node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[4].use[1]!./node_modules/postcss-loader/dist/cjs.js??ruleSet[1].rules[4].use[2]!./node_modules/sass-loader/dist/cjs.js??ruleSet[1].rules[4].use[3]!./src/content-section/style.scss ***!
@@ -117,7 +117,7 @@ img:is([sizes=auto i],[sizes^="auto," i]){contain-intrinsic-size:3000px 1500px}
 /*# sourceMappingURL=style-index.css.map*/
 /*# sourceURL=https://www.thryv.com/wp-content/plugins/thryv-free-tools/build/content-section/style-index.css */
 </style>
-<link data-minify="1" rel='stylesheet' id='thryv-block-estimate-generator-style-css' href='https://www.thryv.com/wp-content/cache/min/1/wp-content/plugins/thryv-free-tools/build/estimate-generator/style-index.css?ver=1773347118' type='text/css' media='all' />
+<link data-minify="1" rel='stylesheet' id='thryv-block-estimate-generator-style-css' href='https://www.thryv.com/wp-content/cache/min/1/wp-content/plugins/thryv-free-tools/build/estimate-generator/style-index.css?ver=1773443272' type='text/css' media='all' />
 <style id='thryv-block-faqs-style-inline-css' type='text/css'>
 /*!********************************************************************************************************************************************************************************************************************************************!*\
   !*** css ./node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[4].use[1]!./node_modules/postcss-loader/dist/cjs.js??ruleSet[1].rules[4].use[2]!./node_modules/sass-loader/dist/cjs.js??ruleSet[1].rules[4].use[3]!./src/faqs/style.scss ***!
@@ -376,7 +376,7 @@ img:is([sizes=auto i],[sizes^="auto," i]){contain-intrinsic-size:3000px 1500px}
 /*# sourceMappingURL=style-index.css.map*/
 /*# sourceURL=https://www.thryv.com/wp-content/plugins/thryv-free-tools/build/hubspot-embed-form/style-index.css */
 </style>
-<link data-minify="1" rel='stylesheet' id='thryv-block-invoice-generator-style-css' href='https://www.thryv.com/wp-content/cache/min/1/wp-content/plugins/thryv-free-tools/build/invoice-generator/style-index.css?ver=1773347118' type='text/css' media='all' />
+<link data-minify="1" rel='stylesheet' id='thryv-block-invoice-generator-style-css' href='https://www.thryv.com/wp-content/cache/min/1/wp-content/plugins/thryv-free-tools/build/invoice-generator/style-index.css?ver=1773443272' type='text/css' media='all' />
 <style id='thryv-block-modal-button-style-inline-css' type='text/css'>
 /*!****************************************************************************************************************************************************************************************************************************************************!*\
   !*** css ./node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[4].use[1]!./node_modules/postcss-loader/dist/cjs.js??ruleSet[1].rules[4].use[2]!./node_modules/sass-loader/dist/cjs.js??ruleSet[1].rules[4].use[3]!./src/modal-button/style.scss ***!
@@ -1246,27 +1246,27 @@ img:is([sizes=auto i],[sizes^="auto," i]){contain-intrinsic-size:3000px 1500px}
 :root :where(.wp-block-thryv-block-thryver-opt-in){background-color: #F4F6FB;padding-top: 100px;padding-bottom: 60px;}
 /*# sourceURL=global-styles-inline-css */
 </style>
-<link data-minify="1" rel='stylesheet' id='feature-explorer-style-css' href='https://www.thryv.com/wp-content/cache/min/1/wp-content/plugins/thryv-interactive-vue/dist/assets/feature-explorer-BGr763jq.css?ver=1773347118' type='text/css' media='all' />
-<link data-minify="1" rel='stylesheet' id='g2-with-quotes-css-css' href='https://www.thryv.com/wp-content/cache/min/1/wp-content/themes/new-understrap-child-master/css/g2-with-quotes.css?ver=1773347118' type='text/css' media='all' />
-<link data-minify="1" rel='stylesheet' id='demo-email-css-css' href='https://www.thryv.com/wp-content/cache/min/1/wp-content/themes/new-understrap-child-master/css/demo-email.css?ver=1773347118' type='text/css' media='all' />
-<link data-minify="1" rel='stylesheet' id='child-understrap-styles-css' href='https://www.thryv.com/wp-content/cache/min/1/wp-content/themes/new-understrap-child-master/dist-css/child-theme.min.css?ver=1773347118' type='text/css' media='all' />
+<link data-minify="1" rel='stylesheet' id='feature-explorer-style-css' href='https://www.thryv.com/wp-content/cache/min/1/wp-content/plugins/thryv-interactive-vue/dist/assets/feature-explorer-BGr763jq.css?ver=1773443272' type='text/css' media='all' />
+<link data-minify="1" rel='stylesheet' id='g2-with-quotes-css-css' href='https://www.thryv.com/wp-content/cache/min/1/wp-content/themes/new-understrap-child-master/css/g2-with-quotes.css?ver=1773443272' type='text/css' media='all' />
+<link data-minify="1" rel='stylesheet' id='demo-email-css-css' href='https://www.thryv.com/wp-content/cache/min/1/wp-content/themes/new-understrap-child-master/css/demo-email.css?ver=1773443272' type='text/css' media='all' />
+<link data-minify="1" rel='stylesheet' id='child-understrap-styles-css' href='https://www.thryv.com/wp-content/cache/min/1/wp-content/themes/new-understrap-child-master/dist-css/child-theme.min.css?ver=1773443273' type='text/css' media='all' />
 <link rel='stylesheet' id='intl-tel-input-css-css' href='https://www.thryv.com/css/intlTelInput.min.css?ver=3.20.10' type='text/css' media='all' />
 
-<link data-minify="1" rel='stylesheet' id='page-builder-main-styles-css' href='https://www.thryv.com/wp-content/cache/min/1/wp-content/themes/new-understrap-child-master/app/AcfPageBuilder/assets-css/styles.css?ver=1773347119' type='text/css' media='all' />
-<link data-minify="1" rel='stylesheet' id='demoSchedulerStyles-css' href='https://www.thryv.com/wp-content/cache/min/1/wp-content/plugins/thryv-demo-scheduler/assets/css/demo-styles-b.css?ver=1773347118' type='text/css' media='all' />
-<script type="rocketlazyloadscript" data-rocket-type="text/javascript" data-rocket-src="https://www.thryv.com/wp-content/themes/new-understrap-child-master/dist-js/g2-with-quotes.js?ver=3.20.10" id="g2-with-quotes-js-js"></script>
-<script type="rocketlazyloadscript" data-rocket-type="text/javascript" data-rocket-src="https://cdn.jsdelivr.net/npm/dayjs@1/dayjs.min.js" id="dayjs-js"></script>
+<link data-minify="1" rel='stylesheet' id='page-builder-main-styles-css' href='https://www.thryv.com/wp-content/cache/min/1/wp-content/themes/new-understrap-child-master/app/AcfPageBuilder/assets-css/styles.css?ver=1773443273' type='text/css' media='all' />
+<link data-minify="1" rel='stylesheet' id='demoSchedulerStyles-css' href='https://www.thryv.com/wp-content/cache/min/1/wp-content/plugins/thryv-demo-scheduler/assets/css/demo-styles-b.css?ver=1773443273' type='text/css' media='all' />
+<script type="text/rocketlazyloadscript" data-rocket-type="text/javascript" data-rocket-src="https://www.thryv.com/wp-content/themes/new-understrap-child-master/dist-js/g2-with-quotes.js?ver=3.20.10" id="g2-with-quotes-js-js"></script>
+<script type="text/rocketlazyloadscript" data-rocket-type="text/javascript" data-rocket-src="https://cdn.jsdelivr.net/npm/dayjs@1/dayjs.min.js" id="dayjs-js"></script>
 <script type="text/javascript" id="jquery-core-js-extra">
 /* <![CDATA[ */
-var thryvSettings = {"env":"live","ajaxurl":"https://www.thryv.com/wp-admin/admin-ajax.php","purl":"","icpphone":"","err":"","lvalue":"","thryvCountry":"US","apps":["ShareAble for Hires","Lendio","Indeed","Fora Financial","Coterie Insurance Partnership","Shopify Integration"],"geoip":{"country":"IE"},"recaptcha":{"v2":"6Ley8K4UAAAAAOMA96p8Oy4QrnPm-gyAvEYKyrVJ","v3":"6Ldb_K0UAAAAAM27Qmp4Pp17JoWB2RD0a7g42dDD"},"twilioAPI":"https://thryvdemoscheduler-8789.twil.io/","thryvNonce":"e2c9bd5a5b","siteUrl":"https://www.thryv.com","isMobile":"0","device":"Unknown","threatTypeCode":null,"threatInfo":null};
+var thryvSettings = {"env":"live","ajaxurl":"https://www.thryv.com/wp-admin/admin-ajax.php","purl":"","icpphone":"","err":"","lvalue":"","thryvCountry":"US","apps":["ShareAble for Hires","Lendio","Indeed","Fora Financial","Coterie Insurance Partnership","Shopify Integration"],"geoip":{"country":"IE"},"recaptcha":{"v2":"6Ley8K4UAAAAAOMA96p8Oy4QrnPm-gyAvEYKyrVJ","v3":"6Ldb_K0UAAAAAM27Qmp4Pp17JoWB2RD0a7g42dDD"},"twilioAPI":"https://thryvdemoscheduler-8789.twil.io/","thryvNonce":"c04100910c","siteUrl":"https://www.thryv.com","isMobile":"0","device":"Unknown","threatTypeCode":null,"threatInfo":null};
 //# sourceURL=jquery-core-js-extra
 /* ]]> */
 </script>
 <script type="text/javascript" src="https://www.thryv.com/wp-includes/js/jquery/jquery.min.js?ver=3.7.1" id="jquery-core-js"></script>
-<script type="rocketlazyloadscript" data-rocket-type="text/javascript" data-rocket-src="https://www.thryv.com/wp-content/themes/new-understrap-child-master/js/noconflict.js?ver=3.20.10" id="no-conflict-js"></script>
-<script type="rocketlazyloadscript" data-rocket-type="text/javascript" data-rocket-src="https://www.thryv.com/wp-content/themes/new-understrap-child-master/js/ao-excluded.js?ver=3.20.10" id="ao-excluded-scripts-js"></script>
-<script type="rocketlazyloadscript" data-rocket-type="text/javascript" data-rocket-src="https://www.thryv.com/wp-content/themes/new-understrap-child-master/js/font-checker.js?ver=3.20.10" id="font-checker-script-js"></script>
-<script type="rocketlazyloadscript" data-rocket-type="text/javascript" data-rocket-src="https://js.hsforms.net/forms/embed/v2.js" id="hsforms-embed-v2-js"></script>
+<script type="text/rocketlazyloadscript" data-rocket-type="text/javascript" data-rocket-src="https://www.thryv.com/wp-content/themes/new-understrap-child-master/js/noconflict.js?ver=3.20.10" id="no-conflict-js"></script>
+<script type="text/rocketlazyloadscript" data-rocket-type="text/javascript" data-rocket-src="https://www.thryv.com/wp-content/themes/new-understrap-child-master/js/ao-excluded.js?ver=3.20.10" id="ao-excluded-scripts-js"></script>
+<script type="text/rocketlazyloadscript" data-rocket-type="text/javascript" data-rocket-src="https://www.thryv.com/wp-content/themes/new-understrap-child-master/js/font-checker.js?ver=3.20.10" id="font-checker-script-js"></script>
+<script type="text/rocketlazyloadscript" data-rocket-type="text/javascript" data-rocket-src="https://js.hsforms.net/forms/embed/v2.js" id="hsforms-embed-v2-js"></script>
 <link rel="https://api.w.org/" href="https://www.thryv.com/wp-json/" /><link rel="alternate" title="JSON" type="application/json" href="https://www.thryv.com/wp-json/wp/v2/pages/15001" /><link rel="EditURI" type="application/rsd+xml" title="RSD" href="https://www.thryv.com/xmlrpc.php?rsd" />
 <link rel='shortlink' href='https://www.thryv.com/?p=15001' />
 <meta name="facebook-domain-verification" content="3iwkybimobas740o85yv0dyk7x6yzj" /><meta name="google-site-verification" content="HlVcEAzaIbfgDXvtgwdgrIvwOCDXwHQs8_brDucOPhM" /><meta name="mobile-web-app-capable" content="yes">
@@ -1276,7 +1276,7 @@ var thryvSettings = {"env":"live","ajaxurl":"https://www.thryv.com/wp-admin/admi
 <link rel="icon" href="https://assets.thryv.com/prod/media/2024/08/cropped-thryv-favicon-32-192x192.png" sizes="192x192" />
 <link rel="apple-touch-icon" href="https://assets.thryv.com/prod/media/2024/08/cropped-thryv-favicon-32-180x180.png" />
 <meta name="msapplication-TileImage" content="https://assets.thryv.com/prod/media/2024/08/cropped-thryv-favicon-32-270x270.png" />
-<noscript><style id="rocket-lazyload-nojs-css">.rll-youtube-player, [data-lazy-src]{display:none !important;}</style></noscript>  <style id="rocket-lazyrender-inline-css">[data-wpr-lazyrender] {content-visibility: auto;}</style><meta name="generator" content="WP Rocket 3.20.5" data-wpr-features="wpr_delay_js wpr_lazyload_images wpr_lazyload_iframes wpr_preconnect_external_domains wpr_automatic_lazy_rendering wpr_oci wpr_image_dimensions wpr_minify_css wpr_preload_links wpr_host_fonts_locally wpr_desktop" /></head>
+<noscript><style id="rocket-lazyload-nojs-css">.rll-youtube-player, [data-lazy-src]{display:none !important;}</style></noscript>  <style id="rocket-lazyrender-inline-css">[data-wpr-lazyrender] {content-visibility: auto;}</style><meta name="generator" content="WP Rocket 3.20.6.1" data-wpr-features="wpr_delay_js wpr_lazyload_images wpr_lazyload_iframes wpr_preconnect_external_domains wpr_automatic_lazy_rendering wpr_oci wpr_image_dimensions wpr_minify_css wpr_preload_links wpr_host_fonts_locally wpr_desktop" /></head>
 
   <body class="wp-singular page-template page-template-page-builder page-template-page-builder-template page-template-page-builderpage-builder-template-php page page-id-15001 wp-custom-logo wp-embed-responsive wp-theme-new-understrap wp-child-theme-new-understrap-child-master group-blog" data-type="desktop">
 
@@ -1303,7 +1303,7 @@ var thryvSettings = {"env":"live","ajaxurl":"https://www.thryv.com/wp-admin/admi
     1 (888) 733-9482  </a>
 </div>
 
-<script type="rocketlazyloadscript">
+<script type="text/rocketlazyloadscript">
 function headerPhoneNoClick(el, event) {
   // console.log('el', el);
   // console.log('event', event);
@@ -1710,7 +1710,7 @@ function headerPhoneNoClick(el, event) {
     1 (888) 733-9482  </a>
 </div>
 
-<script type="rocketlazyloadscript">
+<script type="text/rocketlazyloadscript">
 function headerPhoneNoClick(el, event) {
   // console.log('el', el);
   // console.log('event', event);
@@ -2127,7 +2127,7 @@ function headerPhoneNoClick(el, event) {
               2200 West Airfield Dr.<br>
               P.O. Box 619810<br>
               D/FW Airport, TX 75261-9810<br>
-              Email: <a href="/cdn-cgi/l/email-protection#c5a1a8a6a4abaab1aca6a0b685b1adb7bcb3eba6aaa8"><span class="__cf_email__" data-cfemail="88ece5ebe9e6e7fce1ebedfbc8fce0faf1fea6ebe7e5">[email&#160;protected]</span></a></p>
+              Email: <a href="/cdn-cgi/l/email-protection#81e5ece2e0efeef5e8e2e4f2c1f5e9f3f8f7afe2eeec"><span class="__cf_email__" data-cfemail="e98d848a8887869d808a8c9aa99d819b909fc78a8684">[email&#160;protected]</span></a></p>
             <p>For clarity, only copyright infringement notices should go to our Copyright Agent. You acknowledge that if you fail to comply with all of the requirements of this Section your notice may not be valid.</p>
             <p>If you believe the content that was removed (or to which access was disabled) is not infringing, or that you have the authorization from the copyright owner, the copyright owner's agent, or pursuant to the law, to post and use such content, you may submit a counter-notice to the address listed above containing the following information:</p>
             <ul>
@@ -2545,7 +2545,7 @@ ol ul {list-style-type: disc;}
   }
   </style>
 
-  <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script type="rocketlazyloadscript" data-rocket-type="text/javascript" charset="utf-8">
+  <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script type="text/rocketlazyloadscript" data-rocket-type="text/javascript" charset="utf-8">
 
     var CookieSettingsLink = new Object();
 
@@ -2633,7 +2633,7 @@ ol ul {list-style-type: disc;}
 
 
 
-  <script type="rocketlazyloadscript" data-rocket-type="text/javascript" charset="utf-8" defer>
+  <script type="text/rocketlazyloadscript" data-rocket-type="text/javascript" charset="utf-8" defer>
     DOMReady(function() {
       // jQuery('.icp-modal').modal('show');
     });
@@ -2641,10 +2641,10 @@ ol ul {list-style-type: disc;}
 
       </div>
     
-    <script type="rocketlazyloadscript" data-rocket-type='text/javascript'>const skipBtn = document.createElement('div');skipBtn.innerHTML = '<a class="skip-to-main" tabindex="0" href="#content">Skip to main content</a>';document.body.insertAdjacentElement('afterbegin', skipBtn);</script><script type="speculationrules">
+    <script type="text/rocketlazyloadscript" data-rocket-type='text/javascript'>const skipBtn = document.createElement('div');skipBtn.innerHTML = '<a class="skip-to-main" tabindex="0" href="#content">Skip to main content</a>';document.body.insertAdjacentElement('afterbegin', skipBtn);</script><script type="speculationrules">
 {"prefetch":[{"source":"document","where":{"and":[{"href_matches":"/*"},{"not":{"href_matches":["/wp-*.php","/wp-admin/*","/media/*","/wp-content/*","/wp-content/plugins/*","/wp-content/themes/new-understrap-child-master/*","/wp-content/themes/new-understrap/*","/*\\?(.+)"]}},{"not":{"selector_matches":"a[rel~=\"nofollow\"]"}},{"not":{"selector_matches":".no-prefetch, .no-prefetch a"}}]},"eagerness":"conservative"}]}
 </script>
-    <script type="rocketlazyloadscript">
+    <script type="text/rocketlazyloadscript">
         // jQuery.ajax({
         //     type: "GET",
         //     url: thryvSettings.ajaxurl,
@@ -2692,7 +2692,7 @@ ol ul {list-style-type: disc;}
   </div>
 </div>
 
-<script type="rocketlazyloadscript" data-rocket-type="text/javascript" charset="utf-8" defer>
+<script type="text/rocketlazyloadscript" data-rocket-type="text/javascript" charset="utf-8" defer>
 
 jQuery(document).ready(function($) {
 
@@ -2787,12 +2787,12 @@ ExitIntentModal.show = function() {
 </script>
 
 <!-- This site is converting visitors into subscribers and customers with OptinMonster - https://optinmonster.com :: Campaign Title: 30 Second Delay Pricing Pop - Desktop - Copy -->
-<script type="rocketlazyloadscript">(function(d,u,ac){var s=d.createElement('script');s.type='text/javascript';s.src='https://a.omappapi.com/app/js/api.min.js';s.async=true;s.dataset.user=u;s.dataset.campaign=ac;d.getElementsByTagName('head')[0].appendChild(s);})(document,289020,'cwzo739o5hnqssgo0ym4');</script>
+<script type="text/rocketlazyloadscript">(function(d,u,ac){var s=d.createElement('script');s.type='text/javascript';s.src='https://a.omappapi.com/app/js/api.min.js';s.async=true;s.dataset.user=u;s.dataset.campaign=ac;d.getElementsByTagName('head')[0].appendChild(s);})(document,289020,'cwzo739o5hnqssgo0ym4');</script>
 <!-- / OptinMonster --><!-- This site is converting visitors into subscribers and customers with OptinMonster - https://optinmonster.com :: Campaign Title: 30 Second Delay Pricing Pop - Mobile -->
-<script type="rocketlazyloadscript">(function(d,u,ac){var s=d.createElement('script');s.type='text/javascript';s.src='https://a.omappapi.com/app/js/api.min.js';s.async=true;s.dataset.user=u;s.dataset.campaign=ac;d.getElementsByTagName('head')[0].appendChild(s);})(document,289020,'z0iymxyd2vwzkxqbgfkw');</script>
-<!-- / OptinMonster -->		<script type="rocketlazyloadscript" data-rocket-type="text/javascript">
+<script type="text/rocketlazyloadscript">(function(d,u,ac){var s=d.createElement('script');s.type='text/javascript';s.src='https://a.omappapi.com/app/js/api.min.js';s.async=true;s.dataset.user=u;s.dataset.campaign=ac;d.getElementsByTagName('head')[0].appendChild(s);})(document,289020,'z0iymxyd2vwzkxqbgfkw');</script>
+<!-- / OptinMonster -->		<script type="text/rocketlazyloadscript" data-rocket-type="text/javascript">
 		var cwzo739o5hnqssgo0ym4_shortcode = true;var z0iymxyd2vwzkxqbgfkw_shortcode = true;		</script>
-		<script type="rocketlazyloadscript" data-rocket-type="text/javascript" id="rocket-browser-checker-js-after">
+		<script type="text/rocketlazyloadscript" data-rocket-type="text/javascript" id="rocket-browser-checker-js-after">
 /* <![CDATA[ */
 "use strict";var _createClass=function(){function defineProperties(target,props){for(var i=0;i<props.length;i++){var descriptor=props[i];descriptor.enumerable=descriptor.enumerable||!1,descriptor.configurable=!0,"value"in descriptor&&(descriptor.writable=!0),Object.defineProperty(target,descriptor.key,descriptor)}}return function(Constructor,protoProps,staticProps){return protoProps&&defineProperties(Constructor.prototype,protoProps),staticProps&&defineProperties(Constructor,staticProps),Constructor}}();function _classCallCheck(instance,Constructor){if(!(instance instanceof Constructor))throw new TypeError("Cannot call a class as a function")}var RocketBrowserCompatibilityChecker=function(){function RocketBrowserCompatibilityChecker(options){_classCallCheck(this,RocketBrowserCompatibilityChecker),this.passiveSupported=!1,this._checkPassiveOption(this),this.options=!!this.passiveSupported&&options}return _createClass(RocketBrowserCompatibilityChecker,[{key:"_checkPassiveOption",value:function(self){try{var options={get passive(){return!(self.passiveSupported=!0)}};window.addEventListener("test",null,options),window.removeEventListener("test",null,options)}catch(err){self.passiveSupported=!1}}},{key:"initRequestIdleCallback",value:function(){!1 in window&&(window.requestIdleCallback=function(cb){var start=Date.now();return setTimeout(function(){cb({didTimeout:!1,timeRemaining:function(){return Math.max(0,50-(Date.now()-start))}})},1)}),!1 in window&&(window.cancelIdleCallback=function(id){return clearTimeout(id)})}},{key:"isDataSaverModeOn",value:function(){return"connection"in navigator&&!0===navigator.connection.saveData}},{key:"supportsLinkPrefetch",value:function(){var elem=document.createElement("link");return elem.relList&&elem.relList.supports&&elem.relList.supports("prefetch")&&window.IntersectionObserver&&"isIntersecting"in IntersectionObserverEntry.prototype}},{key:"isSlowConnection",value:function(){return"connection"in navigator&&"effectiveType"in navigator.connection&&("2g"===navigator.connection.effectiveType||"slow-2g"===navigator.connection.effectiveType)}}]),RocketBrowserCompatibilityChecker}();
 //# sourceURL=rocket-browser-checker-js-after
@@ -2804,7 +2804,7 @@ var RocketPreloadLinksConfig = {"excludeUris":"/near-me/why-thryv/|/webinar-acce
 //# sourceURL=rocket-preload-links-js-extra
 /* ]]> */
 </script>
-<script type="rocketlazyloadscript" data-rocket-type="text/javascript" id="rocket-preload-links-js-after">
+<script type="text/rocketlazyloadscript" data-rocket-type="text/javascript" id="rocket-preload-links-js-after">
 /* <![CDATA[ */
 (function() {
 "use strict";var r="function"==typeof Symbol&&"symbol"==typeof Symbol.iterator?function(e){return typeof e}:function(e){return e&&"function"==typeof Symbol&&e.constructor===Symbol&&e!==Symbol.prototype?"symbol":typeof e},e=function(){function i(e,t){for(var n=0;n<t.length;n++){var i=t[n];i.enumerable=i.enumerable||!1,i.configurable=!0,"value"in i&&(i.writable=!0),Object.defineProperty(e,i.key,i)}}return function(e,t,n){return t&&i(e.prototype,t),n&&i(e,n),e}}();function i(e,t){if(!(e instanceof t))throw new TypeError("Cannot call a class as a function")}var t=function(){function n(e,t){i(this,n),this.browser=e,this.config=t,this.options=this.browser.options,this.prefetched=new Set,this.eventTime=null,this.threshold=1111,this.numOnHover=0}return e(n,[{key:"init",value:function(){!this.browser.supportsLinkPrefetch()||this.browser.isDataSaverModeOn()||this.browser.isSlowConnection()||(this.regex={excludeUris:RegExp(this.config.excludeUris,"i"),images:RegExp(".("+this.config.imageExt+")$","i"),fileExt:RegExp(".("+this.config.fileExt+")$","i")},this._initListeners(this))}},{key:"_initListeners",value:function(e){-1<this.config.onHoverDelay&&document.addEventListener("mouseover",e.listener.bind(e),e.listenerOptions),document.addEventListener("mousedown",e.listener.bind(e),e.listenerOptions),document.addEventListener("touchstart",e.listener.bind(e),e.listenerOptions)}},{key:"listener",value:function(e){var t=e.target.closest("a"),n=this._prepareUrl(t);if(null!==n)switch(e.type){case"mousedown":case"touchstart":this._addPrefetchLink(n);break;case"mouseover":this._earlyPrefetch(t,n,"mouseout")}}},{key:"_earlyPrefetch",value:function(t,e,n){var i=this,r=setTimeout(function(){if(r=null,0===i.numOnHover)setTimeout(function(){return i.numOnHover=0},1e3);else if(i.numOnHover>i.config.rateThrottle)return;i.numOnHover++,i._addPrefetchLink(e)},this.config.onHoverDelay);t.addEventListener(n,function e(){t.removeEventListener(n,e,{passive:!0}),null!==r&&(clearTimeout(r),r=null)},{passive:!0})}},{key:"_addPrefetchLink",value:function(i){return this.prefetched.add(i.href),new Promise(function(e,t){var n=document.createElement("link");n.rel="prefetch",n.href=i.href,n.onload=e,n.onerror=t,document.head.appendChild(n)}).catch(function(){})}},{key:"_prepareUrl",value:function(e){if(null===e||"object"!==(void 0===e?"undefined":r(e))||!1 in e||-1===["http:","https:"].indexOf(e.protocol))return null;var t=e.href.substring(0,this.config.siteUrl.length),n=this._getPathname(e.href,t),i={original:e.href,protocol:e.protocol,origin:t,pathname:n,href:t+n};return this._isLinkOk(i)?i:null}},{key:"_getPathname",value:function(e,t){var n=t?e.substring(this.config.siteUrl.length):e;return n.startsWith("/")||(n="/"+n),this._shouldAddTrailingSlash(n)?n+"/":n}},{key:"_shouldAddTrailingSlash",value:function(e){return this.config.usesTrailingSlash&&!e.endsWith("/")&&!this.regex.fileExt.test(e)}},{key:"_isLinkOk",value:function(e){return null!==e&&"object"===(void 0===e?"undefined":r(e))&&(!this.prefetched.has(e.href)&&e.origin===this.config.siteUrl&&-1===e.href.indexOf("?")&&-1===e.href.indexOf("#")&&!this.regex.excludeUris.test(e.href)&&!this.regex.images.test(e.href))}}],[{key:"run",value:function(){"undefined"!=typeof RocketPreloadLinksConfig&&new n(new RocketBrowserCompatibilityChecker({capture:!0,passive:!0}),RocketPreloadLinksConfig).init()}}]),n}();t.run();
@@ -2813,34 +2813,34 @@ var RocketPreloadLinksConfig = {"excludeUris":"/near-me/why-thryv/|/webinar-acce
 //# sourceURL=rocket-preload-links-js-after
 /* ]]> */
 </script>
-<script type="rocketlazyloadscript" data-rocket-type="text/javascript" data-rocket-src="https://www.thryv.com/js/intlTelInput.min.js?ver=3.20.10" id="intl-tel-input-js"></script>
-<script type="rocketlazyloadscript" data-rocket-type="text/javascript" data-rocket-src="https://www.thryv.com/wp-includes/js/dist/vendor/moment.min.js?ver=2.30.1" id="moment-js"></script>
-<script type="rocketlazyloadscript" data-rocket-type="text/javascript" id="moment-js-after">
+<script type="text/rocketlazyloadscript" data-rocket-type="text/javascript" data-rocket-src="https://www.thryv.com/js/intlTelInput.min.js?ver=3.20.10" id="intl-tel-input-js"></script>
+<script type="text/rocketlazyloadscript" data-rocket-type="text/javascript" data-rocket-src="https://www.thryv.com/wp-includes/js/dist/vendor/moment.min.js?ver=2.30.1" id="moment-js"></script>
+<script type="text/rocketlazyloadscript" data-rocket-type="text/javascript" id="moment-js-after">
 /* <![CDATA[ */
 moment.updateLocale( 'en_US', {"months":["January","February","March","April","May","June","July","August","September","October","November","December"],"monthsShort":["Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec"],"weekdays":["Sunday","Monday","Tuesday","Wednesday","Thursday","Friday","Saturday"],"weekdaysShort":["Sun","Mon","Tue","Wed","Thu","Fri","Sat"],"week":{"dow":1},"longDateFormat":{"LT":"g:i a","LTS":null,"L":null,"LL":"F j, Y","LLL":"F j, Y g:i a","LLLL":null}} );
 //# sourceURL=moment-js-after
 /* ]]> */
 </script>
-<script type="rocketlazyloadscript" data-rocket-type="text/javascript" data-rocket-src="https://www.thryv.com/wp-content/plugins/thryv-demo-scheduler/assets/js/moment-timezone.js?ver=1.0.0" id="moment-timezone-js"></script>
-<script type="rocketlazyloadscript" data-rocket-type="text/javascript" data-rocket-src="https://www.thryv.com/wp-content/themes/new-understrap-child-master/dist-js/helpers.min.js?ver=3.20.10" id="theme-helpers-js"></script>
-<script type="rocketlazyloadscript" data-rocket-type="text/javascript" data-rocket-src="https://www.thryv.com/wp-content/themes/new-understrap-child-master/js/jquery.matchHeight.js?ver=3.20.10" id="jquery-matchHeight-js"></script>
-<script type="rocketlazyloadscript" data-rocket-type="text/javascript" data-rocket-src="https://www.thryv.com/wp-content/themes/new-understrap-child-master/dist-js/child-theme.min.js?ver=3.20.10" id="child-understrap-scripts-js"></script>
-<script type="rocketlazyloadscript" data-rocket-type="text/javascript" data-rocket-src="https://9ddeee0af5cb453881288056da97b8f4.js.ubembed.com" id="ub-sticky-js"></script>
-<script type="rocketlazyloadscript" data-rocket-type="text/javascript" data-rocket-src="https://www.thryv.com/wp-content/themes/new-understrap-child-master/dist-js/main.min.js?ver=3.20.10" id="theme-scripts-v2-js"></script>
+<script type="text/rocketlazyloadscript" data-rocket-type="text/javascript" data-rocket-src="https://www.thryv.com/wp-content/plugins/thryv-demo-scheduler/assets/js/moment-timezone.js?ver=1.0.0" id="moment-timezone-js"></script>
+<script type="text/rocketlazyloadscript" data-rocket-type="text/javascript" data-rocket-src="https://www.thryv.com/wp-content/themes/new-understrap-child-master/dist-js/helpers.min.js?ver=3.20.10" id="theme-helpers-js"></script>
+<script type="text/rocketlazyloadscript" data-rocket-type="text/javascript" data-rocket-src="https://www.thryv.com/wp-content/themes/new-understrap-child-master/js/jquery.matchHeight.js?ver=3.20.10" id="jquery-matchHeight-js"></script>
+<script type="text/rocketlazyloadscript" data-rocket-type="text/javascript" data-rocket-src="https://www.thryv.com/wp-content/themes/new-understrap-child-master/dist-js/child-theme.min.js?ver=3.20.10" id="child-understrap-scripts-js"></script>
+<script type="text/rocketlazyloadscript" data-rocket-type="text/javascript" data-rocket-src="https://9ddeee0af5cb453881288056da97b8f4.js.ubembed.com" id="ub-sticky-js"></script>
+<script type="text/rocketlazyloadscript" data-rocket-type="text/javascript" data-rocket-src="https://www.thryv.com/wp-content/themes/new-understrap-child-master/dist-js/main.min.js?ver=3.20.10" id="theme-scripts-v2-js"></script>
 <script type="text/javascript" src="https://www.thryv.com/wp-content/themes/new-understrap-child-master/dist-js/HeaderSection.min.js?ver=3.20.10" id="header-section-scripts-js"></script>
-<script type="rocketlazyloadscript" data-rocket-type="text/javascript" data-rocket-src="https://www.thryv.com/wp-content/themes/new-understrap-child-master/app/AcfPageBuilder/assets-js/scripts.js?ver=1772736266" id="page-builder-main-scripts-js"></script>
-<script type="rocketlazyloadscript">(function(d){var s=d.createElement("script");s.type="text/javascript";s.src="https://a.omappapi.com/app/js/api.min.js";s.async=true;s.id="omapi-script";d.getElementsByTagName("head")[0].appendChild(s);})(document);</script><script type="rocketlazyloadscript" data-rocket-type="text/javascript" data-rocket-src="https://www.thryv.com/wp-content/plugins/thryv-demo-scheduler/assets/js/demo-verify.js?ver=1.0.2" id="demo-verify-js"></script>
-<script type="rocketlazyloadscript" data-rocket-type="text/javascript" data-rocket-src="https://www.thryv.com/wp-content/plugins/thryv-demo-scheduler/assets/js/home-hero-ab-test.js?ver=1.0.2" id="home-hero-ab-test-js"></script>
-<script type="rocketlazyloadscript" data-rocket-type="text/javascript" data-rocket-src="https://www.thryv.com/js/intlTelInput.min.js?ver=6.9.1" id="thryv-intl-tel-input-js"></script>
-<script type="rocketlazyloadscript" data-rocket-type="text/javascript" data-rocket-src="https://www.thryv.com/wp-content/plugins/thryv-demo-scheduler/assets/js/priority.js?ver=1.0.2" id="prioritizedTDJS-js"></script>
-<script type="rocketlazyloadscript" data-rocket-type="text/javascript" data-rocket-src="https://www.google.com/recaptcha/api.js?onload=thryvRecaptchaCallback&amp;render=explicit&amp;sitekey=6Ldb_K0UAAAAAM27Qmp4Pp17JoWB2RD0a7g42dDD&#039; async=&#039;async" id="thryv-recaptcha-js"></script>
-<script type="rocketlazyloadscript" data-rocket-type="text/javascript" data-rocket-src="https://www.thryv.com/wp-content/plugins/optinmonster/assets/dist/js/helper.min.js?ver=2.16.22" id="optinmonster-wp-helper-js"></script>
-		<script type="rocketlazyloadscript" data-rocket-type="text/javascript">var omapi_localized = {
+<script type="text/rocketlazyloadscript" data-rocket-type="text/javascript" data-rocket-src="https://www.thryv.com/wp-content/themes/new-understrap-child-master/app/AcfPageBuilder/assets-js/scripts.js?ver=1772736266" id="page-builder-main-scripts-js"></script>
+<script type="text/rocketlazyloadscript">(function(d){var s=d.createElement("script");s.type="text/javascript";s.src="https://a.omappapi.com/app/js/api.min.js";s.async=true;s.id="omapi-script";d.getElementsByTagName("head")[0].appendChild(s);})(document);</script><script type="text/rocketlazyloadscript" data-rocket-type="text/javascript" data-rocket-src="https://www.thryv.com/wp-content/plugins/thryv-demo-scheduler/assets/js/demo-verify.js?ver=1.0.2" id="demo-verify-js"></script>
+<script type="text/rocketlazyloadscript" data-rocket-type="text/javascript" data-rocket-src="https://www.thryv.com/wp-content/plugins/thryv-demo-scheduler/assets/js/home-hero-ab-test.js?ver=1.0.2" id="home-hero-ab-test-js"></script>
+<script type="text/rocketlazyloadscript" data-rocket-type="text/javascript" data-rocket-src="https://www.thryv.com/js/intlTelInput.min.js?ver=6.9.4" id="thryv-intl-tel-input-js"></script>
+<script type="text/rocketlazyloadscript" data-rocket-type="text/javascript" data-rocket-src="https://www.thryv.com/wp-content/plugins/thryv-demo-scheduler/assets/js/priority.js?ver=1.0.2" id="prioritizedTDJS-js"></script>
+<script type="text/rocketlazyloadscript" data-rocket-type="text/javascript" data-rocket-src="https://www.google.com/recaptcha/api.js?onload=thryvRecaptchaCallback&amp;render=explicit&amp;sitekey=6Ldb_K0UAAAAAM27Qmp4Pp17JoWB2RD0a7g42dDD&#039; async=&#039;async" id="thryv-recaptcha-js"></script>
+<script type="text/rocketlazyloadscript" data-rocket-type="text/javascript" data-rocket-src="https://www.thryv.com/wp-content/plugins/optinmonster/assets/dist/js/helper.min.js?ver=2.16.22" id="optinmonster-wp-helper-js"></script>
+		<script type="text/rocketlazyloadscript" data-rocket-type="text/javascript">var omapi_localized = {
 			ajax: 'https://www.thryv.com/wp-admin/admin-ajax.php?optin-monster-ajax-route=1',
-			nonce: 'bb41a0d153',
+			nonce: '9d5763ecb0',
 			slugs:
 			{"cwzo739o5hnqssgo0ym4":{"slug":"cwzo739o5hnqssgo0ym4","mailpoet":false},"z0iymxyd2vwzkxqbgfkw":{"slug":"z0iymxyd2vwzkxqbgfkw","mailpoet":false}}		};</script>
-				<script type="rocketlazyloadscript" data-rocket-type="text/javascript">var omapi_data = {"object_id":15001,"object_key":"page","object_type":"post","term_ids":[],"wp_json":"https:\/\/www.thryv.com\/wp-json","wc_active":false,"edd_active":false,"nonce":"1a46b6cc45"};</script>
+				<script type="text/rocketlazyloadscript" data-rocket-type="text/javascript">var omapi_data = {"object_id":15001,"object_key":"page","object_type":"post","term_ids":[],"wp_json":"https:\/\/www.thryv.com\/wp-json","wc_active":false,"edd_active":false,"nonce":"f6af5ed19c"};</script>
 		<script>window.lazyLoadOptions=[{elements_selector:"img[data-lazy-src],.rocket-lazyload,iframe[data-lazy-src]",data_src:"lazy-src",data_srcset:"lazy-srcset",data_sizes:"lazy-sizes",class_loading:"lazyloading",class_loaded:"lazyloaded",threshold:300,callback_loaded:function(element){if(element.tagName==="IFRAME"&&element.dataset.rocketLazyload=="fitvidscompatible"){if(element.classList.contains("lazyloaded")){if(typeof window.jQuery!="undefined"){if(jQuery.fn.fitVids){jQuery(element).parent().fitVids()}}}}}},{elements_selector:".rocket-lazyload",data_src:"lazy-src",data_srcset:"lazy-srcset",data_sizes:"lazy-sizes",class_loading:"lazyloading",class_loaded:"lazyloaded",threshold:300,}];window.addEventListener('LazyLoad::Initialized',function(e){var lazyLoadInstance=e.detail.instance;if(window.MutationObserver){var observer=new MutationObserver(function(mutations){var image_count=0;var iframe_count=0;var rocketlazy_count=0;mutations.forEach(function(mutation){for(var i=0;i<mutation.addedNodes.length;i++){if(typeof mutation.addedNodes[i].getElementsByTagName!=='function'){continue}
 if(typeof mutation.addedNodes[i].getElementsByClassName!=='function'){continue}
 images=mutation.addedNodes[i].getElementsByTagName('img');is_image=mutation.addedNodes[i].tagName=="IMG";iframes=mutation.addedNodes[i].getElementsByTagName('iframe');is_iframe=mutation.addedNodes[i].tagName=="IFRAME";rocket_lazy=mutation.addedNodes[i].getElementsByClassName('rocket-lazyload');image_count+=images.length;iframe_count+=iframes.length;rocketlazy_count+=rocket_lazy.length;if(is_image){image_count+=1}
