@@ -1778,7 +1778,22 @@ window.kentico.builder.useJQuery = true;</script><script src="/_content/Kentico.
         <script src="https://assets.adobedtm.com/9905200c8263/6d2c65730bd8/launch-f9f49c5fa51f.min.js" async=""></script>
     
 
-    <!-- End Start Adobe Data Layer -->
+    <script>_satellite["_runScript1"](function(event, target, Promise) {
+// debug logging function
+window.adobeDataLayer = window.adobeDataLayer || [];
+var myHandler = function (event) {
+    if (localStorage.getItem("com.adobe.reactor.debug") === "true") {
+        console.log(
+            "%c[Adobe Data Layer Logging] event type: " + event.event, "background: palegreen", "State:", adobeDataLayer.getState()
+        );
+    }
+};
+
+// add event listener
+window.adobeDataLayer.push(function (dl) {
+    dl.addEventListener("adobeDataLayer:event", myHandler);
+});
+});</script><!-- End Start Adobe Data Layer -->
     
 
 
@@ -1794,22 +1809,7 @@ window.kentico.builder.useJQuery = true;</script><script src="/_content/Kentico.
         <script src="/Scripts/GoogleAnalyticsEventsHandler.js?v=TJYm6LWc4MvlRLfiKEFZpZbgF0TskJjDxkf-myehSl0"></script>
 
 
-<script>_satellite["_runScript1"](function(event, target, Promise) {
-// debug logging function
-window.adobeDataLayer = window.adobeDataLayer || [];
-var myHandler = function (event) {
-    if (localStorage.getItem("com.adobe.reactor.debug") === "true") {
-        console.log(
-            "%c[Adobe Data Layer Logging] event type: " + event.event, "background: palegreen", "State:", adobeDataLayer.getState()
-        );
-    }
-};
-
-// add event listener
-window.adobeDataLayer.push(function (dl) {
-    dl.addEventListener("adobeDataLayer:event", myHandler);
-});
-});</script><div style="display: none; visibility: hidden;">
+<div style="display: none; visibility: hidden;">
 <script type="text/javascript" src="https://cdn.cookielaw.org/consent/18621396-2686-49cb-a9f7-e065a701595c/OtAutoBlock.js"></script>
 <script src="https://cdn.cookielaw.org/scripttemplates/otSDKStub.js" type="text/javascript" charset="UTF-8" data-domain-script="18621396-2686-49cb-a9f7-e065a701595c"></script>
 <script type="text/javascript">function OptanonWrapper(){};</script>
