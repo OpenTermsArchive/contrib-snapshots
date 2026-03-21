@@ -281,7 +281,7 @@
     
 <link rel="stylesheet" href="/etc.clientlibs/adobe-cms/clientlibs/clientlib-base.lc-30313e00669f877069f15dd099f23454-lc.min.css" type="text/css">
 <link rel="stylesheet" href="/etc.clientlibs/adobe-cms/clientlibs/clientlib-idlStylesCarbon.lc-e907180d2950d3ed10121fb37ae044df-lc.min.css" type="text/css">
-<link rel="stylesheet" href="/etc.clientlibs/adobe-cms/clientlibs/clientlib-idlStyles.lc-a998404571b1d62f527dcb088e47ccfc-lc.min.css" type="text/css">
+<link rel="stylesheet" href="/etc.clientlibs/adobe-cms/clientlibs/clientlib-idlStyles.lc-cd287872d210124126053e1f9fe8adc7-lc.min.css" type="text/css">
 
 
 
@@ -446,12 +446,14 @@
       {
          document.querySelector('c4d-masthead-container').setAttribute("has-search","false");
          document.querySelector('c4d-masthead-container').setAttribute("has-profile","false");
-       
+
       }
 
 
       if(window.location.hostname.includes("businessofgovernment") ||  window.location.href.includes("/businessofgovernment"))
         {
+             document.querySelector('c4d-masthead-container').setAttribute("has-search","false");
+             document.querySelector('c4d-masthead-container').setAttribute("has-profile","false");
               // Start the function
         updateTopNavHrefFromPlatform();
         }
@@ -3931,6 +3933,47 @@ Example:</p>
             localeButton.style.display = "none";
         }
     });
+
+     if(window.location.hostname.includes("businessofgovernment") ||  window.location.href.includes("/businessofgovernment"))
+        {
+
+              hideCookiePreferencesInSlot();
+        }
+
+     function hideCookiePreferencesInSlot() {
+            // Step 1: get the legal nav component
+            var legalNav = document.querySelector('c4d-legal-nav');
+            if (!legalNav) {
+                setTimeout(hideCookiePreferencesInSlot, 3000);
+                return;
+            }
+
+            // Step 2: get its shadow root
+            var shadow = legalNav.shadowRoot;
+            if (!shadow) {
+                setTimeout(hideCookiePreferencesInSlot, 3000);
+                return;
+            }
+
+            // Step 3: find the slot inside the shadow DOM
+            var slot = shadow.querySelector('slot');
+            if (!slot) {
+                setTimeout(hideCookiePreferencesInSlot, 3000);
+                return;
+            }
+
+            // Step 4: get all assigned nodes from the slot
+            var assignedNodes = slot.assignedNodes({ flatten: true });
+
+            // Step 5: loop through assigned nodes to find the cookie placeholder
+            assignedNodes.forEach(node => {
+                if (node.tagName && node.tagName.toLowerCase() === 'c4d-legal-nav-cookie-preferences-placeholder') {
+                    // Hide the element
+                    node.style.display = 'none';
+                    console.log('Cookie preferences placeholder hidden!');
+                }
+            });
+        }
 </script>
 </div>
 
@@ -4007,7 +4050,7 @@ Example:</p>
     
     <script src="/etc.clientlibs/adobe-cms/clientlibs/clientlib-base.lc-c7d8c8a31404fb2a97939ee4096001bf-lc.min.js"></script>
 <script src="/etc.clientlibs/adobe-cms/clientlibs/clientlib-components-main.lc-927719ddd70f76ad10c2aa32d92282be-lc.min.js"></script>
-<script src="/etc.clientlibs/adobe-cms/clientlibs/clientlib-idlStyles.lc-5cc71c8dfab74d6d2866ebee19fcd98a-lc.min.js"></script>
+<script src="/etc.clientlibs/adobe-cms/clientlibs/clientlib-idlStyles.lc-8eb92c78ab6b12e247c04eb88405c135-lc.min.js"></script>
 <script src="/etc.clientlibs/adobe-cms/components/content/atoms/image-dm/clientlibs/site.lc-29e16b8b6492a45657744888fb76a272-lc.min.js"></script>
 
 
@@ -4606,5 +4649,5 @@ Example:</p>
     });
 </script>
 
-<script type="text/javascript"  src="/dPxcoV/N/k/wmdyfzRfqg/3aaJhhN4D8SGXkaw/XGwSAQ/YBhhS0/APVQoB"></script><link rel="stylesheet" type="text/css"  href="/dPxcoV/N/k/wmdyfzRfqg/mzaJ/eU4AAQ/QB9ONg/NfeTBY"><script  src="/dPxcoV/N/k/wmdyfzRfqg/mzaJ/eU4AAQ/dGFmQy/QeQioq" async defer></script><div id="sec-overlay" style="display:none;"><div id="sec-container"></div></div></body>
+<script type="text/javascript"  src="/PAiptbaj/xew/oQA/JsAcIIBq9G/7aOipcGwXfNc6Suu/VjtXHEtQXw/emU1aV/5odEwB"></script><link rel="stylesheet" type="text/css"  href="/PAiptbaj/xew/oQA/JsAcIIBq9G/fbOi/LDZJHEtQXw/BENQGi/hofj5Y"><script  src="/PAiptbaj/xew/oQA/JsAcIIBq9G/fbOi/LDZJHEtQXw/OAZpJ0/knRzgq" async defer></script><div id="sec-overlay" style="display:none;"><div id="sec-container"></div></div></body>
 </html>
