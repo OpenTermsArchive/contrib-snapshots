@@ -66,7 +66,7 @@
 <link href="https://www.thetradedesk.com/dist/main-Dx-To6KM.css" rel="stylesheet">
 
             
-<script type="text/javascript">var _rollbarConfig = {"accessToken":"d409d93d21764390919435284df88592","captureUncaught":true,"captureUnhandledRejections":true,"captureIp":false,"ignoredMessages":["(unknown)","(unknown): Script error.","","Script error."],"maxItems":10,"payload":{"environment":"production"}};(()=>{"use strict";var r={133:r=>{function o(r,e){this.impl=r(e,this),this.options=e,function(r){for(var o=function(r){return function(){var o=Array.prototype.slice.call(arguments,0);if(this.impl[r])return this.impl[r].apply(this.impl,o)}},e="log,debug,info,warn,warning,error,critical,global,configure,handleUncaughtException,handleAnonymousErrors,handleUnhandledRejection,_createItem,wrap,loadFull,shimId,captureEvent,captureDomContentLoaded,captureLoad".split(","),n=0;n<e.length;n++)r[e[n]]=o(e[n])}(o.prototype)}o.prototype._swapAndProcessMessages=function(r,o){var e,n,t;for(this.impl=r(this.options);e=o.shift();)n=e.method,t=e.args,this[n]&&"function"==typeof this[n]&&("captureDomContentLoaded"===n||"captureLoad"===n?this[n].apply(this,[t[0],e.ts]):this[n].apply(this,t));return this},r.exports=o},424:r=>{function o(r,o,e){if(o.hasOwnProperty&&o.hasOwnProperty("addEventListener")){for(var n=o.addEventListener;n._rollbarOldAdd&&n.belongsToShim;)n=n._rollbarOldAdd;var t=function(o,e,t){n.call(this,o,r.wrap(e),t)};t._rollbarOldAdd=n,t.belongsToShim=e,o.addEventListener=t;for(var a=o.removeEventListener;a._rollbarOldRemove&&a.belongsToShim;)a=a._rollbarOldRemove;var l=function(r,o,e){a.call(this,r,o&&o._rollbar_wrapped||o,e)};l._rollbarOldRemove=a,l.belongsToShim=e,o.removeEventListener=l}}r.exports=function(r,e,n){if(r){var t,a,l="EventTarget,Window,Node,ApplicationCache,AudioTrackList,ChannelMergerNode,CryptoOperation,EventSource,FileReader,HTMLUnknownElement,IDBDatabase,IDBRequest,IDBTransaction,KeyOperation,MediaController,MessagePort,ModalWindow,Notification,SVGElementInstance,Screen,TextTrack,TextTrackCue,TextTrackList,WebSocket,WebSocketWorker,Worker,XMLHttpRequest,XMLHttpRequestEventTarget,XMLHttpRequestUpload".split(",");for(t=0;t<l.length;++t)r[a=l[t]]&&r[a].prototype&&o(e,r[a].prototype,n)}}},579:(r,o,e)=>{var n=e(796),t=e(424);function a(r){return function(){try{return r.apply(this,arguments)}catch(r){try{console.error("[Rollbar]: Internal error",r)}catch(r){}}}}var l=0;function i(r,o){this.options=r,this._rollbarOldOnError=null;var e=l++;this.shimId=function(){return e},"undefined"!=typeof window&&window._rollbarShims&&(window._rollbarShims[e]={handler:o,messages:[]})}var s=e(133),d=function(r,o){return new i(r,o)},p=function(r){return new s(d,r)};function c(r){return a((function(){var o=Array.prototype.slice.call(arguments,0),e={shim:this,method:r,args:o,ts:new Date};window._rollbarShims[this.shimId()].messages.push(e)}))}i.prototype.loadFull=function(r,o,e,n,t){var l=!1,i=o.createElement("script"),s=o.getElementsByTagName("script")[0],d=s.parentNode;i.crossOrigin="",i.src=n.rollbarJsUrl,e||(i.async=!0),i.onload=i.onreadystatechange=a((function(){if(!(l||this.readyState&&"loaded"!==this.readyState&&"complete"!==this.readyState)){i.onload=i.onreadystatechange=null;try{d.removeChild(i)}catch(r){}l=!0,function(){var o;if(void 0===r._rollbarDidLoad){o=new Error("rollbar.js did not load");for(var e,n,a,l,i=0;e=r._rollbarShims[i++];)for(e=e.messages||[];n=e.shift();)for(a=n.args||[],i=0;i<a.length;++i)if("function"==typeof(l=a[i])){l(o);break}}"function"==typeof t&&t(o)}()}})),d.insertBefore(i,s)},i.prototype.wrap=function(r,o,e){try{var n;if(n="function"==typeof o?o:function(){return o||{}},"function"!=typeof r)return r;if(r._isWrap)return r;if(!r._rollbar_wrapped&&(r._rollbar_wrapped=function(){e&&"function"==typeof e&&e.apply(this,arguments);try{return r.apply(this,arguments)}catch(e){var o=e;throw o&&("string"==typeof o&&(o=new String(o)),o._rollbarContext=n()||{},o._rollbarContext._wrappedSource=r.toString(),window._rollbarWrappedError=o),o}},r._rollbar_wrapped._isWrap=!0,r.hasOwnProperty))for(var t in r)r.hasOwnProperty(t)&&(r._rollbar_wrapped[t]=r[t]);return r._rollbar_wrapped}catch(o){return r}};for(var u="log,debug,info,warn,warning,error,critical,global,configure,handleUncaughtException,handleAnonymousErrors,handleUnhandledRejection,captureEvent,captureDomContentLoaded,captureLoad".split(","),f=0;f<u.length;++f)i.prototype[u[f]]=c(u[f]);r.exports={setupShim:function(r,o){if(r){var e=o.globalAlias||"Rollbar";if("object"==typeof r[e])return r[e];r._rollbarShims={},r._rollbarWrappedError=null;var l=new p(o);return a((function(){o.captureUncaught&&(l._rollbarOldOnError=r.onerror,n.captureUncaughtExceptions(r,l,!0),o.wrapGlobalEventHandlers&&t(r,l,!0)),o.captureUnhandledRejections&&n.captureUnhandledRejections(r,l,!0);var a=o.autoInstrument;return!1!==o.enabled&&(void 0===a||!0===a||function(r){return!("object"!=typeof r||void 0!==r.page&&!r.page)}(a))&&r.addEventListener&&(r.addEventListener("load",l.captureLoad.bind(l)),r.addEventListener("DOMContentLoaded",l.captureDomContentLoaded.bind(l))),r[e]=l,l}))()}},Rollbar:p}},791:r=>{r.exports=function(r){return function(o){if(!o&&!window._rollbarInitialized){for(var e,n,t=(r=r||{}).globalAlias||"Rollbar",a=window.rollbar,l=function(r){return new a(r)},i=0;e=window._rollbarShims[i++];)n||(n=e.handler),e.handler._swapAndProcessMessages(l,e.messages);window[t]=n,window._rollbarInitialized=!0}}}},796:r=>{r.exports={captureUncaughtExceptions:function(r,o,e){if(r){var n;if("function"==typeof o._rollbarOldOnError)n=o._rollbarOldOnError;else if(r.onerror){for(n=r.onerror;n._rollbarOldOnError;)n=n._rollbarOldOnError;o._rollbarOldOnError=n}o.handleAnonymousErrors();var t=function(){var e=Array.prototype.slice.call(arguments,0);!function(r,o,e,n){r._rollbarWrappedError&&(n[4]||(n[4]=r._rollbarWrappedError),n[5]||(n[5]=r._rollbarWrappedError._rollbarContext),r._rollbarWrappedError=null);var t=o.handleUncaughtException.apply(o,n);e&&e.apply(r,n),"anonymous"===t&&(o.anonymousErrorsPending+=1)}(r,o,n,e)};e&&(t._rollbarOldOnError=n),r.onerror=t}},captureUnhandledRejections:function(r,o,e){if(r){"function"==typeof r._rollbarURH&&r._rollbarURH.belongsToShim&&r.removeEventListener("unhandledrejection",r._rollbarURH);var n=function(r){var e,n,t;try{e=r.reason}catch(r){e=void 0}try{n=r.promise}catch(r){n="[unhandledrejection] error getting `promise` from event"}try{t=r.detail,!e&&t&&(e=t.reason,n=t.promise)}catch(r){}e||(e="[unhandledrejection] error getting `reason` from event"),o&&o.handleUnhandledRejection&&o.handleUnhandledRejection(e,n)};n.belongsToShim=e,r._rollbarURH=n,r.addEventListener("unhandledrejection",n)}}}}},o={};function e(n){var t=o[n];if(void 0!==t)return t.exports;var a=o[n]={exports:{}};return r[n](a,a.exports,e),a.exports}var n=e(579),t=e(791);_rollbarConfig=_rollbarConfig||{},_rollbarConfig.rollbarJsUrl=_rollbarConfig.rollbarJsUrl||"https://cdn.rollbar.com/rollbarjs/refs/tags/v2.26.5/rollbar.min.js",_rollbarConfig.async=void 0===_rollbarConfig.async||_rollbarConfig.async;var a=n.setupShim(window,_rollbarConfig),l=t(_rollbarConfig);window.rollbar=n.Rollbar,a.loadFull(window,document,!_rollbarConfig.async,_rollbarConfig,l)})();;</script><script src="https://cdn.cookielaw.org/scripttemplates/202601.2.0/otBannerSdk.js" async="" type="text/javascript"></script></head>
+<script type="text/javascript">var _rollbarConfig = {"accessToken":"d409d93d21764390919435284df88592","captureUncaught":true,"captureUnhandledRejections":true,"captureIp":false,"ignoredMessages":["(unknown)","(unknown): Script error.","","Script error."],"maxItems":10,"payload":{"environment":"production"}};(()=>{"use strict";var r={133:r=>{function o(r,e){this.impl=r(e,this),this.options=e,function(r){for(var o=function(r){return function(){var o=Array.prototype.slice.call(arguments,0);if(this.impl[r])return this.impl[r].apply(this.impl,o)}},e="log,debug,info,warn,warning,error,critical,global,configure,handleUncaughtException,handleAnonymousErrors,handleUnhandledRejection,_createItem,wrap,loadFull,shimId,captureEvent,captureDomContentLoaded,captureLoad".split(","),n=0;n<e.length;n++)r[e[n]]=o(e[n])}(o.prototype)}o.prototype._swapAndProcessMessages=function(r,o){var e,n,t;for(this.impl=r(this.options);e=o.shift();)n=e.method,t=e.args,this[n]&&"function"==typeof this[n]&&("captureDomContentLoaded"===n||"captureLoad"===n?this[n].apply(this,[t[0],e.ts]):this[n].apply(this,t));return this},r.exports=o},424:r=>{function o(r,o,e){if(o.hasOwnProperty&&o.hasOwnProperty("addEventListener")){for(var n=o.addEventListener;n._rollbarOldAdd&&n.belongsToShim;)n=n._rollbarOldAdd;var t=function(o,e,t){n.call(this,o,r.wrap(e),t)};t._rollbarOldAdd=n,t.belongsToShim=e,o.addEventListener=t;for(var a=o.removeEventListener;a._rollbarOldRemove&&a.belongsToShim;)a=a._rollbarOldRemove;var l=function(r,o,e){a.call(this,r,o&&o._rollbar_wrapped||o,e)};l._rollbarOldRemove=a,l.belongsToShim=e,o.removeEventListener=l}}r.exports=function(r,e,n){if(r){var t,a,l="EventTarget,Window,Node,ApplicationCache,AudioTrackList,ChannelMergerNode,CryptoOperation,EventSource,FileReader,HTMLUnknownElement,IDBDatabase,IDBRequest,IDBTransaction,KeyOperation,MediaController,MessagePort,ModalWindow,Notification,SVGElementInstance,Screen,TextTrack,TextTrackCue,TextTrackList,WebSocket,WebSocketWorker,Worker,XMLHttpRequest,XMLHttpRequestEventTarget,XMLHttpRequestUpload".split(",");for(t=0;t<l.length;++t)r[a=l[t]]&&r[a].prototype&&o(e,r[a].prototype,n)}}},579:(r,o,e)=>{var n=e(796),t=e(424);function a(r){return function(){try{return r.apply(this,arguments)}catch(r){try{console.error("[Rollbar]: Internal error",r)}catch(r){}}}}var l=0;function i(r,o){this.options=r,this._rollbarOldOnError=null;var e=l++;this.shimId=function(){return e},"undefined"!=typeof window&&window._rollbarShims&&(window._rollbarShims[e]={handler:o,messages:[]})}var s=e(133),d=function(r,o){return new i(r,o)},p=function(r){return new s(d,r)};function c(r){return a((function(){var o=Array.prototype.slice.call(arguments,0),e={shim:this,method:r,args:o,ts:new Date};window._rollbarShims[this.shimId()].messages.push(e)}))}i.prototype.loadFull=function(r,o,e,n,t){var l=!1,i=o.createElement("script"),s=o.getElementsByTagName("script")[0],d=s.parentNode;i.crossOrigin="",i.src=n.rollbarJsUrl,e||(i.async=!0),i.onload=i.onreadystatechange=a((function(){if(!(l||this.readyState&&"loaded"!==this.readyState&&"complete"!==this.readyState)){i.onload=i.onreadystatechange=null;try{d.removeChild(i)}catch(r){}l=!0,function(){var o;if(void 0===r._rollbarDidLoad){o=new Error("rollbar.js did not load");for(var e,n,a,l,i=0;e=r._rollbarShims[i++];)for(e=e.messages||[];n=e.shift();)for(a=n.args||[],i=0;i<a.length;++i)if("function"==typeof(l=a[i])){l(o);break}}"function"==typeof t&&t(o)}()}})),d.insertBefore(i,s)},i.prototype.wrap=function(r,o,e){try{var n;if(n="function"==typeof o?o:function(){return o||{}},"function"!=typeof r)return r;if(r._isWrap)return r;if(!r._rollbar_wrapped&&(r._rollbar_wrapped=function(){e&&"function"==typeof e&&e.apply(this,arguments);try{return r.apply(this,arguments)}catch(e){var o=e;throw o&&("string"==typeof o&&(o=new String(o)),o._rollbarContext=n()||{},o._rollbarContext._wrappedSource=r.toString(),window._rollbarWrappedError=o),o}},r._rollbar_wrapped._isWrap=!0,r.hasOwnProperty))for(var t in r)r.hasOwnProperty(t)&&(r._rollbar_wrapped[t]=r[t]);return r._rollbar_wrapped}catch(o){return r}};for(var u="log,debug,info,warn,warning,error,critical,global,configure,handleUncaughtException,handleAnonymousErrors,handleUnhandledRejection,captureEvent,captureDomContentLoaded,captureLoad".split(","),f=0;f<u.length;++f)i.prototype[u[f]]=c(u[f]);r.exports={setupShim:function(r,o){if(r){var e=o.globalAlias||"Rollbar";if("object"==typeof r[e])return r[e];r._rollbarShims={},r._rollbarWrappedError=null;var l=new p(o);return a((function(){o.captureUncaught&&(l._rollbarOldOnError=r.onerror,n.captureUncaughtExceptions(r,l,!0),o.wrapGlobalEventHandlers&&t(r,l,!0)),o.captureUnhandledRejections&&n.captureUnhandledRejections(r,l,!0);var a=o.autoInstrument;return!1!==o.enabled&&(void 0===a||!0===a||function(r){return!("object"!=typeof r||void 0!==r.page&&!r.page)}(a))&&r.addEventListener&&(r.addEventListener("load",l.captureLoad.bind(l)),r.addEventListener("DOMContentLoaded",l.captureDomContentLoaded.bind(l))),r[e]=l,l}))()}},Rollbar:p}},791:r=>{r.exports=function(r){return function(o){if(!o&&!window._rollbarInitialized){for(var e,n,t=(r=r||{}).globalAlias||"Rollbar",a=window.rollbar,l=function(r){return new a(r)},i=0;e=window._rollbarShims[i++];)n||(n=e.handler),e.handler._swapAndProcessMessages(l,e.messages);window[t]=n,window._rollbarInitialized=!0}}}},796:r=>{r.exports={captureUncaughtExceptions:function(r,o,e){if(r){var n;if("function"==typeof o._rollbarOldOnError)n=o._rollbarOldOnError;else if(r.onerror){for(n=r.onerror;n._rollbarOldOnError;)n=n._rollbarOldOnError;o._rollbarOldOnError=n}o.handleAnonymousErrors();var t=function(){var e=Array.prototype.slice.call(arguments,0);!function(r,o,e,n){r._rollbarWrappedError&&(n[4]||(n[4]=r._rollbarWrappedError),n[5]||(n[5]=r._rollbarWrappedError._rollbarContext),r._rollbarWrappedError=null);var t=o.handleUncaughtException.apply(o,n);e&&e.apply(r,n),"anonymous"===t&&(o.anonymousErrorsPending+=1)}(r,o,n,e)};e&&(t._rollbarOldOnError=n),r.onerror=t}},captureUnhandledRejections:function(r,o,e){if(r){"function"==typeof r._rollbarURH&&r._rollbarURH.belongsToShim&&r.removeEventListener("unhandledrejection",r._rollbarURH);var n=function(r){var e,n,t;try{e=r.reason}catch(r){e=void 0}try{n=r.promise}catch(r){n="[unhandledrejection] error getting `promise` from event"}try{t=r.detail,!e&&t&&(e=t.reason,n=t.promise)}catch(r){}e||(e="[unhandledrejection] error getting `reason` from event"),o&&o.handleUnhandledRejection&&o.handleUnhandledRejection(e,n)};n.belongsToShim=e,r._rollbarURH=n,r.addEventListener("unhandledrejection",n)}}}}},o={};function e(n){var t=o[n];if(void 0!==t)return t.exports;var a=o[n]={exports:{}};return r[n](a,a.exports,e),a.exports}var n=e(579),t=e(791);_rollbarConfig=_rollbarConfig||{},_rollbarConfig.rollbarJsUrl=_rollbarConfig.rollbarJsUrl||"https://cdn.rollbar.com/rollbarjs/refs/tags/v2.26.5/rollbar.min.js",_rollbarConfig.async=void 0===_rollbarConfig.async||_rollbarConfig.async;var a=n.setupShim(window,_rollbarConfig),l=t(_rollbarConfig);window.rollbar=n.Rollbar,a.loadFull(window,document,!_rollbarConfig.async,_rollbarConfig,l)})();;</script><script src="https://cdn.cookielaw.org/scripttemplates/202601.2.0/otBannerSdk.js" async="" type="text/javascript"></script><script id="" type="text/javascript" async="" src="https://cdn.cookielaw.org/scripttemplates/202601.2.0/otTCF.js"></script></head>
 
     <body x-bot-detector="" x-data="" class="antialiased">
                     <!-- Google Tag Manager (noscript) -->
@@ -162,10 +162,10 @@
         }" id="page-wrapper" class="flex flex-col min-h-screen" :style="{
             '--banner-elem-top-bar-height': `calc(${bannerElemHeight}px + var(--navbar-height))`,
             '--banner-elem-top-bar-nav-height': `calc(${bannerElemHeight}px + var(--navbar-height-full))`
-        }" style="--banner-elem-top-bar-height: calc(82px + var(--navbar-height)); --banner-elem-top-bar-nav-height: calc(82px + var(--navbar-height-full));"><a href="#main-content" class="skip-to-content">
+        }" style="--banner-elem-top-bar-height: calc(80px + var(--navbar-height)); --banner-elem-top-bar-nav-height: calc(80px + var(--navbar-height-full));"><a href="#main-content" class="skip-to-content">
             Skip to content
         </a>
-<header class="fixed w-full transition-transform z-[100] headroom" :class="[
+<header class="fixed w-full transition-transform z-[100]" :class="[
         navBackground ? navBackground : (headerTheme != 'white' ? 'bg-sea-salt' : ''),
         scrolled &amp;&amp; bannerActive
             ? 'lg:-translate-y-banner-elem-top-bar-height'
@@ -175,7 +175,7 @@
     ]" x-ref="header">
 
         
-<div role="alert" class="w-full bg-lightest-misty transition ease-out duration-300 transform translate-y-0" x-show="bannerActive" x-transition:enter="transition ease-out duration-300 transform" x-transition:enter-start="translate-y-[-100%]" x-transition:enter-end="translate-y-0" x-transition:leave="transition ease-in duration-200 transform" x-transition:leave-start="translate-y-0" x-transition:leave-end="translate-y-[-100%]" x-ref="banner" style="">
+<div role="alert" class="w-full bg-lightest-misty " x-show="bannerActive" x-transition:enter="transition ease-out duration-300 transform" x-transition:enter-start="translate-y-[-100%]" x-transition:enter-end="translate-y-0" x-transition:leave="transition ease-in duration-200 transform" x-transition:leave-start="translate-y-0" x-transition:leave-end="translate-y-[-100%]" x-ref="banner" style="display: none;">
     
 
 
@@ -294,119 +294,7 @@
             
                     </div>
                 </form>
-            </template><form x-data="{
-                        get siteOptions() {
-                            const links = document.querySelectorAll('#site-languages a[data-site]');
-                            return Array.from(links).map(el =&gt; ({
-                                value: el.getAttribute('href'),
-                                text: el.textContent.trim(),
-                                site: JSON.parse(el.getAttribute('data-site'))
-                            }));
-                        },
-                        get selectedOption() {
-                            const el = this.$refs.selectSite;
-                            return el.options[el.selectedIndex];
-                        },
-                        onSelectClick() {
-
-                            window.dataLayer = window.dataLayer || [];
-                            window.dataLayer.push({
-                                event: 'banner_interaction',
-                                element_name: this.selectedOption.textContent,
-                                element_location: 'header',
-                                element_action: 'language dropdown'
-                            });
-                        },
-                        onSelectChange() {
-                            const el = this.$refs.selectSite;
-                            window.dataLayer = window.dataLayer || [];
-                            window.dataLayer.push({
-                                event: 'banner_interaction',
-                                element_name: this.selectedOption.textContent,
-                                element_location: 'header',
-                                element_action: 'language toggle'
-                            });
-                        },
-                        onSubmitClick($event) {
-                            window.dataLayer = window.dataLayer || [];
-                            window.dataLayer.push({
-                                event: 'banner_interaction',
-                                element_name: $event.target.textContent,
-                                element_location: 'header',
-                                element_action: 'button click'
-                            });
-                        },
-                        onSubmit() {
-                            window.location.href = this.$refs.selectSite.value;
-                        }
-                    }" x-init="
-                        if (bannerActive) {
-                            window.dataLayer = window.dataLayer || [];
-                            window.dataLayer.push({
-                                event: 'banner_view',
-                                element_name: `Select your preferred language`,
-                                element_location: 'header'
-                            });
-                        }
-                    " @submit.prevent="onSubmit()" class="flex flex-col gap-1.5 py-3 pr-6 md:flex-row md:gap-8 md:items-center md:py-4 md:pr-0 md:min-h-[75px]">
-                                                                                <svg class="shrink-0 aspect-square size-10 md:size-[50px]" width="50" height="50" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 50 50" fill="none">
-  <g id="Group 338064">
-    <rect id="pscbdmohsm-icon_plus" x="50" y="50" width="50" height="50" rx="8" transform="rotate(-180 50 50)" fill="white"></rect>
-    <g id="pscbdmohsm-Group">
-      <path id="pscbdmohsm-Vector" d="M9 36.8937L19.6188 36.8667V40.4522H20.9619L25.5338 36.8607L29.6559 36.8817V18.8789H9V36.8907V36.8937ZM10.7988 20.6807H27.8542V35.0769L24.9132 35.0619L21.4146 37.8081V35.0649L10.7988 35.0919V20.6807Z" fill="#0372E2"></path>
-      <path id="pscbdmohsm-Vector_2" d="M20.6719 9V17.0825H22.4707V10.7988H39.535V23.3722H34.8672V26.1184L31.4525 23.4351V25.7226L35.3229 28.7625H36.666V25.171H41.3338V9H20.6719Z" fill="#0372E2"></path>
-      <path id="pscbdmohsm-Vector_3" d="M17.0987 24.472C16.8829 25.2185 16.751 26.0788 16.7 26.9692H18.5018C18.6097 25.3623 18.9904 24.337 19.2483 23.9653C19.5031 24.337 19.8838 25.3653 19.9918 26.9692H21.7935C21.7426 26.0908 21.6137 25.2424 21.4038 24.5019C22.2642 25.0625 22.8998 25.9409 23.1366 26.9692H24.9624C24.5307 24.2021 22.1443 22.0766 19.2633 22.0586C19.2573 22.0586 19.2513 22.0586 19.2453 22.0586C19.2453 22.0586 19.2423 22.0586 19.2393 22.0586C19.2363 22.0586 19.2303 22.0586 19.2273 22.0586C16.3283 22.0586 13.9269 24.1931 13.4922 26.9722H15.3179C15.5578 25.9229 16.2143 25.0326 17.0957 24.475L17.0987 24.472Z" fill="#0372E2"></path>
-      <path id="pscbdmohsm-Vector_4" d="M24.9672 28.7695H23.1414C22.9046 29.8008 22.269 30.6792 21.4086 31.2368C21.6185 30.4964 21.7474 29.6479 21.7984 28.7695H19.9966C19.8887 30.3764 19.5079 31.4047 19.2531 31.7765C18.9983 31.4047 18.6175 30.3764 18.5066 28.7695H16.7048C16.7558 29.6599 16.8877 30.5204 17.1035 31.2669C16.2192 30.7092 15.5656 29.8188 15.3258 28.7695H13.5C13.9347 31.5486 16.3361 33.6832 19.2351 33.6832C19.2381 33.6832 19.2441 33.6832 19.2471 33.6832C19.2471 33.6832 19.2501 33.6832 19.2531 33.6832C19.2591 33.6832 19.2651 33.6832 19.2711 33.6832C22.1521 33.6652 24.5355 31.5366 24.9702 28.7695H24.9672Z" fill="#0372E2"></path>
-      <path id="pscbdmohsm-Vector_5" d="M27.7547 15.9945C27.7547 15.251 27.1521 14.6484 26.4086 14.6484C25.6651 14.6484 25.0625 15.251 25.0625 15.9945C25.0625 16.738 25.6651 17.3406 26.4086 17.3406C27.1521 17.3406 27.7547 16.738 27.7547 15.9945Z" fill="#0372E2"></path>
-      <path id="pscbdmohsm-Vector_6" d="M32.4031 15.9945C32.4031 15.251 31.8005 14.6484 31.057 14.6484C30.3135 14.6484 29.7109 15.251 29.7109 15.9945C29.7109 16.738 30.3135 17.3406 31.057 17.3406C31.8005 17.3406 32.4031 16.738 32.4031 15.9945Z" fill="#0372E2"></path>
-      <path id="pscbdmohsm-Vector_7" d="M36.9344 15.9945C36.9344 15.251 36.3318 14.6484 35.5883 14.6484C34.8448 14.6484 34.2422 15.251 34.2422 15.9945C34.2422 16.738 34.8448 17.3406 35.5883 17.3406C36.3318 17.3406 36.9344 16.738 36.9344 15.9945Z" fill="#0372E2"></path>
-    </g>
-  </g>
-</svg>
-
-                            
-                                        <div class="space-y-1">
-                                                    <div class="type-theta" :lang="suggestedSite?.language" x-html="suggestedSite?.bannerText || `Select\u0020your\u0020preferred\u0020language`" lang="en-GB">Select your preferred language</div>
-                                            </div>
-
-                    <div class="flex gap-x-4 items-center md:whitespace-nowrap grow">
-                        <div class="relative md:mr-auto">
-                            <label class="flex items-center border-b border-black-ink/30">
-                                <select class="bg-transparent border-0 p-0 pr-2.5 cursor-pointer z-[2]" name="target" style="appearance:none;-webkit-appearance:none;-moz-appearance:none;background-image:none;box-shadow:none !important" x-ref="selectSite" @click="onSelectClick()" @change="onSelectChange()">
-                                    <template x-for="(option, i) in siteOptions" :key="i">
-                                        <option :value="option.value" x-text="option.text" :selected="suggestedSite?.id === option.site.id"></option>
-                                    </template><option :value="option.value" x-text="option.text" :selected="suggestedSite?.id === option.site.id" value="https://www.thetradedesk.com/legal/website-privacy-policy">English</option><option :value="option.value" x-text="option.text" :selected="suggestedSite?.id === option.site.id" value="https://www.thetradedesk.com/uk/" selected="selected">English (UK)</option><option :value="option.value" x-text="option.text" :selected="suggestedSite?.id === option.site.id" value="https://www.thetradedesk.cn/">中文（简体）</option><option :value="option.value" x-text="option.text" :selected="suggestedSite?.id === option.site.id" value="https://www.thetradedesk.com/tw/">中文（繁體）</option><option :value="option.value" x-text="option.text" :selected="suggestedSite?.id === option.site.id" value="https://www.thetradedesk.com/jp/">日本語</option><option :value="option.value" x-text="option.text" :selected="suggestedSite?.id === option.site.id" value="https://www.thetradedesk.com/kr/">한국어</option><option :value="option.value" x-text="option.text" :selected="suggestedSite?.id === option.site.id" value="https://www.thetradedesk.com/de/">Deutsch</option><option :value="option.value" x-text="option.text" :selected="suggestedSite?.id === option.site.id" value="https://www.thetradedesk.com/fr/">Français</option><option :value="option.value" x-text="option.text" :selected="suggestedSite?.id === option.site.id" value="https://www.thetradedesk.com/es/">Español</option>
-                                </select>
-                                <svg class="fill-current w-2.5 h-1.5 -ml-2.5 rotate-180 z-[1]" viewBox="0 0 14 7" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-                                    <path d="M7 0L13.0622 6.75H0.937822L7 0Z" fill="currentColor"></path>
-                                </svg>
-                            </label>
-                        </div>
-
-                        <button class="button-sm button-secondary-black" @click="onSubmitClick($event)">
-                            Continue
-                        </button>
-                                        <button @click="
-                        dismissBanner(),
-                        window.dataLayer = window.dataLayer || [];
-                        window.dataLayer.push({
-                            event: 'banner_interaction',
-                            element_name: 'Select your preferred language',
-                            element_location: 'header',
-                            element_action: 'dismiss'
-                        });
-                    " class="absolute top-2.5 right-2.5 md:static">
-                    <span class="sr-only">Click to close alert</span>
-                    <svg class="w-[31px] h-[31px] text-white hover:opacity-70" viewBox="0 0 31 31" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-    <circle opacity="0.75" cx="15.5" cy="15.5" r="15.5" fill="currentColor"></circle>
-    <path d="M9.92188 9.91992L21.0819 21.0799" stroke="black" stroke-width="2" stroke-linecap="round"></path>
-    <path d="M21.0819 9.91992L9.92188 21.0799" stroke="black" stroke-width="2" stroke-linecap="round"></path>
-</svg>
-
-                </button>
-            
-                    </div>
-                </form>
+            </template>
 
             <template x-if="!siteMismatch &amp;&amp; alertEnabled">
                 <div class="flex flex-col gap-1.5 py-3 pr-7 md:flex-row md:gap-4 md:items-center md:py-4 md:pr-0 md:min-h-[75px]" x-data="" x-init="
@@ -1179,7 +1067,7 @@
 
 
 <div class="max-w-[1490px] px-4 lg:px-10 box-content mx-auto">
-	                            <div class="flex flex-col gap-10 pb-8 h-[95dvh] md:max-h-dvh pt-banner-elem-top-bar-height" :class="[
+	                            <div class="flex flex-col gap-10 pb-8 h-[95dvh] md:max-h-dvh pt-navbar" :class="[
                                     bannerActive ? 'pt-banner-elem-top-bar-height' : 'pt-navbar'
                                 ]">
                                 <ul class="divide-y">
@@ -1730,7 +1618,7 @@
                                         </nav>
 </header>
 
-        <div id="content-wrapper" class="grow pt-navbar lg:pt-navbar-full !pt-banner-elem-top-bar-height lg:!pt-banner-elem-top-bar-nav-height" :class="[
+        <div id="content-wrapper" class="grow pt-navbar lg:pt-navbar-full" :class="[
                 headerTheme == 'white' &amp;&amp; bannerActive ? '!pt-banner-elem-top-bar-height lg:!pt-banner-elem-top-bar-nav-height' : ''
             ]">
             <main id="main-content">            
@@ -2064,6 +1952,8 @@
         });</script><script defer="" src="https://static.cloudflareinsights.com/beacon.min.js/v8c78df7c7c0f484497ecbca7046644da1771523124516" integrity="sha512-8DS7rgIrAmghBFwoOTujcf6D9rXvH8xm8JQ1Ja01h9QX8EzXldiszufYa4IFfKdLUKTTrnSFXLDkUEOTrZQ8Qg==" data-cf-beacon="{&quot;version&quot;:&quot;2024.11.0&quot;,&quot;token&quot;:&quot;28a5291401254c0d819fd5e73b508002&quot;,&quot;server_timing&quot;:{&quot;name&quot;:{&quot;cfCacheStatus&quot;:true,&quot;cfEdge&quot;:true,&quot;cfExtPri&quot;:true,&quot;cfL4&quot;:true,&quot;cfOrigin&quot;:true,&quot;cfSpeedBrain&quot;:true},&quot;location_startswith&quot;:null}}" crossorigin="anonymous"></script>
 
 
+<meta name="facebook-domain-verification" content="tx47z8lqvjbfqr7raqj5h4cmniowrl">
+<meta name="facebook-domain-verification" content="pll156cg6scuz6z66ryu7b3vzvdjef">
 <div class="ms-mobile-select"><div class="ms-gray-layer" style="background: rgba(0, 0, 0, 0.3);"></div>
         <div class="ms-content">
           <div class="ms-btn-bar">
@@ -2079,6 +1969,4 @@
             <div class="ms-select-line"></div>
             <div class="ms-shadow-mask"></div>
           </div>
-        </div></div></div><meta name="facebook-domain-verification" content="tx47z8lqvjbfqr7raqj5h4cmniowrl">
-<meta name="facebook-domain-verification" content="pll156cg6scuz6z66ryu7b3vzvdjef">
-<iframe style="display: none;" name="__tcfapiLocator" title="CMP Locator"></iframe></body></html>
+        </div></div></div><iframe style="display: none;" name="__tcfapiLocator" title="CMP Locator"></iframe></body></html>
