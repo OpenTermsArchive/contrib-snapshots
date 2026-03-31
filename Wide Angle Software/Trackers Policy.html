@@ -41,29 +41,40 @@
   <!-- Set default consent -->
 <script>
 	window.dataLayer = window.dataLayer || [];
-	function gtag(){dataLayer.push(arguments);}
-	
-	if(localStorage.getItem('consentMode') === null){
+	function gtag(){ dataLayer.push(arguments); }
+
+	/* Check that we can access localStorage to avoid JS errors */
+	function readJsonStorage(key) {
+		try {
+			const raw = localStorage.getItem(key);
+			return raw ? JSON.parse(raw) : null;
+		} catch (e) {
+			return null;
+		}
+	}
+
+	const storedConsent = readJsonStorage('consentMode');
+	if (storedConsent === null) {
 		gtag('consent', 'default', {
-			'ad_user_data': 'granted',
-			'ad_personalization': 'granted',
-			'ad_storage': 'granted',
-			'analytics_storage': 'granted'
-//			'wait_for_update': 500
+			ad_user_data: 'granted',
+			ad_personalization: 'granted',
+			ad_storage: 'granted',
+			analytics_storage: 'granted'
 		});
 	} else {
-		gtag('consent', 'default', JSON.parse(localStorage.getItem('consentMode')));
+		gtag('consent', 'default', storedConsent);
 	}
 
 	/* Microsoft Consent */
 	window.uetq = window.uetq || [];
-    if(localStorage.getItem('uetConsent') === null) {
-        window.uetq.push('consent', 'default', {
-            'ad_storage': 'granted' // Default to granted
-        });
-    } else {
-        window.uetq.push('consent', 'update', JSON.parse(localStorage.getItem('uetConsent')));
-    }
+	const storedUetConsent = readJsonStorage('uetConsent');
+	if (storedUetConsent === null) {
+		window.uetq.push('consent', 'default', {
+			ad_storage: 'granted'
+		});
+	} else {
+		window.uetq.push('consent', 'update', storedUetConsent);
+	}
 </script>
 <!-- End Set default consent -->
 
