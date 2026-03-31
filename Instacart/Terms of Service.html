@@ -18,7 +18,7 @@
 
   <!-- segment_amplitude  -->
   <script type="text/javascript">
-  window._ic_event_super_props = {"country_id":840,"currency":"USD","guest":false,"is_new_user":false,"wl_exclusive":"","region":"","referrer_domain":"","user_channel_1":"other","user_channel_2":"terms","user_channel_4":"customer","platform":"web","ahoy_visitor_token":"44523B54-ccbc-403c-b938-d5490fa3aee4","ahoy_visit_token":"2FDEE03F-d76f-4844-ab3c-7a55f627f789","whitelabel_retailer":"instacart","whitelabel_id":1,"user_id":-1};
+  window._ic_event_super_props = {"country_id":840,"currency":"USD","guest":false,"is_new_user":false,"wl_exclusive":"","region":"","referrer_domain":"","user_channel_1":"other","user_channel_2":"terms","user_channel_4":"customer","platform":"web","ahoy_visitor_token":"9CA0C5C4-1af1-4f05-9289-dc557f681ae3","ahoy_visit_token":"60741A78-db9d-4d0b-9e94-0a2a958f37ff","whitelabel_retailer":"instacart","whitelabel_id":1,"user_id":-1};
   !function(){var analytics=window.analytics=window.analytics||[];if(!analytics.initialize)if(analytics.invoked)window.console&&console.error&&console.error("Segment snippet included twice.");else{analytics.invoked=!0;analytics.methods=["trackSubmit","trackClick","trackLink","trackForm","pageview","identify","reset","group","track","ready","alias","debug","page","once","off","on"];analytics.factory=function(t){return function(){var e=Array.prototype.slice.call(arguments);e.unshift(t);analytics.push(e);return analytics}};for(var t=0;t<analytics.methods.length;t++){var e=analytics.methods[t];analytics[e]=analytics.factory(e)}analytics.load=function(t,e){var n=document.createElement("script");n.type="text/javascript";n.async=!0;n.src="https://cdn.segment.com/analytics.js/v1/"+t+"/analytics.min.js";var a=document.getElementsByTagName("script")[0];a.parentNode.insertBefore(n,a);analytics._loadOptions=e};analytics.SNIPPET_VERSION="4.1.0";
 
       analytics.load("9uIMc3rUXySY5rCFhBfRHc6zKHFNrkFv", {
@@ -29,14 +29,14 @@
         }
       });
 
-  var pageViewProps = {"referrer_domain":"","user_channel_1":"other","user_channel_2":"terms","user_channel_4":"customer","platform":"web","ahoy_visitor_token":"44523B54-ccbc-403c-b938-d5490fa3aee4","ahoy_visit_token":"2FDEE03F-d76f-4844-ab3c-7a55f627f789","country_id":840,"currency":"USD"};
+  var pageViewProps = {"referrer_domain":"","user_channel_1":"other","user_channel_2":"terms","user_channel_4":"customer","platform":"web","ahoy_visitor_token":"9CA0C5C4-1af1-4f05-9289-dc557f681ae3","ahoy_visit_token":"60741A78-db9d-4d0b-9e94-0a2a958f37ff","country_id":840,"currency":"USD"};
   window['pageViewProps'] = pageViewProps;
   window['user_channel_props'] = {"user_channel_1":"other","user_channel_2":"terms","user_channel_4":"customer"};
   window['utm_params'] = {}
   pageViewProps.name = window.location.pathname;
   pageViewProps.login_state = "loggedout";
 
-    var superProps = {"referrer_domain":"","platform":"web","ahoy_visitor_token":"44523B54-ccbc-403c-b938-d5490fa3aee4","ahoy_visit_token":"2FDEE03F-d76f-4844-ab3c-7a55f627f789","is_new_user":false,"whitelabel_retailer":"instacart"};
+    var superProps = {"referrer_domain":"","platform":"web","ahoy_visitor_token":"9CA0C5C4-1af1-4f05-9289-dc557f681ae3","ahoy_visit_token":"60741A78-db9d-4d0b-9e94-0a2a958f37ff","is_new_user":false,"whitelabel_retailer":"instacart"};
     analytics.identify(superProps);
 
   analytics.page(pageViewProps);
@@ -70,7 +70,7 @@
       })();
 
       window.dataLayer = window.dataLayer || [];
-      var superProps = {"referrer_domain":"","platform":"web","ahoy_visitor_token":"44523B54-ccbc-403c-b938-d5490fa3aee4","ahoy_visit_token":"2FDEE03F-d76f-4844-ab3c-7a55f627f789","is_new_user":false,"whitelabel_retailer":"instacart"};
+      var superProps = {"referrer_domain":"","platform":"web","ahoy_visitor_token":"9CA0C5C4-1af1-4f05-9289-dc557f681ae3","ahoy_visit_token":"60741A78-db9d-4d0b-9e94-0a2a958f37ff","is_new_user":false,"whitelabel_retailer":"instacart"};
       window.dataLayer.push({ ahoy_visit_token: superProps.ahoy_visit_token, ahoy_visitor_token: superProps.ahoy_visitor_token });
     </script>
 
@@ -683,9 +683,19 @@
   <script>
     Sentry.init({
       dsn: 'https://5f6d34ee575445a0a0e792ec73d8ef51@o502263.ingest.sentry.io/5644305',
-      release: 'instacart@6f08404ab518008b622ad540ef0d523c8a9a638c',
+      release: 'instacart@e77ed9d41302c407b6d899ff4b0a7508b0024802',
       environment: 'production',
-      maxBreadcrumbs: 15
+      maxBreadcrumbs: 15,
+      ignoreErrors: [
+        'ResizeObserver loop',
+        'Non-Error promise rejection captured',
+        /^Script error\.?$/
+      ],
+      denyUrls: [
+        /extensions\//i,
+        /^chrome-extension:\/\//,
+        /^moz-extension:\/\//
+      ]
     })
     Sentry.setTag('side', 'client')
     Sentry.setTag('service', 'web.instacart.customers')
@@ -694,7 +704,7 @@
   </script>
 
 <meta name="csrf-param" content="authenticity_token" />
-<meta name="csrf-token" content="iU4u3e88nXFVjk4S2mSZg-t09oqCyrdJYC70_z8d5yEPvdXWTQqCQERdVorlfinVtHPpZMx3AgZwdPGlGN8keg" />
+<meta name="csrf-token" content="pPaLw1GAF33hqKcx5rKDjSt7pGgsDfPUNkfC29Gl8b5R5iPVNUcWAxO17or-zvP2H5WCHi_Yk7PsV94HxpbUpA" />
 <script>
 //<![CDATA[
 window.gon={};
@@ -867,7 +877,7 @@ Android app
 </script>
 
 <script>
-  CSRF_TOKEN = 'hG3esWWBYboms-xCwLJwIcp6-1D13-5TT0pS-l2poBkCniW6x7d-izdg9Nr_qMB3lX3kvrtiWxxfEFegemtjQg';
+  CSRF_TOKEN = 'XyH4z3r8dJrbORwJQDoEpIDJCTbyDETweUfg8nmGTTiqMVDZHjt15CkkVbJYRnTftCcvQPHZJJejV_wubrVoIg';
 </script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 <script src="https://d2guulkeunn7d8.cloudfront.net/assets/global_commons.webpack_bundle-0a49432c936a9d75.js"></script>
