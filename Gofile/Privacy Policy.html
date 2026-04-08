@@ -23,7 +23,19 @@
     <script src="/dist/js/ui.js"></script>
     <script src="/dist/js/account.js"></script>
     <script src="/dist/js/wt.obf.js"></script>
+    <!-- filemanager modules — must load before filemanager.js -->
+    <script src="/dist/js/filemanager/behaviorRegistry.js"></script>
+    <script src="/dist/js/filemanager/behaviors/standard.js"></script>
+    <script src="/dist/js/filemanager/behaviors/recycle.js"></script>
+    <script src="/dist/js/filemanager/permissions.js"></script>
+    <script src="/dist/js/filemanager/contentLookup.js"></script>
+    <script src="/dist/js/filemanager/api.js"></script>
+    <script src="/dist/js/filemanager/selection.js"></script>
+    <script src="/dist/js/filemanager/render/items.js"></script>
+    <script src="/dist/js/filemanager/render/header.js"></script>
+    <script src="/dist/js/filemanager/render/toolbar.js"></script>
     <script src="/dist/js/filemanager.js"></script>
+    <script src="/dist/js/filemanager/actions.js"></script>
     <script src="/dist/js/upload.js"></script>
     <script src="/dist/js/profile.js"></script>
     <script src="/dist/js/payment.js"></script>
@@ -50,54 +62,64 @@
                 </button>
             </div>
             <div id="index_accounts" class="flex flex-col items-start mb-6">
-                <div id="index_accountList" class="space-y-2 w-full"><div class="relative account_accountItem border-2 border-blue-500 rounded" data-email="guest8820943906">
+                <div id="index_accountList" class="space-y-2 w-full"><div class="relative account_accountItem border-2 border-blue-500 rounded" data-email="guest6078615886">
             <div class="dropdown-toggle flex items-center justify-between p-2 bg-gray-700 rounded hover:bg-gray-600 transition-colors cursor-pointer">
                 <div class="flex items-center gap-2 truncate">
-                    <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAEAAAABACAYAAACqaXHeAAACi0lEQVR4AeyZPUoFQRCEhwUP4A1MxDN4BRMTU1NBvIHmJh7AA5iaeBNDwcQbeACDJ5UV3y7TDIL6eloo6LJremf6x1nfW97OrnY93L0+7Ho4Ob3Z/SV6e5Ovdzb5ljb5TyVg8gZoYQc8X380x+Xte3MwgS+HX60H6sl7a+Wj3vci2/cqm3ryMAFckI1XArJVdPQ8qw44/zxoDgZ0n2z6n+6Pm0MaB/XkrpXtsWRH+lH/KgEMkJ1XArJXODpf2AG6ex0MePF41By6ex2+VrZrt2xpHB5LNtdwP75WNv3kYQK4IBuvBGSraHQe+sMO0N3r0Fw5NJcO98nmA/W+3gP1iuHwZ8l2n2zfq2zGIw8TwAXZeCUgW0VHz7PqAM2RIwoY3ctcr7nsgXry0ef5WWQz3ioBFGTnlYDsFY7OF3aA7loHA7pPNv36n94hTQ+ulc14XDvqpz5MABdk45WAbBUdPc+iOXMwgO5Oh2tlU//bXHtw+F5lcz+ulV0jwAzNxtN3QFTQRXPi0Fw4GMC1svlu7mtl0681PVCvGA76GYv79bWyqa8OYMZm49UBUcU1Nw7qR9/Ne58FyDcaj/vxvcqmn7w6gBmZjVcHsOK8J+knp56c+t53AvJRz3jk1JNH+uoAZmw2Xh0QVZwzpLvVobvb4T7ZXP/fnlcdEFUkuz9dB4wWbPWZoObWwYCcab670+9/H2QzHrk0DsaLnsd4fpYtuzqAGZuNVwdEFd+aG/8dZ9R9shnf53vLpl4xHNHzXCub8cirA5iR2Xh1ACvOGSOnnpyf2/Pepp6cesajnpz7Jae+OoAZmY1XB3BGdHf2QD07hjNM/yiP4nE/vb3LR311wGhFsun3vgN+WpBvAAAA//+635+IAAAABklEQVQDAB+U1T55LBB6AAAAAElFTkSuQmCC" alt="Avatar" class="h-7 w-7 rounded-full">
-                    <span class="text-white truncate">guest8820943906</span>
+                    <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAEAAAABACAYAAACqaXHeAAACg0lEQVR4AeyZwUl1MRCFwytDcP86sAJ70IVoCeLSAlyKPbjQEmxBXAi2INjGk7M7fLlkCHdxucn8cGDOnzOTyWSGXPXw83089eDjeHly9PhKe3f7dWpBmh54LrJ7fKU9lMn/ZQEmb4By+Ls+Ly2wQGdvv8VBX+q5/nB/U1qgPornuciO9IyfI8CKzcazA6Ib58yQ0//55bU4NJcO+pO7VrbHks396E9OPXl2ACsyG88O0Jz14P3iqTjYMXzjue6+Szb1vfF6ziJtdgArPhufrgN4wVUBet9RBow4Z5o88u9dj85TFaB3g73rswB7v8G1+VcdwLeZM8SZ1VvqoH5tgozne8lmPtTzPMynKgAFo/MswOg3HJ2v+p0gZyqaIW6guXRwJqknp95jyaaenPnyPIyfI8AKzsazAzRXDs4IOyJap95jy6Y/uTQOxiOnf7TusWVnB7Bis/HhOyC60Oo7gA5Xn4/FoblxUB/NJPURj+J5LrI9V9mMz3jZAazQbDw7gN/O7ACu6+9zDs4U/aP1Xj3jeS6ymS/jcz07gBWajWcHRDfOn6fJ6c8Z09vsoJ7ctbIZj3rmQ049eXYAKzIbzw7Q97JDc+dgR/Addq1szqDeZgfjkbtWNuNpDwfzYTzXyvazys4OYMVm48N1QO8FhgXgjGmOHFxnApxhrpNHeu7nucjmOuOThwWgw2g8CzDajfaep+oAvb0OzZUjmjH3XbL5bU++5OP/xwMyH89VtvvKpn9VAApG51mA0W84Ol/YAZobh+aqBX1ft8B3nrzlq7XW3lrzXGWvLkAUYO/rYQfs/YBR/lkAvsOasxaiim693spdazxvdsDWN7b1/rvvgLUF/AcAAP//8AUzbgAAAAZJREFUAwB3hPw20QV7PwAAAABJRU5ErkJggg==" alt="Avatar" class="h-7 w-7 rounded-full">
+                    <span class="text-white truncate">guest6078615886</span>
                 </div>
                 <i class="fas fa-angle-down text-white"></i>
             </div>
             <div class="dropdown hidden absolute bg-gray-700 text-white w-full mt-1 rounded shadow-lg z-10 border border-gray-600">
                 <a href="/myprofile" class="block p-2 flex items-center gap-2 hover:bg-gray-600 hover:text-white"><i class="fas fa-user"></i> My Profile</a>
                 <a href="/myfiles" class="block p-2 flex items-center gap-2 hover:bg-gray-600 hover:text-white"><i class="fas fa-folder"></i> My Files</a>
+                
                 <hr class="border-gray-600">
                 
                 <button type="button" class="logout block w-full text-left p-2 flex items-center gap-2 hover:bg-gray-600 hover:text-white"><i class="fas fa-sign-out-alt"></i> Logout</button>
             </div>
-        </div></div>
-                <button role="button" aria-label="Add Account" class="index_addAccount mt-4 flex items-center justify-center gap-2 p-2 text-white bg-blue-600 hover:bg-blue-700 rounded w-full">
-                    <i class="fas fa-plus-circle"></i> Add Account
-                </button>
-            </div>
-            <ul id="index_mainNav" class="space-y-4">
-                <li class="border-b border-gray-700"></li>
-                <li><a href="/" id="index_navHome" class="hover:text-blue-500 flex items-center gap-2" aria-label="Home"><i class="fas fa-home"></i> Home</a></li>
-                <li><a href="/premium" id="index_navPremium" class="hover:text-blue-500 flex items-center gap-2" aria-label="Premium"><i class="fas fa-crown"></i> Premium</a></li>
-                <!-- Desktop App link temporarily disabled (page kept at /desktopapp).
+        </div><button role="button" aria-label="Add Account" class="index_addAccount mt-4 flex items-center justify-center gap-2 p-2 text-white bg-blue-600 hover:bg-blue-700 rounded w-full"><i class="fas fa-plus-circle"></i> Add Account</button></div>
+                <ul id="index_mainNav" class="space-y-4">
+                    <li class="border-b border-gray-700"></li>
+                    <li>
+                        <a href="/" id="index_navHome" class="hover:text-blue-500 flex items-center gap-2" aria-label="Home"><i class="fas fa-home"></i> Home</a>
+                    </li>
+                    <li>
+                        <a href="/premium" id="index_navPremium" class="hover:text-blue-500 flex items-center gap-2" aria-label="Premium"><i class="fas fa-crown"></i> Premium</a>
+                    </li>
+                    <!-- Desktop App link temporarily disabled (page kept at /desktopapp).
                      To re-enable, uncomment the <li> below. -->
-                <!-- <li><a href="/desktopapp" id="index_navDesktopapp" class="hover:text-blue-500 flex items-center gap-2" aria-label="Desktop App"><i class="fas fa-desktop"></i> Desktop App</a></li> -->
-                <li><a href="/api" id="index_navApi" class="hover:text-blue-500 flex items-center gap-2" aria-label="API"><i class="fas fa-cogs"></i> API</a></li>
-                <li><a href="/faq" id="index_navFaq" class="hover:text-blue-500 flex items-center gap-2" aria-label="FAQ"><i class="fas fa-question-circle"></i> FAQ</a></li>
-                <li><a href="/contact" id="index_navContact" class="hover:text-blue-500 flex items-center gap-2" aria-label="Contact"><i class="fas fa-envelope"></i> Contact</a></li>
-            </ul>
-            <div id="index_footerSocial" class="mt-4 border-t border-gray-700 pt-4">
-                <ul>
-                    <li><a href="https://x.com/Gofile_io" target="_blank" rel="noopener noreferrer" class="hover:text-blue-500 flex items-center gap-2" aria-label="Gofile Twitter"><i class="fa-brands fa-x-twitter"></i> @gofile_io</a></li>
+                    <!-- <li><a href="/desktopapp" id="index_navDesktopapp" class="hover:text-blue-500 flex items-center gap-2" aria-label="Desktop App"><i class="fas fa-desktop"></i> Desktop App</a></li> -->
+                    <li>
+                        <a href="/api" id="index_navApi" class="hover:text-blue-500 flex items-center gap-2" aria-label="API"><i class="fas fa-cogs"></i> API</a>
+                    </li>
+                    <li>
+                        <a href="/faq" id="index_navFaq" class="hover:text-blue-500 flex items-center gap-2" aria-label="FAQ"><i class="fas fa-question-circle"></i> FAQ</a>
+                    </li>
+                    <li>
+                        <a href="/contact" id="index_navContact" class="hover:text-blue-500 flex items-center gap-2" aria-label="Contact"><i class="fas fa-envelope"></i> Contact</a>
+                    </li>
                 </ul>
+                <div id="index_footerSocial" class="mt-4 border-t border-gray-700 pt-4">
+                    <ul>
+                        <li>
+                            <a href="https://x.com/Gofile_io" target="_blank" rel="noopener noreferrer" class="hover:text-blue-500 flex items-center gap-2" aria-label="Gofile Twitter"><i class="fa-brands fa-x-twitter"></i>
+                                @gofile_io</a>
+                        </li>
+                    </ul>
+                </div>
             </div>
         </div>
         <div id="index_content" class="flex-1 bg-gray-800 rounded-lg shadow-lg flex flex-col overflow-auto">
-            <header id="index_header" class="bg-gray-800 p-2 flex items-center justify-between rounded-t-lg border-b border-gray-700">
-                <button id="index_toggleSidebar" aria-label="Toggle Sidebar" class="px-2 py-1 bg-blue-600 hover:bg-blue-700 text-white rounded">
-                    <i class="fas fa-bars"></i>
-                </button>
-                <input type="file" multiple="" class="uploadInput hidden">
-            </header>
-            <div id="index_upload" class="p-2 border-b border-gray-700 space-y-2 max-w-full md:max-w-5xl md:mx-auto hidden">
-            </div>
-            <div id="index_ads" class="flex flex-col justify-center items-center p-4 border-b border-gray-700 hidden"></div>
-            <main id="index_main" class="flex-1 p-3 lg:p-6"><div class="max-w-4xl mx-auto space-y-6">
+                <header id="index_header" class="bg-gray-800 p-2 flex items-center justify-between rounded-t-lg border-b border-gray-700">
+                    <button id="index_toggleSidebar" aria-label="Toggle Sidebar" class="px-2 py-1 bg-blue-600 hover:bg-blue-700 text-white rounded">
+                        <i class="fas fa-bars"></i>
+                    </button>
+                    <input type="file" multiple="" class="uploadInput hidden">
+                </header>
+                <div id="index_upload" class="p-2 border-b border-gray-700 space-y-2 max-w-full md:max-w-5xl md:mx-auto hidden"></div>
+                <div id="index_ads" class="flex flex-col justify-center items-center p-4 border-b border-gray-700 hidden"></div>
+                <main id="index_main" class="flex-1 p-3 lg:p-6"><div class="max-w-4xl mx-auto space-y-6">
     <div class="text-center mb-12">
         <h1 class="text-2xl md:text-3xl font-bold text-white mb-4">
             <i class="fas fa-user-shield text-blue-400 mr-2"></i>Privacy Policy
@@ -131,24 +153,31 @@
     </div>
 </div>
 </main>
-            <footer id="index_footer" class="bg-gray-800 p-2 text-center text-sm text-gray-400 border-t border-gray-700 rounded-b-lg flex flex-col lg:flex-row justify-between items-center space-y-2 lg:space-y-0 lg:space-x-2">
-                <div class="flex flex-col items-center space-y-2 lg:flex-row lg:space-y-0 lg:space-x-2">
-                    <a href="/" class="hover:text-blue-500">Home</a>
-                    <span class="hidden lg:inline">|</span>
-                    <a href="/terms" class="hover:text-blue-500">Terms of Service</a>
-                    <span class="hidden lg:inline">|</span>
-                    <a href="/privacy" class="hover:text-blue-500">Privacy Policy</a>
-                    <span class="hidden lg:inline">|</span>
-                    <a href="/copyright" class="hover:text-blue-500">Copyright</a>
-                    <span class="hidden lg:inline">|</span>
-                    <a href="/contact" class="hover:text-blue-500">Contact</a>
-                </div>
-                <div class="text-center lg:text-right">
-                    <p>WOJTEK SAS © <script>document.write(new Date().getFullYear());</script>2026, made with <span class="text-red-500">❤️</span> by Gofile Team</p>
-                </div>                
-            </footer>
+                <footer id="index_footer" class="bg-gray-800 p-2 text-center text-sm text-gray-400 border-t border-gray-700 rounded-b-lg flex flex-col lg:flex-row justify-between items-center space-y-2 lg:space-y-0 lg:space-x-2">
+                    <div class="flex flex-col items-center space-y-2 lg:flex-row lg:space-y-0 lg:space-x-2">
+                        <a href="/" class="hover:text-blue-500">Home</a>
+                        <span class="hidden lg:inline">|</span>
+                        <a href="/terms" class="hover:text-blue-500">Terms of Service</a>
+                        <span class="hidden lg:inline">|</span>
+                        <a href="/privacy" class="hover:text-blue-500">Privacy Policy</a>
+                        <span class="hidden lg:inline">|</span>
+                        <a href="/copyright" class="hover:text-blue-500">Copyright</a>
+                        <span class="hidden lg:inline">|</span>
+                        <a href="/contact" class="hover:text-blue-500">Contact</a>
+                    </div>
+                    <div class="text-center lg:text-right">
+                        <p>
+                            WOJTEK SAS ©
+                            <script>
+                                document.write(new Date().getFullYear());
+                            </script>2026
+                            , made with <span class="text-red-500">❤️</span> by
+                            Gofile Team
+                        </p>
+                    </div>
+                </footer>
+            </div>
         </div>
-    </div>
-
+    
 
 </body></html>
