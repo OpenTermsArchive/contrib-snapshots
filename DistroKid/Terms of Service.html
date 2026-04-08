@@ -24,7 +24,7 @@
 <meta name="msapplication-TileImage" content="/ms-icon-144x144.png">
 <meta name="theme-color" content="#ffffff">
 <script>
-serverTime = new Date('2026-04-07 12:36:40 GMT');
+serverTime = new Date('2026-04-08 12:36:36 GMT');
 </script>
 <title>Terms of Service | DistroKid</title>
 <meta name="description" content="Read DistroKid's Terms of Service">
@@ -73,9 +73,9 @@ initializeDKModal();
 captchaSiteKey = "6Ld_vDcUAAAAABBf4b4MfIPqz5XA53JWQyOh6MX0";
 turnstileSiteKey = "0x4AAAAAAAwjnOrGSKrIkAR9";
 </script>
-<script src="/js/header.js?cacheHash=25d1e6e15ea342b6" 1775565397383></script>
-<script src="/js/distro.js?cacheHash=54264061eb74f258" 1775565397383></script>
-<script src="/js/fixCaps.js?cacheHash=4d712b9355dbb337" 1775565397384></script>
+<script src="/js/header.js?cacheHash=25d1e6e15ea342b6" 1775608596982></script>
+<script src="/js/distro.js?cacheHash=54264061eb74f258" 1775608596982></script>
+<script src="/js/fixCaps.js?cacheHash=4d712b9355dbb337" 1775608596982></script>
 <script src="/js/jquery.kenburns-0.1.js"></script>
 <script src="/js/lazysizes.min.js"></script>
 <script>
@@ -459,7 +459,7 @@ return String(input);
 <div style="position:relative;" class="outer2 navNotLoggedIn">
 <div class="headerLoggedOutNav nav inner2">
 <div class="navInner">
-<input type="hidden" id="forgotPasswordSessionID" name="forgotPasswordSessionID" value="distrokid_65670d4d-dfca-4339-8c64-20977003a6a1_0">
+<input type="hidden" id="forgotPasswordSessionID" name="forgotPasswordSessionID" value="distrokid_fdd5b5b7-4dbe-468d-9202-0e37dc278ed3_0">
 <script type="text/template" id="templateForgotPassword">
 <div class="signinBoxNotification">
 Done! Instructions to reset your password have been emailed.
@@ -648,7 +648,7 @@ Copyright Agent
 DistroKid LLC
 34 Third Ave #183
 New York, NY 10003
-Email: <a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="82eee7e5e3eec2e6ebf1f6f0ede9ebe6ace1edef">[email&#160;protected]</a> <br>
+Email: <a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="3a565f5d5b567a5e53494e485551535e14595557">[email&#160;protected]</a> <br>
 In accordance with the DMCA and other applicable law, DistroKid has adopted a policy of terminating, in appropriate circumstances and in DistroKid's sole discretion, users who are deemed to be repeat infringers. For the avoidance of doubt, the foregoing sentence in no way limits DistroKid's right to limit access to the Services and/or terminate the Accounts of any users for any reason, in DistroKid's sole discretion, including, without limitation, in the case of users who infringe, or allegedly infringe, any Intellectual Property Rights of others, whether or not there is any repeat infringement. <br>
 Please be advised that pursuant to federal law you may be held liable for damages if you make material misrepresentations in a Notice. Thus, if you are not sure that material located on or linked to by the infringes your copyright, you should consider first contacting an attorney. <br>
 <strong>Links to Third-Party Websites or Services</strong><br>
@@ -705,7 +705,7 @@ keepalive: true,
 credentials: 'same-origin',
 headers: {
 'Content-Type': 'application/json',
-'Authorization': 'Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJjbGkiOjEsImlhdCI6MTc3NTU2NTQwMCwiaXNzIjoiaHR0cHM6Ly9kaXN0cm9raWQuY29tIiwic3ViIjowLCJleHAiOjE3NzU1NjkwMDAsImRldiI6IiIsInNjb3BlIjoicmVhZC1wcm9maWxlIiwiYXVkIjoiIn0.J4UvF9ymrIDiIiHw6JOudpK3RnTHtvQLsi7WPvKbyOI'
+'Authorization': 'Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJjbGkiOjEsImlhdCI6MTc3NTYwODU5NywiaXNzIjoiaHR0cHM6Ly9kaXN0cm9raWQuY29tIiwic3ViIjowLCJleHAiOjE3NzU2MTIxOTcsImRldiI6IiIsInNjb3BlIjoicmVhZC1wcm9maWxlIiwiYXVkIjoiIn0.6FDKN2YjsVFEQzUgun98JhOUHUPfzsmislvuM55XsC4'
 },
 body: JSON.stringify({ languageCode: languageCode })
 });
@@ -844,6 +844,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 function initializeDKDataLayer() {
 const queuedEvents = window.dkDataLayer || [];
 window.dkDataLayer = [];
+window.dataLayer = window.dataLayer || [];
 window.dkDataLayer.push = function() {
 Array.prototype.push.apply(this, arguments);
 Array.from(arguments).forEach(argument => {
