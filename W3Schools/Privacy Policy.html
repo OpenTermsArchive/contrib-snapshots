@@ -30,7 +30,7 @@
 <link rel="preload" href="/lib/fonts/SourceSansPro-Regular.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="preload" href="/lib/fonts/freckle-face-v9-latin-regular.woff2" as="font" type="font/woff2" crossorigin> 
 <link rel="stylesheet" href="/lib/topnav/main.v1.0.94.css">
-<link rel="stylesheet" href="/lib/my-learning/main.v1.0.75.css">
+<link rel="stylesheet" href="/lib/my-learning/main.v1.0.80.css">
 <link rel="stylesheet" href="/lib/pathfinder/main.v1.0.12.css">
 <link rel="stylesheet" href="/lib/w3schools.css?v=1.0.1">
 <link rel="stylesheet" href="/plus/plans/main.css?v=1.0.1">
@@ -130,12 +130,13 @@ function w3_getStyleValue(elmnt,style) {
 }
 </script>
 
-<script src="/lib/common-deps/main.v1.0.17.js"></script>
+<script src="/lib/common-deps/main.v1.0.18.js"></script>
 <script src="/lib/user-session/main.v1.0.51.js"></script>
 <script src="/lib/topnav/main.v1.0.94.js"></script>
-<script src="/lib/my-learning/main.v1.0.75.js"></script>
+<script src="/lib/my-learning/main.v1.0.80.js"></script>
 
 </head><body>
+
 
 <div id="tnb-search-suggestions"></div>
 
@@ -4372,7 +4373,7 @@ function w3_getStyleValue(elmnt,style) {
                     class="w3-bar-item w3-button ga-top-drop w3-center w3-round ga-top-drop-exercises"
                     href="/exercises/index.php"
                     title="W3Schools Exercises"
-                    style="display: block; background-color: #21232c; border: 1px solid grey; width: 195px; margin-bottom: 16px"
+                    style="display: block; background-color: #21232c; border: 1px solid grey; width: 235px; margin-bottom: 16px"
                   >
                     What is an Exercise?
                   </a>
@@ -4380,7 +4381,7 @@ function w3_getStyleValue(elmnt,style) {
                     class="w3-bar-item w3-button ga-top-drop w3-center w3-round ga-top-drop-quiztest"
                     href="/quiztest/default.asp"
                     title="W3Schools Quizzes"
-                    style="display: block; background-color: #21232c; border: 1px solid grey; width: 195px; margin-bottom: 16px"
+                    style="display: block; background-color: #21232c; border: 1px solid grey; width: 235px; margin-bottom: 16px"
                   >
                     What is a Quiz?
                   </a>
@@ -4388,9 +4389,17 @@ function w3_getStyleValue(elmnt,style) {
                     class="w3-bar-item w3-button ga-top-drop w3-center w3-round ga-top-drop-challenges"
                     href="/challenges/index.php"
                     title="W3Schools Challenges"
-                    style="display: block; background-color: #21232c; border: 1px solid grey; width: 195px"
+                    style="display: block; background-color: #21232c; border: 1px solid grey; width: 235px; margin-bottom: 16px"
                   >
                     What is a Challenge?
+                  </a>
+                  <a
+                    class="w3-bar-item w3-button ga-top-drop w3-center w3-round ga-top-drop-pp"
+                    href="/practice/index.php"
+                    title="W3Schools Practice Problems"
+                    style="display: block; background-color: #21232c; border: 1px solid grey; width: 235px"
+                  >
+                    What are Practice Problems?
                   </a>
                 </div>
               </div>
@@ -4581,6 +4590,13 @@ function w3_getStyleValue(elmnt,style) {
                   >
                     Challenge
                   </a>
+                  <a
+                    class="ws-btn acclink-text ga-top-drop ga-top-drop-pp-python"
+                    href="/practice/practice_python.php"
+                    title="Python Practice Problems"
+                  >
+                    Problems
+                  </a>
                 </div>
                 <div
                   data-name="sql"
@@ -4659,6 +4675,13 @@ function w3_getStyleValue(elmnt,style) {
                   >
                     Quiz
                   </a>
+                  <a
+                    class="ws-btn acclink-text ga-top-drop ga-top-drop-pp-php"
+                    href="/practice/practice_php.php"
+                    title="PHP Practice Problems"
+                  >
+                    Problems
+                  </a>
                 </div>
                 <div
                   data-name="java"
@@ -4692,6 +4715,14 @@ function w3_getStyleValue(elmnt,style) {
                   >
                     Challenge
                   </a>
+                  <a
+                    class="ws-btn acclink-text ga-top-drop ga-top-drop-pp-java"
+                    href="/practice/practice_java.php"
+                    title="Java Practice Problems"
+                  >
+                    Problems
+                  </a>
+
                 </div>
                 <div
                   data-name="c"
@@ -4724,6 +4755,13 @@ function w3_getStyleValue(elmnt,style) {
                     title="C Challenges"
                   >
                     Challenge
+                  </a>
+                  <a
+                    class="ws-btn acclink-text ga-top-drop ga-top-drop-pp-c"
+                    href="/practice/practice_c.php"
+                    title="C Practice Problems"
+                  >
+                    Problems
                   </a>
                 </div>
                 <div
@@ -4758,6 +4796,14 @@ function w3_getStyleValue(elmnt,style) {
                   >
                     Challenge
                   </a>
+                  <a
+                    class="ws-btn acclink-text ga-top-drop ga-top-drop-pp-cpp"
+                    href="/practice/practice_cpp.php"
+                    title="C++ Practice Problems"
+                  >
+                    Problems
+                  </a>
+
                 </div>
                 <div
                   data-name="c#"
@@ -4783,6 +4829,13 @@ function w3_getStyleValue(elmnt,style) {
                     title="C# Quizzes"
                   >
                     Quiz
+                  </a>
+                  <a
+                    class="ws-btn acclink-text ga-top-drop ga-top-drop-pp-cs"
+                    href="/practice/practice_csharp.php"
+                    title="C# Practice Problems"
+                  >
+                    Problems
                   </a>
                 </div>
                 <div
@@ -4810,6 +4863,13 @@ function w3_getStyleValue(elmnt,style) {
                   >
                     Quiz
                   </a>
+                  <a
+                    class="ws-btn acclink-text ga-top-drop ga-top-drop-pp-r"
+                    href="/practice/practice_r.php"
+                    title="R Practice Problems"
+                  >
+                    Problems
+                  </a>
                 </div>
                 <div
                   data-name="kotlin"
@@ -4835,6 +4895,13 @@ function w3_getStyleValue(elmnt,style) {
                     title="Kotlin Quizzes"
                   >
                     Quiz
+                  </a>
+                  <a
+                    class="ws-btn acclink-text ga-top-drop ga-top-drop-pp-kotlin"
+                    href="/practice/practice_kotlin.php"
+                    title="Kotlin Practice Problems"
+                  >
+                    Problems
                   </a>
                 </div>
                 <div
@@ -4888,6 +4955,14 @@ function w3_getStyleValue(elmnt,style) {
                   >
                     Quiz
                   </a>
+                  <a
+                    class="ws-btn acclink-text ga-top-drop ga-top-drop-pp-nodejs"
+                    href="/practice/practice_javascript.php"
+                    title="Node.js Practice Problems"
+                  >
+                    Problems
+                  </a>
+
                 </div>
                 <div
                   data-name="postgresql"
@@ -4939,6 +5014,13 @@ function w3_getStyleValue(elmnt,style) {
                     title="TypeScript Quizzes"
                   >
                     Quiz
+                  </a>
+                  <a
+                    class="ws-btn acclink-text ga-top-drop ga-top-drop-pp-typescript"
+                    href="/practice/practice_typescript.php"
+                    title="TypeScript Practice Problems"
+                  >
+                    Problems
                   </a>
                 </div>
                 <div
@@ -5029,6 +5111,39 @@ function w3_getStyleValue(elmnt,style) {
                     title="MongoDB Exercises"
                   >
                     Exercise
+                  </a>
+                </div>
+                <div
+                  data-name="swift"
+                  data-category="backend"
+                >
+                  <a
+                    class="w3-bar-item w3-button acctop-link ga-top-drop ga-top-drop-ex-swift"
+                    href="/swift/swift_exercises.asp"
+                    title="Swift Exercises"
+                  >
+                    Swift
+                  </a>
+                  <a
+                    class="ws-btn acclink-text ga-top-drop ga-top-drop-ex-swift"
+                    href="/swift/swift_exercises.asp"
+                    title="Swift Exercises"
+                  >
+                    Exercise
+                  </a>
+                  <a
+                    class="ws-btn acclink-text ga-top-drop ga-top-drop-qz-typescript"
+                    href="/swift/swift_quiz.asp"
+                    title="Swift Quizzes"
+                  >
+                    Quiz
+                  </a>
+                  <a
+                    class="ws-btn acclink-text ga-top-drop ga-top-drop-pp-typescript"
+                    href="/practice/practice_swift.php"
+                    title="Swift Practice Problems"
+                  >
+                    Problems
                   </a>
                 </div>
                 <!--
@@ -5201,7 +5316,7 @@ function w3_getStyleValue(elmnt,style) {
                     class="w3-bar-item w3-button ga-top-drop w3-center w3-round ga-top-drop-exercises"
                     href="/exercises/index.php"
                     title="W3Schools Exercises"
-                    style="display: block; background-color: #21232c; border: 1px solid grey; width: 195px; margin-bottom: 16px"
+                    style="display: block; background-color: #21232c; border: 1px solid grey; width: 230px; margin-bottom: 16px"
                   >
                     What is an Exercise?
                   </a>
@@ -5209,7 +5324,7 @@ function w3_getStyleValue(elmnt,style) {
                     class="w3-bar-item w3-button ga-top-drop w3-center w3-round ga-top-drop-quiztest"
                     href="/quiztest/default.asp"
                     title="W3Schools Quizzes"
-                    style="display: block; background-color: #21232c; border: 1px solid grey; width: 195px; margin-bottom: 16px"
+                    style="display: block; background-color: #21232c; border: 1px solid grey; width: 230px; margin-bottom: 16px"
                   >
                     What is a Quiz?
                   </a>
@@ -5217,9 +5332,17 @@ function w3_getStyleValue(elmnt,style) {
                     class="w3-bar-item w3-button ga-top-drop w3-center w3-round ga-top-drop-challenges"
                     href="/challenges/index.php"
                     title="W3Schools Code Challenges"
-                    style="display: block; background-color: #21232c; border: 1px solid grey; width: 195px"
+                    style="display: block; background-color: #21232c; border: 1px solid grey; width: 230px; margin-bottom: 16px"
                   >
                     What is a Code Challenge?
+                  </a>
+                  <a
+                    class="w3-bar-item w3-button ga-top-drop w3-center w3-round ga-top-drop-pp"
+                    href="/practice/index.php"
+                    title="W3Schools Practice Problems"
+                    style="display: block; background-color: #21232c; border: 1px solid grey; width: 230px"
+                  >
+                    What is a Practice Problem?
                   </a>
                 </div>
               </div>
@@ -7694,6 +7817,14 @@ function w3_getStyleValue(elmnt,style) {
       </nav>
     </div>
   </div>
+
+
+
+  <div id="googleSearch">
+    <div class="gcse-search"></div>
+  </div>
+</div>
+
 
 
 
