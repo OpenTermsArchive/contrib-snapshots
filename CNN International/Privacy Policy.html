@@ -55,35 +55,53 @@ window._wpemojiSettings = {"baseUrl":"https:\/\/s.w.org\/images\/core\/emoji\/16
 .wp-block-button__link{color:#fff;background-color:#32373c;border-radius:9999px;box-shadow:none;text-decoration:none;padding:calc(.667em + 2px) calc(1.333em + 2px);font-size:1.125em}.wp-block-file__button{background:#32373c;color:#fff;text-decoration:none}
 </style>
 <link rel="stylesheet" id="wpml-legacy-dropdown-click-0-css" href="https://www.wbdprivacy.com/wp-content/plugins/sitepress-multilingual-cms/templates/language-switchers/legacy-dropdown-click/style.min.css?ver=1" media="all">
-<link rel="stylesheet" id="privacycenter-css" href="https://www.wbdprivacy.com/wp-content/themes/privacycenter/dist/app.min.css?ver=1762364185" media="all">
+<link rel="stylesheet" id="privacycenter-css" href="https://www.wbdprivacy.com/wp-content/themes/privacycenter/dist/app.min.css?ver=1776792093" media="all">
 <script type="text/javascript" id="privacycenterscripts-js-extra">
 /* <![CDATA[ */
 var privacycenterjs = {"ajax_url":"https:\/\/www.wbdprivacy.com\/wp-admin\/admin-ajax.php"};
-var php_var = {"required":"This field is required.","email":"Please enter a valid email address.","pattern":"Invalid format.","noSpaceFirstName":"Please enter a valid First Name without spaces","noSpaceLastName":" Please enter a valid Last Name without spaces"};
+var php_var = {"required":"This field is required.","email":"Please enter a valid email address.","pattern":"Invalid format.","noSpaceFirstName":"Please enter a valid First Name without spaces","noSpaceLastName":"Please enter a valid Last Name without spaces","brMobileInvalid":"Please enter a valid mobile number."};
 /* ]]> */
 </script>
-<script type="text/javascript" src="https://www.wbdprivacy.com/wp-content/themes/privacycenter/dist/app.min.js?ver=1762364185" id="privacycenterscripts-js"></script>
+<script type="text/javascript" src="https://www.wbdprivacy.com/wp-content/themes/privacycenter/dist/app.min.js?ver=1776792094" id="privacycenterscripts-js"></script>
 <script type="text/javascript" src="https://www.wbdprivacy.com/wp-content/plugins/sitepress-multilingual-cms/templates/language-switchers/legacy-dropdown-click/script.min.js?ver=1" id="wpml-legacy-dropdown-click-0-js"></script>
 <link rel="https://api.w.org/" href="https://www.wbdprivacy.com/wp-json/"><link rel="alternate" title="oEmbed (JSON)" type="application/json+oembed" href="https://www.wbdprivacy.com/wp-json/oembed/1.0/embed?url=https%3A%2F%2Fwww.wbdprivacy.com%2Fpolicycenter%2Fb2c%2F">
 <link rel="alternate" title="oEmbed (XML)" type="text/xml+oembed" href="https://www.wbdprivacy.com/wp-json/oembed/1.0/embed?url=https%3A%2F%2Fwww.wbdprivacy.com%2Fpolicycenter%2Fb2c%2F&amp;format=xml">
 <meta name="generator" content="WPML ver:4.7.4 stt:1,42,2;">
 	<script>
-        jQuery(document).ready(function(){
-		jQuery.validator.addMethod("noSpaceFirstName", function(value, element) {
-		return value.indexOf(" ") < 0 && value != "";
-		}, php_var.noSpaceFirstName);
-		jQuery.validator.addMethod("noSpaceLastName", function(value, element) {
-		return value.indexOf(" ") < 0 && value != "";
-		}, php_var.noSpaceLastName);
-
-	});
-	jQuery.extend(jQuery.validator.messages, {
-		required: php_var.required,
-		email: php_var.email,
-		pattern: php_var.pattern,
-	});
+		jQuery(document).ready(function() {
+			jQuery.validator.addMethod("noSpaceFirstName", function(value, element) {
+				return value.indexOf(" ") < 0 && value != "";
+			}, php_var.noSpaceFirstName);
+			jQuery.validator.addMethod("noSpaceLastName", function(value, element) {
+				return value.indexOf(" ") < 0 && value != "";
+			}, php_var.noSpaceLastName);
+			jQuery.validator.addMethod("brMobileNational", function(value, element) {
+				var $radios = jQuery('input[name="subjectSubType"][type="radio"]');
+				var subjectSubType;
+				if ($radios.length) {
+					subjectSubType = $radios.filter(':checked').val();
+				} else {
+					subjectSubType = jQuery('input[name="subjectSubType"]').val();
+				}
+				if (subjectSubType === undefined || subjectSubType === '') {
+					subjectSubType = jQuery('input[name="subjectSubType"][type="hidden"]').val();
+				}
+				if (subjectSubType !== 'CONSUMER') {
+					return true;
+				}
+				if (jQuery('input[name="brMobileAccountUsed"]:checked').val() !== 'YES') {
+					return true;
+				}
+				var digits = String(value).replace(/\D/g, '');
+				return digits.length === 10;
+			}, php_var.brMobileInvalid);
+		});
+		jQuery.extend(jQuery.validator.messages, {
+			required: php_var.required,
+			email: php_var.email,
+			pattern: php_var.pattern,
+		});
 	</script>
-
 <style type="text/css"> 
 
  
@@ -471,7 +489,33 @@ clearInterval(waitforOT);
 
 		</div>
 		<!-- /wrapper -->
+        <script>
+            jQuery(function($) {
+                var translatedText = 'Cookie Settings';
 
+                // Function to update the text
+                function updateCookieSettingsText() {
+                    var menuItem = $('.ot-sdk-show-settings');
+                    if (menuItem.length && menuItem.text() !== translatedText) {
+                        menuItem.text(translatedText);
+                    }
+                }
+
+                // Check once when DOM is ready
+                updateCookieSettingsText();
+
+                // Watch for changes in the DOM (when OneTrust loads)
+                var observer = new MutationObserver(function(mutations) {
+                    updateCookieSettingsText();
+                });
+
+                // Observe the body for added nodes
+                observer.observe(document.body, {
+                    childList: true,
+                    subtree: true
+                });
+            });
+        </script>
 		<script type="speculationrules">
 {"prefetch":[{"source":"document","where":{"and":[{"href_matches":"\/*"},{"not":{"href_matches":["\/wp-*.php","\/wp-admin\/*","\/wp-content\/uploads\/*","\/wp-content\/*","\/wp-content\/plugins\/*","\/wp-content\/themes\/privacycenter\/*","\/*\\?(.+)"]}},{"not":{"selector_matches":"a[rel~=\"nofollow\"]"}},{"not":{"selector_matches":".no-prefetch, .no-prefetch a"}}]},"eagerness":"conservative"}]}
 </script>
