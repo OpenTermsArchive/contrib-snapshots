@@ -24,7 +24,7 @@
 <meta name="msapplication-TileImage" content="/ms-icon-144x144.png">
 <meta name="theme-color" content="#ffffff">
 <script>
-serverTime = new Date('2026-04-28 12:36:01 GMT');
+serverTime = new Date('2026-04-28 12:37:08 GMT');
 </script>
 <title>Terms of Service | DistroKid</title>
 <meta name="description" content="Read DistroKid's Terms of Service">
@@ -73,9 +73,9 @@ initializeDKModal();
 captchaSiteKey = "6Ld_vDcUAAAAABBf4b4MfIPqz5XA53JWQyOh6MX0";
 turnstileSiteKey = "0x4AAAAAAAwjnOrGSKrIkAR9";
 </script>
-<script src="/js/header.js?cacheHash=25d1e6e15ea342b6" 1777336558892></script>
-<script src="/js/distro.js?cacheHash=172e2f38c9fd5126" 1777336558892></script>
-<script src="/js/fixCaps.js?cacheHash=4d712b9355dbb337" 1777336558893></script>
+<script src="/js/header.js?cacheHash=25d1e6e15ea342b6" 1777379826920></script>
+<script src="/js/distro.js?cacheHash=172e2f38c9fd5126" 1777379826923></script>
+<script src="/js/fixCaps.js?cacheHash=4d712b9355dbb337" 1777379826925></script>
 <script src="/js/jquery.kenburns-0.1.js"></script>
 <script src="/js/lazysizes.min.js"></script>
 <script>
@@ -284,6 +284,10 @@ document.head.appendChild(osanoScript);
 const TELEMETRY_API_URL = "https://uwwgok9jpj.execute-api.us-east-1.amazonaws.com/prod/v1";
 const TELEMETRY_API_KEY = "vueDCNdxj68BeTSQJeiKL2A0FXOmee1Z2eoRVH6Z";
 const VERBOSE_DEBUG_ENABLED = false;
+const LOCALDEV_LOG = false;
+if(LOCALDEV_LOG) {
+const TELEMETRY_LOG_AUTH_USER_ID = 0;
+}
 const events = {
 "Checkout Started": { method: "checkout-started" },
 "Order Completed": { method: "order-completed" },
@@ -342,6 +346,49 @@ return {
 function getTimeZone() {
 return Intl.DateTimeFormat().resolvedOptions().timeZone;
 }
+/**
+* On localdev only, mirrors TelemetrySingleEntryClient: POST parsed Kinesis shard/sequence to tblDistroLog via /api/log/.
+* Requires a logged-in session (TELEMETRY_LOG_AUTH_USER_ID); anonymous traffic is skipped.
+*
+* @param method Telemetry event_type / client method (e.g. page-viewed).
+* @param status HTTP status from the telemetry API response.
+* @param responseText Raw response body text from the telemetry API.
+*/
+function logTelemetrySingleEntryResponseToServerIfLocaldev(method, status, responseText) {
+if (status !== 200) {
+return;
+}
+if (!TELEMETRY_LOG_AUTH_USER_ID) {
+return;
+}
+let parsed;
+try {
+parsed = JSON.parse(responseText);
+} catch (parseErr) {
+return;
+}
+const shardId = Object.prototype.hasOwnProperty.call(parsed, "kinesisShardId")
+? String(parsed.kinesisShardId)
+: "";
+const seq = Object.prototype.hasOwnProperty.call(parsed, "kinesisSequenceNumber")
+? String(parsed.kinesisSequenceNumber)
+: "";
+const params = new URLSearchParams();
+params.set("action", "telemetry: client " + method);
+params.set("notes", "telemetry ok (client) event=" + method + " shardId=" + shardId + " seq=" + seq);
+params.set("userId", String(TELEMETRY_LOG_AUTH_USER_ID));
+params.set("longnotes", responseText);
+fetch("/api/log/", {
+method: "POST",
+credentials: "same-origin",
+headers: {
+"Content-Type": "application/x-www-form-urlencoded;charset=UTF-8",
+},
+body: params.toString(),
+}).catch(function() {
+// Best-effort localdev mirror; ignore /api/log failures.
+});
+}
 function sendToSingleEntryEndpoint(method, segmentData) {
 const endpoint = `${TELEMETRY_API_URL}/event/`;
 // Extract date and hour for Iceberg partitioning
@@ -371,6 +418,9 @@ headers: {
 })
 .then(async response => {
 const responseText = await response.text();
+if( LOCALDEV_LOG ){
+logTelemetrySingleEntryResponseToServerIfLocaldev(method, response.status, responseText);
+}
 if (VERBOSE_DEBUG_ENABLED) {
 Sentry.captureMessage(`[Telemetry-SingleEntry] Debug: [${method}]`, {
 "extra": {
@@ -474,7 +524,7 @@ return String(input);
 <div style="position:relative;" class="outer2 navNotLoggedIn">
 <div class="headerLoggedOutNav nav inner2">
 <div class="navInner">
-<input type="hidden" id="forgotPasswordSessionID" name="forgotPasswordSessionID" value="distrokid_d00cd971-505a-436a-bee3-9ec69910b042_0">
+<input type="hidden" id="forgotPasswordSessionID" name="forgotPasswordSessionID" value="distrokid_32b89cf2-4035-4272-a4ce-cbf86c8ac911_0">
 <script type="text/template" id="templateForgotPassword">
 <div class="signinBoxNotification">
 Done! Instructions to reset your password have been emailed.
@@ -663,7 +713,7 @@ Copyright Agent
 DistroKid LLC
 34 Third Ave #183
 New York, NY 10003
-Email: <a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="7e121b191f123e1a170d0a0c1115171a501d1113">[email&#160;protected]</a> <br>
+Email: <a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="8ae6efedebe6caeee3f9fef8e5e1e3eea4e9e5e7">[email&#160;protected]</a> <br>
 In accordance with the DMCA and other applicable law, DistroKid has adopted a policy of terminating, in appropriate circumstances and in DistroKid's sole discretion, users who are deemed to be repeat infringers. For the avoidance of doubt, the foregoing sentence in no way limits DistroKid's right to limit access to the Services and/or terminate the Accounts of any users for any reason, in DistroKid's sole discretion, including, without limitation, in the case of users who infringe, or allegedly infringe, any Intellectual Property Rights of others, whether or not there is any repeat infringement. <br>
 Please be advised that pursuant to federal law you may be held liable for damages if you make material misrepresentations in a Notice. Thus, if you are not sure that material located on or linked to by the infringes your copyright, you should consider first contacting an attorney. <br>
 <strong>Links to Third-Party Websites or Services</strong><br>
@@ -720,7 +770,7 @@ keepalive: true,
 credentials: 'same-origin',
 headers: {
 'Content-Type': 'application/json',
-'Authorization': 'Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJjbGkiOjEsImlhdCI6MTc3NzMzNjU2MSwiaXNzIjoiaHR0cHM6Ly9kaXN0cm9raWQuY29tIiwic3ViIjowLCJleHAiOjE3NzczNDAxNjEsImRldiI6IiIsInNjb3BlIjoicmVhZC1wcm9maWxlIiwiYXVkIjoiIn0.sjIT5_XKD7wDEmaLaN9j6drNGNOvDfMw4kk3KB413sk'
+'Authorization': 'Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJjbGkiOjEsImlhdCI6MTc3NzM3OTgyOCwiaXNzIjoiaHR0cHM6Ly9kaXN0cm9raWQuY29tIiwic3ViIjowLCJleHAiOjE3NzczODM0MjgsImRldiI6IiIsInNjb3BlIjoicmVhZC1wcm9maWxlIiwiYXVkIjoiIn0.GbyhQIlDobm-n6oSzWbSKSQTPAfdxp50C_tjetoxaaU'
 },
 body: JSON.stringify({ languageCode: languageCode })
 });
