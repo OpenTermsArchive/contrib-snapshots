@@ -4,7 +4,7 @@
 </script>
     
     <script type="text/javascript" charset="utf-8" id="head_inline_scripts">
-var thryvData = {"env":"live","envs_info":{"US":{"name":"United States","adj":"United States","timezone":"America\/Chicago","url":"https:\/\/www.thryv.com","country_code":"+1"},"AU":{"name":"Australia","adj":"Australian","timezone":"Australia\/Sydney","url":"https:\/\/www.thryv.com.au","country_code":"+61"},"CA":{"name":"Canada","adj":"Canadian","timezone":"America\/Winnipeg","url":"https:\/\/www.thryv.ca","country_code":"+1"},"NZ":{"name":"New Zealand","adj":"New Zealand","timezone":"NZ","url":"https:\/\/www.thryv.co.nz","country_code":"+64"},"TEST":"111"},"thryv_country":"US","thryv_country_alpha2_code":"US","nonce":"fc6f3d2bf6","ajax_url":"https:\/\/www.thryv.com\/wp-admin\/admin-ajax.php","site_url":"https:\/\/www.thryv.com","permalink":"https:\/\/www.thryv.com\/terms-of-use\/","current_url":"https:\/\/www.thryv.com\/terms-of-use\/","current_path":"\/terms-of-use\/","current_query":null,"is_front_page":false,"recaptcha":{"invisible_v2_site_key":"6Ldng9YZAAAAADAfRl9_TJrMuqzCazql0pZmOa73"},"geoip":{"country":"IE"},"js_callbacks_queue":[],"tealium_tags_loaded":[],"is_mobile":false,"string_translations":[],"theme_version":"3.30.12","intercom_status":false};
+var thryvData = {"env":"live","envs_info":{"US":{"name":"United States","adj":"United States","timezone":"America\/Chicago","url":"https:\/\/www.thryv.com","country_code":"+1"},"AU":{"name":"Australia","adj":"Australian","timezone":"Australia\/Sydney","url":"https:\/\/www.thryv.com.au","country_code":"+61"},"CA":{"name":"Canada","adj":"Canadian","timezone":"America\/Winnipeg","url":"https:\/\/www.thryv.ca","country_code":"+1"},"NZ":{"name":"New Zealand","adj":"New Zealand","timezone":"NZ","url":"https:\/\/www.thryv.co.nz","country_code":"+64"},"TEST":"111"},"thryv_country":"US","thryv_country_alpha2_code":"US","nonce":"24b9e94d45","ajax_url":"https:\/\/www.thryv.com\/wp-admin\/admin-ajax.php","site_url":"https:\/\/www.thryv.com","permalink":"https:\/\/www.thryv.com\/terms-of-use\/","current_url":"https:\/\/www.thryv.com\/terms-of-use\/","current_path":"\/terms-of-use\/","current_query":null,"is_front_page":false,"recaptcha":{"invisible_v2_site_key":"6Ldng9YZAAAAADAfRl9_TJrMuqzCazql0pZmOa73"},"geoip":{"country":"IE"},"js_callbacks_queue":[],"tealium_tags_loaded":[],"is_mobile":false,"string_translations":[],"theme_version":"3.30.12","intercom_status":false};
 function DOMReady(callback){var callbackDelay=arguments.length>1&&void 0!==arguments[1]?arguments[1]:1;"complete"===document.readyState||"interactive"===document.readyState?setTimeout(callback,callbackDelay):document.addEventListener("DOMContentLoaded",function(){setTimeout(callback,callbackDelay)})}window.thryvData=window.thryvData||{},window.TealiumEnrichments=[],window.thryvData=window.thryvData||{},window.thryvData.version="1.0.2",window.thryvData.dispatchAnEvent=function(eventName){var detail,element=arguments.length>2&&void 0!==arguments[2]?arguments[2]:document,CustomEventObject=new CustomEvent(eventName,{detail:arguments.length>1&&void 0!==arguments[1]?arguments[1]:{}});element.dispatchEvent(CustomEventObject)},window.thryvData.clearIntervalAfter=function(callback){var timeoutDelay=arguments.length>1&&void 0!==arguments[1]?arguments[1]:5e3,intervalDelay,intervalID=setInterval(callback,arguments.length>2&&void 0!==arguments[2]?arguments[2]:500);return setTimeout(function(){clearInterval(intervalID)},timeoutDelay),intervalID},window.thryvData.execWhen=function(condition,callback){var timeoutDelay=arguments.length>2&&void 0!==arguments[2]?arguments[2]:1e4,intervalDelay=arguments.length>3&&void 0!==arguments[3]?arguments[3]:200;if(("string"==typeof condition||"function"==typeof condition)&&"function"==typeof callback)var conditionResult,intervalID=window.thryvData.clearIntervalAfter(function(){try{if(conditionResult="function"==typeof condition?condition():eval(condition),"boolean"!=typeof conditionResult)return void clearInterval(intervalID);!0===conditionResult&&(callback(),clearInterval(intervalID))}catch(error){clearInterval(intervalID),console.error("Error evaluating condition:",error)}},timeoutDelay,intervalDelay)},window.thryvData.enqueueScript=function(scripts){var callback=arguments.length>1&&void 0!==arguments[1]&&arguments[1],key,key2,script,scriptId,scriptUrl,scriptElem,scriptExists,scriptsLength,scriptsLoaded,scriptAttributes;for(key in scriptsLoaded=scriptsLength=0,scripts)scriptsLength++;for(key in scripts)if(void 0===scripts[key].id&&(scripts[key].id=key),scriptId=(script=scripts[key]).id,scriptUrl=script.url,scriptAttributes=void 0===script.attributes?{}:script.attributes,scriptExists=document.querySelector("script#"+scriptId))scriptExists&&"function"==typeof script.onload?(script.onload(),scriptsLoaded++):scriptExists&&void 0===script.onload&&scriptsLoaded++;else{for(key2 in(scriptElem=document.createElement("script")).src=scriptUrl,scriptElem.type="text/javascript",scriptElem.id=scriptId,scriptAttributes)scriptElem.setAttribute(key2,scriptAttributes[key2]);if(document.head)document.head.appendChild(scriptElem);else{if(!document.body)return;document.body.appendChild(scriptElem)}scriptElem.onload=function(script){script=scripts[script.target.getAttribute("id")],scriptsLoaded++,"function"==typeof script.onload&&script.onload()}}if("function"==typeof callback)var interval=setInterval(function(){scriptsLength===scriptsLoaded&&(callback(),clearInterval(interval))},100)},window.thryvData.enqueueStyle=function(styles){var key,key2,style,styleId,styleUrl,styleMedia,styleElem,styleExists,stylesLength,stylesLoaded,styleAttributes;for(key in styles)if(void 0===styles[key].id&&(styles[key].id=key),styleId=(style=styles[key]).id,styleUrl=style.url,styleAttributes=void 0===style.attributes?{}:style.attributes,!(styleExists=document.querySelector("link#"+styleId))){for(key2 in(styleElem=document.createElement("link")).id=styleId,styleElem.rel="stylesheet",styleElem.type="text/css",styleElem.media="all",styleElem.href=styleUrl,styleAttributes)styleElem[key2]=styleAttributes[key2];if(document.head)document.head.appendChild(styleElem);else{if(!document.body)return;document.body.appendChild(styleElem)}}},window.thryvData.getUrlParam=function(){var name=arguments.length>0&&void 0!==arguments[0]&&arguments[0],type=arguments.length>1&&void 0!==arguments[1]?arguments[1]:"url",urlParamsStr=window.location.search,hashParamsStr=window.location.hash.replace("#",""),params="url"==type?new URLSearchParams(urlParamsStr):new URLSearchParams(hashParamsStr);return name?params.get(name):Object.fromEntries(params)},window.thryvData=window.thryvData||{},window.thryvData.QueueRunner={queue:[],runningCount:0,add:function add(task){this.queue.push(task),this.run()},run:function run(){var _this=this;if(0!==this.queue.length){var task=this.queue.shift();this.runningCount++,task(function(){_this.runningCount--,_this.run()})}}};
 //# sourceMappingURL=head-inline-scripts.min.js.map
 
@@ -90,263 +90,7 @@ function DOMReady(callback){var callbackDelay=arguments.length>1&&void 0!==argum
 img:is([sizes=auto i],[sizes^="auto," i]){contain-intrinsic-size:3000px 1500px}
 /*# sourceURL=wp-img-auto-sizes-contain-inline-css */
 </style>
-<link data-minify="1" rel='stylesheet' id='thryv-block-business-scan-style-css' href='https://www.thryv.com/wp-content/cache/min/1/wp-content/plugins/thryv-free-tools/build/business-scan/style-index.css?ver=1777060910' type='text/css' media='all' />
-<style id='thryv-block-content-section-style-inline-css' type='text/css'>
-.wp-block-thryv-block-content-section .columns-justify-content-start .wp-block-columns{justify-content:flex-start!important}.wp-block-thryv-block-content-section .columns-justify-content-end .wp-block-columns{justify-content:flex-end!important}.wp-block-thryv-block-content-section .columns-justify-content-center .wp-block-columns{justify-content:center!important}.wp-block-thryv-block-content-section .columns-justify-content-between .wp-block-columns{justify-content:space-between!important}.wp-block-thryv-block-content-section .columns-justify-content-around .wp-block-columns{justify-content:space-around!important}
-
-/*# sourceURL=https://www.thryv.com/wp-content/plugins/thryv-free-tools/build/content-section/style-index.css */
-</style>
-<link data-minify="1" rel='stylesheet' id='thryv-block-estimate-generator-style-css' href='https://www.thryv.com/wp-content/cache/min/1/wp-content/plugins/thryv-free-tools/build/estimate-generator/style-index.css?ver=1777060910' type='text/css' media='all' />
-<style id='thryv-block-faqs-style-inline-css' type='text/css'>
-.wp-block-thryv-block-faqs{padding-bottom:50px;padding-top:70px}.wp-block-thryv-block-faqs>.wrapper>.container>.row .faqs-block-title{font-weight:600}.wp-block-thryv-block-faqs>.wrapper>.container>.row .faqs-block-title strong{font-weight:700!important}.wp-block-thryv-block-faqs>.wrapper>.container>.row .faqs-component .card{background-color:transparent;border-color:transparent}.wp-block-thryv-block-faqs>.wrapper>.container>.row .faqs-component .card .card-header{background-color:transparent;border-color:transparent;border-bottom:0!important;border-top:1px solid #fff;padding-bottom:0;padding-left:0;padding-top:0}.wp-block-thryv-block-faqs>.wrapper>.container>.row .faqs-component .card .card-header .faq-question-wrapper{-webkit-appearance:none!important;-moz-appearance:none!important;appearance:none!important;background:transparent!important;border:0!important;box-shadow:none!important;cursor:pointer;padding:15px 0!important;text-decoration:none;width:100%}.wp-block-thryv-block-faqs>.wrapper>.container>.row .faqs-component .card .card-header .faq-question-wrapper:after{content:"";float:right;font-family:FontAwesome;margin-right:-18px}.wp-block-thryv-block-faqs>.wrapper>.container>.row .faqs-component .card .card-header .faq-question-wrapper.collapsed:after{content:""}.wp-block-thryv-block-faqs>.wrapper>.container>.row .faqs-component .card .card-body{padding-left:0;padding-top:0}
-
-/*# sourceURL=https://www.thryv.com/wp-content/plugins/thryv-free-tools/build/faqs/style-index.css */
-</style>
-<style id='thryv-block-free-tool-style-inline-css' type='text/css'>
-.wp-block-thryv-block-free-tool{padding:50px 0}.has-background.has-light-orange-to-light-blue-gradient-background{background-image:linear-gradient(247.6deg,hsla(0,0%,100%,.2) 45%,#fff9f7 68.43%),linear-gradient(260.12deg,#f4f6fb 22.14%,hsla(0,0%,100%,.2) 46.75%)}.has-background.has-light-blue-to-white-gradient-background{background-image:linear-gradient(0deg,#f4f6fb 15%,#fff 60%)}.has-background.has-white-to-light-grayish-blue-gradient-background{background-image:linear-gradient(20deg,#fff 20%,#f4f6fb 70%)}.has-background.has-thryv-orange-background-color{background-color:#ff5000}.has-background.has-thryv-light-orange-background-color{background-color:#ffe3d7}.has-background.has-thryv-dark-blue-background-color{background-color:#29355d}.has-background.has-thryv-cornflower-background-color{background-color:#3d5199}.has-background.has-thryv-sapphire-background-color{background-color:#5378fc}.has-background.has-thryv-light-blue-background-color{background-color:rgba(83,120,252,.451)}.has-background.has-thryv-steel-background-color{background-color:gray}.has-background.has-thryv-night-background-color{background-color:#4d4d4d}.has-background.has-thryv-black-background-color{background-color:#121212}.has-background.has-white-background-color{background-color:#fff}.has-inline-color.has-thryv-orange-color{color:#ff5000!important}.has-inline-color.has-thryv-light-orange-color{color:#ffe3d7!important}.has-inline-color.has-thryv-dark-blue-color{color:#29355d!important}.has-inline-color.has-thryv-cornflower-color{color:#3d5199!important}.has-inline-color.has-thryv-sapphire-color{color:#5378fc!important}.has-inline-color.has-thryv-light-blue-color{color:rgba(83,120,252,.451)!important}.has-inline-color.has-thryv-steel-color{color:gray!important}.has-inline-color.has-thryv-night-color{color:#4d4d4d!important}.has-inline-color.has-thryv-black-color{color:#121212!important}.has-inline-color.has-white-color{color:#fff!important}
-
-/*# sourceURL=https://www.thryv.com/wp-content/plugins/thryv-free-tools/build/free-tool/style-index.css */
-</style>
-<style id='thryv-block-hero-block-style-inline-css' type='text/css'>
-.wp-block-thryv-block-hero-block{overflow:hidden;padding:80px 0;position:relative}.wp-block-thryv-block-hero-block.has-dots:before{background-image:radial-gradient(circle at 3px 3px,rgba(83,120,252,.15) 3px,transparent 0);background-size:23px 23px;bottom:0;content:"";display:block;height:100%;margin:auto;max-width:1700px;opacity:.3;position:absolute;width:100%}.wp-block-thryv-block-hero-block mark{padding:0!important}.wp-block-thryv-block-hero-block.has-text-align-left{text-align:left!important}.wp-block-thryv-block-hero-block.has-text-align-center{text-align:center!important}.wp-block-thryv-block-hero-block.has-text-align-right{text-align:right!important}.wp-block-thryv-block-hero-block.has-1-columns .container>.row{flex-direction:column!important}@media only screen and (min-width:992px){.wp-block-thryv-block-hero-block .container.sm{max-width:980px}.wp-block-thryv-block-hero-block .container.md{max-width:1060px}.wp-block-thryv-block-hero-block .container.nl{max-width:1140px}.wp-block-thryv-block-hero-block .container.lg{max-width:1220px}.wp-block-thryv-block-hero-block .container.xl{max-width:1300px}}.wp-block-thryv-block-hero-block h1 mark{padding:0!important}.wp-block-thryv-block-hero-block h1 em{font-weight:400}.wp-block-thryv-block-hero-block .hero-button{border-width:2px!important;padding:10px 30px!important}.wp-block-thryv-block-hero-block .hero-image{border-radius:20px}
-
-/*# sourceURL=https://www.thryv.com/wp-content/plugins/thryv-free-tools/build/hero-block/style-index.css */
-</style>
-<style id='thryv-block-hubspot-embed-form-style-inline-css' type='text/css'>
-.wp-block-thryv-block-hubspot-embed-form .downloadable-form-response>p,.wp-block-thryv-block-hubspot-embed-form .hs-modal-instructions{max-width:325px}.wp-block-thryv-block-hubspot-embed-form.is-downloadable-submit .submitted-message{display:none!important}
-
-/*# sourceURL=https://www.thryv.com/wp-content/plugins/thryv-free-tools/build/hubspot-embed-form/style-index.css */
-</style>
-<link data-minify="1" rel='stylesheet' id='thryv-block-invoice-generator-style-css' href='https://www.thryv.com/wp-content/cache/min/1/wp-content/plugins/thryv-free-tools/build/invoice-generator/style-index.css?ver=1777060910' type='text/css' media='all' />
-<style id='thryv-block-modal-button-style-inline-css' type='text/css'>
-
-
-/*# sourceURL=https://www.thryv.com/wp-content/plugins/thryv-free-tools/build/modal-button/style-index.css */
-</style>
-<style id='thryv-block-pricing-calculator-style-inline-css' type='text/css'>
-.wp-block-thryv-block-pricing-calculator .pricing-calculator .shadow-line-bottom:after{height:30px!important;width:50%!important}.wp-block-thryv-block-pricing-calculator .pricing-calculator .click-btn{background-color:#e6ebfd;border-radius:5px;color:#5b77f4}.wp-block-thryv-block-pricing-calculator .pricing-calculator .click-btn.active{background-color:#5b77f4;color:#fff}.wp-block-thryv-block-pricing-calculator .pricing-calculator .calculator-title>.text-hourly,.wp-block-thryv-block-pricing-calculator .pricing-calculator .calculator-title>.text-project{text-decoration-line:none;text-decoration-thickness:2px;text-underline-offset:6px}.wp-block-thryv-block-pricing-calculator .pricing-calculator .calculator-title>.text-hourly.active,.wp-block-thryv-block-pricing-calculator .pricing-calculator .calculator-title>.text-project.active{text-decoration-line:underline}.wp-block-thryv-block-pricing-calculator .pricing-calculator .calculators>.calculator{display:none;opacity:0;transform:scale(.99) translateY(-20px);transition:all .2s ease-in-out;visibility:hidden}.wp-block-thryv-block-pricing-calculator .pricing-calculator .calculators>.calculator [data-view]{display:none}.wp-block-thryv-block-pricing-calculator .pricing-calculator .calculators>.calculator [data-view] .bg-thryv-fresh-cornflower-rounded-6px{background-color:#f4f6fb;border:1px solid #f4f6fb;border-radius:6px;overflow:hidden;padding:25px 20px}.wp-block-thryv-block-pricing-calculator .pricing-calculator .calculators>.calculator [data-view] .bg-thryv-white-rounded-6px{background-color:#fff;border:1px solid #ddd;border-radius:6px;overflow:hidden;padding:25px 20px}.wp-block-thryv-block-pricing-calculator .pricing-calculator .calculators>.calculator [data-view] .payment-text-left{float:left;width:calc(100% - 110px)}.wp-block-thryv-block-pricing-calculator .pricing-calculator .calculators>.calculator [data-view] .payment-calculator input[type=number]{border:1px solid #ccc;border-radius:4px;float:left;padding:7px 0 7px 20px;position:relative;width:calc(100% - 100px)}.wp-block-thryv-block-pricing-calculator .pricing-calculator .calculators>.calculator [data-view] .payment-calculator input[type=number]::-webkit-inner-spin-button,.wp-block-thryv-block-pricing-calculator .pricing-calculator .calculators>.calculator [data-view] .payment-calculator input[type=number]::-webkit-outer-spin-button{-webkit-appearance:inner-spin-button!important;height:100%;opacity:1;position:absolute;right:0;top:0;width:25px}.wp-block-thryv-block-pricing-calculator .pricing-calculator .calculators>.calculator [data-view] .payment-calculator p.range-value{float:left;margin-left:12px;position:relative}.wp-block-thryv-block-pricing-calculator .pricing-calculator .calculators>.calculator [data-view] .price-slider{float:left;width:calc(100% - 100px)}.wp-block-thryv-block-pricing-calculator .pricing-calculator .calculators>.calculator [data-view] .range-value-percent{float:left;margin-left:12px;position:relative}.wp-block-thryv-block-pricing-calculator .pricing-calculator .calculators>.calculator .submit-btn span.back{display:none}.wp-block-thryv-block-pricing-calculator .pricing-calculator .calculators>.calculator .submit-btn span.back>i{font-size:22px;margin:0 8px 0 0;position:relative;top:-1px}.wp-block-thryv-block-pricing-calculator .pricing-calculator .calculators>.calculator[data-active-view=result] .submit-btn span.back{display:flex}.wp-block-thryv-block-pricing-calculator .pricing-calculator .calculators>.calculator[data-active-view=form] [data-view=form],.wp-block-thryv-block-pricing-calculator .pricing-calculator .calculators>.calculator[data-active-view=result] [data-view=result]{display:block}.wp-block-thryv-block-pricing-calculator .pricing-calculator[data-active=hourly] .calculators>[data-calculator=hourly]{display:flex}.wp-block-thryv-block-pricing-calculator .pricing-calculator.animate[data-active=hourly] .calculators>[data-calculator=hourly]{opacity:1;transform:scale(1);transition-duration:.4s;visibility:visible}.wp-block-thryv-block-pricing-calculator .pricing-calculator[data-active=project] .calculators>[data-calculator=project]{display:flex}.wp-block-thryv-block-pricing-calculator .pricing-calculator.animate[data-active=project] .calculators>[data-calculator=project]{opacity:1;transform:scale(1);transition-duration:.4s;visibility:visible}.wp-block-thryv-block-pricing-calculator .download-guide-btn>a{color:#fff!important}
-
-/*# sourceURL=https://www.thryv.com/wp-content/plugins/thryv-free-tools/build/pricing-calculator/style-index.css */
-</style>
-<style id='thryv-block-review-link-generator-style-inline-css' type='text/css'>
-.wp-block-thryv-block-review-link-generator #get-my-review-link{padding-bottom:12px;padding-top:12px}.wp-block-thryv-block-review-link-generator #get-link-section{background-color:#f7f9fc;border-radius:0 0 12px 12px}
-
-/*# sourceURL=https://www.thryv.com/wp-content/plugins/thryv-free-tools/build/review-link-generator/style-index.css */
-</style>
-<style id='thryv-block-savings-calculator-style-inline-css' type='text/css'>
-.wp-block-create-block-savings-calculator input.form-control{min-height:46px!important}
-
-/*# sourceURL=https://www.thryv.com/wp-content/plugins/thryv-free-tools/build/savings-calculator/style-index.css */
-</style>
-<style id='thryv-block-simple-cta-style-inline-css' type='text/css'>
-.wp-block-thryv-block-simple-cta>.wrapper{padding:60px 0 40px}.wp-block-thryv-block-simple-cta mark{padding:0!important}.wp-block-thryv-block-simple-cta strong{font-weight:800!important}@media only screen and (max-width:767px){.wp-block-thryv-block-simple-cta .simple-cta-btn{margin-top:1rem}}
-
-/*# sourceURL=https://www.thryv.com/wp-content/plugins/thryv-free-tools/build/simple-cta/style-index.css */
-</style>
-<style id='thryv-block-thryver-opt-in-style-inline-css' type='text/css'>
-.wp-block-thryv-block-thryver-opt-in{max-width:unset!important}.wp-block-thryv-block-thryver-opt-in .thryver-opt-in{background-image:url(https://assets.thryv.com/prod/media/2025/07/resource-download-cta-bg.jpg);background-position:50%;background-repeat:no-repeat;background-size:cover;border:2px solid rgba(240,244,255,.898);filter:drop-shadow(0 .477px 2.899px rgba(0,0,0,.02)) drop-shadow(0 2.098px 6.002px rgba(0,0,0,.02)) drop-shadow(0 5.211px 12.026px rgba(0,0,0,.02)) drop-shadow(0 9.621px 24.052px rgba(0,0,0,.02)) drop-shadow(0 16.034px 42.491px rgba(0,0,0,.03)) drop-shadow(0 25.655px 32.069px rgba(0,0,0,.06));gap:0}.wp-block-thryv-block-thryver-opt-in .thryver-opt-in .HS-Form-wrap{background:transparent}.wp-block-thryv-block-thryver-opt-in .thryver-opt-in .HS-Form-wrap .HS-Form .hs-form-field>label{display:none}.wp-block-thryv-block-thryver-opt-in .thryver-opt-in .HS-Form-wrap .HS-Form .hs-form-field>.input{margin-top:0!important}.wp-block-thryv-block-thryver-opt-in .thryver-opt-in .HS-Form-wrap .HS-Form .hs-form-field label{background:transparent}.wp-block-thryv-block-thryver-opt-in .thryver-opt-in .HS-Form-wrap .HS-Form .hs-form-field .hs-form-booleancheckbox-display{background:transparent;font-size:11px!important;margin-top:-12px!important}.wp-block-thryv-block-thryver-opt-in .thryver-opt-in .HS-Form-wrap .HS-Form .legal-consent-container .hs-fieldtype-booleancheckbox{margin-bottom:0!important}.wp-block-thryv-block-thryver-opt-in .thryver-opt-in .HS-Form-wrap .HS-Form .legal-consent-container .hs-fieldtype-booleancheckbox .inputs-list{margin-bottom:4px!important}.wp-block-thryv-block-thryver-opt-in .thryver-opt-in .HS-Form-wrap .HS-Form>.hs-submit{padding-bottom:0!important}
-
-/*# sourceURL=https://www.thryv.com/wp-content/plugins/thryv-free-tools/build/thryver-opt-in/style-index.css */
-</style>
-<style id='thryv-block-callout-style-inline-css' type='text/css'>
-/*!***************************************************************************************************************************************************************************************************************************************!*\
-  !*** css ./node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[4].use[1]!./node_modules/postcss-loader/dist/cjs.js??ruleSet[1].rules[4].use[2]!./node_modules/sass-loader/dist/cjs.js??ruleSet[1].rules[4].use[3]!./src/style.scss ***!
-  \***************************************************************************************************************************************************************************************************************************************/
-/**
- * The following styles get applied both on the front of your site
- * and in the editor.
- *
- * Replace them with your own styles or remove the file completely.
- */
-[data-type="thryv-block/callout"] .orangeLineBottomShadow {
-  width: 100%;
-  overflow: hidden;
-  background-color: #fff;
-  border-bottom: 3px solid #ff5000;
-  box-shadow: 0 0 12px 1px rgba(0, 0, 0, 0.1);
-  padding: 30px;
-  margin: 40px 0;
-}
-
-/*# sourceMappingURL=style-index.css.map*/
-/*# sourceURL=https://www.thryv.com/wp-content/themes/new-understrap-child-master/includes/blocks/callout/build/style-index.css */
-</style>
-<style id='acf-center-feature-cta-style-inline-css' type='text/css'>
-#thryv-center-feature {
-    background: linear-gradient(171.14deg, #FFFFFF 33.46%, #F0F0F0 65.89%);
-    border: 2px solid #E1E1E1;
-    border-radius: 30px;
-    max-width: 685px;
-    margin-top: 1em;
-    margin-bottom: 1em;
-    position: relative;
-}
-
-#thryv-center-feature .text-wrap {
-    padding: 3em 2.5em 0;
-    text-align: center;
-    z-index: 10;
-    position: relative;
-}
-
-#thryv-center-feature .text-wrap .headline {
-    font-size: 30px !important;
-    font-weight: bold;
-    color: #000000;
-    line-height: 1.5;
-}
-
-#thryv-center-feature .text-wrap .subtext {
-    font-size: 15px !important;
-    font-weight: 600;
-    color: #000000 !important;
-    max-width: 95%;
-    margin-left: auto;
-    margin-right: auto;
-}
-
-#thryv-center-feature .text-wrap .cta-wrap {
-    text-align: center;
-}
-
-#thryv-center-feature .text-wrap .cta-wrap .cta-btn {
-    background-color: #ff5000;
-    color: #fff !important;
-    border-radius: 30px;
-    display: inline-block;
-    cursor: pointer;
-    padding: 10px 60px !important;
-    font-size: 16px !important;
-    font-weight: 600;
-    text-transform: uppercase;
-    letter-spacing: 1px;
-    margin-top: 0.25em;
-    text-align: center;
-    text-decoration: none !important;
-}
-
-#thryv-center-feature .preview-image {
-    display: block;
-    margin-bottom: -13px;
-    margin-top: -55px;
-}
-
-#thryv-center-feature[data-feature="free_trial"] {
-    background-image: url('https://assets.thryv.com/prod/media/2026/04/mc-free-trial-blog-cta-bg.jpg');
-    background-size: cover;
-    background-repeat: no-repeat;
-    background-position: right top;
-    width: 100%;
-    max-width: 100%;
-    padding: 32px 24px;
-
-    @media (min-width:992px) and (max-width:1100px) {
-        background-size: 180%;
-        background-position: left top;
-        background-image: url('https://assets.thryv.com/prod/media/2026/04/bg-sidebar-mc-free-trial-v3.png');
-    }
-
-    @media (min-width:1101px) and (max-width:1300px) {
-        background-position: 50% top;
-    }
-
-    @media (max-width:991px) {
-        background-position: 50% top;
-    }
-
-    @media (max-width:767px) {
-        background-size: 180%;
-        background-position: left top;
-        background-image: url('https://assets.thryv.com/prod/media/2026/04/bg-sidebar-mc-free-trial-v3.png');
-    }
-}
-
-.editor-styles-wrapper #thryv-center-feature[data-feature="free_trial"] {
-    max-width: 800px;
-}
-
-#thryv-center-feature[data-feature="free_trial"] .text-wrap {
-    width: 40%;
-    padding: 0;
-    text-align: left;
-
-    @media (min-width:992px) and (max-width:1100px) {
-        width: 100%;
-        text-align: center;
-    }
-
-    @media (min-width:1101px) and (max-width:1300px) {
-        width: 50%;
-    }
-
-    @media (max-width:991px) {
-        width: 50%;
-    }
-
-    @media (max-width:767px) {
-        width: 100%;
-        text-align: center;
-    }
-}
-
-#thryv-center-feature[data-feature="free_trial"] .text-wrap .headline {
-    margin-bottom: 0 !important;
-}
-
-#thryv-center-feature[data-feature="free_trial"] .text-wrap .headline span {
-    color: #ffffff;
-    font-size: 32px !important;
-    font-weight: 700 !important;
-    line-height: 1.3 !important;
-    letter-spacing: -1px !important;
-}
-
-#thryv-center-feature[data-feature="free_trial"] .text-wrap .headline span .thryv-orange {
-    color: #ff5000;
-}
-
-#thryv-center-feature[data-feature="free_trial"] .text-wrap .headline span sup {
-    color: #fff;
-    font-size: 45%;
-    margin-left: .1em;
-    top: -1em;
-    letter-spacing: 0;
-}
-
-#thryv-center-feature[data-feature="free_trial"] .text-wrap .subtext {
-    font-size: 14px !important;
-    font-weight: 400 !important;
-    color: #ffffff !important;
-    line-height: 1.35 !important;
-    margin-top: 1rem;
-    margin-bottom: 2rem;
-}
-
-#thryv-center-feature[data-feature="free_trial"] .text-wrap .cta-wrap {
-    margin-bottom: 0 !important;
-    text-align: left !important;
-}
-
-#thryv-center-feature[data-feature="free_trial"] .text-wrap .cta-wrap .cta-btn {
-    padding: 16px 48px !important;
-    color: #FFF;
-    text-align: center;
-    font-family: Inter, 'Open Sans', sans-serif;
-    font-size: 17px !important;
-    font-style: normal;
-    font-weight: 900 !important;
-    text-transform: capitalize !important;
-    letter-spacing: initial !important;
-    min-width: unset;
-    margin-top: 0 !important;
-    margin-left: 0 !important;
-}
-
-#thryv-center-feature[data-feature="free_trial"] .cta-img-wrap {
-    display: none;
-}
-/*# sourceURL=https://www.thryv.com/wp-content/themes/new-understrap-child-master/includes/blocks/center-feature-cta/center-feature-cta.css */
-</style>
+<link data-minify="1" rel='stylesheet' id='acf-center-feature-cta-style-css' href='https://www.thryv.com/wp-content/cache/min/1/wp-content/themes/new-understrap-child-master/includes/blocks/acf/center-feature-cta/center-feature-cta.css?ver=1777337458' type='text/css' media='all' />
 <style id='acf-center-multi-select-style-inline-css' type='text/css'>
 .multi-select-cta {
     background: #ffffff;
@@ -454,7 +198,7 @@ img:is([sizes=auto i],[sizes^="auto," i]){contain-intrinsic-size:3000px 1500px}
     display: block;
     width: 20px;
     height: 20px;
-    background-image: url('/wp-content/themes/new-understrap-child-master/includes/blocks/center-multi-select/../../../../../../media/green-circle-check.svg');
+    background-image: url('/wp-content/themes/new-understrap-child-master/includes/blocks/acf/center-multi-select/../../../../../../media/green-circle-check.svg');
     background-size: contain;
     background-position: center;
     background-repeat: no-repeat;
@@ -486,7 +230,7 @@ img:is([sizes=auto i],[sizes^="auto," i]){contain-intrinsic-size:3000px 1500px}
     text-align: center;
     text-decoration: none !important;
 }
-/*# sourceURL=https://www.thryv.com/wp-content/themes/new-understrap-child-master/includes/blocks/center-multi-select/center-multi-select.css */
+/*# sourceURL=https://www.thryv.com/wp-content/themes/new-understrap-child-master/includes/blocks/acf/center-multi-select/center-multi-select.css */
 </style>
 <style id='acf-ebook-cta-style-inline-css' type='text/css'>
 #thryv-ebook-cta {
@@ -553,7 +297,7 @@ img:is([sizes=auto i],[sizes^="auto," i]){contain-intrinsic-size:3000px 1500px}
         flex-direction: column;
     }
 }
-/*# sourceURL=https://www.thryv.com/wp-content/themes/new-understrap-child-master/includes/blocks/ebook-cta/ebook-cta.css */
+/*# sourceURL=https://www.thryv.com/wp-content/themes/new-understrap-child-master/includes/blocks/acf/ebook-cta/ebook-cta.css */
 </style>
 <style id='acf-guide-multi-select-style-inline-css' type='text/css'>
 .multi-select-cta {
@@ -667,7 +411,7 @@ img:is([sizes=auto i],[sizes^="auto," i]){contain-intrinsic-size:3000px 1500px}
     text-align: center;
     text-decoration: none !important;
 }
-/*# sourceURL=https://www.thryv.com/wp-content/themes/new-understrap-child-master/includes/blocks/guide-multi-select/guide-multi-select.css */
+/*# sourceURL=https://www.thryv.com/wp-content/themes/new-understrap-child-master/includes/blocks/acf/guide-multi-select/guide-multi-select.css */
 </style>
 <style id='acf-legacy-guide-cta-style-inline-css' type='text/css'>
 .guide-cta-wrap .wrapper {
@@ -754,37 +498,7 @@ img:is([sizes=auto i],[sizes^="auto," i]){contain-intrinsic-size:3000px 1500px}
     }
 
 }
-/*# sourceURL=https://www.thryv.com/wp-content/themes/new-understrap-child-master/includes/blocks/legacy-guide-cta/legacy-guide-cta.css */
-</style>
-<style id='thryv-block-list-snippet-style-inline-css' type='text/css'>
-/*!***************************************************************************************************************************************************************************************************************************************!*\
-  !*** css ./node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[4].use[1]!./node_modules/postcss-loader/dist/cjs.js??ruleSet[1].rules[4].use[2]!./node_modules/sass-loader/dist/cjs.js??ruleSet[1].rules[4].use[3]!./src/style.scss ***!
-  \***************************************************************************************************************************************************************************************************************************************/
-/**
- * The following styles get applied both on the front of your site
- * and in the editor.
- *
- * Replace them with your own styles or remove the file completely.
- */
-.wp-block-thryv-block-list-snippet {
-  width: 100%;
-  overflow: hidden;
-  background-color: #f7f7f7;
-  border-bottom: 3px solid #ff5000;
-  padding: 30px;
-  margin: 40px 0;
-}
-
-.wp-block-thryv-block-list-snippet li {
-  font-size: 16px !important;
-  line-height: 1.5;
-  font-weight: 400;
-  margin-bottom: 12px;
-  color: #121212;
-}
-
-/*# sourceMappingURL=style-index.css.map*/
-/*# sourceURL=https://www.thryv.com/wp-content/themes/new-understrap-child-master/includes/blocks/list-snippet/build/style-index.css */
+/*# sourceURL=https://www.thryv.com/wp-content/themes/new-understrap-child-master/includes/blocks/acf/legacy-guide-cta/legacy-guide-cta.css */
 </style>
 <style id='acf-related-tools-style-inline-css' type='text/css'>
 .wp-block-acf-related-tools {
@@ -845,7 +559,118 @@ img:is([sizes=auto i],[sizes^="auto," i]){contain-intrinsic-size:3000px 1500px}
         font-size: 16px !important;
     }
 }
-/*# sourceURL=https://www.thryv.com/wp-content/themes/new-understrap-child-master/includes/blocks/related-tools/style-index.css */
+/*# sourceURL=https://www.thryv.com/wp-content/themes/new-understrap-child-master/includes/blocks/acf/related-tools/style-index.css */
+</style>
+<link data-minify="1" rel='stylesheet' id='thryv-block-business-scan-style-css' href='https://www.thryv.com/wp-content/cache/min/1/wp-content/themes/new-understrap-child-master/includes/blocks/react/build/business-scan/style-index.css?ver=1777334441' type='text/css' media='all' />
+<style id='thryv-block-callout-style-inline-css' type='text/css'>
+/*!*******************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************!*\
+  !*** css ./node_modules/.pnpm/css-loader@6.11.0_webpack@5.106.2/node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[4].use[1]!./node_modules/.pnpm/postcss-loader@6.2.1_postcss@8.5.12_webpack@5.106.2/node_modules/postcss-loader/dist/cjs.js??ruleSet[1].rules[4].use[2]!./node_modules/.pnpm/sass-loader@16.0.7_sass@1.99.0_webpack@5.106.2/node_modules/sass-loader/dist/cjs.js??ruleSet[1].rules[4].use[3]!./includes/blocks/react/src/callout/style.scss ***!
+  \*******************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************/
+[data-type="thryv-block/callout"] .orangeLineBottomShadow{background-color:#fff;border-bottom:3px solid #ff5000;box-shadow:0 0 12px 1px rgba(0,0,0,.1);margin:40px 0;overflow:hidden;padding:30px;width:100%}
+
+/*# sourceMappingURL=style-index.css.map*/
+/*# sourceURL=https://www.thryv.com/wp-content/themes/new-understrap-child-master/includes/blocks/react/build/callout/style-index.css */
+</style>
+<style id='thryv-block-content-section-style-inline-css' type='text/css'>
+/*!***************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************!*\
+  !*** css ./node_modules/.pnpm/css-loader@6.11.0_webpack@5.106.2/node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[4].use[1]!./node_modules/.pnpm/postcss-loader@6.2.1_postcss@8.5.12_webpack@5.106.2/node_modules/postcss-loader/dist/cjs.js??ruleSet[1].rules[4].use[2]!./node_modules/.pnpm/sass-loader@16.0.7_sass@1.99.0_webpack@5.106.2/node_modules/sass-loader/dist/cjs.js??ruleSet[1].rules[4].use[3]!./includes/blocks/react/src/content-section/style.scss ***!
+  \***************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************/
+.wp-block-thryv-block-content-section .columns-justify-content-start .wp-block-columns{justify-content:flex-start!important}.wp-block-thryv-block-content-section .columns-justify-content-end .wp-block-columns{justify-content:flex-end!important}.wp-block-thryv-block-content-section .columns-justify-content-center .wp-block-columns{justify-content:center!important}.wp-block-thryv-block-content-section .columns-justify-content-between .wp-block-columns{justify-content:space-between!important}.wp-block-thryv-block-content-section .columns-justify-content-around .wp-block-columns{justify-content:space-around!important}
+
+/*# sourceMappingURL=style-index.css.map*/
+/*# sourceURL=https://www.thryv.com/wp-content/themes/new-understrap-child-master/includes/blocks/react/build/content-section/style-index.css */
+</style>
+<link data-minify="1" rel='stylesheet' id='thryv-block-estimate-generator-style-css' href='https://www.thryv.com/wp-content/cache/min/1/wp-content/themes/new-understrap-child-master/includes/blocks/react/build/estimate-generator/style-index.css?ver=1777334441' type='text/css' media='all' />
+<style id='thryv-block-faqs-style-inline-css' type='text/css'>
+/*!****************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************!*\
+  !*** css ./node_modules/.pnpm/css-loader@6.11.0_webpack@5.106.2/node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[4].use[1]!./node_modules/.pnpm/postcss-loader@6.2.1_postcss@8.5.12_webpack@5.106.2/node_modules/postcss-loader/dist/cjs.js??ruleSet[1].rules[4].use[2]!./node_modules/.pnpm/sass-loader@16.0.7_sass@1.99.0_webpack@5.106.2/node_modules/sass-loader/dist/cjs.js??ruleSet[1].rules[4].use[3]!./includes/blocks/react/src/faqs/style.scss ***!
+  \****************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************/
+.wp-block-thryv-block-faqs{padding-bottom:50px;padding-top:70px}.wp-block-thryv-block-faqs>.wrapper>.container>.row .faqs-block-title{font-weight:600}.wp-block-thryv-block-faqs>.wrapper>.container>.row .faqs-block-title strong{font-weight:700!important}.wp-block-thryv-block-faqs>.wrapper>.container>.row .faqs-component .card{background-color:transparent;border-color:transparent}.wp-block-thryv-block-faqs>.wrapper>.container>.row .faqs-component .card .card-header{background-color:transparent;border-color:transparent;border-bottom:0!important;border-top:1px solid #fff;padding-bottom:0;padding-left:0;padding-top:0}.wp-block-thryv-block-faqs>.wrapper>.container>.row .faqs-component .card .card-header .faq-question-wrapper{-webkit-appearance:none!important;-moz-appearance:none!important;appearance:none!important;background:transparent!important;border:0!important;box-shadow:none!important;cursor:pointer;padding:15px 0!important;text-decoration:none;width:100%}.wp-block-thryv-block-faqs>.wrapper>.container>.row .faqs-component .card .card-header .faq-question-wrapper:after{content:"\f106";float:right;font-family:FontAwesome;margin-right:-18px}.wp-block-thryv-block-faqs>.wrapper>.container>.row .faqs-component .card .card-header .faq-question-wrapper.collapsed:after{content:"\f107"}.wp-block-thryv-block-faqs>.wrapper>.container>.row .faqs-component .card .card-body{padding-left:0;padding-top:0}
+
+/*# sourceMappingURL=style-index.css.map*/
+/*# sourceURL=https://www.thryv.com/wp-content/themes/new-understrap-child-master/includes/blocks/react/build/faqs/style-index.css */
+</style>
+<style id='thryv-block-free-tool-style-inline-css' type='text/css'>
+/*!*********************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************!*\
+  !*** css ./node_modules/.pnpm/css-loader@6.11.0_webpack@5.106.2/node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[4].use[1]!./node_modules/.pnpm/postcss-loader@6.2.1_postcss@8.5.12_webpack@5.106.2/node_modules/postcss-loader/dist/cjs.js??ruleSet[1].rules[4].use[2]!./node_modules/.pnpm/sass-loader@16.0.7_sass@1.99.0_webpack@5.106.2/node_modules/sass-loader/dist/cjs.js??ruleSet[1].rules[4].use[3]!./includes/blocks/react/src/free-tool/style.scss ***!
+  \*********************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************/
+.wp-block-thryv-block-free-tool{padding:50px 0}.has-background.has-light-orange-to-light-blue-gradient-background{background-image:linear-gradient(247.6deg,hsla(0,0%,100%,.2) 45%,#fff9f7 68.43%),linear-gradient(260.12deg,#f4f6fb 22.14%,hsla(0,0%,100%,.2) 46.75%)}.has-background.has-light-blue-to-white-gradient-background{background-image:linear-gradient(0deg,#f4f6fb 15%,#fff 60%)}.has-background.has-white-to-light-grayish-blue-gradient-background{background-image:linear-gradient(20deg,#fff 20%,#f4f6fb 70%)}.has-background.has-thryv-orange-background-color{background-color:#ff5000}.has-background.has-thryv-light-orange-background-color{background-color:#ffe3d7}.has-background.has-thryv-dark-blue-background-color{background-color:#29355d}.has-background.has-thryv-cornflower-background-color{background-color:#3d5199}.has-background.has-thryv-sapphire-background-color{background-color:#5378fc}.has-background.has-thryv-light-blue-background-color{background-color:rgba(83,120,252,.451)}.has-background.has-thryv-steel-background-color{background-color:gray}.has-background.has-thryv-night-background-color{background-color:#4d4d4d}.has-background.has-thryv-black-background-color{background-color:#121212}.has-background.has-white-background-color{background-color:#fff}.has-inline-color.has-thryv-orange-color{color:#ff5000!important}.has-inline-color.has-thryv-light-orange-color{color:#ffe3d7!important}.has-inline-color.has-thryv-dark-blue-color{color:#29355d!important}.has-inline-color.has-thryv-cornflower-color{color:#3d5199!important}.has-inline-color.has-thryv-sapphire-color{color:#5378fc!important}.has-inline-color.has-thryv-light-blue-color{color:rgba(83,120,252,.451)!important}.has-inline-color.has-thryv-steel-color{color:gray!important}.has-inline-color.has-thryv-night-color{color:#4d4d4d!important}.has-inline-color.has-thryv-black-color{color:#121212!important}.has-inline-color.has-white-color{color:#fff!important}
+
+/*# sourceMappingURL=style-index.css.map*/
+/*# sourceURL=https://www.thryv.com/wp-content/themes/new-understrap-child-master/includes/blocks/react/build/free-tool/style-index.css */
+</style>
+<style id='thryv-block-hero-block-style-inline-css' type='text/css'>
+/*!**********************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************!*\
+  !*** css ./node_modules/.pnpm/css-loader@6.11.0_webpack@5.106.2/node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[4].use[1]!./node_modules/.pnpm/postcss-loader@6.2.1_postcss@8.5.12_webpack@5.106.2/node_modules/postcss-loader/dist/cjs.js??ruleSet[1].rules[4].use[2]!./node_modules/.pnpm/sass-loader@16.0.7_sass@1.99.0_webpack@5.106.2/node_modules/sass-loader/dist/cjs.js??ruleSet[1].rules[4].use[3]!./includes/blocks/react/src/hero-block/style.scss ***!
+  \**********************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************/
+.wp-block-thryv-block-hero-block{overflow:hidden;padding:80px 0;position:relative}.wp-block-thryv-block-hero-block.has-dots:before{background-image:radial-gradient(circle at 3px 3px,rgba(83,120,252,.15) 3px,transparent 0);background-size:23px 23px;bottom:0;content:"";display:block;height:100%;margin:auto;max-width:1700px;opacity:.3;position:absolute;width:100%}.wp-block-thryv-block-hero-block mark{padding:0!important}.wp-block-thryv-block-hero-block.has-text-align-left{text-align:left!important}.wp-block-thryv-block-hero-block.has-text-align-center{text-align:center!important}.wp-block-thryv-block-hero-block.has-text-align-right{text-align:right!important}.wp-block-thryv-block-hero-block.has-1-columns .container>.row{flex-direction:column!important}@media only screen and (min-width:992px){.wp-block-thryv-block-hero-block .container.sm{max-width:980px}.wp-block-thryv-block-hero-block .container.md{max-width:1060px}.wp-block-thryv-block-hero-block .container.nl{max-width:1140px}.wp-block-thryv-block-hero-block .container.lg{max-width:1220px}.wp-block-thryv-block-hero-block .container.xl{max-width:1300px}}.wp-block-thryv-block-hero-block h1 mark{padding:0!important}.wp-block-thryv-block-hero-block h1 em{font-weight:400}.wp-block-thryv-block-hero-block .hero-button{border-width:2px!important;padding:10px 30px!important}.wp-block-thryv-block-hero-block .hero-image{border-radius:20px}
+
+/*# sourceMappingURL=style-index.css.map*/
+/*# sourceURL=https://www.thryv.com/wp-content/themes/new-understrap-child-master/includes/blocks/react/build/hero-block/style-index.css */
+</style>
+<style id='thryv-block-hubspot-embed-form-style-inline-css' type='text/css'>
+/*!******************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************!*\
+  !*** css ./node_modules/.pnpm/css-loader@6.11.0_webpack@5.106.2/node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[4].use[1]!./node_modules/.pnpm/postcss-loader@6.2.1_postcss@8.5.12_webpack@5.106.2/node_modules/postcss-loader/dist/cjs.js??ruleSet[1].rules[4].use[2]!./node_modules/.pnpm/sass-loader@16.0.7_sass@1.99.0_webpack@5.106.2/node_modules/sass-loader/dist/cjs.js??ruleSet[1].rules[4].use[3]!./includes/blocks/react/src/hubspot-embed-form/style.scss ***!
+  \******************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************/
+.wp-block-thryv-block-hubspot-embed-form .downloadable-form-response>p,.wp-block-thryv-block-hubspot-embed-form .hs-modal-instructions{max-width:325px}.wp-block-thryv-block-hubspot-embed-form.is-downloadable-submit .submitted-message{display:none!important}
+
+/*# sourceMappingURL=style-index.css.map*/
+/*# sourceURL=https://www.thryv.com/wp-content/themes/new-understrap-child-master/includes/blocks/react/build/hubspot-embed-form/style-index.css */
+</style>
+<link data-minify="1" rel='stylesheet' id='thryv-block-invoice-generator-style-css' href='https://www.thryv.com/wp-content/cache/min/1/wp-content/themes/new-understrap-child-master/includes/blocks/react/build/invoice-generator/style-index.css?ver=1777334441' type='text/css' media='all' />
+<style id='thryv-block-list-snippet-style-inline-css' type='text/css'>
+/*!************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************!*\
+  !*** css ./node_modules/.pnpm/css-loader@6.11.0_webpack@5.106.2/node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[4].use[1]!./node_modules/.pnpm/postcss-loader@6.2.1_postcss@8.5.12_webpack@5.106.2/node_modules/postcss-loader/dist/cjs.js??ruleSet[1].rules[4].use[2]!./node_modules/.pnpm/sass-loader@16.0.7_sass@1.99.0_webpack@5.106.2/node_modules/sass-loader/dist/cjs.js??ruleSet[1].rules[4].use[3]!./includes/blocks/react/src/list-snippet/style.scss ***!
+  \************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************/
+.wp-block-thryv-block-list-snippet{background-color:#f7f7f7;border-bottom:3px solid #ff5000;margin:40px 0;overflow:hidden;padding:30px;width:100%}.wp-block-thryv-block-list-snippet li{color:#121212;font-size:16px!important;font-weight:400;line-height:1.5;margin-bottom:12px}
+
+/*# sourceMappingURL=style-index.css.map*/
+/*# sourceURL=https://www.thryv.com/wp-content/themes/new-understrap-child-master/includes/blocks/react/build/list-snippet/style-index.css */
+</style>
+<style id='thryv-block-modal-button-style-inline-css' type='text/css'>
+/*!************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************!*\
+  !*** css ./node_modules/.pnpm/css-loader@6.11.0_webpack@5.106.2/node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[4].use[1]!./node_modules/.pnpm/postcss-loader@6.2.1_postcss@8.5.12_webpack@5.106.2/node_modules/postcss-loader/dist/cjs.js??ruleSet[1].rules[4].use[2]!./node_modules/.pnpm/sass-loader@16.0.7_sass@1.99.0_webpack@5.106.2/node_modules/sass-loader/dist/cjs.js??ruleSet[1].rules[4].use[3]!./includes/blocks/react/src/modal-button/style.scss ***!
+  \************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************/
+
+
+/*# sourceURL=https://www.thryv.com/wp-content/themes/new-understrap-child-master/includes/blocks/react/build/modal-button/style-index.css */
+</style>
+<link data-minify="1" rel='stylesheet' id='thryv-block-pricing-calculator-style-css' href='https://www.thryv.com/wp-content/cache/min/1/wp-content/themes/new-understrap-child-master/includes/blocks/react/build/pricing-calculator/style-index.css?ver=1777337458' type='text/css' media='all' />
+<style id='thryv-block-review-link-generator-style-inline-css' type='text/css'>
+/*!*********************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************!*\
+  !*** css ./node_modules/.pnpm/css-loader@6.11.0_webpack@5.106.2/node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[4].use[1]!./node_modules/.pnpm/postcss-loader@6.2.1_postcss@8.5.12_webpack@5.106.2/node_modules/postcss-loader/dist/cjs.js??ruleSet[1].rules[4].use[2]!./node_modules/.pnpm/sass-loader@16.0.7_sass@1.99.0_webpack@5.106.2/node_modules/sass-loader/dist/cjs.js??ruleSet[1].rules[4].use[3]!./includes/blocks/react/src/review-link-generator/style.scss ***!
+  \*********************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************/
+.wp-block-thryv-block-review-link-generator #get-my-review-link{padding-bottom:12px;padding-top:12px}.wp-block-thryv-block-review-link-generator #get-link-section{background-color:#f7f9fc;border-radius:0 0 12px 12px}
+
+/*# sourceMappingURL=style-index.css.map*/
+/*# sourceURL=https://www.thryv.com/wp-content/themes/new-understrap-child-master/includes/blocks/react/build/review-link-generator/style-index.css */
+</style>
+<style id='thryv-block-savings-calculator-style-inline-css' type='text/css'>
+/*!******************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************!*\
+  !*** css ./node_modules/.pnpm/css-loader@6.11.0_webpack@5.106.2/node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[4].use[1]!./node_modules/.pnpm/postcss-loader@6.2.1_postcss@8.5.12_webpack@5.106.2/node_modules/postcss-loader/dist/cjs.js??ruleSet[1].rules[4].use[2]!./node_modules/.pnpm/sass-loader@16.0.7_sass@1.99.0_webpack@5.106.2/node_modules/sass-loader/dist/cjs.js??ruleSet[1].rules[4].use[3]!./includes/blocks/react/src/savings-calculator/style.scss ***!
+  \******************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************/
+.wp-block-create-block-savings-calculator input.form-control{min-height:46px!important}
+
+/*# sourceMappingURL=style-index.css.map*/
+/*# sourceURL=https://www.thryv.com/wp-content/themes/new-understrap-child-master/includes/blocks/react/build/savings-calculator/style-index.css */
+</style>
+<style id='thryv-block-simple-cta-style-inline-css' type='text/css'>
+/*!**********************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************!*\
+  !*** css ./node_modules/.pnpm/css-loader@6.11.0_webpack@5.106.2/node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[4].use[1]!./node_modules/.pnpm/postcss-loader@6.2.1_postcss@8.5.12_webpack@5.106.2/node_modules/postcss-loader/dist/cjs.js??ruleSet[1].rules[4].use[2]!./node_modules/.pnpm/sass-loader@16.0.7_sass@1.99.0_webpack@5.106.2/node_modules/sass-loader/dist/cjs.js??ruleSet[1].rules[4].use[3]!./includes/blocks/react/src/simple-cta/style.scss ***!
+  \**********************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************/
+.wp-block-thryv-block-simple-cta>.wrapper{padding:60px 0 40px}.wp-block-thryv-block-simple-cta mark{padding:0!important}.wp-block-thryv-block-simple-cta strong{font-weight:800!important}@media only screen and (max-width:767px){.wp-block-thryv-block-simple-cta .simple-cta-btn{margin-top:1rem}}
+
+/*# sourceMappingURL=style-index.css.map*/
+/*# sourceURL=https://www.thryv.com/wp-content/themes/new-understrap-child-master/includes/blocks/react/build/simple-cta/style-index.css */
+</style>
+<style id='thryv-block-thryver-opt-in-style-inline-css' type='text/css'>
+/*!**************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************!*\
+  !*** css ./node_modules/.pnpm/css-loader@6.11.0_webpack@5.106.2/node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[4].use[1]!./node_modules/.pnpm/postcss-loader@6.2.1_postcss@8.5.12_webpack@5.106.2/node_modules/postcss-loader/dist/cjs.js??ruleSet[1].rules[4].use[2]!./node_modules/.pnpm/sass-loader@16.0.7_sass@1.99.0_webpack@5.106.2/node_modules/sass-loader/dist/cjs.js??ruleSet[1].rules[4].use[3]!./includes/blocks/react/src/thryver-opt-in/style.scss ***!
+  \**************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************/
+.wp-block-thryv-block-thryver-opt-in{max-width:unset!important}.wp-block-thryv-block-thryver-opt-in .thryver-opt-in{background-image:url(https://assets.thryv.com/prod/media/2025/07/resource-download-cta-bg.jpg);background-position:50%;background-repeat:no-repeat;background-size:cover;border:2px solid rgba(240,244,255,.898);filter:drop-shadow(0 .477px 2.899px rgba(0,0,0,.02)) drop-shadow(0 2.098px 6.002px rgba(0,0,0,.02)) drop-shadow(0 5.211px 12.026px rgba(0,0,0,.02)) drop-shadow(0 9.621px 24.052px rgba(0,0,0,.02)) drop-shadow(0 16.034px 42.491px rgba(0,0,0,.03)) drop-shadow(0 25.655px 32.069px rgba(0,0,0,.06));gap:0}.wp-block-thryv-block-thryver-opt-in .thryver-opt-in .HS-Form-wrap{background:transparent}.wp-block-thryv-block-thryver-opt-in .thryver-opt-in .HS-Form-wrap .HS-Form .hs-form-field>label{display:none}.wp-block-thryv-block-thryver-opt-in .thryver-opt-in .HS-Form-wrap .HS-Form .hs-form-field>.input{margin-top:0!important}.wp-block-thryv-block-thryver-opt-in .thryver-opt-in .HS-Form-wrap .HS-Form .hs-form-field label{background:transparent}.wp-block-thryv-block-thryver-opt-in .thryver-opt-in .HS-Form-wrap .HS-Form .hs-form-field .hs-form-booleancheckbox-display{background:transparent;font-size:11px!important;margin-top:-12px!important}.wp-block-thryv-block-thryver-opt-in .thryver-opt-in .HS-Form-wrap .HS-Form .legal-consent-container .hs-fieldtype-booleancheckbox{margin-bottom:0!important}.wp-block-thryv-block-thryver-opt-in .thryver-opt-in .HS-Form-wrap .HS-Form .legal-consent-container .hs-fieldtype-booleancheckbox .inputs-list{margin-bottom:4px!important}.wp-block-thryv-block-thryver-opt-in .thryver-opt-in .HS-Form-wrap .HS-Form>.hs-submit{padding-bottom:0!important}
+
+/*# sourceMappingURL=style-index.css.map*/
+/*# sourceURL=https://www.thryv.com/wp-content/themes/new-understrap-child-master/includes/blocks/react/build/thryver-opt-in/style-index.css */
 </style>
 <style id='global-styles-inline-css' type='text/css'>
 :root{--wp--preset--aspect-ratio--square: 1;--wp--preset--aspect-ratio--4-3: 4/3;--wp--preset--aspect-ratio--3-4: 3/4;--wp--preset--aspect-ratio--3-2: 3/2;--wp--preset--aspect-ratio--2-3: 2/3;--wp--preset--aspect-ratio--16-9: 16/9;--wp--preset--aspect-ratio--9-16: 9/16;--wp--preset--color--black: #000000;--wp--preset--color--cyan-bluish-gray: #abb8c3;--wp--preset--color--white: #ffffff;--wp--preset--color--pale-pink: #f78da7;--wp--preset--color--vivid-red: #cf2e2e;--wp--preset--color--luminous-vivid-orange: #ff6900;--wp--preset--color--luminous-vivid-amber: #fcb900;--wp--preset--color--light-green-cyan: #7bdcb5;--wp--preset--color--vivid-green-cyan: #00d084;--wp--preset--color--pale-cyan-blue: #8ed1fc;--wp--preset--color--vivid-cyan-blue: #0693e3;--wp--preset--color--vivid-purple: #9b51e0;--wp--preset--color--thryv-orange: #ff5000;--wp--preset--color--thryv-light-orange: #ffe3d7;--wp--preset--color--thryv-dark-blue: #29355D;--wp--preset--color--thryv-cornflower: #3d5199;--wp--preset--color--thryv-sapphire: #5378fc;--wp--preset--color--thryv-light-blue: #5378fc73;--wp--preset--color--thryv-steel: #808080;--wp--preset--color--thryv-night: #4d4d4d;--wp--preset--color--thryv-black: #121212;--wp--preset--gradient--vivid-cyan-blue-to-vivid-purple: linear-gradient(135deg,rgb(6,147,227) 0%,rgb(155,81,224) 100%);--wp--preset--gradient--light-green-cyan-to-vivid-green-cyan: linear-gradient(135deg,rgb(122,220,180) 0%,rgb(0,208,130) 100%);--wp--preset--gradient--luminous-vivid-amber-to-luminous-vivid-orange: linear-gradient(135deg,rgb(252,185,0) 0%,rgb(255,105,0) 100%);--wp--preset--gradient--luminous-vivid-orange-to-vivid-red: linear-gradient(135deg,rgb(255,105,0) 0%,rgb(207,46,46) 100%);--wp--preset--gradient--very-light-gray-to-cyan-bluish-gray: linear-gradient(135deg,rgb(238,238,238) 0%,rgb(169,184,195) 100%);--wp--preset--gradient--cool-to-warm-spectrum: linear-gradient(135deg,rgb(74,234,220) 0%,rgb(151,120,209) 20%,rgb(207,42,186) 40%,rgb(238,44,130) 60%,rgb(251,105,98) 80%,rgb(254,248,76) 100%);--wp--preset--gradient--blush-light-purple: linear-gradient(135deg,rgb(255,206,236) 0%,rgb(152,150,240) 100%);--wp--preset--gradient--blush-bordeaux: linear-gradient(135deg,rgb(254,205,165) 0%,rgb(254,45,45) 50%,rgb(107,0,62) 100%);--wp--preset--gradient--luminous-dusk: linear-gradient(135deg,rgb(255,203,112) 0%,rgb(199,81,192) 50%,rgb(65,88,208) 100%);--wp--preset--gradient--pale-ocean: linear-gradient(135deg,rgb(255,245,203) 0%,rgb(182,227,212) 50%,rgb(51,167,181) 100%);--wp--preset--gradient--electric-grass: linear-gradient(135deg,rgb(202,248,128) 0%,rgb(113,206,126) 100%);--wp--preset--gradient--midnight: linear-gradient(135deg,rgb(2,3,129) 0%,rgb(40,116,252) 100%);--wp--preset--gradient--light-orange-to-light-blue: linear-gradient(247.6deg, rgba(255, 255, 255, 0.2) 45%, #FFF9F7 68.43%),linear-gradient(260.12deg, #F4F6FB 22.14%, rgba(255, 255, 255, 0.2) 46.75%);--wp--preset--gradient--light-blue-to-white: linear-gradient(to top,#f4f6fb 15%,#fff 60%);--wp--preset--gradient--white-to-light-grayish-blue: linear-gradient(20deg,#fff 20%,#f4f6fb 70%);--wp--preset--gradient--dark-blue-to-grayish-blue: linear-gradient(0deg, #29355D, #29355D),linear-gradient(180deg, rgba(11, 11, 11, 0.2035) 25.45%, rgba(212, 221, 254, 0.37) 100%);--wp--preset--font-size--small: 13px;--wp--preset--font-size--medium: 20px;--wp--preset--font-size--large: 36px;--wp--preset--font-size--x-large: 42px;--wp--preset--font-size--psmall: 16px;--wp--preset--font-size--pmed: 18px;--wp--preset--font-size--plarge: 20px;--wp--preset--font-size--pxlarge: 24px;--wp--preset--font-size--hsmall: 36px;--wp--preset--font-size--hmed: 40px;--wp--preset--font-size--hlarge: 48px;--wp--preset--font-size--hxlarge: 52px;--wp--preset--font-family--open-sans: 'Open Sans', 'Helvetica Neue', Arial, Helvetica, sans-serif;--wp--preset--spacing--20: 0.44rem;--wp--preset--spacing--30: 0.67rem;--wp--preset--spacing--40: 1rem;--wp--preset--spacing--50: 1.5rem;--wp--preset--spacing--60: 2.25rem;--wp--preset--spacing--70: 3.38rem;--wp--preset--spacing--80: 5.06rem;--wp--preset--shadow--natural: 6px 6px 9px rgba(0, 0, 0, 0.2);--wp--preset--shadow--deep: 12px 12px 50px rgba(0, 0, 0, 0.4);--wp--preset--shadow--sharp: 6px 6px 0px rgba(0, 0, 0, 0.2);--wp--preset--shadow--outlined: 6px 6px 0px -3px rgb(255, 255, 255), 6px 6px rgb(0, 0, 0);--wp--preset--shadow--crisp: 6px 6px 0px rgb(0, 0, 0);}:root { --wp--style--global--content-size: 1140px;--wp--style--global--wide-size: 1220px; }:where(body) { margin: 0; }.wp-site-blocks > .alignleft { float: left; margin-right: 2em; }.wp-site-blocks > .alignright { float: right; margin-left: 2em; }.wp-site-blocks > .aligncenter { justify-content: center; margin-left: auto; margin-right: auto; }:where(.is-layout-flex){gap: 0.5em;}:where(.is-layout-grid){gap: 0.5em;}.is-layout-flow > .alignleft{float: left;margin-inline-start: 0;margin-inline-end: 2em;}.is-layout-flow > .alignright{float: right;margin-inline-start: 2em;margin-inline-end: 0;}.is-layout-flow > .aligncenter{margin-left: auto !important;margin-right: auto !important;}.is-layout-constrained > .alignleft{float: left;margin-inline-start: 0;margin-inline-end: 2em;}.is-layout-constrained > .alignright{float: right;margin-inline-start: 2em;margin-inline-end: 0;}.is-layout-constrained > .aligncenter{margin-left: auto !important;margin-right: auto !important;}.is-layout-constrained > :where(:not(.alignleft):not(.alignright):not(.alignfull)){max-width: var(--wp--style--global--content-size);margin-left: auto !important;margin-right: auto !important;}.is-layout-constrained > .alignwide{max-width: var(--wp--style--global--wide-size);}body .is-layout-flex{display: flex;}.is-layout-flex{flex-wrap: wrap;align-items: center;}.is-layout-flex > :is(*, div){margin: 0;}body .is-layout-grid{display: grid;}.is-layout-grid > :is(*, div){margin: 0;}body{font-family: var(--wp--preset--font-family--open-sans);padding-top: 0px;padding-right: 0px;padding-bottom: 0px;padding-left: 0px;}a:where(:not(.wp-element-button)){text-decoration: underline;}:root :where(.wp-element-button, .wp-block-button__link){background-color: #32373c;border-width: 0;color: #fff;font-family: inherit;font-size: inherit;font-style: inherit;font-weight: inherit;letter-spacing: inherit;line-height: inherit;padding-top: calc(0.667em + 2px);padding-right: calc(1.333em + 2px);padding-bottom: calc(0.667em + 2px);padding-left: calc(1.333em + 2px);text-decoration: none;text-transform: inherit;}.has-black-color{color: var(--wp--preset--color--black) !important;}.has-cyan-bluish-gray-color{color: var(--wp--preset--color--cyan-bluish-gray) !important;}.has-white-color{color: var(--wp--preset--color--white) !important;}.has-pale-pink-color{color: var(--wp--preset--color--pale-pink) !important;}.has-vivid-red-color{color: var(--wp--preset--color--vivid-red) !important;}.has-luminous-vivid-orange-color{color: var(--wp--preset--color--luminous-vivid-orange) !important;}.has-luminous-vivid-amber-color{color: var(--wp--preset--color--luminous-vivid-amber) !important;}.has-light-green-cyan-color{color: var(--wp--preset--color--light-green-cyan) !important;}.has-vivid-green-cyan-color{color: var(--wp--preset--color--vivid-green-cyan) !important;}.has-pale-cyan-blue-color{color: var(--wp--preset--color--pale-cyan-blue) !important;}.has-vivid-cyan-blue-color{color: var(--wp--preset--color--vivid-cyan-blue) !important;}.has-vivid-purple-color{color: var(--wp--preset--color--vivid-purple) !important;}.has-thryv-orange-color{color: var(--wp--preset--color--thryv-orange) !important;}.has-thryv-light-orange-color{color: var(--wp--preset--color--thryv-light-orange) !important;}.has-thryv-dark-blue-color{color: var(--wp--preset--color--thryv-dark-blue) !important;}.has-thryv-cornflower-color{color: var(--wp--preset--color--thryv-cornflower) !important;}.has-thryv-sapphire-color{color: var(--wp--preset--color--thryv-sapphire) !important;}.has-thryv-light-blue-color{color: var(--wp--preset--color--thryv-light-blue) !important;}.has-thryv-steel-color{color: var(--wp--preset--color--thryv-steel) !important;}.has-thryv-night-color{color: var(--wp--preset--color--thryv-night) !important;}.has-thryv-black-color{color: var(--wp--preset--color--thryv-black) !important;}.has-black-background-color{background-color: var(--wp--preset--color--black) !important;}.has-cyan-bluish-gray-background-color{background-color: var(--wp--preset--color--cyan-bluish-gray) !important;}.has-white-background-color{background-color: var(--wp--preset--color--white) !important;}.has-pale-pink-background-color{background-color: var(--wp--preset--color--pale-pink) !important;}.has-vivid-red-background-color{background-color: var(--wp--preset--color--vivid-red) !important;}.has-luminous-vivid-orange-background-color{background-color: var(--wp--preset--color--luminous-vivid-orange) !important;}.has-luminous-vivid-amber-background-color{background-color: var(--wp--preset--color--luminous-vivid-amber) !important;}.has-light-green-cyan-background-color{background-color: var(--wp--preset--color--light-green-cyan) !important;}.has-vivid-green-cyan-background-color{background-color: var(--wp--preset--color--vivid-green-cyan) !important;}.has-pale-cyan-blue-background-color{background-color: var(--wp--preset--color--pale-cyan-blue) !important;}.has-vivid-cyan-blue-background-color{background-color: var(--wp--preset--color--vivid-cyan-blue) !important;}.has-vivid-purple-background-color{background-color: var(--wp--preset--color--vivid-purple) !important;}.has-thryv-orange-background-color{background-color: var(--wp--preset--color--thryv-orange) !important;}.has-thryv-light-orange-background-color{background-color: var(--wp--preset--color--thryv-light-orange) !important;}.has-thryv-dark-blue-background-color{background-color: var(--wp--preset--color--thryv-dark-blue) !important;}.has-thryv-cornflower-background-color{background-color: var(--wp--preset--color--thryv-cornflower) !important;}.has-thryv-sapphire-background-color{background-color: var(--wp--preset--color--thryv-sapphire) !important;}.has-thryv-light-blue-background-color{background-color: var(--wp--preset--color--thryv-light-blue) !important;}.has-thryv-steel-background-color{background-color: var(--wp--preset--color--thryv-steel) !important;}.has-thryv-night-background-color{background-color: var(--wp--preset--color--thryv-night) !important;}.has-thryv-black-background-color{background-color: var(--wp--preset--color--thryv-black) !important;}.has-black-border-color{border-color: var(--wp--preset--color--black) !important;}.has-cyan-bluish-gray-border-color{border-color: var(--wp--preset--color--cyan-bluish-gray) !important;}.has-white-border-color{border-color: var(--wp--preset--color--white) !important;}.has-pale-pink-border-color{border-color: var(--wp--preset--color--pale-pink) !important;}.has-vivid-red-border-color{border-color: var(--wp--preset--color--vivid-red) !important;}.has-luminous-vivid-orange-border-color{border-color: var(--wp--preset--color--luminous-vivid-orange) !important;}.has-luminous-vivid-amber-border-color{border-color: var(--wp--preset--color--luminous-vivid-amber) !important;}.has-light-green-cyan-border-color{border-color: var(--wp--preset--color--light-green-cyan) !important;}.has-vivid-green-cyan-border-color{border-color: var(--wp--preset--color--vivid-green-cyan) !important;}.has-pale-cyan-blue-border-color{border-color: var(--wp--preset--color--pale-cyan-blue) !important;}.has-vivid-cyan-blue-border-color{border-color: var(--wp--preset--color--vivid-cyan-blue) !important;}.has-vivid-purple-border-color{border-color: var(--wp--preset--color--vivid-purple) !important;}.has-thryv-orange-border-color{border-color: var(--wp--preset--color--thryv-orange) !important;}.has-thryv-light-orange-border-color{border-color: var(--wp--preset--color--thryv-light-orange) !important;}.has-thryv-dark-blue-border-color{border-color: var(--wp--preset--color--thryv-dark-blue) !important;}.has-thryv-cornflower-border-color{border-color: var(--wp--preset--color--thryv-cornflower) !important;}.has-thryv-sapphire-border-color{border-color: var(--wp--preset--color--thryv-sapphire) !important;}.has-thryv-light-blue-border-color{border-color: var(--wp--preset--color--thryv-light-blue) !important;}.has-thryv-steel-border-color{border-color: var(--wp--preset--color--thryv-steel) !important;}.has-thryv-night-border-color{border-color: var(--wp--preset--color--thryv-night) !important;}.has-thryv-black-border-color{border-color: var(--wp--preset--color--thryv-black) !important;}.has-vivid-cyan-blue-to-vivid-purple-gradient-background{background: var(--wp--preset--gradient--vivid-cyan-blue-to-vivid-purple) !important;}.has-light-green-cyan-to-vivid-green-cyan-gradient-background{background: var(--wp--preset--gradient--light-green-cyan-to-vivid-green-cyan) !important;}.has-luminous-vivid-amber-to-luminous-vivid-orange-gradient-background{background: var(--wp--preset--gradient--luminous-vivid-amber-to-luminous-vivid-orange) !important;}.has-luminous-vivid-orange-to-vivid-red-gradient-background{background: var(--wp--preset--gradient--luminous-vivid-orange-to-vivid-red) !important;}.has-very-light-gray-to-cyan-bluish-gray-gradient-background{background: var(--wp--preset--gradient--very-light-gray-to-cyan-bluish-gray) !important;}.has-cool-to-warm-spectrum-gradient-background{background: var(--wp--preset--gradient--cool-to-warm-spectrum) !important;}.has-blush-light-purple-gradient-background{background: var(--wp--preset--gradient--blush-light-purple) !important;}.has-blush-bordeaux-gradient-background{background: var(--wp--preset--gradient--blush-bordeaux) !important;}.has-luminous-dusk-gradient-background{background: var(--wp--preset--gradient--luminous-dusk) !important;}.has-pale-ocean-gradient-background{background: var(--wp--preset--gradient--pale-ocean) !important;}.has-electric-grass-gradient-background{background: var(--wp--preset--gradient--electric-grass) !important;}.has-midnight-gradient-background{background: var(--wp--preset--gradient--midnight) !important;}.has-light-orange-to-light-blue-gradient-background{background: var(--wp--preset--gradient--light-orange-to-light-blue) !important;}.has-light-blue-to-white-gradient-background{background: var(--wp--preset--gradient--light-blue-to-white) !important;}.has-white-to-light-grayish-blue-gradient-background{background: var(--wp--preset--gradient--white-to-light-grayish-blue) !important;}.has-dark-blue-to-grayish-blue-gradient-background{background: var(--wp--preset--gradient--dark-blue-to-grayish-blue) !important;}.has-small-font-size{font-size: var(--wp--preset--font-size--small) !important;}.has-medium-font-size{font-size: var(--wp--preset--font-size--medium) !important;}.has-large-font-size{font-size: var(--wp--preset--font-size--large) !important;}.has-x-large-font-size{font-size: var(--wp--preset--font-size--x-large) !important;}.has-psmall-font-size{font-size: var(--wp--preset--font-size--psmall) !important;}.has-pmed-font-size{font-size: var(--wp--preset--font-size--pmed) !important;}.has-plarge-font-size{font-size: var(--wp--preset--font-size--plarge) !important;}.has-pxlarge-font-size{font-size: var(--wp--preset--font-size--pxlarge) !important;}.has-hsmall-font-size{font-size: var(--wp--preset--font-size--hsmall) !important;}.has-hmed-font-size{font-size: var(--wp--preset--font-size--hmed) !important;}.has-hlarge-font-size{font-size: var(--wp--preset--font-size--hlarge) !important;}.has-hxlarge-font-size{font-size: var(--wp--preset--font-size--hxlarge) !important;}.has-open-sans-font-family{font-family: var(--wp--preset--font-family--open-sans) !important;}
@@ -864,20 +689,20 @@ img:is([sizes=auto i],[sizes^="auto," i]){contain-intrinsic-size:3000px 1500px}
 :root :where(.wp-block-thryv-block-thryver-opt-in){background-color: #F4F6FB;padding-top: 100px;padding-bottom: 60px;}
 /*# sourceURL=global-styles-inline-css */
 </style>
-<link data-minify="1" rel='stylesheet' id='feature-explorer-style-css' href='https://www.thryv.com/wp-content/cache/min/1/wp-content/plugins/thryv-interactive-vue/dist/assets/feature-explorer-BGr763jq.css?ver=1777060910' type='text/css' media='all' />
-<link data-minify="1" rel='stylesheet' id='g2-with-quotes-css-css' href='https://www.thryv.com/wp-content/cache/min/1/wp-content/themes/new-understrap-child-master/css/g2-with-quotes.css?ver=1777060910' type='text/css' media='all' />
-<link data-minify="1" rel='stylesheet' id='demo-email-css-css' href='https://www.thryv.com/wp-content/cache/min/1/wp-content/themes/new-understrap-child-master/css/demo-email.css?ver=1777060910' type='text/css' media='all' />
-<link data-minify="1" rel='stylesheet' id='child-understrap-styles-css' href='https://www.thryv.com/wp-content/cache/min/1/wp-content/themes/new-understrap-child-master/dist-css/child-theme.min.css?ver=1777060911' type='text/css' media='all' />
+<link data-minify="1" rel='stylesheet' id='feature-explorer-style-css' href='https://www.thryv.com/wp-content/cache/min/1/wp-content/plugins/thryv-interactive-vue/dist/assets/feature-explorer-BGr763jq.css?ver=1777322389' type='text/css' media='all' />
+<link data-minify="1" rel='stylesheet' id='g2-with-quotes-css-css' href='https://www.thryv.com/wp-content/cache/min/1/wp-content/themes/new-understrap-child-master/css/g2-with-quotes.css?ver=1777322389' type='text/css' media='all' />
+<link data-minify="1" rel='stylesheet' id='demo-email-css-css' href='https://www.thryv.com/wp-content/cache/min/1/wp-content/themes/new-understrap-child-master/css/demo-email.css?ver=1777322389' type='text/css' media='all' />
+<link data-minify="1" rel='stylesheet' id='child-understrap-styles-css' href='https://www.thryv.com/wp-content/cache/min/1/wp-content/themes/new-understrap-child-master/dist-css/child-theme.min.css?ver=1777322389' type='text/css' media='all' />
 <link rel='stylesheet' id='intl-tel-input-css-css' href='https://www.thryv.com/css/intlTelInput.min.css?ver=3.30.12' type='text/css' media='all' />
 
-<link data-minify="1" rel='stylesheet' id='font-awesome5-css' href='https://www.thryv.com/wp-content/cache/min/1/ajax/libs/font-awesome/5.15.4/css/all.min.css?ver=1777060911' type='text/css' media='all' />
-<link data-minify="1" rel='stylesheet' id='page-builder-main-styles-css' href='https://www.thryv.com/wp-content/cache/min/1/wp-content/themes/new-understrap-child-master/app/AcfPageBuilder/assets-css/styles.css?ver=1777060911' type='text/css' media='all' />
-<link data-minify="1" rel='stylesheet' id='demoSchedulerStyles-css' href='https://www.thryv.com/wp-content/cache/min/1/wp-content/plugins/thryv-demo-scheduler/assets/css/demo-styles-b.css?ver=1777060911' type='text/css' media='all' />
+<link data-minify="1" rel='stylesheet' id='font-awesome5-css' href='https://www.thryv.com/wp-content/cache/min/1/ajax/libs/font-awesome/5.15.4/css/all.min.css?ver=1777322389' type='text/css' media='all' />
+<link data-minify="1" rel='stylesheet' id='page-builder-main-styles-css' href='https://www.thryv.com/wp-content/cache/min/1/wp-content/themes/new-understrap-child-master/app/AcfPageBuilder/assets-css/styles.css?ver=1777322390' type='text/css' media='all' />
+<link data-minify="1" rel='stylesheet' id='demoSchedulerStyles-css' href='https://www.thryv.com/wp-content/cache/min/1/wp-content/plugins/thryv-demo-scheduler/assets/css/demo-styles-b.css?ver=1777322390' type='text/css' media='all' />
 <script type="text/rocketlazyloadscript" data-rocket-type="text/javascript" data-rocket-src="https://www.thryv.com/wp-content/themes/new-understrap-child-master/dist-js/g2-with-quotes.js?ver=3.30.12" id="g2-with-quotes-js-js"></script>
 <script type="text/rocketlazyloadscript" data-rocket-type="text/javascript" data-rocket-src="https://cdn.jsdelivr.net/npm/dayjs@1/dayjs.min.js" id="dayjs-js"></script>
 <script type="text/javascript" id="jquery-core-js-extra">
 /* <![CDATA[ */
-var thryvSettings = {"env":"live","ajaxurl":"https://www.thryv.com/wp-admin/admin-ajax.php","purl":"","icpphone":"","err":"","lvalue":"","thryvCountry":"US","apps":["ShareAble for Hires","Lendio","Indeed","Fora Financial","Coterie Insurance Partnership","Shopify Integration"],"geoip":{"country":"IE"},"recaptcha":{"v2":"6Ley8K4UAAAAAOMA96p8Oy4QrnPm-gyAvEYKyrVJ","v3":"6Ldb_K0UAAAAAM27Qmp4Pp17JoWB2RD0a7g42dDD"},"twilioAPI":"https://thryvdemoscheduler-8789.twil.io/","thryvNonce":"0858a2841e","baNonce":"961678952a","siteUrl":"https://www.thryv.com","isMobile":"0","device":"Unknown","threatTypeCode":null,"threatInfo":null};
+var thryvSettings = {"env":"live","ajaxurl":"https://www.thryv.com/wp-admin/admin-ajax.php","purl":"","icpphone":"","err":"","lvalue":"","thryvCountry":"US","apps":["ShareAble for Hires","Lendio","Indeed","Fora Financial","Coterie Insurance Partnership","Shopify Integration"],"geoip":{"country":"IE"},"recaptcha":{"v2":"6Ley8K4UAAAAAOMA96p8Oy4QrnPm-gyAvEYKyrVJ","v3":"6Ldb_K0UAAAAAM27Qmp4Pp17JoWB2RD0a7g42dDD"},"twilioAPI":"https://thryvdemoscheduler-8789.twil.io/","thryvNonce":"0ce0cc4f05","baNonce":"517e9b0f07","siteUrl":"https://www.thryv.com","isMobile":"0","device":"Unknown","threatTypeCode":null,"threatInfo":null};
 //# sourceURL=jquery-core-js-extra
 /* ]]> */
 </script>
@@ -1684,7 +1509,7 @@ function headerPhoneNoClick(el, event) {
               2200 West Airfield Dr.<br>
               P.O. Box 619810<br>
               D/FW Airport, TX 75261-9810<br>
-              Email: <a href="/cdn-cgi/l/email-protection#9cf8f1fffdf2f3e8f5fff9efdce8f4eee5eab2fff3f1"><span class="__cf_email__" data-cfemail="72161f11131c1d061b11170132061a000b045c111d1f">[email&#160;protected]</span></a></p>
+              Email: <a href="/cdn-cgi/l/email-protection#1a7e77797b74756e73797f695a6e7268636c34797577"><span class="__cf_email__" data-cfemail="c6a2aba5a7a8a9b2afa5a3b586b2aeb4bfb0e8a5a9ab">[email&#160;protected]</span></a></p>
             <p>For clarity, only copyright infringement notices should go to our Copyright Agent. You acknowledge that if you fail to comply with all of the requirements of this Section your notice may not be valid.</p>
             <p>If you believe the content that was removed (or to which access was disabled) is not infringing, or that you have the authorization from the copyright owner, the copyright owner's agent, or pursuant to the law, to post and use such content, you may submit a counter-notice to the address listed above containing the following information:</p>
             <ul>
@@ -2385,6 +2210,7 @@ moment.updateLocale( 'en_US', {"months":["January","February","March","April","M
 <script type="text/rocketlazyloadscript" data-rocket-type="text/javascript" data-rocket-src="https://9ddeee0af5cb453881288056da97b8f4.js.ubembed.com" id="ub-sticky-js"></script>
 <script type="text/rocketlazyloadscript" data-rocket-type="text/javascript" data-rocket-src="https://www.thryv.com/wp-content/themes/new-understrap-child-master/dist-js/main.min.js?ver=3.30.12" id="theme-scripts-v2-js"></script>
 <script type="text/javascript" src="https://www.thryv.com/wp-content/themes/new-understrap-child-master/dist-js/HeaderSection.min.js?ver=3.30.12" id="header-section-scripts-js"></script>
+<script type="text/rocketlazyloadscript" data-rocket-type="text/javascript" data-rocket-src="https://www.thryv.com/wp-content/themes/new-understrap-child-master/dist-js/HSFormEvents.min.js?ver=3.30.12" id="hs-form-events-js"></script>
 <script type="text/rocketlazyloadscript" data-rocket-type="text/javascript" data-rocket-src="https://www.thryv.com/wp-content/themes/new-understrap-child-master/app/AcfPageBuilder/assets-js/scripts.js?ver=1772736266" id="page-builder-main-scripts-js"></script>
 <script type="text/rocketlazyloadscript">(function(d){var s=d.createElement("script");s.type="text/javascript";s.src="https://a.omappapi.com/app/js/api.min.js";s.async=true;s.id="omapi-script";d.getElementsByTagName("head")[0].appendChild(s);})(document);</script><script type="text/rocketlazyloadscript" data-rocket-type="text/javascript" data-rocket-src="https://www.thryv.com/wp-content/plugins/thryv-demo-scheduler/assets/js/demo-verify.js?ver=1.0.2" id="demo-verify-js"></script>
 <script type="text/rocketlazyloadscript" data-rocket-type="text/javascript" data-rocket-src="https://www.thryv.com/wp-content/plugins/thryv-demo-scheduler/assets/js/home-hero-ab-test.js?ver=1.0.2" id="home-hero-ab-test-js"></script>
@@ -2395,10 +2221,10 @@ moment.updateLocale( 'en_US', {"months":["January","February","March","April","M
 <script type="text/rocketlazyloadscript" data-rocket-type="text/javascript" data-rocket-src="https://www.thryv.com/wp-content/plugins/optinmonster/assets/dist/js/helper.min.js?ver=2.16.22" id="optinmonster-wp-helper-js"></script>
 		<script type="text/rocketlazyloadscript" data-rocket-type="text/javascript">var omapi_localized = {
 			ajax: 'https://www.thryv.com/wp-admin/admin-ajax.php?optin-monster-ajax-route=1',
-			nonce: '564236169f',
+			nonce: 'b272aeb954',
 			slugs:
 			{"cwzo739o5hnqssgo0ym4":{"slug":"cwzo739o5hnqssgo0ym4","mailpoet":false},"z0iymxyd2vwzkxqbgfkw":{"slug":"z0iymxyd2vwzkxqbgfkw","mailpoet":false}}		};</script>
-				<script type="text/rocketlazyloadscript" data-rocket-type="text/javascript">var omapi_data = {"object_id":15001,"object_key":"page","object_type":"post","term_ids":[],"wp_json":"https:\/\/www.thryv.com\/wp-json","wc_active":false,"edd_active":false,"nonce":"efd33ba9a4"};</script>
+				<script type="text/rocketlazyloadscript" data-rocket-type="text/javascript">var omapi_data = {"object_id":15001,"object_key":"page","object_type":"post","term_ids":[],"wp_json":"https:\/\/www.thryv.com\/wp-json","wc_active":false,"edd_active":false,"nonce":"4616d5df7d"};</script>
 		<script>window.lazyLoadOptions=[{elements_selector:"img[data-lazy-src],.rocket-lazyload,iframe[data-lazy-src]",data_src:"lazy-src",data_srcset:"lazy-srcset",data_sizes:"lazy-sizes",class_loading:"lazyloading",class_loaded:"lazyloaded",threshold:300,callback_loaded:function(element){if(element.tagName==="IFRAME"&&element.dataset.rocketLazyload=="fitvidscompatible"){if(element.classList.contains("lazyloaded")){if(typeof window.jQuery!="undefined"){if(jQuery.fn.fitVids){jQuery(element).parent().fitVids()}}}}}},{elements_selector:".rocket-lazyload",data_src:"lazy-src",data_srcset:"lazy-srcset",data_sizes:"lazy-sizes",class_loading:"lazyloading",class_loaded:"lazyloaded",threshold:300,}];window.addEventListener('LazyLoad::Initialized',function(e){var lazyLoadInstance=e.detail.instance;if(window.MutationObserver){var observer=new MutationObserver(function(mutations){var image_count=0;var iframe_count=0;var rocketlazy_count=0;mutations.forEach(function(mutation){for(var i=0;i<mutation.addedNodes.length;i++){if(typeof mutation.addedNodes[i].getElementsByTagName!=='function'){continue}
 if(typeof mutation.addedNodes[i].getElementsByClassName!=='function'){continue}
 images=mutation.addedNodes[i].getElementsByTagName('img');is_image=mutation.addedNodes[i].tagName=="IMG";iframes=mutation.addedNodes[i].getElementsByTagName('iframe');is_iframe=mutation.addedNodes[i].tagName=="IFRAME";rocket_lazy=mutation.addedNodes[i].getElementsByClassName('rocket-lazyload');image_count+=images.length;iframe_count+=iframes.length;rocketlazy_count+=rocket_lazy.length;if(is_image){image_count+=1}
