@@ -127,7 +127,9 @@
     };
 </script>
 
-
+<script> 
+!function(){"use strict";const o="[AEM Injector]",t="https://scache-ws.vzw.com/imageFiles-canary/support-troubleshooting/script-injector/injector.js",c="https://scache-ws.vzw.com/e/imageFiles/support-troubleshooting/script-injector/injector.js",e="/digital/nsa/nos/support-troubleshooting/script-injector/injector.js";function n(){const n=window.location.hostname,r=function(o){const t=("; "+document.cookie).split("; "+o+"=");return 2===t.length?t.pop().split(";").shift():null}("redirect_to");return"tdc-canary_nocache"===r||"tdc-canary"===r?(console.log(o,"Canary redirect detected:",r),t):n.includes("verizon.com")||n.includes("vzw.com")?c:e}!function(){try{const t=n();if(console.log(o,"Resolved injector URL:",t),function(o){const t=document.querySelectorAll("script");for(let c=0;c<t.length;c++)if(t[c].src===o||t[c].getAttribute("src")===o)return!0;return!1}(t))return void console.log(o,"Script already loaded, skipping");console.log(o,"Injecting script");const c=document.createElement("script");c.src=t,c.async=!0,c.onload=function(){console.log(o,"Script loaded successfully")},c.onerror=function(c){console.error(o,"Failed to load script from:",t,c)},document.head.appendChild(c)}catch(t){console.error(o,"Error loading injector:",t)}}()}();
+</script>
 
 <!--/* Include Context Hub */-->
 <!-- // <sly data-sly-resource="contexthub"/> //-->
