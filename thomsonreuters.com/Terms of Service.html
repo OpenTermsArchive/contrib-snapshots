@@ -28,11 +28,14 @@
     
     
     
-        
-            <script src="https://www.datadoghq-browser-agent.com/us1/v4/datadog-rum.js" type="text/javascript">
-            </script>
-            <script>
-                window.DD_RUM && window.DD_RUM.init({
+        <script>
+            (function(h,o,u,n,d) {
+                h=h[d]=h[d]||{q:[],onReady:function(c){h.q.push(c)}}
+                d=o.createElement(u);d.async=1;d.src=n
+                n=o.getElementsByTagName(u)[0];n.parentNode.insertBefore(d,n)
+            })(window,document,'script','https://www.datadoghq-browser-agent.com/us1/v4/datadog-rum.js','DD_RUM')
+            window.DD_RUM.onReady(function() {
+                window.DD_RUM.init({
                     clientToken: "pub5f5a3c44c0f49e41aa5eafd97eed3f5c",
                     applicationId: "1a31ca8a-2063-4352-85f3-078208db1857",
                     site: 'datadoghq.com',
@@ -48,11 +51,9 @@
                     defaultPrivacyLevel: 'mask-user-input',
                 });
 
-                window.DD_RUM &&
                 window.DD_RUM.startSessionReplayRecording();
-            </script>
-        
-        
+            })
+        </script>
     
 
 
@@ -131,9 +132,15 @@
 <meta name="w-uuid" content="ffe50312-bded-45b2-978b-eb3bb9e07729"/>
 
 <script>
-    var digitalData = {"page":{"attributes":{"businessUnit":"trcorp","discipline":"general","taxonomyCategory":"","taxonomySubCategory":"","country":"global","brands":[],"language":"en","customerSegment":"","practiceArea":"","internalBusinessSegment":"general"},"category":{"primaryCategory":"thomson-reuters-corporate"},"pageInfo":{"pageTitle":"Terms of use | Thomson Reuters","pageID":"707c2d98-96dc-41d0-93ad-6b78fe7307a7","pageURL":"https://www.thomsonreuters.com/en/terms-of-use","pageName":"trcorp:terms-of-use","pageTemplate":"TR_legal-notices_template","documentAge":"116","createDate":"2026-01-12","publishDate":"2026-01-12","pageType":"legal-notices"}},"product":{}};
+    var digitalData = {"page":{"attributes":{"businessUnit":"trcorp","discipline":"general","taxonomyCategory":"","taxonomySubCategory":"","country":"global","brands":[],"language":"en","customerSegment":"","practiceArea":"","internalBusinessSegment":"general"},"category":{"primaryCategory":"thomson-reuters-corporate"},"pageInfo":{"pageTitle":"Terms of use | Thomson Reuters","pageID":"707c2d98-96dc-41d0-93ad-6b78fe7307a7","pageURL":"https://www.thomsonreuters.com/en/terms-of-use","pageName":"trcorp:terms-of-use","pageTemplate":"TR_legal-notices_template","documentAge":"117","createDate":"2026-01-12","publishDate":"2026-01-12","pageType":"legal-notices"}},"product":{}};
 </script>
 
+
+    
+    
+        <script>window.schema_highlighter={accountId: "ThomsonReuters/ThomsonReutersCom", outputCache: true}</script>
+    
+    <script async src="https://cdn.schemaapp.com/javascript/highlight.js"></script>
 
 
 <meta name="w-internal-title" content="Terms of use"/>
@@ -426,7 +433,7 @@ window['adrum-start-time'] = new Date().getTime();
     
     <link rel="stylesheet" href="/etc.clientlibs/uefalcon/clientlibs/clientlib-dependencies.lc-d41d8cd98f00b204e9800998ecf8427e-lc.min.css" type="text/css">
 <link rel="stylesheet" href="/etc.clientlibs/uefalcon/clientlibs/clientlib-font_awesome_icons.lc-98fdf7ef91907b70a9dc2f3fe88afeeb-lc.min.css" type="text/css">
-<link rel="stylesheet" href="/etc.clientlibs/uefalcon/clientlibs/clientlib-site.lc-fad1607008129386c99195213f02078f-lc.min.css" type="text/css">
+<link rel="stylesheet" href="/etc.clientlibs/uefalcon/clientlibs/clientlib-site.lc-9c59f30691c014358a0fe1db0390523c-lc.min.css" type="text/css">
 
 
     
@@ -439,8 +446,8 @@ window['adrum-start-time'] = new Date().getTime();
     
       
       
-        <link href="https://app-data.gcs.trstatic.net/emcm-ui/bundle/v24.103.0/main.css" rel="stylesheet"/>
-        <script src="https://app-data.gcs.trstatic.net/emcm-ui/bundle/v24.103.0/head.js"></script>
+        <link href="https://app-data.gcs.trstatic.net/emcm-ui/bundle/v24.104.0/main.css" rel="stylesheet"/>
+        <script src="https://app-data.gcs.trstatic.net/emcm-ui/bundle/v24.104.0/head.js"></script>
       
     
     
@@ -562,7 +569,7 @@ window['adrum-start-time'] = new Date().getTime();
 
     
     
-<script src="/etc.clientlibs/uefalcon/clientlibs/clientlib-dcl_search_headless.lc-954bed0981795dd7219f90196983a3cb-lc.min.js"></script>
+<script src="/etc.clientlibs/uefalcon/clientlibs/clientlib-dcl_search_headless.lc-ffaaadda89d2bac21752ecad5ebb3471-lc.min.js"></script>
 
 
 
@@ -676,7 +683,7 @@ window['adrum-start-time'] = new Date().getTime();
                 
                 
 
-                <tr-navigation-level2-item class="tr-globalNavigation-level2-item__tab navigation-tabs__tab" data-navigation-hook-tabs="tab" data-tab-title="Law firms" id="item_1774292693205-tab" tab-id="acc6b0be-3451-49de-a96f-8b48d681abf9" role="tab" aria-expanded="false" aria-haspopup="true" item-id="acc6b0be-3451-49de-a96f-8b48d681abf9" is-default-active="false" aria-label="Law firms" analytics-action='Menu Navigation Level 2' analytics-value='Solutions|Law firms'>
+                <tr-navigation-level2-item class="tr-globalNavigation-level2-item__tab navigation-tabs__tab" data-navigation-hook-tabs="tab" data-tab-title="Law firms" id="item_1774292693205-tab" tab-id="17b12348-d05e-4131-90ca-0b963f25f339" role="tab" aria-expanded="false" aria-haspopup="true" item-id="17b12348-d05e-4131-90ca-0b963f25f339" is-default-active="false" aria-label="Law firms" analytics-action='Menu Navigation Level 2' analytics-value='Solutions|Law firms'>
                     <span class="tr-globalNavigation-level2-item__tab-inner">
                         <span class="tr-globalNavigation-level2-item__tab-left">
                             <span class="tr-globalNavigation-level2-item__tab-icon tr-globalNavigation-level2-item__tab-icon--leading">
@@ -697,7 +704,7 @@ window['adrum-start-time'] = new Date().getTime();
                 
                 
 
-                <tr-navigation-level2-item class="tr-globalNavigation-level2-item__tab navigation-tabs__tab" data-navigation-hook-tabs="tab" data-tab-title="Corporations" id="item_1774292720492-tab" tab-id="e1cedbf5-814d-4424-bb8c-b5651376a85e" role="tab" aria-expanded="false" aria-haspopup="true" item-id="e1cedbf5-814d-4424-bb8c-b5651376a85e" is-default-active="false" aria-label="Corporations" analytics-action='Menu Navigation Level 2' analytics-value='Solutions|Corporations'>
+                <tr-navigation-level2-item class="tr-globalNavigation-level2-item__tab navigation-tabs__tab" data-navigation-hook-tabs="tab" data-tab-title="Corporations" id="item_1774292720492-tab" tab-id="24541c81-bfd6-4acb-94eb-5966d2ccf7b3" role="tab" aria-expanded="false" aria-haspopup="true" item-id="24541c81-bfd6-4acb-94eb-5966d2ccf7b3" is-default-active="false" aria-label="Corporations" analytics-action='Menu Navigation Level 2' analytics-value='Solutions|Corporations'>
                     <span class="tr-globalNavigation-level2-item__tab-inner">
                         <span class="tr-globalNavigation-level2-item__tab-left">
                             <span class="tr-globalNavigation-level2-item__tab-icon tr-globalNavigation-level2-item__tab-icon--leading">
@@ -718,7 +725,7 @@ window['adrum-start-time'] = new Date().getTime();
                 
                 
 
-                <tr-navigation-level2-item class="tr-globalNavigation-level2-item__tab navigation-tabs__tab" data-navigation-hook-tabs="tab" data-tab-title="Tax, audit &amp; accounting firms" id="item_1774292710882-tab" tab-id="3bb5864c-4c9e-4fac-b6e9-fd6c67681134" role="tab" aria-expanded="false" aria-haspopup="true" item-id="3bb5864c-4c9e-4fac-b6e9-fd6c67681134" is-default-active="false" aria-label="Tax, audit &amp; accounting firms" analytics-action='Menu Navigation Level 2' analytics-value='Solutions|Tax, audit &amp; accounting firms'>
+                <tr-navigation-level2-item class="tr-globalNavigation-level2-item__tab navigation-tabs__tab" data-navigation-hook-tabs="tab" data-tab-title="Tax, audit &amp; accounting firms" id="item_1774292710882-tab" tab-id="52b76805-40b3-47c0-ab07-953750b5cd6c" role="tab" aria-expanded="false" aria-haspopup="true" item-id="52b76805-40b3-47c0-ab07-953750b5cd6c" is-default-active="false" aria-label="Tax, audit &amp; accounting firms" analytics-action='Menu Navigation Level 2' analytics-value='Solutions|Tax, audit &amp; accounting firms'>
                     <span class="tr-globalNavigation-level2-item__tab-inner">
                         <span class="tr-globalNavigation-level2-item__tab-left">
                             <span class="tr-globalNavigation-level2-item__tab-icon tr-globalNavigation-level2-item__tab-icon--leading">
@@ -739,7 +746,7 @@ window['adrum-start-time'] = new Date().getTime();
                 
                 
 
-                <tr-navigation-level2-item class="tr-globalNavigation-level2-item__tab navigation-tabs__tab" data-navigation-hook-tabs="tab" data-tab-title="Government" id="item_1774292737320-tab" tab-id="78daaad3-2a8d-43b9-8b43-82c43306c956" role="tab" aria-expanded="false" aria-haspopup="true" item-id="78daaad3-2a8d-43b9-8b43-82c43306c956" is-default-active="false" aria-label="Government" analytics-action='Menu Navigation Level 2' analytics-value='Solutions|Government'>
+                <tr-navigation-level2-item class="tr-globalNavigation-level2-item__tab navigation-tabs__tab" data-navigation-hook-tabs="tab" data-tab-title="Government" id="item_1774292737320-tab" tab-id="5fd6725a-be28-4632-a39c-08c2b19d805e" role="tab" aria-expanded="false" aria-haspopup="true" item-id="5fd6725a-be28-4632-a39c-08c2b19d805e" is-default-active="false" aria-label="Government" analytics-action='Menu Navigation Level 2' analytics-value='Solutions|Government'>
                     <span class="tr-globalNavigation-level2-item__tab-inner">
                         <span class="tr-globalNavigation-level2-item__tab-left">
                             <span class="tr-globalNavigation-level2-item__tab-icon tr-globalNavigation-level2-item__tab-icon--leading">
@@ -760,7 +767,7 @@ window['adrum-start-time'] = new Date().getTime();
                 
                 
 
-                <tr-navigation-level2-item class="tr-globalNavigation-level2-item__tab navigation-tabs__tab" data-navigation-hook-tabs="tab" data-tab-title="Partnerships &amp; alliances" id="item_1774292859333-tab" tab-id="a0ed2863-17a6-4789-b6af-a71bd59df7f2" role="tab" aria-expanded="false" aria-haspopup="true" item-id="a0ed2863-17a6-4789-b6af-a71bd59df7f2" is-default-active="false" aria-label="Partnerships &amp; alliances" analytics-action='Menu Navigation Level 2' analytics-value='Solutions|Partnerships &amp; alliances'>
+                <tr-navigation-level2-item class="tr-globalNavigation-level2-item__tab navigation-tabs__tab" data-navigation-hook-tabs="tab" data-tab-title="Partnerships &amp; alliances" id="item_1774292859333-tab" tab-id="a0e05d12-235f-4fe1-9ea8-41465cc67ebc" role="tab" aria-expanded="false" aria-haspopup="true" item-id="a0e05d12-235f-4fe1-9ea8-41465cc67ebc" is-default-active="false" aria-label="Partnerships &amp; alliances" analytics-action='Menu Navigation Level 2' analytics-value='Solutions|Partnerships &amp; alliances'>
                     <span class="tr-globalNavigation-level2-item__tab-inner">
                         <span class="tr-globalNavigation-level2-item__tab-left">
                             <span class="tr-globalNavigation-level2-item__tab-icon tr-globalNavigation-level2-item__tab-icon--leading">
@@ -780,7 +787,7 @@ window['adrum-start-time'] = new Date().getTime();
         </div>
     </ul>
     <div class="tr-globalNavigation-level3-container">
-        <tr-navigation-level-3 tab-id="acc6b0be-3451-49de-a96f-8b48d681abf9" id="Law firms-tabpanel-0" data-label="Law firms" role="tabpanel" class="navigation-tabs__tabpanel navigation-tabs__tabpanel--active" data-navigation-hook-tabs="tabpanel"><div class="navigationLevel3 tabs panelcontainer">
+        <tr-navigation-level-3 tab-id="17b12348-d05e-4131-90ca-0b963f25f339" id="Law firms-tabpanel-0" data-label="Law firms" role="tabpanel" class="navigation-tabs__tabpanel navigation-tabs__tabpanel--active" data-navigation-hook-tabs="tabpanel"><div class="navigationLevel3 tabs panelcontainer">
 
 
 <div data-navigation-is="tabs" id="navigationLevel3-a00559b9ae" class="tr-navigation-level-3__layout-container tr-globalNavigation-level3 navigation-tabs">
@@ -1160,7 +1167,7 @@ window['adrum-start-time'] = new Date().getTime();
     
 </div>
 </tr-navigation-level-3>
-<tr-navigation-level-3 tab-id="e1cedbf5-814d-4424-bb8c-b5651376a85e" id="Corporations-tabpanel-1" data-label="Corporations" role="tabpanel" class="navigation-tabs__tabpanel navigation-tabs__tabpanel--active" data-navigation-hook-tabs="tabpanel"><div class="navigationLevel3 tabs panelcontainer">
+<tr-navigation-level-3 tab-id="24541c81-bfd6-4acb-94eb-5966d2ccf7b3" id="Corporations-tabpanel-1" data-label="Corporations" role="tabpanel" class="navigation-tabs__tabpanel navigation-tabs__tabpanel--active" data-navigation-hook-tabs="tabpanel"><div class="navigationLevel3 tabs panelcontainer">
 
 
 <div data-navigation-is="tabs" id="navigationLevel3-606b5d0a7e" class="tr-navigation-level-3__layout-container tr-globalNavigation-level3 navigation-tabs">
@@ -1678,7 +1685,7 @@ window['adrum-start-time'] = new Date().getTime();
     
 </div>
 </tr-navigation-level-3>
-<tr-navigation-level-3 tab-id="3bb5864c-4c9e-4fac-b6e9-fd6c67681134" id="Tax, audit &amp; accounting firms-tabpanel-2" data-label="Tax, audit &amp; accounting firms" role="tabpanel" class="navigation-tabs__tabpanel navigation-tabs__tabpanel--active" data-navigation-hook-tabs="tabpanel"><div class="navigationLevel3 tabs panelcontainer">
+<tr-navigation-level-3 tab-id="52b76805-40b3-47c0-ab07-953750b5cd6c" id="Tax, audit &amp; accounting firms-tabpanel-2" data-label="Tax, audit &amp; accounting firms" role="tabpanel" class="navigation-tabs__tabpanel navigation-tabs__tabpanel--active" data-navigation-hook-tabs="tabpanel"><div class="navigationLevel3 tabs panelcontainer">
 
 
 <div data-navigation-is="tabs" id="navigationLevel3-56ee032d76" class="tr-navigation-level-3__layout-container tr-globalNavigation-level3 navigation-tabs">
@@ -1819,7 +1826,7 @@ window['adrum-start-time'] = new Date().getTime();
     
 </div>
 </tr-navigation-level-3>
-<tr-navigation-level-3 tab-id="78daaad3-2a8d-43b9-8b43-82c43306c956" id="Government-tabpanel-3" data-label="Government" role="tabpanel" class="navigation-tabs__tabpanel navigation-tabs__tabpanel--active" data-navigation-hook-tabs="tabpanel"><div class="navigationLevel3 tabs panelcontainer">
+<tr-navigation-level-3 tab-id="5fd6725a-be28-4632-a39c-08c2b19d805e" id="Government-tabpanel-3" data-label="Government" role="tabpanel" class="navigation-tabs__tabpanel navigation-tabs__tabpanel--active" data-navigation-hook-tabs="tabpanel"><div class="navigationLevel3 tabs panelcontainer">
 
 
 <div data-navigation-is="tabs" id="navigationLevel3-5d072bfcd3" class="tr-navigation-level-3__layout-container tr-globalNavigation-level3 navigation-tabs">
@@ -2019,7 +2026,7 @@ window['adrum-start-time'] = new Date().getTime();
     
 </div>
 </tr-navigation-level-3>
-<tr-navigation-level-3 tab-id="a0ed2863-17a6-4789-b6af-a71bd59df7f2" id="Partnerships &amp; alliances-tabpanel-4" data-label="Partnerships &amp; alliances" role="tabpanel" class="navigation-tabs__tabpanel navigation-tabs__tabpanel--active" data-navigation-hook-tabs="tabpanel"><div class="navigationLevel3 tabs panelcontainer">
+<tr-navigation-level-3 tab-id="a0e05d12-235f-4fe1-9ea8-41465cc67ebc" id="Partnerships &amp; alliances-tabpanel-4" data-label="Partnerships &amp; alliances" role="tabpanel" class="navigation-tabs__tabpanel navigation-tabs__tabpanel--active" data-navigation-hook-tabs="tabpanel"><div class="navigationLevel3 tabs panelcontainer">
 
 
 <div data-navigation-is="tabs" id="navigationLevel3-2e65a87587" class="tr-navigation-level-3__layout-container tr-globalNavigation-level3 navigation-tabs">
@@ -2181,7 +2188,7 @@ window['adrum-start-time'] = new Date().getTime();
                 
                 
 
-                <tr-navigation-level2-item class="tr-globalNavigation-level2-item__tab navigation-tabs__tab" data-navigation-hook-tabs="tab" data-tab-title="Legal" id="item_1774292937634-tab" tab-id="7180dd83-6d08-4534-95ee-e716e75b559b" role="tab" aria-expanded="false" aria-haspopup="true" item-id="7180dd83-6d08-4534-95ee-e716e75b559b" is-default-active="false" aria-label="Legal" analytics-action='Menu Navigation Level 2' analytics-value='Products|Legal'>
+                <tr-navigation-level2-item class="tr-globalNavigation-level2-item__tab navigation-tabs__tab" data-navigation-hook-tabs="tab" data-tab-title="Legal" id="item_1774292937634-tab" tab-id="aada01f4-f51e-4ddf-861d-8ae8417c1b47" role="tab" aria-expanded="false" aria-haspopup="true" item-id="aada01f4-f51e-4ddf-861d-8ae8417c1b47" is-default-active="false" aria-label="Legal" analytics-action='Menu Navigation Level 2' analytics-value='Products|Legal'>
                     <span class="tr-globalNavigation-level2-item__tab-inner">
                         <span class="tr-globalNavigation-level2-item__tab-left">
                             <span class="tr-globalNavigation-level2-item__tab-icon tr-globalNavigation-level2-item__tab-icon--leading">
@@ -2202,7 +2209,7 @@ window['adrum-start-time'] = new Date().getTime();
                 
                 
 
-                <tr-navigation-level2-item class="tr-globalNavigation-level2-item__tab navigation-tabs__tab" data-navigation-hook-tabs="tab" data-tab-title="Tax, audit &amp; accounting" id="item_1774292952632-tab" tab-id="34362bd6-4b95-4ed6-a50b-17a90705c25d" role="tab" aria-expanded="false" aria-haspopup="true" item-id="34362bd6-4b95-4ed6-a50b-17a90705c25d" is-default-active="false" aria-label="Tax, audit &amp; accounting" analytics-action='Menu Navigation Level 2' analytics-value='Products|Tax, audit &amp; accounting'>
+                <tr-navigation-level2-item class="tr-globalNavigation-level2-item__tab navigation-tabs__tab" data-navigation-hook-tabs="tab" data-tab-title="Tax, audit &amp; accounting" id="item_1774292952632-tab" tab-id="3d42f496-8103-43dd-82a7-1dfc4dd62eca" role="tab" aria-expanded="false" aria-haspopup="true" item-id="3d42f496-8103-43dd-82a7-1dfc4dd62eca" is-default-active="false" aria-label="Tax, audit &amp; accounting" analytics-action='Menu Navigation Level 2' analytics-value='Products|Tax, audit &amp; accounting'>
                     <span class="tr-globalNavigation-level2-item__tab-inner">
                         <span class="tr-globalNavigation-level2-item__tab-left">
                             <span class="tr-globalNavigation-level2-item__tab-icon tr-globalNavigation-level2-item__tab-icon--leading">
@@ -2223,7 +2230,7 @@ window['adrum-start-time'] = new Date().getTime();
                 
                 
 
-                <tr-navigation-level2-item class="tr-globalNavigation-level2-item__tab navigation-tabs__tab" data-navigation-hook-tabs="tab" data-tab-title="Global trade &amp; supply" id="item_1774292959151-tab" tab-id="a87bd0d4-2cdc-4a11-be1d-c7682e608adc" role="tab" aria-expanded="false" aria-haspopup="true" item-id="a87bd0d4-2cdc-4a11-be1d-c7682e608adc" is-default-active="false" aria-label="Global trade &amp; supply" analytics-action='Menu Navigation Level 2' analytics-value='Products|Global trade &amp; supply'>
+                <tr-navigation-level2-item class="tr-globalNavigation-level2-item__tab navigation-tabs__tab" data-navigation-hook-tabs="tab" data-tab-title="Global trade &amp; supply" id="item_1774292959151-tab" tab-id="9c614fe4-49ee-414c-bafb-e91b1cd678e7" role="tab" aria-expanded="false" aria-haspopup="true" item-id="9c614fe4-49ee-414c-bafb-e91b1cd678e7" is-default-active="false" aria-label="Global trade &amp; supply" analytics-action='Menu Navigation Level 2' analytics-value='Products|Global trade &amp; supply'>
                     <span class="tr-globalNavigation-level2-item__tab-inner">
                         <span class="tr-globalNavigation-level2-item__tab-left">
                             <span class="tr-globalNavigation-level2-item__tab-icon tr-globalNavigation-level2-item__tab-icon--leading">
@@ -2244,7 +2251,7 @@ window['adrum-start-time'] = new Date().getTime();
                 
                 
 
-                <tr-navigation-level2-item class="tr-globalNavigation-level2-item__tab navigation-tabs__tab" data-navigation-hook-tabs="tab" data-tab-title="Risk &amp; fraud" id="item_1774292968088-tab" tab-id="3565c185-176a-48bb-a789-b8518389d8b6" role="tab" aria-expanded="false" aria-haspopup="true" item-id="3565c185-176a-48bb-a789-b8518389d8b6" is-default-active="false" aria-label="Risk &amp; fraud" analytics-action='Menu Navigation Level 2' analytics-value='Products|Risk &amp; fraud'>
+                <tr-navigation-level2-item class="tr-globalNavigation-level2-item__tab navigation-tabs__tab" data-navigation-hook-tabs="tab" data-tab-title="Risk &amp; fraud" id="item_1774292968088-tab" tab-id="a733de67-befa-4440-8ee3-280d8911664c" role="tab" aria-expanded="false" aria-haspopup="true" item-id="a733de67-befa-4440-8ee3-280d8911664c" is-default-active="false" aria-label="Risk &amp; fraud" analytics-action='Menu Navigation Level 2' analytics-value='Products|Risk &amp; fraud'>
                     <span class="tr-globalNavigation-level2-item__tab-inner">
                         <span class="tr-globalNavigation-level2-item__tab-left">
                             <span class="tr-globalNavigation-level2-item__tab-icon tr-globalNavigation-level2-item__tab-icon--leading">
@@ -2265,7 +2272,7 @@ window['adrum-start-time'] = new Date().getTime();
                 
                 
 
-                <tr-navigation-level2-item class="tr-globalNavigation-level2-item__tab navigation-tabs__tab" data-navigation-hook-tabs="tab" data-tab-title="Books" id="item_1774292980780-tab" tab-id="e0bdfd86-df2a-4afe-95ae-427012bd945d" role="tab" aria-expanded="false" aria-haspopup="true" item-id="e0bdfd86-df2a-4afe-95ae-427012bd945d" is-default-active="false" aria-label="Books" analytics-action='Menu Navigation Level 2' analytics-value='Products|Books'>
+                <tr-navigation-level2-item class="tr-globalNavigation-level2-item__tab navigation-tabs__tab" data-navigation-hook-tabs="tab" data-tab-title="Books" id="item_1774292980780-tab" tab-id="7431b1d0-13c4-444f-a00e-82828bc7b920" role="tab" aria-expanded="false" aria-haspopup="true" item-id="7431b1d0-13c4-444f-a00e-82828bc7b920" is-default-active="false" aria-label="Books" analytics-action='Menu Navigation Level 2' analytics-value='Products|Books'>
                     <span class="tr-globalNavigation-level2-item__tab-inner">
                         <span class="tr-globalNavigation-level2-item__tab-left">
                             <span class="tr-globalNavigation-level2-item__tab-icon tr-globalNavigation-level2-item__tab-icon--leading">
@@ -2285,7 +2292,7 @@ window['adrum-start-time'] = new Date().getTime();
         </div>
     </ul>
     <div class="tr-globalNavigation-level3-container">
-        <tr-navigation-level-3 tab-id="7180dd83-6d08-4534-95ee-e716e75b559b" id="Legal-tabpanel-0" data-label="Legal" role="tabpanel" class="navigation-tabs__tabpanel navigation-tabs__tabpanel--active" data-navigation-hook-tabs="tabpanel"><div class="navigationLevel3 tabs panelcontainer">
+        <tr-navigation-level-3 tab-id="aada01f4-f51e-4ddf-861d-8ae8417c1b47" id="Legal-tabpanel-0" data-label="Legal" role="tabpanel" class="navigation-tabs__tabpanel navigation-tabs__tabpanel--active" data-navigation-hook-tabs="tabpanel"><div class="navigationLevel3 tabs panelcontainer">
 
 
 <div data-navigation-is="tabs" id="navigationLevel3-83b00cc7b9" class="tr-navigation-level-3__layout-container tr-globalNavigation-level3 navigation-tabs">
@@ -2528,7 +2535,7 @@ window['adrum-start-time'] = new Date().getTime();
     
 </div>
 </tr-navigation-level-3>
-<tr-navigation-level-3 tab-id="34362bd6-4b95-4ed6-a50b-17a90705c25d" id="Tax, audit &amp; accounting-tabpanel-1" data-label="Tax, audit &amp; accounting" role="tabpanel" class="navigation-tabs__tabpanel navigation-tabs__tabpanel--active" data-navigation-hook-tabs="tabpanel"><div class="navigationLevel3 tabs panelcontainer">
+<tr-navigation-level-3 tab-id="3d42f496-8103-43dd-82a7-1dfc4dd62eca" id="Tax, audit &amp; accounting-tabpanel-1" data-label="Tax, audit &amp; accounting" role="tabpanel" class="navigation-tabs__tabpanel navigation-tabs__tabpanel--active" data-navigation-hook-tabs="tabpanel"><div class="navigationLevel3 tabs panelcontainer">
 
 
 <div data-navigation-is="tabs" id="navigationLevel3-3a69551d9f" class="tr-navigation-level-3__layout-container tr-globalNavigation-level3 navigation-tabs">
@@ -2897,7 +2904,7 @@ window['adrum-start-time'] = new Date().getTime();
     
 </div>
 </tr-navigation-level-3>
-<tr-navigation-level-3 tab-id="a87bd0d4-2cdc-4a11-be1d-c7682e608adc" id="Global trade &amp; supply-tabpanel-2" data-label="Global trade &amp; supply" role="tabpanel" class="navigation-tabs__tabpanel navigation-tabs__tabpanel--active" data-navigation-hook-tabs="tabpanel"><div class="navigationLevel3 tabs panelcontainer">
+<tr-navigation-level-3 tab-id="9c614fe4-49ee-414c-bafb-e91b1cd678e7" id="Global trade &amp; supply-tabpanel-2" data-label="Global trade &amp; supply" role="tabpanel" class="navigation-tabs__tabpanel navigation-tabs__tabpanel--active" data-navigation-hook-tabs="tabpanel"><div class="navigationLevel3 tabs panelcontainer">
 
 
 <div data-navigation-is="tabs" id="navigationLevel3-fd551d4c41" class="tr-navigation-level-3__layout-container tr-globalNavigation-level3 navigation-tabs">
@@ -3117,7 +3124,7 @@ window['adrum-start-time'] = new Date().getTime();
     
 </div>
 </tr-navigation-level-3>
-<tr-navigation-level-3 tab-id="3565c185-176a-48bb-a789-b8518389d8b6" id="Risk &amp; fraud-tabpanel-3" data-label="Risk &amp; fraud" role="tabpanel" class="navigation-tabs__tabpanel navigation-tabs__tabpanel--active" data-navigation-hook-tabs="tabpanel"><div class="navigationLevel3 tabs panelcontainer">
+<tr-navigation-level-3 tab-id="a733de67-befa-4440-8ee3-280d8911664c" id="Risk &amp; fraud-tabpanel-3" data-label="Risk &amp; fraud" role="tabpanel" class="navigation-tabs__tabpanel navigation-tabs__tabpanel--active" data-navigation-hook-tabs="tabpanel"><div class="navigationLevel3 tabs panelcontainer">
 
 
 <div data-navigation-is="tabs" id="navigationLevel3-8a85326c37" class="tr-navigation-level-3__layout-container tr-globalNavigation-level3 navigation-tabs">
@@ -3337,7 +3344,7 @@ window['adrum-start-time'] = new Date().getTime();
     
 </div>
 </tr-navigation-level-3>
-<tr-navigation-level-3 tab-id="e0bdfd86-df2a-4afe-95ae-427012bd945d" id="Books-tabpanel-4" data-label="Books" role="tabpanel" class="navigation-tabs__tabpanel navigation-tabs__tabpanel--active" data-navigation-hook-tabs="tabpanel"><div class="navigationLevel3 tabs panelcontainer">
+<tr-navigation-level-3 tab-id="7431b1d0-13c4-444f-a00e-82828bc7b920" id="Books-tabpanel-4" data-label="Books" role="tabpanel" class="navigation-tabs__tabpanel navigation-tabs__tabpanel--active" data-navigation-hook-tabs="tabpanel"><div class="navigationLevel3 tabs panelcontainer">
 
 
 <div data-navigation-is="tabs" id="navigationLevel3-b3512c53b2" class="tr-navigation-level-3__layout-container tr-globalNavigation-level3 navigation-tabs">
@@ -3595,7 +3602,7 @@ window['adrum-start-time'] = new Date().getTime();
                 
                 
 
-                <tr-navigation-level2-item class="tr-globalNavigation-level2-item__tab navigation-tabs__tab" data-navigation-hook-tabs="tab" data-tab-title="Law firms under 10 attorneys" id="item_1774293066364-tab" tab-id="6fe5ae48-2d0f-4c88-9988-7a44363762ff" role="tab" aria-expanded="false" aria-haspopup="true" item-id="6fe5ae48-2d0f-4c88-9988-7a44363762ff" is-default-active="false" aria-label="Law firms under 10 attorneys" analytics-action='Menu Navigation Level 2' analytics-value='Purchase|Law firms under 10 attorneys'>
+                <tr-navigation-level2-item class="tr-globalNavigation-level2-item__tab navigation-tabs__tab" data-navigation-hook-tabs="tab" data-tab-title="Law firms under 10 attorneys" id="item_1774293066364-tab" tab-id="bdb67f2e-8363-4b9c-8967-d5aed73b58db" role="tab" aria-expanded="false" aria-haspopup="true" item-id="bdb67f2e-8363-4b9c-8967-d5aed73b58db" is-default-active="false" aria-label="Law firms under 10 attorneys" analytics-action='Menu Navigation Level 2' analytics-value='Purchase|Law firms under 10 attorneys'>
                     <span class="tr-globalNavigation-level2-item__tab-inner">
                         <span class="tr-globalNavigation-level2-item__tab-left">
                             <span class="tr-globalNavigation-level2-item__tab-icon tr-globalNavigation-level2-item__tab-icon--leading">
@@ -3616,7 +3623,7 @@ window['adrum-start-time'] = new Date().getTime();
                 
                 
 
-                <tr-navigation-level2-item class="tr-globalNavigation-level2-item__tab navigation-tabs__tab" data-navigation-hook-tabs="tab" data-tab-title="Law firms over 10 attorneys" id="item_1774293085109-tab" tab-id="f05e4474-2433-4d9e-8ff1-49c7fe846a29" role="tab" aria-expanded="false" aria-haspopup="true" item-id="f05e4474-2433-4d9e-8ff1-49c7fe846a29" is-default-active="false" aria-label="Law firms over 10 attorneys" analytics-action='Menu Navigation Level 2' analytics-value='Purchase|Law firms over 10 attorneys'>
+                <tr-navigation-level2-item class="tr-globalNavigation-level2-item__tab navigation-tabs__tab" data-navigation-hook-tabs="tab" data-tab-title="Law firms over 10 attorneys" id="item_1774293085109-tab" tab-id="616692ce-fd57-4ad3-9a17-c67f8ba1e80a" role="tab" aria-expanded="false" aria-haspopup="true" item-id="616692ce-fd57-4ad3-9a17-c67f8ba1e80a" is-default-active="false" aria-label="Law firms over 10 attorneys" analytics-action='Menu Navigation Level 2' analytics-value='Purchase|Law firms over 10 attorneys'>
                     <span class="tr-globalNavigation-level2-item__tab-inner">
                         <span class="tr-globalNavigation-level2-item__tab-left">
                             <span class="tr-globalNavigation-level2-item__tab-icon tr-globalNavigation-level2-item__tab-icon--leading">
@@ -3637,7 +3644,7 @@ window['adrum-start-time'] = new Date().getTime();
                 
                 
 
-                <tr-navigation-level2-item class="tr-globalNavigation-level2-item__tab navigation-tabs__tab" data-navigation-hook-tabs="tab" data-tab-title="Corporations" id="item_1774293110261-tab" tab-id="74c1f29d-59d7-4001-b024-788d5e379d92" role="tab" aria-expanded="false" aria-haspopup="true" item-id="74c1f29d-59d7-4001-b024-788d5e379d92" is-default-active="false" aria-label="Corporations" analytics-action='Menu Navigation Level 2' analytics-value='Purchase|Corporations'>
+                <tr-navigation-level2-item class="tr-globalNavigation-level2-item__tab navigation-tabs__tab" data-navigation-hook-tabs="tab" data-tab-title="Corporations" id="item_1774293110261-tab" tab-id="4b212b6b-3d93-47a3-bb97-e9644a512a44" role="tab" aria-expanded="false" aria-haspopup="true" item-id="4b212b6b-3d93-47a3-bb97-e9644a512a44" is-default-active="false" aria-label="Corporations" analytics-action='Menu Navigation Level 2' analytics-value='Purchase|Corporations'>
                     <span class="tr-globalNavigation-level2-item__tab-inner">
                         <span class="tr-globalNavigation-level2-item__tab-left">
                             <span class="tr-globalNavigation-level2-item__tab-icon tr-globalNavigation-level2-item__tab-icon--leading">
@@ -3658,7 +3665,7 @@ window['adrum-start-time'] = new Date().getTime();
                 
                 
 
-                <tr-navigation-level2-item class="tr-globalNavigation-level2-item__tab navigation-tabs__tab" data-navigation-hook-tabs="tab" data-tab-title="Tax, audit &amp; accounting firms" id="item_1774295527254-tab" tab-id="62593bd3-fc6d-4da2-9114-b10fa32e82bc" role="tab" aria-expanded="false" aria-haspopup="true" item-id="62593bd3-fc6d-4da2-9114-b10fa32e82bc" is-default-active="false" aria-label="Tax, audit &amp; accounting firms" analytics-action='Menu Navigation Level 2' analytics-value='Purchase|Tax, audit &amp; accounting firms'>
+                <tr-navigation-level2-item class="tr-globalNavigation-level2-item__tab navigation-tabs__tab" data-navigation-hook-tabs="tab" data-tab-title="Tax, audit &amp; accounting firms" id="item_1774295527254-tab" tab-id="62d18fd4-eaca-4e81-924f-a4050892fc74" role="tab" aria-expanded="false" aria-haspopup="true" item-id="62d18fd4-eaca-4e81-924f-a4050892fc74" is-default-active="false" aria-label="Tax, audit &amp; accounting firms" analytics-action='Menu Navigation Level 2' analytics-value='Purchase|Tax, audit &amp; accounting firms'>
                     <span class="tr-globalNavigation-level2-item__tab-inner">
                         <span class="tr-globalNavigation-level2-item__tab-left">
                             <span class="tr-globalNavigation-level2-item__tab-icon tr-globalNavigation-level2-item__tab-icon--leading">
@@ -3679,7 +3686,7 @@ window['adrum-start-time'] = new Date().getTime();
                 
                 
 
-                <tr-navigation-level2-item class="tr-globalNavigation-level2-item__tab navigation-tabs__tab" data-navigation-hook-tabs="tab" data-tab-title="Government" id="item_1774293121545-tab" tab-id="0805e34d-5ce8-4954-9200-9a69c5d56245" role="tab" aria-expanded="false" aria-haspopup="true" item-id="0805e34d-5ce8-4954-9200-9a69c5d56245" is-default-active="false" aria-label="Government" analytics-action='Menu Navigation Level 2' analytics-value='Purchase|Government'>
+                <tr-navigation-level2-item class="tr-globalNavigation-level2-item__tab navigation-tabs__tab" data-navigation-hook-tabs="tab" data-tab-title="Government" id="item_1774293121545-tab" tab-id="cc2a1155-4cbd-46f8-b683-6750252def72" role="tab" aria-expanded="false" aria-haspopup="true" item-id="cc2a1155-4cbd-46f8-b683-6750252def72" is-default-active="false" aria-label="Government" analytics-action='Menu Navigation Level 2' analytics-value='Purchase|Government'>
                     <span class="tr-globalNavigation-level2-item__tab-inner">
                         <span class="tr-globalNavigation-level2-item__tab-left">
                             <span class="tr-globalNavigation-level2-item__tab-icon tr-globalNavigation-level2-item__tab-icon--leading">
@@ -3700,7 +3707,7 @@ window['adrum-start-time'] = new Date().getTime();
                 
                 
 
-                <tr-navigation-level2-item class="tr-globalNavigation-level2-item__tab navigation-tabs__tab" data-navigation-hook-tabs="tab" data-tab-title="Books" id="item_1774293134563-tab" tab-id="bf3432a7-2a21-41c1-8fee-d569d09200ff" role="tab" aria-expanded="false" aria-haspopup="true" item-id="bf3432a7-2a21-41c1-8fee-d569d09200ff" is-default-active="false" aria-label="Books" analytics-action='Menu Navigation Level 2' analytics-value='Purchase|Books'>
+                <tr-navigation-level2-item class="tr-globalNavigation-level2-item__tab navigation-tabs__tab" data-navigation-hook-tabs="tab" data-tab-title="Books" id="item_1774293134563-tab" tab-id="c2e01ebe-ca86-4358-bc5c-533efea2b76c" role="tab" aria-expanded="false" aria-haspopup="true" item-id="c2e01ebe-ca86-4358-bc5c-533efea2b76c" is-default-active="false" aria-label="Books" analytics-action='Menu Navigation Level 2' analytics-value='Purchase|Books'>
                     <span class="tr-globalNavigation-level2-item__tab-inner">
                         <span class="tr-globalNavigation-level2-item__tab-left">
                             <span class="tr-globalNavigation-level2-item__tab-icon tr-globalNavigation-level2-item__tab-icon--leading">
@@ -3720,7 +3727,7 @@ window['adrum-start-time'] = new Date().getTime();
         </div>
     </ul>
     <div class="tr-globalNavigation-level3-container">
-        <tr-navigation-level-3 tab-id="6fe5ae48-2d0f-4c88-9988-7a44363762ff" id="Law firms under 10 attorneys-tabpanel-0" data-label="Law firms under 10 attorneys" role="tabpanel" class="navigation-tabs__tabpanel navigation-tabs__tabpanel--active" data-navigation-hook-tabs="tabpanel"><div class="navigationLevel3 tabs panelcontainer">
+        <tr-navigation-level-3 tab-id="bdb67f2e-8363-4b9c-8967-d5aed73b58db" id="Law firms under 10 attorneys-tabpanel-0" data-label="Law firms under 10 attorneys" role="tabpanel" class="navigation-tabs__tabpanel navigation-tabs__tabpanel--active" data-navigation-hook-tabs="tabpanel"><div class="navigationLevel3 tabs panelcontainer">
 
 
 <div data-navigation-is="tabs" id="navigationLevel3-19ddb47359" class="tr-navigation-level-3__layout-container tr-globalNavigation-level3 navigation-tabs">
@@ -3981,7 +3988,7 @@ window['adrum-start-time'] = new Date().getTime();
     
 </div>
 </tr-navigation-level-3>
-<tr-navigation-level-3 tab-id="f05e4474-2433-4d9e-8ff1-49c7fe846a29" id="Law firms over 10 attorneys-tabpanel-1" data-label="Law firms over 10 attorneys" role="tabpanel" class="navigation-tabs__tabpanel navigation-tabs__tabpanel--active" data-navigation-hook-tabs="tabpanel"><div class="navigationLevel3 tabs panelcontainer">
+<tr-navigation-level-3 tab-id="616692ce-fd57-4ad3-9a17-c67f8ba1e80a" id="Law firms over 10 attorneys-tabpanel-1" data-label="Law firms over 10 attorneys" role="tabpanel" class="navigation-tabs__tabpanel navigation-tabs__tabpanel--active" data-navigation-hook-tabs="tabpanel"><div class="navigationLevel3 tabs panelcontainer">
 
 
 <div data-navigation-is="tabs" id="navigationLevel3-83fe93b98f" class="tr-navigation-level-3__layout-container tr-globalNavigation-level3 navigation-tabs">
@@ -4074,7 +4081,7 @@ window['adrum-start-time'] = new Date().getTime();
     
 </div>
 </tr-navigation-level-3>
-<tr-navigation-level-3 tab-id="74c1f29d-59d7-4001-b024-788d5e379d92" id="Corporations-tabpanel-2" data-label="Corporations" role="tabpanel" class="navigation-tabs__tabpanel navigation-tabs__tabpanel--active" data-navigation-hook-tabs="tabpanel"><div class="navigationLevel3 tabs panelcontainer">
+<tr-navigation-level-3 tab-id="4b212b6b-3d93-47a3-bb97-e9644a512a44" id="Corporations-tabpanel-2" data-label="Corporations" role="tabpanel" class="navigation-tabs__tabpanel navigation-tabs__tabpanel--active" data-navigation-hook-tabs="tabpanel"><div class="navigationLevel3 tabs panelcontainer">
 
 
 <div data-navigation-is="tabs" id="navigationLevel3-dbe473f9de" class="tr-navigation-level-3__layout-container tr-globalNavigation-level3 navigation-tabs">
@@ -4287,7 +4294,7 @@ window['adrum-start-time'] = new Date().getTime();
     
 </div>
 </tr-navigation-level-3>
-<tr-navigation-level-3 tab-id="62593bd3-fc6d-4da2-9114-b10fa32e82bc" id="Tax, audit &amp; accounting firms-tabpanel-3" data-label="Tax, audit &amp; accounting firms" role="tabpanel" class="navigation-tabs__tabpanel navigation-tabs__tabpanel--active" data-navigation-hook-tabs="tabpanel"><div class="navigationLevel3 tabs panelcontainer">
+<tr-navigation-level-3 tab-id="62d18fd4-eaca-4e81-924f-a4050892fc74" id="Tax, audit &amp; accounting firms-tabpanel-3" data-label="Tax, audit &amp; accounting firms" role="tabpanel" class="navigation-tabs__tabpanel navigation-tabs__tabpanel--active" data-navigation-hook-tabs="tabpanel"><div class="navigationLevel3 tabs panelcontainer">
 
 
 <div data-navigation-is="tabs" id="navigationLevel3-1b2302625c" class="tr-navigation-level-3__layout-container tr-globalNavigation-level3 navigation-tabs">
@@ -4380,7 +4387,7 @@ window['adrum-start-time'] = new Date().getTime();
     
 </div>
 </tr-navigation-level-3>
-<tr-navigation-level-3 tab-id="0805e34d-5ce8-4954-9200-9a69c5d56245" id="Government-tabpanel-4" data-label="Government" role="tabpanel" class="navigation-tabs__tabpanel navigation-tabs__tabpanel--active" data-navigation-hook-tabs="tabpanel"><div class="navigationLevel3 tabs panelcontainer">
+<tr-navigation-level-3 tab-id="cc2a1155-4cbd-46f8-b683-6750252def72" id="Government-tabpanel-4" data-label="Government" role="tabpanel" class="navigation-tabs__tabpanel navigation-tabs__tabpanel--active" data-navigation-hook-tabs="tabpanel"><div class="navigationLevel3 tabs panelcontainer">
 
 
 <div data-navigation-is="tabs" id="navigationLevel3-61ab657686" class="tr-navigation-level-3__layout-container tr-globalNavigation-level3 navigation-tabs">
@@ -4521,7 +4528,7 @@ window['adrum-start-time'] = new Date().getTime();
     
 </div>
 </tr-navigation-level-3>
-<tr-navigation-level-3 tab-id="bf3432a7-2a21-41c1-8fee-d569d09200ff" id="Books-tabpanel-5" data-label="Books" role="tabpanel" class="navigation-tabs__tabpanel navigation-tabs__tabpanel--active" data-navigation-hook-tabs="tabpanel"><div class="navigationLevel3 tabs panelcontainer">
+<tr-navigation-level-3 tab-id="c2e01ebe-ca86-4358-bc5c-533efea2b76c" id="Books-tabpanel-5" data-label="Books" role="tabpanel" class="navigation-tabs__tabpanel navigation-tabs__tabpanel--active" data-navigation-hook-tabs="tabpanel"><div class="navigationLevel3 tabs panelcontainer">
 
 
 <div data-navigation-is="tabs" id="navigationLevel3-8a6dee4f3c" class="tr-navigation-level-3__layout-container tr-globalNavigation-level3 navigation-tabs">
@@ -4779,7 +4786,7 @@ window['adrum-start-time'] = new Date().getTime();
                 
                 
 
-                <tr-navigation-level2-item class="tr-globalNavigation-level2-item__tab navigation-tabs__tab" data-navigation-hook-tabs="tab" data-tab-title="Insights" id="item_1774293272573-tab" tab-id="ea2f91ea-2227-46a1-b0ae-45766030dc86" role="tab" aria-expanded="false" aria-haspopup="true" item-id="ea2f91ea-2227-46a1-b0ae-45766030dc86" is-default-active="false" aria-label="Insights" analytics-action='Menu Navigation Level 2' analytics-value='Resources|Insights'>
+                <tr-navigation-level2-item class="tr-globalNavigation-level2-item__tab navigation-tabs__tab" data-navigation-hook-tabs="tab" data-tab-title="Insights" id="item_1774293272573-tab" tab-id="4c65dd82-9cbc-403b-ae46-00186631f51f" role="tab" aria-expanded="false" aria-haspopup="true" item-id="4c65dd82-9cbc-403b-ae46-00186631f51f" is-default-active="false" aria-label="Insights" analytics-action='Menu Navigation Level 2' analytics-value='Resources|Insights'>
                     <span class="tr-globalNavigation-level2-item__tab-inner">
                         <span class="tr-globalNavigation-level2-item__tab-left">
                             <span class="tr-globalNavigation-level2-item__tab-icon tr-globalNavigation-level2-item__tab-icon--leading">
@@ -4800,7 +4807,7 @@ window['adrum-start-time'] = new Date().getTime();
                 
                 
 
-                <tr-navigation-level2-item class="tr-globalNavigation-level2-item__tab navigation-tabs__tab" data-navigation-hook-tabs="tab" data-tab-title="Events" id="item_1774293275689-tab" tab-id="1a6257c0-a1c7-4bc3-9ed6-57de2d8856da" role="tab" aria-expanded="false" aria-haspopup="true" item-id="1a6257c0-a1c7-4bc3-9ed6-57de2d8856da" is-default-active="false" aria-label="Events" analytics-action='Menu Navigation Level 2' analytics-value='Resources|Events'>
+                <tr-navigation-level2-item class="tr-globalNavigation-level2-item__tab navigation-tabs__tab" data-navigation-hook-tabs="tab" data-tab-title="Events" id="item_1774293275689-tab" tab-id="6e039773-7f8b-4525-8648-00e16453a344" role="tab" aria-expanded="false" aria-haspopup="true" item-id="6e039773-7f8b-4525-8648-00e16453a344" is-default-active="false" aria-label="Events" analytics-action='Menu Navigation Level 2' analytics-value='Resources|Events'>
                     <span class="tr-globalNavigation-level2-item__tab-inner">
                         <span class="tr-globalNavigation-level2-item__tab-left">
                             <span class="tr-globalNavigation-level2-item__tab-icon tr-globalNavigation-level2-item__tab-icon--leading">
@@ -4821,7 +4828,7 @@ window['adrum-start-time'] = new Date().getTime();
                 
                 
 
-                <tr-navigation-level2-item class="tr-globalNavigation-level2-item__tab navigation-tabs__tab" data-navigation-hook-tabs="tab" data-tab-title="Product training" id="item_1774293277969-tab" tab-id="5fdc1f24-22aa-4c94-bf9c-001a99fe0665" role="tab" aria-expanded="false" aria-haspopup="true" item-id="5fdc1f24-22aa-4c94-bf9c-001a99fe0665" is-default-active="false" aria-label="Product training" analytics-action='Menu Navigation Level 2' analytics-value='Resources|Product training'>
+                <tr-navigation-level2-item class="tr-globalNavigation-level2-item__tab navigation-tabs__tab" data-navigation-hook-tabs="tab" data-tab-title="Product training" id="item_1774293277969-tab" tab-id="4254fee0-95bc-4af6-bf4e-cfafb56edbf1" role="tab" aria-expanded="false" aria-haspopup="true" item-id="4254fee0-95bc-4af6-bf4e-cfafb56edbf1" is-default-active="false" aria-label="Product training" analytics-action='Menu Navigation Level 2' analytics-value='Resources|Product training'>
                     <span class="tr-globalNavigation-level2-item__tab-inner">
                         <span class="tr-globalNavigation-level2-item__tab-left">
                             <span class="tr-globalNavigation-level2-item__tab-icon tr-globalNavigation-level2-item__tab-icon--leading">
@@ -4842,7 +4849,7 @@ window['adrum-start-time'] = new Date().getTime();
                 
                 
 
-                <tr-navigation-level2-item class="tr-globalNavigation-level2-item__tab navigation-tabs__tab" data-navigation-hook-tabs="tab" data-tab-title="Product communities" id="item_1774293280208-tab" tab-id="163092a9-a288-44f8-9101-92a4efd8486e" role="tab" aria-expanded="false" aria-haspopup="true" item-id="163092a9-a288-44f8-9101-92a4efd8486e" is-default-active="false" aria-label="Product communities" analytics-action='Menu Navigation Level 2' analytics-value='Resources|Product communities'>
+                <tr-navigation-level2-item class="tr-globalNavigation-level2-item__tab navigation-tabs__tab" data-navigation-hook-tabs="tab" data-tab-title="Product communities" id="item_1774293280208-tab" tab-id="1f0a7349-fe1d-46f6-b901-80aa94d300e5" role="tab" aria-expanded="false" aria-haspopup="true" item-id="1f0a7349-fe1d-46f6-b901-80aa94d300e5" is-default-active="false" aria-label="Product communities" analytics-action='Menu Navigation Level 2' analytics-value='Resources|Product communities'>
                     <span class="tr-globalNavigation-level2-item__tab-inner">
                         <span class="tr-globalNavigation-level2-item__tab-left">
                             <span class="tr-globalNavigation-level2-item__tab-icon tr-globalNavigation-level2-item__tab-icon--leading">
@@ -4863,7 +4870,7 @@ window['adrum-start-time'] = new Date().getTime();
                 
                 
 
-                <tr-navigation-level2-item class="tr-globalNavigation-level2-item__tab navigation-tabs__tab" data-navigation-hook-tabs="tab" data-tab-title="Developers" id="item_1774293321083-tab" tab-id="42424a23-6c24-4b35-bc04-863a8e31de53" role="tab" aria-expanded="false" aria-haspopup="true" item-id="42424a23-6c24-4b35-bc04-863a8e31de53" is-default-active="false" aria-label="Developers" analytics-action='Menu Navigation Level 2' analytics-value='Resources|Developers'>
+                <tr-navigation-level2-item class="tr-globalNavigation-level2-item__tab navigation-tabs__tab" data-navigation-hook-tabs="tab" data-tab-title="Developers" id="item_1774293321083-tab" tab-id="68ddca77-b547-4215-a3dc-76d8b9b45f15" role="tab" aria-expanded="false" aria-haspopup="true" item-id="68ddca77-b547-4215-a3dc-76d8b9b45f15" is-default-active="false" aria-label="Developers" analytics-action='Menu Navigation Level 2' analytics-value='Resources|Developers'>
                     <span class="tr-globalNavigation-level2-item__tab-inner">
                         <span class="tr-globalNavigation-level2-item__tab-left">
                             <span class="tr-globalNavigation-level2-item__tab-icon tr-globalNavigation-level2-item__tab-icon--leading">
@@ -4883,7 +4890,7 @@ window['adrum-start-time'] = new Date().getTime();
         </div>
     </ul>
     <div class="tr-globalNavigation-level3-container">
-        <tr-navigation-level-3 tab-id="ea2f91ea-2227-46a1-b0ae-45766030dc86" id="Insights-tabpanel-0" data-label="Insights" role="tabpanel" class="navigation-tabs__tabpanel navigation-tabs__tabpanel--active" data-navigation-hook-tabs="tabpanel"><div class="navigationLevel3 tabs panelcontainer">
+        <tr-navigation-level-3 tab-id="4c65dd82-9cbc-403b-ae46-00186631f51f" id="Insights-tabpanel-0" data-label="Insights" role="tabpanel" class="navigation-tabs__tabpanel navigation-tabs__tabpanel--active" data-navigation-hook-tabs="tabpanel"><div class="navigationLevel3 tabs panelcontainer">
 
 
 <div data-navigation-is="tabs" id="navigationLevel3-4ba3fb4c12" class="tr-navigation-level-3__layout-container tr-globalNavigation-level3 navigation-tabs">
@@ -5048,7 +5055,7 @@ window['adrum-start-time'] = new Date().getTime();
     
 </div>
 </tr-navigation-level-3>
-<tr-navigation-level-3 tab-id="1a6257c0-a1c7-4bc3-9ed6-57de2d8856da" id="Events-tabpanel-1" data-label="Events" role="tabpanel" class="navigation-tabs__tabpanel navigation-tabs__tabpanel--active" data-navigation-hook-tabs="tabpanel"><div class="navigationLevel3 tabs panelcontainer">
+<tr-navigation-level-3 tab-id="6e039773-7f8b-4525-8648-00e16453a344" id="Events-tabpanel-1" data-label="Events" role="tabpanel" class="navigation-tabs__tabpanel navigation-tabs__tabpanel--active" data-navigation-hook-tabs="tabpanel"><div class="navigationLevel3 tabs panelcontainer">
 
 
 <div data-navigation-is="tabs" id="navigationLevel3-d6444e1500" class="tr-navigation-level-3__layout-container tr-globalNavigation-level3 navigation-tabs">
@@ -5165,7 +5172,7 @@ window['adrum-start-time'] = new Date().getTime();
     
 </div>
 </tr-navigation-level-3>
-<tr-navigation-level-3 tab-id="5fdc1f24-22aa-4c94-bf9c-001a99fe0665" id="Product training-tabpanel-2" data-label="Product training" role="tabpanel" class="navigation-tabs__tabpanel navigation-tabs__tabpanel--active" data-navigation-hook-tabs="tabpanel"><div class="navigationLevel3 tabs panelcontainer">
+<tr-navigation-level-3 tab-id="4254fee0-95bc-4af6-bf4e-cfafb56edbf1" id="Product training-tabpanel-2" data-label="Product training" role="tabpanel" class="navigation-tabs__tabpanel navigation-tabs__tabpanel--active" data-navigation-hook-tabs="tabpanel"><div class="navigationLevel3 tabs panelcontainer">
 
 
 <div data-navigation-is="tabs" id="navigationLevel3-cb5d6d5578" class="tr-navigation-level-3__layout-container tr-globalNavigation-level3 navigation-tabs">
@@ -5304,7 +5311,7 @@ window['adrum-start-time'] = new Date().getTime();
     
 </div>
 </tr-navigation-level-3>
-<tr-navigation-level-3 tab-id="163092a9-a288-44f8-9101-92a4efd8486e" id="Product communities-tabpanel-3" data-label="Product communities" role="tabpanel" class="navigation-tabs__tabpanel navigation-tabs__tabpanel--active" data-navigation-hook-tabs="tabpanel"><div class="navigationLevel3 tabs panelcontainer">
+<tr-navigation-level-3 tab-id="1f0a7349-fe1d-46f6-b901-80aa94d300e5" id="Product communities-tabpanel-3" data-label="Product communities" role="tabpanel" class="navigation-tabs__tabpanel navigation-tabs__tabpanel--active" data-navigation-hook-tabs="tabpanel"><div class="navigationLevel3 tabs panelcontainer">
 
 
 <div data-navigation-is="tabs" id="navigationLevel3-814ff33c3c" class="tr-navigation-level-3__layout-container tr-globalNavigation-level3 navigation-tabs">
@@ -5419,7 +5426,7 @@ window['adrum-start-time'] = new Date().getTime();
     
 </div>
 </tr-navigation-level-3>
-<tr-navigation-level-3 tab-id="42424a23-6c24-4b35-bc04-863a8e31de53" id="Developers-tabpanel-4" data-label="Developers" role="tabpanel" class="navigation-tabs__tabpanel navigation-tabs__tabpanel--active" data-navigation-hook-tabs="tabpanel"><div class="navigationLevel3 tabs panelcontainer">
+<tr-navigation-level-3 tab-id="68ddca77-b547-4215-a3dc-76d8b9b45f15" id="Developers-tabpanel-4" data-label="Developers" role="tabpanel" class="navigation-tabs__tabpanel navigation-tabs__tabpanel--active" data-navigation-hook-tabs="tabpanel"><div class="navigationLevel3 tabs panelcontainer">
 
 
 <div data-navigation-is="tabs" id="navigationLevel3-047a77d4ba" class="tr-navigation-level-3__layout-container tr-globalNavigation-level3 navigation-tabs">
@@ -5630,7 +5637,6 @@ window['adrum-start-time'] = new Date().getTime();
 </tr-global-navigation>
 
     
-
 </div>
 
     
@@ -6655,13 +6661,13 @@ function OptanonWrapper() {
         
             
             
-                <script src="https://app-data.gcs.trstatic.net/emcm-ui/bundle/v24.103.0/main.js"></script>
+                <script src="https://app-data.gcs.trstatic.net/emcm-ui/bundle/v24.104.0/main.js"></script>
             
         
 
         
     
-<script src="/etc.clientlibs/uefalcon/clientlibs/clientlib-dependencies.lc-13087cad8ca0b4b92e37d28d4a8b9f11-lc.min.js"></script>
+<script src="/etc.clientlibs/uefalcon/clientlibs/clientlib-dependencies.lc-e4da311e2646dfe409455ccacb5de9a2-lc.min.js"></script>
 <script src="/etc.clientlibs/uefalcon/clientlibs/clientlib-site.lc-6c0e46d9e3fcd80543f4810d13bcdc9f-lc.min.js"></script>
 
 
