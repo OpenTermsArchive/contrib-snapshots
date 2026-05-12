@@ -24,7 +24,7 @@
 <meta name="msapplication-TileImage" content="/ms-icon-144x144.png">
 <meta name="theme-color" content="#ffffff">
 <script>
-serverTime = new Date('2026-05-11 12:36:46 GMT');
+serverTime = new Date('2026-05-12 12:36:06 GMT');
 </script>
 <title>Terms of Service | DistroKid</title>
 <meta name="description" content="Read DistroKid's Terms of Service">
@@ -73,15 +73,15 @@ initializeDKModal();
 captchaSiteKey = "6Ld_vDcUAAAAABBf4b4MfIPqz5XA53JWQyOh6MX0";
 turnstileSiteKey = "0x4AAAAAAAwjnOrGSKrIkAR9";
 </script>
-<script src="/js/header.js?cacheHash=25d1e6e15ea342b6" 1778503002476></script>
-<script src="/js/distro.js?cacheHash=4c598bb073bec1d8" 1778503002476></script>
-<script src="/js/fixCaps.js?cacheHash=4d712b9355dbb337" 1778503002477></script>
+<script src="/js/header.js?cacheHash=25d1e6e15ea342b6" 1778546162164></script>
+<script src="/js/distro.js?cacheHash=4c598bb073bec1d8" 1778546162164></script>
+<script src="/js/fixCaps.js?cacheHash=4d712b9355dbb337" 1778546162164></script>
 <script src="/js/jquery.kenburns-0.1.js"></script>
 <script src="/js/lazysizes.min.js"></script>
 <script>
 var distroKidDevMode = false;
 </script>
-<link href="/css/main.css?cacheHash=392af74587ffaec7" type="text/css" rel="stylesheet">
+<link href="/css/main.css?cacheHash=5ee5eadef0c71bbd" type="text/css" rel="stylesheet">
 <link href="/css/animation.css?cacheHash=5c3dd0a8672eff96" type="text/css" rel="stylesheet">
 <!--[if lt IE 9]>
 <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
@@ -507,7 +507,7 @@ trackTelemetry(event, event.detail);
 <div style="position:relative;" class="outer2 navNotLoggedIn">
 <div class="headerLoggedOutNav nav inner2">
 <div class="navInner">
-<input type="hidden" id="forgotPasswordSessionID" name="forgotPasswordSessionID" value="distrokid_4956763d-a4e4-46df-96f9-8e4eb6d85bb0_0">
+<input type="hidden" id="forgotPasswordSessionID" name="forgotPasswordSessionID" value="distrokid_501f7c28-e1aa-4899-9486-ba3f33ac4ffb_0">
 <script type="text/template" id="templateForgotPassword">
 <div class="signinBoxNotification">
 Done! Instructions to reset your password have been emailed.
@@ -528,7 +528,7 @@ Done! Instructions to reset your password have been emailed.
 <div style="margin-left:10px;flex: 1;text-align: left;" class="distrokidLogoContainer nonLoggedDKLogoContainer">
 <a href="/"><img id="js-dk-logo-white" style="margin:0px 0px 0px 5px;border:none;height:18px;width:auto;display: block;" src="/images/distrokid-logo-white.png" alt="White DistroKid logo"></a>
 </div>
-<div class="navLink navLinkBigger outsideClickLink" onclick="openSignIn();" style="display: flex;align-items: center;" tabindex="0" onkeydown="openSignInAria(event)">
+<div class="navLink navLinkBigger outsideClickLink" data-testid="dropdown-sign-in-button" onclick="openSignIn();" style="display: flex;align-items: center;" tabindex="0" onkeydown="openSignInAria(event)">
 <div style="text-transform:uppercase;" id="signInButtonFrontPage" class="bold outsideClickLink pointer">Sign in</div>
 <div class="outsideClickLink pointer" style="padding:0px 0px 0px 3px;box-sizing: border-box;">&#9660;</div>
 </div>
@@ -563,10 +563,10 @@ Done. We just emailed instructions to you.
 </form>
 <div class="or-container-sign-up"><hr class="or-hr"><p class="or-sign-up">or</p><hr class="or-hr"></div>
 <div class="social-sign-in-container">
-<button title="Apple" class="sign-in-icon-button" onclick="$j('.signinBox').hide(); popup('https://auth.distrokid.com/oauth2/authorize?identity_provider=SignInWithApple&redirect_uri=https%3A%2F%2Fdistrokid%2Ecom%2Fsignin%2Fsocial%2Fcallback%2F&response_type=CODE&client_id=3c6i9jhf1n06021b411h4l2ia9&scope=email%20openid%20phone%20profile&state=','DistroKidSocial',500,500)">
+<button title="Apple" class="sign-in-icon-button" data-testid="header-apple-sso-sign-in-button" onclick="$j('.signinBox').hide(); popup('https://auth.distrokid.com/oauth2/authorize?identity_provider=SignInWithApple&redirect_uri=https%3A%2F%2Fdistrokid%2Ecom%2Fsignin%2Fsocial%2Fcallback%2F&response_type=CODE&client_id=3c6i9jhf1n06021b411h4l2ia9&scope=email%20openid%20phone%20profile&state=','DistroKidSocial',500,500)">
 <img src="/images/apple-sign-in-icon.png" class="sign-in-icon" alt="Apple sign-in icon">
 </button>
-<button title="Google" class="sign-in-icon-button" onclick="$j('.signinBox').hide(); popup('https://auth.distrokid.com/oauth2/authorize?identity_provider=Google&redirect_uri=https%3A%2F%2Fdistrokid%2Ecom%2Fsignin%2Fsocial%2Fcallback%2F&response_type=CODE&client_id=3c6i9jhf1n06021b411h4l2ia9&scope=email%20openid%20phone%20profile&state=','DistroKidSocial',500,500)">
+<button title="Google" class="sign-in-icon-button" data-testid="header-google-sso-sign-in-button" onclick="$j('.signinBox').hide(); popup('https://auth.distrokid.com/oauth2/authorize?identity_provider=Google&redirect_uri=https%3A%2F%2Fdistrokid%2Ecom%2Fsignin%2Fsocial%2Fcallback%2F&response_type=CODE&client_id=3c6i9jhf1n06021b411h4l2ia9&scope=email%20openid%20phone%20profile&state=','DistroKidSocial',500,500)">
 <img src="/images/google-sign-in-icon.png" class="sign-in-icon" alt="Google sign-in icon">
 </button>
 </div>
@@ -696,7 +696,7 @@ Copyright Agent
 DistroKid LLC
 34 Third Ave #183
 New York, NY 10003
-Email: <a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="6c00090b0d002c08051f181e03070508420f0301">[email&#160;protected]</a> <br>
+Email: <a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="214d4446404d6145485255534e4a48450f424e4c">[email&#160;protected]</a> <br>
 In accordance with the DMCA and other applicable law, DistroKid has adopted a policy of terminating, in appropriate circumstances and in DistroKid's sole discretion, users who are deemed to be repeat infringers. For the avoidance of doubt, the foregoing sentence in no way limits DistroKid's right to limit access to the Services and/or terminate the Accounts of any users for any reason, in DistroKid's sole discretion, including, without limitation, in the case of users who infringe, or allegedly infringe, any Intellectual Property Rights of others, whether or not there is any repeat infringement. <br>
 Please be advised that pursuant to federal law you may be held liable for damages if you make material misrepresentations in a Notice. Thus, if you are not sure that material located on or linked to by the infringes your copyright, you should consider first contacting an attorney. <br>
 <strong>Links to Third-Party Websites or Services</strong><br>
@@ -785,7 +785,7 @@ keepalive: true,
 credentials: 'same-origin',
 headers: {
 'Content-Type': 'application/json',
-'Authorization': 'Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJjbGkiOjEsImlhdCI6MTc3ODUwMzAwNiwiaXNzIjoiaHR0cHM6Ly9kaXN0cm9raWQuY29tIiwic3ViIjowLCJleHAiOjE3Nzg1MDY2MDYsImRldiI6IiIsInNjb3BlIjoicmVhZC1wcm9maWxlIiwiYXVkIjoiIn0.VtPVZJqMFEvxtS_z-0p2f7ftLsLwJR3qadGdIwkXkpY'
+'Authorization': 'Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJjbGkiOjEsImlhdCI6MTc3ODU0NjE2NiwiaXNzIjoiaHR0cHM6Ly9kaXN0cm9raWQuY29tIiwic3ViIjowLCJleHAiOjE3Nzg1NDk3NjYsImRldiI6IiIsInNjb3BlIjoicmVhZC1wcm9maWxlIiwiYXVkIjoiIn0.Kmfopptv_RZlblqJKprVsH4JI04B4ZfrXVNQXxZyPcE'
 },
 body: JSON.stringify({ languageCode: languageCode })
 });
