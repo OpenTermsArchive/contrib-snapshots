@@ -48,50 +48,30 @@
                 <meta property="og:site_name" content="theregister">
 
                 
-                <script >window.googletag = window.googletag || {cmd: []};
-
-googletag.cmd.push(function() {
-
+                <script >window.googletag = window.googletag || { cmd: [] };
+googletag.cmd.push(function () {
     const context = document.querySelector('meta[property="og:type"]')?.content === "article" ? "article" : "front";
     const device = window.Dac.clientData.labDevice === "mobile" ? "mobile" : "desktop";
-    const bwidth =  window.innerWidth || 0;
+    const bwidth = window.innerWidth || 0;
+    const test = new URLSearchParams(window.location.search).get('test');
+    const author = document.querySelector('meta[property="article:author"]')?.content;
+    const canonicalUrl = document.querySelector("link[rel=canonical]")?.getAttribute("href");
+    const articleId = canonicalUrl?.split("/").pop();
 
-    if (bwidth) {
-        googletag.pubads().setTargeting("bwidth", bwidth + '');
-    }
-
-    if (device) {
-        googletag.pubads().setTargeting("device", device);
-    }
-
-    const urlParams = new URLSearchParams(window.location.search);
-    const test = urlParams.get('test');
-    if (test) {
-        googletag.pubads().setTargeting("test", test);
-    }
-
-    const metaAuthor = document.querySelector('meta[property="article:author"]')?.content;
-    if (metaAuthor) {
-        googletag.pubads().setTargeting("author", metaAuthor);
-    }
-
-    const canonicalUrl = document.querySelector("link[rel=canonical]").getAttribute("href");
-    if (canonicalUrl) {
-        googletag.pubads().setTargeting("canonicalUrl", canonicalUrl);
-    }
-
-    const articleId = canonicalUrl.split("/").pop();
-    if (articleId) {
-        googletag.pubads().setTargeting("articleId ", articleId);
-    }
+    googletag.setConfig({
+        targeting: {
+            device,
+            ...(bwidth && { bwidth: bwidth + '' }),
+            ...(test && { test }),
+            ...(author && { author }),
+            ...(canonicalUrl && { canonicalUrl }),
+            ...(articleId && { articleId }),
+        }
+    });
 
     googletag.defineOutOfPageSlot('/6978/labrador/thereg/' + context + '/' + device + '/oops', 'oops')
-          .addService(googletag.pubads())
-          .setConfig({
-            targeting: {
-              is_oops: '1',
-            },
-          });
+        .addService(googletag.pubads())
+        .setConfig({ targeting: { is_oops: '1' } });
 });</script><script type="module">import { setFrontPagePostCountsAndTimeStamps } from "https://cdn.theregister.com/assets/javascript/forum_post_counts.b8a1a47b.js";
 setFrontPagePostCountsAndTimeStamps();</script><script type="module" src="https://cdn.theregister.com/assets/javascript/front.9509a31d.js"></script><script >window.dataLayer = window.dataLayer || [];
   function gtag(){dataLayer.push(arguments);}
@@ -480,18 +460,7 @@ var k5aMeta = { "title": "Terms & Conditions | The Register", "teasertitle": "",
 <!-- Google Tag Manager (noscript) -->
 <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-KVXB44"
 height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
-<!-- End Google Tag Manager (noscript) -->        <script >window.googletag = window.googletag || { cmd: [] };
-
-var oopsdiv = document.createElement('div');
-oopsdiv.id = 'oops';
-oopsdiv.style.display = 'none';
-if (document.body.firstChild) document.body.insertBefore(oopsdiv, document.body.firstChild);
-else document.body.appendChild(oopsdiv);
-
-googletag.cmd.push(() => {
-    // Request and render an ad for the "out-of-page-ad" slot.
-    googletag.display("oops");
-});</script>
+<!-- End Google Tag Manager (noscript) -->        
         
         <script>
         document.addEventListener("DOMContentLoaded", (event) => {
@@ -1349,8 +1318,8 @@ googletag.cmd.push(() => {
 
         <section class="main front" id="main">
         <h1 class="hidden-heading">Terms &amp; Conditions | The Register</h1>
-            <div data-element-guid="d90caea1-f630-4042-db69-41aa91bdb4f2" class="placeholder placement-top">
-<div data-element-guid="54e538c5-282e-4514-b776-5e9b01ddb5cb" class="column google-ad small-12 large-12 small-abs-12 large-abs-12"  style="">
+            <div data-element-guid="2eec2066-cb14-46df-cee1-1097b8363be3" class="placeholder placement-top">
+<div data-element-guid="0b85e257-a02c-49e4-c198-8099364b5ded" class="column google-ad small-12 large-12 small-abs-12 large-abs-12"  style="">
 
         <span class="ad-label">REG AD</span>
         <div class="adunit" id="labrador/thereg/front/desktop/a" style="min-height:90px;"></div>
@@ -1881,36 +1850,29 @@ googletag.cmd.push(() => {
 
 
 
-        <script >document.addEventListener("DOMContentLoaded", function() {
-    const consentLink = document.querySelector('[aria-label="Your Consent Options"]');
+        <script >document.addEventListener("DOMContentLoaded", () => {
+    const link = document.querySelector('[aria-label="Your Consent Options"]');
+    if (!link) return;
 
-    if (consentLink) {
-        // 1. Hide immediately so the user can't click a broken link
-        consentLink.style.display = 'none';
+    let ready = false;
 
-        // 2. Wait 5 seconds
-        setTimeout(function() {
-            
-            // 3. Check if googlefc has arrived
-            if (typeof googlefc !== "undefined" && googlefc.callbackQueue) {
-                
-                // SUCCESS: Add the click handler
-                consentLink.addEventListener("click", function(e) {
-                    e.preventDefault();
-                    googlefc.callbackQueue.push(googlefc.showRevocationMessage);
-                });
+    link.addEventListener("click", (e) => {
+        e.preventDefault();
+        if (ready) {
+            googlefc.callbackQueue.push(googlefc.showRevocationMessage);
+        }
+    });
 
-                // Make the link visible again
-                consentLink.style.display = ''; 
-
-            } else {
-                
-                // FAILURE: Time is up and googlefc isn't here. Remove the link.
-                consentLink.remove();
-            }
-
-        }, 5000);
-    }
+    let attempts = 0;
+    const check = setInterval(() => {
+        if (typeof googlefc !== "undefined" && googlefc.callbackQueue) {
+            clearInterval(check);
+            ready = true;
+        } else if (++attempts >= 6) {
+            clearInterval(check);
+            link.remove();
+        }
+    }, 1000);
 });</script>
             </body>
 </html>
