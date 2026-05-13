@@ -48,8 +48,15 @@
                 <meta property="og:site_name" content="theregister">
 
                 
-                <script >window.googletag = window.googletag || { cmd: [] };
+                <script >// OOPS slot definition v2 — same code on all sites, only SITE_KEY changes:
+//   theregister.com    → 'thereg'
+//   blocksandfiles.com → 'bandf'
+//   devclass.com       → 'devclass'
+//   nextplatform.com   → 'nextplatform'
+
+window.googletag = window.googletag || { cmd: [] };
 googletag.cmd.push(function () {
+    const SITE_KEY = 'thereg'; // CHANGE PER SITE
     const context = document.querySelector('meta[property="og:type"]')?.content === "article" ? "article" : "front";
     const device = window.Dac.clientData.labDevice === "mobile" ? "mobile" : "desktop";
     const bwidth = window.innerWidth || 0;
@@ -57,7 +64,6 @@ googletag.cmd.push(function () {
     const author = document.querySelector('meta[property="article:author"]')?.content;
     const canonicalUrl = document.querySelector("link[rel=canonical]")?.getAttribute("href");
     const articleId = canonicalUrl?.split("/").pop();
-
     googletag.setConfig({
         targeting: {
             device,
@@ -68,27 +74,22 @@ googletag.cmd.push(function () {
             ...(articleId && { articleId }),
         }
     });
-
-    googletag.defineOutOfPageSlot('/6978/labrador/thereg/' + context + '/' + device + '/oops', 'oops')
+    function createOops() {
+        if (document.getElementById('oops')) return;
+        const oopsDiv = document.createElement('div');
+        oopsDiv.id = 'oops';
+        oopsDiv.style.cssText = 'width:0;height:0;overflow:hidden;';
+        document.body.prepend(oopsDiv);
+    }
+    if (document.body) {
+        createOops();
+    } else {
+        document.addEventListener('DOMContentLoaded', createOops);
+    }
+    googletag.defineOutOfPageSlot('/6978/labrador/' + SITE_KEY + '/' + context + '/' + device + '/oops', 'oops')
         .addService(googletag.pubads())
         .setConfig({ targeting: { is_oops: '1' } });
-});
-
-
-(function() {
-  function addOops() {
-    if (document.getElementById('oops')) return;
-    var d = document.createElement('div');
-    d.id = 'oops';
-    d.style.cssText = 'position:absolute;width:0;height:0;overflow:hidden;';
-    document.body.appendChild(d);
-  }
-  if (document.body) {
-    addOops();
-  } else {
-    document.addEventListener('DOMContentLoaded', addOops);
-  }
-})();</script><script type="module">import { setFrontPagePostCountsAndTimeStamps } from "https://cdn.theregister.com/assets/javascript/forum_post_counts.b8a1a47b.js";
+});</script><script type="module">import { setFrontPagePostCountsAndTimeStamps } from "https://cdn.theregister.com/assets/javascript/forum_post_counts.b8a1a47b.js";
 setFrontPagePostCountsAndTimeStamps();</script><script type="module" src="https://cdn.theregister.com/assets/javascript/front.9509a31d.js"></script><script >window.dataLayer = window.dataLayer || [];
   function gtag(){dataLayer.push(arguments);}
 
@@ -1334,8 +1335,8 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 
         <section class="main front" id="main">
         <h1 class="hidden-heading">Terms &amp; Conditions | The Register</h1>
-            <div data-element-guid="06034ed7-07dd-4bac-b3e5-a5b2cbe1b25b" class="placeholder placement-top">
-<div data-element-guid="f9b085f2-c380-4aeb-d0c1-301c018cd558" class="column google-ad small-12 large-12 small-abs-12 large-abs-12"  style="">
+            <div data-element-guid="6aea3d01-da72-4812-c95d-8075bfeda58d" class="placeholder placement-top">
+<div data-element-guid="e9389600-0642-4934-92a8-bfd7be9a5cf3" class="column google-ad small-12 large-12 small-abs-12 large-abs-12"  style="">
 
         <span class="ad-label">REG AD</span>
         <div class="adunit" id="labrador/thereg/front/desktop/a" style="min-height:90px;"></div>
