@@ -24,7 +24,7 @@
 <meta name="msapplication-TileImage" content="/ms-icon-144x144.png">
 <meta name="theme-color" content="#ffffff">
 <script>
-serverTime = new Date('2026-05-12 12:36:09 GMT');
+serverTime = new Date('2026-05-13 12:36:40 GMT');
 </script>
 <title>Terms of Service | DistroKid</title>
 <meta name="description" content="Read DistroKid's Terms of Service">
@@ -45,7 +45,7 @@ serverTime = new Date('2026-05-12 12:36:09 GMT');
 <link href="/font-awesome-4.7.0/css/font-awesome.min.css" rel="stylesheet">
 <link href="/css/dk-modal.css?cacheHash=285a1f62cb79d023" type="text/css" rel="stylesheet">
 <script src="/js/sweetalert2@8.min.js"></script>
-<script src="/js/shared/dk-modal/dk-modal.js?cacheHash=75afec2c23df77c7" ></script>
+<script src="/js/shared/dk-modal/dk-modal.js?cacheHash=54a5691e183a8127" ></script>
 <script>
 if (document.readyState !== 'loading') {
 if (typeof initializeDKModal === 'function') {
@@ -73,9 +73,9 @@ initializeDKModal();
 captchaSiteKey = "6Ld_vDcUAAAAABBf4b4MfIPqz5XA53JWQyOh6MX0";
 turnstileSiteKey = "0x4AAAAAAAwjnOrGSKrIkAR9";
 </script>
-<script src="/js/header.js?cacheHash=25d1e6e15ea342b6" 1778589364994></script>
-<script src="/js/distro.js?cacheHash=4c598bb073bec1d8" 1778589364994></script>
-<script src="/js/fixCaps.js?cacheHash=4d712b9355dbb337" 1778589364994></script>
+<script src="/js/header.js?cacheHash=2b93bc7519c68007" 1778632597255></script>
+<script src="/js/distro.js?cacheHash=4c598bb073bec1d8" 1778632597255></script>
+<script src="/js/fixCaps.js?cacheHash=4d712b9355dbb337" 1778632597256></script>
 <script src="/js/jquery.kenburns-0.1.js"></script>
 <script src="/js/lazysizes.min.js"></script>
 <script>
@@ -334,7 +334,7 @@ const metaContentLanguage = document.querySelector("meta[http-equiv='content-lan
 return metaContentLanguage.getAttribute("content") || "en-US";
 }
 function getCampaign() {
-const searchParams = new URLSearchParams(window.location.href);
+const searchParams = new URLSearchParams(window.location.search);
 return {
 "name": searchParams.get("utm_campaign"),
 "source": searchParams.get("utm_source"),
@@ -507,7 +507,7 @@ trackTelemetry(event, event.detail);
 <div style="position:relative;" class="outer2 navNotLoggedIn">
 <div class="headerLoggedOutNav nav inner2">
 <div class="navInner">
-<input type="hidden" id="forgotPasswordSessionID" name="forgotPasswordSessionID" value="distrokid_163362cf-a1a8-4bb1-9428-682c2e92a1df_0">
+<input type="hidden" id="forgotPasswordSessionID" name="forgotPasswordSessionID" value="distrokid_cdd59cd6-afb4-47f7-9dc6-7e57b0b1e518_0">
 <script type="text/template" id="templateForgotPassword">
 <div class="signinBoxNotification">
 Done! Instructions to reset your password have been emailed.
@@ -696,7 +696,7 @@ Copyright Agent
 DistroKid LLC
 34 Third Ave #183
 New York, NY 10003
-Email: <a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="a7cbc2c0c6cbe7c3ced4d3d5c8cccec389c4c8ca">[email&#160;protected]</a> <br>
+Email: <a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="f19d9496909db195988285839e9a9895df929e9c">[email&#160;protected]</a> <br>
 In accordance with the DMCA and other applicable law, DistroKid has adopted a policy of terminating, in appropriate circumstances and in DistroKid's sole discretion, users who are deemed to be repeat infringers. For the avoidance of doubt, the foregoing sentence in no way limits DistroKid's right to limit access to the Services and/or terminate the Accounts of any users for any reason, in DistroKid's sole discretion, including, without limitation, in the case of users who infringe, or allegedly infringe, any Intellectual Property Rights of others, whether or not there is any repeat infringement. <br>
 Please be advised that pursuant to federal law you may be held liable for damages if you make material misrepresentations in a Notice. Thus, if you are not sure that material located on or linked to by the infringes your copyright, you should consider first contacting an attorney. <br>
 <strong>Links to Third-Party Websites or Services</strong><br>
@@ -785,7 +785,7 @@ keepalive: true,
 credentials: 'same-origin',
 headers: {
 'Content-Type': 'application/json',
-'Authorization': 'Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJjbGkiOjEsImlhdCI6MTc3ODU4OTM2OSwiaXNzIjoiaHR0cHM6Ly9kaXN0cm9raWQuY29tIiwic3ViIjowLCJleHAiOjE3Nzg1OTI5NjksImRldiI6IiIsInNjb3BlIjoicmVhZC1wcm9maWxlIiwiYXVkIjoiIn0.ieN9pkcd-o7wZIXwqYw9FPz5dK3hqzs0uWn7Z3MGGUc'
+'Authorization': 'Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJjbGkiOjEsImlhdCI6MTc3ODYzMjYwMCwiaXNzIjoiaHR0cHM6Ly9kaXN0cm9raWQuY29tIiwic3ViIjowLCJleHAiOjE3Nzg2MzYyMDAsImRldiI6IiIsInNjb3BlIjoicmVhZC1wcm9maWxlIiwiYXVkIjoiIn0.7tdXO26BBAT0wL4Fa-2cjke9IgVHj-_aiSbWDOdb-qk'
 },
 body: JSON.stringify({ languageCode: languageCode })
 });
