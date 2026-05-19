@@ -452,11 +452,11 @@
 
             
             <div>
-                <p><strong>Date:</strong> April 28, 2026</p>
+                <p><strong>Date:</strong>&nbsp;May 19, 2026</p>
 <div class="key-changes-block with-margin-bottom">
 <h2>Key Changes to the Terms of Service and Privacy Policy for Spark</h2>
-<p>At Spark, we greatly care about our users. As Spark evolves, we update our <a href="https://sparkmailapp.com/legal/terms">Terms of Service</a> and <a href="https://sparkmailapp.com/legal/privacy-app">Privacy Policy</a> to ensure they remain clear and aligned with how the product works.&nbsp;</p>
-<p>In a nutshell, we detailed provisions related to the use of third-party services and clarified data sharing practices for integrations.</p>
+<p>At Spark, we greatly care about our users. As Spark evolves, we update our&nbsp;<a href="https://sparkmailapp.com/legal/privacy-app">Privacy Policy</a> to ensure it remains clear and aligned with how the product works.&nbsp;</p>
+<p>In a nutshell, we added details on the new AI features.</p>
 <p>We encourage you to carefully review the <a href="https://sparkmailapp.com/legal/privacy-app">Privacy Policy</a> in full. The changes take effect as of the date above.</p>
 </div>
 <hr>
@@ -767,11 +767,13 @@
 <li>Audio stream and video (only to extract audio) for Meeting Notes</li>
 <li>Meeting notes and summaries</li>
 <li>Your writing style description</li>
-<li>Worfklows (commands, labels, rules)</li>
+<li>Personalization context (as described below)</li>
+<li>Worfklows (commands, rules)</li>
+<li>Labels</li>
 </ul>
 </td>
 <td>Providing you with the functionality of the App</td>
-<td>Performance of the contract</td>
+<td>Performance of the contract /&nbsp; Consent (as may be applicable)</td>
 </tr>
 </tbody>
 </table>
@@ -786,6 +788,18 @@
 <p>After you turn on this feature, please ensure that you always inform the meeting participants that you are making a meeting transcription via Spark.</p>
 <p>The feature captures an audio stream on your device with the help of the on-device AI model. Once the meeting ends or you finish the transcription, the audio stream is automatically sent to the third-party AI provider to obtain a transcription, which is further summarized. The transcription and summary are saved in your Spark account.</p>
 <p>Spark does not store the audio stream of the conversation, unless you choose to share one with us for troubleshooting. The AI provider may retain the audio stream for up to thirty (30) days for abuse and misuse monitoring.</p>
+<p><span style="color: #7e8c8d;"><strong>Personalization</strong></span></p>
+<p>This feature lets you customize your experience with Spark+AI by using personalization context &mdash; a structured summary of how you work and communicate, and a set of instructions, which may include:&nbsp;</p>
+<ul>
+<li>Role: General details about your job, location, timezone;</li>
+<li>Workflow: How you usually reply and prioritize requests, your key contacts;</li>
+<li>Schedule: How you usually schedule meetings, preferred meeting lengths, typical availability;</li>
+<li>Background: Your industry, current projects, interests, and other context.</li>
+</ul>
+<p>You may provide the personalization context manually by sharing any information and instructions you wish. Alternatively, you may choose to let Spark analyze your email data to generate this context automatically. &nbsp;</p>
+<p>Spark does not use personalization context for marketing or AI training purposes.</p>
+<p>When enabled, +AI features use personalization context and may generate more relevant outputs. For example, AI-generated drafts will sound more like you, requiring less rewriting and editing.</p>
+<p>You may review, edit, or permanently delete your personalization context at any time.&nbsp;</p>
 <h3 id="teamdata" class="terracotta-color">Team Data</h3>
 <p>You may create Teams in Spark to effectively collaborate with other Users.</p>
 <div class="table-block">
@@ -972,8 +986,12 @@
 <td>Until deletion of the Spark account</td>
 </tr>
 <tr>
-<td>+AI Meeting Notes and Summaries; sample emails for My Writing Style; writing style description; AI Assistant history, AI Workflows (commands, labels, rules)</td>
+<td>+AI Meeting Notes and Summaries; sample emails for My Writing Style; writing style description; AI Assistant history, AI workflows (commands, rules)</td>
 <td>Until deletion of Spark account or until you delete the data manually via settings</td>
+</tr>
+<tr>
+<td>Personalization context</td>
+<td>Until disabling 'Personalization' feature</td>
 </tr>
 <tr>
 <td>Customer Support Requests</td>
@@ -1062,7 +1080,7 @@
 </div>
 <p>Additionally, Spark integrates with popular third-party services: Notion, Asana, etc. We may receive some data within such integrations.</p>
 <h2 id="datasharing">Data Sharing with Third Parties</h2>
-<p>We may share your personal data with third parties in compliance with applicable laws.&nbsp;</p>
+<p>We may share your personal data with third parties without causing you any harm and in strict compliance with applicable laws. Additionally, we have put in place organizational and technical measures to secure your personal data during its transfer to third parties.</p>
 <p>To share your data, we rely on the lawful bases such as consent, compliance with the law, and performance of a contract, depending on the specific circumstances.</p>
 <div class="table-block">
 <table width="100%">
@@ -1073,7 +1091,7 @@
 </tr>
 <tr>
 <td>Integrations</td>
-<td>To help you work effectively, Spark may integrates with third-party services via APIs, command-line interface, or other access points in the app. For example, you can turn an email into an Asana task, export it to Evernote, or integrate an AI agent and use it for work with your inbox.<br><br>Please note that Spark is not responsible for the performance, security, or data handling practices of third-party services or your device. We also recommend reviewing the legal documents for such third-party services before using any integration.</td>
+<td>Spark integrates with popular third-party services so that you can work effectively. For example, you can turn an email into an Asana task, export it to Evernote, or add an email to OneNote Notebook.</td>
 </tr>
 <tr>
 <td>Contractors</td>
@@ -1596,8 +1614,8 @@
         amplitude.flush()
     });
 
-    amplitude.setSessionId(1779151877475);
-    amplitude.setDeviceId("95754918-7329-43ba-8510-a9a2cd53a15d-1779151877475R");
+    amplitude.setSessionId(1779195125399);
+    amplitude.setDeviceId("89517687-de47-4248-ae04-8c3016ae4be6-1779195125399R");
 
     var identify = new amplitude.Identify();
     identify.set('Identity', 'Set');
