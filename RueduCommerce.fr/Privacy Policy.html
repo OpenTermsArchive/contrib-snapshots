@@ -1,10 +1,17 @@
 <!DOCTYPE html>
 <html lang="fr">
 <head>
+    <script>
+        try {
+            if (/LDLCApp\//i.test(navigator.userAgent)) {
+                document.documentElement.setAttribute('data-is-mobile-app', '');
+            }
+        } catch (e) {}
+    </script>
             
         <title>FAQ & espace d'aide Rue du Commerce</title>
         <meta charset="utf-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover" />
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
 <meta name="theme-color" content="#f7f7f7" />
 <meta http-equiv="X-UA-Compatible" content="IE=edge" />
 <meta property="og:title" content="FAQ & espace d'aide Rue du Commerce" />
@@ -40,7 +47,7 @@
 
     <script defer data-domain="rueducommerce.fr" src="https://plausible.io/js/script.revenue.tagged-events.js"></script>
 
-            <link rel="stylesheet" href="/rdc/build/777.d38cd532.css">
+            <link rel="stylesheet" href="/rdc/build/777.63ae8d8c.css">
     
         <script type="application/ld+json"> {
 	"@context": "https://schema.org",
@@ -85,34 +92,34 @@
 </noscript>
 <!-- End Google Tag Manager (noscript) -->
 
-    <a href="#skip-content" class="skip-link">Aller au contenu principal</a>
+    <a href="#main-content" class="skip-link">Aller au contenu principal</a>
                                     
         <header class="nav-down" data-controller="header-user">
             <div class="alert-country-banner" id="localisation-banner"></div>
         <div class="header__banner">
-        <img src="https://www.rueducommerce.fr/rdc/build/img/common/RDC-premium--blue.svg" alt="Livraison offerte">
+        <img src="https://www.rueducommerce.fr/rdc/build/img/common/RDC-premium--blue.svg" alt="">
         <span class="header__banner__title">&nbsp;Livraison offerte&nbsp;</span>dès 19€&nbsp;<span class="header__banner__blue">sans abonnement</span>&nbsp;!
     </div>
             <div class="top">
             <div class="container">
                     <div class="wrap-header">
                                                     <div class="hidden-l burger-menu">
-                                <span class="toggle-menu dl-trigger">
-                                    <span class="icon-burger"></span>
-                                </span>
+                                <button type="button" class="toggle-menu dl-trigger" aria-expanded="false" aria-controls="dl-menu" aria-label="Ouvrir le menu">
+                                    <span class="icon-burger" aria-hidden="true"></span>
+                                </button>
                             </div>
                                                                             <div class="logo">
                                                                 <a href="https://www.rueducommerce.fr/">
                                     <img src="https://media.rueducommerce.fr/nbo/rdc/logo/1750325152-logo-test.png" alt="Logo Rue du Commerce" />
                                 </a>
                             </div>
-                                                                            <form name="search" method="post" action="https://www.rueducommerce.fr/recherche/" id="formSearch" novalidate="novalidate">
+                                                                            <form name="search" method="post" action="https://www.rueducommerce.fr/recherche/" id="formSearch" novalidate="novalidate" role="search">
 <div class="search-block">
     <div class="wrap-search">
         <div class="search">
-            <input type="text" id="search_search_text" name="search[search_text]" required="required" placeholder="Chercher un produit, une marque, une catégorie" data-placeholder="Chercher un produit, une marque, une catégorie" data-mobile-placeholder="Rechercher" autocomplete="off" />
-            <button type="submit" class="submit">
-                <span class="icon icon-zoom"></span>
+            <input type="text" id="search_search_text" name="search[search_text]" required="required" placeholder="Chercher un produit, une marque, une catégorie" data-placeholder="Chercher un produit, une marque, une catégorie" data-mobile-placeholder="Rechercher" autocomplete="off" aria-label="Chercher un produit, une marque, une catégorie" />
+            <button type="submit" class="submit" aria-label="Chercher">
+                <span class="icon icon-zoom" aria-hidden="true"></span>
             </button>
         </div>
         <div class="search-engine"></div>
@@ -122,13 +129,13 @@
 </form>
 
                                                                             <div id="account-menu-item" class="account">
-    <a id="compte" href="https://secure.rueducommerce.fr/Account" rel="nofollow" data-header-user-target="user">
+    <a id="compte" href="https://secure.rueducommerce.fr/Account" rel="nofollow" aria-label="Compte" data-header-user-target="user">
         <span class="icon icon-user"></span>
         <span class="icon icon-success"></span>
     </a>
 </div>
 <div class="basket">
-    <a id="panier" href="https://secure.rueducommerce.fr/Cart" rel="nofollow" data-header-user-target="cart">
+    <a id="panier" href="https://secure.rueducommerce.fr/Cart" rel="nofollow" aria-label="Panier" data-header-user-target="cart">
         <span class="icon icon-basket"></span>
     </a>
 </div>
@@ -136,19 +143,17 @@
 
             </div>
         </div>
-                <nav>
+                <nav aria-label="Menu principal">
     <div class="container" data-loading-ajax="1" data-loading-ajax-mode-all="1">
         <div class="cat-menu">
             <ul>
-	<li class="cat">
-	<div class="cat-arrow burger-menu"><span class="icon-burger"></span><span class="text" data-id-trigger="trigger-c1">Tous nos rayons</span><span class="icon icon-arrow-bottom"></span></div>
-
+	<li class="cat"><button class="cat-arrow burger-menu"><span class="icon-burger"></span><span class="text" data-id-trigger="trigger-c1">Tous nos rayons</span><span class="icon icon-arrow-bottom"></span></button>
 	<div class="main-menu dl-menuwrapper" data-back="Retour" id="dl-menu">
 	<ul class="dl-menu">
 		<li data-submenu-id="c-9123" data-id-trigger="trigger-c1" data-submenu-id="c-9123">
     <a href="https://www.rueducommerce.fr/v/9123/culture/" target="_blank">
                                             
-        <img src="https://media.rueducommerce.fr/r250/categories/9123.jpg" alt="Culture" onerror="this.src='https://www.rueducommerce.fr/rdc/build/img/common/no-photo-250.png'" />
+        <img src="https://media.rueducommerce.fr/r250/categories/9123.jpg" alt="" onerror="this.src='https://www.rueducommerce.fr/rdc/build/img/common/no-photo-250.png'" />
         <span>Culture</span>
         <span class="icon icon-arrow-right"></span>
     </a>
@@ -157,7 +162,7 @@
 <li data-submenu-id="c-70000" data-submenu-id="c-70000">
     <a href="https://www.rueducommerce.fr/v/70000/informatique/" target="_blank">
                                             
-        <img src="https://media.rueducommerce.fr/r250/categories/70000.jpg" alt="Informatique" onerror="this.src='https://www.rueducommerce.fr/rdc/build/img/common/no-photo-250.png'" />
+        <img src="https://media.rueducommerce.fr/r250/categories/70000.jpg" alt="" onerror="this.src='https://www.rueducommerce.fr/rdc/build/img/common/no-photo-250.png'" />
         <span>Informatique</span>
         <span class="icon icon-arrow-right"></span>
     </a>
@@ -166,7 +171,7 @@
 <li data-submenu-id="c-70001" data-submenu-id="c-70001">
     <a href="https://www.rueducommerce.fr/v/70001/smartphone-objets-connectes/" target="_blank">
                                             
-        <img src="https://media.rueducommerce.fr/r250/categories/70001.jpg" alt="Smartphone &amp; objets connectés" onerror="this.src='https://www.rueducommerce.fr/rdc/build/img/common/no-photo-250.png'" />
+        <img src="https://media.rueducommerce.fr/r250/categories/70001.jpg" alt="" onerror="this.src='https://www.rueducommerce.fr/rdc/build/img/common/no-photo-250.png'" />
         <span>Smartphone &amp; objets connectés</span>
         <span class="icon icon-arrow-right"></span>
     </a>
@@ -175,7 +180,7 @@
 <li data-submenu-id="c-70002" data-submenu-id="c-70002">
     <a href="https://www.rueducommerce.fr/v/70002/image-son-photo/" target="_blank">
                                             
-        <img src="https://media.rueducommerce.fr/r250/categories/70002.jpg" alt="Image/son &amp; photo" onerror="this.src='https://www.rueducommerce.fr/rdc/build/img/common/no-photo-250.png'" />
+        <img src="https://media.rueducommerce.fr/r250/categories/70002.jpg" alt="" onerror="this.src='https://www.rueducommerce.fr/rdc/build/img/common/no-photo-250.png'" />
         <span>Image/son &amp; photo</span>
         <span class="icon icon-arrow-right"></span>
     </a>
@@ -184,7 +189,7 @@
 <li data-submenu-id="c-70009" data-submenu-id="c-70009">
     <a href="https://www.rueducommerce.fr/v/70009/maison-decoration/" target="_blank">
                                             
-        <img src="https://media.rueducommerce.fr/r250/categories/70009.jpg" alt="Maison &amp; décoration" onerror="this.src='https://www.rueducommerce.fr/rdc/build/img/common/no-photo-250.png'" />
+        <img src="https://media.rueducommerce.fr/r250/categories/70009.jpg" alt="" onerror="this.src='https://www.rueducommerce.fr/rdc/build/img/common/no-photo-250.png'" />
         <span>Maison &amp; décoration</span>
         <span class="icon icon-arrow-right"></span>
     </a>
@@ -193,7 +198,7 @@
 <li data-submenu-id="c-70004" data-submenu-id="c-70004">
     <a href="https://www.rueducommerce.fr/v/70004/electromenager/" target="_blank">
                                             
-        <img src="https://media.rueducommerce.fr/r250/categories/70004.jpg" alt="Electroménager" onerror="this.src='https://www.rueducommerce.fr/rdc/build/img/common/no-photo-250.png'" />
+        <img src="https://media.rueducommerce.fr/r250/categories/70004.jpg" alt="" onerror="this.src='https://www.rueducommerce.fr/rdc/build/img/common/no-photo-250.png'" />
         <span>Electroménager</span>
         <span class="icon icon-arrow-right"></span>
     </a>
@@ -202,7 +207,7 @@
 <li data-submenu-id="c-8419" data-submenu-id="c-8419">
     <a href="https://www.rueducommerce.fr/v/8419/brico-jardin/" target="_blank">
                                             
-        <img src="https://media.rueducommerce.fr/r250/categories/8419.jpg" alt="Brico &amp; jardin" onerror="this.src='https://www.rueducommerce.fr/rdc/build/img/common/no-photo-250.png'" />
+        <img src="https://media.rueducommerce.fr/r250/categories/8419.jpg" alt="" onerror="this.src='https://www.rueducommerce.fr/rdc/build/img/common/no-photo-250.png'" />
         <span>Brico &amp; jardin</span>
         <span class="icon icon-arrow-right"></span>
     </a>
@@ -211,7 +216,7 @@
 <li data-submenu-id="c-70003" data-submenu-id="c-70003">
     <a href="https://www.rueducommerce.fr/v/70003/jeux-jouets/" target="_blank">
                                             
-        <img src="https://media.rueducommerce.fr/r250/categories/70003.jpg" alt="Jeux &amp; jouets" onerror="this.src='https://www.rueducommerce.fr/rdc/build/img/common/no-photo-250.png'" />
+        <img src="https://media.rueducommerce.fr/r250/categories/70003.jpg" alt="" onerror="this.src='https://www.rueducommerce.fr/rdc/build/img/common/no-photo-250.png'" />
         <span>Jeux &amp; jouets</span>
         <span class="icon icon-arrow-right"></span>
     </a>
@@ -220,7 +225,7 @@
 <li data-submenu-id="c-9028" data-submenu-id="c-9028">
     <a href="https://www.rueducommerce.fr/v/9028/puericulture/" target="_blank">
                                             
-        <img src="https://media.rueducommerce.fr/r250/categories/9028.jpg" alt="Puériculture" onerror="this.src='https://www.rueducommerce.fr/rdc/build/img/common/no-photo-250.png'" />
+        <img src="https://media.rueducommerce.fr/r250/categories/9028.jpg" alt="" onerror="this.src='https://www.rueducommerce.fr/rdc/build/img/common/no-photo-250.png'" />
         <span>Puériculture</span>
         <span class="icon icon-arrow-right"></span>
     </a>
@@ -229,7 +234,7 @@
 <li data-submenu-id="c-70005" data-submenu-id="c-70005">
     <a href="https://www.rueducommerce.fr/v/70005/mobilite-sport/" target="_blank">
                                             
-        <img src="https://media.rueducommerce.fr/r250/categories/70005.jpg" alt="Mobilité &amp; sport" onerror="this.src='https://www.rueducommerce.fr/rdc/build/img/common/no-photo-250.png'" />
+        <img src="https://media.rueducommerce.fr/r250/categories/70005.jpg" alt="" onerror="this.src='https://www.rueducommerce.fr/rdc/build/img/common/no-photo-250.png'" />
         <span>Mobilité &amp; sport</span>
         <span class="icon icon-arrow-right"></span>
     </a>
@@ -255,7 +260,7 @@
 <ul class="cat-menu__right">
 	<li class="cat__help"><a href="https://www.rueducommerce.fr/aide/"><span class="text">Aide</span></a></li>
 	<li class="cat__premium">
-	<div><a href="https://www.rueducommerce.fr/aide/999-frais-de-port/" style="text-decoration:none;color:#fff;"><img alt="Livraison offerte" src="https://media.rueducommerce.fr/nbo/rdc/menu/RDC-premium--blue.png" /><span>Livraison offerte</span></a></div>
+	<div><a href="https://www.rueducommerce.fr/aide/999-frais-de-port/" style="text-decoration:none;color:#001440;"><img alt="Livraison offerte" src="https://media.rueducommerce.fr/nbo/rdc/menu/RDC-premium--blue.png" /><span>Livraison offerte</span></a></div>
 	<span><span>d&egrave;s 19&euro;</span> sans abonnement !</span></li>
 </ul>
         </div>
@@ -292,7 +297,7 @@
             </svg>
         </div>
     </div>
-    <div id="skip-content"></div>
+    <div id="main-content" tabindex="-1"></div>
         <div class="main faq">
                                                 <div class="head-faq">
             <h1 class="title-1"><strong>Besoin d&#039;aide ?</strong>Notre équipe est là pour vous aider.</h1>
@@ -384,30 +389,30 @@
         </div>
     </div>
             </div>
-    <div class="modal" id="modal-default" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+    <div class="modal" id="modal-default" tabindex="-1" role="dialog" aria-label="Fenetre de dialogue" data-controller="modal-default">
     <div class="modal-dialog" role="document">
         <div class="modal-content modal-md"></div>
     </div>
-</div>    <div class="modal" id="modal-login" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+</div>    <div class="modal" id="modal-login" tabindex="-1" role="dialog" aria-labelledby="modal-login-title">
     <div class="modal-dialog" role="document">
         <div class="modal-content modal-login modal-sm">
             <div class="modal-header">
-                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close">
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Fermer">
                     <span class="icon icon-close" aria-hidden="true"></span>
                 </button>
-                <h3 class="title-2">Identifiez-vous :</h3>
+                <h3 id="modal-login-title" class="title-2">Identifiez-vous :</h3>
             </div>
             <div class="modal-body padding text-center"></div>
         </div>
     </div>
-</div>    <div class="modal" id="error-generic-modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+</div>    <div class="modal" id="error-generic-modal" tabindex="-1" role="dialog" aria-labelledby="modal-generic-error-title">
     <div class="modal-dialog" role="document">
         <div class="modal-content modal-md">
             <div class="modal-header">
-                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close">
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Fermer">
                     <span class="icon icon-close" aria-hidden="true"></span>
                 </button>
-                <h3 class="title-2">Une erreur est survenue</h3>
+                <h3 id="modal-generic-error-title" class="title-2">Une erreur est survenue</h3>
             </div>
             <div class="modal-body padding">
                 Veuillez nous excuser pour la gêne occasionnée
@@ -417,15 +422,15 @@
 </div>
     <div class="offcanvas offcanvas-end"
      id="modal-alma-information"
-     aria-labelledby=""
+     aria-labelledby="offcanvas-alma-title"
      tabindex="-1"
 >
     <div class="offcanvas-content modal-alma-information">
-        <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close">
+        <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Fermer">
             <span class="icon icon-close" aria-hidden="true"></span>
         </button>
         <div class="offcanvas-header touchSwipe padding">
-            <h2 class="offcanvas-title">
+            <h2 class="offcanvas-title" id="offcanvas-alma-title">
                 Payez en plusieurs fois par carte bancaire avec <img src="/rdc/build/img/public/img-alma.svg" />
             </h2>
         </div>
@@ -444,8 +449,11 @@
         </div>
     </div>
 </div>
-    <footer>
-                         <div class="footer__row">
+        <footer>
+    <div data-hide-on-app>
+        
+    </div>
+             <div class="footer__row">
         <div class="row">
             <p class="footer__title">Rejoignez nous sur :</p>
             <ul class="footer__rs">
@@ -490,6 +498,7 @@
 	<li><a class="js-no-scroll" data-bs-target="#modal-cookies" data-bs-toggle="modal" data-remote="false" href="#CookiesPreferences" rel="nofollow">G&eacute;rer mes cookies</a></li>
 	<li><a href="https://www.rueducommerce.fr/aide/1037-informations-legales/" rel="nofollow">Mentions l&eacute;gales</a></li>
 	<li><a href="https://www.rueducommerce.fr/aide/1148-declaration-d-accessibilite/" rel="nofollow">Accessibilit&eacute; : non conforme</a></li>
+	<li><a href="https://www.rueducommerce.fr/aide/1197-notice-d-accessibilite/" rel="nofollow">Notice d&#39;accessibilit&eacute;</a></li>
 </ul>
             </div>
                     <div class="col">
@@ -503,14 +512,17 @@
 </div>
 
 
-            </footer>
-    <div class="offcanvas offcanvas-end" id="appCanvas" aria-labelledby="" tabindex="-1" aria-modal="true" role="dialog"></div>
+    <div data-hide-on-app>
+        
+    </div>
+</footer>
+<div class="offcanvas offcanvas-end" id="appCanvas" aria-label="Panneau lateral" tabindex="-1" aria-modal="true" role="dialog"></div>
 
     <script>
         var request_locale = 'fr';
         var request_country = 'fr';
     </script>
-    <script src="/rdc/build/runtime.123a8c26.js"></script><script src="/rdc/build/692.b351c162.js"></script><script src="/rdc/build/736.606ae616.js"></script><script src="/rdc/build/500.aaa81b5d.js"></script><script src="/rdc/build/241.1809a498.js"></script><script src="/rdc/build/660.0b63a5bf.js"></script><script src="/rdc/build/145.362e250a.js"></script><script src="/rdc/build/331.ce382a45.js"></script><script src="/rdc/build/582.53e54ab7.js"></script><script src="/rdc/build/js/app.0b622e37.js"></script>
+    <script src="/rdc/build/runtime.123a8c26.js"></script><script src="/rdc/build/692.b351c162.js"></script><script src="/rdc/build/736.606ae616.js"></script><script src="/rdc/build/500.aaa81b5d.js"></script><script src="/rdc/build/241.2c4e6ec9.js"></script><script src="/rdc/build/660.0b63a5bf.js"></script><script src="/rdc/build/145.362e250a.js"></script><script src="/rdc/build/331.ce382a45.js"></script><script src="/rdc/build/582.e76cf390.js"></script><script src="/rdc/build/js/app.0b622e37.js"></script>
     <script src="/rdc/build/js/front.9773c7a6.js" defer></script>
 </body>
 </html>
