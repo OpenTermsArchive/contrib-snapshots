@@ -24,7 +24,7 @@
 <meta name="msapplication-TileImage" content="/ms-icon-144x144.png">
 <meta name="theme-color" content="#ffffff">
 <script>
-serverTime = new Date('2026-05-19 12:38:02 GMT');
+serverTime = new Date('2026-05-20 12:37:44 GMT');
 </script>
 <title>Terms of Service | DistroKid</title>
 <meta name="description" content="Read DistroKid's Terms of Service">
@@ -73,9 +73,9 @@ initializeDKModal();
 captchaSiteKey = "6Ld_vDcUAAAAABBf4b4MfIPqz5XA53JWQyOh6MX0";
 turnstileSiteKey = "0x4AAAAAAAwjnOrGSKrIkAR9";
 </script>
-<script src="/js/header.js?cacheHash=2b93bc7519c68007" 1779194278649></script>
-<script src="/js/distro.js?cacheHash=4c598bb073bec1d8" 1779194278649></script>
-<script src="/js/fixCaps.js?cacheHash=4d712b9355dbb337" 1779194278650></script>
+<script src="/js/header.js?cacheHash=2b93bc7519c68007" 1779237461156></script>
+<script src="/js/distro.js?cacheHash=4d35a396168d257c" 1779237461157></script>
+<script src="/js/fixCaps.js?cacheHash=4d712b9355dbb337" 1779237461162></script>
 <script src="/js/jquery.kenburns-0.1.js"></script>
 <script src="/js/lazysizes.min.js"></script>
 <script>
@@ -280,222 +280,9 @@ document.head.appendChild(osanoScript);
 }
 </script>
 <script>
-;(function() {
-const TELEMETRY_API_URL = "https://uwwgok9jpj.execute-api.us-east-1.amazonaws.com/prod/v1";
-const TELEMETRY_API_KEY = "vueDCNdxj68BeTSQJeiKL2A0FXOmee1Z2eoRVH6Z";
-const VERBOSE_DEBUG_ENABLED = false;
-const LOCALDEV_LOG = false;
-if(LOCALDEV_LOG) {
-const TELEMETRY_LOG_AUTH_USER_ID = 0;
-}
-const events = {
-"Checkout Started": { method: "checkout-started" },
-"Order Completed": { method: "order-completed" },
-"Plans Viewed": { method: "plans-viewed" },
-"Signed In": { method: "signed-in"},
-"Page Viewed": { method: "page-viewed"},
-"Downloaded Mastered Track": { method: "downloaded-mastered-track"},
-"Mastered a Track": { method: "mastered-a-track"},
-"Compared Audio (Original vs. Master)": { method: "compared-audio"},
-"Interacted with the Player": { method: "interacted-with-the-player"},
-"Adjusted Intensity": { method: "adjusted-intensity"},
-"Adjusted EQ": { method: "adjusted-eq"},
-"Initiated File Selection": { method: "initiated-file-selection"},
-"Uploaded a Track": { method: "uploaded-a-track"},
-"Compared MALC Audio (Original vs. Master)": { method: "compared-malc-audio"}
-};
-function createAnonymousUuid() {
-const anonymousUuid = crypto.randomUUID();
-localStorage.setItem("anonymousUuid", anonymousUuid);
-return anonymousUuid;
-}
-function getAnonymousUuid() {
-return localStorage.getItem("anonymousUuid") || createAnonymousUuid();
-}
-function getConsentPreferences() {
-if(typeof window.getSegmentPreparedConsent === "function") {
-return window.getSegmentPreparedConsent();
-}
-else {
-return {
-"categoryPreferences": {
-"ANALYTICS": true,
-"ESSENTIAL": true,
-"MARKETING": true,
-"OPT_OUT": false,
-"PERSONALIZATION": true,
-"STORAGE": true
-}
-}
-}
-}
-function getLocale() {
-const metaContentLanguage = document.querySelector("meta[http-equiv='content-language']");
-return metaContentLanguage.getAttribute("content") || "en-US";
-}
-function getCampaign() {
-const searchParams = new URLSearchParams(window.location.search);
-return {
-"name": searchParams.get("utm_campaign"),
-"source": searchParams.get("utm_source"),
-"medium": searchParams.get("utm_medium"),
-"term": searchParams.get("utm_term"),
-"content": searchParams.get("utm_content")
-};
-}
-function getTimeZone() {
-return Intl.DateTimeFormat().resolvedOptions().timeZone;
-}
-/**
-* On localdev only, mirrors TelemetrySingleEntryClient: POST parsed Kinesis shard/sequence to tblDistroLog via /api/log/.
-* Requires a logged-in session (TELEMETRY_LOG_AUTH_USER_ID); anonymous traffic is skipped.
-*
-* @param method Telemetry event_type / client method (e.g. page-viewed).
-* @param status HTTP status from the telemetry API response.
-* @param responseText Raw response body text from the telemetry API.
-*/
-function logTelemetrySingleEntryResponseToServerIfLocaldev(method, status, responseText) {
-if (status !== 200) {
-return;
-}
-if (!TELEMETRY_LOG_AUTH_USER_ID) {
-return;
-}
-let parsed;
-try {
-parsed = JSON.parse(responseText);
-} catch (parseErr) {
-return;
-}
-const shardId = Object.prototype.hasOwnProperty.call(parsed, "kinesisShardId")
-? String(parsed.kinesisShardId)
-: "";
-const seq = Object.prototype.hasOwnProperty.call(parsed, "kinesisSequenceNumber")
-? String(parsed.kinesisSequenceNumber)
-: "";
-const params = new URLSearchParams();
-params.set("action", "telemetry: client " + method);
-params.set("notes", "telemetry ok (client) event=" + method + " shardId=" + shardId + " seq=" + seq);
-params.set("userId", String(TELEMETRY_LOG_AUTH_USER_ID));
-params.set("longnotes", responseText);
-fetch("/api/log/", {
-method: "POST",
-credentials: "same-origin",
-headers: {
-"Content-Type": "application/x-www-form-urlencoded;charset=UTF-8",
-},
-body: params.toString(),
-}).catch(function() {
-// Best-effort localdev mirror; ignore /api/log failures.
-});
-}
-function sendToSingleEntryEndpoint(method, segmentData) {
-const endpoint = `${TELEMETRY_API_URL}/event/`;
-// Extract date and hour for Iceberg partitioning
-const now = new Date(segmentData.timestamp);
-const eventDate = now.toISOString().split('T')[0]; // YYYY-MM-DD
-const eventHour = String(now.getUTCHours()).padStart(2, '0'); // HH24
-// Build the root envelope matching Iceberg table schema
-const envelopeBody = {
-"id": segmentData.messageId,
-"event_at": segmentData.timestamp,
-"event_type": method,
-"source": "client",
-"version": segmentData.version ?? "1.0.0",
-"event_date": eventDate,
-"event_hour": eventHour,
-"metadata": JSON.stringify({}),
-"data": JSON.stringify(segmentData)
-};
-const bodyJSON = JSON.stringify(envelopeBody);
-return fetch(endpoint, {
-method: "POST",
-body: bodyJSON,
-headers: {
-"Content-type": "application/json",
-"X-Api-Key": TELEMETRY_API_KEY
-}
-})
-.then(async response => {
-const responseText = await response.text();
-if( LOCALDEV_LOG ){
-logTelemetrySingleEntryResponseToServerIfLocaldev(method, response.status, responseText);
-}
-if (VERBOSE_DEBUG_ENABLED) {
-Sentry.captureMessage(`[Telemetry-SingleEntry] Debug: [${method}]`, {
-"extra": {
-"endpoint": "single-entry",
-"response": {
-"ok": response?.ok ?? null,
-"status": response?.status ?? null,
-"statusText": response?.statusText ?? null,
-"type": response?.type ?? 'unknown',
-"url": response?.url ?? null,
-"body": responseText
-},
-"body": bodyJSON
-}
-});
-}
-if(response.status !== 200) {
-const captureContext = {
-"extra": {
-"endpoint": "single-entry",
-"response": {
-"ok": response?.ok ?? null,
-"status": response?.status ?? null,
-"statusText": response?.statusText ?? null,
-"type": response?.type ?? 'unknown',
-"url": response?.url ?? null,
-"body": responseText
-},
-"body": bodyJSON
-}
-};
-const message = `[Telemetry-SingleEntry] Non-200 Status Code (${response.status} - JS): ${method}`;
-Sentry.captureMessage(message, captureContext);
-}
-return response;
-})
-.catch(error => {
-Sentry.captureException(error);
-});
-}
-function trackTelemetry(event, payload) {
-const method = events[event.type].method;
-const messageId = crypto.randomUUID();
-const timestamp = new Date(Date.now()).toISOString();
-// Build the Segment-formatted data
-const segmentData = {
-"event": event.type,
-"timestamp": timestamp,
-"messageId": messageId,
-"context": {
-"page": {
-"path": window.location.pathname,
-"referrer": document.referrer,
-"search": window.location.search,
-"title": document.title,
-"url": window.location.href
-},
-"userAgent": window?.navigator?.userAgent || "",
-"userAgentData": window?.navigator?.userAgentData || "",
-"locale": getLocale(),
-"campaign": getCampaign(),
-"timezone": getTimeZone(),
-"consent": window.getSegmentPreparedConsent()
-}
-};
-// Send to single-entry endpoint
-sendToSingleEntryEndpoint(method, segmentData);
-}
-Object.keys(events).forEach(eventName => {
-document.addEventListener(eventName, event => {
-trackTelemetry(event, event.detail);
-});
-});
-})();
+window.__telemetryConfig = {"localdevLog":false,"apiUrl":"https://uwwgok9jpj.execute-api.us-east-1.amazonaws.com/prod/v1","verboseDebugEnabled":false,"apiKey":"vueDCNdxj68BeTSQJeiKL2A0FXOmee1Z2eoRVH6Z"};
 </script>
+<script src="/js/telemetry/bootstrap.js?cacheHash=6c21760fa7ae8af4" type="module"></script>
 </head>
 <body class="">
 <script src='https://www.google.com/recaptcha/api.js'></script>
@@ -507,7 +294,7 @@ trackTelemetry(event, event.detail);
 <div style="position:relative;" class="outer2 navNotLoggedIn">
 <div class="headerLoggedOutNav nav inner2">
 <div class="navInner">
-<input type="hidden" id="forgotPasswordSessionID" name="forgotPasswordSessionID" value="distrokid_e0500be9-cc32-434a-8e1f-757002aa698b_0">
+<input type="hidden" id="forgotPasswordSessionID" name="forgotPasswordSessionID" value="distrokid_1e8de739-f258-4e1b-8ff5-e4ea4a0e8736_0">
 <script type="text/template" id="templateForgotPassword">
 <div class="signinBoxNotification">
 Done! Instructions to reset your password have been emailed.
@@ -696,7 +483,7 @@ Copyright Agent
 DistroKid LLC
 34 Third Ave #183
 New York, NY 10003
-Email: <a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="167a7371777a56727f656264797d7f723875797b">[email&#160;protected]</a> <br>
+Email: <a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="54383133353814303d2720263b3f3d307a373b39">[email&#160;protected]</a> <br>
 In accordance with the DMCA and other applicable law, DistroKid has adopted a policy of terminating, in appropriate circumstances and in DistroKid's sole discretion, users who are deemed to be repeat infringers. For the avoidance of doubt, the foregoing sentence in no way limits DistroKid's right to limit access to the Services and/or terminate the Accounts of any users for any reason, in DistroKid's sole discretion, including, without limitation, in the case of users who infringe, or allegedly infringe, any Intellectual Property Rights of others, whether or not there is any repeat infringement. <br>
 Please be advised that pursuant to federal law you may be held liable for damages if you make material misrepresentations in a Notice. Thus, if you are not sure that material located on or linked to by the infringes your copyright, you should consider first contacting an attorney. <br>
 <strong>Links to Third-Party Websites or Services</strong><br>
@@ -785,7 +572,7 @@ keepalive: true,
 credentials: 'same-origin',
 headers: {
 'Content-Type': 'application/json',
-'Authorization': 'Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJjbGkiOjEsImlhdCI6MTc3OTE5NDI4MiwiaXNzIjoiaHR0cHM6Ly9kaXN0cm9raWQuY29tIiwic3ViIjowLCJleHAiOjE3NzkxOTc4ODIsImRldiI6IiIsInNjb3BlIjoicmVhZC1wcm9maWxlIiwiYXVkIjoiIn0.LcRkyaGBZwiL0Rw_Hf11oRoZkN5xcI8r00duxEoesmY'
+'Authorization': 'Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJjbGkiOjEsImlhdCI6MTc3OTIzNzQ2NSwiaXNzIjoiaHR0cHM6Ly9kaXN0cm9raWQuY29tIiwic3ViIjowLCJleHAiOjE3NzkyNDEwNjUsImRldiI6IiIsInNjb3BlIjoicmVhZC1wcm9maWxlIiwiYXVkIjoiIn0.TEFiurRa6eJxrLZRt5BNxMa-mTaUwS_8inhL9zjfI2U'
 },
 body: JSON.stringify({ languageCode: languageCode })
 });
