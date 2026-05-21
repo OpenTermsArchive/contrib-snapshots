@@ -4,8 +4,17 @@
 
                 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
                 
+                <script>
+                    window.labClientAPIReady = new Promise(function (resolve) {
+                        document.addEventListener(
+                            'labClientAPIReady',
+                            function () { resolve(window.labClientAPI); },
+                            { once: true }
+                        );
+                    });
+                </script>
                 <script type="module">
-                    import { ClientAPI } from '/view-resources/baseview/public/common/ClientAPI/index.js?v=1779200174-L4';
+                    import { ClientAPI } from '/view-resources/baseview/public/common/ClientAPI/index.js?v=1779347063-L4';
                     window.labClientAPI = new ClientAPI({
                         pageData: {
                             url: 'https://www.theregister.com/profile/terms_and_conditions_of_use',
@@ -145,12 +154,12 @@ body {
                         <link type="image/png" rel="apple-touch-icon" sizes="180x180" href="/view-resources/dachser2/public/theregister/favicons/apple-touch-icon.png">
                     <link rel="manifest" href=/view-resources/dachser2/public/theregister/favicons/manifest.json />
                 <link href="https://fonts.googleapis.com/css?family=Merriweather:300,400,700,900" rel="stylesheet"  media="print" onload="this.media='all'" >
-                <link rel="stylesheet" href="/view-resources/view/css/grid.css?v=1779200174-L4">
-                <link rel="stylesheet" href="/view-resources/view/css/main.css?v=1779200174-L4">
-                <link rel="stylesheet" href="/view-resources/view/css/colors.css?v=1779200174-L4">
-                <link rel="stylesheet" href="/view-resources/view/css/print.css?v=1779200174-L4" media="print">
-                <link rel="stylesheet" href="/view-resources/view/css/foundation-icons/foundation-icons.css?v=1779200174-L4">
-                <link rel="stylesheet" href="/view-resources/view/css/site/theregister.css?v=1779200174-L4">
+                <link rel="stylesheet" href="/view-resources/view/css/grid.css?v=1779347063-L4">
+                <link rel="stylesheet" href="/view-resources/view/css/main.css?v=1779347063-L4">
+                <link rel="stylesheet" href="/view-resources/view/css/colors.css?v=1779347063-L4">
+                <link rel="stylesheet" href="/view-resources/view/css/print.css?v=1779347063-L4" media="print">
+                <link rel="stylesheet" href="/view-resources/view/css/foundation-icons/foundation-icons.css?v=1779347063-L4">
+                <link rel="stylesheet" href="/view-resources/view/css/site/theregister.css?v=1779347063-L4">
                 <style data-key="custom_properties">
                     :root{--primary: rgba(0,0,0,1);--secondary: rgba(255,255,255,1);--tertiary: rgba(214,0,0,1);--quaternary: rgba(0,0,0,1);--bg-secondary: rgba(255,255,255,1);--bg-tertiary: rgba(239,239,239,1);--bg-quaternary: rgba(0,0,0,1);--bg-quinary: rgba(22,22,22,1);--bg-senary: rgba(255,235,235,1);--bg-septenary: rgba(214,0,0,1);--bg-octonary: rgba(248,248,248,1);--bg-nonary: rgba(208, 200, 200, 1);--bg-primary: rgba(255,0,0,1);--bg-septenary-light: rgba(230,102,102,1);--bg-septenary-dark: rgba(150,0,0,1);--bg-nonary-light: rgba(227,222,222,1);--bg-nonary-dark: rgba(146,140,140,1);}
                 </style>
@@ -173,6 +182,7 @@ body {
                 :root {
                     --lab_page_width: 1200px;
                     --lab_columns_gutter: 11px;
+                    --lab_focus_ring_color: #005fcc;
                     --space-top: 0;
                     --space-top-adnuntiusAd: ;
                 }
@@ -188,8 +198,8 @@ body {
                     }
                 }
                 </style>
-<script src="/view-resources/public/common/JWTCookie.js?v=1779200174-L4"></script>
-<script src="/view-resources/public/common/Paywall.js?v=1779200174-L4"></script>
+<script src="/view-resources/public/common/JWTCookie.js?v=1779347063-L4"></script>
+<script src="/view-resources/public/common/Paywall.js?v=1779347063-L4"></script>
                 <script>
                 window.Dac = window.Dac || {};
                 (function () {
@@ -247,7 +257,7 @@ body {
                 }());
                 </script>
 
-                    <script type="module" src="/view-resources/baseview/public/common/baseview/moduleHandlers.js?v=1779200174-L4" data-cookieconsent="ignore"></script>
+                    <script type="module" src="/view-resources/baseview/public/common/baseview/moduleHandlers.js?v=1779347063-L4" data-cookieconsent="ignore"></script>
 <!-- DataLayer -->
 <script>
 
@@ -509,24 +519,16 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
             <div class="hamburger-container" id="hamburger-container">        
                 <div data-id="pageElements-4" class="search visible dac-hidden-desktop-up">
 
-        <button class="search-button" aria-label="Search" >
-                <i class="open fi-magnifying-glass"></i>
-                <i class="close fi-x"></i>
-        </button>
-
     <form class="search-container" action="/cse" method="get" role="search">
         <label for="search-input-4" class="visuallyhidden">Search</label>
         <input type="text" id="search-input-4" name="q" placeholder="Search...">
+                <button type="submit" class="search-button" aria-label="Search">
+                        <i class="open fi-magnifying-glass"></i>
+                </button>
     </form>
+
 </div>
 
-    <script>
-        if (document.querySelector('[data-id="pageElements-4"] .search-button')) {
-            document.querySelector('[data-id="pageElements-4"] .search-button').addEventListener('click', (event) => {
-                document.querySelector('[data-id="pageElements-4"] .search-container').submit();
-            }, false);
-        }
-    </script>
 <nav class="navigation mainMenu expandable">
 			<p class="lab-menu-name  dac-hidden-desktop-down">TOPICS</p>
 	<ul class="menu-list">
@@ -563,7 +565,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 						<a href="/channel" target="_self">Channel</a>
 					</li>
 					<li class="selected dac-hidden-desktop-down">
-						<a href="/paas_iaas" target="_self">PaaS + IaaS</a>
+						<a href="/tag/paas-iaas" target="_self">PaaS + IaaS</a>
 					</li>
 					<li class="">
 						<a href="/saas" target="_self">SaaS</a>
@@ -606,7 +608,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 						<a href="/software" target="_self">All Software</a>
 					</li>
 					<li class="">
-						<a href="/ai_ml" target="_self">AI + ML</a>
+						<a href="/tag/ai-ml" target="_self">AI + ML</a>
 					</li>
 					<li class="">
 						<a href="/applications" target="_self">Applications</a>
@@ -1084,11 +1086,6 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     }());
 </script><div data-id="pageElements-7" class="search to-be-expanded dac-hidden-desktop-down bonusButton">
 
-        <button class="search-button search-expander" aria-label="Search"  aria-expanded="false" aria-controls="search-input-7" >
-                <i class="open fi-magnifying-glass"></i>
-                <i class="close fi-x"></i>
-        </button>
-
     <form class="search-container" action="/cse" method="get" role="search">
         <label for="search-input-7" class="visuallyhidden">Search</label>
         <input type="text" id="search-input-7" name="q" placeholder="Search...">
@@ -1096,6 +1093,11 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
                         <i class="fi-magnifying-glass" aria-hidden="true"></i>
                 </button>
     </form>
+
+            <button class="search-button search-expander" aria-label="Search" aria-expanded="false" aria-controls="search-input-7">
+                    <i class="open fi-magnifying-glass"></i>
+                    <i class="close fi-x"></i>
+            </button>
 </div>
 
         <script>
@@ -1126,11 +1128,34 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
                 }, false);
             }
 
-            /*
-                There should probably be some sort of sorting of the elements, so that if the search button is to the right,
-                the tab order should be the input before the button.
-                This is a job for future me.
-            */
+            // Wrap in a block so const doesn't conflict when multiple search widgets are on the same page
+            {
+                const searchWrapper = document.querySelector('[data-id="pageElements-7"]');
+                if (searchWrapper) {
+                    const searchButton = document.querySelector('[data-id="pageElements-7"] .search-button');
+                    searchWrapper.addEventListener('focusout', (event) => {
+                        if (searchWrapper.classList.contains('expanded') && !searchWrapper.contains(event.relatedTarget)) {
+                            searchWrapper.classList.remove('expanded');
+                            if (searchButton) {
+                                searchButton.setAttribute('aria-expanded', 'false');
+                                searchButton.setAttribute('aria-label', 'Open search');
+                            }
+                        }
+                    });
+
+                    searchWrapper.addEventListener('keydown', (event) => {
+                        if (event.key === 'Escape' && searchWrapper.classList.contains('expanded')) {
+                            searchWrapper.classList.remove('expanded');
+                            if (searchButton) {
+                                searchButton.setAttribute('aria-expanded', 'false');
+                                searchButton.setAttribute('aria-label', 'Open search');
+                                searchButton.focus();
+                            }
+                        }
+                    });
+                }
+            }
+
         </script>
 <figure class="logo logo--mobile">
     <a href="https://www.theregister.com" aria-label="Go to frontpage">
@@ -1337,8 +1362,8 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 
         <section class="main front" id="main">
         <h1 class="hidden-heading">Terms &amp; Conditions | The Register</h1>
-            <div data-element-guid="6b4b0cd9-dab0-44bb-e7c1-7d2df3bb88fb" class="placeholder placement-top">
-<div data-element-guid="860ad295-b9a9-49ea-d2ef-0c5a2e8849c3" class="column google-ad small-12 large-12 small-abs-12 large-abs-12"  style="">
+            <div data-element-guid="2e3f441f-92ce-4c40-ffc9-80777e5270d0" class="placeholder placement-top">
+<div data-element-guid="60f00ff8-77ad-4f67-8fd0-8b618d38eb2b" class="column google-ad small-12 large-12 small-abs-12 large-abs-12"  style="">
 
         <span class="ad-label">REG AD</span>
         <div class="adunit" id="labrador/thereg/front/desktop/a" style="min-height:90px;"></div>
@@ -1757,7 +1782,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 </footer>
 
 
-<script src="/view-resources/baseview/public/common/build/baseview_dependencies_dom.js?v=1779200174-L4" data-cookieconsent="ignore"></script>
+<script src="/view-resources/baseview/public/common/build/baseview_dependencies_dom.js?v=1779347063-L4" data-cookieconsent="ignore"></script>
 
         <script>
             window.dachserData.handlers = {
