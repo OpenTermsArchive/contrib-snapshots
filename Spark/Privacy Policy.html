@@ -484,7 +484,8 @@
 <ul>
 <li><a class="scroll-to" href="#sparkai-general" rel="nofollow">General</a></li>
 <li><a class="scroll-to" href="#sparkai-style" rel="nofollow">My Writing Style</a></li>
-<li><a class="scroll-to" href="#sparkai-notes" rel="nofollow">Meeting Notes</a></li>
+<li><a class="scroll-to" href="#meetingnotes" rel="nofollow">Meeting Notes</a></li>
+<li><a class="scroll-to" href="#personalization" rel="nofollow">Personalization</a></li>
 </ul>
 </li>
 <li><a class="scroll-to" href="#teamdata" rel="nofollow">Team Data</a></li>
@@ -778,17 +779,17 @@
 </tbody>
 </table>
 </div>
-<p><span style="color: #7e8c8d;"><strong>My Writing Style</strong></span></p>
+<p id="sparkai-style"><span style="color: #7e8c8d;"><strong>My Writing Style</strong></span></p>
 <p>This feature is based on profiling, i.e. automated processing of personal data to assess specific aspects of a person. In this case, profiling does not result in any legal implications for you, nor does it significantly impact you in a similar manner.</p>
 <p>When you turn on the feature, we automatically select several of your recently sent emails that meet the length and other criteria (&lsquo;<strong>samples</strong>&rsquo;) and pass such samples to the AI provider to get the description of your writing style. The AI provider will not have access to your other emails.</p>
 <p>Subsequently, the description of your style will be sent to the AI provider along with each request and applied to all new Spark +AI-generated email drafts.</p>
 <p>The samples are stored in your account as the feature's settings. You can review the samples in the &lsquo;Settings&rsquo; and manually replace them with other examples if you wish. We also store the samples and your writing style description in our backend.</p>
-<p id="sparkai-notes"><span style="color: #7e8c8d;"><strong>Meeting Notes</strong></span></p>
+<p id="meetingnotes"><span style="color: #7e8c8d;"><strong>Meeting Notes</strong></span></p>
 <p>This feature provides AI-powered audio transcription and summarization, allowing you to generate, edit, copy, and share meeting transcripts and summaries via a link.</p>
 <p>After you turn on this feature, please ensure that you always inform the meeting participants that you are making a meeting transcription via Spark.</p>
 <p>The feature captures an audio stream on your device with the help of the on-device AI model. Once the meeting ends or you finish the transcription, the audio stream is automatically sent to the third-party AI provider to obtain a transcription, which is further summarized. The transcription and summary are saved in your Spark account.</p>
 <p>Spark does not store the audio stream of the conversation, unless you choose to share one with us for troubleshooting. The AI provider may retain the audio stream for up to thirty (30) days for abuse and misuse monitoring.</p>
-<p><span style="color: #7e8c8d;"><strong>Personalization</strong></span></p>
+<p id="personalization"><span style="color: #7e8c8d;"><strong>Personalization</strong></span></p>
 <p>This feature lets you customize your experience with Spark+AI by using personalization context &mdash; a structured summary of how you work and communicate, and a set of instructions, which may include:&nbsp;</p>
 <ul>
 <li>Role: General details about your job, location, timezone;</li>
@@ -1614,8 +1615,8 @@
         amplitude.flush()
     });
 
-    amplitude.setSessionId(1779454313428);
-    amplitude.setDeviceId("4b9af210-3c3e-4443-bf20-077fb600fee4-1779454313428R");
+    amplitude.setSessionId(1779497533772);
+    amplitude.setDeviceId("a6932080-0015-4618-8424-619868076975-1779497533772R");
 
     var identify = new amplitude.Identify();
     identify.set('Identity', 'Set');
