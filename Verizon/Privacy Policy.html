@@ -5907,23 +5907,21 @@ jQuery('head').append('<style>.node--type-article-landing-page .div_share_addln_
       if (location.href.indexOf('scrollto=index-2') != -1) {
         jQuery("html, body").animate({scrollTop: jQuery('#acc-item-55 .paragraph--type--sbs.sbs--accordion-item.sbs.index-2').offset().top-100}, 1200);
       }
-      if (location.href.indexOf('scrollto=index-0') != -1) {
+      else if (location.href.indexOf('scrollto=index-0') != -1) {
         jQuery("html, body").animate({scrollTop: jQuery('#acc-item-55 .paragraph--type--sbs.sbs--accordion-item.sbs.index-0').offset().top-100}, 1200);
       }
+      //Nevada index-5
+      else if (location.href.indexOf('scrollto=index-5') != -1) {
+        jQuery("html, body").animate({scrollTop: jQuery('#acc-item-55 .paragraph--type--sbs.sbs--accordion-item.sbs.index-5').offset().top-100}, 1200);
+      }
+      //Virginial index-6
+      else if (location.href.indexOf('scrollto=index-6') != -1) {
+        jQuery("html, body").animate({scrollTop: jQuery('#acc-item-55 .paragraph--type--sbs.sbs--accordion-item.sbs.index-6').offset().top-100}, 1200);
+      } 
+      else {
+        jQuery("html, body").animate({scrollTop: jQuery('#acc-item-55-label').offset().top-100}, 1200);
+      }
     }
-
-
-if (location.href.match(/(\/privacy\/full\-privacy\-policy)/i)) {
-//Nevada index-5
-  if (location.href.indexOf('scrollto=index-5') != -1) {
-    jQuery("html, body").animate({scrollTop: jQuery('#acc-item-55 .paragraph--type--sbs.sbs--accordion-item.sbs.index-5').offset().top-100}, 1200);
-  }
-  //Virginial index-6
-  else if (location.href.indexOf('scrollto=index-6') != -1) {
-    jQuery("html, body").animate({scrollTop: jQuery('#acc-item-55 .paragraph--type--sbs.sbs--accordion-item.sbs.index-6').offset().top-100}, 1200);
-  }
-}
-
 
   }, 100)
 });
