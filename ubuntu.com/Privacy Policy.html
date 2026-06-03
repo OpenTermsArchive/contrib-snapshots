@@ -90,7 +90,7 @@
                 crossorigin />
 
           <script src="https://assets.ubuntu.com/v1/703e23c9-lazysizes+noscript+native-loading.5.1.2.min.js"
-                  defer></script>
+                  defer nonce="SJYMT4TJsKApg-2uir4ZQg"></script>
 
           <link rel="stylesheet" type="text/css" media="screen" href="/static/css/styles.css?v=ed1ab12" />
         </head>
@@ -110,7 +110,7 @@
     <div class="p-notification__content">
       <p class="p-notification__message">
         Your submission was sent successfully! <a href="#"
-    onclick="document.querySelector('#success').classList.add('u-hide');"><i class="p-notification__close">Close</i></a>
+    data-js-hide-target="#success"><i class="p-notification__close">Close</i></a>
       </p>
     </div>
   </div>
@@ -122,7 +122,7 @@
         Thank you for signing up for our newsletter!
         <br />
         In these regular emails you will find the latest updates from Canonical and upcoming events where you can meet our team.<a href="#"
-   onclick="document.querySelector('#newsletter-signup').classList.add('u-hide');"><i class="p-notification__close">Close</i></a>
+   data-js-hide-target="#newsletter-signup"><i class="p-notification__close">Close</i></a>
       </p>
     </div>
   </div>
@@ -132,7 +132,7 @@
     <div class="p-notification__content">
       <p class="p-notification__message">
         Thank you for contacting us. A member of our team will be in touch shortly. <a href="#"
-    onclick="document.querySelector('#contact-form-success').classList.add('u-hide');"><i class="p-notification__close">Close</i></a>
+    data-js-hide-target="#contact-form-success"><i class="p-notification__close">Close</i></a>
       </p>
     </div>
   </div>
@@ -148,7 +148,7 @@
           <a href="https://github.com/canonical/canonical.com/issues/new?template=ISSUE_TEMPLATE.md">file a bug report</a>.
         
         <a href="#"
-           onclick="document.querySelector('#contact-form-fail').classList.add('u-hide');"><i class="p-notification__close">Close</i></a>
+           data-js-hide-target="#contact-form-fail"><i class="p-notification__close">Close</i></a>
       </p>
     </div>
   </div>
@@ -6608,7 +6608,7 @@ United Kingdom</p>
               <nav class="p-table-of-contents__nav" aria-label="Table of contents" id="table-of-contents"></nav>
             </div>
           </div>
-          <script src="/static/js/dist/table-of-contents.js?v=1f8e4ce" defer></script>
+          <script src="/static/js/dist/table-of-contents.js?v=1f8e4ce" defer nonce="SJYMT4TJsKApg-2uir4ZQg"></script>
         </div>
       </div>
     </div>
@@ -6911,9 +6911,9 @@ United Kingdom</p>
 </footer>
           
 
-          <script defer src="/static/js/dist/navigation.js?v=ae2db6d"></script>
-          <script src="/static/js/dist/forms.js?v=eea52ca"></script>
-          <script>
+          <script defer src="/static/js/dist/navigation.js?v=ae2db6d" nonce="SJYMT4TJsKApg-2uir4ZQg"></script>
+          <script src="/static/js/dist/forms.js?v=eea52ca" nonce="SJYMT4TJsKApg-2uir4ZQg"></script>
+          <script nonce="SJYMT4TJsKApg-2uir4ZQg">
             (function() {
               // Form submission notification
               var bannerElements = ["#success", "#newsletter-signup", "#contact-form-success", "#contact-form-fail"];
@@ -6937,12 +6937,15 @@ United Kingdom</p>
           </script>
           
           <!-- Cookie policy -->
-          <script src="/static/js/modules/cookie-policy/cookie-loader.js?v=87d2e24"></script>
-          <script src="/static/js/dist/cookie-policy-with-callback.js?v=6127052"></script>
-          <script src="/static/js/dist/watch-consent-changes.js?v=1c3a092"></script>
+          <script src="/static/js/modules/cookie-policy/cookie-loader.js?v=87d2e24" nonce="SJYMT4TJsKApg-2uir4ZQg"></script>
+          <script src="/static/js/dist/cookie-policy-with-callback.js?v=6127052" nonce="SJYMT4TJsKApg-2uir4ZQg"></script>
+          <script src="/static/js/dist/watch-consent-changes.js?v=1c3a092" nonce="SJYMT4TJsKApg-2uir4ZQg"></script>
+
+          <script defer src="/static/js/usabilla-loader.js?v=2b75785" nonce="SJYMT4TJsKApg-2uir4ZQg"></script>
+          <script defer src="/static/js/csp-event-handlers.js?v=989d5f5" nonce="SJYMT4TJsKApg-2uir4ZQg"></script>
 
            <!-- Google Tag Manager -->
-          <script>
+          <script nonce="SJYMT4TJsKApg-2uir4ZQg">
             document.addEventListener('DOMContentLoaded', () => {
               /** init gtm after 2 seconds - can be adjusted */
               setTimeout(initGTM, 2000);
