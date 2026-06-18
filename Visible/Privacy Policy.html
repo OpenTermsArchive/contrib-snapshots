@@ -72,8 +72,8 @@
   const SYNC_GRP =
     "3e1db8d7e927e65ebdea683143ab1db4511e86f8dfad7916b7808217b30683af";
   
-  var isLowerEnv = /www98.verizon/i.test(location.host);
-  var APIDomainName = isLowerEnv ? "www.verizonwireless.com" : "www.verizon.com";
+  const IS_LOWER_ENV = /www98.verizon/i.test(location.host);
+  const API_DOMAIN_NAME = IS_LOWER_ENV ? "www.verizonwireless.com" : "www.verizon.com";
 
   const script = document.createElement("script");
   
@@ -84,7 +84,7 @@
     BANNER_SESSION_COUNT: "UDNS_NTCS",
     INTL_FEATURE_FLAG: "UDNS_INTL_ENABLED",
     ONE_TRUST_CONSENT: "OptanonConsent",
-    ONE_TRUST_CONSENT_COPIED: "UDNS_OT_COPIED"
+    ONE_TRUST_CONSENT_COPIED: "UDNS_OT_CON_CPD"
   };
 
   // ==================== ONETRUST THROTTLE CONFIGURATION ====================
@@ -96,14 +96,21 @@
   const OT_THROTTLE_PERCENTAGE = 0;
 
   const CONSTANTS = {
+    AIRGAP_METADATA: {
+      SESSIONS: 'UDNS_NTCV',
+      US_BANNER_DISMISSAL: 'UDNS_NTCD',
+      INTL_BANNER_DISMISSAL: 'UDNS_INTL_NTCD',
+    },
     COOKIES: COOKIES,
     TIME: {
+      NINETY_ONE_DAYS_IN_MS: 91 * 24 * 60 * 60 * 1000,
       ONE_YEAR_FROM_NOW: new Date(Date.now() + 365 * 24 * 60 * 60 * 1000).toUTCString()
     }
   };
 
   const LS_KEYS = {
     INTL_FEATURE: "HANDLE_INTL_USERS",
+    ACTIVE_TRANSCEND_ONLY_THROTTLE_TESTING: "ACTIVE_TRANSCEND_ONLY_THROTTLE",
     USER_LOCATION: "objGeo",
     MOCKED_USER_COUNTRY: "udnsMockLoc"
   };
@@ -190,6 +197,18 @@
     "united kingdom",
   ];
 
+  CONSTANTS.COUNTRIES = {
+    OPT_IN: OPT_IN_COUNTRIES,
+    OPT_OUT: OPT_OUT_COUNTRIES,
+  };
+  CONSTANTS.ELEMENTS = ELEMENTS;
+  CONSTANTS.LCL_STORAGE = {
+    ACTIVE_TRANSCEND_ONLY_THROTTLE_TESTING: LS_KEYS.ACTIVE_TRANSCEND_ONLY_THROTTLE_TESTING,
+    INTL_FEATURE_TESTING: LS_KEYS.INTL_FEATURE,
+    MOCKED_USER_COUNTRY: LS_KEYS.MOCKED_USER_COUNTRY,
+    USER_LOCATION: LS_KEYS.USER_LOCATION,
+  };
+
   // ==================== UTILITY FUNCTIONS ====================
   
   function getCk(cName) {
@@ -221,7 +240,7 @@
   }
 
   cLog = function (txt, strc = 0) {
-    if (window.UDNS_LOG > 0 || strc > 9 || isLowerEnv) {
+    if (window.UDNS_LOG > 0 || strc > 9 || IS_LOWER_ENV) {
       const e = new Error();
       if (!e.stack) {
         try {
@@ -259,18 +278,33 @@
     return localStorage.getItem(LS_KEYS.INTL_FEATURE) === "1" || getCk(COOKIES.INTL_FEATURE_FLAG) === "1";
   }
 
+  function handleActiveCmpNotification(cmp) {
+    cLog(`handleActiveCmpNotification() - activeCmp: ${cmp}`);
+    const activeCmpNotification = new CustomEvent("cmpLoad", {
+      bubbles: true,
+      cancelable: true,
+      detail: { cmp },
+    });
+    document.dispatchEvent(activeCmpNotification);
+  }
+
   // ==================== TESTING/MOCK FUNCTIONS ====================
 
   // Feature flag to enable/disable international user handling
   window.useNewImpl = () => {
     try {
       localStorage.setItem(LS_KEYS.INTL_FEATURE, "1");
-      return "International user handling enabled - refresh page to apply";
+      return "only loading Transcend - OneTrust will no longer load for this session";
     } catch (e) {
       cLog("localStorage not available, using cookie fallback");
       setLclCk(COOKIES.INTL_FEATURE_FLAG, "1");
-      return "International user handling enabled (cookie fallback) - refresh page to apply";
+      return "only loading Transcend - OneTrust will no longer load for this session";
     }
+  };
+
+  window.setActiveTranscendOnlyThrottleButExcludeUser = () => {
+    localStorage.setItem(CONSTANTS.LCL_STORAGE.ACTIVE_TRANSCEND_ONLY_THROTTLE_TESTING, "1");
+    return "throttle will active on the next page load - to remove user from the throttle, delete the HANDLE_INTL_USERS item in local storage - this will simulate an active throttle (throttle set to a value above 0%) but exclude the user from the throttle";
   };
 
   window.useOldImpl = () => {
@@ -289,8 +323,8 @@
   };
   
   window.setUdnsCountry = (country) => {
-    if (!isIntlFeatureEnabled()) {
-      return "International feature is disabled - run useNewImpl() first to enable international user handling";
+    if (!getTranscendOnlyThrottleState().active) {
+      return "ability to mock user location has be disabled - run useNewImpl() in the console to be included in the Transcend only throttle and mock your location";
     }
     
     if (!country) {
@@ -344,6 +378,14 @@
     return "User country not yet determined";
   };
 
+  window.showStateInTheConsole = () => {
+    return {
+      transcendOnlyThrottle: getTranscendOnlyThrottleState(),
+      userLocation: window.UDNS_USER_LOCATION,
+      activeBundle: window.UDNS_ACTIVE_BUNDLE,
+    };
+  };
+
   window.useAirgapLogs = function () {
     setLclCk(COOKIES.UDNS_LOG, 1);
     return "subsequent page loads during this session will show related logs in green";
@@ -369,24 +411,40 @@
   let resolvedBundleId = BUNDLE_IDS.DOMESTIC;
   let resolvedIntlEnabled = false;
 
+  // ==================== THROTTLE & REGULATION LOGIC ====================
+  const URL_PARMS = (window.UDNS_PARMS = new URLSearchParams(window.location.search));
+  const THROTTLE_URL_PARM = URL_PARMS.get('UDNS_THROTTLE');
+  const TC_CONSENT_STRING = localStorage.getItem('tcmMPConsent');
+  const TC_CONSENT_OBJECT = TC_CONSENT_STRING ? JSON.parse(TC_CONSENT_STRING) : undefined;
+  console.log('Throttle Parm:' + THROTTLE_URL_PARM);
+  if (THROTTLE_URL_PARM) {
+    window.UDNS_THROTTLE = THROTTLE_URL_PARM === 'true' ? 'true' : 'false';
+  } else {
+    window.UDNS_THROTTLE = (TC_CONSENT_OBJECT?.[SYNC_GRP]?.metadata?.UDNS_THROTTLE === 'true' ? 'true' : 'false');
+  }
+  console.log('Throttle:' + window.UDNS_THROTTLE);
+  const useRegulation = (window.UDNS_THROTTLE === 'true');
+
   // ==================== AIRGAP INITIALIZATION ====================
   
-  if (!self.airgap) {
-    self.airgap = {
-      readyQueue: [],
-      ready(callback) {
-        this.readyQueue.push(callback);
-      },
-      ...self.airgap,
-    };
-  }
+  self.airgap = {
+    readyQueue: [],
+    ready(callback) {
+      this.readyQueue.push(callback);
+    },
+    ...self.airgap,
+    loadOptions: {
+      reportOnly: useRegulation ? 'off' : 'on'
+    }
+  };
+  console.log('Regulation:' + useRegulation);
 
   // ==================== USER LOCATION FUNCTIONS ====================
   
   async function getUserLocation() {
     cLog("getUserLocation() - fetching from API");
     let apiUrl = "https://www.verizon.com/business/geoloc.json";
-    if (isLowerEnv) apiUrl = "https://www98.verizon.com/business/geoloc.json";
+    if (IS_LOWER_ENV) apiUrl = "https://www98.verizon.com/business/geoloc.json";
     
     try {
       const response = await fetch(apiUrl, { referrerPolicy: "origin" });
@@ -430,8 +488,8 @@
     console.log("extendCookieLife called");
     console.log("SYNC_GRP:" + SYNC_GRP);
     const cookieName = `tcm-${SYNC_GRP}`;
-    console.log("APIDomainName:" + APIDomainName);
-    const cookieExtensionUrl = `https://${APIDomainName}/soe/digital/peripheralsservice/nse/cSvc`;
+    console.log("APIDomainName:" + API_DOMAIN_NAME);
+    const cookieExtensionUrl = `https://${API_DOMAIN_NAME}/soe/digital/peripheralsservice/nse/cSvc`;
     const fetchConfig = {
       method: "POST",
       headers: {
@@ -529,7 +587,7 @@
     postJson.transcendJson = window.UDNS_AEI;
     const response = await fetch(
       "https://" +
-        APIDomainName +
+        API_DOMAIN_NAME +
         "/soe/digital/prospect/dns/ccpa-core/updateGlobalOptOut",
       {
         method: "POST",
@@ -599,9 +657,9 @@
   
   (async function configureAirgapScriptTag() {
     try {
-      // Check if international feature is enabled
-      resolvedIntlEnabled = isIntlFeatureEnabled();
-      cLog(`International feature enabled: ${resolvedIntlEnabled}`);
+      // Check if international feature is enabled via feature flag
+      const intlFeatureFlag = isIntlFeatureEnabled();
+      cLog(`International feature flag: ${intlFeatureFlag}`);
       
       // Always resolve user location (needed in both legacy and new mode
       // to prevent showing US banner to international users)
@@ -613,6 +671,14 @@
         resolvedUserLocation = (await checkUserLocation()).toLowerCase();
       }
       cLog(`Resolved user location: ${resolvedUserLocation}`);
+
+      // Enable intl flow when the feature flag is set OR when the OT throttle is active
+      // and the user is international. This ensures that when the throttle is active but the
+      // user is excluded (no HANDLE_INTL_USERS), international users still load the intl
+      // bundle and see the intl banner instead of falling through to the legacy no-op path.
+      const isIntlUserLocation = OPT_IN_COUNTRIES.includes(resolvedUserLocation) || OPT_OUT_COUNTRIES.includes(resolvedUserLocation);
+      resolvedIntlEnabled = intlFeatureFlag || (isIntlUserLocation && getTranscendOnlyThrottleState().active);
+      cLog(`International feature enabled: ${resolvedIntlEnabled}`);
 
       if (resolvedIntlEnabled) {
         // NEW IMPLEMENTATION: International support enabled
@@ -638,8 +704,9 @@
       window.UDNS_INTL_ENABLED = resolvedIntlEnabled;
       window.UDNS_USER_LOCATION = resolvedUserLocation;
 
-      let airgapScriptUrl = `https://cdn.transcend.io/cm/${resolvedBundleId}/airgap.js`;
-      if (isLowerEnv) airgapScriptUrl = `https://cdn.transcend.io/cm-test/${resolvedBundleId}/airgap.js`;
+      let airgapScriptUrl = IS_LOWER_ENV
+        ? `https://cdn.transcend.io/cm-test/${resolvedBundleId}/airgap.js`
+        : `https://cdn.transcend.io/cm/${resolvedBundleId}/airgap.js`;
       script.src = airgapScriptUrl;
       script.defer = true;
       script.setAttribute(
@@ -649,7 +716,7 @@
       script.setAttribute("data-cfasync", "false");
       script.setAttribute("data-require-auth", "off");
       script.setAttribute("data-locale", "en");
-      if(!isLowerEnv) script.setAttribute("data-privacy-policy","https://www.verizon.com/about/privacy/cookies/management?ssf")
+      if(!IS_LOWER_ENV) script.setAttribute("data-privacy-policy","https://www.verizon.com/about/privacy/cookies/management?ssf")
 
       // Only set data-regime for international users when feature is enabled
       if (resolvedIntlEnabled && resolvedBundleId === BUNDLE_IDS.INTERNATIONAL) {
@@ -677,223 +744,164 @@
 
   // ==================== PRIVACY BANNER IMPLEMENTATION ====================
   
-  function preparePrivacyBanner() {
-    cLog("preparePrivacyBanner()");
-    
-    // Safety check: Don't prepare US banner if international bundle is loaded
-    if (isInternationalBundleLoaded()) {
-      cLog("International bundle detected - skipping US banner preparation");
+  function handlePrivacyBanner(transcendInstance) {
+    cLog("handlePrivacyBanner()");
+
+    const transcendApi = transcendInstance || window.transcend;
+    if (
+      !transcendApi ||
+      typeof transcendApi.addEventListener !== 'function' ||
+      typeof transcendApi.showConsentManager !== 'function'
+    ) {
+      cLog('Transcend API not ready for banner handling');
       return;
     }
 
-    window.displayNTC = function () {
-      cLog(
-        "displayNTC() - add padding to the footer and displaying the banner"
-      );
+    const isIntlUser =
+      OPT_IN_COUNTRIES.includes(resolvedUserLocation) ||
+      OPT_OUT_COUNTRIES.includes(resolvedUserLocation);
+    const throttleState = getTranscendOnlyThrottleState();
+    const runInternationalFlow = isIntlUser && throttleState.active;
 
-      setTimeout(function () {
-        document.getElementsByClassName(
-          ELEMENTS.GLOBAL_FOOTER
-        )[0].style.paddingBottom = "90px";
-      }, 1000);
-
-      /* Log the display of the Privacy Banner */
-      window.coreData = window.coreData || [];
-      window.coreData.push({
-        task: "emit",
-        event: "openView",
-        params: {
-          selector: ELEMENTS.BANNER.US.ID_SELECTOR,
-          name: "PRIVACY_BANNER_DISPLAY",
-          trackAs: "link",
-        },
-      });
-
-      transcend.showConsentManager({ viewState: ELEMENTS.BANNER.US.TYPE });
-
-      transcend.addEventListener(
-        "view-state-change",
-        ({ detail: { viewState, previousViewState } }) => {
-          cLog(`view-state-change event fired with viewState: ${viewState}`);
-          if (
-            viewState === "Hidden" &&
-            previousViewState === ELEMENTS.BANNER.US.TYPE
-          ) {
-            cLog("banner has been closed");
-            airgap
-              .sync()
-              .then(() =>
-                airgap.setConsentMetadata(window.airgapScriptLoadEvent, {
-                  ...(airgap.getConsent().metadata || {}),
-                  UDNS_NTCD: Date.now(),
-                  UDNS_NTCV: 0,
-                })
-              )
-              .then(() =>
-                cLog(
-                  "Set NTCD To " +
-                    UDNS_NTCD +
-                    " and removing padding from footer"
-                )
-              ),
-              (document.getElementsByClassName(
-                ELEMENTS.GLOBAL_FOOTER
-              )[0].style.paddingBottom = "");
-
-            window.coreData = window.coreData || [];
-            window.coreData.push({
-              task: "emit",
-              event: "linkClick",
-              params: {
-                name: "privacy banner close",
-                detail: "PRIVACY_BANNER_DISPLAY",
-              },
-            });
-          } else {
-            cLog("banner has been displayed on the page");
-          }
-        }
-      );
-
-      window.UDNS_NTC_VISUAL = Date.now();
-    };
-
-    function validateBannerDisplayOnAirgapLoad() {
-      cLog("validateBannerDisplayOnAirgapLoad()");
-      
-      // Safety check: Don't validate if international bundle is loaded
+    if (!runInternationalFlow) {
       if (isInternationalBundleLoaded()) {
-        cLog("International bundle detected - skipping banner validation");
+        cLog("International bundle detected - skipping US banner preparation");
         return;
       }
-      
-      var NTCinit = 0;
-      for (let i = 500; i < 5001; i += 250) {
-        setTimeout(() => {
-          if (NTCinit === 0) {
-            if (
-              typeof transcend === "object" &&
-              typeof transcend.addEventListener === "function"
-            ) {
-              cLog(
-                "transcend loaded - ready to check if privacy banner should be displayed"
-              );
-              NTCinit = i;
-              validateBannerDisplay();
-            } else {
-              //wait another 500ms for transcend to load
+
+      window.displayNTC = function () {
+        cLog("displayNTC() - add padding to the footer and displaying the banner");
+
+        setTimeout(function () {
+          document.getElementsByClassName(ELEMENTS.GLOBAL_FOOTER)[0].style.paddingBottom = "90px";
+        }, 1000);
+
+        window.coreData = window.coreData || [];
+        window.coreData.push({
+          task: "emit",
+          event: "openView",
+          params: {
+            selector: ELEMENTS.BANNER.US.ID_SELECTOR,
+            name: "PRIVACY_BANNER_DISPLAY",
+            trackAs: "link",
+          },
+        });
+
+        transcendApi.showConsentManager({ viewState: ELEMENTS.BANNER.US.TYPE });
+
+        transcendApi.addEventListener(
+          "view-state-change",
+          ({ detail: { viewState, previousViewState } }) => {
+            if (viewState === "Hidden" && previousViewState === ELEMENTS.BANNER.US.TYPE) {
+              airgap
+                .sync()
+                .then(() =>
+                  airgap.setConsentMetadata(window.airgapScriptLoadEvent, {
+                    ...(airgap.getConsent().metadata || {}),
+                    UDNS_NTCD: Date.now(),
+                    UDNS_NTCV: 0,
+                  })
+                );
+
+              if (document.getElementsByClassName(ELEMENTS.GLOBAL_FOOTER)[0]) {
+                document.getElementsByClassName(ELEMENTS.GLOBAL_FOOTER)[0].style.paddingBottom = "";
+              }
+
+              window.coreData = window.coreData || [];
+              window.coreData.push({
+                task: "emit",
+                event: "linkClick",
+                params: {
+                  name: "privacy banner close",
+                  detail: "PRIVACY_BANNER_DISPLAY",
+                },
+              });
             }
           }
-        }, i);
-      }
-    }
-
-    const inApp = /(MY_VZW_APP|MFA)/i.test(
-      (navigator && navigator.userAgent) || ""
-    );
-    const inFiosTV = /(client_id=VerizonTVAgent)/i.test(
-      window.location.href || ""
-    );
-    const inStreamTV = /(client_id=StreamTVAgent)/i.test(
-      window.location.href || ""
-    );
-    if (inApp != true && inFiosTV != true && inStreamTV != true) {
-      validateBannerDisplayOnAirgapLoad();
-    }
-
-    function validateBannerDisplay() {
-      cLog("validateBannerDisplay()");
-      
-      // Safety check: Don't display if international bundle is loaded
-      if (isInternationalBundleLoaded()) {
-        cLog("International bundle detected - not displaying US banner");
-        return;
-      }
-      
-      if (typeof transcend != "object") {
-        cLog(
-          "Transcend Not Yet Loaded - returning out of validateBannerDisplay"
         );
-        return 0;
-      }
 
-      const airgapMetadata = airgap.getConsent().metadata;
-      window.UDNS_NTCD = airgapMetadata?.UDNS_NTCD
-        ? Number(airgapMetadata.UDNS_NTCD)
-        : 0;
-      let bannerDismissalDate = airgapMetadata?.UDNS_NTCD
-        ? Number(airgapMetadata.UDNS_NTCD)
-        : 0;
-      let sessionsWithBanner = airgapMetadata?.UDNS_NTCV
-        ? Number(airgapMetadata.UDNS_NTCV)
-        : 0;
+        window.UDNS_NTC_VISUAL = Date.now();
+      };
 
-      cLog(
-        `validateBannerDisplay() - setting window values regarding display of banner from airgap metadata\n
-              airgapMetadata: ${JSON.stringify(airgapMetadata)}\n
-              bannerDismissalDate: ${bannerDismissalDate}\n
-              sessionsWithBanner: ${sessionsWithBanner}`
-      );
+      function validateBannerDisplay() {
+        if (isInternationalBundleLoaded()) {
+          return;
+        }
 
-      if (bannerDismissalDate < Date.now() - 7.776e9) {
-        if (sessionsWithBanner < 2) {
-          var bannerViewsInFirstTwoSessions = Number(getCk(COOKIES.BANNER_SESSION_COUNT));
+        if (typeof transcendApi !== "object") {
+          return 0;
+        }
 
-          if (bannerViewsInFirstTwoSessions === 0) {
-            setLclCk(COOKIES.BANNER_SESSION_COUNT, 1);
-            sessionsWithBanner += 1;
-            airgap
-              .sync()
-              .then(() =>
-                airgap.setConsentMetadata(window.airgapScriptLoadEvent, {
-                  ...(airgap.getConsent().metadata || {}),
-                  UDNS_NTCV: sessionsWithBanner,
-                })
-              )
-              .then(() =>
-                cLog(
-                  "validateBannerDisplay() - first view of banner and first session with banner - displaying the privacy banner"
-                )
-              )
-              .then(window.displayNTC());
-          } else {
-            /* Only show the banner to the first 3 pages in a session */
-            if (bannerViewsInFirstTwoSessions < 3) {
-              bannerViewsInFirstTwoSessions += 1;
-              setLclCk(COOKIES.BANNER_SESSION_COUNT, bannerViewsInFirstTwoSessions);
-              cLog(
-                "validateBannerDisplay() - user has seen the banner less than 3 times in the first 2 sessions - displaying the privacy banner"
-              );
-              window.displayNTC();
-            } else {
-              cLog(
-                "validateBannerDisplay() - user has seen the banner 3 times within 2 browser sessions - no privacy banner"
-              );
-            }
-          }
-        } else {
-          cLog(
-            "validateBannerDisplay() - this is the third session or greater on Verizon and the banner was displaying for the first 2 sessions - no privacy banner"
-          );
-          window.UDNS_NTCD = Date.now();
-          airgap
-            .sync()
-            .then(() =>
+        const airgapMetadata = airgap.getConsent().metadata;
+        window.UDNS_NTCD = airgapMetadata?.UDNS_NTCD ? Number(airgapMetadata.UDNS_NTCD) : 0;
+        let bannerDismissalDate = airgapMetadata?.UDNS_NTCD ? Number(airgapMetadata.UDNS_NTCD) : 0;
+        let sessionsWithBanner = airgapMetadata?.UDNS_NTCV ? Number(airgapMetadata.UDNS_NTCV) : 0;
+
+        if (bannerDismissalDate <= Date.now() - 7.776e9) {
+          if (sessionsWithBanner >= 2) {
+            sessionsWithBanner = 0;
+            setLclCk(COOKIES.BANNER_SESSION_COUNT, 0);
+            airgap.sync().then(() =>
               airgap.setConsentMetadata(window.airgapScriptLoadEvent, {
                 ...(airgap.getConsent().metadata || {}),
-                UDNS_NTCD: window.UDNS_NTCD,
                 UDNS_NTCV: 0,
               })
-            )
-            .then(() =>
-              cLog(
-                "validateBannerDisplay() - setting banner dismissal date to now and number of session visits with banner to 0 on window and airgap metadata"
-              )
             );
+          }
+
+          if (sessionsWithBanner < 2) {
+            var bannerViewsInFirstTwoSessions = Number(getCk(COOKIES.BANNER_SESSION_COUNT));
+
+            if (bannerViewsInFirstTwoSessions === 0) {
+              setLclCk(COOKIES.BANNER_SESSION_COUNT, 1);
+              sessionsWithBanner += 1;
+              airgap
+                .sync()
+                .then(() =>
+                  airgap.setConsentMetadata(window.airgapScriptLoadEvent, {
+                    ...(airgap.getConsent().metadata || {}),
+                    UDNS_NTCV: sessionsWithBanner,
+                  })
+                )
+                .then(() => window.displayNTC());
+            } else if (bannerViewsInFirstTwoSessions < 3) {
+              bannerViewsInFirstTwoSessions += 1;
+              setLclCk(COOKIES.BANNER_SESSION_COUNT, bannerViewsInFirstTwoSessions);
+              window.displayNTC();
+            }
+          }
         }
-      } else {
-        cLog("no privacy banner - has been dismissed in the last 90 days");
       }
+
+      const inApp = /(MY_VZW_APP|MFA)/i.test((navigator && navigator.userAgent) || "");
+      const inFiosTV = /(client_id=VerizonTVAgent)/i.test(window.location.href || "");
+      const inStreamTV = /(client_id=StreamTVAgent)/i.test(window.location.href || "");
+      if (inApp !== true && inFiosTV !== true && inStreamTV !== true) {
+        validateBannerDisplay();
+      }
+      return;
+    }
+
+    const ninetyDaysAgo = Date.now() - 90 * 24 * 60 * 60 * 1000;
+    const airgapMetadata = airgap.getConsent().metadata || {};
+    const intlDismissalDate =
+      Number(airgapMetadata[CONSTANTS.AIRGAP_METADATA.INTL_BANNER_DISMISSAL]) || 0;
+
+    if (!window.__UDNS_INTL_BANNER_VIEW_STATE_LISTENER) {
+      window.__UDNS_INTL_BANNER_VIEW_STATE_LISTENER = true;
+      transcendApi.addEventListener('view-state-change', ({ detail: { viewState, previousViewState } }) => {
+        if (previousViewState === null && viewState === 'Hidden') return;
+        if (viewState === 'Hidden') {
+          airgap.setConsentMetadata(window.airgapScriptLoadEvent, {
+            ...(airgap.getConsent().metadata || {}),
+            [CONSTANTS.AIRGAP_METADATA.INTL_BANNER_DISMISSAL]: Date.now(),
+          });
+        }
+      });
+    }
+
+    if (intlDismissalDate <= ninetyDaysAgo) {
+      transcendApi.showConsentManager({ viewState: ELEMENTS.BANNER.INTL.TYPE });
     }
   }
 
@@ -942,10 +950,26 @@
     if (!intlEnabled) {
       return "International feature is disabled - this function only works when international support is enabled";
     }
-    transcend.showConsentManager({
+    if (!window.transcend || typeof window.transcend.showConsentManager !== 'function') {
+      return "Transcend is not ready yet";
+    }
+    window.transcend.showConsentManager({
       viewState: ELEMENTS.BANNER.INTL.TYPE,
     });
     return "International banner will temporarily display until dismissed or next page load";
+  };
+
+  window.setBannerDismissalDatesToNinetyOneDaysAgo = () => {
+    const pastDate = Date.now() - CONSTANTS.TIME.NINETY_ONE_DAYS_IN_MS;
+    const metadata = {
+      ...(window.airgap.getConsent().metadata || {}),
+      [CONSTANTS.AIRGAP_METADATA.INTL_BANNER_DISMISSAL]: pastDate,
+      [CONSTANTS.AIRGAP_METADATA.US_BANNER_DISMISSAL]: pastDate,
+    };
+
+    window.airgap.setConsentMetadata(window.airgapScriptLoadEvent, metadata);
+    setLclCk(COOKIES.BANNER_SESSION_COUNT, 0);
+    return 'banner dismissal dates set to 91 days ago (session counters unchanged) - reload page to validate normal 90-day behavior';
   };
 
   window.resetNTCVisits = function (visitCount = 0) {
@@ -980,24 +1004,42 @@
   // ==================== ONETRUST THROTTLE & MIGRATION LOGIC ====================
 
   function getEffectiveThrottle() {
-    // If useNewImpl() is set, treat throttle as 100%
     if (isIntlFeatureEnabled()) {
       return 100;
     }
     return OT_THROTTLE_PERCENTAGE;
   }
 
-  function isUserInThrottle() {
-    const throttle = getEffectiveThrottle();
-    if (throttle <= 0) return false;
-    if (throttle >= 100) return true;
-    // Use a deterministic check based on a cookie or random assignment
-    let throttleAssignment = getCk('UDNS_OT_THROTTLE');
-    if (!throttleAssignment) {
-      throttleAssignment = String(Math.floor(Math.random() * 100));
-      setLclCk('UDNS_OT_THROTTLE', throttleAssignment);
+  function getTranscendOnlyThrottleState() {
+    const value = getEffectiveThrottle();
+    const activeTestingOverride = localStorage.getItem(
+      CONSTANTS.LCL_STORAGE.ACTIVE_TRANSCEND_ONLY_THROTTLE_TESTING
+    );
+
+    let active = value > 0;
+    let userIncluded = false;
+
+    if (activeTestingOverride) {
+      active = true;
+      userIncluded = false;
+    } else if (value >= 100) {
+      active = true;
+      userIncluded = true;
+    } else if (value > 0) {
+      let throttleAssignment = getCk('UDNS_OT_THROTTLE');
+      if (!throttleAssignment) {
+        throttleAssignment = String(Math.floor(Math.random() * 100));
+        setLclCk('UDNS_OT_THROTTLE', throttleAssignment);
+      }
+      userIncluded = Number(throttleAssignment) < value;
     }
-    return Number(throttleAssignment) < throttle;
+
+    return {
+      value,
+      active,
+      userIncluded,
+      activeTestingOverride: Boolean(activeTestingOverride),
+    };
   }
 
   function deleteCookie(name) {
@@ -1047,7 +1089,6 @@
         Advertising: targeting === 1,
       },
       {
-        confirmed: false,
         metadata: {
           ...(window.airgap.getConsent().metadata || {}),
         },
@@ -1057,6 +1098,24 @@
     setCookie(CONSTANTS.COOKIES.ONE_TRUST_CONSENT_COPIED, '1', CONSTANTS.TIME.ONE_YEAR_FROM_NOW);
   }
 
+  async function optUserOutInAirgapAllPurposes() {
+    await window.airgap.sync();
+    window.airgap.setConsent(
+      window.airgapScriptLoadEvent,
+      {
+        SaleOfInfo: false,
+        Functional: false,
+        Analytics: false,
+        Advertising: false,
+      },
+      {
+        metadata: {
+          ...(window.airgap.getConsent().metadata || {}),
+        },
+      }
+    );
+  }
+
   /**
    * OneTrust Loading Logic:
    * - If throttle is active (> 0) and user is in throttle: don't load OT, copy consent if OT cookie exists
@@ -1064,39 +1123,46 @@
    * - If throttle is not active (0): BAU (load OT normally)
    */
   function handleOneTrustLoading() {
-    const throttle = getEffectiveThrottle();
+    const throttleState = getTranscendOnlyThrottleState();
     const otConsentCookie = getCk(CONSTANTS.COOKIES.ONE_TRUST_CONSENT);
-    cLog(`OT Throttle: ${throttle}%, User in throttle: ${isUserInThrottle()}, OT cookie present: ${!!otConsentCookie}`);
+    cLog(
+      `OT Throttle active: ${throttleState.active}, value: ${throttleState.value}, userIncluded: ${throttleState.userIncluded}, OT cookie present: ${!!otConsentCookie}`
+    );
 
-    if (throttle > 0) {
-      // Throttle is active
-      if (isUserInThrottle()) {
-        // User is in throttle - never load OT
+    if (throttleState.active) {
+      if (throttleState.userIncluded) {
         if (otConsentCookie) {
-          // Copy consent values to Transcend, then delete OT cookie
           self.airgap.ready(async () => {
-            await copyOneTrustConsentToTranscend();
+            if (activeGPC()) {
+              setCookie(CONSTANTS.COOKIES.ONE_TRUST_CONSENT_COPIED, '1', CONSTANTS.TIME.ONE_YEAR_FROM_NOW);
+              await optUserOutInAirgapAllPurposes();
+            } else {
+              await copyOneTrustConsentToTranscend();
+            }
             deleteCookie(CONSTANTS.COOKIES.ONE_TRUST_CONSENT);
             deleteCookie('OptanonAlertBoxClosed');
-            cLog('OT cookie copied to Transcend and deleted');
+            cLog('OT cookie migrated to Transcend and deleted');
           });
         } else {
-          cLog('User in throttle, no OT cookie - OT will not load');
+          self.airgap.ready(async () => {
+            if (activeGPC()) {
+              setCookie(CONSTANTS.COOKIES.ONE_TRUST_CONSENT_COPIED, '1', CONSTANTS.TIME.ONE_YEAR_FROM_NOW);
+              await optUserOutInAirgapAllPurposes();
+            }
+          });
+          cLog('User in active throttle; OneTrust will not load');
         }
-        return; // Don't load OT
-      } else {
-        // User is NOT in throttle
-        if (!otConsentCookie) {
-          cLog('User not in throttle, no OT cookie - OT will not load');
-          return; // Don't load OT
-        } else {
-          // BAU - load OT
-          cLog('User not in throttle, OT cookie present - loading OT (BAU)');
-          loadOneTrust();
-        }
+        return;
       }
+
+      if (!otConsentCookie && !getCk(CONSTANTS.COOKIES.ONE_TRUST_CONSENT_COPIED)) {
+        cLog('Throttle active and user excluded with no OT cookie; OneTrust will not load');
+        return;
+      }
+
+      cLog('Throttle active but user excluded with OT cookie; loading OT (BAU)');
+      loadOneTrust();
     } else {
-      // Throttle is not active - BAU
       cLog('Throttle not active - loading OT (BAU)');
       loadOneTrust();
     }
@@ -1111,6 +1177,7 @@
     otScript.setAttribute('data-domain-script', '6b3745af-fe59-4bf6-8e19-650ed92f9ee9');
     document.head.appendChild(otScript);
     cLog('OneTrust script loaded');
+    handleActiveCmpNotification("onetrust");
   }
 
   // Execute OneTrust throttle logic
@@ -1158,21 +1225,20 @@
     cLog(`airgap.ready - intlEnabled: ${resolvedIntlEnabled}, bundle: ${resolvedBundleId}, location: ${resolvedUserLocation}`);
     
     if (resolvedIntlEnabled) {
-      // NEW IMPLEMENTATION: Only show US banner if using domestic bundle
-      if (resolvedBundleId === BUNDLE_IDS.DOMESTIC) {
-        cLog("Domestic bundle loaded - will show US banner");
-        preparePrivacyBanner();
-      } else {
-        cLog("International bundle loaded - banner handled by airgap script, no US banner");
-        // Ensure no domestic banner shows
-        return;
-      }
+      cLog("New implementation enabled - script handles banner display logic");
+      self.transcend.ready((transcend) => {
+        handleActiveCmpNotification("transcend");
+        handlePrivacyBanner(transcend);
+      });
     } else {
       // LEGACY IMPLEMENTATION: Only show US banner if user is in the US
       // For non-US users, OneTrust handles consent (loaded separately)
       if (resolvedUserLocation === "us" || resolvedUserLocation === "") {
         cLog("Legacy mode - user in US, showing US privacy banner");
-        preparePrivacyBanner();
+        self.transcend.ready((transcend) => {
+          handleActiveCmpNotification("transcend");
+          handlePrivacyBanner(transcend);
+        });
       } else {
         cLog(`Legacy mode - user in ${resolvedUserLocation}, skipping US banner (OneTrust handles consent)`);
       }
