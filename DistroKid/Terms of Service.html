@@ -2,6 +2,7 @@
 <html lang="en">
 <head>
 <script src="https://js.sentry-cdn.com/50bee7be773b68d5cd832624f9efe0ce.min.js" crossorigin="anonymous"></script>
+<script src="/js/sentry-traces-sampler.js?cacheHash=16d298e6d15711e4" ></script>
 <meta charset="utf-8"/>
 <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, viewport-fit=cover">
@@ -24,7 +25,7 @@
 <meta name="msapplication-TileImage" content="/ms-icon-144x144.png">
 <meta name="theme-color" content="#ffffff">
 <script>
-serverTime = new Date('2026-06-17 12:36:44 GMT');
+serverTime = new Date('2026-06-18 12:36:40 GMT');
 </script>
 <title>Terms of Service | DistroKid</title>
 <meta name="description" content="Read DistroKid's Terms of Service">
@@ -73,9 +74,9 @@ initializeDKModal();
 captchaSiteKey = "6Ld_vDcUAAAAABBf4b4MfIPqz5XA53JWQyOh6MX0";
 turnstileSiteKey = "0x4AAAAAAAwjnOrGSKrIkAR9";
 </script>
-<script src="/js/header.js?cacheHash=2b93bc7519c68007" 1781699802226></script>
-<script src="/js/distro.js?cacheHash=4d35a396168d257c" 1781699802226></script>
-<script src="/js/fixCaps.js?cacheHash=4d712b9355dbb337" 1781699802226></script>
+<script src="/js/header.js?cacheHash=2b93bc7519c68007" 1781742999607></script>
+<script src="/js/distro.js?cacheHash=4ba50a2dac74a1f6" 1781742999607></script>
+<script src="/js/fixCaps.js?cacheHash=4d712b9355dbb337" 1781742999607></script>
 <script src="/js/jquery.kenburns-0.1.js"></script>
 <script src="/js/lazysizes.min.js"></script>
 <script>
@@ -295,7 +296,7 @@ window.__telemetryConfig = {"localdevLog":false,"apiUrl":"https://uwwgok9jpj.exe
 <div style="position:relative;" class="outer2 navNotLoggedIn">
 <div class="headerLoggedOutNav nav inner2">
 <div class="navInner">
-<input type="hidden" id="forgotPasswordSessionID" name="forgotPasswordSessionID" value="distrokid_52d38ef4-ee8a-42f6-9fbf-77c204cb5eea_0">
+<input type="hidden" id="forgotPasswordSessionID" name="forgotPasswordSessionID" value="distrokid_8393bc56-07d3-43d9-a6c1-a895c4d7d427_0">
 <script type="text/template" id="templateForgotPassword">
 <div class="signinBoxNotification">
 Done! Instructions to reset your password have been emailed.
@@ -484,7 +485,7 @@ Copyright Agent
 DistroKid LLC
 34 Third Ave #183
 New York, NY 10003
-Email: <a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="107c7577717c5074796364627f7b79743e737f7d">[email&#160;protected]</a> <br>
+Email: <a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="e68a8381878aa6828f959294898d8f82c885898b">[email&#160;protected]</a> <br>
 In accordance with the DMCA and other applicable law, DistroKid has adopted a policy of terminating, in appropriate circumstances and in DistroKid's sole discretion, users who are deemed to be repeat infringers. For the avoidance of doubt, the foregoing sentence in no way limits DistroKid's right to limit access to the Services and/or terminate the Accounts of any users for any reason, in DistroKid's sole discretion, including, without limitation, in the case of users who infringe, or allegedly infringe, any Intellectual Property Rights of others, whether or not there is any repeat infringement. <br>
 Please be advised that pursuant to federal law you may be held liable for damages if you make material misrepresentations in a Notice. Thus, if you are not sure that material located on or linked to by the infringes your copyright, you should consider first contacting an attorney. <br>
 <strong>Links to Third-Party Websites or Services</strong><br>
@@ -580,7 +581,7 @@ keepalive: true,
 credentials: 'same-origin',
 headers: {
 'Content-Type': 'application/json',
-'Authorization': 'Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJjbGkiOjEsImlhdCI6MTc4MTY5OTgwNCwiaXNzIjoiaHR0cHM6Ly9kaXN0cm9raWQuY29tIiwic3ViIjowLCJleHAiOjE3ODE3MDM0MDQsImRldiI6IiIsInNjb3BlIjoicmVhZC1wcm9maWxlIiwiYXVkIjoiIn0.RgixxD4KsdTEtk6AO1mudgrMl3Uwt8mrLlptKnkA50s'
+'Authorization': 'Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJjbGkiOjEsImlhdCI6MTc4MTc0MzAwMCwiaXNzIjoiaHR0cHM6Ly9kaXN0cm9raWQuY29tIiwic3ViIjowLCJleHAiOjE3ODE3NDY2MDAsImRldiI6IiIsInNjb3BlIjoicmVhZC1wcm9maWxlIiwiYXVkIjoiIn0.tvErXL1lpmn8SxQDYtCYdR4QypPec82k6Zi0GpkIKic'
 },
 body: JSON.stringify({ languageCode: languageCode })
 });
@@ -702,31 +703,33 @@ dkSyncPageLocaleMarkers(window.sitetran.lang);
 <div class="clearBoth"></div>
 </div>
 <script>
-if ( (typeof globalThis !== 'undefined') && (typeof Sentry == "object") ){ // only enable sentry for modern browsers
+if ((typeof globalThis !== 'undefined') && (typeof Sentry === "object")) {
 Sentry.onLoad(function() {
 Sentry.init({
 environment: "prod",
 initialScope: {
-tags: { 
-"dev_user" : "unknown",
-"user_id" : "0"
+tags: {
+"dev_user": "unknown",
+"user_id": "0",
+"machine_name": "prod-dk-web-14"
 }
 },
 beforeSend: function(event, hint) {
 const error = hint.originalException;
-if (error && error.message && event.exception && event.exception.values 
+if (error && error.message && event.exception && event.exception.values
 && event.exception.values[0] && event.exception.values[0].value) {
 var original_message = error.message;
 event.exception.values[0].value = original_message + " (" + document.location.pathname + ")";
 }
 return event;
 },
-ignoreErrors: [
-"Script error."
-],
-integrations: [Sentry.browserTracingIntegration()],
+ignoreErrors: ["Script error."],
+integrations: [Sentry.browserTracingIntegration({
+shouldCreateSpanForRequest: distroKidShouldCreateSpanForRequest
+})],
 sampleRate: 0.4,
-tracesSampleRate: 0.08,
+tracesSampler: distroKidTracesSampler,
+beforeSendTransaction: distroKidBeforeSendTransaction,
 tracePropagationTargets: [/^https:\/\/(www\.)?(distrokid|distrovid|hyperfollow|slaps|socialphone)\.com\//]
 });
 });
