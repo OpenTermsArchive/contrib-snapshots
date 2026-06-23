@@ -6,12 +6,12 @@
     <meta name="keywords" content="cloud storage, file sharing, file upload, secure storage, free storage">
     <meta name="author" content="Gofile Team">
     <meta property="og:type" content="website">
-    <meta property="og:url" content="https://gofile.io/">
+    <meta property="og:url" content="https://gofile.io/terms">
     <meta property="og:title" content="Gofile - Cloud Storage Made Simple">
     <meta property="og:description" content="Secure, fast and free cloud storage solution. Upload and share files instantly.">
     <meta property="og:image" content="https://gofile.io/dist/img/logo-small-og.png">
     <meta name="popads-verification-3578301" value="2e287dd9c5d32c7e30a9b1fd44ddde0a">
-    <link rel="canonical" href="https://gofile.io">
+    <link rel="canonical" href="https://gofile.io/terms">
     <link rel="icon" type="image/png" sizes="16x16" href="/dist/img/favicon16.png">
     <link rel="icon" type="image/png" sizes="32x32" href="/dist/img/favicon32.png">
     <link rel="icon" type="image/png" sizes="96x96" href="/dist/img/favicon96.png">
@@ -61,14 +61,23 @@
                 </button>
             </div>
             <div id="index_accounts" class="flex flex-col items-start mb-6">
-                <div id="index_accountList" class="space-y-2 w-full">
-                    <div id="index_loader" class="w-full h-full flex items-center justify-center">
-                        <div class="animate-spin rounded-full h-8 w-8 border-t-4 border-blue-500"></div>
-                    </div>
-                    <button role="button" aria-label="Add Account" class="index_addAccount mt-4 flex items-center justify-center gap-2 p-2 text-white bg-blue-600 hover:bg-blue-700 rounded w-full">
-                        <i class="fas fa-plus-circle"></i> Add Account
-                    </button>
+                <div id="index_accountList" class="space-y-2 w-full"><div class="relative account_accountItem border-2 border-blue-500 rounded" data-email="guest7199607909">
+            <div class="dropdown-toggle flex items-center justify-between p-2 bg-gray-700 rounded hover:bg-gray-600 transition-colors cursor-pointer">
+                <div class="flex items-center gap-2 truncate">
+                    <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAEAAAABACAYAAACqaXHeAAACr0lEQVR4AeyawYlVQRBFHw8zERExBDMQY3Dl1hjEvSG4MgZTEEMQEZkEZjEZ/OHsDvd9unjzV9NdAxduza2q7q6uov9nZn94cX8Z4dvd58sIv9++vxjpa+0pvMqXetqjs6Ht2+I/XYDFG2A7dMCf1x83Iwv06dWXzfj18+VmvPvwfzOswTNf2vgYzgW3Bvde4JnPZ4GnfihAOsxudwFmv+HqfDtzYTBXBnNl2BfOXBq5oGPhqaeNj5G614KzB8OxcJ8Fbl94j0BWeDW7OyBvnLkymBPjzd8f2wjMmeFYeK6XNj6Gc8FHa6M5Fu6zwHO97oCsyGr2ch2QF7wzV0Y6WIN///d1M9KfOTNSP2s7FzzjvRc4ezTS3xq8OyArtJrdHXDrjfPWGszVCNV6o1g0rwWv8lV6d0BVodn17gDeViNvnO/URurMpeFc13jGp30txr/zWvCM917hqTsXvDsgK7Sa3R2QN85cGakzV0bqfCc3Uj9rOxc8470XeOo+Czz17oCsyGr29B1QXeihALyNBt+xDT5/G7mAfeHM3S0gh5HreS9w+8J9FnjGHwqQDrPbXYDZb7g6387balQBlc6cGelv7Rqv/FM/a/us8B6BsxWczb87gLfTyDc757TSs0MyPvW0K//Uq/2k7rPCuwPyBlazuwN4C42cMWvw1HPG8Bkh/dMexaKlf+4HH6PSuwNWm/k873QdkAes7EMBcsb4Tm14vuA5Y/aF5wbSP+30J4eR/uzBsC88z5P5DwVIh9ntLsDsN1yd7/C/wlUAc2Wc9c+ZTNu54WfzV/58/jd6BKqKza53B/gNhVc3zt/fjJzhKv5WPdfzXuBVfs5odAdUFZtd7w7grTXys3Z2gN9QOHNnVPGZr7Izn9eCswcj82W8zwrvDsiKrWY/+w649cIeAQAA///m08QjAAAABklEQVQDACw2GB2dfRZKAAAAAElFTkSuQmCC" alt="Avatar" class="h-7 w-7 rounded-full">
+                    <span class="text-white truncate">guest7199607909</span>
                 </div>
+                <i class="fas fa-angle-down text-white"></i>
+            </div>
+            <div class="dropdown hidden absolute bg-gray-700 text-white w-full mt-1 rounded shadow-lg z-10 border border-gray-600">
+                <a href="/myprofile" class="block p-2 flex items-center gap-2 hover:bg-gray-600 hover:text-white"><i class="fas fa-user"></i> My Profile</a>
+                <a href="/myfiles" class="block p-2 flex items-center gap-2 hover:bg-gray-600 hover:text-white"><i class="fas fa-folder"></i> My Files</a>
+                <a href="/recyclebin" class="block p-2 flex items-center gap-2 hover:bg-gray-600 hover:text-white text-gray-400"><i class="fas fa-trash"></i> Recycle Bin</a>
+                <hr class="border-gray-600">
+                
+                <button type="button" class="logout block w-full text-left p-2 flex items-center gap-2 hover:bg-gray-600 hover:text-white"><i class="fas fa-sign-out-alt"></i> Logout</button>
+            </div>
+        </div><button role="button" aria-label="Add Account" class="index_addAccount mt-4 flex items-center justify-center gap-2 p-2 text-white bg-blue-600 hover:bg-blue-700 rounded w-full"><i class="fas fa-plus-circle"></i> Add Account</button></div>
                 <ul id="index_mainNav" class="space-y-4">
                     <li class="border-b border-gray-700"></li>
                     <li>
@@ -109,11 +118,531 @@
                 </header>
                 <div id="index_upload" class="p-2 border-b border-gray-700 space-y-2 max-w-full md:max-w-5xl md:mx-auto hidden"></div>
                 <div id="index_ads" class="flex flex-col justify-center items-center p-4 border-b border-gray-700 hidden"></div>
-                <main id="index_main" class="flex-1 p-3 lg:p-6">
-                    <div id="index_loader" class="w-full h-full flex items-center justify-center">
-                        <div class="animate-spin rounded-full h-16 w-16 border-t-4 border-blue-500"></div>
+                <main id="index_main" class="flex-1 p-3 lg:p-6"><div class="max-w-4xl mx-auto space-y-8">
+
+    <!-- Header -->
+    <div class="text-center mb-12">
+        <h1 class="text-2xl md:text-3xl font-bold text-white mb-4">
+            <i class="fas fa-file-contract text-blue-400 mr-2"></i>Terms of Service
+        </h1>
+        <p class="text-gray-400 text-sm max-w-2xl mx-auto leading-relaxed">
+            Please read these Terms of Service carefully before using Gofile. By accessing or using our platform, 
+            you agree to be bound by these terms. If you do not agree, you may not use our services.
+        </p>
+    </div>
+
+    <!-- Section 1: Company Information -->
+    <div class="bg-gray-700 bg-opacity-40 p-8 rounded-xl shadow">
+        <h2 class="text-lg font-semibold text-white mb-4 flex items-center gap-2">
+            <i class="fas fa-building text-blue-400"></i> Company Information
+        </h2>
+        <p class="text-gray-300 text-sm mb-4 leading-relaxed">
+            Gofile is a cloud storage and file sharing platform operated by:
+        </p>
+        <div class="bg-gray-800 bg-opacity-60 p-4 rounded-lg space-y-2 text-sm">
+            <div class="flex gap-3">
+                <span class="text-gray-400 w-32 flex-shrink-0">Company:</span>
+                <span class="text-white">WOJTEK SAS</span>
+            </div>
+            <div class="flex gap-3">
+                <span class="text-gray-400 w-32 flex-shrink-0">Capital:</span>
+                <span class="text-white">€1,000</span>
+            </div>
+            <div class="flex gap-3">
+                <span class="text-gray-400 w-32 flex-shrink-0">Address:</span>
+                <span class="text-white">78, Avenue des Champs-Élysées, 75008 Paris, France</span>
+            </div>
+            <div class="flex gap-3">
+                <span class="text-gray-400 w-32 flex-shrink-0">Registration:</span>
+                <span class="text-white">889 963 708 R.C.S. Paris</span>
+            </div>
+            <div class="flex gap-3">
+                <span class="text-gray-400 w-32 flex-shrink-0">Contact:</span>
+                <span class="text-white"><a href="/contact" class="text-blue-400 hover:text-blue-300 transition-colors">Contact Form</a> — +33 9 81 19 38 44</span>
+            </div>
+        </div>
+    </div>
+
+    <!-- Section 2: Definitions -->
+    <div class="bg-gray-700 bg-opacity-40 p-8 rounded-xl shadow">
+        <h2 class="text-lg font-semibold text-white mb-4 flex items-center gap-2">
+            <i class="fas fa-bookmark text-blue-400"></i> Definitions
+        </h2>
+        <div class="space-y-3 text-sm">
+            <div class="flex gap-3">
+                <span class="text-blue-400 font-medium w-28 flex-shrink-0">"Gofile"</span>
+                <span class="text-gray-300">Refers to the cloud storage and file sharing platform operated by WOJTEK SAS, accessible at gofile.io and its associated domains.</span>
+            </div>
+            <div class="flex gap-3">
+                <span class="text-blue-400 font-medium w-28 flex-shrink-0">"Service"</span>
+                <span class="text-gray-300">All features, functionalities, and infrastructure provided by Gofile, including but not limited to file upload, storage, sharing, API access, and content delivery.</span>
+            </div>
+            <div class="flex gap-3">
+                <span class="text-blue-400 font-medium w-28 flex-shrink-0">"User"</span>
+                <span class="text-gray-300">Any individual or entity accessing or using the Service, whether as a guest, a registered free user, or a Premium subscriber.</span>
+            </div>
+            <div class="flex gap-3">
+                <span class="text-blue-400 font-medium w-28 flex-shrink-0">"Content"</span>
+                <span class="text-gray-300">Any file, data, text, image, video, audio, or other material uploaded to, stored on, or shared through the Service by a User.</span>
+            </div>
+            <div class="flex gap-3">
+                <span class="text-blue-400 font-medium w-28 flex-shrink-0">"Premium"</span>
+                <span class="text-gray-300">Any paid tier of the Service, including both Subscription and Pay-as-You-Go plans, offering enhanced features and allowances.</span>
+            </div>
+        </div>
+    </div>
+
+    <!-- Section 3: Account Types & Registration -->
+    <div class="bg-gray-700 bg-opacity-40 p-8 rounded-xl shadow">
+        <h2 class="text-lg font-semibold text-white mb-4 flex items-center gap-2">
+            <i class="fas fa-user-plus text-blue-400"></i> Account Types &amp; Registration
+        </h2>
+
+        <div class="space-y-5">
+            <div>
+                <h3 class="text-white text-sm font-medium mb-2 flex items-center gap-1.5">
+                    <i class="fas fa-user-secret text-gray-400 text-xs"></i> Guest Access
+                </h3>
+                <p class="text-gray-300 text-sm leading-relaxed">
+                    Users may access basic upload and sharing functionality without registration. A guest session is 
+                    automatically created upon first connection. Guest sessions are ephemeral and intended for quick, 
+                    temporary sharing. No personal data is required.
+                </p>
+            </div>
+
+            <div>
+                <h3 class="text-white text-sm font-medium mb-2 flex items-center gap-1.5">
+                    <i class="fas fa-user text-gray-400 text-xs"></i> Free Account
+                </h3>
+                <p class="text-gray-300 text-sm leading-relaxed">
+                    To create a free account, Users must provide a valid email address. A secure login link is sent 
+                    to that address — no password is required. The email address serves as the account identifier. 
+                    Free accounts provide access to the File Manager, basic API operations, and the ability to 
+                    manage content across sessions. Free accounts are subject to ephemeral storage retention 
+                    policies and display advertisements.
+                </p>
+            </div>
+
+            <div>
+                <h3 class="text-white text-sm font-medium mb-2 flex items-center gap-1.5">
+                    <i class="fas fa-crown text-yellow-400 text-xs"></i> Premium Account
+                </h3>
+                <p class="text-gray-300 text-sm leading-relaxed">
+                    Users may upgrade to a Premium account via Subscription or Pay-as-You-Go plans. Premium unlocks 
+                    permanent storage, increased traffic allowances, direct link generation, advanced file manager 
+                    features, full API access, CDN capabilities, priority server access, and an ad-free experience. 
+                    Premium features and allowances are detailed on the 
+                    <a href="/premium" class="text-blue-400 hover:text-blue-300 transition-colors">Premium page</a> 
+                    and may evolve over time.
+                </p>
+            </div>
+
+            <div class="bg-gray-800 bg-opacity-60 p-4 rounded-lg border border-gray-600">
+                <p class="text-gray-300 text-sm leading-relaxed">
+                    <strong class="text-white">Accuracy of Information:</strong> The User guarantees that all 
+                    information provided during registration and account usage is true, accurate, current, and 
+                    complete. Gofile reserves the right to suspend or terminate any account found to be using 
+                    false, inaccurate, or incomplete information.
+                </p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Section 4: Service Description -->
+    <div class="bg-gray-700 bg-opacity-40 p-8 rounded-xl shadow">
+        <h2 class="text-lg font-semibold text-white mb-4 flex items-center gap-2">
+            <i class="fas fa-cloud-upload-alt text-blue-400"></i> Service Description
+        </h2>
+        <p class="text-gray-300 text-sm mb-4 leading-relaxed">
+            Gofile provides a cloud storage platform that allows Users to upload, store, organize, and share 
+            digital content. The Service operates across multiple geographic regions with storage datacenters 
+            in Paris (France) and Phoenix (United States), and a global network of upload and download proxy 
+            servers to optimize performance worldwide.
+        </p>
+        <p class="text-gray-300 text-sm mb-4 leading-relaxed">
+            Users may share content publicly via download pages or keep content private within their account. 
+            Premium Users may additionally generate direct links for embedding, integration, and content delivery, 
+            with configurable access controls including password protection, IP restrictions, domain allow/block 
+            lists, and expiration dates.
+        </p>
+        <p class="text-gray-300 text-sm mb-4 leading-relaxed">
+            Gofile also provides a REST API, documented at 
+            <a href="/api" class="text-blue-400 hover:text-blue-300 transition-colors">/api</a>, enabling 
+            programmatic access to upload, manage, and serve content. The API is currently in BETA and is 
+            subject to change. Most API endpoints require a Premium account.
+        </p>
+        <p class="text-gray-300 text-sm leading-relaxed">
+            Gofile acts as a hosting provider within the meaning of applicable legislation. Content stored on 
+            Gofile is under the sole responsibility of the User who uploaded it. Gofile does not claim ownership 
+            over User Content and does not monitor, screen, or review Content unless required by law or in 
+            response to a valid abuse report.
+        </p>
+    </div>
+
+    <!-- Section 5: Free Services -->
+    <div class="bg-gray-700 bg-opacity-40 p-8 rounded-xl shadow">
+        <h2 class="text-lg font-semibold text-white mb-4 flex items-center gap-2">
+            <i class="fas fa-gift text-blue-400"></i> Free Services
+        </h2>
+        <p class="text-gray-300 text-sm mb-4 leading-relaxed">
+            Gofile offers a free tier intended for quick, temporary file sharing. Free accounts are subject to 
+            the following conditions, which the User expressly acknowledges and accepts:
+        </p>
+        <ul class="space-y-3 text-sm">
+            <li class="flex items-start gap-2">
+                <i class="fas fa-clock text-gray-500 mt-1 text-xs"></i>
+                <span class="text-gray-300"><strong class="text-white">Ephemeral Storage:</strong> Content on free accounts is retained for a limited period. While content that remains actively downloaded may be kept longer, Gofile does not guarantee any specific retention duration for free accounts and may delete inactive content at any time without notice.</span>
+            </li>
+            <li class="flex items-start gap-2">
+                <i class="fas fa-exchange-alt text-gray-500 mt-1 text-xs"></i>
+                <span class="text-gray-300"><strong class="text-white">Traffic Allowance:</strong> Free accounts are subject to a monthly traffic cap. Traffic may be counted by IP address; Users on shared IPs (schools, offices, VPNs) may have their usage aggregated with other Users on the same IP.</span>
+            </li>
+            <li class="flex items-start gap-2">
+                <i class="fas fa-ad text-gray-500 mt-1 text-xs"></i>
+                <span class="text-gray-300"><strong class="text-white">Advertising:</strong> Free accounts display advertisements. The User agrees that Gofile may serve ads through its platform as part of the free offering.</span>
+            </li>
+            <li class="flex items-start gap-2">
+                <i class="fas fa-star text-gray-500 mt-1 text-xs"></i>
+                <span class="text-gray-300"><strong class="text-white">Feature Limitations:</strong> Certain features — including direct links, cold storage import, advanced file manager operations, and most API endpoints — are reserved for Premium accounts.</span>
+            </li>
+        </ul>
+    </div>
+
+    <!-- Section 6: Premium Services & Payment -->
+    <div class="bg-gray-700 bg-opacity-40 p-8 rounded-xl shadow">
+        <h2 class="text-lg font-semibold text-white mb-4 flex items-center gap-2">
+            <i class="fas fa-credit-card text-blue-400"></i> Premium Services &amp; Payment
+        </h2>
+
+        <div class="space-y-5">
+            <div>
+                <h3 class="text-white text-sm font-medium mb-2">Subscription Plans</h3>
+                <p class="text-gray-300 text-sm leading-relaxed">
+                    Subscription plans provide a fixed monthly allowance of storage and traffic for a recurring fee. 
+                    Subscriptions renew automatically at the end of each billing period unless cancelled. Current 
+                    pricing and allowances are published on the 
+                    <a href="/premium" class="text-blue-400 hover:text-blue-300 transition-colors">Premium page</a> 
+                    and may be updated from time to time.
+                </p>
+                <div class="bg-gray-800 bg-opacity-60 p-4 rounded-lg border border-gray-600 mt-3">
+                    <p class="text-gray-300 text-sm leading-relaxed">
+                        <strong class="text-white">Important:</strong> Recurring subscription payments are processed 
+                        by a third-party merchant of record, not by Gofile. Please refer to the Merchant of Record 
+                        subsection below for details.
+                    </p>
+                </div>
+            </div>
+
+            <div>
+                <h3 class="text-white text-sm font-medium mb-2">Pay-as-You-Go &amp; One-Shot Payments</h3>
+                <p class="text-gray-300 text-sm leading-relaxed">
+                    Pay-as-You-Go is a credit-based model where Users are charged based on actual storage consumed 
+                    and data transferred. A minimum monthly usage fee applies. Users may purchase credits in advance. 
+                    Unused credits do not roll over indefinitely. Pay-as-You-Go credits and yearly Premium one-shot 
+                    payments are processed directly by Gofile (WOJTEK SAS).
+                </p>
+            </div>
+
+            <div>
+                <h3 class="text-white text-sm font-medium mb-2">Merchant of Record (Subscriptions)</h3>
+                <p class="text-gray-300 text-sm leading-relaxed mb-3">
+                    All recurring subscription payments are processed by our designated merchant of record. 
+                    The merchant of record is responsible for payment processing, billing, invoicing, and 
+                    handling payment-related inquiries for subscription plans. By subscribing, you enter into 
+                    a payment relationship with the merchant of record for the recurring billing component, 
+                    while the Service itself continues to be provided by Gofile (WOJTEK SAS).
+                </p>
+                <div class="bg-gray-800 bg-opacity-60 p-4 rounded-lg space-y-2 text-sm">
+                    <div class="flex gap-3">
+                        <span class="text-gray-400 w-32 flex-shrink-0">Company:</span>
+                        <span class="text-white">Number X Europe OÜ</span>
                     </div>
-                </main>
+                    <div class="flex gap-3">
+                        <span class="text-gray-400 w-32 flex-shrink-0">Registration:</span>
+                        <span class="text-white">16634149</span>
+                    </div>
+                    <div class="flex gap-3">
+                        <span class="text-gray-400 w-32 flex-shrink-0">Address:</span>
+                        <span class="text-white">Vesivärava tn 50-201, Kesklinna linnaosa, 10152 Tallinn, Harju maakond, Estonia</span>
+                    </div>
+                </div>
+            </div>
+
+            <div>
+                <h3 class="text-white text-sm font-medium mb-2">Payment Terms</h3>
+                <p class="text-gray-300 text-sm leading-relaxed mb-2">
+                    All payments are processed at the time of order. Upon successful payment, the User receives a 
+                    confirmation email. The order is final once payment is confirmed. Premium features are activated 
+                    immediately upon successful payment processing.
+                </p>
+                <p class="text-gray-300 text-sm leading-relaxed">
+                    In the event of payment failure for a Subscription plan, the User's account is downgraded to 
+                    a free account with the associated features and limitations. Gofile will make reasonable efforts 
+                    to notify the User of any payment issues by email.
+                </p>
+            </div>
+
+            <div>
+                <h3 class="text-white text-sm font-medium mb-2">Refunds</h3>
+                <p class="text-gray-300 text-sm leading-relaxed mb-2">
+                    Due to the digital nature of the Service, payments are generally non-refundable once the Service 
+                    has been provided. However, each case is evaluated individually. Refunds may be granted in cases 
+                    of demonstrable error, unresolved technical issues attributable to Gofile, or payments made in 
+                    error. The User acknowledges that the statutory 14-day withdrawal period applicable to consumer 
+                    contracts does not apply once the Service has commenced.
+                </p>
+                <p class="text-gray-300 text-sm leading-relaxed">
+                    For subscription-related refund requests, please contact the merchant of record. 
+                    For refunds related to Pay-as-You-Go 
+                    credits or one-shot yearly payments, please contact Gofile through the 
+                    <a href="/contact" class="text-blue-400 hover:text-blue-300 transition-colors">contact page</a>.
+                </p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Section 7: User Obligations & Prohibited Use -->
+    <div class="bg-gray-700 bg-opacity-40 p-8 rounded-xl shadow">
+        <h2 class="text-lg font-semibold text-white mb-4 flex items-center gap-2">
+            <i class="fas fa-exclamation-triangle text-blue-400"></i> User Obligations &amp; Prohibited Use
+        </h2>
+        <p class="text-gray-300 text-sm mb-6 leading-relaxed">
+            The User is solely responsible for all Content they upload to, store on, or share through Gofile. 
+            The User agrees not to use the Service — and not to permit or enable others to use the Service — for 
+            any of the following purposes:
+        </p>
+
+        <div class="space-y-4">
+            <div class="border-l-2 border-red-500 pl-4">
+                <h3 class="text-white text-sm font-medium mb-1">Illegal Content</h3>
+                <p class="text-gray-400 text-xs leading-relaxed">
+                    Uploading, storing, sharing, or distributing any content that violates applicable local, 
+                    national, or international laws. This includes — but is not limited to — child sexual abuse 
+                    material (CSAM), terrorist propaganda, content promoting violent extremism, and any material 
+                    deemed unlawful in jurisdictions where Gofile operates or where the User resides.
+                </p>
+            </div>
+
+            <div class="border-l-2 border-red-500 pl-4">
+                <h3 class="text-white text-sm font-medium mb-1">Intellectual Property Infringement</h3>
+                <p class="text-gray-400 text-xs leading-relaxed">
+                    Uploading, storing, sharing, or distributing any content that infringes upon the copyright, 
+                    trademark, patent, trade secret, or other intellectual property rights of any third party. 
+                    This includes pirated software, unlicensed media, counterfeit goods, and any content used 
+                    without the express authorization of the rights holder.
+                </p>
+            </div>
+
+            <div class="border-l-2 border-red-500 pl-4">
+                <h3 class="text-white text-sm font-medium mb-1">Harmful &amp; Malicious Content</h3>
+                <p class="text-gray-400 text-xs leading-relaxed">
+                    Distributing malware, viruses, ransomware, spyware, phishing kits, or any other malicious 
+                    software or code. Also prohibited are materials designed to compromise the security, privacy, 
+                    or integrity of any individual, organization, computer system, or network.
+                </p>
+            </div>
+
+            <div class="border-l-2 border-red-500 pl-4">
+                <h3 class="text-white text-sm font-medium mb-1">Hate Speech, Harassment &amp; Abuse</h3>
+                <p class="text-gray-400 text-xs leading-relaxed">
+                    Content that incites hatred, violence, or discrimination against individuals or groups based 
+                    on race, ethnicity, religion, gender, sexual orientation, disability, or any protected 
+                    characteristic. Also prohibited: content used for harassment, stalking, doxing, blackmail, 
+                    extortion, or targeted intimidation of any individual or group.
+                </p>
+            </div>
+
+            <div class="border-l-2 border-red-500 pl-4">
+                <h3 class="text-white text-sm font-medium mb-1">Platform Abuse</h3>
+                <p class="text-gray-400 text-xs leading-relaxed">
+                    Attempting to circumvent storage limits, traffic allowances, or rate limits through 
+                    automated means, multiple accounts, or other deceptive practices. Using the Service to send 
+                    spam or unsolicited commercial communications. Interfering with or disrupting the integrity, 
+                    security, or performance of the Service, its infrastructure, or any other user's enjoyment 
+                    of the platform. Attempting to gain unauthorized access to accounts, systems, or data 
+                    belonging to Gofile or other Users. Excessively consuming resources in a manner that 
+                    degrades the experience for other Users.
+                </p>
+            </div>
+        </div>
+
+        <div class="bg-gray-800 bg-opacity-60 p-4 rounded-lg border border-gray-600 mt-6">
+            <p class="text-gray-300 text-sm leading-relaxed">
+                <strong class="text-white">Enforcement:</strong> Gofile reserves the right to remove any Content 
+                that violates these terms, suspend or terminate any account engaged in prohibited activity, and 
+                refer serious violations — particularly those involving CSAM, terrorism, or imminent threats — 
+                to the appropriate law enforcement authorities. For full details on our moderation practices, 
+                please see our <a href="/abusepolicy" class="text-blue-400 hover:text-blue-300 transition-colors">Abuse Policy</a>.
+            </p>
+        </div>
+    </div>
+
+    <!-- Section 8: Intellectual Property -->
+    <div class="bg-gray-700 bg-opacity-40 p-8 rounded-xl shadow">
+        <h2 class="text-lg font-semibold text-white mb-4 flex items-center gap-2">
+            <i class="fas fa-copyright text-blue-400"></i> Intellectual Property
+        </h2>
+        <p class="text-gray-300 text-sm mb-4 leading-relaxed">
+            All elements of the Gofile platform itself — including but not limited to the website, user interface, 
+            logos, graphics, trademarks, software, API, documentation, and infrastructure — are the exclusive 
+            property of WOJTEK SAS and are protected by French and international intellectual property laws, 
+            including copyright and database protection legislation.
+        </p>
+        <p class="text-gray-300 text-sm mb-4 leading-relaxed">
+            The User retains full ownership of all Content they upload to the Service. By using the Service, 
+            the User grants Gofile a limited, non-exclusive, worldwide, royalty-free license to store, process, 
+            and serve the User's Content solely as necessary to provide the Service (including making public 
+            Content accessible through download pages and direct links as configured by the User). This license 
+            terminates when the User deletes the Content or when the Content is removed in accordance with 
+            these Terms.
+        </p>
+        <p class="text-gray-300 text-sm leading-relaxed">
+            Gofile respects the intellectual property rights of others and expects its Users to do the same. 
+            Rights holders who believe their work has been infringed may submit a notice through our 
+            <a href="/contact" class="text-blue-400 hover:text-blue-300 transition-colors">contact page</a>. 
+            We respond promptly to properly submitted notices that comply with applicable laws, including the 
+            Digital Millennium Copyright Act (DMCA).
+        </p>
+    </div>
+
+    <!-- Section 9: Data & Privacy -->
+    <div class="bg-gray-700 bg-opacity-40 p-8 rounded-xl shadow">
+        <h2 class="text-lg font-semibold text-white mb-4 flex items-center gap-2">
+            <i class="fas fa-shield-alt text-blue-400"></i> Data &amp; Privacy
+        </h2>
+        <p class="text-gray-300 text-sm mb-4 leading-relaxed">
+            Gofile is committed to minimizing data collection. In its most basic use (guest access), Gofile 
+            collects no personal data whatsoever. When a free account is created, only the User's email address 
+            is stored. When a Premium subscription is purchased, billing-related information is collected as 
+            necessary to generate invoices and process payments. Under no circumstances will Gofile sell or 
+            rent personal data to third parties.
+        </p>
+        <p class="text-gray-300 text-sm mb-4 leading-relaxed">
+            Content stored on Gofile is encrypted at rest on our servers. However, Gofile is not an end-to-end 
+            encrypted service — server-side encryption is used, which allows Gofile to provide features such as 
+            direct links, ZIP generation, and content scanning. Users requiring maximum confidentiality are 
+            encouraged to encrypt files locally before uploading.
+        </p>
+        <p class="text-gray-300 text-sm leading-relaxed">
+            For complete details on how we collect, use, and protect personal data, please refer to our 
+            <a href="/privacy" class="text-blue-400 hover:text-blue-300 transition-colors">Privacy Policy</a>.
+        </p>
+    </div>
+
+    <!-- Section 10: Service Availability & Liability -->
+    <div class="bg-gray-700 bg-opacity-40 p-8 rounded-xl shadow">
+        <h2 class="text-lg font-semibold text-white mb-4 flex items-center gap-2">
+            <i class="fas fa-server text-blue-400"></i> Service Availability &amp; Liability
+        </h2>
+        <p class="text-gray-300 text-sm mb-4 leading-relaxed">
+            Gofile strives to maintain high availability and performance, but given the inherent complexities 
+            of internet infrastructure, the Service is provided on an "as is" and "as available" basis. Gofile 
+            is subject to a general obligation of means, not an obligation of result.
+        </p>
+        <p class="text-gray-300 text-sm mb-4 leading-relaxed">
+            Gofile shall not be held liable for damages arising from:
+        </p>
+        <ul class="list-disc list-inside text-gray-300 text-sm mb-4 space-y-1">
+            <li>Service interruptions, downtime, or degradation, whether planned or unplanned</li>
+            <li>Data loss, corruption, or unauthorized access resulting from circumstances beyond Gofile's reasonable control</li>
+            <li>Actions taken in compliance with legal obligations, including content removal in response to valid abuse reports or law enforcement requests</li>
+            <li>Third-party services, websites, or content linked to or from the Gofile platform</li>
+            <li>The conduct or Content of any User</li>
+        </ul>
+        <p class="text-gray-300 text-sm leading-relaxed">
+            Gofile's total liability, whether in contract, tort, or otherwise, shall not exceed the amount paid 
+            by the User to Gofile in the twelve months preceding the event giving rise to the claim. For free 
+            accounts, Gofile's liability is limited to the fullest extent permitted by applicable law.
+        </p>
+    </div>
+
+    <!-- Section 11: Account Termination -->
+    <div class="bg-gray-700 bg-opacity-40 p-8 rounded-xl shadow">
+        <h2 class="text-lg font-semibold text-white mb-4 flex items-center gap-2">
+            <i class="fas fa-door-open text-blue-400"></i> Account Termination
+        </h2>
+        <p class="text-gray-300 text-sm mb-4 leading-relaxed">
+            <strong class="text-white">By the User:</strong> Users may stop using the Service at any time. 
+            Premium subscriptions may be cancelled through the profile page; cancellation takes effect at the 
+            end of the current billing period. Users may delete their Content and request account deletion at 
+            any time.
+        </p>
+        <p class="text-gray-300 text-sm mb-4 leading-relaxed">
+            <strong class="text-white">By Gofile:</strong> Gofile reserves the right to suspend or terminate 
+            any account, with or without notice, in the following circumstances:
+        </p>
+        <ul class="list-disc list-inside text-gray-300 text-sm mb-4 space-y-1">
+            <li>Violation of these Terms of Service or the Abuse Policy</li>
+            <li>Engagement in illegal activity through the platform</li>
+            <li>Extended account inactivity exceeding one year, for security and data integrity purposes</li>
+            <li>Non-payment of Premium fees</li>
+            <li>Force majeure events or circumstances that make continued service provision impossible or impractical</li>
+        </ul>
+        <p class="text-gray-300 text-sm leading-relaxed">
+            Upon termination, the User's right to access the Service ceases immediately. Gofile may delete all 
+            Content associated with the terminated account. Gofile shall not be liable to the User or any third 
+            party for termination of access to the Service.
+        </p>
+    </div>
+
+    <!-- Section 12: Modifications -->
+    <div class="bg-gray-700 bg-opacity-40 p-8 rounded-xl shadow">
+        <h2 class="text-lg font-semibold text-white mb-4 flex items-center gap-2">
+            <i class="fas fa-sync-alt text-blue-400"></i> Modifications to These Terms
+        </h2>
+        <p class="text-gray-300 text-sm mb-4 leading-relaxed">
+            Gofile reserves the right to modify these Terms of Service at any time. Material changes will be 
+            communicated to registered Users by email or through a notice on the platform. For non-material 
+            changes, the updated Terms will be published on this page with a revised effective date.
+        </p>
+        <p class="text-gray-300 text-sm leading-relaxed">
+            Continued use of the Service after modifications become effective constitutes acceptance of the 
+            revised Terms. If the User does not agree to the changes, they must discontinue use of the Service 
+            and may terminate their account. Gofile also reserves the right to modify, suspend, or discontinue 
+            any aspect of the Service, temporarily or permanently, with or without notice, including but not 
+            limited to feature sets, storage limits, traffic allowances, and pricing.
+        </p>
+    </div>
+
+    <!-- Section 13: Governing Law -->
+    <div class="bg-gray-700 bg-opacity-40 p-8 rounded-xl shadow">
+        <h2 class="text-lg font-semibold text-white mb-4 flex items-center gap-2">
+            <i class="fas fa-balance-scale text-blue-400"></i> Governing Law &amp; Jurisdiction
+        </h2>
+        <p class="text-gray-300 text-sm mb-4 leading-relaxed">
+            These Terms of Service shall be governed by and construed in accordance with the laws of France, 
+            without regard to conflict of law principles. Any dispute arising from or relating to these Terms 
+            or the use of the Service shall be subject to the exclusive jurisdiction of the competent courts 
+            of Paris, France.
+        </p>
+        <p class="text-gray-300 text-sm mb-4 leading-relaxed">
+            For any exchange of information by email, the date and time recorded on Gofile's servers shall be 
+            authoritative between the parties. All formal notifications and communications provided for in these 
+            Terms shall be considered validly delivered if addressed by registered mail with return receipt to 
+            the company address stated in Section 1.
+        </p>
+        <p class="text-gray-300 text-sm leading-relaxed">
+            The User acknowledges that digital records, logs, messages, and data stored in Gofile's computer 
+            systems may be used as evidence in the context of any dispute relating to these Terms.
+        </p>
+    </div>
+
+    <!-- Section 14: Contact -->
+    <div class="bg-gray-700 bg-opacity-40 p-8 rounded-xl shadow">
+        <h2 class="text-lg font-semibold text-white mb-4 flex items-center gap-2">
+            <i class="fas fa-envelope text-blue-400"></i> Questions &amp; Contact
+        </h2>
+        <p class="text-gray-300 text-sm leading-relaxed">
+            If you have any questions about these Terms of Service, or if you need to contact Gofile for any 
+            legal or administrative matter, please reach out through our 
+            <a href="/contact" class="text-blue-400 hover:text-blue-300 transition-colors font-medium">contact page</a> 
+            or by registered mail at the address listed in Section 1. We are committed to addressing all 
+            inquiries promptly and professionally.
+        </p>
+    </div>
+
+</div>
+</main>
                 <footer id="index_footer" class="bg-gray-800 px-4 py-3 text-center text-sm text-gray-400 border-t border-gray-700 rounded-b-lg flex flex-col items-center space-y-2">
                     <div class="flex flex-wrap justify-center items-center gap-x-3 md:gap-x-5 gap-y-1">
                         <a href="/" class="hover:text-blue-500 transition-colors">Home</a>
