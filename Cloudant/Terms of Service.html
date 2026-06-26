@@ -56,11 +56,9 @@
     <link rel="canonical" href="https://www.ibm.com/legal/terms"/>
 
       
-          <link rel="preload" as="image" href="/content/adobe-cms/us/en/legal/terms/jcr:content/root/leadspace_container/leadspace/image.coreimg.jpeg/1782390948692/Leadspace-bg-img-desktop.png" fetchpriority="high"/>
-      
 
     
-    <link rel="preload" href="/etc.clientlibs/adobe-cms/clientlibs/clientlib-masthead-container.lc-77093780f8de7b2544462ac5bafdd6a5-lc.min.js" as="script">
+    <link rel="preload" href="/etc.clientlibs/adobe-cms/clientlibs/clientlib-masthead-container.lc-6add6201fbad7c7de364061631efbdb6-lc.min.js" as="script">
 
 
 
@@ -140,6 +138,8 @@
 
     
         <link rel="alternate" hreflang="it-it" href="https://www.ibm.com/it-it/legal/terms"/>
+    
+        <link rel="alternate" hreflang="x-default" href="https://www.ibm.com/legal/terms"/>
     
         <link rel="alternate" hreflang="de-de" href="https://www.ibm.com/de-de/legal/terms"/>
     
@@ -246,7 +246,7 @@
         
     
     
-        <meta property="og:image" content="https://www.ibm.com/content/dam/adobe-cms/default-images/Leadspace-bg-img-desktop.png/_jcr_content/renditions/cq5dam.web.1280.1280.jpeg"/>
+        <meta property="og:image" content="https://assets.ibm.com/is/image/ibm/ibm-8bar-logo-2560x2560?$original$"/>
     
 
     
@@ -259,8 +259,8 @@
     
     
 <link rel="stylesheet" href="/etc.clientlibs/adobe-cms/clientlibs/clientlib-base.lc-30313e00669f877069f15dd099f23454-lc.min.css" type="text/css">
-<link rel="stylesheet" href="/etc.clientlibs/adobe-cms/clientlibs/clientlib-idlStylesCarbon.lc-03eec565f68645aac0da910e14e73a80-lc.min.css" type="text/css">
-<link rel="stylesheet" href="/etc.clientlibs/adobe-cms/clientlibs/clientlib-idlStyles.lc-1b9688b819e4beba12219f98c668fa75-lc.min.css" type="text/css">
+<link rel="stylesheet" href="/etc.clientlibs/adobe-cms/clientlibs/clientlib-idlStylesCarbon.lc-22697d846b80da3d5d6a299497b8fb5e-lc.min.css" type="text/css">
+<link rel="stylesheet" href="/etc.clientlibs/adobe-cms/clientlibs/clientlib-idlStyles.lc-bd80ee69adcf701d021168bf77b27ac9-lc.min.css" type="text/css">
 
 
 
@@ -345,7 +345,7 @@
 
 
 
-    <c4d-masthead-container data-endpoint="#" auth-method="profile-api" has-contact="false" has-global="true" has-profile has-search has-cart current-region-text="Your current region is" different-region-text="Select a different region" no-other-region-text="This page is not available in any other regions">
+    <c4d-masthead-container data-endpoint="#" auth-method="profile-api" has-contact="false" has-global="true" has-profile="true" has-search="true" has-cart current-region-text="Your current region is" different-region-text="Select a different region" no-other-region-text="This page is not available in any other regions">
         
     </c4d-masthead-container>
 
@@ -354,7 +354,7 @@
 
 
 
-    <script defer src="/etc.clientlibs/adobe-cms/clientlibs/clientlib-masthead-container.lc-77093780f8de7b2544462ac5bafdd6a5-lc.min.js"></script>
+    <script defer src="/etc.clientlibs/adobe-cms/clientlibs/clientlib-masthead-container.lc-6add6201fbad7c7de364061631efbdb6-lc.min.js"></script>
 
 
 
@@ -420,20 +420,16 @@
 
 
 
-
 <script type="text/javascript">
-    if (window.location.href.includes("/careers") || window.location.href.includes("/aialliance") ||  window.location.href.includes("www.aialliance.org")|| window.location.hostname.includes("businessofgovernment") ||  window.location.href.includes("/businessofgovernment") ||  window.location.href.includes("/anderon")  || window.location.href.includes("anderon.com"))
+    if (window.location.href.includes("/careers"))
       {
          document.querySelector('c4d-masthead-container').setAttribute("has-search","false");
          document.querySelector('c4d-masthead-container').setAttribute("has-profile","false");
 
       }
 
-
       if(window.location.hostname.includes("businessofgovernment") ||  window.location.href.includes("/businessofgovernment"))
         {
-             document.querySelector('c4d-masthead-container').setAttribute("has-search","false");
-             document.querySelector('c4d-masthead-container').setAttribute("has-profile","false");
               // Start the function
         updateTopNavHrefFromPlatform();
         }
@@ -503,9 +499,7 @@
                     langIcon.style.setProperty('display', 'none', 'important');
                 }
             } else {
-                const search = document.querySelector('c4d-search-with-typeahead');
                 const globalBar = document.querySelector('c4d-masthead-global-bar');
-                if (search) search.style.display = 'none';
                 if (globalBar) globalBar.style.display = 'none';
             }
         }
@@ -600,8 +594,8 @@
 
 
 
-    <script defer src="/etc.clientlibs/adobe-cms/clientlibs/clientlib-button-group.lc-cb0cd7b0d9fdb71d56b96d11db002cd5-lc.min.js"></script>
-<script defer src="/etc.clientlibs/adobe-cms/clientlibs/clientlib-background-media.lc-b842aca4907bcc8bcae6feaa08926337-lc.min.js"></script>
+    <script defer src="/etc.clientlibs/adobe-cms/clientlibs/clientlib-button-group.lc-3b06d93eb6289792dd721ec268ed0079-lc.min.js"></script>
+<script defer src="/etc.clientlibs/adobe-cms/clientlibs/clientlib-background-media.lc-df1684e90cc526820f3334ce661a6cd3-lc.min.js"></script>
 <script defer src="/etc.clientlibs/adobe-cms/clientlibs/clientlib-star-rating.lc-ac9e6f485abb5e9caac490f8b09edc80-lc.min.js"></script>
 
 </div>
@@ -727,7 +721,7 @@
 
 
     
-    <script defer src="/etc.clientlibs/adobe-cms/clientlibs/clientlib-content-block-segmented.lc-ceb43e9669c75e575c562f8b89f213de-lc.min.js"></script>
+    <script defer src="/etc.clientlibs/adobe-cms/clientlibs/clientlib-content-block-segmented.lc-479367e7c4b4615db227bad3e51d40a1-lc.min.js"></script>
 
 
 
@@ -1446,7 +1440,7 @@
 
 
     
-    <script defer src="/etc.clientlibs/adobe-cms/clientlibs/clientlib-footer.lc-315849e31abb7f216a94291f369bc67b-lc.min.js"></script>
+    <script defer src="/etc.clientlibs/adobe-cms/clientlibs/clientlib-footer.lc-c0e770f41f13e5283cf7a30f86b8ed56-lc.min.js"></script>
 
 
 
@@ -1537,8 +1531,7 @@
                 </div>
 
                 <div class="video-wms hide">
-                    <iframe class="video-modal-content" data-original-src="https://video.ibm.com/embed/$[wmsChanneId]?volume=0&autoplay=true&controls=true" src="" webkitallowfullscreen allowfullscreen frameborder="no" referrerpolicy="no-referrer-when-downgrade"></iframe>
-
+                    <iframe class="video-modal-content" data-original-src="https://video.ibm.com/embed/$[wmsChanneId]?volume=0&autoplay=true&controls=true" src="about:blank" webkitallowfullscreen allowfullscreen frameborder="no" referrerpolicy="no-referrer-when-downgrade"></iframe>
                 </div>
 
                 <div class="video-media-center hide">
@@ -1551,7 +1544,7 @@
 
 
     
-    <script defer src="/etc.clientlibs/adobe-cms/clientlibs/clientlib-video-player-v7.lc-9cc56bcad08274395b2024f3af1b8ce5-lc.min.js"></script>
+    <script defer src="/etc.clientlibs/adobe-cms/clientlibs/clientlib-video-player-v7.lc-e2888738eda9175164a62330156448a7-lc.min.js"></script>
 <script defer src="/etc.clientlibs/adobe-cms/clientlibs/clientlib-cweb-loading.lc-bf5f1bc1d22a37b7b50b2e8cc6ac9710-lc.min.js"></script>
 
 
@@ -1562,7 +1555,7 @@
 <c4d-lightbox-video-player-container></c4d-lightbox-video-player-container>
 
     
-    <script defer src="/etc.clientlibs/adobe-cms/clientlibs/clientlib-cibm-cta.lc-f0cf4ba6839d4728f28421f230b806ae-lc.min.js"></script>
+    <script defer src="/etc.clientlibs/adobe-cms/clientlibs/clientlib-cibm-cta.lc-dd0c77f6af7199a2f5cf8575b27e03a8-lc.min.js"></script>
 
 
 
@@ -1582,9 +1575,9 @@
     
     <script src="/etc.clientlibs/adobe-cms/clientlibs/clientlib-ibm-logger.lc-36e5d2891df65964c169c81e085bcb76-lc.min.js"></script>
 <script src="/etc.clientlibs/adobe-cms/clientlibs/clientlib-base.lc-c7d8c8a31404fb2a97939ee4096001bf-lc.min.js"></script>
-<script src="/etc.clientlibs/adobe-cms/clientlibs/clientlib-components-main.lc-90f30647f605040a485b289ea9661290-lc.min.js"></script>
-<script src="/etc.clientlibs/adobe-cms/clientlibs/clientlib-idlStyles.lc-1f0cfb35fcfa9bb484e25ff5100caba2-lc.min.js"></script>
-<script src="/etc.clientlibs/adobe-cms/components/content/atoms/image-dm/clientlibs/site.lc-22f9b83ee05207c25b1e95bb6f760ee4-lc.min.js"></script>
+<script src="/etc.clientlibs/adobe-cms/clientlibs/clientlib-components-main.lc-210e8179271cf4372365d1d25bbad6f5-lc.min.js"></script>
+<script src="/etc.clientlibs/adobe-cms/clientlibs/clientlib-idlStyles.lc-f7f4479196c421540a6c0ac20410a4a0-lc.min.js"></script>
+<script src="/etc.clientlibs/adobe-cms/components/content/atoms/image-dm/clientlibs/site.lc-88172ce0bcee3885207b0388fc98ee49-lc.min.js"></script>
 
 
 
@@ -2182,5 +2175,5 @@
     });
 </script>
 
-<script type="text/javascript"  src="/8KPS2T/Zf-18S/uQTwX/PIhVH/9O/YkSEwbmtzwJzND/ZklJUVMpdA0/ZS99CF1/OM1QB"></script><link rel="stylesheet" type="text/css"  href="/8KPS2T/Zf-18S/uQTwX/PIhVH/9O/mm/bEEkUVMpdA0/AiVwaVl/uARpZ"><script  src="/8KPS2T/Zf-18S/uQTwX/PIhVH/9O/mm/bEEkUVMpdA0/dBsfYlA/YXkYp" async defer></script><div id="sec-overlay" style="display:none;"><div id="sec-container"></div></div></body>
+<script type="text/javascript"  src="/rTYgJ-z89X/UVBd1cEe/AT/YXzEwmV8z4ptSVEtuw/BS8eYThxBg/TQYacG/YnbC0B"></script><link rel="stylesheet" type="text/css"  href="/rTYgJ-z89X/UVBd1cEe/AT/LNzEup/QU14YDhxBg/aAYcAS/NRbBBZ"><script  src="/rTYgJ-z89X/UVBd1cEe/AT/LNzEup/QU14YDhxBg/HEEYVX/xWGAIq" async defer></script><div id="sec-overlay" style="display:none;"><div id="sec-container"></div></div></body>
 </html>
