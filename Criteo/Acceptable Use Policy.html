@@ -176,7 +176,7 @@ img:is([sizes=auto i],[sizes^="auto," i]){contain-intrinsic-size:3000px 1500px}
 /*# sourceURL=global-styles-inline-css */
 </style>
 
-<link rel='stylesheet preload' as='style' id='CSS-theme-css' href='https://www.criteo.com/wp-content/themes/criteo2017/css/theme.min.css?ver=2026062945' media='all' />
+<link rel='stylesheet preload' as='style' id='CSS-theme-css' href='https://www.criteo.com/wp-content/themes/criteo2017/css/theme.min.css?ver=2026063004' media='all' />
 <link rel='stylesheet preload' as='style' id='select2CSS-css' href='https://www.criteo.com/wp-content/themes/criteo2017/sass/select2.min.css?ver=7.0' media='all' />
 <link rel='stylesheet preload' as='style' id='slickCSS-css' href='https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.5.9/slick.min.css?ver=7.0' media='all' />
 <link rel='stylesheet preload' as='style' id='tablepress-default-css' href='https://www.criteo.com/wp-content/uploads/tablepress-combined.min.css?ver=19' media='all' />
@@ -2354,7 +2354,7 @@ img:is([sizes=auto i],[sizes^="auto," i]){contain-intrinsic-size:3000px 1500px}
             </div>
         </div>
     </footer>
-<div class="modal fade" id="modalEmbed" tabindex="-1" role="dialog" aria-hidden="true">
+<div class="modal modal-in-footer fade" id="modalEmbed" tabindex="-1" role="dialog" aria-hidden="true">
     <div class="modal-dialog modal-lg" role="document">
         <div class="modal-content">
             <div class="modal-header" style="text-align: right;">
@@ -2364,7 +2364,7 @@ img:is([sizes=auto i],[sizes^="auto," i]){contain-intrinsic-size:3000px 1500px}
         </div>
     </div>
 </div>
-<div class="modal fade dark_mode" id="modalEmbedDarkMode" tabindex="-1" role="dialog" aria-hidden="true">
+<div class="modal modal-in-footer fade dark_mode" id="modalEmbedDarkMode" tabindex="-1" role="dialog" aria-hidden="true">
     <div class="modal-dialog modal-lg" role="document">
         <div class="modal-content">
             <div class="modal-header" style="text-align: right;">
@@ -2373,6 +2373,16 @@ img:is([sizes=auto i],[sizes^="auto," i]){contain-intrinsic-size:3000px 1500px}
             <div class="modal-body modal-center"></div>
         </div>
     </div>
+</div>
+<div class="modal modal-in-footer fade dark_mode" id="modalEmbedDemo" tabindex="-1" role="dialog" aria-hidden="true">
+  <div class="modal-dialog modal-xl" role="document">
+    <div class="modal-content">
+      <div class="modal-header" style="text-align: right;">
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+      </div>
+      <div class="modal-body modal-center"></div>
+    </div>
+  </div>
 </div>
 
 
@@ -2384,40 +2394,50 @@ img:is([sizes=auto i],[sizes^="auto," i]){contain-intrinsic-size:3000px 1500px}
 </style>
 
 <script>
-    // modal video embed auto-play and auto-shut-up
-    jQuery(document).ready(function() {
+// modal video embed auto-play and auto-shut-up
+jQuery(document).ready(function() {
+  var btn = jQuery('body').find('[data-toggle="modal"][data-type]'); // the button
 
-        var btn = jQuery('body').find('[data-toggle="modal"][data-type]'); // the button
-        var target = jQuery(btn.data('target')); // modal div
-        var src = btn.data('src');
-        var type = btn.data('type'); // youtube or pardot
-        var modalBody = target.find('.modal-body'); // modal body
-        var iframe;
-
-        btn.click(function() {
-            //console.log('modal opened: create iframe for ' + type);
-            iframe = modalBody.html('<iframe width="100%" height="450" frameborder="0" allowfullscreen></iframe>').children('iframe');
-
-            if (type === 'pardot') {
-                //console.log('iframe pardot');
-                iframe.load(function() {
-                    //console.log('iframe loaded');
-                    iFrameResize(); // the secret sauce!
-                });
-                iframe.attr('src', src);
-            } else { // youtube
-                //console.log('iframe youtube');
-                iframe.attr('src', src + '?autoplay=1&enablejsapi=1&rel=0'); // video URL in the button's data attr
-                ytTracker.init(); // <-- Decorate all new videos on the page, from the 400-line monstrosity GTM
-            }
+  btn.click(function() {
+    var modal = jQuery($(this).data('target')); // modal div
+    var src = $(this).data('src');
+    var type = $(this).data('type');
+    var modalBody = modal.find('.modal-body'); // modal body
+    var iframe;
+    console.log(type);
+    if (type === 'pardot' || type === 'embed') {
+      iframe = modalBody.html('<iframe width="100%" height="450" frameborder="0" allowfullscreen></iframe>').children('iframe');
+      
+      if (type === 'pardot') {
+        iframe.load(function() {
+            //console.log('iframe loaded');
+            iFrameResize(); // the secret sauce!
         });
+        iframe.attr('src', src);
+      } 
+      if (type === 'embed') {
+        console.log('embed');
+        iframe.attr('src', src + '?autoplay=1&enablejsapi=1&rel=0'); // video URL in the button's data attr
+        ytTracker.init(); // <-- Decorate all new videos on the page, from the 400-line monstrosity GTM
+      }
+    }
+    
+    if (type === 'demo') {
+      var modalBodyHTML = '<div style="position: relative; padding-bottom:calc(53.81944444444444% + 47px); height: 0;">' +
+        '<iframe width="100%" height="100%" scrolling="no" allow="clipboard-read; clipboard-write"' + 
+        'src="' + src + '"' +
+        'style="left:0;top:0;overflow:hidden;position:absolute;border:none" webkitallowfullscreen mozallowfullscreen allowfullscreen allowtransparency="true">' +
+        '</iframe></div>';
+      iframe = modalBody.html(modalBodyHTML).children('iframe');
+    }
+  });
 
-        target.on('hidden.bs.modal', function(e) {
-            //console.log('modal closed: stripping the contents');
-            modalBody.html('');
-        });
+  jQuery('.modal-in-footer').on('hidden.bs.modal', function(e) {
+   //console.log('modal closed: stripping the contents');
+    $(this).find('.modal-body').html('');
+  });
 
-    });
+});
 </script><script type="speculationrules">
 {"prefetch":[{"source":"document","where":{"and":[{"href_matches":"/*"},{"not":{"href_matches":["/wp-*.php","/wp-admin/*","/wp-content/uploads/*","/wp-content/*","/wp-content/plugins/*","/wp-content/themes/criteo2017/*","/*\\?(.+)"]}},{"not":{"selector_matches":"a[rel~=\"nofollow\"]"}},{"not":{"selector_matches":".no-prefetch, .no-prefetch a"}}]},"eagerness":"conservative"}]}
 </script>
@@ -2430,7 +2450,7 @@ var qpprFrontData = {"linkData":{"https://www.criteo.com/blog/apparel-trend-repo
 <script id="criteoBootstrap4-js" src="https://www.criteo.com/wp-content/themes/criteo2017/js/bs4.min.js"></script>
 <script id="iframe-resizer-js" src="https://www.criteo.com/wp-content/themes/criteo2017/js/iframe.min.js"></script>
 <script id="select2-js" src="https://www.criteo.com/wp-content/themes/criteo2017/js/select2.min.js"></script>
-<script id="Criteo2017-scripts-js" src="https://www.criteo.com/wp-content/themes/criteo2017/js/theme.min.js?ver=2026062945"></script>
+<script id="Criteo2017-scripts-js" src="https://www.criteo.com/wp-content/themes/criteo2017/js/theme.min.js?ver=2026063004"></script>
 <script id="scrolllock-js" src="https://www.criteo.com/wp-content/themes/criteo2017/js/scrolllock.min.js"></script>
 <script id="match-height-js" src="//cdnjs.cloudflare.com/ajax/libs/jquery.matchHeight/0.7.0/jquery.matchHeight-min.js"></script>
 <script id="sticky-kit-js" src="https://www.criteo.com/wp-content/themes/criteo2017/js/jquery.sticky-kit.min.js?ver=0.6.2"></script>
@@ -2438,7 +2458,7 @@ var qpprFrontData = {"linkData":{"https://www.criteo.com/blog/apparel-trend-repo
 <script id="slickJS-js" src="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.5.9/slick.min.js?ver=7.0"></script>
 <div style="display: none">
     </div>
-<script type="text/javascript">window.NREUM||(NREUM={});NREUM.info={"beacon":"bam.nr-data.net","licenseKey":"bb94583995","applicationID":"72531584","transactionName":"b1YBYkFZWBBYBURaDVYcIlVHUVkNFgRRQAtb","queueTime":0,"applicationTime":543,"atts":"QxEWFAlDS08bBxIJGUVO","errorBeacon":"bam.nr-data.net","agent":""}</script></body>
+<script type="text/javascript">window.NREUM||(NREUM={});NREUM.info={"beacon":"bam.nr-data.net","licenseKey":"bb94583995","applicationID":"72531584","transactionName":"b1YBYkFZWBBYBURaDVYcIlVHUVkNFgRRQAtb","queueTime":0,"applicationTime":546,"atts":"QxEWFAlDS08bBxIJGUVO","errorBeacon":"bam.nr-data.net","agent":""}</script></body>
 
 </html>
-<!-- plugin=object-cache-pro client=phpredis metric#hits=5080 metric#misses=13 metric#hit-ratio=99.7 metric#bytes=1473561 metric#prefetches=709 metric#store-reads=42 metric#store-writes=10 metric#store-hits=733 metric#store-misses=5 metric#sql-queries=10 metric#ms-total=542.08 metric#ms-cache=34.41 metric#ms-cache-avg=0.6746 metric#ms-cache-ratio=6.4 -->
+<!-- plugin=object-cache-pro client=phpredis metric#hits=4397 metric#misses=27 metric#hit-ratio=99.4 metric#bytes=1770895 metric#prefetches=9 metric#store-reads=744 metric#store-writes=22 metric#store-hits=734 metric#store-misses=19 metric#sql-queries=26 metric#ms-total=545.76 metric#ms-cache=212.66 metric#ms-cache-avg=0.2780 metric#ms-cache-ratio=39.0 -->
