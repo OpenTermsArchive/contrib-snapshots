@@ -14,7 +14,7 @@
                     });
                 </script>
                 <script type="module">
-                    import { ClientAPI } from '/view-resources/baseview/public/common/ClientAPI/index.js?v=1782459309-L4';
+                    import { ClientAPI } from '/view-resources/baseview/public/common/ClientAPI/index.js?v=1782902298-L4';
                     window.labClientAPI = new ClientAPI({
                         pageData: {
                             url: 'https://www.theregister.com/profile/privacy',
@@ -196,12 +196,12 @@ if (PROVIDER_CONFIG && !window.__labradorPaywallClientAPIInitialized) {
                         <link type="image/png" rel="apple-touch-icon" sizes="180x180" href="/view-resources/dachser2/public/theregister/favicons/apple-touch-icon.png">
                     <link rel="manifest" href=/view-resources/dachser2/public/theregister/favicons/manifest.json />
                 <link href="https://fonts.googleapis.com/css?family=Merriweather:300,400,700,900" rel="stylesheet"  media="print" onload="this.media='all'" >
-                <link rel="stylesheet" href="/view-resources/view/css/grid.css?v=1782459309-L4">
-                <link rel="stylesheet" href="/view-resources/view/css/main.css?v=1782459309-L4">
-                <link rel="stylesheet" href="/view-resources/view/css/colors.css?v=1782459309-L4">
-                <link rel="stylesheet" href="/view-resources/view/css/print.css?v=1782459309-L4" media="print">
-                <link rel="stylesheet" href="/view-resources/view/css/foundation-icons/foundation-icons.css?v=1782459309-L4">
-                <link rel="stylesheet" href="/view-resources/view/css/site/theregister.css?v=1782459309-L4">
+                <link rel="stylesheet" href="/view-resources/view/css/grid.css?v=1782902298-L4">
+                <link rel="stylesheet" href="/view-resources/view/css/main.css?v=1782902298-L4">
+                <link rel="stylesheet" href="/view-resources/view/css/colors.css?v=1782902298-L4">
+                <link rel="stylesheet" href="/view-resources/view/css/print.css?v=1782902298-L4" media="print">
+                <link rel="stylesheet" href="/view-resources/view/css/foundation-icons/foundation-icons.css?v=1782902298-L4">
+                <link rel="stylesheet" href="/view-resources/view/css/site/theregister.css?v=1782902298-L4">
                 <style data-key="custom_properties">
                     :root{--primary: rgba(0,0,0,1);--secondary: rgba(255,255,255,1);--tertiary: rgba(214,0,0,1);--quaternary: rgba(0,0,0,1);--bg-secondary: rgba(255,255,255,1);--bg-tertiary: rgba(239,239,239,1);--bg-quaternary: rgba(0,0,0,1);--bg-quinary: rgba(22,22,22,1);--bg-senary: rgba(255,235,235,1);--bg-septenary: rgba(214,0,0,1);--bg-octonary: rgba(248,248,248,1);--bg-nonary: rgba(208, 200, 200, 1);--bg-primary: rgba(255,0,0,1);--bg-septenary-light: rgba(230,102,102,1);--bg-septenary-dark: rgba(150,0,0,1);--bg-nonary-light: rgba(227,222,222,1);--bg-nonary-dark: rgba(146,140,140,1);}
                 </style>
@@ -240,8 +240,8 @@ if (PROVIDER_CONFIG && !window.__labradorPaywallClientAPIInitialized) {
                     }
                 }
                 </style>
-<script src="/view-resources/public/common/JWTCookie.js?v=1782459309-L4"></script>
-<script src="/view-resources/public/common/Paywall.js?v=1782459309-L4"></script>
+<script src="/view-resources/public/common/JWTCookie.js?v=1782902298-L4"></script>
+<script src="/view-resources/public/common/Paywall.js?v=1782902298-L4"></script>
                 <script>
                 window.Dac = window.Dac || {};
                 (function () {
@@ -299,7 +299,7 @@ if (PROVIDER_CONFIG && !window.__labradorPaywallClientAPIInitialized) {
                 }());
                 </script>
 
-                    <script type="module" src="/view-resources/baseview/public/common/baseview/moduleHandlers.js?v=1782459309-L4" data-cookieconsent="ignore"></script>
+                    <script type="module" src="/view-resources/baseview/public/common/baseview/moduleHandlers.js?v=1782902298-L4" data-cookieconsent="ignore"></script>
 <!-- DataLayer -->
 <script>
 
@@ -483,6 +483,10 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 article.column .content .media .floatingText .section {
     background-color: #ff0000;
     color: #ffffff;
+}
+
+article.column .content .section {
+    box-shadow: none !important;
 }</style><style >@media (min-width: 768px) {
 .custom-bodytext-alignment .bodytext>p,
 .custom-bodytext-alignment .bodytext>h2, 
@@ -1155,24 +1159,40 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
             if (document.querySelector('[data-id="pageElements-7"] .search-button')) {
                 // Now we can set a const that is only available inside the if scope
                 const searchButton = document.querySelector('[data-id="pageElements-7"] .search-button');
+                let searchWasExpanded = false;
+                let hadPointerDown = false;
+                searchButton.addEventListener('pointerdown', () => {
+                    searchWasExpanded = searchButton.getAttribute('aria-expanded') === 'true';
+                    hadPointerDown = true;
+                });
                 searchButton.addEventListener('click', (event) => {
                     event.preventDefault();
                     event.stopPropagation();
 
-                    // Toggle the expanded class on the search button and set the aria-expanded attribute.
-                    searchButton.parentElement.classList.toggle('expanded');
-                    searchButton.setAttribute('aria-expanded', searchButton.getAttribute('aria-expanded') === 'true' ? 'false' : 'true');
-                    searchButton.setAttribute('aria-label', searchButton.getAttribute('aria-expanded') === 'true' ? 'Close search' : 'Open search');
+                    // For pointer interactions (mouse/touch), use the state captured at pointerdown time,
+                    // before focusout could collapse the search. For keyboard interactions, pointerdown
+                    // never fires, so read aria-expanded directly — focusout doesn't fire on keyboard
+                    // so the current state is still accurate.
+                    const wasExpanded = hadPointerDown ? searchWasExpanded : searchButton.getAttribute('aria-expanded') === 'true';
+                    hadPointerDown = false;
 
-                    // Set focus to the input. 
+                    const shouldOpen = !wasExpanded;
+                    searchButton.parentElement.classList.toggle('expanded', shouldOpen);
+                    searchButton.setAttribute('aria-expanded', shouldOpen ? 'true' : 'false');
+                    searchButton.setAttribute('aria-label', shouldOpen ? 'Close search' : 'Open search');
+
+                    // Set focus to the input.
                     // This might be dodgy due to moving focus automatically, but we'll keep it in for now.
-                    if (searchButton.getAttribute('aria-expanded') === 'true') {
+                    if (shouldOpen) {
                         document.getElementById('search-input-7').focus();
                     }
                 }, false);
             }
 
             if (document.getElementById('bonusButton')) {
+                document.getElementById('bonusButton').addEventListener('pointerdown', (event) => {
+                    event.preventDefault();
+                });
                 document.getElementById('bonusButton').addEventListener('click', (event) => {
                     document.querySelector('[data-id="pageElements-7"] .search-container').submit();
                 }, false);
@@ -1412,8 +1432,8 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 
         <section class="main front" id="main">
         <h1 class="hidden-heading">Privacy Policy - The Register</h1>
-            <div data-element-guid="991b08b4-12f5-49b6-dedc-27eb1c30fb1b" class="placeholder placement-top">
-<div data-element-guid="bb1bcaa8-446d-4eb7-dcc3-f8e1fa5080bf" class="column google-ad small-12 large-12 small-abs-12 large-abs-12"  style="">
+            <div data-element-guid="7eb79449-1e88-4201-f0b0-a33a9797ccc0" class="placeholder placement-top">
+<div data-element-guid="992b7e77-2712-47b0-d40b-28cff3992b5a" class="column google-ad small-12 large-12 small-abs-12 large-abs-12"  style="">
 
         <span class="ad-label">REG AD</span>
         <div class="adunit" id="labrador/thereg/front/desktop/a" style="min-height:90px;"></div>
@@ -1425,7 +1445,8 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 </div>
 
 </div>
-            <div data-element-guid="93b1d90d-d469-4a09-858a-09d450fd0291" class="page-content"><div data-element-guid="161aa3b0-9c6b-471e-98ff-b817f9575945" class="row small-12 large-12" style=""><div data-element-guid="e27d7993-20f8-4069-9219-ebe2876d8184" id="markup_5209917" class="markupbox column small-12 large-12 small-abs-12 large-abs-12">
+            <div data-element-guid="93b1d90d-d469-4a09-858a-09d450fd0291" class="page-content"><div data-element-guid="161aa3b0-9c6b-471e-98ff-b817f9575945" class="row small-12 large-12" style="">
+	<div data-element-guid="e27d7993-20f8-4069-9219-ebe2876d8184" id="markup_5209917" class="markupbox column small-12 large-12 small-abs-12 large-abs-12">
     
     <div class="content fullwidthTarget" style="">
 
@@ -1829,7 +1850,8 @@ San Francisco CA 94108</p>
 
 <footer class="page">
     <div data-element-guid="1b2aade5-2711-4202-83e0-c1ee17a28b9b" class="row-section desktop-space-outsideBottom-none mobile-space-outsideBottom-none bg-quaternary color_mobile_bg-quaternary hasContentPadding mobile-hasContentPadding" style="">
-<div class="row small-12 large-12 desktop-space-outsideBottom-none mobile-space-outsideBottom-none desktop-space-insideTop-none mobile-space-insideTop-none bg-quaternary color_mobile_bg-quaternary hasContentPadding mobile-hasContentPadding" style=""><div data-element-guid="342e5400-b668-48dd-b811-7f53040cac1f" id="markup_102602" class="markupbox column small-12 large-12 small-abs-12 large-abs-12 desktop-fullWidth mobile-fullWidth">
+<div class="row small-12 large-12 desktop-space-outsideBottom-none mobile-space-outsideBottom-none desktop-space-insideTop-none mobile-space-insideTop-none bg-quaternary color_mobile_bg-quaternary hasContentPadding mobile-hasContentPadding" style="">
+	<div data-element-guid="342e5400-b668-48dd-b811-7f53040cac1f" id="markup_102602" class="markupbox column small-12 large-12 small-abs-12 large-abs-12 desktop-fullWidth mobile-fullWidth">
     <style></style>
     <div class="content fullwidthTarget bg-quaternary color_mobile_bg-quaternary hasContentPadding mobile-hasContentPadding" style="">
 
@@ -1849,10 +1871,10 @@ San Francisco CA 94108</p>
 </div>
 </div>
 <div data-element-guid="652fb46f-93f4-42cd-8110-7307542d326a" class="row-section desktop-space-outsideTop-none mobile-space-outsideTop-none bg-quinary color_mobile_bg-quinary hasContentPadding mobile-hasContentPadding" style="">
-<div class="row small-12 large-12 desktop-space-outsideTop-none mobile-space-outsideTop-none bg-quinary color_mobile_bg-quinary hasContentPadding mobile-hasContentPadding" style=""><article data-element-guid="eb364ced-8795-41d6-ac71-8c68f9bb5aa7" class="column small-12 large-2 small-abs-12 large-abs-2 " data-site-alias="" data-section="" data-instance="100744" itemscope>
+<div class="row small-12 large-12 desktop-space-outsideTop-none mobile-space-outsideTop-none bg-quinary color_mobile_bg-quinary hasContentPadding mobile-hasContentPadding" style="">
+	<article data-element-guid="eb364ced-8795-41d6-ac71-8c68f9bb5aa7" class="column small-12 large-2 small-abs-12 large-abs-2 " data-site-alias="" data-section="" data-instance="100744" itemscope>
     <style></style>
     <div class="content" style="">
-        
         
 
 
@@ -1896,7 +1918,6 @@ San Francisco CA 94108</p>
     <style></style>
     <div class="content" style="">
         
-        
 
 
         <div class="media ">
@@ -1938,7 +1959,6 @@ San Francisco CA 94108</p>
 <article data-element-guid="95965a77-7ca7-4314-ad6b-45263a326748" class="column small-12 large-2 small-abs-12 large-abs-2 " data-site-alias="" data-section="" data-instance="100746" itemscope>
     <style></style>
     <div class="content mobile_no_border_color mobile_no_border_side" style="">
-        
         
 
 
@@ -1982,7 +2002,6 @@ San Francisco CA 94108</p>
     <style></style>
     <div class="content mobile_no_border_color mobile_no_border_side" style="">
         
-        
 
 
         <div class="media ">
@@ -2018,7 +2037,6 @@ San Francisco CA 94108</p>
     <style>@media (max-width: 1023px) { [data-element-guid="181414e4-8d1d-4724-9997-6e1172b8476c"] .content { margin-right:14% !important; margin-left:12% !important; } }</style>
     <div class="content color_mobile_no_bg_color border-side-left mobile_border-side-top border_width_2 border_width_mobile_2" style="">
         
-        
 
 
         <div class="media ">
@@ -2050,6 +2068,7 @@ San Francisco CA 94108</p>
 
                 
                 
+                
 
             <div class="floatingText">
 
@@ -2079,7 +2098,7 @@ San Francisco CA 94108</p>
 </footer>
 
 
-<script src="/view-resources/baseview/public/common/build/baseview_dependencies_dom.js?v=1782459309-L4" data-cookieconsent="ignore"></script>
+<script src="/view-resources/baseview/public/common/build/baseview_dependencies_dom.js?v=1782902298-L4" data-cookieconsent="ignore"></script>
 
         <script>
             window.dachserData.handlers = {
