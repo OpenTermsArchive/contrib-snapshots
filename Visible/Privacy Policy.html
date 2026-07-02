@@ -89,11 +89,11 @@
 
   // ==================== ONETRUST THROTTLE CONFIGURATION ====================
   // Phase 1: 0% (dark deployment - BAU for all users)
-  // Phase 2: 10%
+  // Phase 2: 10% ✅ CURRENT
   // Phase 3: 50%
   // Phase 4: 100% (OT no longer loading)
   // Phase 5: Remove throttle logic entirely
-  const OT_THROTTLE_PERCENTAGE = 0;
+  const OT_THROTTLE_PERCENTAGE = 10;
 
   const CONSTANTS = {
     AIRGAP_METADATA: {
@@ -1003,11 +1003,30 @@
 
   // ==================== ONETRUST THROTTLE & MIGRATION LOGIC ====================
 
+  // Sticky percentage rollout. A user is either fully IN the Transcend-only
+  // experience (treated exactly like useNewImpl) or fully OUT (normal/BAU).
+  // Keeping this all-or-nothing is what prevents the `active` vs `userIncluded`
+  // split-state bugs: with only 0 or 100 possible, the two flags always agree.
+  function isUserInThrottleRollout() {
+    if (OT_THROTTLE_PERCENTAGE <= 0) return false;
+    if (OT_THROTTLE_PERCENTAGE >= 100) return true;
+
+    let throttleAssignment = getCk('UDNS_OT_THROTTLE');
+    if (throttleAssignment === '') {
+      throttleAssignment = String(Math.floor(Math.random() * 100));
+      setLclCk('UDNS_OT_THROTTLE', throttleAssignment);
+    }
+    return Number(throttleAssignment) < OT_THROTTLE_PERCENTAGE;
+  }
+
   function getEffectiveThrottle() {
+    // Manual tester override (useNewImpl) forces the full Transcend-only experience.
     if (isIntlFeatureEnabled()) {
       return 100;
     }
-    return OT_THROTTLE_PERCENTAGE;
+    // Otherwise the user is either in the rollout (treated like useNewImpl => 100)
+    // or out of it (normal/BAU => 0). Nothing in between.
+    return isUserInThrottleRollout() ? 100 : 0;
   }
 
   function getTranscendOnlyThrottleState() {
@@ -1016,22 +1035,15 @@
       CONSTANTS.LCL_STORAGE.ACTIVE_TRANSCEND_ONLY_THROTTLE_TESTING
     );
 
+    // value is only ever 0 or 100, so active and userIncluded agree in production.
     let active = value > 0;
-    let userIncluded = false;
+    let userIncluded = value >= 100;
 
+    // Testing helper: simulate an active throttle where THIS user is excluded,
+    // to exercise the OneTrust "active but excluded" branch.
     if (activeTestingOverride) {
       active = true;
       userIncluded = false;
-    } else if (value >= 100) {
-      active = true;
-      userIncluded = true;
-    } else if (value > 0) {
-      let throttleAssignment = getCk('UDNS_OT_THROTTLE');
-      if (!throttleAssignment) {
-        throttleAssignment = String(Math.floor(Math.random() * 100));
-        setLclCk('UDNS_OT_THROTTLE', throttleAssignment);
-      }
-      userIncluded = Number(throttleAssignment) < value;
     }
 
     return {
@@ -3031,10 +3043,10 @@
                   <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown" tabindex="-1" aria-hidden="true" role="none"> <span class="caret"></span></button>
         <ul class="dropdown-menu">
                                                 <li hreflang="en" data-drupal-link-system-path="node/3" class="is-active">
-                                                    <a href="/about/privacy/privacy-policy-summary" class="language-link is-active" hreflang="en" data-drupal-link-system-path="node/3">English</a>
+                                                    <a href="/about/privacy/privacypolicysummary" class="language-link is-active" hreflang="en" data-drupal-link-system-path="node/3">English</a>
                                             </li>
                                                                 <li  hreflang="es" data-drupal-link-system-path="node/3" >
-                                                    <a href=https://esus.verizon.com/about/privacy/privacy-policy-summary  class="language-link"  hreflang="es" data-drupal-link-system-path="node/3" > Español </a>
+                                                    <a href=https://esus.verizon.com/about/privacy/privacypolicysummary  class="language-link"  hreflang="es" data-drupal-link-system-path="node/3" > Español </a>
                                             </li>
                                     </ul>
     
