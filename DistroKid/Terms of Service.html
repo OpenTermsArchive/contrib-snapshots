@@ -24,7 +24,7 @@
 <meta name="msapplication-TileImage" content="/ms-icon-144x144.png">
 <meta name="theme-color" content="#ffffff">
 <script>
-serverTime = new Date('2026-07-01 12:37:23 GMT');
+serverTime = new Date('2026-07-02 12:36:50 GMT');
 </script>
 <title>Terms of Service | DistroKid</title>
 <meta name="description" content="Read DistroKid's Terms of Service">
@@ -73,9 +73,9 @@ initializeDKModal();
 captchaSiteKey = "6Ld_vDcUAAAAABBf4b4MfIPqz5XA53JWQyOh6MX0";
 turnstileSiteKey = "0x4AAAAAAAwjnOrGSKrIkAR9";
 </script>
-<script src="/js/header.js?cacheHash=2b93bc7519c68007" 1782909443072></script>
-<script src="/js/distro.js?cacheHash=5323cb1d3826d372" 1782909443072></script>
-<script src="/js/fixCaps.js?cacheHash=4d712b9355dbb337" 1782909443072></script>
+<script src="/js/header.js?cacheHash=2b93bc7519c68007" 1782952606267></script>
+<script src="/js/distro.js?cacheHash=5323cb1d3826d372" 1782952606267></script>
+<script src="/js/fixCaps.js?cacheHash=4d712b9355dbb337" 1782952606267></script>
 <script src="/js/jquery.kenburns-0.1.js"></script>
 <script src="/js/lazysizes.min.js"></script>
 <script>
@@ -295,7 +295,7 @@ window.__telemetryConfig = {"localdevLog":false,"apiUrl":"https://uwwgok9jpj.exe
 <div style="position:relative;" class="outer2 navNotLoggedIn">
 <div class="headerLoggedOutNav nav inner2">
 <div class="navInner">
-<input type="hidden" id="forgotPasswordSessionID" name="forgotPasswordSessionID" value="distrokid_1da29f52-053f-4844-8b97-c34d7dc267d3_0">
+<input type="hidden" id="forgotPasswordSessionID" name="forgotPasswordSessionID" value="distrokid_6cbb0948-f50b-4310-88e4-10d1cabdbacb_0">
 <script type="text/template" id="templateForgotPassword">
 <div class="signinBoxNotification">
 Done! Instructions to reset your password have been emailed.
@@ -349,15 +349,10 @@ Done. We just emailed instructions to you.
 <input type="button" style="width:100%" class="sign-in-button-round" id="signinButton" value="Sign in" onclick="signinSubmitCaptcha(this, signinForm);"> 
 </div>
 </form>
-<div class="or-container-sign-up"><hr class="or-hr"><p class="or-sign-up">or</p><hr class="or-hr"></div>
-<div class="social-sign-in-container">
-<button title="Apple" class="sign-in-icon-button" data-testid="header-apple-sso-sign-in-button" onclick="$j('.signinBox').hide(); popup('https://auth.distrokid.com/oauth2/authorize?identity_provider=SignInWithApple&redirect_uri=https%3A%2F%2Fdistrokid%2Ecom%2Fsignin%2Fsocial%2Fcallback%2F&response_type=CODE&client_id=3c6i9jhf1n06021b411h4l2ia9&scope=email%20openid%20phone%20profile&state=','DistroKidSocial',500,500)">
-<img src="/images/apple-sign-in-icon.png" class="sign-in-icon" alt="Apple sign-in icon">
-</button>
-<button title="Google" class="sign-in-icon-button" data-testid="header-google-sso-sign-in-button" onclick="$j('.signinBox').hide(); popup('https://auth.distrokid.com/oauth2/authorize?identity_provider=Google&redirect_uri=https%3A%2F%2Fdistrokid%2Ecom%2Fsignin%2Fsocial%2Fcallback%2F&response_type=CODE&client_id=3c6i9jhf1n06021b411h4l2ia9&scope=email%20openid%20phone%20profile&state=','DistroKidSocial',500,500)">
-<img src="/images/google-sign-in-icon.png" class="sign-in-icon" alt="Google sign-in icon">
-</button>
-</div>
+<!-- Social Login Disabled.
+Check Application Settings - awsCognito > isAvailable
+Check config settings for environment
+-->
 <div class="dk-signinForgotPassword">
 <a class="signinForgotPasswordLink pointer" onclick="forgotYourPassword();">Forgot your password?</a>
 </div>
@@ -484,7 +479,7 @@ Copyright Agent
 DistroKid LLC
 34 Third Ave #183
 New York, NY 10003
-Email: <a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="14787173757854707d6760667b7f7d703a777b79">[email&#160;protected]</a> <br>
+Email: <a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="cfa3aaa8aea38faba6bcbbbda0a4a6abe1aca0a2">[email&#160;protected]</a> <br>
 In accordance with the DMCA and other applicable law, DistroKid has adopted a policy of terminating, in appropriate circumstances and in DistroKid's sole discretion, users who are deemed to be repeat infringers. For the avoidance of doubt, the foregoing sentence in no way limits DistroKid's right to limit access to the Services and/or terminate the Accounts of any users for any reason, in DistroKid's sole discretion, including, without limitation, in the case of users who infringe, or allegedly infringe, any Intellectual Property Rights of others, whether or not there is any repeat infringement. <br>
 Please be advised that pursuant to federal law you may be held liable for damages if you make material misrepresentations in a Notice. Thus, if you are not sure that material located on or linked to by the infringes your copyright, you should consider first contacting an attorney. <br>
 <strong>Links to Third-Party Websites or Services</strong><br>
@@ -580,7 +575,7 @@ keepalive: true,
 credentials: 'same-origin',
 headers: {
 'Content-Type': 'application/json',
-'Authorization': 'Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJjbGkiOjEsImlhdCI6MTc4MjkwOTQ0MywiaXNzIjoiaHR0cHM6Ly9kaXN0cm9raWQuY29tIiwic3ViIjowLCJleHAiOjE3ODI5MTMwNDMsImRldiI6IiIsInNjb3BlIjoicmVhZC1wcm9maWxlIiwiYXVkIjoiIn0._pXSdVKoDwuJnANJODQmcZhbpyOqmgxfgsRSsi1fHzQ'
+'Authorization': 'Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJjbGkiOjEsImlhdCI6MTc4Mjk1MjYxMCwiaXNzIjoiaHR0cHM6Ly9kaXN0cm9raWQuY29tIiwic3ViIjowLCJleHAiOjE3ODI5NTYyMTAsImRldiI6IiIsInNjb3BlIjoicmVhZC1wcm9maWxlIiwiYXVkIjoiIn0.3QoQGn4fgDXzg_GOT9-aYLxeRK8uhsiLCEzwf1MKnY8'
 },
 body: JSON.stringify({ languageCode: languageCode })
 });
@@ -710,7 +705,7 @@ initialScope: {
 tags: {
 "dev_user": "unknown",
 "user_id": "0",
-"machine_name": "prod-dk-web-04"
+"machine_name": "prod-dk-web-06"
 }
 },
 beforeSend: function(event, hint) {
