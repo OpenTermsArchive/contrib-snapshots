@@ -38,7 +38,8 @@
     .browsers-list li{padding: 5px 0 5px 20px;}
     .browsers-list li a{padding: 5px;}
   </style>
-  <!-- Set default consent -->
+  <!-- Tracking/Analytics/Consent (no Query) - for use on all new pages -->
+<!-- Set default consent -->
 <script>
 	window.dataLayer = window.dataLayer || [];
 	function gtag(){ dataLayer.push(arguments); }
@@ -97,6 +98,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-MM46ZPR" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 <!-- End Google Tag Manager (noscript) -->
 
+<!-- Main website navigation -->
 <header id="global_header">
     <div class="content_wrap">
         <input type="checkbox" id="hamburger-checkbox" class="header-checkbox" aria-label="Toggle Navigation">
@@ -164,15 +166,6 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
                                     </div>
                                 </a>
                             </li>
-                            <!-- <li>
-                                <a href="/pdfconverter/">
-                                    <img class="prod-icon" src="/images/prods/64_pdfconverter.png" alt="PDF Converter icon" loading="lazy" decoding="async" width="64" height="64">
-                                    <div class="prod-info">
-                                        <span class="prod-name">PDF Converter</span>
-                                        <span class="prod-des">Convert and secure PDF files</span>
-                                    </div>
-                                </a>
-                            </li> -->
                             <li>
                                 <a href="/duplicatesweeper/">
                                     <img class="prod-icon" src="/images/prods/64_duplicatesweeper.png" alt="Duplicate Sweeper icon" loading="lazy" decoding="async" width="64" height="64">
@@ -182,36 +175,9 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
                                     </div>
                                 </a>
                             </li>
-                            <!-- <li>
-                                <a href="/contacttransfer/">
-                                    <img class="prod-icon" src="/images/prods/64_contacttransfer.png" alt="Contact Transfer icon" loading="lazy" decoding="async" width="64" height="64">
-                                    <div class="prod-info">
-                                        <span class="prod-name">Contact Transfer</span>
-                                        <span class="prod-des">Copy contacts between devices</span>
-                                    </div>
-                                </a>
-                            </li> -->
                             <li>
                                 <a href="/products/" class="more-products">More Products &#8594;</a>
                             </li>
-                            <!-- <li>
-                                <a href="/waveform/">
-                                    <img class="prod-icon" src="/images/prods/64_waveform.png" alt="Waveform icon" loading="lazy" decoding="async" width="64" height="64">
-                                    <div class="prod-info">
-                                        <span class="prod-name">Waveform</span>
-                                        <span class="prod-des">Music manager for Windows</span>
-                                    </div>
-                                </a>
-                            </li>
-                            <li>
-                                <a href="/ailocalizer/">
-                                    <img class="prod-icon" src="/images/prods/64_ailocalizer.png" alt="AI Localizer icon" loading="lazy" decoding="async" width="64" height="64">
-                                    <div class="prod-info">
-                                        <span class="prod-name">AI Localizer <img src="/images/style/sidebar_new_m.gif" alt="new" style="max-width: 40px" width="40" height="15"></span>
-                                        <span class="prod-des">Automatic app translation</span>
-                                    </div>
-                                </a>
-                            </li> -->
 
                         </ul>
                     </div>
@@ -226,6 +192,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
                 </li>
             </ul>
 
+            <!-- Basket appears to users who went back from incomplete checkout -->
             <a href="/store/checkout.php" hidden=true id="basket_link" style="position:relative;float:right;margin-right:100px">
                 <div style="height:60px; display:flex; align-items:center;">
                     <div style="padding:2px 6px; background:lightgray;border-radius:10px;-moz-border-radius: 10px; ">
@@ -235,10 +202,12 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
                 </div>
             </a>
 
+            <!-- Languages dropdown gets populated dynamically by mobilenavnoflags file if localized version of page is available -->
             <div id="languages">
             </div>
         </nav>
 
+        <!-- Mobile controls -->
         <label id="hamburger_nav_icon_wrapper" class="header-toggle" for="hamburger-checkbox">
             <div id="hamburger_nav_icon">
                 <span></span>
@@ -261,7 +230,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
     <a class="content_sub_navigation_link" href="/refunds/">Refunds</a>
     <a class="content_sub_navigation_link" href="/trademarks/">Trademarks</a>    
   </div>  <div class="content_wrap_core">
-    <div class="pad mpad20">
+    <div>
       <br>
       <h1>Cookie Policy</h1>
 
@@ -503,83 +472,149 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 
 <script type="text/javascript">document.getElementById("basket_link").hidden = true;</script>  <!-- Mobile Navigation -->
   <script>
+    /**
+     * Builds the language picker HTML by scanning <link hreflang="..."> tags
+     * in the document head.
+     *
+     * @returns {string} HTML for the language selector, or an empty string
+     * if no alternate language links are found.
+     */
     function createLanguageSelection() {
         var a = 0,
             d = 0,
             b = document.getElementsByTagName("link"),
             c = "";
-        for (c += '<div id=\'language_current\'>English (en) <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" fill="currentColor" viewBox="0 0 12 10"><path stroke="currentColor" stroke-width="0.7" d="M 1.1522 3.2522 a 0.35 0.35 90 0 1 0.4956 0 L 5.6 7.2051 l 3.9522 -3.9529 a 0.35 0.35 90 0 1 0.4956 0.4956 l -4.2 4.2 a 0.35 0.35 90 0 1 -0.4956 0 l -4.2 -4.2 a 0.35 0.35 90 0 1 0 -0.4956 z"/></svg></div><div id=\'language_selection\'><ul id=\'language_list\'>'; a < b.length;) "de" == b[a].hreflang ? (c += "<li class='language_option'><a href='" + b[a].href + "'>Deutsch (de)</a></li>", d++) : "fr" == b[a].hreflang ? (c += "<li class='language_option'><a href='" + b[a].href + "'>Fran&ccedil;ais (fr)</a></li>", d++) : "es" == b[a].hreflang ? (c += "<li class='language_option'><a href='" + b[a].href + "'>Espa&ntilde;ol (es)</a></li>", d++) : "ja" == b[a].hreflang && (c += "<li class='language_option'><a href='" + b[a].href + "'>\u65E5\u672C\u8A9E (jp)</a></li>", d++), a++;
-        return c += "</ul></div>", 0 == d && (c = ""), c
+
+        // Create the language picker container with English as the current language.
+        for (
+            c += '<div id=\'language_current\'>English (en) <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" fill="currentColor" viewBox="0 0 12 10"><path stroke="currentColor" stroke-width="0.7" d="M 1.1522 3.2522 a 0.35 0.35 90 0 1 0.4956 0 L 5.6 7.2051 l 3.9522 -3.9529 a 0.35 0.35 90 0 1 0.4956 0.4956 l -4.2 4.2 a 0.35 0.35 90 0 1 -0.4956 0 l -4.2 -4.2 a 0.35 0.35 90 0 1 0 -0.4956 z"/></svg></div><div id=\'language_selection\'><ul id=\'language_list\'>';
+
+            a < b.length;
+        )
+            // Look for alternate language links generated in the page head.
+            "de" == b[a].hreflang
+                ? (c += "<li class='language_option'><a href='" + b[a].href + "'>Deutsch (de)</a></li>", d++)
+                : "fr" == b[a].hreflang
+                ? (c += "<li class='language_option'><a href='" + b[a].href + "'>Fran&ccedil;ais (fr)</a></li>", d++)
+                : "es" == b[a].hreflang
+                ? (c += "<li class='language_option'><a href='" + b[a].href + "'>Espa&ntilde;ol (es)</a></li>", d++)
+                : "ja" == b[a].hreflang &&
+                  (c += "<li class='language_option'><a href='" + b[a].href + "'>\u65E5\u672C\u8A9E (jp)</a></li>", d++),
+                a++;
+
+        c += "</ul></div>";
+
+        // Hide the language picker entirely if no alternate languages exist.
+        if (d == 0) {
+            c = "";
+        }
+
+        return c;
     }
+
+    // Wait until the DOM is fully loaded before querying page elements.
     document.addEventListener('DOMContentLoaded', function() {
-    const hamburgerIcon = document.getElementById('hamburger_nav_icon_wrapper');
-    const navigationMenu = document.getElementById('global_header_navigation');
-    const productsHeaderLink = document.getElementById('products_header_link');
-    const productsDropdown = document.getElementById('products_dropdown');
 
-    function addFastEventListener(element, event, handler, preventDefault = false) {
-        if (!element) return;
-        element.addEventListener(event, function(e) {
-            if (preventDefault) {
-                e.preventDefault(); // Only prevent default when necessary
-            }
-            handler(e);
-        }, { passive: !preventDefault }); // Passive unless preventing default
-    }
+        // Primary navigation elements.
+        const hamburgerIcon = document.getElementById('hamburger_nav_icon_wrapper');
+        const navigationMenu = document.getElementById('global_header_navigation');
+        const productsHeaderLink = document.getElementById('products_header_link');
+        const productsDropdown = document.getElementById('products_dropdown');
 
-    let touchHandled = false;
+        /**
+         * Adds an event listener with sensible defaults for touch devices.
+         *
+         * Passive listeners improve scroll performance. If preventDefault()
+         * is required, passive mode is automatically disabled.
+         *
+         * Safe to call with null elements.
+         */
+        function addFastEventListener(element, event, handler, preventDefault = false) {
+            if (!element) return;
 
-    function toggleMenu(event) {
-        if (event.type === 'touchstart') {
-            touchHandled = true;
-        } else if (event.type === 'click' && touchHandled) {
-            touchHandled = false;
-            return; // Skip duplicate click event
+            element.addEventListener(event, function(e) {
+                if (preventDefault) {
+                    e.preventDefault();
+                }
+
+                handler(e);
+            }, {
+                passive: !preventDefault
+            });
         }
 
-        if (hamburgerIcon && navigationMenu) {
-            hamburgerIcon.classList.toggle('open');
-            navigationMenu.classList.toggle('open');
-        }
-    }
+        // Prevents touch devices from firing both touchstart and click handlers.
+        let touchHandled = false;
 
-    if (hamburgerIcon && navigationMenu) {
-        addFastEventListener(hamburgerIcon, 'touchstart', toggleMenu, true);
-        addFastEventListener(hamburgerIcon, 'click', toggleMenu);
-    }
-
-    if (productsHeaderLink) {
-        const productsLink = productsHeaderLink.querySelector("a"); // Get the "Products" link
-
-        function handleProductsClick(event) {
-            if (window.innerWidth <= 678) {
-                event.preventDefault(); // Stop navigation
-                event.stopImmediatePropagation(); // Prevent other handlers from firing
-                productsDropdown.classList.toggle("open"); // Toggle dropdown
-            }
-        }
-
-        // Listen for both touchstart and click, ensuring mobile behavior
-        addFastEventListener(productsLink, "click", handleProductsClick);
-        addFastEventListener(productsLink, "touchstart", handleProductsClick, true);
-    }
-
-    const languagePicker = document.getElementById('languages');
-    if (languagePicker) {
-        languagePicker.innerHTML = createLanguageSelection();
-
-        const languageCurrent = document.getElementById('language_current');
-        const languageSelection = document.getElementById('language_selection');
-        
-        if (languageCurrent && languageSelection) {
-            addFastEventListener(languageCurrent, 'touchstart', function(event) {
-                event.preventDefault(); // Prevent scroll or other defaults
+        /**
+         * Opens/closes the mobile navigation menu.
+         *
+         * On touch devices, browsers often fire both touchstart and click.
+         * This logic ignores the duplicate click event.
+         */
+        function toggleMenu(event) {
+            if (event.type === 'touchstart') {
                 touchHandled = true;
-                languageSelection.classList.toggle('open');
-            }, true);
-        }
-    }
+            } else if (event.type === 'click' && touchHandled) {
+                touchHandled = false;
+                return;
+            }
 
-});
+            if (hamburgerIcon && navigationMenu) {
+                hamburgerIcon.classList.toggle('open');
+                navigationMenu.classList.toggle('open');
+            }
+        }
+
+        // Enable hamburger menu interactions.
+        if (hamburgerIcon && navigationMenu) {
+            addFastEventListener(hamburgerIcon, 'touchstart', toggleMenu, true);
+            addFastEventListener(hamburgerIcon, 'click', toggleMenu);
+        }
+
+        // Mobile-only Products dropdown.
+        if (productsHeaderLink) {
+            const productsLink = productsHeaderLink.querySelector("a");
+
+            /**
+             * Expands/collapses the Products submenu on small screens.
+             * Desktop navigation continues to behave as a normal link.
+             */
+            function handleProductsClick(event) {
+                if (window.innerWidth <= 678) {
+                    event.preventDefault();
+                    event.stopImmediatePropagation();
+                    productsDropdown.classList.toggle("open");
+                }
+            }
+
+            addFastEventListener(productsLink, "click", handleProductsClick);
+            addFastEventListener(productsLink, "touchstart", handleProductsClick, true);
+        }
+
+        // Dynamically build the language picker if the placeholder exists.
+        const languagePicker = document.getElementById('languages');
+
+        if (languagePicker) {
+            languagePicker.innerHTML = createLanguageSelection();
+
+            const languageCurrent = document.getElementById('language_current');
+            const languageSelection = document.getElementById('language_selection');
+
+            if (languageCurrent && languageSelection) {
+
+                /**
+                 * Toggles the language list on touch devices.
+                 * The "open" class is expected to be handled via CSS.
+                 */
+                addFastEventListener(languageCurrent, 'touchstart', function(event) {
+                    event.preventDefault();
+                    touchHandled = true;
+                    languageSelection.classList.toggle('open');
+                }, true);
+            }
+        }
+
+    });
 </script></body>
 </html>
