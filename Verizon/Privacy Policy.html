@@ -24,7 +24,7 @@
 <meta property="og:image" content="" />
 <meta property="og:image:secure_url" content="" />
 <meta property="og:type" content="website" />
-<meta property="og:updated_time" content="2026-06-30EDT23:33:24-14400" />
+<meta property="og:updated_time" content="2026-07-08EDT22:07:20-14400" />
 <meta name="twitter:description" content="View Verizon’s full Privacy Policy. Learn what information we collect, how it’s used and your rights under certain laws" />
 <meta property="og:description" content="View Verizon’s full Privacy Policy. Learn what information we collect, how it’s used and your rights under certain laws" />
 <link rel="icon" href="/about/privacy/themes/custom/vzpp/favicon.ico" type="image/vnd.microsoft.icon" />
@@ -92,7 +92,17 @@
   // Phase 3: 50%
   // Phase 4: 100% (OT no longer loading)
   // Phase 5: Remove throttle logic entirely
-  const OT_THROTTLE_PERCENTAGE = 10;
+  const OT_THROTTLE_PERCENTAGE = 50;
+
+  // Cached throttle decision for the CURRENT page load. isUserInThrottleRollout()
+  // (via getTranscendOnlyThrottleState()) is called several times per load, so we
+  // roll the random assignment only once and reuse it for the rest of the load.
+  // This stops the UDNS_OT_THROTTLE cookie from being rewritten with a different
+  // value multiple times during a single refresh, while a real page refresh resets
+  // this cache and re-rolls (keeping the throttle non-sticky across refreshes).
+  // Declared here (not next to the function) so it is initialized before the
+  // throttle functions run, avoiding a temporal-dead-zone ReferenceError.
+  let throttleRolloutDecision;
 
   const CONSTANTS = {
     AIRGAP_METADATA: {
@@ -132,68 +142,128 @@
   };
   
   const OPT_OUT_COUNTRIES = [
-    "cn",
-    "china",
-    "il",
-    "israel",
-    "ph",
-    "philippines",
-    "sg",
-    "singapore",
-    "uy",
-    "uruguay",
-    "vn",
-    "vietnam",
+    'au',
+    'australia',
+    'cn',
+    'china',
+    'mx',
+    'mexico',
+    'nz',
+    'new zealand',
+    'ph',
+    'philippines',
+    'sg',
+    'singapore',
+    'uy',
+    'uruguay',
+    'vn',
+    'vietnam',
   ];
   const OPT_IN_COUNTRIES = [
-    "eu",
-    "european union",
-    "br",
-    "brazil",
-    "ca",
-    "canada",
-    "co",
-    "colombia",
-    "et",
-    "ethiopia",
-    "is",
-    "iceland",
-    "in",
-    "india",
-    "id",
-    "indonesia",
-    "jp",
-    "japan",
-    "li",
-    "liechtenstein",
-    "my",
-    "malaysia",
-    "mx",
-    "mexico",
-    "ng",
-    "nigeria",
-    "no",
-    "norway",
-    "pe",
-    "peru",
-    "ru",
-    "russia",
-    "za",
-    "south africa",
-    "kr",
-    "south korea",
-    "ch",
-    "switzerland",
-    "th",
-    "thailand",
-    "tr",
-    "turkey",
-    "ae",
-    "united arab emirates",
-    "gb",
-    "united kingdom",
-    "uk",
-    "united kingdom",
+    'ar',
+    'austria',
+    'be',
+    'belgium',
+    'br',
+    'brazil',
+    'bg',
+    'bulgaria',
+    'ca',
+    'canada',
+    'co',
+    'colombia',
+    'hr',
+    'croatia',
+    'cy',
+    'cyprus',
+    'cz',
+    'czechia',
+    'dk',
+    'denmark',
+    'ee',
+    'estonia',
+    'et',
+    'ethiopia',
+    'eu',
+    'european union',
+    'fi',
+    "finland",
+    'is',
+    'fr',
+    'france',
+    'ge',
+    'germany',
+    'gr',
+    'greece',
+    'hu',
+    'hungary',
+    'iceland',
+    'in',
+    'india',
+    'id',
+    'indonesia',
+    'ie',
+    'ireland',
+    'il',
+    'israel',
+    'it',
+    'italy',
+    'jp',
+    'japan',
+    'lv',
+    'latvia',
+    'li',
+    'liechtenstein',
+    'lt',
+    'lithuania',
+    'lu',
+    'luxembourg',
+    'my',
+    'malaysia',
+    'mt',
+    'malta',
+    'mx',
+    'mexico',
+    'nl',
+    'netherlands',
+    'ng',
+    'nigeria',
+    'no',
+    'norway',
+    'pe',
+    'peru',
+    'pl',
+    'poland',
+    'ro',
+    'romania',
+    'ru',
+    'russia',
+    'russian federation',
+    'sk',
+    'slovakia',
+    'sl',
+    'slovenia',
+    'za',
+    'south africa',
+    'es',
+    'kr',
+    'south korea',
+    'se',
+    'sweden',
+    'ch',
+    'switzerland',
+    'tw',
+    'taiwan',
+    'th',
+    'thailand',
+    'tr',
+    'turkey',
+    'ae',
+    'united arab emirates',
+    'gb',
+    'united kingdom',
+    'uk',
+    'united kingdom',
   ];
 
   CONSTANTS.COUNTRIES = {
@@ -322,10 +392,6 @@
   };
   
   window.setUdnsCountry = (country) => {
-    if (!getTranscendOnlyThrottleState().active) {
-      return "ability to mock user location has be disabled - run useNewImpl() in the console to be included in the Transcend only throttle and mock your location";
-    }
-    
     if (!country) {
       // Clear mock - remove objGeo and geoC cookie
       localStorage.removeItem(LS_KEYS.USER_LOCATION);
@@ -421,8 +487,6 @@
   } else {
     window.UDNS_THROTTLE = (TC_CONSENT_OBJECT?.[SYNC_GRP]?.metadata?.UDNS_THROTTLE === 'true' ? 'true' : 'false');
   }
-  console.log('Throttle:' + window.UDNS_THROTTLE);
-  const useRegulation = (window.UDNS_THROTTLE === 'true');
 
   // ==================== AIRGAP INITIALIZATION ====================
   
@@ -433,10 +497,9 @@
     },
     ...self.airgap,
     loadOptions: {
-      reportOnly: useRegulation ? 'off' : 'on'
+      reportOnly: 'off'
     }
   };
-  console.log('Regulation:' + useRegulation);
 
   // ==================== USER LOCATION FUNCTIONS ====================
   
@@ -945,10 +1008,6 @@
   };
 
   window.resetIntlBanner = () => {
-    const intlEnabled = localStorage.getItem(LS_KEYS.INTL_FEATURE) === "1" || getCk(COOKIES.INTL_FEATURE_FLAG) === "1";
-    if (!intlEnabled) {
-      return "International feature is disabled - this function only works when international support is enabled";
-    }
     if (!window.transcend || typeof window.transcend.showConsentManager !== 'function') {
       return "Transcend is not ready yet";
     }
@@ -1002,20 +1061,25 @@
 
   // ==================== ONETRUST THROTTLE & MIGRATION LOGIC ====================
 
-  // Sticky percentage rollout. A user is either fully IN the Transcend-only
-  // experience (treated exactly like useNewImpl) or fully OUT (normal/BAU).
+  // Non-sticky percentage rollout. The throttle bucket is re-evaluated on every
+  // page load, so a refreshing user can move between IN (Transcend-only, treated
+  // exactly like useNewImpl) and OUT (normal/BAU) across refreshes.
   // Keeping this all-or-nothing is what prevents the `active` vs `userIncluded`
   // split-state bugs: with only 0 or 100 possible, the two flags always agree.
+  // (The per-load cache variable `throttleRolloutDecision` is declared near the
+  // top of the IIFE so it is initialized before this function is first called.)
   function isUserInThrottleRollout() {
     if (OT_THROTTLE_PERCENTAGE <= 0) return false;
     if (OT_THROTTLE_PERCENTAGE >= 100) return true;
 
-    let throttleAssignment = getCk('UDNS_OT_THROTTLE');
-    if (throttleAssignment === '') {
-      throttleAssignment = String(Math.floor(Math.random() * 100));
+    if (throttleRolloutDecision === undefined) {
+      // First evaluation this page load: roll once and persist the assignment so
+      // the current load's bucket stays observable via the cookie.
+      const throttleAssignment = String(Math.floor(Math.random() * 100));
       setLclCk('UDNS_OT_THROTTLE', throttleAssignment);
+      throttleRolloutDecision = Number(throttleAssignment) <= OT_THROTTLE_PERCENTAGE;
     }
-    return Number(throttleAssignment) < OT_THROTTLE_PERCENTAGE;
+    return throttleRolloutDecision;
   }
 
   function getEffectiveThrottle() {
@@ -4402,7 +4466,7 @@ Wireline customers can limit the disclosure of credit information within Verizon
 <p><strong>Customer Proprietary Network Information (CPNI)</strong><br>
 You can limit the use and <a href="#" class="te-link" data-te-target="28" aria-expanded="false">sharing of CPNI</a> for marketing services to you that are different from the ones you have.</p>
 
-<div class="te callout" data-te-id="28"><div class="te__heading h6">sharing of CPNI</div>Here is an example of a <a href="/about/privacy/customer-proprietary-network-information">CPNI notice </a>we provide to customers.<br></div>
+<div class="te callout" data-te-id="28"><div class="te__heading h6">sharing of CPNI</div>Here is an example of a <a href="/about/privacy/customer-proprietary-network-information">CPNI notice</a> we provide to customers.<br></div>
 
 <ul><li>Verizon Wireline and certain business customers:<br><span class="vzpp-icon-phone vzpp-icon--bg" style="font-size: 14px !important"><span class="sr-only">call</span></span> 1-866-483-9700 to update your preferences.</li>
 	<li>Verizon Wireless and certain business customers:<br><span class="vzpp-icon-phone vzpp-icon--bg" style="font-size: 14px !important"><span class="sr-only">call</span></span> 1-800-333-9956 to update your preferences or visit the <a href="http://verizonwireless.com/myprivacy">privacy preferences page in My Verizon</a> or in the My Verizon app (Edit profile &amp; settings -&gt; Privacy preferences).</li>
@@ -5042,7 +5106,7 @@ Washington, DC 20005
 <div class="te callout" data-te-id="pSA2PlO2LgEzqkaBdwKn">
 <div class="te__heading h6">sensitive personal information under the state laws</div>
 
-<p>The laws describe sensitive data to include some or all of the following types of information:  personal data revealing racial or ethnic origin, national origin, religious beliefs, mental or physical health condition or diagnosis (including pregnancy), sex life or sexual orientation, status as transgender or nonbinary, citizenship or immigration status, processing biometric data for the purpose of uniquely identifying you, personal data collected from a known child, precise geolocation information, certain financial information, and status as a crime victim. Depending on the products and services you use and the information you choose to share, we may have this information about you.</p>
+<p>The laws describe sensitive data to include some or all of the following types of information: personal data revealing racial or ethnic origin, national origin, religious beliefs, mental or physical health condition or diagnosis (including pregnancy), sex life or sexual orientation, status as transgender or nonbinary, citizenship or immigration status, processing biometric data for the purpose of uniquely identifying you, personal data collected from a known child, precise geolocation information, certain financial information, and status as a crime victim. Depending on the products and services you use and the information you choose to share, we may have this information about you.</p>
 </div>
 
 <div class="te callout" data-te-id="6gKOK1MbTytqK8gCBEVh">
@@ -5243,7 +5307,7 @@ Send a message</a>
 
 <p>If you would like to opt out of the collection and use of information through web-based tools such as cookies, pixels, beacons, tags, scripts and similar technology, please visit the Your Privacy Choices link above for the websites that you use, or the Do Not Sell or Share My Personal Information link in the footer of the Frontier website, in addition to having your authorized agent contact us. This will associate your opt out with your browser.</p>
 
-<p>For requests to  access, delete or correct information we require you to <a aria-expanded="false" class="te-link" data-te-target="aTZ88Fzf0OB0ZyO6dcIY" href="#">verify your identity</a> using the processes we describe in the dashboard before we fulfill your request. </p>
+<p>For requests to access, delete or correct information we require you to <a aria-expanded="false" class="te-link" data-te-target="aTZ88Fzf0OB0ZyO6dcIY" href="#">verify your identity</a> using the processes we describe in the dashboard before we fulfill your request. </p>
 
 <div class="te callout" data-te-id="aTZ88Fzf0OB0ZyO6dcIY">
 <div class="te__heading h6">verify your identity</div>
