@@ -47,8 +47,8 @@
 <link href='https://betterstack.com/terms' rel='canonical'>
 <meta content='https://betterstack.com/terms' property='og:url'>
 <meta name="csrf-param" content="authenticity_token" />
-<meta name="csrf-token" content="az_UleWLRVWphxkhCVfxU4JyKVy-jgHfjRXRV2cOKNI9iI1Bijukdq6PtF1v_scKt2eE79XH2PHFQqP7ltmJbw" />
-<meta name="csp-nonce" content="96441d1c9134a9c82ec6abbb316fa9a9" />
+<meta name="csrf-token" content="nQefzZT6abexr5AC8r_Ex6JwQ9pbOCt6HG2l4ykeErRYWnb4mGTYB1VIMuyBzJQlX0N5UOQmKqyOJsNYMwJC3A" />
+<meta name="csp-nonce" content="eab65cc9c9ad31c0c94a901881c1e86d" />
 
 
 <link rel="preload" href="/static/fonts/Helvetica/HelveticaNowText-Regular.woff2" as="font" type="font/woff2" crossorigin="anonymous">
@@ -110,8 +110,8 @@
 
 
 
-<link rel="stylesheet" href="https://betterstack.com/assets/betterstack_v2-4d440eae.css" media="all" data-turbo-track="reload" />
-<script type="importmap" data-turbo-track="reload" nonce="96441d1c9134a9c82ec6abbb316fa9a9">{
+<link rel="stylesheet" href="https://betterstack.com/assets/betterstack_v2-21505951.css" media="all" data-turbo-track="reload" />
+<script type="importmap" data-turbo-track="reload" nonce="eab65cc9c9ad31c0c94a901881c1e86d">{
   "imports": {
     "admin_controllers/article_form_controller": "/assets/admin_controllers/article_form_controller-139527db.js",
     "admin_controllers": "/assets/admin_controllers/index-577d86b7.js",
@@ -151,9 +151,10 @@
     "articles_controllers/code_controller": "/assets/articles_controllers/code_controller-a3b80b9c.js",
     "articles_controllers": "/assets/articles_controllers/index-2a641587.js",
     "articles_controllers/lightbox_controller": "/assets/articles_controllers/lightbox_controller-9e772aad.js",
+    "articles_controllers/pill_scroller_controller": "/assets/articles_controllers/pill_scroller_controller-a8e7ddfd.js",
     "articles_controllers/search_controller": "/assets/articles_controllers/search_controller-07c1ded1.js",
     "articles_controllers/theme_controller": "/assets/articles_controllers/theme_controller-df419c92.js",
-    "articles_controllers/toc_controller": "/assets/articles_controllers/toc_controller-1c21d8ab.js",
+    "articles_controllers/toc_controller": "/assets/articles_controllers/toc_controller-f2da599a.js",
     "articles_controllers/toggle_controller": "/assets/articles_controllers/toggle_controller-ea5c1697.js",
     "betterstack_v2/carousel": "/assets/betterstack_v2/carousel-9e6623b0.js",
     "betterstack_v2/collapse": "/assets/betterstack_v2/collapse-5e9e0fbd.js",
@@ -434,12 +435,12 @@
     "marked": "https://cdnjs.betterstack.com/marked@4.3.0/lib/marked.esm.js"
   }
 }</script>
-<link rel="modulepreload" href="https://cdnjs.betterstack.com/vue@3.5.13/dist/vue.esm-browser.prod.js" nonce="96441d1c9134a9c82ec6abbb316fa9a9">
-<link rel="modulepreload" href="/assets/vendor/pinia@3.0.0.prod-dc83e9f4.js" nonce="96441d1c9134a9c82ec6abbb316fa9a9">
-<link rel="modulepreload" href="https://cdnjs.betterstack.com/vue-turbolinks@2.2.2/index.js" nonce="96441d1c9134a9c82ec6abbb316fa9a9">
-<script type="esms-options" nonce="96441d1c9134a9c82ec6abbb316fa9a9">{"nonce":"96441d1c9134a9c82ec6abbb316fa9a9"}</script>
-<script src="/assets/es-module-shims.min-806a0b27.js" defer="defer" data-turbo-track="reload" nonce="96441d1c9134a9c82ec6abbb316fa9a9"></script>
-<script type="module" nonce="96441d1c9134a9c82ec6abbb316fa9a9">
+<link rel="modulepreload" href="https://cdnjs.betterstack.com/vue@3.5.13/dist/vue.esm-browser.prod.js" nonce="eab65cc9c9ad31c0c94a901881c1e86d">
+<link rel="modulepreload" href="/assets/vendor/pinia@3.0.0.prod-dc83e9f4.js" nonce="eab65cc9c9ad31c0c94a901881c1e86d">
+<link rel="modulepreload" href="https://cdnjs.betterstack.com/vue-turbolinks@2.2.2/index.js" nonce="eab65cc9c9ad31c0c94a901881c1e86d">
+<script type="esms-options" nonce="eab65cc9c9ad31c0c94a901881c1e86d">{"nonce":"eab65cc9c9ad31c0c94a901881c1e86d"}</script>
+<script src="/assets/es-module-shims.min-806a0b27.js" defer="defer" data-turbo-track="reload" nonce="eab65cc9c9ad31c0c94a901881c1e86d"></script>
+<script type="module" nonce="eab65cc9c9ad31c0c94a901881c1e86d">
 //<![CDATA[
 !function(b,e,t,r){
   b[t]=b[t]||function(...args){(b[t].q=b[t].q||[]).push(args)};
@@ -448,28 +449,6 @@
   s.src='https://betterstack.net/b.js?t='+r;
   (e.head||e.getElementsByTagName('head')[0]).appendChild(s);
 }(window,document,'betterstack','v2CKiJRHnw3yBFdNogaJkM8a');
-// A script injected by the iOS Instagram in-app browser attempts to access
-// `window.webkit.messageHandlers` without guarding for undefined, so we ignore
-// the error in Instagram and report it for all other browsers.
-var ua = navigator.userAgent || '';
-var isIosInstagram = /Instagram/.test(ua) && /iPhone|iPad|iPod|iOS/.test(ua);
-betterstack('config', {
-  sentry: {
-    ignoreErrors: isIosInstagram ? [/window\.webkit\.messageHandlers/] : [],
-    beforeSend: function (event) {
-      var ex = event.exception && event.exception.values && event.exception.values[0];
-      var frames = ex && ex.stacktrace && ex.stacktrace.frames;
-      // Don't report exceptions that come from expressions like `setTimeout("await 1", 0)`. These come mostly from browser extensions, have no frames (stack trace)
-      if (
-        ex && ex.type === 'SyntaxError' &&
-        ex.mechanism && ex.mechanism.type === 'auto.browser.browserapierrors.setTimeout' &&
-        (ex.value === 'Unexpected reserved word' || ex.value === 'await is a reserved identifier') &&
-        (!frames || frames.length === 0)
-      ) return null;
-      return event;
-    },
-  },
-})
 betterstack('init', { environment: window.cfg.environment, release: window.cfg.app_version })
 betterstack('user', {
   ...(window.cfg.sentry_user || {}),
@@ -481,7 +460,7 @@ betterstack('user', {
 
 //]]>
 </script>
-<script nonce='96441d1c9134a9c82ec6abbb316fa9a9' type='module'>import "common/aos"
+<script nonce='eab65cc9c9ad31c0c94a901881c1e86d' type='module'>import "common/aos"
 import "common/lazy"
 import "common/recaptchaSubmit"
 import "common/data-disable-with-spinner"
@@ -503,7 +482,7 @@ import "common/site_settings_panel"
 
 </head>
 <body class='helvetica bg-[#0B0C14] text-neutral-200'>
-<script type="application/javascript" nonce="96441d1c9134a9c82ec6abbb316fa9a9">
+<script type="application/javascript" nonce="eab65cc9c9ad31c0c94a901881c1e86d">
 //<![CDATA[
 window.cfg = {"base_host":"betterstack.com","base_url":"https://betterstack.com","better_stack_url":"https://betterstack.com","uptime_url":"https://uptime.betterstack.com","logtail_url":"https://telemetry.betterstack.com","errors_url":"https://errors.betterstack.com","aisre_url":"https://chat.betterstack.com","rum_url":"https://rum.betterstack.com","cloud_url":"https://cloud.betterstack.com","warehouse_url":"https://warehouse.betterstack.com","controller":"betterstack","action":"terms","app":"betterstack","environment":"production"};
 
@@ -1068,7 +1047,7 @@ System status
 </footer>
 </div>
 
-<script nonce='96441d1c9134a9c82ec6abbb316fa9a9' type='module'>
+<script nonce='eab65cc9c9ad31c0c94a901881c1e86d' type='module'>
 import { front_identity_path } from 'routes'
 import WebStorageService from 'services/WebStorageService'
 
@@ -1121,7 +1100,7 @@ if (document.readyState === 'complete') {
 <img alt='' height='1' src='https://px.ads.linkedin.com/collect/?pid=8770794&amp;fmt=gif' style='display:none' width='1'>
 </noscript>
 
-<script type="application/javascript" nonce="96441d1c9134a9c82ec6abbb316fa9a9">
+<script type="application/javascript" nonce="eab65cc9c9ad31c0c94a901881c1e86d">
 //<![CDATA[
 window.recaptchaLoaded = false
 window.recaptchaSiteKey = '6LcqMUUaAAAAAB9e71hGegt9lvZ2v_mO1lFsvlRX'
