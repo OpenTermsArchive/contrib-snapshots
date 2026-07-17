@@ -83,7 +83,7 @@
 
     <link rel="icon" type="image/x-icon" href="/favicon.ico">
 
-    <link rel="stylesheet" href="/css/styles.min.css?v=COEM2W4GgSOPMRl7Xya_g_giDPqMxZebP7sJ9atvXgY" type="text/css" />
+    <link rel="stylesheet" href="/css/styles.min.css?v=UpCCr9ESGYExzGQlqvlNw6y_PHYkcVnBds0_2Ciae2E" type="text/css" />
 
     <script type="text/javascript" src="/Kentico.Resource/ABTest/KenticoABTestLogger/en-GB/ConversionLogger.js" async></script>
 
@@ -109,7 +109,7 @@
             <!-- GT Code End -->
 
     <header class="header">
-    <a href="#content-section" class="visually-hidden-focusable">Skip to main content</a>
+    <a href="#banner-header" class="visually-hidden-focusable">Skip to main content</a>
     <div id="searchBarContainer" class="search-bar__container">
     <div class="search-bar__content">
         <form id="searchBarForm" class="search-bar__form" role="search" method="GET" action="/search">
@@ -166,13 +166,15 @@
                         <a class="header__upper-top-nav__nav__list__item__link "
                            href="https://smarthomestore.energia.ie/"
                            target="_blank"
+                           rel="noopener noreferrer"
+                           aria-label="Smart Home Store opens in new tab"
                            onclick="adobeDataEvents.navigationLinkClicked(this)"
                            data-adobe-link-id="Smart Home Store"
                            data-adobe-link-container="top-navigation"
                            data-adobe-link-region="header"
                            data-adobe-link-destination="https://smarthomestore.energia.ie/">
                             Smart Home Store
-                                <svg class="icon-external-link header__upper-top-nav__nav__list__item__link__icon">
+                                <svg class="icon-external-link header__upper-top-nav__nav__list__item__link__icon" aria-hidden="true">
                                     <use xlink:href="#icon-external-link" xmlns:xlink="http://www.w3.org/1999/xlink"></use>
                                 </svg>
                         </a>
@@ -181,13 +183,15 @@
                         <a class="header__upper-top-nav__nav__list__item__link "
                            href="https://www.energiagroup.com/"
                            target="_blank"
+                           rel="noopener noreferrer"
+                           aria-label="Energia Group opens in new tab"
                            onclick="adobeDataEvents.navigationLinkClicked(this)"
                            data-adobe-link-id="Energia Group"
                            data-adobe-link-container="top-navigation"
                            data-adobe-link-region="header"
                            data-adobe-link-destination="https://www.energiagroup.com/">
                             Energia Group
-                                <svg class="icon-external-link header__upper-top-nav__nav__list__item__link__icon">
+                                <svg class="icon-external-link header__upper-top-nav__nav__list__item__link__icon" aria-hidden="true">
                                     <use xlink:href="#icon-external-link" xmlns:xlink="http://www.w3.org/1999/xlink"></use>
                                 </svg>
                         </a>
@@ -217,9 +221,16 @@
                     </svg>
                     <span class="header__upper-top-nav__extra__control--search__text">Search</span>
                 </button>
-                <div id="account__dropdown-items" onclick="openAccountsDDL(this)">
+                <div id="account__dropdown-items">
                     <div class="header__upper-top-nav__accounts header__upper-top-nav__extra__control header__upper-top-nav__extra__control--account">
-                        <button type="button" class=" button button--purple">
+                        <button 
+                            id="account-dropdown-btn"
+                            type="button" 
+                            class="button button--purple" 
+                            aria-expanded="false"
+                            aria-controls="account-menu"
+                            onclick="openAccountsDDL()"
+                        >
                             <svg class="icon-user" aria-hidden="true">
                                 <use xlink:href="#icon-user" xmlns:xlink="http://www.w3.org/1999/xlink"></use>
                             </svg>
@@ -308,8 +319,63 @@
 <script>
     function openAccountsDDL() {
         let ddl = document.querySelector("#account__dropdown-items ul");
+        let btn = document.querySelector("#account-dropdown-btn");
+
         if (ddl) {
-            ddl.style.display = ddl.style.display === "block" ? "none" : "block";
+            const isOpen = ddl.style.display === "block";
+            ddl.style.display = isOpen ? "none" : "block";
+
+            if (btn) {
+                btn.setAttribute("aria-expanded", String(!isOpen));
+            }
+
+            if (!isOpen) {
+                trapFocus(ddl, btn);
+            } else {
+                releaseFocus();
+            }
+        }
+    }
+
+    function trapFocus(container, triggerBtn) {
+        const focusableSelectors = 'a[href], button:not([disabled]), input, select, textarea, [tabindex]:not([tabindex="-1"])';
+        const focusableElements = container.querySelectorAll(focusableSelectors);
+        const first = focusableElements[0];
+        const last = focusableElements[focusableElements.length - 1];
+
+        if (first) first.focus();
+
+        function handleKeyDown(e) {
+            if (e.key === 'Escape') {
+                openAccountsDDL();
+                triggerBtn.focus();
+                return;
+            }
+
+            if (e.key === 'Tab') {
+                if (e.shiftKey) {
+                    if (document.activeElement === first) {
+                        e.preventDefault();
+                        last.focus();
+                    }
+                } else {
+                    if (document.activeElement === last) {
+                        e.preventDefault();
+                        first.focus();
+                    }
+                }
+            }
+        }
+
+        document.addEventListener('keydown', handleKeyDown);
+
+        document._accountMenuHandler = handleKeyDown;
+    }
+
+    function releaseFocus() {
+        if (document._accountMenuHandler) {
+            document.removeEventListener('keydown', document._accountMenuHandler);
+            document._accountMenuHandler = null;
         }
     }
 </script>
@@ -342,11 +408,7 @@
                 </svg>
             </a>
         </div>
-            <label class="header__lower-top-nav__control-label" id="lbl-toggle-menu" for="chk-toggle-menu" tabindex="0">
-                <span class="sr-only">Toggle Navigation</span>
-                <div class="header__lower-top-nav__control-label__burger"></div>
-            </label>
-        <nav class="header__lower-top-nav__nav">
+        <nav class="header__lower-top-nav__nav" id="lower-nav-menu">
                 <ul class="header__lower-top-nav__nav__list" role="navigation" aria-label="Main navigation">
                         <li class="header__lower-top-nav__nav__list__item ">
                             <a class="header__lower-top-nav__nav__list__item__link" href="/energy-plans" target="_self" onclick="adobeDataEvents.navigationLinkClicked(this)" data-adobe-link-id="Energy Plans" data-adobe-link-container="main-navigation" data-adobe-link-region="header" data-adobe-link-destination="/energy-plans">Energy Plans</a>
@@ -575,25 +637,25 @@
                 </ul>
                 <ul class="header__lower-top-nav__nav__top-list">
                             <li class="header__lower-top-nav__nav__top-list__item">
-                                <a class="header__lower-top-nav__nav__top-list__item__link " href="/business" onclick="adobeDataEvents.navigationLinkClicked(this)" data-adobe-link-id="Business Energy" data-adobe-link-container="main-navigation" data-adobe-link-region="header" data-adobe-link-destination="/business">
+                                <a class="header__lower-top-nav__nav__top-list__item__link " href="/business" target="_self" onclick="adobeDataEvents.navigationLinkClicked(this)" data-adobe-link-id="Business Energy" data-adobe-link-container="main-navigation" data-adobe-link-region="header" data-adobe-link-destination="/business">
                                     Business Energy
-                                        <svg class="icon-chevron">
+                                        <svg class="icon-chevron" aria-hidden="true">
                                             <use xlink:href="#icon-chevron" xmlns:xlink="http://www.w3.org/1999/xlink"></use>
                                         </svg>
                                 </a>
                             </li>
                             <li class="header__lower-top-nav__nav__top-list__item">
-                                <a class="header__lower-top-nav__nav__top-list__item__link " href="https://www.energiagroup.com/" onclick="adobeDataEvents.navigationLinkClicked(this)" data-adobe-link-id="Energia Group" data-adobe-link-container="main-navigation" data-adobe-link-region="header" data-adobe-link-destination="https://www.energiagroup.com/">
+                                <a class="header__lower-top-nav__nav__top-list__item__link " href="https://www.energiagroup.com/" target="_blank" rel="noopener noreferrer" aria-label="Energia Group opens in new tab" onclick="adobeDataEvents.navigationLinkClicked(this)" data-adobe-link-id="Energia Group" data-adobe-link-container="main-navigation" data-adobe-link-region="header" data-adobe-link-destination="https://www.energiagroup.com/">
                                     Energia Group
-                                        <svg class="icon-external-link">
+                                        <svg class="icon-external-link" aria-hidden="true">
                                             <use xlink:href="#icon-external-link" xmlns:xlink="http://www.w3.org/1999/xlink"></use>
                                         </svg>
                                 </a>
                             </li>
                             <li class="header__lower-top-nav__nav__top-list__item">
-                                <a class="header__lower-top-nav__nav__top-list__item__link " href="https://smarthomestore.energia.ie/" onclick="adobeDataEvents.navigationLinkClicked(this)" data-adobe-link-id="Smart Home Store" data-adobe-link-container="main-navigation" data-adobe-link-region="header" data-adobe-link-destination="https://smarthomestore.energia.ie/">
+                                <a class="header__lower-top-nav__nav__top-list__item__link " href="https://smarthomestore.energia.ie/" target="_blank" rel="noopener noreferrer" aria-label="Smart Home Store opens in new tab" onclick="adobeDataEvents.navigationLinkClicked(this)" data-adobe-link-id="Smart Home Store" data-adobe-link-container="main-navigation" data-adobe-link-region="header" data-adobe-link-destination="https://smarthomestore.energia.ie/">
                                     Smart Home Store
-                                        <svg class="icon-external-link">
+                                        <svg class="icon-external-link" aria-hidden="true">
                                             <use xlink:href="#icon-external-link" xmlns:xlink="http://www.w3.org/1999/xlink"></use>
                                         </svg>
                                 </a>
@@ -603,6 +665,10 @@
             <div class="header__lower-top-nav__link">
                 <a class="button button--pink" href="https://switchto.energia.ie/ChooseMyPlan?Type=Smart&amp;Fuel=D&amp;apptype=cos" target="_self" onclick="adobeDataEvents.navigationLinkClicked(this)" data-adobe-link-id="Switch Now" data-adobe-link-container="main-navigation" data-adobe-link-region="header" data-adobe-link-destination="https://switchto.energia.ie/ChooseMyPlan?Type=Smart&amp;Fuel=D&amp;apptype=cos">Switch Now</a>
             </div>
+            <label class="header__lower-top-nav__control-label" id="lbl-toggle-menu" for="chk-toggle-menu" tabindex="0" role="button" aria-expanded="false" aria-controls="lower-nav-menu">
+                <span class="sr-only">Toggle Navigation</span>
+                <div class="header__lower-top-nav__control-label__burger"></div>
+            </label>
     </div>
     <div class="header__lower-top-nav__right-fill"></div>
 </div>
@@ -637,7 +703,7 @@
 
     <div class="banner__content banner-text-color-">
         <div class="banner__content__header">
-            <h1>Energia Cookie Policy</h1>
+            <h1 id="banner-header" tabindex="-1">Energia Cookie Policy</h1>
         </div>
         <svg class="icon rectangle" aria-hidden="true">
             <use xlink:href="#icon-rectangle"></use>
@@ -1262,17 +1328,15 @@
         </div>
         <div class="footer__links">
             <ul class="footer__links__list">
-                <li class="footer__links__list__item" tabindex="0">
-                    <input type="checkbox" id="toggle-footer-1" name="toggle"
-                        aria-label="Click to see Important info navigation on mobile only" />
-                    <div class="footer__links__list__item__title">
-                        <label for="toggle-footer-1">Important info</label>
-                        <div class="footer__links__list__item__title__border"></div>
-                        <svg class="footer__links__list__item__title__icon icon-triangle">
+                <li class="footer__links__list__item">
+                    <button type="button" class="footer__links__list__item__title" aria-expanded="false" aria-controls="footer-section-1">
+                        Important info
+                        <span class="footer__links__list__item__title__border"></span>
+                        <svg class="footer__links__list__item__title__icon icon-triangle" aria-hidden="true">
                             <use xlink:href="#icon-triangle" xmlns:xlink="http://www.w3.org/1999/xlink"></use>
                         </svg>
-                    </div>
-                    <ul class="footer__links__list__item__sublist" role="navigation" aria-label="Important info">
+                    </button>
+                    <ul id="footer-section-1" class="footer__links__list__item__sublist" role="navigation" aria-label="Important info">
                             <li class="footer__links__list__item__sublist__item">
                                 <a href="/home/privacy-statement" class="footer__links__list__item__sublist__item__link" onclick="adobeDataEvents.navigationLinkClicked(this)" data-adobe-link-id="Privacy Statement" data-adobe-link-container="footer-navigation" data-adobe-link-region="footer" data-adobe-link-destination="/home/privacy-statement">Privacy Statement</a>
                             </li>
@@ -1290,17 +1354,15 @@
                             </li>
                     </ul>
                 </li>
-                <li class="footer__links__list__item" tabindex="0">
-                    <input type="checkbox" id="toggle-footer-2" name="toggle"
-                        aria-label="Click to see Energy Plans navigation on mobile only" />
-                    <div class="footer__links__list__item__title">
-                        <label for="toggle-footer-2">Energy Plans</label>
-                        <div class="footer__links__list__item__title__border"></div>
-                        <svg class="footer__links__list__item__title__icon icon-triangle">
+                <li class="footer__links__list__item">
+                    <button type="button" class="footer__links__list__item__title" aria-expanded="false" aria-controls="footer-section-2">
+                        Energy Plans
+                        <span class="footer__links__list__item__title__border"></span>
+                        <svg class="footer__links__list__item__title__icon icon-triangle" aria-hidden="true">
                             <use xlink:href="#icon-triangle" xmlns:xlink="http://www.w3.org/1999/xlink"></use>
                         </svg>
-                    </div>
-                    <ul class="footer__links__list__item__sublist" role="navigation" aria-label="Energy Plans">
+                    </button>
+                    <ul id="footer-section-2" class="footer__links__list__item__sublist" role="navigation" aria-label="Energy Plans">
                             <li class="footer__links__list__item__sublist__item">
                                 <a href="/energy-plans/electricity" class="footer__links__list__item__sublist__item__link" onclick="adobeDataEvents.navigationLinkClicked(this)" data-adobe-link-id="Electricity" data-adobe-link-container="footer-navigation" data-adobe-link-region="footer" data-adobe-link-destination="/energy-plans/electricity">Electricity</a>
                             </li>
@@ -1315,17 +1377,15 @@
                             </li>
                     </ul>
                 </li>
-                <li class="footer__links__list__item" tabindex="0">
-                    <input type="checkbox" id="toggle-footer-3" name="toggle"
-                        aria-label="Click to see Community navigation on mobile only" />
-                    <div class="footer__links__list__item__title">
-                        <label for="toggle-footer-3">Community</label>
-                        <div class="footer__links__list__item__title__border"></div>
-                        <svg class="footer__links__list__item__title__icon icon-triangle">
+                <li class="footer__links__list__item">
+                    <button type="button" class="footer__links__list__item__title" aria-expanded="false" aria-controls="footer-section-3">
+                        Community
+                        <span class="footer__links__list__item__title__border"></span>
+                        <svg class="footer__links__list__item__title__icon icon-triangle" aria-hidden="true">
                             <use xlink:href="#icon-triangle" xmlns:xlink="http://www.w3.org/1999/xlink"></use>
                         </svg>
-                    </div>
-                    <ul class="footer__links__list__item__sublist" role="navigation" aria-label="Community">
+                    </button>
+                    <ul id="footer-section-3" class="footer__links__list__item__sublist" role="navigation" aria-label="Community">
                             <li class="footer__links__list__item__sublist__item">
                                 <a href="/about-energia/freekend-maps" class="footer__links__list__item__sublist__item__link" onclick="adobeDataEvents.navigationLinkClicked(this)" data-adobe-link-id="Free-Kend Map" data-adobe-link-container="footer-navigation" data-adobe-link-region="footer" data-adobe-link-destination="/about-energia/freekend-maps">Free-Kend Map</a>
                             </li>
@@ -1337,17 +1397,15 @@
                             </li>
                     </ul>
                 </li>
-                <li class="footer__links__list__item" tabindex="0">
-                    <input type="checkbox" id="toggle-footer-4" name="toggle"
-                        aria-label="Click to see Help &amp; Support navigation on mobile only" />
-                    <div class="footer__links__list__item__title">
-                        <label for="toggle-footer-4">Help &amp; Support</label>
-                        <div class="footer__links__list__item__title__border"></div>
-                        <svg class="footer__links__list__item__title__icon icon-triangle">
+                <li class="footer__links__list__item">
+                    <button type="button" class="footer__links__list__item__title" aria-expanded="false" aria-controls="footer-section-4">
+                        Help &amp; Support
+                        <span class="footer__links__list__item__title__border"></span>
+                        <svg class="footer__links__list__item__title__icon icon-triangle" aria-hidden="true">
                             <use xlink:href="#icon-triangle" xmlns:xlink="http://www.w3.org/1999/xlink"></use>
                         </svg>
-                    </div>
-                    <ul class="footer__links__list__item__sublist" role="navigation" aria-label="Help &amp; Support">
+                    </button>
+                    <ul id="footer-section-4" class="footer__links__list__item__sublist" role="navigation" aria-label="Help &amp; Support">
                             <li class="footer__links__list__item__sublist__item">
                                 <a href="/help-and-support" class="footer__links__list__item__sublist__item__link" onclick="adobeDataEvents.navigationLinkClicked(this)" data-adobe-link-id="Help and Support" data-adobe-link-container="footer-navigation" data-adobe-link-region="footer" data-adobe-link-destination="/help-and-support">Help and Support</a>
                             </li>
@@ -1362,17 +1420,15 @@
                             </li>
                     </ul>
                 </li>
-                <li class="footer__links__list__item" tabindex="0">
-                    <input type="checkbox" id="toggle-footer-5" name="toggle"
-                        aria-label="Click to see About Energia navigation on mobile only" />
-                    <div class="footer__links__list__item__title">
-                        <label for="toggle-footer-5">About Energia</label>
-                        <div class="footer__links__list__item__title__border"></div>
-                        <svg class="footer__links__list__item__title__icon icon-triangle">
+                <li class="footer__links__list__item">
+                    <button type="button" class="footer__links__list__item__title" aria-expanded="false" aria-controls="footer-section-5">
+                        About Energia
+                        <span class="footer__links__list__item__title__border"></span>
+                        <svg class="footer__links__list__item__title__icon icon-triangle" aria-hidden="true">
                             <use xlink:href="#icon-triangle" xmlns:xlink="http://www.w3.org/1999/xlink"></use>
                         </svg>
-                    </div>
-                    <ul class="footer__links__list__item__sublist" role="navigation" aria-label="About Energia">
+                    </button>
+                    <ul id="footer-section-5" class="footer__links__list__item__sublist" role="navigation" aria-label="About Energia">
                             <li class="footer__links__list__item__sublist__item">
                                 <a href="/about-energia" class="footer__links__list__item__sublist__item__link" onclick="adobeDataEvents.navigationLinkClicked(this)" data-adobe-link-id="About Energia" data-adobe-link-container="footer-navigation" data-adobe-link-region="footer" data-adobe-link-destination="/about-energia">About Energia</a>
                             </li>
@@ -1405,7 +1461,7 @@
                 </div>
                 <div class="footer__sponsors__partner-logos">
                     <div class="footer__sponsors__partner-logos__container">
-                        <svg viewBox="0 0 334.44000244140625 106.55000305175781">
+                        <svg viewBox="0 0 334.44000244140625 106.55000305175781" role="img" aria-label="Energia, Official Partner of IRFU">
                             <g transform="translate(1, 1)">
                                 <defs>
                                     <style>
@@ -1418,7 +1474,7 @@
                                 <path d="M206.72 0h2.41v104.55h-2.41z" class="cls-1_1645008698352" vector-effect="non-scaling-stroke" style="fill: rgb(148, 148, 148);" />
                             </g>
                         </svg>
-                        <svg viewBox="0 0 357.4200134277344 103.0999984741211">
+                        <svg viewBox="0 0 357.4200134277344 103.0999984741211" role="img" aria-label="Energia, Official Partner of Leinster Rugby">
                             <g transform="translate(1, 1)">
                                 <defs>
                                     <style>
@@ -1436,7 +1492,7 @@
                                 <path d="M200.02 0h2.83v101.1h-2.83z" class="cls-1_1645008698350" vector-effect="non-scaling-stroke" style="fill: rgb(148, 148, 148);" />
                             </g>
                         </svg>
-                        <svg viewBox="0 0 451.6099853515625 130.0500030517578">
+                        <svg viewBox="0 0 451.6099853515625 130.0500030517578" role="img" aria-label="Energia, Proud Sponsor of the All-Ireland League">
                             <g transform="translate(1, 1)">
                                 <defs>
                                     <style>
@@ -1461,6 +1517,31 @@
                                 <path transform="translate(-2)" d="M395.77 44.6c0-16.81-16.85-25.13-40.45-25.13-37 0-85.61 28.58-85.61 61.11 0 13.19 11.88 21.77 25.76 25.07-8.47-4.44-10.39-9.56-5.36-8.83 17.77 2.59 36.64-1.08 54.41-7.91C363 81.8 376 71.82 385.68 59.55c2-2.35 3.17-2.95 3.86-2.82 1.61.26 1.39 4.59.83 9.19a40.51 40.51 0 005.4-21.32zM361 25.93c11.19.48 25.51 5.25 25.51 15 0 5.34-3.69 11.37-8.16 16.4 1.87-4.38 3.47-8.85 3.47-13-.04-9.25-10.14-15.14-20.82-18.4zm-1.35 41.94A140.55 140.55 0 01344.9 76l.33-44.53a67.5 67.5 0 018.64-.79l-.28 30.83a71.85 71.85 0 0010.33-6 7.74 7.74 0 011.37 4.67c0 2.82-1.53 5.09-5.68 7.69zm-33.23 14.68c-2.86.76-5.72 1.4-8.58 1.94l.16-9.84c-2.59.63-5.19 1.17-7.78 1.62-.29 3-.5 6.2-.62 9.44-4.19.48-6.68.52-9.09-.32.9-12.83 1.95-19.77 4.65-28 2.82-8.72 7-13.8 13.8-17.53a42.07 42.07 0 017.91-3.45zm-49.42-4c0-7.42 4-15.14 9.58-21.34-3.77 7.28-4.81 13-4.81 17.78 0 9.24 8.06 12.66 17 15.18C288.23 90.51 277 88 277 78.59zm54.73-43.91a93.13 93.13 0 018.58-2.28L340 78.11l-.16.06c-2.75 1.09-5.57 2.07-8.42 3z" class="cls-1_1645008698353" vector-effect="non-scaling-stroke" style="fill: rgb(148, 148, 148);" />
                                 <path transform="translate(-2)" d="M313.89 56.66a82.43 82.43 0 00-2.65 11.51c2.3-.42 4.59-.92 6.89-1.49l.25-16.27c-1.64.69-3.3 2.41-4.49 6.25z" class="cls-1_1645008698353" vector-effect="non-scaling-stroke" style="fill: rgb(148, 148, 148);" />
                             </g>
+                        </svg>
+                        <svg xmlns="http://www.w3.org/2000/svg" version="1.1" viewBox="156 108 1162 390">
+                            <path d="M0 0 C11.34471703 6.56289944 17.73833424 16.94356626 21.2890625 29.32421875 C22.27207965 34.28532809 22.82255798 39.29014758 23.2890625 44.32421875 C21.9690625 43.99421875 20.6490625 43.66421875 19.2890625 43.32421875 C19.49402344 44.02546875 19.69898438 44.72671875 19.91015625 45.44921875 C21.51273647 51.09275484 22.73800263 56.48298418 23.2890625 62.32421875 C19.66821185 61.11726853 18.9477773 59.85620094 16.7265625 56.82421875 C14.4575685 53.54590405 14.4575685 53.54590405 11.2890625 51.32421875 C11.00096533 56.89409732 11.08686567 60.52092351 14.2890625 65.32421875 C17.31113287 67.22871824 19.94483416 67.67401914 23.4765625 67.94921875 C24.44851563 68.0265625 25.42046875 68.10390625 26.421875 68.18359375 C28.9221106 68.30622111 31.35235577 68.28815849 33.8515625 68.19921875 C41.36444674 68.11843505 48.47805418 70.5697574 54.2890625 75.32421875 C59.41686466 80.48900025 62.40557071 84.67818353 62.4140625 92.16015625 C62.36632309 94.93699851 62.28870067 97.71213593 62.2109375 100.48828125 C62.11846059 105.88276742 62.64860439 110.13250677 64.2890625 115.32421875 C66.01720879 129.2545806 65.66980047 143.66997606 62.2890625 157.32421875 C63.00707031 157.0096875 63.72507812 156.69515625 64.46484375 156.37109375 C73.58110297 152.99189946 83.31365708 154.59309592 92.70703125 155.77734375 C99.21814332 156.59071403 105.74006456 156.93898358 112.2890625 157.32421875 C112.6190625 152.70421875 112.9490625 148.08421875 113.2890625 143.32421875 C109.89297732 143.80165248 106.49719698 144.28109899 103.1015625 144.76171875 C102.14185547 144.89642578 101.18214844 145.03113281 100.19335938 145.16992188 C99.26201172 145.30205078 98.33066406 145.43417969 97.37109375 145.5703125 C96.51749268 145.69075928 95.6638916 145.81120605 94.78442383 145.93530273 C93.96095459 146.06364502 93.13748535 146.1919873 92.2890625 146.32421875 C91.37987061 146.46351807 90.47067871 146.60281738 89.53393555 146.74633789 C88.79312744 146.93703857 88.05231934 147.12773926 87.2890625 147.32421875 C86.9590625 147.98421875 86.6290625 148.64421875 86.2890625 149.32421875 C86.2890625 140.74421875 86.2890625 132.16421875 86.2890625 123.32421875 C88.5990625 124.31421875 90.9090625 125.30421875 93.2890625 126.32421875 C96.06679947 126.97728522 96.06679947 126.97728522 98.78515625 127.2734375 C99.75517578 127.39912109 100.72519531 127.52480469 101.72460938 127.65429688 C103.21057617 127.8312207 103.21057617 127.8312207 104.7265625 128.01171875 C106.25313477 128.20604492 106.25313477 128.20604492 107.81054688 128.40429688 C110.30238386 128.72016354 112.79499883 129.02653915 115.2890625 129.32421875 C115.32870117 128.32310059 115.36833984 127.32198242 115.40917969 126.29052734 C116.86042632 90.45814267 119.65755046 54.80971235 123.9140625 19.19921875 C124.01820465 18.31347168 124.1223468 17.42772461 124.22964478 16.51513672 C124.52444733 14.03104266 124.8302745 11.54860026 125.140625 9.06640625 C125.22697708 8.33638397 125.31332916 7.60636169 125.40229797 6.85421753 C125.86672305 3.26439807 126.57823623 0.49636108 128.2890625 -2.67578125 C129.67435823 3.14606962 130.73969939 8.90939363 131.4375 14.8515625 C131.58359207 16.06073837 131.58359207 16.06073837 131.7326355 17.29434204 C132.04983071 19.94939165 132.35799419 22.60536456 132.6640625 25.26171875 C132.77133667 26.18274384 132.87861084 27.10376892 132.98913574 28.05270386 C134.83009061 43.97151883 136.27585175 59.9123974 137.5390625 75.88671875 C137.62178406 76.93036591 137.70450562 77.97401306 137.78973389 79.04928589 C138.58257392 89.14181484 139.32107965 99.23617121 139.89453125 109.34375 C139.95528839 110.40705284 139.95528839 110.40705284 140.01727295 111.49183655 C140.33608381 117.43850236 140.39411959 123.37098359 140.2890625 129.32421875 C143.81214111 128.90372082 147.33188903 128.45975825 150.8515625 128.01171875 C151.84220703 127.89376953 152.83285156 127.77582031 153.85351562 127.65429688 C154.82353516 127.52861328 155.79355469 127.40292969 156.79296875 127.2734375 C157.67799072 127.16346436 158.5630127 127.05349121 159.47485352 126.94018555 C163.0876874 126.24195931 163.0876874 126.24195931 169.2890625 123.32421875 C169.2890625 131.90421875 169.2890625 140.48421875 169.2890625 149.32421875 C166.9790625 148.33421875 164.6690625 147.34421875 162.2890625 146.32421875 C159.99167434 145.84845841 157.67690514 145.44836261 155.3515625 145.13671875 C154.20816406 144.97816406 153.06476563 144.81960938 151.88671875 144.65625 C151.02949219 144.54667969 150.17226563 144.43710937 149.2890625 144.32421875 C149.24651894 146.32376621 149.24825467 148.32463511 149.2890625 150.32421875 C149.6190625 150.65421875 149.9490625 150.98421875 150.2890625 151.32421875 C150.4765625 154.26171875 150.4765625 154.26171875 150.2890625 157.32421875 C149.6290625 157.98421875 148.9690625 158.64421875 148.2890625 159.32421875 C148.6190625 159.65421875 148.9490625 159.98421875 149.2890625 160.32421875 C149.4765625 162.76171875 149.4765625 162.76171875 149.2890625 165.32421875 C148.6290625 165.98421875 147.9690625 166.64421875 147.2890625 167.32421875 C146.61613749 169.29112249 146.61613749 169.29112249 146.1640625 171.44921875 C145.8753125 172.72796875 145.5865625 174.00671875 145.2890625 175.32421875 C142.9790625 175.65421875 140.6690625 175.98421875 138.2890625 176.32421875 C138.9490625 177.31421875 139.6090625 178.30421875 140.2890625 179.32421875 C141.12525525 183.20918509 141.21592872 186.76784271 139.14453125 190.24609375 C135.55254191 193.91673979 132.30533411 194.7531516 127.2265625 194.94921875 C121.99114564 194.67401536 119.0945892 193.92945457 115.2890625 190.32421875 C114.58431827 189.01061386 113.90978247 187.67955227 113.2890625 186.32421875 C112.56203125 186.50597656 111.835 186.68773437 111.0859375 186.875 C108.95971199 187.40655638 106.83340332 187.93778019 104.70703125 188.46875 C102.56317817 189.0053258 100.41986179 189.54405551 98.27734375 190.0859375 C79.50328023 194.82331801 61.32442052 198.31823659 41.96539307 199.27816772 C40.5663913 199.35001032 39.16783869 199.43127457 37.7699585 199.52236938 C35.80018518 199.64551343 33.82766733 199.72201438 31.85546875 199.796875 C30.71021729 199.85109619 29.56496582 199.90531738 28.38500977 199.96118164 C25.2890625 199.32421875 25.2890625 199.32421875 20.2890625 193.32421875 C18.6390625 188.37421875 16.9890625 183.42421875 15.2890625 178.32421875 C14.9590625 209.01421875 14.6290625 239.70421875 14.2890625 271.32421875 C11.16547789 268.20063414 8.85105129 265.45529581 6.3515625 261.88671875 C3.56967754 258.01470512 0.85643035 254.51607419 -2.7109375 251.32421875 C-3.6184375 250.47859375 -4.5259375 249.63296875 -5.4609375 248.76171875 C-11.68983009 243.75324532 -17.99973958 241.64831333 -25.98828125 241.91796875 C-29.66219356 242.46615653 -32.65485562 243.74166616 -35.93359375 245.44921875 C-37.7109375 246.32421875 -37.7109375 246.32421875 -39.7109375 246.32421875 C-38.20324067 241.42587928 -36.2140248 236.91392055 -34.015625 232.30078125 C-33.66331818 231.55460541 -33.31101135 230.80842957 -32.94802856 230.03964233 C-31.83050907 227.67464913 -30.70830273 225.31191552 -29.5859375 222.94921875 C-28.82390725 221.33868902 -28.06218524 219.7280134 -27.30078125 218.1171875 C-25.44106261 214.18450083 -23.57713951 210.25383271 -21.7109375 206.32421875 C-22.33419922 206.58759033 -22.95746094 206.85096191 -23.59960938 207.12231445 C-29.07792519 209.38403776 -34.4365564 211.19582613 -40.2109375 212.51171875 C-45.08591518 213.54899741 -45.08591518 213.54899741 -49.7109375 215.32421875 C-50.36866178 218.35356366 -50.36866178 218.35356366 -50.7109375 221.32421875 C-48.0709375 221.32421875 -45.4309375 221.32421875 -42.7109375 221.32421875 C-44.5342339 223.65398638 -45.71007778 224.32395709 -48.5859375 225.19921875 C-52.42551048 225.35280167 -53.8738172 224.91815731 -56.7109375 222.32421875 C-57.5234375 218.63671875 -57.5234375 218.63671875 -57.7109375 215.32421875 C-60.6910561 218.43390772 -61.23897578 221.21343037 -61.79296875 225.32421875 C-61.68901631 227.85867824 -61.14120247 229.22943067 -59.7109375 231.32421875 C-54.35906095 234.29995094 -48.69660335 234.65070961 -42.7109375 234.32421875 C-42.7109375 234.98421875 -42.7109375 235.64421875 -42.7109375 236.32421875 C-50.32343636 239.19105343 -56.92122813 240.3722039 -64.75390625 237.6015625 C-69.41427359 235.30615769 -72.06454065 232.14580954 -73.7109375 227.32421875 C-74.68218999 221.71744302 -73.44350489 217.31822122 -70.7109375 212.32421875 C-66.19460525 206.43930097 -59.80619724 203.94471265 -52.6171875 202.85546875 C-49.97970539 202.61075392 -47.35750223 202.42484859 -44.7109375 202.32421875 C-44.7109375 201.00421875 -44.7109375 199.68421875 -44.7109375 198.32421875 C-45.7628125 198.24171875 -46.8146875 198.15921875 -47.8984375 198.07421875 C-51.7109375 197.32421875 -51.7109375 197.32421875 -54.1484375 195.32421875 C-59.27438861 191.32347642 -66.19138529 192.23665696 -72.4140625 192.484375 C-74.98303137 192.30524622 -76.47760842 191.55867491 -78.7109375 190.32421875 C-81.12511622 189.74019742 -81.12511622 189.74019742 -83.7109375 190.32421875 C-85.18769076 191.57624869 -86.66245187 192.83225543 -88.0859375 194.14453125 C-90.73547236 196.06799165 -93.52399853 196.13300241 -96.7109375 196.32421875 C-96.7109375 196.98421875 -96.7109375 197.64421875 -96.7109375 198.32421875 C-98.6484375 197.69921875 -98.6484375 197.69921875 -100.7109375 196.32421875 C-101.9328615 192.65844675 -102.04650835 191.01061367 -100.3359375 187.51171875 C-98.7109375 185.32421875 -98.7109375 185.32421875 -97.7109375 184.32421875 C-96.02909802 184.09134867 -94.3396959 183.91157709 -92.6484375 183.76171875 C-91.72933594 183.67792969 -90.81023437 183.59414063 -89.86328125 183.5078125 C-89.15300781 183.44722656 -88.44273437 183.38664063 -87.7109375 183.32421875 C-92.20243216 181.82705386 -96.84949081 181.96753621 -101.55078125 181.80664062 C-105.3948128 181.63009498 -107.44470903 181.50170439 -110.7109375 179.32421875 C-111.0409375 179.98421875 -111.3709375 180.64421875 -111.7109375 181.32421875 C-112.4609375 179.13671875 -112.4609375 179.13671875 -112.7109375 176.32421875 C-111.2734375 173.51171875 -111.2734375 173.51171875 -108.7109375 171.32421875 C-102.98772301 170.46573658 -99.59037764 171.52480745 -94.609375 174.30078125 C-92.0819691 175.66329225 -89.45429676 176.50121097 -86.7109375 177.32421875 C-90.16158244 173.77528102 -90.16158244 173.77528102 -94.0234375 170.69921875 C-94.5803125 170.24546875 -95.1371875 169.79171875 -95.7109375 169.32421875 C-95.7109375 168.33421875 -95.7109375 167.34421875 -95.7109375 166.32421875 C-97.0309375 166.65421875 -98.3509375 166.98421875 -99.7109375 167.32421875 C-99.3359375 165.38671875 -99.3359375 165.38671875 -98.7109375 163.32421875 C-94.99203022 161.46476511 -90.76142936 161.758728 -86.7109375 162.32421875 C-84.19931836 164.43926644 -83.15260518 166.32402961 -81.83984375 169.296875 C-79.82527251 173.76905596 -78.15161819 176.60136173 -73.62109375 178.765625 C-66.78518379 180.76467434 -59.84975817 177.02882212 -53.7109375 174.32421875 C-54.2059375 173.23109375 -54.7009375 172.13796875 -55.2109375 171.01171875 C-56.7109375 167.32421875 -56.7109375 167.32421875 -56.7109375 164.32421875 C-56.19144531 164.081875 -55.67195312 163.83953125 -55.13671875 163.58984375 C-47.79805213 160.25734457 -47.79805213 160.25734457 -42.7109375 154.32421875 C-43.55688477 154.49812134 -43.55688477 154.49812134 -44.41992188 154.67553711 C-47.01629379 155.20741059 -49.61359826 155.73459021 -52.2109375 156.26171875 C-53.54125 156.53532227 -53.54125 156.53532227 -54.8984375 156.81445312 C-64.18722208 158.69270001 -72.99015067 159.51764911 -82.4609375 159.51171875 C-83.52119141 159.51236328 -84.58144531 159.51300781 -85.67382812 159.51367188 C-92.87581488 159.46497989 -99.69117455 159.04837105 -106.7109375 157.32421875 C-106.7109375 156.66421875 -106.7109375 156.00421875 -106.7109375 155.32421875 C-105.81632812 155.11667969 -104.92171875 154.90914062 -104 154.6953125 C-92.64021142 151.80086744 -84.21990487 147.76598596 -77.8671875 137.53515625 C-76.63785959 135.18448193 -75.65047053 132.80354203 -74.7109375 130.32421875 C-75.23413574 130.5257959 -75.75733398 130.72737305 -76.29638672 130.93505859 C-80.47810246 132.53689954 -84.66924827 134.10969744 -88.87890625 135.63671875 C-89.6783667 135.92675781 -90.47782715 136.21679688 -91.30151367 136.515625 C-95.41149201 137.89491857 -99.40212032 138.86443643 -103.7109375 139.32421875 C-104.9071875 139.45570313 -106.1034375 139.5871875 -107.3359375 139.72265625 C-119.41349436 140.85239231 -131.48136411 140.36606803 -142.7109375 135.32421875 C-139.70333913 133.31915317 -137.10735359 132.3328124 -133.7109375 131.13671875 C-120.49609133 126.07322288 -107.60983567 117.04988903 -100.7109375 104.32421875 C-101.25508301 104.50073975 -101.79922852 104.67726074 -102.35986328 104.85913086 C-104.85049914 105.66436408 -107.34317792 106.46308537 -109.8359375 107.26171875 C-110.691875 107.53951172 -111.5478125 107.81730469 -112.4296875 108.10351562 C-131.05040178 114.04782057 -152.24500518 112.47952952 -170.7109375 106.32421875 C-170.7109375 105.66421875 -170.7109375 105.00421875 -170.7109375 104.32421875 C-169.71835938 104.11667969 -168.72578125 103.90914063 -167.703125 103.6953125 C-147.34688849 99.1851575 -130.47413362 88.79078268 -118.7109375 71.32421875 C-120.75267808 71.63623549 -122.79432663 71.94885444 -124.8359375 72.26171875 C-125.97289062 72.43574219 -127.10984375 72.60976562 -128.28125 72.7890625 C-130.37935002 73.11644257 -132.47470599 73.46303822 -134.56396484 73.84277344 C-158.25640782 77.46740474 -178.73709472 72.20762882 -198.7109375 59.32421875 C-199.0409375 58.66421875 -199.3709375 58.00421875 -199.7109375 57.32421875 C-198.44121094 57.41960937 -197.17148438 57.515 -195.86328125 57.61328125 C-172.25600304 59.21260291 -153.42196596 54.42334703 -132.7109375 43.32421875 C-133.9690625 43.22625 -135.2271875 43.12828125 -136.5234375 43.02734375 C-164.86022009 40.64064865 -193.50745338 31.12827292 -214.7109375 11.32421875 C-215.74538379 10.0174293 -216.75739591 8.69116287 -217.7109375 7.32421875 C-217.15148437 7.50597656 -216.59203125 7.68773438 -216.015625 7.875 C-200.52908197 12.73010593 -185.55256458 14.5951164 -169.3984375 14.69921875 C-168.66794189 14.70477783 -167.93744629 14.71033691 -167.18481445 14.71606445 C-153.70332442 14.76701491 -140.65443151 13.32698072 -127.36987305 11.10302734 C-95.2417207 5.82381637 -95.2417207 5.82381637 -83.33984375 13.94140625 C-79.30752855 17.29088733 -76.0100375 20.25210685 -75.48046875 25.69140625 C-75.56042136 30.35773158 -75.91006963 34.7192285 -76.7109375 39.32421875 C-77.2336187 47.16443682 -75.53465195 53.67678986 -72.0234375 60.69921875 C-67.74346541 65.55756544 -61.61638483 68.09798815 -55.19921875 68.59765625 C-45.14774834 69.07829332 -45.14774834 69.07829332 -36.2578125 64.953125 C-30.63707114 59.03431402 -28.58197367 53.39329666 -28.4609375 45.32421875 C-28.43515625 44.29296875 -28.409375 43.26171875 -28.3828125 42.19921875 C-28.75546445 38.93407787 -29.37145661 37.60507939 -31.7109375 35.32421875 C-35.31559498 34.51106964 -35.31559498 34.51106964 -38.7109375 34.32421875 C-38.7109375 33.33421875 -38.7109375 32.34421875 -38.7109375 31.32421875 C-33.39321901 28.60627375 -28.9295989 27.90080707 -22.96875 27.6328125 C-22.22367188 27.53097656 -21.47859375 27.42914063 -20.7109375 27.32421875 C-20.3809375 26.66421875 -20.0509375 26.00421875 -19.7109375 25.32421875 C-31.71309187 24.45833186 -41.5005793 28.16485167 -52.21484375 33.21875 C-57.97661435 35.77052008 -63.44857888 36.58515036 -69.7109375 36.32421875 C-69.7109375 35.66421875 -69.7109375 35.00421875 -69.7109375 34.32421875 C-68.98390625 34.17726562 -68.256875 34.0303125 -67.5078125 33.87890625 C-58.72469357 31.9195951 -51.42370393 28.44594904 -43.56640625 24.15234375 C-38.17209499 21.29588565 -32.63109828 19.76072835 -26.7109375 18.32421875 C-32.32619182 18.99911503 -32.32619182 18.99911503 -37.8984375 19.94921875 C-40.7109375 20.32421875 -40.7109375 20.32421875 -43.1484375 19.57421875 C-46.74588693 19.22324807 -48.28129246 20.76295333 -51.0625 22.90234375 C-52.69279886 24.3085731 -54.21186949 25.77972443 -55.7109375 27.32421875 C-57.28034948 25.75480677 -56.9559222 24.18286881 -57.0234375 22.01171875 C-56.99614666 18.58398884 -56.92355264 17.61479278 -54.8359375 14.76171875 C-52.7109375 13.32421875 -52.7109375 13.32421875 -50.7109375 13.32421875 C-50.44152344 12.72480469 -50.17210937 12.12539062 -49.89453125 11.5078125 C-41.35161951 -4.25287286 -14.79416438 -6.52683723 0 0 Z M-37.7109375 10.32421875 C-37.7109375 11.31421875 -37.7109375 12.30421875 -37.7109375 13.32421875 C-32.95612104 12.74787736 -29.74045538 10.77353354 -25.7109375 8.32421875 C-25.7109375 7.99421875 -25.7109375 7.66421875 -25.7109375 7.32421875 C-30.58757759 6.97588731 -33.48143755 7.90736163 -37.7109375 10.32421875 Z M125.2890625 57.32421875 C124.2990625 81.08421875 123.3090625 104.84421875 122.2890625 129.32421875 C123.9390625 129.32421875 125.5890625 129.32421875 127.2890625 129.32421875 C127.31241046 121.85610158 127.33009052 114.38798827 127.34087467 106.91984272 C127.34605501 103.45069893 127.35306255 99.98158042 127.36450195 96.51245117 C127.37762036 92.50829856 127.38233073 88.50417178 127.38671875 84.5 C127.39188004 83.27654373 127.39704132 82.05308746 127.40235901 80.79255676 C127.40286253 72.92462222 127.0083399 65.15909735 126.2890625 57.32421875 C125.9590625 57.32421875 125.6290625 57.32421875 125.2890625 57.32421875 Z M123.2890625 149.32421875 C121.50878796 157.03314343 122.18727743 165.47545875 122.2890625 173.32421875 C124.2690625 172.99421875 126.2490625 172.66421875 128.2890625 172.32421875 C129.24404668 167.54929785 129.53149281 163.17282499 129.2890625 158.32421875 C128.6290625 157.66421875 127.9690625 157.00421875 127.2890625 156.32421875 C127.1640625 153.19921875 127.1640625 153.19921875 127.2890625 150.32421875 C127.9490625 149.99421875 128.6090625 149.66421875 129.2890625 149.32421875 C126.23993022 148.31310782 126.23993022 148.31310782 123.2890625 149.32421875 Z M-20.7109375 169.32421875 C-21.91959353 170.84935578 -23.10217703 172.39517844 -24.2734375 173.94921875 C-27.88951217 178.5049544 -31.47888836 182.62344176 -36.7109375 185.32421875 C-41.17786741 185.5369297 -44.17640434 182.87237056 -47.7109375 180.32421875 C-50.6809375 181.97421875 -53.6509375 183.62421875 -56.7109375 185.32421875 C-56.7109375 185.98421875 -56.7109375 186.64421875 -56.7109375 187.32421875 C-55.46376953 187.47117187 -55.46376953 187.47117187 -54.19140625 187.62109375 C-52.56138672 187.84539062 -52.56138672 187.84539062 -50.8984375 188.07421875 C-49.81949219 188.2134375 -48.74054688 188.35265625 -47.62890625 188.49609375 C-44.7109375 189.32421875 -44.7109375 189.32421875 -42.8359375 191.16796875 C-41.229738 194.2465178 -41.51418888 196.91390929 -41.7109375 200.32421875 C-35.6885501 198.96918159 -31.5911678 196.01780502 -27.7109375 191.32421875 C-23.53839057 184.46619195 -20.5265895 177.33619279 -19.7109375 169.32421875 C-20.0409375 169.32421875 -20.3709375 169.32421875 -20.7109375 169.32421875 Z " fill="#797979" transform="translate(388.7109375,116.67578125)"/>
+                            <path d="M0 0 C1.13477783 0.05184448 1.13477783 0.05184448 2.29248047 0.10473633 C3.39293701 0.17084106 3.39293701 0.17084106 4.515625 0.23828125 C5.16305664 0.27606689 5.81048828 0.31385254 6.47753906 0.3527832 C9.65915329 0.8214116 12.66613051 1.78833935 15.75 2.6875 C15.26888722 12.88618916 14.78226536 23.08460016 14.28901863 33.28271008 C14.06003473 38.02046673 13.83279853 42.75829245 13.60986328 47.49633789 C11.89633471 83.86251007 11.89633471 83.86251007 10.7265625 96.40625 C10.65406281 97.19472824 10.58156311 97.98320648 10.50686646 98.795578 C9.41941582 109.27996724 5.89412133 118.49860675 -2.28515625 125.40625 C-12.44868504 132.71968871 -23.08892636 133.60019721 -35.25 132.6875 C-41.64477797 131.55320776 -48.53237858 129.50615131 -52.46484375 123.98046875 C-55.65035834 118.59570209 -56.36918652 114.67883071 -56.3125 108.5 C-56.30347656 107.22769531 -56.29445313 105.95539063 -56.28515625 104.64453125 C-56.27355469 103.66871094 -56.26195312 102.69289063 -56.25 101.6875 C-52.85705554 102.30648311 -50.76167006 103.59348371 -48 105.625 C-40.99994368 110.38686539 -33.67923997 111.7695419 -25.25 110.6875 C-21.01695063 109.36243379 -18.08375105 107.73641261 -15.3125 104.25 C-13.39309827 99.62085466 -13.13275453 95.35683761 -13.1875 90.375 C-13.19652344 89.30636719 -13.20554687 88.23773438 -13.21484375 87.13671875 C-13.22644531 86.32847656 -13.23804688 85.52023437 -13.25 84.6875 C-14.260625 85.47125 -15.27125 86.255 -16.3125 87.0625 C-22.07422556 91.1466147 -28.22299021 92.52372765 -35.25 91.6875 C-42.69376332 90.09137141 -48.64656835 85.67503455 -52.79296875 79.32421875 C-57.69279046 70.08496549 -58.59517227 61.15000574 -58.5625 50.8125 C-58.57861328 49.80058594 -58.59472656 48.78867187 -58.61132812 47.74609375 C-58.61928521 35.317134 -55.27843087 22.90658986 -46.8125 13.5 C-33.95901681 1.47577379 -16.85196547 -0.83213228 0 0 Z M-25.25 23.6875 C-31.22597337 28.34786729 -34.14487062 34.29010247 -35.25 41.6875 C-35.97728422 51.18316863 -36.46493102 61.62958277 -30.0625 69.3125 C-26.3811079 71.11229169 -23.22413764 71.45895025 -19.25 70.6875 C-14.77045726 68.40546879 -12.37860475 66.21078508 -10.25 61.6875 C-9.74024627 58.67299323 -9.64487066 55.67773329 -9.5625 52.625 C-9.52906494 51.7597168 -9.49562988 50.89443359 -9.46118164 50.00292969 C-9.13390726 40.56722684 -9.15962063 31.12712346 -9.25 21.6875 C-15.34882574 20.42170598 -19.64670032 20.97450996 -25.25 23.6875 Z " fill="#797979" transform="translate(1179.25,283.3125)"/>
+                            <path d="M0 0 C2.94137976 2.3687751 3.35359725 3.11615749 4.5 6.9375 C4.375 10.1875 4.375 10.1875 2.375 12.1875 C-1.37140441 11.88778765 -4.75909503 11.14950641 -8.375 10.125 C-19.17175748 7.41026827 -29.71280851 9.51242298 -39.4609375 14.6953125 C-46.08402998 18.97148332 -50.12566901 24.18883802 -53.625 31.1875 C-52.80708984 30.78917969 -52.80708984 30.78917969 -51.97265625 30.3828125 C-42.51127668 25.95132874 -32.36083906 23.19989756 -21.94921875 25.875 C-14.61557674 28.54582562 -8.90524806 32.28920194 -5.25 39.3125 C-1.59872783 47.218298 -1.49787445 55.62221732 -4.1875 63.875 C-7.36176008 71.71005745 -13.14763593 78.16002624 -20.625 82.1875 C-30.37029093 86.14130375 -41.70341395 85.2970023 -51.29296875 81.35546875 C-53.82186072 80.08890477 -56.22172985 78.67727137 -58.625 77.1875 C-58.14910529 84.8018154 -54.98667985 90.2294045 -49.4375 95.4375 C-43.27168575 100.3221061 -36.23089911 102.91934909 -28.34765625 102.58203125 C-21.19266933 101.5452254 -14.34863833 99.66631116 -8.625 95.1875 C-7.965 95.1875 -7.305 95.1875 -6.625 95.1875 C-6.17000346 101.55745158 -6.91578308 105.90268651 -10.625 111.1875 C-17.16305709 118.52005517 -25.0979559 120.58942091 -34.640625 121.34765625 C-46.69375042 121.84625676 -57.65092234 117.75338707 -66.75 110.0625 C-75.95733312 101.3926149 -80.50155037 90.98142813 -81 78.3125 C-80.78091867 71.56479503 -79.85585751 63.24351024 -76.57519531 57.27880859 C-75.46727085 54.84034998 -75.44805353 53.287285 -75.5703125 50.625 C-75.59786621 49.75141846 -75.62541992 48.87783691 -75.65380859 47.9777832 C-75.68555176 47.05698975 -75.71729492 46.13619629 -75.75 45.1875 C-75.98572745 30.32779921 -71.75469897 18.47790559 -61.5 7.5 C-44.8823427 -8.27979223 -19.66236265 -12.88938711 0 0 Z M-51.625 55.1875 C-48.76800768 59.78353112 -45.946915 61.2442252 -40.9296875 62.68359375 C-36.30435709 63.69489481 -32.87873399 63.65457737 -28.4375 62 C-24.55108048 59.49541853 -22.11468669 57.19521545 -21 52.625 C-21.45809956 49.92248204 -21.45809956 49.92248204 -24.125 47.875 C-34.25001928 42.99329428 -44.23154166 47.84158802 -51.625 55.1875 Z " fill="#797979" transform="translate(1061.625,263.8125)"/>
+                            <path d="M0 0 C0.81251221 0.03456299 1.62502441 0.06912598 2.4621582 0.10473633 C3.24421631 0.14880615 4.02627441 0.19287598 4.83203125 0.23828125 C5.87387573 0.29495972 5.87387573 0.29495972 6.93676758 0.3527832 C9.8246405 0.7822521 12.44283605 1.70956147 15.1875 2.6875 C14.55692607 22.28512314 13.66720397 41.85744927 12.625 61.4375 C12.48454741 64.10414174 12.34483737 66.77082176 12.20507812 69.4375 C11.86832582 75.85429715 11.52900325 82.27095403 11.1875 88.6875 C8.81124823 88.79633596 6.44006024 88.87516696 4.0625 88.9375 C3.39734375 88.97101563 2.7321875 89.00453125 2.046875 89.0390625 C-3.16064734 89.14117078 -5.67361996 87.66561765 -9.8125 84.6875 C-13.77262388 84.26215476 -13.77262388 84.26215476 -16 86.5 C-21.04588807 90.42457961 -27.27215289 92.34800035 -33.7109375 92.02734375 C-41.20036831 90.81622762 -46.65861245 87.85559568 -51.34765625 81.88671875 C-60.14750614 68.67521077 -60.21891245 52.17517143 -58.34765625 36.890625 C-56.24962457 26.51219609 -51.58538758 16.04975064 -42.8125 9.6875 C-28.87251481 1.56276489 -16.04400606 -0.74384313 0 0 Z M-27.625 25.4375 C-34.1012975 32.09883457 -35.80629006 40.12407351 -36.0625 49.1875 C-35.84512382 56.86359637 -34.76128056 63.65617369 -29.8125 69.6875 C-26.21557569 71.48596216 -22.72235543 71.36198965 -18.8125 70.6875 C-14.92892351 68.49412614 -11.51615922 65.73760971 -10.03881836 61.43338013 C-9.69842019 58.86951964 -9.60095057 56.40260462 -9.59375 53.81640625 C-9.56067749 52.894077 -9.52760498 51.97174774 -9.49353027 51.02146912 C-9.39694425 48.09737059 -9.35392937 45.17534736 -9.3125 42.25 C-9.25614658 40.25836016 -9.19628684 38.26681624 -9.1328125 36.27539062 C-8.98544726 31.41293193 -8.88607854 26.5516121 -8.8125 21.6875 C-16.37705947 20.497774 -21.11980931 21.38982579 -27.625 25.4375 Z " fill="#797979" transform="translate(1300.8125,283.3125)"/>
+                            <path d="M0 0 C8.48721135 9.23608294 9.4766335 20.30118594 9.04663086 32.37646484 C8.98999268 33.59285645 8.93335449 34.80924805 8.875 36.0625 C8.8241626 37.34205566 8.7733252 38.62161133 8.72094727 39.93994141 C8.12507183 54.41158133 7.14755628 68.86572956 6.125 83.3125 C3.86869146 83.3598312 1.61209817 83.39372996 -0.64453125 83.421875 C-1.90112549 83.44217773 -3.15771973 83.46248047 -4.45239258 83.48339844 C-9.02622103 83.25501696 -10.63756692 82.46243489 -13.875 79.3125 C-21.42659924 70.38053814 -17.36321177 53.84510573 -16.63354492 42.95385742 C-16.46286658 40.36169497 -16.30691203 37.76894698 -16.15234375 35.17578125 C-16.09513657 34.3902034 -16.03792938 33.60462555 -15.97898865 32.79524231 C-15.69065562 27.82810983 -16.11482716 23.99053075 -17.875 19.3125 C-20.70498161 16.80594486 -22.49448062 16.35477993 -26.25 15.9375 C-31.54044949 16.48478788 -35.48380275 18.38503517 -39.875 21.3125 C-40.42145822 23.62939644 -40.42145822 23.62939644 -40.47509766 26.36962891 C-40.53170563 27.42477692 -40.5883136 28.47992493 -40.64663696 29.56704712 C-40.69363739 30.71281219 -40.74063782 31.85857727 -40.7890625 33.0390625 C-40.87901993 34.80423721 -40.87901993 34.80423721 -40.97079468 36.60507202 C-41.16072844 40.38202543 -41.33100318 44.15955696 -41.5 47.9375 C-41.68003738 51.69373453 -41.86410963 55.44973997 -42.05062866 59.20565796 C-42.16548165 61.54497316 -42.27589251 63.88451188 -42.3812561 66.22427368 C-42.65039774 71.97086529 -43.06153745 77.61653324 -43.875 83.3125 C-57.83185258 84.00078314 -57.83185258 84.00078314 -61.5625 81.625 C-66.16237193 77.02512807 -67.23415647 73.63173487 -67.24121094 67.2668457 C-67.22348633 66.31253662 -67.20576172 65.35822754 -67.1875 64.375 C-67.1762207 63.3646167 -67.16494141 62.3542334 -67.15332031 61.31323242 C-67.09198356 57.64513299 -66.98989147 53.97921258 -66.875 50.3125 C-66.85201843 49.54800537 -66.82903687 48.78351074 -66.80535889 47.99584961 C-66.64826534 42.89609688 -66.4581852 37.79868582 -66.23519897 32.7013855 C-66.16194843 30.9888319 -66.09438873 29.27602508 -66.03262329 27.5630188 C-65.94176495 25.13057244 -65.82576687 22.70055728 -65.703125 20.26953125 C-65.67999741 19.540224 -65.65686981 18.81091675 -65.63304138 18.05950928 C-65.35359714 13.24840564 -64.26879251 10.71837284 -60.875 7.3125 C-43.28862146 -5.64207514 -19.76359782 -11.60037263 0 0 Z " fill="#797979" transform="translate(961.875,288.6875)"/>
+                            <path d="M0 0 C5.72895097 5.22267158 8.96858187 12.9318407 9.453125 20.58203125 C9.5629544 29.02974275 9.45652129 34.31969367 4.125 41.0625 C-3.3165543 47.04809803 -11.28706725 48.51421652 -20.6796875 48.47265625 C-21.96875 48.46943359 -23.2578125 48.46621094 -24.5859375 48.46289062 C-25.93229236 48.45453733 -27.27864652 48.44607241 -28.625 48.4375 C-29.99479004 48.4324783 -31.36458185 48.42791657 -32.734375 48.42382812 C-36.0729619 48.41207254 -39.41145815 48.39563964 -42.75 48.375 C-42.1401403 49.81636652 -41.52279393 51.25456671 -40.90234375 52.69140625 C-40.38788696 53.89325562 -40.38788696 53.89325562 -39.86303711 55.11938477 C-37.95010055 58.99602895 -35.4080197 61.53560899 -31.56640625 63.48046875 C-28.06411902 64.59284569 -24.76518341 64.758222 -21.125 64.75 C-20.42149414 64.74911377 -19.71798828 64.74822754 -18.99316406 64.74731445 C-11.92801668 64.58864664 -5.30820701 63.05645456 0.421875 58.73828125 C2.25 57.375 2.25 57.375 4.25 57.375 C4.651398 64.62989725 4.71377516 71.33392898 -0.2265625 77.09765625 C-8.07299107 84.38874398 -17.81689595 85.68062563 -28.20703125 85.5234375 C-38.92595123 84.89775553 -47.50025515 80.5216071 -54.890625 72.76171875 C-64.45151227 60.4892353 -64.93014135 47.29406158 -63.75 32.375 C-62.20530348 22.5426022 -58.24021448 13.94458061 -51.75 6.375 C-51.20472656 5.72015625 -50.65945313 5.0653125 -50.09765625 4.390625 C-37.20688791 -9.80438578 -15.10610541 -11.49236037 0 0 Z M-37.25 18.140625 C-40.5316549 22.87664968 -41.19152906 26.69523175 -41.75 32.375 C-38.39590806 32.43359857 -35.04194983 32.46879582 -31.6875 32.5 C-30.74455078 32.51675781 -29.80160156 32.53351563 -28.83007812 32.55078125 C-19.87237642 32.63541425 -19.87237642 32.63541425 -11.84375 29.0234375 C-9.68501366 25.76991345 -10.03243594 22.09328651 -10.75 18.375 C-12.93159145 15.61930553 -14.62177494 13.93911253 -17.75 12.375 C-25.61606464 11.57926212 -31.92974602 11.87824271 -37.25 18.140625 Z " fill="#797979" transform="translate(876.75,289.625)"/>
+                            <path d="M0 0 C-0.33 7.26 -0.66 14.52 -1 22 C-3.97 22.37125 -3.97 22.37125 -7 22.75 C-13.74086784 23.78536205 -20.56904603 25.35012341 -25 31 C-25.54031638 33.39808952 -25.54031638 33.39808952 -25.60009766 36.12646484 C-25.65670563 37.17119965 -25.7133136 38.21593445 -25.77163696 39.29232788 C-25.81863739 40.42046906 -25.86563782 41.54861023 -25.9140625 42.7109375 C-26.00401993 44.45136826 -26.00401993 44.45136826 -26.09579468 46.22695923 C-26.28549146 49.94245034 -26.4559816 53.65851576 -26.625 57.375 C-26.80473491 61.08407492 -26.98843855 64.79291148 -27.17562866 68.50161743 C-27.29098241 70.81075338 -27.40136769 73.12014407 -27.5062561 75.42977905 C-27.55655975 76.48081818 -27.6068634 77.5318573 -27.65869141 78.61474609 C-27.70071686 79.53613373 -27.74274231 80.45752136 -27.78604126 81.40682983 C-28.00012488 84.00151353 -28.43799757 86.45993532 -29 89 C-42.95685258 89.68828314 -42.95685258 89.68828314 -46.6875 87.3125 C-50.16433169 83.83566831 -51.86476905 81.40168405 -52.34570312 76.41674805 C-52.34187071 74.96908392 -52.31887931 73.52139881 -52.28125 72.07421875 C-52.27049438 71.26200363 -52.25973877 70.44978851 -52.24865723 69.61296082 C-52.00829673 56.66947398 -51.20984253 43.7365568 -50.5 30.8125 C-50.35443911 28.10487237 -50.21040514 25.39716422 -50.06640625 22.68945312 C-49.71620687 16.12601008 -49.36038565 9.56289122 -49 3 C-43.80385843 1.42177098 -39.50675306 0.77864154 -34.0625 0.875 C-33.37865234 0.88402344 -32.69480469 0.89304687 -31.99023438 0.90234375 C-30.32666713 0.92561042 -28.66328369 0.96146833 -27 1 C-26.67 3.97 -26.34 6.94 -26 10 C-25.52691406 9.52949219 -25.05382813 9.05898438 -24.56640625 8.57421875 C-16.53488878 1.01238066 -11.11050375 0 0 0 Z " fill="#797979" transform="translate(1121,283)"/>
+                            <path d="M0 0 C2.70860124 0.14176421 5.41680752 0.28828216 8.125 0.4375 C9.26582031 0.49647461 9.26582031 0.49647461 10.4296875 0.55664062 C11.55117187 0.61948242 11.55117187 0.61948242 12.6953125 0.68359375 C13.7164917 0.73858032 13.7164917 0.73858032 14.75830078 0.79467773 C17.53467813 1.04897237 20.25510225 1.51732399 23 2 C23.24877307 16.38557301 22.56520763 30.69014555 21.77319336 45.05175781 C21.56176082 48.88841316 21.3574462 52.72539797 21.15429688 56.5625 C21.02124496 59.03908465 20.88779534 61.51564797 20.75390625 63.9921875 C20.66321617 65.68479202 20.66321617 65.68479202 20.57069397 67.41159058 C20.17112018 74.62001855 19.63776709 81.80875721 19 89 C5.05633774 89.68763266 5.05633774 89.68763266 1.3125 87.4375 C-2.94064272 82.95445767 -4.21610716 78.83829448 -4.14453125 72.78125 C-4.05097911 70.68666496 -3.93898861 68.5928543 -3.8125 66.5 C-3.75642578 65.35523193 -3.70035156 64.21046387 -3.64257812 63.03100586 C-3.47956885 59.76073946 -3.30123756 56.49162729 -3.11968994 53.22235107 C-2.8998239 49.13997341 -2.70802876 45.05622164 -2.51171875 40.97265625 C-1.08145181 11.6184165 -1.08145181 11.6184165 0 0 Z " fill="#797979" transform="translate(1209,283)"/>
+                            <path d="M0 0 C1.65 0 3.3 0 5 0 C5 123.75 5 247.5 5 375 C3.35 375 1.7 375 0 375 C0 251.25 0 127.5 0 0 Z " fill="#797979" transform="translate(693,114)"/>
+                            <path d="M0 0 C14 0 14 0 17.17822266 2.39916992 C17.8335498 3.49849854 18.48887695 4.59782715 19.1640625 5.73046875 C19.53429535 6.31790359 19.9045282 6.90533844 20.28598022 7.51057434 C21.44854189 9.3775207 22.53594668 11.27693537 23.625 13.1875 C24.38981074 14.44883793 25.15931465 15.70734265 25.93359375 16.96289062 C27.35890651 19.27835947 28.74598897 21.60385773 30.11572266 23.95385742 C32.18848601 27.44142667 32.18848601 27.44142667 36 32 C36 21.44 36 10.88 36 0 C40.29 0 44.58 0 49 0 C49 17.82 49 35.64 49 54 C44.71 54 40.42 54 36 54 C32.56693584 50.22798295 30.45858404 47.32550563 28 43 C26.65652281 40.95777147 25.30232294 38.92255656 23.9375 36.89453125 C22.62143614 34.86949919 21.30955569 32.84174686 20 30.8125 C17.69 27.244375 15.38 23.67625 13 20 C12.67 31.22 12.34 42.44 12 54 C8.04 54 4.08 54 0 54 C0 36.18 0 18.36 0 0 Z " fill="#797979" transform="translate(267,397)"/>
+                            <path d="M0 0 C14 0 14 0 17.51708984 2.9375 C18.78793335 4.87890625 18.78793335 4.87890625 19.9609375 7 C20.63039902 8.06541016 20.63039902 8.06541016 21.31338501 9.15234375 C22.71636163 11.40885487 24.04463951 13.70008745 25.375 16 C26.31828737 17.5445035 27.26616708 19.0862122 28.21875 20.625 C30.54384292 24.38403524 32.76295242 28.18210546 35 32 C35.33 21.44 35.66 10.88 36 0 C39.96 0 43.92 0 48 0 C48 17.82 48 35.64 48 54 C35 54 35 54 31.50463867 50.97070312 C30.59566102 49.60419031 29.73469212 48.20482317 28.91796875 46.78125 C28.44805008 46.04878052 27.97813141 45.31631104 27.49397278 44.56164551 C26.01362492 42.23258266 24.60137562 39.86987435 23.1875 37.5 C22.19109084 35.90749429 21.19047581 34.31761193 20.18554688 32.73046875 C17.731347 28.85157647 15.37339079 24.93365577 13 21 C12.67 31.89 12.34 42.78 12 54 C8.04 54 4.08 54 0 54 C0 36.18 0 18.36 0 0 Z " fill="#797979" transform="translate(326,397)"/>
+                            <path d="M0 0 C0.70108887 0.00829834 1.40217773 0.01659668 2.12451172 0.02514648 C9.80566375 0.27490392 15.21005167 2.07655966 20.5 7.6875 C26.90740224 16.17730797 27.06669319 25.21340252 26.125 35.4375 C25.23000457 38.79717516 23.99225467 41.51625488 22.125 44.4375 C21.568125 45.345 21.01125 46.2525 20.4375 47.1875 C14.7159133 52.75444923 7.92934923 55.46357864 0 55.75 C-6.80977382 55.61403114 -13.05337264 53.85145717 -18.28125 49.37890625 C-25.72901656 41.37795413 -26.4380687 34.0528271 -26.18359375 23.58203125 C-25.75258633 15.60749974 -22.49420453 10.5037244 -16.94921875 4.9453125 C-11.6703315 1.1079293 -6.42146334 -0.09823246 0 0 Z M-8.875 14.4375 C-12.85923458 19.9869696 -13.67684311 25.73716714 -12.875 32.4375 C-11.34270659 37.02644088 -9.31363849 41.15092866 -4.875 43.4375 C-0.43800584 44.99644389 2.8162852 44.16098592 7.125 42.4375 C11.41256341 38.26581669 12.94596871 33.89918028 13.375 28 C12.99057688 22.52197059 12.28272499 18.76888373 8.625 14.5625 C5.03319861 11.50946882 2.89996763 11.14531303 -1.84375 11.22265625 C-4.84781372 11.54039376 -6.56328277 12.52207715 -8.875 14.4375 Z " fill="#797979" transform="translate(232.875,396.5625)"/>
+                            <path d="M0 0 C4.29 0 8.58 0 13 0 C13 6.93 13 13.86 13 21 C19.93 21 26.86 21 34 21 C34 14.07 34 7.14 34 0 C38.29 0 42.58 0 47 0 C47 17.82 47 35.64 47 54 C42.71 54 38.42 54 34 54 C34 46.74 34 39.48 34 32 C27.07 32 20.14 32 13 32 C13 39.26 13 46.52 13 54 C8.71 54 4.42 54 0 54 C0 36.18 0 18.36 0 0 Z " fill="#797979" transform="translate(481,397)"/>
+                            <path d="M0 0 C4.29 0 8.58 0 13 0 C17.21057415 9.8601018 21.0272152 19.84584157 24.78588867 29.88525391 C25.82393029 32.65550432 26.86786512 35.42348882 27.91210938 38.19140625 C28.57327119 39.95299198 29.2340914 41.71470597 29.89453125 43.4765625 C30.36316338 44.71703842 30.36316338 44.71703842 30.84126282 45.98257446 C33 51.77075189 33 51.77075189 33 54 C20.22170832 55.33920961 12.13782387 51.90604338 1 46 C-0.485 45.505 -0.485 45.505 -2 45 C-2.66 47.97 -3.32 50.94 -4 54 C-8.62 54 -13.24 54 -18 54 C-16.70235529 47.43062216 -14.81704759 41.49014103 -12.3046875 35.29296875 C-11.95238068 34.40515213 -11.60007385 33.51733551 -11.23709106 32.60261536 C-10.12278805 29.79497784 -9.00001273 26.99086185 -7.875 24.1875 C-6.38546528 20.4756909 -4.90483483 16.76051555 -3.4296875 13.04296875 C-3.08598114 12.19502243 -2.74227478 11.34707611 -2.38815308 10.47343445 C-1.9173381 9.28618523 -1.9173381 9.28618523 -1.43701172 8.07495117 C-1.15880585 7.38261887 -0.88059998 6.69028656 -0.59396362 5.97697449 C0.19182339 3.70557206 0.19182339 3.70557206 0 0 Z M6 19 C4.68 23.62 3.36 28.24 2 33 C5.3 34.65 8.6 36.3 12 38 C13.4216868 33.73493961 11.65386682 30.79962257 10.0625 26.8125 C9.77181641 26.06291016 9.48113281 25.31332031 9.18164062 24.54101562 C8.46274964 22.69075523 7.73245347 20.84493352 7 19 C6.67 19 6.34 19 6 19 Z " fill="#797979" transform="translate(399,397)"/>
+                            <path d="M0 0 C1.51980469 0.02030273 1.51980469 0.02030273 3.0703125 0.04101562 C5.54710833 0.07606462 8.02362691 0.12986028 10.5 0.1875 C10.5 4.8075 10.5 9.4275 10.5 14.1875 C9.571875 13.8575 8.64375 13.5275 7.6875 13.1875 C1.71966914 11.49803261 -4.92301463 10.92530308 -10.5625 13.6875 C-11.201875 14.1825 -11.84125 14.6775 -12.5 15.1875 C-13.16 15.1875 -13.82 15.1875 -14.5 15.1875 C-17.36117842 22.24507343 -18.89393925 28.08312332 -16.375 35.5 C-13.52845272 39.5800511 -10.41700152 41.59109953 -5.6875 43.0625 C-1.39152175 43.23096974 2.36940579 42.28398501 6.5 41.1875 C8.48 40.6925 8.48 40.6925 10.5 40.1875 C10.5 44.1475 10.5 48.1075 10.5 52.1875 C1.57811693 55.75625323 -8.37554941 56.78145186 -17.5 53.1875 C-23.61761566 50.2469318 -27.94610278 46.65465039 -30.68359375 40.359375 C-32.8903952 31.7855818 -33.15867983 21.59689763 -29.4375 13.4375 C-22.48020039 2.08303069 -12.63939455 -0.32344907 0 0 Z " fill="#797979" transform="translate(191.5,396.8125)"/>
+                            <path d="M0 0 C1.53333984 0.01353516 1.53333984 0.01353516 3.09765625 0.02734375 C5.6068724 0.05079437 8.11596716 0.08666164 10.625 0.125 C10.625 4.745 10.625 9.365 10.625 14.125 C9.696875 13.795 8.76875 13.465 7.8125 13.125 C1.49360039 11.35262572 -4.90610227 10.93463859 -10.875 13.8125 C-15.40933592 18.00676072 -16.95741398 21.7023593 -17.43359375 27.78125 C-17.33651575 31.66436981 -16.4345882 34.82667397 -14.375 38.125 C-10.58264431 41.41170826 -7.38938743 42.92835736 -2.375 43.125 C0.67701675 42.63497288 3.63904895 41.91763428 6.625 41.125 C8.605 40.63 8.605 40.63 10.625 40.125 C10.625 44.085 10.625 48.045 10.625 52.125 C2.81838917 56.02830542 -6.08663584 56.17231286 -14.5 54.0625 C-21.30028674 51.76366093 -26.42060563 47.50445194 -29.875 41.1875 C-32.88118922 33.36335573 -32.8853278 22.66137182 -29.625 14.9375 C-26.04409225 8.3516347 -21.82108525 4.10336812 -14.890625 1.01953125 C-9.90545887 -0.24891658 -5.11996268 -0.08588324 0 0 Z " fill="#797979" transform="translate(463.375,396.875)"/>
+                            <path d="M0 0 C14.19 0 28.38 0 43 0 C43 3.63 43 7.26 43 11 C37.72 11 32.44 11 27 11 C27 25.19 27 39.38 27 54 C23.04 54 19.08 54 15 54 C15 39.81 15 25.62 15 11 C10.05 11 5.1 11 0 11 C0 7.37 0 3.74 0 0 Z " fill="#797979" transform="translate(534,397)"/>
+                            <path d="M0 0 C3.23300086 1.47593517 5.72160787 3.26592945 8 6 C9.56840852 10.70522555 9.54895539 14.52648816 7.8125 19.1875 C5.47953993 22.80761046 2.84455245 25.07772378 -1 27 C-5.05380289 27.51037087 -9.1774658 27.89274541 -12.921875 26.05859375 C-16.13426316 23.52207934 -18.16467413 20.99100138 -19 17 C-18.81309777 11.11257989 -17.87848698 7.63263723 -14 3 C-9.77930715 -0.61773673 -5.32267858 -0.72581981 0 0 Z " fill="#797979" transform="translate(1228,248)"/>
+                            <path d="M0 0 C2.0625 -0.061875 4.125 -0.12375 6.25 -0.1875 C7.99023438 -0.23970703 7.99023438 -0.23970703 9.765625 -0.29296875 C13.25907488 0.02346693 14.65052305 0.41961623 17 3 C17.35546875 5.0078125 17.35546875 5.0078125 17.1875 7.125 C17.0946875 9.043125 17.0946875 9.043125 17 11 C17.33 11.33 17.66 11.66 18 12 C18.46740995 17.79588336 18.46740995 17.79588336 18 20 C15.5921564 22.68405509 14.16482281 22.98601616 10.546875 23.29296875 C7.03125 23.1953125 3.515625 23.09765625 0 23 C0 15.41 0 7.82 0 0 Z M6 5 C6 6.32 6 7.64 6 9 C7.65 9 9.3 9 11 9 C11 7.68 11 6.36 11 5 C9.35 5 7.7 5 6 5 Z M6 14 C6 15.32 6 16.64 6 18 C7.65 18 9.3 18 11 18 C11.33 16.68 11.66 15.36 12 14 C10.02 14 8.04 14 6 14 Z " fill="#797979" transform="translate(384,467)"/>
+                            <path d="M0 0 C3 1.1875 3 1.1875 5 3 C5.8125 5.6875 5.8125 5.6875 6 8 C4.02 8 2.04 8 0 8 C0 7.34 0 6.68 0 6 C-4.13108746 5.69022028 -4.13108746 5.69022028 -7.9375 7.0625 C-9.61676907 10.12469653 -8.68621125 12.69370941 -8 16 C-3.89776415 17.01540112 -3.89776415 17.01540112 0 16 C-1.65 15.67 -3.3 15.34 -5 15 C-5 13.35 -5 11.7 -5 10 C-1.04 10 2.92 10 7 10 C6.82994533 15.01661286 6.75478383 17.11635064 3.4375 21 C-1.02172399 23.59445759 -2.91191361 23.64610621 -8 23 C-12.16507424 21.2414131 -14.20882468 19.14798495 -16 15 C-16.53632889 9.99426368 -16.10708223 6.99482001 -13 3 C-9.44217368 -0.96834474 -4.96743255 -0.64638605 0 0 Z " fill="#797979" transform="translate(372,467)"/>
+                            <path d="M0 0 C12.05122556 -0.60864776 12.05122556 -0.60864776 16.3125 2.125 C18.29795345 5.5076244 18.56287116 7.14031205 18 11 C17.608125 11.86625 17.21625 12.7325 16.8125 13.625 C16.544375 14.40875 16.27625 15.1925 16 16 C17.32337286 18.15340529 17.32337286 18.15340529 19 20 C19 20.99 19 21.98 19 23 C16.25 23.375 16.25 23.375 13 23 C10.8125 20.0625 10.8125 20.0625 9 17 C8.01 16.67 7.02 16.34 6 16 C6 18.31 6 20.62 6 23 C4.02 23 2.04 23 0 23 C0 15.41 0 7.82 0 0 Z M6 5 C6 6.98 6 8.96 6 11 C7.98 10.67 9.96 10.34 12 10 C11.67 8.35 11.34 6.7 11 5 C9.35 5 7.7 5 6 5 Z " fill="#797979" transform="translate(308,467)"/>
+                            <path d="M0 0 C1.98 0 3.96 0 6 0 C6.33 5.28 6.66 10.56 7 16 C8.32 16.33 9.64 16.66 11 17 C13.05922402 14.94077598 12.41427579 10.78291876 12.5625 7.9375 C12.60568359 7.17888672 12.64886719 6.42027344 12.69335938 5.63867188 C12.79973633 3.75934562 12.90039934 1.87969756 13 0 C14.65 0 16.3 0 18 0 C18.08710289 3.10398978 18.14042309 6.20766548 18.1875 9.3125 C18.21263672 10.19357422 18.23777344 11.07464844 18.26367188 11.98242188 C18.27333984 12.82998047 18.28300781 13.67753906 18.29296875 14.55078125 C18.3086792 15.33106689 18.32438965 16.11135254 18.34057617 16.9152832 C17.91223453 19.53722536 17.04678833 20.3637512 15 22 C11.84203893 23.57898053 8.39329364 23.81928171 5 23 C2.149284 20.98175805 0.27235763 19.44250536 -0.39624023 15.90136719 C-0.49209277 13.47784894 -0.43675588 11.10953378 -0.3125 8.6875 C-0.28994141 7.85154297 -0.26738281 7.01558594 -0.24414062 6.15429688 C-0.1855061 4.10208851 -0.09583215 2.05080798 0 0 Z " fill="#797979" transform="translate(332,467)"/>
+                            <path d="M0 0 C2.75 -0.375 2.75 -0.375 6 0 C8.375 3 8.375 3 10 6 C11.50559539 4.03617993 12.89131683 2.21736634 14 0 C16.31 0 18.62 0 21 0 C19.81191348 3.34824382 18.26964728 6.22642747 16.4375 9.25 C13.78356233 13.89439093 13.25286154 17.68990773 13 23 C11.35 23 9.7 23 8 23 C7.979375 21.7625 7.95875 20.525 7.9375 19.25 C7.35156028 13.49131118 4.54881418 9.31332295 1.49609375 4.50390625 C0 2 0 2 0 0 Z " fill="#797979" transform="translate(405,467)"/>
                         </svg>
                     </div>
                 </div>
@@ -2361,7 +2442,7 @@
     
 
 <modals>
-    <div id="modalVideo" class="modal modal--video" tabindex="-1">
+    <div id="modalVideo" class="modal modal--video" tabindex="-1" role="dialog" aria-modal="true" aria-label="Video player">
         <div class="modal__container">
             <div class="modal__control">
                 <button type="button" class="button" onclick="modals.close(this)">
@@ -2391,7 +2472,7 @@ window.kentico.builder.useJQuery = true;</script><script src="/_content/Kentico.
     <script src="/libs/autoComplete/autoComplete.min.js"></script>
     <script src="/libs/jquery-validate/1.21.0/jquery.validate.min.js"></script>
     <script src="/libs/jquery-validation-unobtrusive/3.2.12/jquery.validate.unobtrusive.min.js"></script>
-    <script src="/js/scripts.min.js?v=zdqiHolYnTtfPCUxLDrbRu25xOCCISvEJrllzJOEMbs"></script>
+    <script src="/js/scripts.min.js?v=FjRsyVlHbrBLw_g1yODTDJLwTx3s6vdEA4YtixZCC28"></script>
 
 
 
@@ -2417,7 +2498,7 @@ window.kentico.builder.useJQuery = true;</script><script src="/_content/Kentico.
     <!-- Reachdesk Code Start -->
     <script type="text/javascript" src="https://www.browsealoud.com/plus/scripts/3.1.0/ba.js" crossorigin="anonymous" integrity="sha256-VCrJcQdV3IbbIVjmUyF7DnCqBbWD1BcZ/1sda2KWeFc= sha384-k2OQFn+wNFrKjU9HiaHAcHlEvLbfsVfvOnpmKBGWVBrpmGaIleDNHnnCJO4z2Y2H sha512-gxDfysgvGhVPSHDTieJ/8AlcIEjFbF3MdUgZZL2M5GXXDdIXCcX0CpH7Dh6jsHLOLOjRzTFdXASWZtxO+eMgyQ==" defer></script>
     <!-- Reachdesk Code End -->
-        <script src="/multistep/js/MultiStepForm.js?v=1oitVwF_rurMfvcee8ZDhAMdZS0cA7YCafyRpyHZUb0"></script>
+        <script src="/multistep/js/MultiStepForm.js?v=Onn92RNHsaQUE19jqfjmD80GdLAxGLQXD6H-s3r7mlc"></script>
         <script src="/Scripts/GoogleAnalyticsEventsHandler.js?v=fAkNwmkzu9XF3dveBpXMpnH4yCMkkHPOt4JxrxLTkuQ"></script>
 </body>
 
