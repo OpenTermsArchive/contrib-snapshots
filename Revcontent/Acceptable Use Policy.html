@@ -2621,7 +2621,7 @@ thead td {
   line-height: 42px;
 }
 
-a.header__menu-link {
+.header__menu-link {
   color: var(--header-menu-font-color);
   text-decoration: none;
 }
@@ -2727,7 +2727,7 @@ a.header__nav-link:focus {
   text-transform: var(--top-bar-hover-dropdown-text-transform);
 }
 
-a.header__menu-link {
+.header__menu-link {
   color: #33475b;
   color: var(--header-menu-main-font-color);
   font-family: 'Rubik', sans-serif;
@@ -2770,7 +2770,7 @@ a.header__menu-link:active {
   background-color: var(--header-menu-submenu-bg);
 }
 
-.header__menu-submenu a.header__menu-link {
+.header__menu-submenu .header__menu-link {
   color: #33475b;
   color: var(--header-menu-submenu-font-color);
   font-family: 'Rubik', sans-serif;
@@ -2796,9 +2796,9 @@ a.header__menu-link:active {
   background-color: var(--header-menu-hover-submenu-bg);
 }
 
-.header__menu-submenu a.header__menu-link:hover,
-.header__menu-submenu a.header__menu-link:focus,
-.header__menu-submenu a.header__menu-link:active {
+.header__menu-submenu .header__menu-link:hover,
+.header__menu-submenu .header__menu-link:focus,
+.header__menu-submenu .header__menu-link:active {
   color: #33475b;
   color: var(--header-menu-hover-submenu-font-color);
   font-family: 'Rubik', sans-serif;
@@ -2820,11 +2820,11 @@ a.header__menu-link:active {
 .header__menu-submenu
   .header__menu-item:hover
   > .header__menu-link-toggle-wrapper
-  > a.header__menu-link,
+  > .header__menu-link,
 .header__menu-submenu
   .header__menu-item:focus
   > .header__menu-link-toggle-wrapper
-  > a.header__menu-link {
+  > .header__menu-link {
   color: #33475b;
   color: var(--header-menu-hover-submenu-font-color);
 }
@@ -3251,8 +3251,8 @@ a.hs-kb-social_follow__link {
 /* stylelint-enable declaration-no-important */
 </style>
 
-<link rel="stylesheet" href="//7052064.fs1.hubspotusercontent-na1.net/hubfs/7052064/hub_generated/template_assets/DEFAULT_ASSET/1783698985446/template_article.min.css">
-<link rel="stylesheet" href="https://7052064.fs1.hubspotusercontent-na1.net/hubfs/7052064/hub_generated/module_assets/1/-107255593217/1783699076538/module_website-header.min.css">
+<link rel="stylesheet" href="//7052064.fs1.hubspotusercontent-na1.net/hubfs/7052064/hub_generated/template_assets/DEFAULT_ASSET/1784301875481/template_article.min.css">
+<link rel="stylesheet" href="https://7052064.fs1.hubspotusercontent-na1.net/hubfs/7052064/hub_generated/module_assets/1/-107255593217/1784301993511/module_website-header.min.css">
 
   <style>
     #hs_cos_wrapper_knowledgebase_header .header__language-switcher-current-label>span {}
@@ -3287,7 +3287,7 @@ a.hs-kb-social_follow__link {
 
   </style>
 
-<link rel="stylesheet" href="https://7052064.fs1.hubspotusercontent-na1.net/hubfs/7052064/hub_generated/module_assets/1/-153268142413/1783699077924/module_kb-search-input.min.css">
+<link rel="stylesheet" href="https://7052064.fs1.hubspotusercontent-na1.net/hubfs/7052064/hub_generated/module_assets/1/-153268142413/1784301995004/module_kb-search-input.min.css">
 
 <style>
   #hs_cos_wrapper_hs_kb-search-input-module .hs-search-field__bar>form { border-radius:px; }
@@ -3311,10 +3311,10 @@ a.hs-kb-social_follow__link {
 
 </style>
 
-<link rel="stylesheet" href="https://7052064.fs1.hubspotusercontent-na1.net/hubfs/7052064/hub_generated/module_assets/1/-112597758981/1783698968831/module_kb_breadcrumbs.min.css">
-<link rel="stylesheet" href="https://7052064.fs1.hubspotusercontent-na1.net/hubfs/7052064/hub_generated/module_assets/1/-112598395238/1783698966738/module_kb_feedback.min.css">
-<link rel="stylesheet" href="https://7052064.fs1.hubspotusercontent-na1.net/hubfs/7052064/hub_generated/module_assets/1/-112595965569/1783698965157/module_kb_related_articles.min.css">
-<link rel="stylesheet" href="https://7052064.fs1.hubspotusercontent-na1.net/hubfs/7052064/hub_generated/module_assets/1/-112597758980/1783698966159/module_kb_accordion_menu.css">
+<link rel="stylesheet" href="https://7052064.fs1.hubspotusercontent-na1.net/hubfs/7052064/hub_generated/module_assets/1/-112597758981/1784301888924/module_kb_breadcrumbs.min.css">
+<link rel="stylesheet" href="https://7052064.fs1.hubspotusercontent-na1.net/hubfs/7052064/hub_generated/module_assets/1/-112598395238/1784301887084/module_kb_feedback.min.css">
+<link rel="stylesheet" href="https://7052064.fs1.hubspotusercontent-na1.net/hubfs/7052064/hub_generated/module_assets/1/-112595965569/1784301885736/module_kb_related_articles.min.css">
+<link rel="stylesheet" href="https://7052064.fs1.hubspotusercontent-na1.net/hubfs/7052064/hub_generated/module_assets/1/-112597758980/1784301886474/module_kb_accordion_menu.css">
 <style>
   @font-face {
     font-family: "Montserrat";
@@ -3434,6 +3434,8 @@ a.hs-kb-social_follow__link {
 
   <a href="#main-content" class="header__skip">Skip to content</a>
   <div id="hs_cos_wrapper_knowledgebase_header" class="hs_cos_wrapper hs_cos_wrapper_widget hs_cos_wrapper_type_module" style="" data-hs-cos-general-type="widget" data-hs-cos-type="module">
+
+
 
 
 
@@ -4286,10 +4288,10 @@ var hsVars = hsVars || {}; hsVars['language'] = 'en';
 </script>
 
 <script src="/hs/hsstatic/cos-i18n/static-1.53/bundles/project.js"></script>
-<script src="https://7052064.fs1.hubspotusercontent-na1.net/hubfs/7052064/hub_generated/module_assets/1/-107255593217/1783699076538/module_website-header.min.js"></script>
-<script src="https://7052064.fs1.hubspotusercontent-na1.net/hubfs/7052064/hub_generated/module_assets/1/-153268142413/1783699077924/module_kb-search-input.min.js"></script>
-<script src="//7052064.fs1.hubspotusercontent-na1.net/hubfs/7052064/hub_generated/template_assets/DEFAULT_ASSET/1783698989305/template_purify.min.js"></script>
-<script src="https://7052064.fs1.hubspotusercontent-na1.net/hubfs/7052064/hub_generated/module_assets/1/-112597758980/1783698966159/module_kb_accordion_menu.min.js"></script>
+<script src="https://7052064.fs1.hubspotusercontent-na1.net/hubfs/7052064/hub_generated/module_assets/1/-107255593217/1784301993511/module_website-header.min.js"></script>
+<script src="https://7052064.fs1.hubspotusercontent-na1.net/hubfs/7052064/hub_generated/module_assets/1/-153268142413/1784301995004/module_kb-search-input.min.js"></script>
+<script src="//7052064.fs1.hubspotusercontent-na1.net/hubfs/7052064/hub_generated/template_assets/DEFAULT_ASSET/1784301907492/template_purify.min.js"></script>
+<script src="https://7052064.fs1.hubspotusercontent-na1.net/hubfs/7052064/hub_generated/module_assets/1/-112597758980/1784301886474/module_kb_accordion_menu.min.js"></script>
 
 <!-- Start of HubSpot Analytics Code -->
 <script type="text/javascript">
@@ -4318,8 +4320,8 @@ _hsq.push(["setContentMetadata", {
 
 <script type="text/javascript">
 var hsVars = {
-    render_id: "2c41d2c5-604e-470d-b90b-4766f67ada74",
-    ticks: 1783888977742,
+    render_id: "c575fa24-88b4-4064-a1ea-7299b386cc13",
+    ticks: 1784493782412,
     page_id: 193793382985,
     dynamic_page_id: "36761210186",
     content_group_id: 193790478393,
