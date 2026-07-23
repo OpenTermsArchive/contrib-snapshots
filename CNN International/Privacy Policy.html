@@ -55,7 +55,7 @@ window._wpemojiSettings = {"baseUrl":"https:\/\/s.w.org\/images\/core\/emoji\/16
 .wp-block-button__link{color:#fff;background-color:#32373c;border-radius:9999px;box-shadow:none;text-decoration:none;padding:calc(.667em + 2px) calc(1.333em + 2px);font-size:1.125em}.wp-block-file__button{background:#32373c;color:#fff;text-decoration:none}
 </style>
 <link rel="stylesheet" id="wpml-legacy-dropdown-click-0-css" href="https://www.wbdprivacy.com/wp-content/plugins/sitepress-multilingual-cms/templates/language-switchers/legacy-dropdown-click/style.min.css?ver=1" media="all">
-<link rel="stylesheet" id="privacycenter-css" href="https://www.wbdprivacy.com/wp-content/themes/privacycenter/dist/app.min.css?ver=1776792093" media="all">
+<link rel="stylesheet" id="privacycenter-css" href="https://www.wbdprivacy.com/wp-content/themes/privacycenter/dist/app.min.css?ver=1784736298" media="all">
 <script type="text/javascript" id="privacycenterscripts-js-extra">
 /* <![CDATA[ */
 var privacycenterjs = {"ajax_url":"https:\/\/www.wbdprivacy.com\/wp-admin\/admin-ajax.php"};
@@ -386,7 +386,18 @@ margin-top: 2rem;
 
 }.otnotice-content .otnotice-sections .otnotice-section-content p strong{
   margin-left: -30px;
-}main a[target="_blank"]:after {display:none;}</style><script>
+}main a[target="_blank"]:after {display:none;}
+span.fa.fa-bars {
+    display: none;
+}
+.ot-sdk-show-settings {
+    display: none !important;
+}
+@media (max-width: 1200px) {
+#navbar-main{
+  display: none;
+}}
+</style><script>
 var waitforOT = setInterval(function() {if (jQuery('.otnotice-content').length) {
 if(window.location.hash) {
         $('html, body').animate({
