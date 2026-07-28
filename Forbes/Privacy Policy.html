@@ -2624,6 +2624,16 @@ th, td {
     text-transform: none;
   }
 }
+/*
+ * When an experience is a stack-manager promotion remount (an already-shown experience re-homed
+ * into a wrapper), suppress its ENTRANCE animation so it doesn't replay — it should appear
+ * unchanged. Entrance animation classes contain "Animate"/"Animated"; dismiss classes contain
+ * "Dismiss". During a dismiss the element carries both, so :not([class*="Dismiss"]) keeps the
+ * dismiss animation working while only neutralizing the entrance.
+ */
+.ketch-suppress-enter-animation [class*="Animate"]:not([class*="Dismiss"]) {
+  animation: none !important;
+}
 #lanyard_root * .placeholder\:ketch-text-ketch-l::-moz-placeholder {
   font-size: 14px;
   line-height: 21px;
