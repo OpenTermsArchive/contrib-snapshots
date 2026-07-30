@@ -35,7 +35,7 @@
 <link rel="preload" href="/lib/fonts/source-sans-pro-v14-latin-600.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="preload" href="/lib/fonts/SourceSansPro-Regular.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="preload" href="/lib/fonts/freckle-face-v9-latin-regular.woff2" as="font" type="font/woff2" crossorigin> 
-<link rel="stylesheet" href="/lib/topnav/main.v1.0.108.css">
+<link rel="stylesheet" href="/lib/topnav/main.v1.0.113.css">
 <link rel="stylesheet" href="/lib/my-learning/main.v1.0.92.css">
 <link rel="stylesheet" href="/lib/pathfinder/main.v1.0.12.css">
 <link rel="stylesheet" href="/lib/w3schools.css?v=1.0.1">
@@ -138,7 +138,7 @@ function w3_getStyleValue(elmnt,style) {
 
 <script src="/lib/common-deps/main.v1.0.21.js"></script>
 <script src="/lib/user-session/main.v1.0.51.js"></script>
-<script src="/lib/topnav/main.v1.0.108.js"></script>
+<script src="/lib/topnav/main.v1.0.113.js"></script>
 <script src="/lib/my-learning/main.v1.0.92.js"></script>
 
 </head><body>
@@ -166,9 +166,10 @@ function w3_getStyleValue(elmnt,style) {
     </a>
     <nav class="tnb-desktop-nav w3-bar-item">
       <a
-        onclick="TopNavBar.openNavItem('tutorials')"
+        data-tnb-action="openNavItem"
+        data-tnb-nav-id="tutorials"
         class="tnb-nav-btn w3-bar-item w3-button barex bar-item-hover w3-padding-16 ga-top ga-top-tut-and-ref"
-        href="javascript:void(0)"
+        href="#"
         id="navbtn_tutorials"
         title="Tutorials and References"
         role="button"
@@ -186,9 +187,10 @@ function w3_getStyleValue(elmnt,style) {
         ></i>
       </a>
       <a
-        onclick="TopNavBar.openNavItem('references')"
+        data-tnb-action="openNavItem"
+        data-tnb-nav-id="references"
         class="tnb-nav-btn w3-bar-item w3-button barex bar-item-hover w3-padding-16 ga-top ga-top-ref"
-        href="javascript:void(0)"
+        href="#"
         id="navbtn_references"
         title="References"
         role="button"
@@ -206,9 +208,10 @@ function w3_getStyleValue(elmnt,style) {
         ></i>
       </a>
       <a
-        onclick="TopNavBar.openNavItem('exercises')"
+        data-tnb-action="openNavItem"
+        data-tnb-nav-id="exercises"
         class="tnb-nav-btn w3-bar-item w3-button barex bar-item-hover w3-padding-16 ga-top ga-top-exc-and-quz"
-        href="javascript:void(0)"
+        href="#"
         id="navbtn_exercises"
         title="Exercises and Quizzes"
         role="button"
@@ -226,9 +229,10 @@ function w3_getStyleValue(elmnt,style) {
         ></i>
       </a>
       <a
-        onclick="TopNavBar.openNavItem('certified')"
+        data-tnb-action="openNavItem"
+        data-tnb-nav-id="certified"
         class="tnb-nav-btn w3-bar-item w3-button barex bar-item-hover w3-padding-16 tnb-paid-service ga-top ga-top-cert-and-course"
-        href="javascript:void(0)"
+        href="#"
         id="navbtn_certified"
         title="Certificates"
         role="button"
@@ -247,9 +251,9 @@ function w3_getStyleValue(elmnt,style) {
       </a>
     </nav>
     <a
-      onclick="TopNavBar.openMenu()"
+      data-tnb-action="openMenu"
       class="tnb-menu-btn w3-bar-item w3-button bar-item-hover w3-padding-16 ga-top ga-top-menu"
-      href="javascript:void(0)"
+      href="#"
       title="Menu"
       aria-label="Menu"
       role="button"
@@ -282,18 +286,18 @@ function w3_getStyleValue(elmnt,style) {
           type="text"
           placeholder="Search..."
           autocomplete="off"
-          onkeydown="TopNavBar.googleSearchAttachKeyPressHandler(event)"
+          data-tnb-on-keydown="googleSearchKeyPress"
+          data-tnb-on-input="searchWithSuggestions"
+          data-tnb-on-focus="searchWithSuggestions"
+          data-tnb-on-blur="searchFieldLostFocus"
           aria-label="Search field"
-          oninput="TopNavBar.searchWithSuggestions(this)"
-          onfocus="TopNavBar.searchWithSuggestions(this)"
-          onblur="TopNavBar.searchFieldLostFocus(event)"
         />
         <div
           id="tnb-google-search-submit-btn"
           class="tnb-button-light"
           role="button"
           aria-label="Button to search"
-          onclick="TopNavBar.googleSearchSubmit()"
+          data-tnb-action="googleSearchSubmit"
         >
           <svg
             id="tnb-google-search-icon"
@@ -312,7 +316,7 @@ function w3_getStyleValue(elmnt,style) {
         <div
           id="tnb-google-search-mobile-show"
           class="tnb-button"
-          onclick="TopNavBar.googleSearchShowMobileContainer()"
+          data-tnb-action="googleSearchShowMobileContainer"
           aria-label="Button to open search field"
           role="button"
         >
@@ -330,7 +334,7 @@ function w3_getStyleValue(elmnt,style) {
         <div
           id="tnb-google-search-mobile-close"
           class="tnb-button"
-          onclick="TopNavBar.googleSearchHideMobileContainer()"
+          data-tnb-action="googleSearchHideMobileContainer"
           role="button"
           aria-label="Close search field"
         >
@@ -340,9 +344,10 @@ function w3_getStyleValue(elmnt,style) {
     </div>
     <div id="tnb-menu-toggle-wrapper">
       <a
-        onclick="TopNavBar.openNavItem('services')"
+        data-tnb-action="openNavItem"
+        data-tnb-nav-id="services"
         class="tnb-nav-btn w3-bar-item w3-button barex bar-item-hover ga-top ga-top-services w3-tooltip"
-        href="javascript:void(0)"
+        href="#"
         id="navbtn_services"
         aria-label="All our services"
         role="button"
@@ -704,11 +709,13 @@ function w3_getStyleValue(elmnt,style) {
         id="toggle-darkmode-mobile-wrapper"
         style="position: absolute; top: 20px; left: 20px"
       >
-        <label class="tnb-toggle-darkmode-switch">
+        <label
+          class="tnb-toggle-darkmode-switch"
+          data-tnb-action="toggleUserPreferredTheme"
+        >
           <input
             type="checkbox"
             id="darkToggle_on_small"
-            onclick="TopNavBar.toggleUserPreferredTheme()"
           />
           <span
             class="tnb-toggle-darkmode-slider fa"
@@ -732,7 +739,8 @@ function w3_getStyleValue(elmnt,style) {
       >
         <div
           class="tnb-mobile-nav-section-toggle-btn w3-button ga-top ga-top-menu-tut-and-ref"
-          onclick="TopNavBar.openNavItem('tutorials');"
+          data-tnb-action="openNavItem"
+          data-tnb-nav-id="tutorials"
           aria-label="Tutorials"
           role="button"
         >
@@ -755,7 +763,8 @@ function w3_getStyleValue(elmnt,style) {
       >
         <div
           class="tnb-mobile-nav-section-toggle-btn w3-button ga-top ga-top-menu-ref"
-          onclick="TopNavBar.openNavItem('references');"
+          data-tnb-action="openNavItem"
+          data-tnb-nav-id="references"
           aria-label="References"
           role="button"
         >
@@ -778,7 +787,8 @@ function w3_getStyleValue(elmnt,style) {
       >
         <div
           class="tnb-mobile-nav-section-toggle-btn w3-button ga-top ga-top-menu-exc-and-quz"
-          onclick="TopNavBar.openNavItem('exercises');"
+          data-tnb-action="openNavItem"
+          data-tnb-nav-id="exercises"
           aria-label="Exercises"
           role="button"
         >
@@ -801,7 +811,8 @@ function w3_getStyleValue(elmnt,style) {
       >
         <div
           class="tnb-mobile-nav-section-toggle-btn tnb-paid-service w3-button ga-top ga-top-menu-cert-and-course"
-          onclick="TopNavBar.openNavItem('certified');"
+          data-tnb-action="openNavItem"
+          data-tnb-nav-id="certified"
           aria-label="Certificates"
           role="button"
         >
@@ -909,7 +920,8 @@ function w3_getStyleValue(elmnt,style) {
       >
         <div
           class="tnb-mobile-nav-section-toggle-btn w3-button ga-top ga-top-menu-services"
-          onclick="TopNavBar.toggleMobileNav(event, 'services')"
+          data-tnb-action="toggleMobileNav"
+          data-tnb-nav-id="services"
           aria-label="Services"
           role="button"
         >
@@ -1011,7 +1023,7 @@ function w3_getStyleValue(elmnt,style) {
     <div
       class="w3-button tnb-close-menu-btn w3-round ga-top ga-top-close-accordion"
       tabindex="0"
-      onclick="TopNavBar.closeMenu()"
+      data-tnb-action="closeMenu"
       role="button"
       aria-label="Close menu"
     >
@@ -1026,13 +1038,15 @@ function w3_getStyleValue(elmnt,style) {
         tabindex="-1"
         aria-label="Menu for tutorials"
         style="border-bottom: none; background: transparent"
-        onclick="if(event.target===this){TopNavBar.closeNavItem('tutorials')}"
+        data-tnb-action="closeNavItemBackdrop"
+        data-tnb-nav-id="tutorials"
       >
         <div class="tutnav-wrap">
           <button
             class="tutnav-close-btn"
             tabindex="0"
-            onclick="TopNavBar.closeNavItem('tutorials')"
+            data-tnb-action="closeNavItem"
+            data-tnb-nav-id="tutorials"
             aria-label="Close navigation"
           >
             &times;
@@ -1113,14 +1127,16 @@ function w3_getStyleValue(elmnt,style) {
         tabindex="-1"
         aria-label="References menu"
         style="border-bottom: none; background: transparent"
-        onclick="if(event.target===this){TopNavBar.closeNavItem('references')}"
+        data-tnb-action="closeNavItemBackdrop"
+        data-tnb-nav-id="references"
       >
         <div class="refnav-wrap">
           <button
             class="refnav-close-btn"
             tabindex="0"
-            onclick="TopNavBar.closeNavItem('references')"
-            onkeydown="TopNavBar.mouseHandler(event, this, 'references')"
+            data-tnb-action="closeNavItem"
+            data-tnb-nav-id="references"
+            data-tnb-on-keydown="mouseHandler"
             aria-label="Close navigation"
           >
             &times;
@@ -1138,7 +1154,8 @@ function w3_getStyleValue(elmnt,style) {
               <div class="refnav-filter">
                 <input
                   id="filter-references-input"
-                  oninput="TopNavBar.filter(event, 'nav_references')"
+                  data-tnb-on-input="filter"
+                  data-tnb-filter-nav="nav_references"
                   type="text"
                   placeholder="Filter..."
                   aria-label="References filter bar"
@@ -1146,7 +1163,8 @@ function w3_getStyleValue(elmnt,style) {
                 <button
                   class="refnav-filter-clear"
                   aria-label="Filter clear button"
-                  onclick="TopNavBar.clearFilter(event, 'nav_references')"
+                  data-tnb-action="clearFilter"
+                  data-tnb-filter-nav="nav_references"
                 >
                   &times;
                 </button>
@@ -1415,14 +1433,16 @@ function w3_getStyleValue(elmnt,style) {
         tabindex="-1"
         aria-label="Exercises menu"
         style="border-bottom: none; background: transparent"
-        onclick="if(event.target===this){if(window.exnavBackToList)exnavBackToList();TopNavBar.closeNavItem('exercises')}"
+        data-tnb-action="closeNavItemBackdrop"
+        data-tnb-nav-id="exercises"
       >
         <div class="exnav-wrap">
           <button
             class="exnav-close-btn"
             tabindex="0"
-            onclick="if(window.exnavBackToList)exnavBackToList();TopNavBar.closeNavItem('exercises')"
-            onkeydown="TopNavBar.mouseHandler(event, this, 'exercises')"
+            data-tnb-action="closeExercisesNavItem"
+            data-tnb-on-keydown="mouseHandler"
+            data-tnb-nav-id="exercises"
             aria-label="Close navigation"
           >
             &times;
@@ -1507,7 +1527,8 @@ function w3_getStyleValue(elmnt,style) {
               <div class="exnav-filter">
                 <input
                   id="filter-exercises-input"
-                  oninput="TopNavBar.filter(event, 'nav_exercises')"
+                  data-tnb-on-input="filter"
+                  data-tnb-filter-nav="nav_exercises"
                   type="text"
                   placeholder="Filter..."
                   aria-label="Exercises filter bar"
@@ -1515,7 +1536,8 @@ function w3_getStyleValue(elmnt,style) {
                 <button
                   class="exnav-filter-clear"
                   aria-label="Filter clear button"
-                  onclick="TopNavBar.clearFilter(event, 'nav_exercises')"
+                  data-tnb-action="clearFilter"
+                  data-tnb-filter-nav="nav_exercises"
                 >
                   &times;
                 </button>
@@ -1855,7 +1877,7 @@ function w3_getStyleValue(elmnt,style) {
               </div>
               <button
                 class="exnav-detail-back"
-                onclick="exnavBackToList()"
+                data-tnb-action="exnavBackToList"
               >
                 &larr; Back to topics
               </button>
@@ -1884,14 +1906,16 @@ function w3_getStyleValue(elmnt,style) {
         tabindex="-1"
         aria-label="Certificates menu"
         style="border-bottom: none; background: transparent"
-        onclick="if(event.target===this){TopNavBar.closeNavItem('certified')}"
+        data-tnb-action="closeNavItemBackdrop"
+        data-tnb-nav-id="certified"
       >
         <div class="certnav-wrap">
           <button
             class="certnav-close-btn"
             tabindex="0"
-            onclick="TopNavBar.closeNavItem('certified')"
-            onkeydown="TopNavBar.mouseHandler(event, this, 'certified')"
+            data-tnb-action="closeNavItem"
+            data-tnb-nav-id="certified"
+            data-tnb-on-keydown="mouseHandler"
             aria-label="Close navigation"
           >
             &times;
@@ -1917,7 +1941,8 @@ function w3_getStyleValue(elmnt,style) {
               <div class="certnav-filter">
                 <input
                   id="filter-certified-input"
-                  oninput="TopNavBar.filter(event, 'nav_certified')"
+                  data-tnb-on-input="filter"
+                  data-tnb-filter-nav="nav_certified"
                   type="text"
                   placeholder="Filter..."
                   aria-label="Certificates filter input"
@@ -1925,7 +1950,8 @@ function w3_getStyleValue(elmnt,style) {
                 <button
                   class="certnav-filter-clear"
                   aria-label="Filter clear button"
-                  onclick="TopNavBar.clearFilter(event, 'nav_certified')"
+                  data-tnb-action="clearFilter"
+                  data-tnb-filter-nav="nav_certified"
                 >
                   &times;
                 </button>
@@ -2321,7 +2347,10 @@ function w3_getStyleValue(elmnt,style) {
                 id="toggle-darkmode-wrapper"
                 style="float: right; text-align: center; padding: 20px 40px 0 0"
               >
-                <label class="tnb-toggle-darkmode-switch w3-tooltip">
+                <label
+                  class="tnb-toggle-darkmode-switch w3-tooltip"
+                  data-tnb-action="toggleUserPreferredTheme"
+                >
                   <span
                     class="w3-text"
                     id="tnb-darkmode-tooltip"
@@ -2331,7 +2360,6 @@ function w3_getStyleValue(elmnt,style) {
                   <input
                     type="checkbox"
                     id="darkToggle"
-                    onclick="TopNavBar.toggleUserPreferredTheme()"
                   />
                   <span
                     class="tnb-toggle-darkmode-slider fa"
@@ -2354,7 +2382,8 @@ function w3_getStyleValue(elmnt,style) {
                   </label>
                   <input
                     id="filter-services-input"
-                    oninput="TopNavBar.filter(event, 'nav_services')"
+                    data-tnb-on-input="filter"
+                    data-tnb-filter-nav="nav_services"
                     type="text"
                     class="filter-input"
                     placeholder="Filter..."
@@ -2364,7 +2393,8 @@ function w3_getStyleValue(elmnt,style) {
                     class="filter-clear-btn tnb-button-dark-v2"
                     role="button"
                     aria-label="Filter clear button"
-                    onclick="TopNavBar.clearFilter(event, 'nav_services')"
+                    data-tnb-action="clearFilter"
+                    data-tnb-filter-nav="nav_services"
                   >
                     <span>&times;</span>
                   </div>
@@ -3058,8 +3088,9 @@ function w3_getStyleValue(elmnt,style) {
             <div
               class="w3-button tnb-close-nav-btn w3-round"
               tabindex="0"
-              onclick="TopNavBar.closeNavItem('services')"
-              onkeydown="TopNavBar.mouseHandler(event, this, 'services')"
+              data-tnb-action="closeNavItem"
+              data-tnb-nav-id="services"
+              data-tnb-on-keydown="mouseHandler"
               role="button"
               aria-label="Close navigation"
             >
@@ -4214,7 +4245,7 @@ of all content. While using W3Schools, you agree to have read and accepted our <
 
 
 </div>
-<!-- <script src="/lib/topnav/main.v1.0.108.js"></script> --> -->
+<!-- <script src="/lib/topnav/main.v1.0.113.js"></script> --> -->
 <script src="/lib/w3schools_footer.js?update=20250924"></script>
 <script src="/lib/w3schools_features.js?update=20260625"></script>
 <script src="https://www.google.com/recaptcha/api.js?render=explicit"></script>
