@@ -37,7 +37,7 @@
 <link rel="stylesheet" media="all" href="/about/privacy/sites/default/files/css/css_AbpHGcgLb-kRsJGnwFEktk7uzpZOCcBY74-YBdrKVGs.css" />
 <link rel="stylesheet" media="all" href="/about/privacy/sites/default/files/css/css_LMf7pD0EkMMcn3GAMYbwP6wuVKRzm8nRQeNddrkHg0Y.css" />
 <link rel="stylesheet" media="all" href="https://respframework.verizon.com/fonts/v2/fonts.css" />
-<link rel="stylesheet" media="all" href="/about/privacy/sites/default/files/css/css_JM5wGKgW-usaoFIU-SrO3xN86B0ycBVsZj0K9uSOg5Y.css" />
+<link rel="stylesheet" media="all" href="/about/privacy/sites/default/files/css/css_cbQMPnkDw9-v-beSrDw4-KJTbk2rQByqzHXdFqgTzx4.css" />
 
     
             <script>
@@ -88,21 +88,7 @@
   };
 
   // ==================== ONETRUST THROTTLE CONFIGURATION ====================
-  // Phase 1: 0% (dark deployment - BAU for all users)
-  // Phase 2: 10% ✅ CURRENT
-  // Phase 3: 50%
-  // Phase 4: 100% (OT no longer loading)
-  // Phase 5: Remove throttle logic entirely
-  const OT_THROTTLE_PERCENTAGE = 50;
-
-  // Cached throttle decision for the CURRENT page load. isUserInThrottleRollout()
-  // (via getTranscendOnlyThrottleState()) is called several times per load, so we
-  // roll the random assignment only once and reuse it for the rest of the load.
-  // This stops the UDNS_OT_THROTTLE cookie from being rewritten with a different
-  // value multiple times during a single refresh, while a real page refresh resets
-  // this cache and re-rolls (keeping the throttle non-sticky across refreshes).
-  // Declared here (not next to the function) so it is initialized before the
-  // throttle functions run, avoiding a temporal-dead-zone ReferenceError.
+  const OT_THROTTLE_PERCENTAGE = 100;
   let throttleRolloutDecision;
 
   const CONSTANTS = {
@@ -223,8 +209,6 @@
     'malaysia',
     'mt',
     'malta',
-    'mx',
-    'mexico',
     'nl',
     'netherlands',
     'ng',
@@ -1330,7 +1314,6 @@
   });
 
 })();
-
 </script>
     
     
@@ -1341,7 +1324,7 @@
 
     <script type="application/json" data-drupal-selector="drupal-settings-json">{"path":{"baseUrl":"\/about\/privacy\/","scriptPath":null,"pathPrefix":"","currentPath":"node\/3","currentPathIsAdmin":false,"isFront":true,"currentLanguage":"en"},"pluralDelimiter":"\u0003","suppressDeprecationErrors":true,"gtag":{"tagId":"","consentMode":false,"otherIds":[],"events":[],"additionalConfigInfo":[]},"ajaxPageState":{"libraries":"advanced_shortcodes\/accordion-a11y,advanced_shortcodes\/bootstrap,core\/drupal.dialog.ajax,duo_blocks\/blocks,duo_blocks_text\/blocks-text,duo_layouts\/threecol_section,google_tag\/gtag,google_tag\/gtag.ajax,paragraphs\/drupal.paragraphs.unpublished,system\/base,vzpp\/cta,vzpp\/global,vzpp\/hero,vzpp\/pulse_insight_js,vzpp\/sbs,vzpp\/slider,vzpp\/topic,vzpp\/wayfinding,vzpp_theme\/analytics-prod,vzpp_theme\/gnav-header-footer-prod,vzpp_theme\/vzc-gdpr-attach-css,vzpp_theme\/vzc-schemaapp-js","theme":"vzpp","theme_token":null},"ajaxTrustedUrl":[],"user":{"uid":0,"permissionsHash":"850a0c870a25d9b5b56c05f8360c6f9a76f793f4f6dbc9152aded01ab49e2533"}}</script>
 <script src="/about/privacy/sites/default/files/js/js_qiOJboP-yBXBXBBhvL2qDO7h1UkXyuHFzC-ny51asMo.js"></script>
-<script src="/about/privacy/modules/contrib/google_tag/js/gtag.js?th5y4f"></script>
+<script src="/about/privacy/modules/contrib/google_tag/js/gtag.js?tiyric"></script>
 <script src="https://assets.adobedtm.com/2ea7ee22c8c2/5ede70ac23f6/launch-f9c524bb5e64.min.js"></script>
 <script src="https://cdn.schemaapp.com/javascript/highlight.js" async></script>
 
@@ -3998,12 +3981,23 @@ jQuery('head').append('<style>.node--type-article-landing-page .div_share_addln_
 
   setTimeout(function() {
     if (location.href.match(/(\/privacy\/full\-privacy\-policy)/i)) {
+      if (location.href.indexOf('scrollto=index-0') != -1) {
+        jQuery("html, body").animate({scrollTop: jQuery('#acc-item-55 .paragraph--type--sbs.sbs--accordion-item.sbs.index-0').offset().top-100}, 1200);
+      }
+      else if (location.href.indexOf('scrollto=index-1') != -1) {
+        jQuery("html, body").animate({scrollTop: jQuery('#acc-item-55 .paragraph--type--sbs.sbs--accordion-item.sbs.index-1').offset().top-100}, 1200);
+      }
       //Maine
-      if (location.href.indexOf('scrollto=index-2') != -1) {
+      else if (location.href.indexOf('scrollto=index-2') != -1) {
         jQuery("html, body").animate({scrollTop: jQuery('#acc-item-55 .paragraph--type--sbs.sbs--accordion-item.sbs.index-2').offset().top-100}, 1200);
       }
-      else if (location.href.indexOf('scrollto=index-0') != -1) {
-        jQuery("html, body").animate({scrollTop: jQuery('#acc-item-55 .paragraph--type--sbs.sbs--accordion-item.sbs.index-0').offset().top-100}, 1200);
+      
+      else if (location.href.indexOf('scrollto=index-3') != -1) {
+        jQuery("html, body").animate({scrollTop: jQuery('#acc-item-55 .paragraph--type--sbs.sbs--accordion-item.sbs.index-3').offset().top-100}, 1200);
+      }
+      
+      else if (location.href.indexOf('scrollto=index-4') != -1) {
+        jQuery("html, body").animate({scrollTop: jQuery('#acc-item-55 .paragraph--type--sbs.sbs--accordion-item.sbs.index-4').offset().top-100}, 1200);
       }
       //Nevada index-5
       else if (location.href.indexOf('scrollto=index-5') != -1) {
@@ -4013,12 +4007,21 @@ jQuery('head').append('<style>.node--type-article-landing-page .div_share_addln_
       else if (location.href.indexOf('scrollto=index-6') != -1) {
         jQuery("html, body").animate({scrollTop: jQuery('#acc-item-55 .paragraph--type--sbs.sbs--accordion-item.sbs.index-6').offset().top-100}, 1200);
       } 
+      
+      else if (location.href.indexOf('scrollto=index-7') != -1) {
+        jQuery("html, body").animate({scrollTop: jQuery('#acc-item-55 .paragraph--type--sbs.sbs--accordion-item.sbs.index-7').offset().top-100}, 1200);
+      }
+      
+      else if (location.href.indexOf('scrollto=index-8') != -1) {
+        jQuery("html, body").animate({scrollTop: jQuery('#acc-item-55 .paragraph--type--sbs.sbs--accordion-item.sbs.index-8').offset().top-100}, 1200);
+      }
       else {
         jQuery("html, body").animate({scrollTop: jQuery('#acc-item-55-label').offset().top-100}, 1200);
       }
     }
 
   }, 100)
+
 });
 
   //file-a-fraud fix EOOV-14010
@@ -4028,29 +4031,6 @@ jQuery('head').append('<style>.node--type-article-landing-page .div_share_addln_
     jQuery('.layout__region a').attr('href', 'javascript:void(0);');
   }
 
-// Onload function
-  jQuery(window).on('load',function() {
-
-if (location.href.match(/(\/full\-privacy\-policy)/i)) {
-  //EOOV-14748
-  //Nevada
-  if (location.href.indexOf('scrollto=index-3') != -1) {
-    //jQuery("html, body").animate({scrollTop: jQuery('#acc-item-55 .paragraph--type--sbs.sbs--accordion-item.sbs.index-3').offset().top-100}, 1200);
-  }
-  //Maine
-  else if (location.href.indexOf('scrollto=index-4') != -1) {
-    //jQuery("html, body").animate({scrollTop: jQuery('#acc-item-55 .paragraph--type--sbs.sbs--accordion-item.sbs.index-4').offset().top-100}, 1200);
-  }
-  //California
-  else {
-    //jQuery("html, body").animate({scrollTop: jQuery('#acc-item-55 .paragraph--type--sbs.sbs--accordion-item.sbs.index-1').offset().top-100}, 1200);
-  }
- //end EOOV-14748
-
-
-}
-});
-//end onload
 jQuery('.menu--cybersecurity-glossary li a').each(function( index2 ) {
   if(window.location.href.toLowerCase().indexOf(jQuery(this).attr('href').toLowerCase())  != -1 || window.location.href.toLowerCase().replace('/privacy', '').indexOf(jQuery(this).attr('href').toLowerCase())  != -1 || window.location.href.toLowerCase().replace('/privacy', '').indexOf(jQuery(this).attr('href').toLowerCase().replace('https://www.verizon.com/about', ''))  != -1) {
     //console.log(jQuery(this).attr('href'));
@@ -4587,7 +4567,7 @@ article[about*="accessibility-faqs"] .hero_with_icon__container .hero-with-icon-
   </div>
 
     
-    <script src="/about/privacy/sites/default/files/js/js_6ywHZGkMnxuE-e0V336W92RnAX8vPGhMCouh71CqsY4.js"></script>
+    <script src="/about/privacy/sites/default/files/js/js_xClRxPDQZrUuLI852tlU1PeBIQJ9eUjry-Ig-YSV8XI.js"></script>
 <script src="https://www.verizon.com/etc/designs/vzwcom/gnav20/corporate.js"></script>
 
           <script async src="https://cdn.quantummetric.com/qscripts/quantum-verizon.js"></script>
