@@ -47,8 +47,8 @@
 <link href='https://betterstack.com/privacy' rel='canonical'>
 <meta content='https://betterstack.com/privacy' property='og:url'>
 <meta name="csrf-param" content="authenticity_token" />
-<meta name="csrf-token" content="uDGTYxkmw4uZs5hS_Cv1oNn99lj2Sn3GpTNfJfkYO_Bt3j9unASGsHBxOTE0IERJgc4NJQaGP1tsA8wvAbb03A" />
-<meta name="csp-nonce" content="dd61dc8ee89c6651e21ccea286ab8f92" />
+<meta name="csrf-token" content="JHKE49dcRVMQg4Sl4sFypFqKag4QXMpfyyoMORa5L7ZHFnADwDp4BFfTCTaJCGGYvoYgQ5h5GlX9dMn4H0xQ2A" />
+<meta name="csp-nonce" content="eddff816581634b607140804b896d3a8" />
 <meta content='marketing.website' name='bs-surface'>
 
 
@@ -111,8 +111,8 @@
 
 
 
-<link rel="stylesheet" href="https://betterstack.com/assets/betterstack_v2-8bb18724.css" media="all" data-turbo-track="reload" />
-<script type="importmap" data-turbo-track="reload" nonce="dd61dc8ee89c6651e21ccea286ab8f92">{
+<link rel="stylesheet" href="https://betterstack.com/assets/betterstack_v2-4d59d62e.css" media="all" data-turbo-track="reload" />
+<script type="importmap" data-turbo-track="reload" nonce="eddff816581634b607140804b896d3a8">{
   "imports": {
     "admin_controllers/article_form_controller": "/assets/admin_controllers/article_form_controller-95d029c4.js",
     "admin_controllers": "/assets/admin_controllers/index-577d86b7.js",
@@ -179,12 +179,17 @@
     "common/side-menu-scroll": "/assets/common/side-menu-scroll-4d201e25.js",
     "common/site_settings_bootstrap": "/assets/common/site_settings_bootstrap-c104a0e6.js",
     "common/site_settings_panel": "/assets/common/site_settings_panel-812b3a51.js",
-    "common/stripe": "/assets/common/stripe-ed630eb2.js",
+    "common/stripe": "/assets/common/stripe-eea2cad5.js",
     "common_controllers/auth_controller": "/assets/common_controllers/auth_controller-c0c35ef7.js",
     "common_controllers/careers_roles_controller": "/assets/common_controllers/careers_roles_controller-83a48712.js",
     "common_controllers/carousel_controller": "/assets/common_controllers/carousel_controller-904c8672.js",
     "common_controllers/clipboard_controller": "/assets/common_controllers/clipboard_controller-d6bd31ec.js",
+    "common_controllers/cloud_downtime_controller": "/assets/common_controllers/cloud_downtime_controller-ee3f8c99.js",
+    "common_controllers/cloud_fit_controller": "/assets/common_controllers/cloud_fit_controller-2f9024d0.js",
+    "common_controllers/cloud_pricing_controller": "/assets/common_controllers/cloud_pricing_controller-30d8d37e.js",
     "common_controllers/collapse_controller": "/assets/common_controllers/collapse_controller-c1e140f6.js",
+    "common_controllers/comparison_table_controller": "/assets/common_controllers/comparison_table_controller-dec56746.js",
+    "common_controllers/copy_prompt_controller": "/assets/common_controllers/copy_prompt_controller-a705d39f.js",
     "common_controllers/dev_bar_controller": "/assets/common_controllers/dev_bar_controller-8dae09df.js",
     "common_controllers/flash_appear_controller": "/assets/common_controllers/flash_appear_controller-bb83796e.js",
     "common_controllers/header_controller": "/assets/common_controllers/header_controller-a3d9ce2a.js",
@@ -439,12 +444,12 @@
     "marked": "https://cdnjs.betterstack.com/marked@4.3.0/lib/marked.esm.js"
   }
 }</script>
-<link rel="modulepreload" href="https://cdnjs.betterstack.com/vue@3.5.13/dist/vue.esm-browser.prod.js" nonce="dd61dc8ee89c6651e21ccea286ab8f92">
-<link rel="modulepreload" href="/assets/vendor/pinia@3.0.0.prod-dc83e9f4.js" nonce="dd61dc8ee89c6651e21ccea286ab8f92">
-<link rel="modulepreload" href="https://cdnjs.betterstack.com/vue-turbolinks@2.2.2/index.js" nonce="dd61dc8ee89c6651e21ccea286ab8f92">
-<script type="esms-options" nonce="dd61dc8ee89c6651e21ccea286ab8f92">{"nonce":"dd61dc8ee89c6651e21ccea286ab8f92"}</script>
-<script src="/assets/es-module-shims.min-806a0b27.js" defer="defer" data-turbo-track="reload" nonce="dd61dc8ee89c6651e21ccea286ab8f92"></script>
-<script type="module" nonce="dd61dc8ee89c6651e21ccea286ab8f92">
+<link rel="modulepreload" href="https://cdnjs.betterstack.com/vue@3.5.13/dist/vue.esm-browser.prod.js" nonce="eddff816581634b607140804b896d3a8">
+<link rel="modulepreload" href="/assets/vendor/pinia@3.0.0.prod-dc83e9f4.js" nonce="eddff816581634b607140804b896d3a8">
+<link rel="modulepreload" href="https://cdnjs.betterstack.com/vue-turbolinks@2.2.2/index.js" nonce="eddff816581634b607140804b896d3a8">
+<script type="esms-options" nonce="eddff816581634b607140804b896d3a8">{"nonce":"eddff816581634b607140804b896d3a8"}</script>
+<script src="/assets/es-module-shims.min-806a0b27.js" defer="defer" data-turbo-track="reload" nonce="eddff816581634b607140804b896d3a8"></script>
+<script type="module" nonce="eddff816581634b607140804b896d3a8">
 //<![CDATA[
 !function(b,e,t,r){
   b[t]=b[t]||function(...args){(b[t].q=b[t].q||[]).push(args)};
@@ -470,7 +475,7 @@ document.addEventListener('turbo:load', setBetterstackUser)
 
 //]]>
 </script>
-<script nonce='dd61dc8ee89c6651e21ccea286ab8f92' type='module'>import "common/aos"
+<script nonce='eddff816581634b607140804b896d3a8' type='module'>import "common/aos"
 import "common/lazy"
 import "common/recaptchaSubmit"
 import "common/data-disable-with-spinner"
@@ -492,7 +497,7 @@ import "common/site_settings_panel"
 
 </head>
 <body class='helvetica bg-[#0B0C14] text-neutral-200'>
-<script type="application/javascript" nonce="dd61dc8ee89c6651e21ccea286ab8f92">
+<script type="application/javascript" nonce="eddff816581634b607140804b896d3a8">
 //<![CDATA[
 window.cfg = {"base_host":"betterstack.com","base_url":"https://betterstack.com","better_stack_url":"https://betterstack.com","uptime_url":"https://uptime.betterstack.com","logtail_url":"https://telemetry.betterstack.com","errors_url":"https://errors.betterstack.com","aisre_url":"https://chat.betterstack.com","rum_url":"https://rum.betterstack.com","cloud_url":"https://cloud.betterstack.com","warehouse_url":"https://warehouse.betterstack.com","controller":"betterstack","action":"privacy","app":"betterstack","environment":"production"};
 
@@ -1106,7 +1111,7 @@ System status
 </footer>
 </div>
 
-<script nonce='dd61dc8ee89c6651e21ccea286ab8f92' type='module'>
+<script nonce='eddff816581634b607140804b896d3a8' type='module'>
 import { front_identity_path } from 'routes'
 import WebStorageService from 'services/WebStorageService'
 
@@ -1159,7 +1164,7 @@ if (document.readyState === 'complete') {
 <img alt='' height='1' src='https://px.ads.linkedin.com/collect/?pid=8770794&amp;fmt=gif' style='display:none' width='1'>
 </noscript>
 
-<script type="application/javascript" nonce="dd61dc8ee89c6651e21ccea286ab8f92">
+<script type="application/javascript" nonce="eddff816581634b607140804b896d3a8">
 //<![CDATA[
 window.recaptchaLoaded = false
 window.recaptchaSiteKey = '6LcqMUUaAAAAAB9e71hGegt9lvZ2v_mO1lFsvlRX'
