@@ -47,8 +47,8 @@
 <link href='https://betterstack.com/terms' rel='canonical'>
 <meta content='https://betterstack.com/terms' property='og:url'>
 <meta name="csrf-param" content="authenticity_token" />
-<meta name="csrf-token" content="elFIeep5FMInWZc-PDBW4171LpWEyOPIYW7wSifqTFjSlQ0XrAcSw9xz2To5MbKY55sIzZ7_oRDX7oqOMegejg" />
-<meta name="csp-nonce" content="f0466c37e1f459d2e093e3f3f3677565" />
+<meta name="csrf-token" content="O-84HpunIHAQV8nwPza5OL23t7KyrucAnNvmt1jGbQQkqwMtJ7zTF1oGHAJCxjSdSDD9byM8ORbIqTgCHjTX5g" />
+<meta name="csp-nonce" content="855f0a65920b600985a997be35647d0f" />
 <meta content='marketing.website' name='bs-surface'>
 
 
@@ -112,7 +112,7 @@
 
 
 <link rel="stylesheet" href="https://betterstack.com/assets/betterstack_v2-01c15d5c.css" media="all" data-turbo-track="reload" />
-<script type="importmap" data-turbo-track="reload" nonce="f0466c37e1f459d2e093e3f3f3677565">{
+<script type="importmap" data-turbo-track="reload" nonce="855f0a65920b600985a997be35647d0f">{
   "imports": {
     "admin_controllers/article_form_controller": "/assets/admin_controllers/article_form_controller-95d029c4.js",
     "admin_controllers": "/assets/admin_controllers/index-577d86b7.js",
@@ -445,12 +445,12 @@
     "marked": "https://cdnjs.betterstack.com/marked@4.3.0/lib/marked.esm.js"
   }
 }</script>
-<link rel="modulepreload" href="https://cdnjs.betterstack.com/vue@3.5.13/dist/vue.esm-browser.prod.js" nonce="f0466c37e1f459d2e093e3f3f3677565">
-<link rel="modulepreload" href="/assets/vendor/pinia@3.0.0.prod-dc83e9f4.js" nonce="f0466c37e1f459d2e093e3f3f3677565">
-<link rel="modulepreload" href="https://cdnjs.betterstack.com/vue-turbolinks@2.2.2/index.js" nonce="f0466c37e1f459d2e093e3f3f3677565">
-<script type="esms-options" nonce="f0466c37e1f459d2e093e3f3f3677565">{"nonce":"f0466c37e1f459d2e093e3f3f3677565"}</script>
-<script src="/assets/es-module-shims.min-806a0b27.js" defer="defer" data-turbo-track="reload" nonce="f0466c37e1f459d2e093e3f3f3677565"></script>
-<script type="module" nonce="f0466c37e1f459d2e093e3f3f3677565">
+<link rel="modulepreload" href="https://cdnjs.betterstack.com/vue@3.5.13/dist/vue.esm-browser.prod.js" nonce="855f0a65920b600985a997be35647d0f">
+<link rel="modulepreload" href="/assets/vendor/pinia@3.0.0.prod-dc83e9f4.js" nonce="855f0a65920b600985a997be35647d0f">
+<link rel="modulepreload" href="https://cdnjs.betterstack.com/vue-turbolinks@2.2.2/index.js" nonce="855f0a65920b600985a997be35647d0f">
+<script type="esms-options" nonce="855f0a65920b600985a997be35647d0f">{"nonce":"855f0a65920b600985a997be35647d0f"}</script>
+<script src="/assets/es-module-shims.min-806a0b27.js" defer="defer" data-turbo-track="reload" nonce="855f0a65920b600985a997be35647d0f"></script>
+<script type="module" nonce="855f0a65920b600985a997be35647d0f">
 //<![CDATA[
 !function(b,e,t,r){
   b[t]=b[t]||function(...args){(b[t].q=b[t].q||[]).push(args)};
@@ -476,7 +476,7 @@ document.addEventListener('turbo:load', setBetterstackUser)
 
 //]]>
 </script>
-<script nonce='f0466c37e1f459d2e093e3f3f3677565' type='module'>import "common/aos"
+<script nonce='855f0a65920b600985a997be35647d0f' type='module'>import "common/aos"
 import "common/lazy"
 import "common/recaptchaSubmit"
 import "common/data-disable-with-spinner"
@@ -498,7 +498,7 @@ import "common/site_settings_panel"
 
 </head>
 <body class='helvetica bg-[#0B0C14] text-neutral-200'>
-<script type="application/javascript" nonce="f0466c37e1f459d2e093e3f3f3677565">
+<script type="application/javascript" nonce="855f0a65920b600985a997be35647d0f">
 //<![CDATA[
 window.cfg = {"base_host":"betterstack.com","base_url":"https://betterstack.com","better_stack_url":"https://betterstack.com","uptime_url":"https://uptime.betterstack.com","logtail_url":"https://telemetry.betterstack.com","errors_url":"https://errors.betterstack.com","aisre_url":"https://chat.betterstack.com","rum_url":"https://rum.betterstack.com","cloud_url":"https://cloud.betterstack.com","warehouse_url":"https://warehouse.betterstack.com","controller":"betterstack","action":"terms","app":"betterstack","environment":"production"};
 
@@ -1063,20 +1063,12 @@ System status
 </footer>
 </div>
 
-<script nonce='f0466c37e1f459d2e093e3f3f3677565' type='module'>
+<script nonce='855f0a65920b600985a997be35647d0f' type='module'>
 import { front_identity_path } from 'routes'
 import WebStorageService from 'services/WebStorageService'
 
 const currentPath = window.location.pathname
 let identity = JSON.parse(WebStorageService.getItem('frontChat:identity')) || {}
-
-if (!identity.userHash && (currentPath.startsWith('/settings') || currentPath.startsWith('/onboarding'))) {
-  try {
-    const response = await fetch(front_identity_path())
-    identity = await response.json()
-    WebStorageService.setItem('frontChat:identity', JSON.stringify(identity))
-  } catch (_) {}
-}
 
 function initFrontChat() {
   // Do nothing if the FrontChat script has been blocked or otherwise failed to load
@@ -1102,11 +1094,25 @@ function loadAndInit() {
   document.head.appendChild(script)
 }
 
-if (document.readyState === 'complete') {
-  loadAndInit()
-} else {
-  window.addEventListener('load', loadAndInit, { once: true })
+// Wrapped in an async function rather than using top-level await, which browsers older than
+// Chrome 89 cannot parse, and a parse error takes the whole chat widget down for them.
+async function fetchIdentityAndInit() {
+  if (!identity.userHash && (currentPath.startsWith('/settings') || currentPath.startsWith('/onboarding'))) {
+    try {
+      const response = await fetch(front_identity_path())
+      identity = await response.json()
+      WebStorageService.setItem('frontChat:identity', JSON.stringify(identity))
+    } catch (_) {}
+  }
+
+  if (document.readyState === 'complete') {
+    loadAndInit()
+  } else {
+    window.addEventListener('load', loadAndInit, { once: true })
+  }
 }
+
+fetchIdentityAndInit()
 </script>
 
 <noscript>
@@ -1116,7 +1122,7 @@ if (document.readyState === 'complete') {
 <img alt='' height='1' src='https://px.ads.linkedin.com/collect/?pid=8770794&amp;fmt=gif' style='display:none' width='1'>
 </noscript>
 
-<script type="application/javascript" nonce="f0466c37e1f459d2e093e3f3f3677565">
+<script type="application/javascript" nonce="855f0a65920b600985a997be35647d0f">
 //<![CDATA[
 window.recaptchaLoaded = false
 window.recaptchaSiteKey = '6LcqMUUaAAAAAB9e71hGegt9lvZ2v_mO1lFsvlRX'
