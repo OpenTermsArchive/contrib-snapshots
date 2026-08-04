@@ -176,7 +176,7 @@ img:is([sizes=auto i],[sizes^="auto," i]){contain-intrinsic-size:3000px 1500px}
 /*# sourceURL=global-styles-inline-css */
 </style>
 
-<link rel='stylesheet preload' as='style' id='CSS-theme-css' href='https://www.criteo.com/wp-content/themes/criteo2017/css/theme.min.css?ver=2026080333' media='all' />
+<link rel='stylesheet preload' as='style' id='CSS-theme-css' href='https://www.criteo.com/wp-content/themes/criteo2017/css/theme.min.css?ver=2026080337' media='all' />
 <link rel='stylesheet preload' as='style' id='select2CSS-css' href='https://www.criteo.com/wp-content/themes/criteo2017/sass/select2.min.css?ver=7.0.2' media='all' />
 <link rel='stylesheet preload' as='style' id='slickCSS-css' href='https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.5.9/slick.min.css?ver=7.0.2' media='all' />
 <link rel='stylesheet preload' as='style' id='tablepress-default-css' href='https://www.criteo.com/wp-content/uploads/tablepress-combined.min.css?ver=19' media='all' />
@@ -1966,7 +1966,7 @@ Partners</td>
 </tr>
 </tbody>
 </table>
-<!-- #tablepress-45 from cache -->
+
 <p>Please note that some of the types of data above may not be classified as personal data or personally identifiable information in every jurisdiction.</p>
 <h3 id="categories-of-personal-data-we-do-not-collect">Categories of personal data we do not collect</h3>
 
@@ -1986,7 +1986,7 @@ Partners</td>
 </tr>
 </tbody>
 </table>
-<!-- #tablepress-46 from cache -->
+
 <h2 id="how-do-we-use-your-data">How do we use your data?</h2>
 <p>We use the data collected through our technologies to deliver and measure personalized and contextual advertising, improve our services, ensure their security, and meet our legal and contractual obligations.</p>
 <h3 id="processing-for-which-criteo-advertisers-and-or-publishers-act-as-joint-data-controllers">Processing for which Criteo, advertisers, and/or publishers act as joint data controllers</h3>
@@ -2003,7 +2003,7 @@ Consent collected by advertisers and publishers on their websites, apps or other
 </tr>
 </tbody>
 </table>
-<!-- #tablepress-47 from cache -->
+
 <h3 id="processing-for-which-criteo-acts-as-a-sole-data-controller">Processing for which Criteo acts as a sole data controller</h3>
 
 <table id="tablepress-48" class="tablepress tablepress-id-48 tablepress-responsive">
@@ -2126,7 +2126,7 @@ Coarse location data</td>
 </tr>
 </tbody>
 </table>
-<!-- #tablepress-49 from cache -->
+
 <p>Please note that some of these recipients may be in countries outside of Europe. In some cases, this may include countries located outside the European Union (“EU”) and/or European Economic Area (&#8220;EEA&#8221;).</p>
 <p>Some countries where recipients are located already provide an adequate level of protection for this data, and transfers to other countries such as the USA may be protected under arrangements such as the EU-US Data Protection Framework.</p>
 <p>Otherwise, Criteo will take all necessary measures to ensure that transfers outside of the EU/EEA are adequately protected as required by applicable data protection law. This will include using appropriate safeguards such as the EU Standard Data Protection Clauses. You can obtain a copy of these safeguards by contacting us (see <a href="#who-can-you-contact-if-you-have-questions">Who can you contact if you have questions?</a>).</p>
@@ -2169,7 +2169,7 @@ Coarse location data</td>
 </tr>
 </tbody>
 </table>
-<!-- #tablepress-50 from cache -->
+
 <p>Click <a href="#" data-toggle="modal" data-target="#optoutModal">here</a> to exercise your rights</p>
 <h2 id="information-for-us-residents">Information for U.S. residents</h2>
 <p>While specific rights and terminology may vary by state, the information below reflects the core protections available under U.S. state privacy laws (including California, Virginia, Colorado, Connecticut, Utah, Texas, Oregon, and Delaware).</p>
@@ -2217,7 +2217,7 @@ Coarse location data</td>
 </tr>
 </tbody>
 </table>
-<!-- #tablepress-51 from cache -->
+
 <p>You may exercise your rights directly or through an authorized agent. We may need to verify your identity before processing your request. We respond to all valid requests within the time limits set by law.</p>
 <p>Click <a href="#" data-toggle="modal" data-target="#optoutModal">here</a> to exercise your rights</p>
 <h3 id="data-broker-information">Data broker information</h3>
@@ -2618,54 +2618,146 @@ Coarse location data</td>
     .modal-dialog .modal-header {
         justify-content: flex-end;
     }
+
+    /* Demo / Guideflow modal only — does not affect other embed modals */
+    #modalEmbedDemo .demo-embed-wrap {
+      position: relative;
+      padding-bottom: calc(53.81944444444444% + 47px);
+      height: 0;
+    }
+    #modalEmbedDemo .demo-embed-loading {
+      position: absolute;
+      inset: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: #fff;
+      z-index: 1;
+      transition: opacity .2s ease;
+    }
+    #modalEmbedDemo .demo-embed-loading.is-done {
+      opacity: 0;
+      pointer-events: none;
+    }
+    #modalEmbedDemo .demo-embed-spinner {
+      width: 40px;
+      height: 40px;
+      border: 3px solid #e6e6e6;
+      border-top-color: #fe5000;
+      border-radius: 50%;
+      animation: demoEmbedSpin .7s linear infinite;
+    }
+    @keyframes demoEmbedSpin {
+      to { transform: rotate(360deg); }
+    }
+    #modalEmbedDemo .demo-embed-wrap iframe {
+      left: 0;
+      top: 0;
+      overflow: hidden;
+      position: absolute;
+      border: none;
+      opacity: 0;
+      transition: opacity .2s ease;
+    }
+    #modalEmbedDemo .demo-embed-wrap iframe.is-ready {
+      opacity: 1;
+    }
 </style>
 
 <script>
 // modal video embed auto-play and auto-shut-up
+// Demo/Guideflow: inject iframe on shown.bs.modal so it initializes with real
+// dimensions. Loader is scoped to #modalEmbedDemo only.
 jQuery(document).ready(function() {
-  var btn = jQuery('body').find('[data-toggle="modal"][data-type]'); // the button
+  var btn = jQuery('body').find('[data-toggle="modal"][data-type]');
 
-  btn.click(function() {
-    var modal = jQuery($(this).data('target')); // modal div
-    var src = $(this).data('src');
-    var type = $(this).data('type');
-    var modalBody = modal.find('.modal-body'); // modal body
+  btn.on('click', function() {
+    var $trigger = jQuery(this);
+    var modal = jQuery($trigger.data('target'));
+    modal.data('embedSrc', $trigger.data('src'));
+    modal.data('embedType', $trigger.data('type'));
+  });
+
+  // Demo only: show loader as soon as the modal starts opening
+  jQuery('#modalEmbedDemo').on('show.bs.modal', function() {
+    var modal = jQuery(this);
+    if (modal.data('embedType') !== 'demo') {
+      return;
+    }
+    modal.find('.modal-body').html(
+      '<div class="demo-embed-wrap">' +
+        '<div class="demo-embed-loading" aria-live="polite" aria-busy="true">' +
+          '<span class="demo-embed-spinner" role="status" aria-label="Loading demo"></span>' +
+        '</div>' +
+      '</div>'
+    );
+  });
+
+  // Demo only: inject Guideflow after modal is fully shown/sized
+  jQuery('#modalEmbedDemo').on('shown.bs.modal', function() {
+    var modal = jQuery(this);
+    var src = modal.data('embedSrc');
+    var $wrap = modal.find('.demo-embed-wrap');
+    var $loading = modal.find('.demo-embed-loading');
+
+    if (modal.data('embedType') !== 'demo' || !src || !$wrap.length) {
+      return;
+    }
+
+    var $iframe = jQuery(
+      '<iframe width="100%" height="100%" scrolling="no" allow="clipboard-read; clipboard-write" ' +
+      'webkitallowfullscreen mozallowfullscreen allowfullscreen allowtransparency="true"></iframe>'
+    );
+
+    function revealDemo() {
+      $loading.addClass('is-done').attr('aria-busy', 'false');
+      $iframe.addClass('is-ready');
+    }
+
+    $iframe.on('load', revealDemo);
+    $wrap.append($iframe);
+    $iframe.attr('src', src);
+
+    // Fallback if the iframe load event is delayed/missed
+    window.setTimeout(revealDemo, 8000);
+  });
+
+  // Other embed modals (unchanged behavior)
+  jQuery('#modalEmbed, #modalEmbedDarkMode').on('shown.bs.modal', function() {
+    var modal = jQuery(this);
+    var src = modal.data('embedSrc');
+    var type = modal.data('embedType');
+    var modalBody = modal.find('.modal-body');
     var iframe;
-    console.log(type);
+
+    if (!src || !type) {
+      return;
+    }
+
     if (type === 'pardot' || type === 'embed') {
       iframe = modalBody.html('<iframe width="100%" height="450" frameborder="0" allowfullscreen></iframe>').children('iframe');
-      
+
       if (type === 'pardot') {
-        iframe.load(function() {
-            //console.log('iframe loaded');
-            iFrameResize(); // the secret sauce!
+        iframe.on('load', function() {
+          iFrameResize();
         });
         iframe.attr('src', src);
-      } 
+      }
       if (type === 'embed') {
-        console.log('embed');
-        iframe.attr('src', src + '?autoplay=1&enablejsapi=1&rel=0'); // video URL in the button's data attr
-        ytTracker.init(); // <-- Decorate all new videos on the page, from the 400-line monstrosity GTM
+        iframe.attr('src', src + '?autoplay=1&enablejsapi=1&rel=0');
+        ytTracker.init();
       }
     }
-    
-    if (type === 'demo') {
-      var modalBodyHTML = '<div style="position: relative; padding-bottom:calc(53.81944444444444% + 47px); height: 0;">' +
-        '<iframe width="100%" height="100%" scrolling="no" allow="clipboard-read; clipboard-write"' + 
-        'src="' + src + '"' +
-        'style="left:0;top:0;overflow:hidden;position:absolute;border:none" webkitallowfullscreen mozallowfullscreen allowfullscreen allowtransparency="true">' +
-        '</iframe></div>';
-      iframe = modalBody.html(modalBodyHTML).children('iframe');
-    }
   });
 
-  jQuery('.modal-in-footer').on('hidden.bs.modal', function(e) {
-   //console.log('modal closed: stripping the contents');
-    $(this).find('.modal-body').html('');
+  jQuery('.modal-in-footer').on('hidden.bs.modal', function() {
+    var modal = jQuery(this);
+    modal.find('.modal-body').html('');
+    modal.removeData('embedSrc').removeData('embedType');
   });
-
 });
-</script><script type="speculationrules">
+</script>
+<script type="speculationrules">
 {"prefetch":[{"source":"document","where":{"and":[{"href_matches":"/*"},{"not":{"href_matches":["/wp-*.php","/wp-admin/*","/wp-content/uploads/*","/wp-content/*","/wp-content/plugins/*","/wp-content/themes/criteo2017/*","/*\\?(.+)"]}},{"not":{"selector_matches":"a[rel~=\"nofollow\"]"}},{"not":{"selector_matches":".no-prefetch, .no-prefetch a"}}]},"eagerness":"conservative"}]}
 </script>
 
@@ -2689,7 +2781,7 @@ var qpprFrontData = {"linkData":{"https://www.criteo.com/blog/apparel-trend-repo
 <script id="criteoBootstrap4-js" src="https://www.criteo.com/wp-content/themes/criteo2017/js/bs4.min.js"></script>
 <script id="iframe-resizer-js" src="https://www.criteo.com/wp-content/themes/criteo2017/js/iframe.min.js"></script>
 <script id="select2-js" src="https://www.criteo.com/wp-content/themes/criteo2017/js/select2.min.js"></script>
-<script id="Criteo2017-scripts-js" src="https://www.criteo.com/wp-content/themes/criteo2017/js/theme.min.js?ver=2026080333"></script>
+<script id="Criteo2017-scripts-js" src="https://www.criteo.com/wp-content/themes/criteo2017/js/theme.min.js?ver=2026080337"></script>
 <script id="scrolllock-js" src="https://www.criteo.com/wp-content/themes/criteo2017/js/scrolllock.min.js"></script>
 <script id="match-height-js" src="//cdnjs.cloudflare.com/ajax/libs/jquery.matchHeight/0.7.0/jquery.matchHeight-min.js"></script>
 <script id="sticky-kit-js" src="https://www.criteo.com/wp-content/themes/criteo2017/js/jquery.sticky-kit.min.js?ver=0.6.2"></script>
@@ -2698,7 +2790,7 @@ var qpprFrontData = {"linkData":{"https://www.criteo.com/blog/apparel-trend-repo
 <script id="slickJS-js" src="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.5.9/slick.min.js?ver=7.0.2"></script>
 <div style="display: none">
     </div>
-<script type="text/javascript">window.NREUM||(NREUM={});NREUM.info={"beacon":"bam.nr-data.net","licenseKey":"bb94583995","applicationID":"72531584","transactionName":"b1YBYkFZWBBYBURaDVYcIlVHUVkNFgRRQAtb","queueTime":0,"applicationTime":402,"atts":"QxEWFAlDS08bBxIJGUVO","errorBeacon":"bam.nr-data.net","agent":""}</script></body>
+<script type="text/javascript">window.NREUM||(NREUM={});NREUM.info={"beacon":"bam.nr-data.net","licenseKey":"bb94583995","applicationID":"72531584","transactionName":"b1YBYkFZWBBYBURaDVYcIlVHUVkNFgRRQAtb","queueTime":0,"applicationTime":1009,"atts":"QxEWFAlDS08bBxIJGUVO","errorBeacon":"bam.nr-data.net","agent":""}</script></body>
 
 </html>
-<!-- plugin=object-cache-pro client=phpredis metric#hits=5529 metric#misses=17 metric#hit-ratio=99.7 metric#bytes=1922871 metric#prefetches=840 metric#store-reads=54 metric#store-writes=17 metric#store-hits=863 metric#store-misses=9 metric#sql-queries=16 metric#ms-total=399.96 metric#ms-cache=33.82 metric#ms-cache-avg=0.4832 metric#ms-cache-ratio=8.5 -->
+<!-- plugin=object-cache-pro client=phpredis metric#hits=4642 metric#misses=130 metric#hit-ratio=97.3 metric#bytes=1793853 metric#prefetches=9 metric#store-reads=805 metric#store-writes=67 metric#store-hits=744 metric#store-misses=122 metric#sql-queries=53 metric#ms-total=1005.90 metric#ms-cache=301.16 metric#ms-cache-avg=0.3458 metric#ms-cache-ratio=29.9 sample#redis-hits=143809017 sample#redis-misses=1332589 sample#redis-hit-ratio=99.1 sample#redis-ops-per-sec=4754 sample#redis-evicted-keys=156030 sample#redis-used-memory=8241968 sample#redis-used-memory-rss=49123328 sample#redis-memory-fragmentation-ratio=5.9 sample#redis-connected-clients=7 sample#redis-tracking-clients=0 sample#redis-rejected-connections=0 sample#redis-keys=13800 -->
