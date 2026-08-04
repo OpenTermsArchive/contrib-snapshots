@@ -24,7 +24,7 @@
 <meta name="msapplication-TileImage" content="/ms-icon-144x144.png">
 <meta name="theme-color" content="#ffffff">
 <script>
-serverTime = new Date('2026-08-03 12:37:47 GMT');
+serverTime = new Date('2026-08-04 12:37:48 GMT');
 </script>
 <title>Terms of Service | DistroKid</title>
 <meta name="description" content="Read DistroKid's Terms of Service">
@@ -74,9 +74,9 @@ initializeDKModal();
 captchaSiteKey = "6Ld_vDcUAAAAABBf4b4MfIPqz5XA53JWQyOh6MX0";
 turnstileSiteKey = "0x4AAAAAAAwjnOrGSKrIkAR9";
 </script>
-<script src="/js/header.js?cacheHash=466af816c1eddd11" 1785760663748></script>
-<script src="/js/distro.js?cacheHash=5323cb1d3826d372" 1785760663748></script>
-<script src="/js/fixCaps.js?cacheHash=4d712b9355dbb337" 1785760663748></script>
+<script src="/js/header.js?cacheHash=466af816c1eddd11" 1785803868581></script>
+<script src="/js/distro.js?cacheHash=5323cb1d3826d372" 1785803868581></script>
+<script src="/js/fixCaps.js?cacheHash=4d712b9355dbb337" 1785803868581></script>
 <script src="/js/jquery.kenburns-0.1.js"></script>
 <script src="/js/lazysizes.min.js"></script>
 <script>
@@ -296,7 +296,7 @@ window.__telemetryConfig = {"localdevLog":false,"apiUrl":"https://uwwgok9jpj.exe
 <div style="position:relative;" class="outer2 navNotLoggedIn">
 <div class="headerLoggedOutNav nav inner2">
 <div class="navInner">
-<input type="hidden" id="forgotPasswordSessionID" name="forgotPasswordSessionID" value="distrokid_082ff065-8971-44c4-af0c-c84fb86715fe_0">
+<input type="hidden" id="forgotPasswordSessionID" name="forgotPasswordSessionID" value="distrokid_690b172b-415c-4512-ad5c-c90c62be5a38_0">
 <script type="text/template" id="templateForgotPassword">
 <div class="signinBoxNotification">
 Done! Instructions to reset your password have been emailed.
@@ -485,7 +485,7 @@ Copyright Agent
 DistroKid LLC
 34 Third Ave #183
 New York, NY 10003
-Email: <a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="a5c9c0c2c4c9e5c1ccd6d1d7caceccc18bc6cac8">[email&#160;protected]</a> <br>
+Email: <a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="076b6260666b47636e747375686c6e632964686a">[email&#160;protected]</a> <br>
 In accordance with the DMCA and other applicable law, DistroKid has adopted a policy of terminating, in appropriate circumstances and in DistroKid's sole discretion, users who are deemed to be repeat infringers. For the avoidance of doubt, the foregoing sentence in no way limits DistroKid's right to limit access to the Services and/or terminate the Accounts of any users for any reason, in DistroKid's sole discretion, including, without limitation, in the case of users who infringe, or allegedly infringe, any Intellectual Property Rights of others, whether or not there is any repeat infringement. <br>
 Please be advised that pursuant to federal law you may be held liable for damages if you make material misrepresentations in a Notice. Thus, if you are not sure that material located on or linked to by the infringes your copyright, you should consider first contacting an attorney. <br>
 <strong>Links to Third-Party Websites or Services</strong><br>
@@ -559,102 +559,9 @@ aria-label="DistroKid on Instagram"
 <div id="sitetran_translate_element"></div>
 <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script src="/js/page-locale.js?cacheHash=3f5b671542614595" type="module"></script>
 <script>
-function dkSyncPageLocaleMarkers(languageCode) {
-if (window.dkPageLocale && typeof window.dkPageLocale.setPageLocale === 'function') {
-window.dkPageLocale.setPageLocale(document, languageCode);
-}
-}
-function onLanguageChange(languageCode, languageChangeReason) {
-const currentLanguage = document.documentElement.getAttribute('lang');
-if (window && window.dataLayer) {
-window.dataLayer.push({ 'event' : 'sitetran-language', 'language-code' : languageCode });
-}
-dkSyncPageLocaleMarkers(languageCode);
-// Only handle explicit user actions (not auto-switches from browser/cookie)
-const isUserAction = languageChangeReason === 'UA-SELECT' || languageChangeReason === 'UA-LIST';
-if (!isUserAction) return;
-// Update user language preference in DB for logged-in users
-if (typeof me !== 'undefined') {
-fetch('/api/v1/user/updateLanguage/', {
-method: 'POST',
-keepalive: true,
-credentials: 'same-origin',
-headers: {
-'Content-Type': 'application/json',
-'Authorization': 'Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJjbGkiOjEsImlhdCI6MTc4NTc2MDY2NywiaXNzIjoiaHR0cHM6Ly9kaXN0cm9raWQuY29tIiwic3ViIjowLCJleHAiOjE3ODU3NjQyNjcsImRldiI6IiIsInNjb3BlIjoicmVhZC1wcm9maWxlIiwiYXVkIjoiIn0.9FSdt6mmWdAHIzdY9SxNQwq_p8LmxOvMYOk2crcqoRE'
-},
-body: JSON.stringify({ languageCode: languageCode })
-});
-}
-// On SEO pages, redirect to the static path for the selected language
-dkSeoRedirect(languageCode);
-}
-var sitetran = JSON.parse(`{"url_type":"none","auto_switch_from_browser_lang":true,"refresh_translation_seconds":0.1,"site_default_language_code":"en","phrase_discovery_enabled":true,"preferredLanguage":"en","zendeskLanguageCode":"en-us","site_id":1566,"static_url_language_code_lookup":{},"update_direction":true,"widget_type":"styled-select"}`);
-sitetran.language_change_function = onLanguageChange;
-const sitetranCommands = JSON.parse(`[]`);
-sitetran.cmds = sitetran.cmds || [];
-sitetran.cmds.push(...sitetranCommands);
-var zendeskLanguageMapping = JSON.parse(`{"ja":"ja","sv":"sv","tr":"tr","es-ES":"es-es","hu":"hu","en-GB":"en-us","da":"da","ro":"ro","ms":"ms","de":"de","cs":"cs","fr":"fr","el":"el","ko":"ko","fi":"fi","pt-BR":"pt-br","pl":"pl","ar":"ar","hi":"hi","th":"th","es":"es","nb":"nb","sw":"sw","nl":"nl","id":"id","he":"he","uk":"uk","it":"it","pt-PT":"pt-pt","fr-CA":"fr-ca","vi":"vi"}`);
-// Fallback for SEO pages: even if SiteTran fails to load translation data, we can still redirect
-// to the statically translated path (/{lang}{page}) to avoid JIT translation + flash of English.
-const dkIsSeoPage = true;
-const dkSeoPagePath = '/terms/';
-function dkNormalizeLang(code) {
-if (!code) return '';
-// Normalize "pt-br" -> "pt-BR", "en-gb" -> "en-GB"
-const m = String(code).match(/^([a-z]{2})-([a-z]{2})$/);
-if (m) return `${m[1]}-${m[2].toUpperCase()}`;
-return String(code);
-}
-function dkSeoRedirect(code) {
-if (!dkIsSeoPage) return;
-// Only redirect logged-in users to static translated paths
-// Logged-out users stay on English URL and get normal SiteTran JIT translation
-if (typeof me === 'undefined') return;
-const lang = dkNormalizeLang(code);
-if (!lang) return;
-const localizedPath = (lang === 'en') ? dkSeoPagePath : `/${lang}${dkSeoPagePath}`;
-// Preserve marketing/attribution params (e.g. c, ref, utm_*) across the redirect (DC-40660)
-const target = localizedPath + location.search;
-if ((location.pathname + location.search) !== target) {
-location.href = target;
-}
-}
-// Fallback listener for when SiteTran errors prevent its callback from firing
-// The redirect is the critical fallback; DB update is handled by onLanguageChange() when SiteTran works
-try {
-const widgetContainer = document.getElementById('sitetran_translate_element');
-if (widgetContainer) {
-widgetContainer.addEventListener('change', function(ev) {
-const t = ev.target;
-if (t && t.tagName && t.tagName.toLowerCase() === 'select' && t.value) {
-dkSyncPageLocaleMarkers(t.value);
-dkSeoRedirect(t.value);
-}
-}, true);
-}
-} catch (e) {}
-function dkLangFromPathname() {
-var match = location.pathname.match(/^\/([a-z]{2}(?:-[a-zA-Z]{2})?)\//);
-return match ? match[1] : '';
-}
-window.addEventListener('sitetranReady', function () {
-try {
-var pathLang = dkLangFromPathname();
-if (pathLang) {
-dkSyncPageLocaleMarkers(pathLang);
-if (window.sitetran && typeof window.sitetran.api_change_language === 'function') {
-window.sitetran.api_change_language(pathLang, 'UA-API-PROG');
-}
-return;
-}
-if (window.sitetran && window.sitetran.lang) {
-dkSyncPageLocaleMarkers(window.sitetran.lang);
-}
-} catch (e) {}
-});
+window.__sitetranWidgetConfig = {"scriptUrl":"//c.sitetran.com/widget/v3.js","isSeoPage":true,"isLoggedIn":false,"seoPagePath":"/terms/","sitetran":{"url_type":"none","auto_switch_from_browser_lang":true,"refresh_translation_seconds":0.1,"site_default_language_code":"en","phrase_discovery_enabled":true,"preferredLanguage":"en","zendeskLanguageCode":"en-us","site_id":1566,"static_url_language_code_lookup":{},"update_direction":true,"widget_type":"styled-select"},"zendeskLanguageMapping":{"ja":"ja","sv":"sv","tr":"tr","es-ES":"es-es","hu":"hu","en-GB":"en-us","da":"da","ro":"ro","ms":"ms","de":"de","cs":"cs","fr":"fr","el":"el","ko":"ko","fi":"fi","pt-BR":"pt-br","pl":"pl","ar":"ar","hi":"hi","th":"th","es":"es","nb":"nb","sw":"sw","nl":"nl","id":"id","he":"he","uk":"uk","it":"it","pt-PT":"pt-pt","fr-CA":"fr-ca","vi":"vi"},"sitetranCommands":[],"accessToken":"eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJjbGkiOjEsImlhdCI6MTc4NTgwMzg2OCwiaXNzIjoiaHR0cHM6Ly9kaXN0cm9raWQuY29tIiwic3ViIjowLCJleHAiOjE3ODU4MDc0NjgsImRldiI6IiIsInNjb3BlIjoicmVhZC1wcm9maWxlIiwiYXVkIjoiIn0.iq1TfSJjnSi5yKBTW0MDgfVCbtJuufPkNAxXbnHsMnc"};
 </script>
-<script src="//c.sitetran.com/widget/v3.js"></script>
+<script src="/js/sitetran-widget.js?cacheHash=66b3101c2c89c027" type="module"></script>
 </div>
 </div>
 </div>
@@ -714,7 +621,7 @@ initialScope: {
 tags: {
 "dev_user": "unknown",
 "user_id": "0",
-"machine_name": "prod-dk-web-07"
+"machine_name": "prod-dk-web-11"
 }
 },
 beforeSend: function(event, hint) {
