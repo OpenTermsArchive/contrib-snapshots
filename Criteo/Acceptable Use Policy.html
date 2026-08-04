@@ -176,7 +176,7 @@ img:is([sizes=auto i],[sizes^="auto," i]){contain-intrinsic-size:3000px 1500px}
 /*# sourceURL=global-styles-inline-css */
 </style>
 
-<link rel='stylesheet preload' as='style' id='CSS-theme-css' href='https://www.criteo.com/wp-content/themes/criteo2017/css/theme.min.css?ver=2026080333' media='all' />
+<link rel='stylesheet preload' as='style' id='CSS-theme-css' href='https://www.criteo.com/wp-content/themes/criteo2017/css/theme.min.css?ver=2026080338' media='all' />
 <link rel='stylesheet preload' as='style' id='select2CSS-css' href='https://www.criteo.com/wp-content/themes/criteo2017/sass/select2.min.css?ver=7.0.2' media='all' />
 <link rel='stylesheet preload' as='style' id='slickCSS-css' href='https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.5.9/slick.min.css?ver=7.0.2' media='all' />
 <link rel='stylesheet preload' as='style' id='tablepress-default-css' href='https://www.criteo.com/wp-content/uploads/tablepress-combined.min.css?ver=19' media='all' />
@@ -2415,54 +2415,146 @@ img:is([sizes=auto i],[sizes^="auto," i]){contain-intrinsic-size:3000px 1500px}
     .modal-dialog .modal-header {
         justify-content: flex-end;
     }
+
+    /* Demo / Guideflow modal only — does not affect other embed modals */
+    #modalEmbedDemo .demo-embed-wrap {
+      position: relative;
+      padding-bottom: calc(53.81944444444444% + 47px);
+      height: 0;
+    }
+    #modalEmbedDemo .demo-embed-loading {
+      position: absolute;
+      inset: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: #fff;
+      z-index: 1;
+      transition: opacity .2s ease;
+    }
+    #modalEmbedDemo .demo-embed-loading.is-done {
+      opacity: 0;
+      pointer-events: none;
+    }
+    #modalEmbedDemo .demo-embed-spinner {
+      width: 40px;
+      height: 40px;
+      border: 3px solid #e6e6e6;
+      border-top-color: #fe5000;
+      border-radius: 50%;
+      animation: demoEmbedSpin .7s linear infinite;
+    }
+    @keyframes demoEmbedSpin {
+      to { transform: rotate(360deg); }
+    }
+    #modalEmbedDemo .demo-embed-wrap iframe {
+      left: 0;
+      top: 0;
+      overflow: hidden;
+      position: absolute;
+      border: none;
+      opacity: 0;
+      transition: opacity .2s ease;
+    }
+    #modalEmbedDemo .demo-embed-wrap iframe.is-ready {
+      opacity: 1;
+    }
 </style>
 
 <script>
 // modal video embed auto-play and auto-shut-up
+// Demo/Guideflow: inject iframe on shown.bs.modal so it initializes with real
+// dimensions. Loader is scoped to #modalEmbedDemo only.
 jQuery(document).ready(function() {
-  var btn = jQuery('body').find('[data-toggle="modal"][data-type]'); // the button
+  var btn = jQuery('body').find('[data-toggle="modal"][data-type]');
 
-  btn.click(function() {
-    var modal = jQuery($(this).data('target')); // modal div
-    var src = $(this).data('src');
-    var type = $(this).data('type');
-    var modalBody = modal.find('.modal-body'); // modal body
+  btn.on('click', function() {
+    var $trigger = jQuery(this);
+    var modal = jQuery($trigger.data('target'));
+    modal.data('embedSrc', $trigger.data('src'));
+    modal.data('embedType', $trigger.data('type'));
+  });
+
+  // Demo only: show loader as soon as the modal starts opening
+  jQuery('#modalEmbedDemo').on('show.bs.modal', function() {
+    var modal = jQuery(this);
+    if (modal.data('embedType') !== 'demo') {
+      return;
+    }
+    modal.find('.modal-body').html(
+      '<div class="demo-embed-wrap">' +
+        '<div class="demo-embed-loading" aria-live="polite" aria-busy="true">' +
+          '<span class="demo-embed-spinner" role="status" aria-label="Loading demo"></span>' +
+        '</div>' +
+      '</div>'
+    );
+  });
+
+  // Demo only: inject Guideflow after modal is fully shown/sized
+  jQuery('#modalEmbedDemo').on('shown.bs.modal', function() {
+    var modal = jQuery(this);
+    var src = modal.data('embedSrc');
+    var $wrap = modal.find('.demo-embed-wrap');
+    var $loading = modal.find('.demo-embed-loading');
+
+    if (modal.data('embedType') !== 'demo' || !src || !$wrap.length) {
+      return;
+    }
+
+    var $iframe = jQuery(
+      '<iframe width="100%" height="100%" scrolling="no" allow="clipboard-read; clipboard-write" ' +
+      'webkitallowfullscreen mozallowfullscreen allowfullscreen allowtransparency="true"></iframe>'
+    );
+
+    function revealDemo() {
+      $loading.addClass('is-done').attr('aria-busy', 'false');
+      $iframe.addClass('is-ready');
+    }
+
+    $iframe.on('load', revealDemo);
+    $wrap.append($iframe);
+    $iframe.attr('src', src);
+
+    // Fallback if the iframe load event is delayed/missed
+    window.setTimeout(revealDemo, 8000);
+  });
+
+  // Other embed modals (unchanged behavior)
+  jQuery('#modalEmbed, #modalEmbedDarkMode').on('shown.bs.modal', function() {
+    var modal = jQuery(this);
+    var src = modal.data('embedSrc');
+    var type = modal.data('embedType');
+    var modalBody = modal.find('.modal-body');
     var iframe;
-    console.log(type);
+
+    if (!src || !type) {
+      return;
+    }
+
     if (type === 'pardot' || type === 'embed') {
       iframe = modalBody.html('<iframe width="100%" height="450" frameborder="0" allowfullscreen></iframe>').children('iframe');
-      
+
       if (type === 'pardot') {
-        iframe.load(function() {
-            //console.log('iframe loaded');
-            iFrameResize(); // the secret sauce!
+        iframe.on('load', function() {
+          iFrameResize();
         });
         iframe.attr('src', src);
-      } 
+      }
       if (type === 'embed') {
-        console.log('embed');
-        iframe.attr('src', src + '?autoplay=1&enablejsapi=1&rel=0'); // video URL in the button's data attr
-        ytTracker.init(); // <-- Decorate all new videos on the page, from the 400-line monstrosity GTM
+        iframe.attr('src', src + '?autoplay=1&enablejsapi=1&rel=0');
+        ytTracker.init();
       }
     }
-    
-    if (type === 'demo') {
-      var modalBodyHTML = '<div style="position: relative; padding-bottom:calc(53.81944444444444% + 47px); height: 0;">' +
-        '<iframe width="100%" height="100%" scrolling="no" allow="clipboard-read; clipboard-write"' + 
-        'src="' + src + '"' +
-        'style="left:0;top:0;overflow:hidden;position:absolute;border:none" webkitallowfullscreen mozallowfullscreen allowfullscreen allowtransparency="true">' +
-        '</iframe></div>';
-      iframe = modalBody.html(modalBodyHTML).children('iframe');
-    }
   });
 
-  jQuery('.modal-in-footer').on('hidden.bs.modal', function(e) {
-   //console.log('modal closed: stripping the contents');
-    $(this).find('.modal-body').html('');
+  jQuery('.modal-in-footer').on('hidden.bs.modal', function() {
+    var modal = jQuery(this);
+    modal.find('.modal-body').html('');
+    modal.removeData('embedSrc').removeData('embedType');
   });
-
 });
-</script><script type="speculationrules">
+</script>
+<script type="speculationrules">
 {"prefetch":[{"source":"document","where":{"and":[{"href_matches":"/*"},{"not":{"href_matches":["/wp-*.php","/wp-admin/*","/wp-content/uploads/*","/wp-content/*","/wp-content/plugins/*","/wp-content/themes/criteo2017/*","/*\\?(.+)"]}},{"not":{"selector_matches":"a[rel~=\"nofollow\"]"}},{"not":{"selector_matches":".no-prefetch, .no-prefetch a"}}]},"eagerness":"conservative"}]}
 </script>
 <script id="qppr_frontend_scripts-js-extra">
@@ -2474,7 +2566,7 @@ var qpprFrontData = {"linkData":{"https://www.criteo.com/blog/apparel-trend-repo
 <script id="criteoBootstrap4-js" src="https://www.criteo.com/wp-content/themes/criteo2017/js/bs4.min.js"></script>
 <script id="iframe-resizer-js" src="https://www.criteo.com/wp-content/themes/criteo2017/js/iframe.min.js"></script>
 <script id="select2-js" src="https://www.criteo.com/wp-content/themes/criteo2017/js/select2.min.js"></script>
-<script id="Criteo2017-scripts-js" src="https://www.criteo.com/wp-content/themes/criteo2017/js/theme.min.js?ver=2026080333"></script>
+<script id="Criteo2017-scripts-js" src="https://www.criteo.com/wp-content/themes/criteo2017/js/theme.min.js?ver=2026080338"></script>
 <script id="scrolllock-js" src="https://www.criteo.com/wp-content/themes/criteo2017/js/scrolllock.min.js"></script>
 <script id="match-height-js" src="//cdnjs.cloudflare.com/ajax/libs/jquery.matchHeight/0.7.0/jquery.matchHeight-min.js"></script>
 <script id="sticky-kit-js" src="https://www.criteo.com/wp-content/themes/criteo2017/js/jquery.sticky-kit.min.js?ver=0.6.2"></script>
@@ -2482,7 +2574,7 @@ var qpprFrontData = {"linkData":{"https://www.criteo.com/blog/apparel-trend-repo
 <script id="slickJS-js" src="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.5.9/slick.min.js?ver=7.0.2"></script>
 <div style="display: none">
     </div>
-<script type="text/javascript">window.NREUM||(NREUM={});NREUM.info={"beacon":"bam.nr-data.net","licenseKey":"bb94583995","applicationID":"72531584","transactionName":"b1YBYkFZWBBYBURaDVYcIlVHUVkNFgRRQAtb","queueTime":0,"applicationTime":475,"atts":"QxEWFAlDS08bBxIJGUVO","errorBeacon":"bam.nr-data.net","agent":""}</script></body>
+<script type="text/javascript">window.NREUM||(NREUM={});NREUM.info={"beacon":"bam.nr-data.net","licenseKey":"bb94583995","applicationID":"72531584","transactionName":"b1YBYkFZWBBYBURaDVYcIlVHUVkNFgRRQAtb","queueTime":0,"applicationTime":696,"atts":"QxEWFAlDS08bBxIJGUVO","errorBeacon":"bam.nr-data.net","agent":""}</script></body>
 
 </html>
-<!-- plugin=object-cache-pro client=phpredis metric#hits=5122 metric#misses=13 metric#hit-ratio=99.8 metric#bytes=1399362 metric#prefetches=721 metric#store-reads=42 metric#store-writes=11 metric#store-hits=745 metric#store-misses=5 metric#sql-queries=11 metric#ms-total=472.96 metric#ms-cache=37.93 metric#ms-cache-avg=0.7293 metric#ms-cache-ratio=8.0 -->
+<!-- plugin=object-cache-pro client=phpredis metric#hits=4427 metric#misses=27 metric#hit-ratio=99.4 metric#bytes=1702415 metric#prefetches=9 metric#store-reads=756 metric#store-writes=22 metric#store-hits=746 metric#store-misses=19 metric#sql-queries=26 metric#ms-total=695.59 metric#ms-cache=278.72 metric#ms-cache-avg=0.3587 metric#ms-cache-ratio=40.1 -->
