@@ -176,7 +176,7 @@ img:is([sizes=auto i],[sizes^="auto," i]){contain-intrinsic-size:3000px 1500px}
 /*# sourceURL=global-styles-inline-css */
 </style>
 
-<link rel='stylesheet preload' as='style' id='CSS-theme-css' href='https://www.criteo.com/wp-content/themes/criteo2017/css/theme.min.css?ver=2026080338' media='all' />
+<link rel='stylesheet preload' as='style' id='CSS-theme-css' href='https://www.criteo.com/wp-content/themes/criteo2017/css/theme.min.css?ver=2026080432' media='all' />
 <link rel='stylesheet preload' as='style' id='select2CSS-css' href='https://www.criteo.com/wp-content/themes/criteo2017/sass/select2.min.css?ver=7.0.2' media='all' />
 <link rel='stylesheet preload' as='style' id='slickCSS-css' href='https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.5.9/slick.min.css?ver=7.0.2' media='all' />
 <link rel='stylesheet preload' as='style' id='tablepress-default-css' href='https://www.criteo.com/wp-content/uploads/tablepress-combined.min.css?ver=19' media='all' />
@@ -186,7 +186,7 @@ img:is([sizes=auto i],[sizes^="auto," i]){contain-intrinsic-size:3000px 1500px}
 <script id="cookieManagement-js" src="https://www.criteo.com/wp-content/themes/criteo2017/js/cookies.js"></script>
 </head>
 
-<body class="wp-singular page-template page-template-page-templates page-template-basic page-template-page-templatesbasic-php page page-id-8918 wp-theme-criteo2017 has-banner group-blog advertising-guidelines" data-country="" data-whitelist="UK,GB,IE,US,AU,NZ" data-site="https://www.criteo.com" data-blog="1">
+<body class="wp-singular page-template page-template-page-templates page-template-basic page-template-page-templatesbasic-php page page-id-8918 wp-theme-criteo2017 group-blog advertising-guidelines" data-country="" data-whitelist="UK,GB,IE,US,AU,NZ" data-site="https://www.criteo.com" data-blog="1">
         <script>
         var $ = jQuery.noConflict();
         const lightSchemeIcon = document.querySelector('link#lightico');
@@ -213,23 +213,6 @@ img:is([sizes=auto i],[sizes^="auto," i]){contain-intrinsic-size:3000px 1500px}
 
     
 <div class="header-container desktop sticky">    
-          <div id="global-banner" class="container">
-        <div class="inner-container clickable">
-          <div class="banner-content pt-st-3 pb-st-3 pl-st-8 pr-st-8">
-            <div class="banner-left">
-                                <div class="text-icon">
-                    <img width="64" height="29" src="https://www.criteo.com/wp-content/uploads/2026/06/Button.svg" class="attachment-full size-full" alt="" decoding="async" />                  </div>
-                              <div class="banner-text">Meet <b>Criteo GO</b>: now with access to emerging advertising opportunities inside <b>ChatGPT</b>.</div>
-            </div>
-                          <div class="banner-right">
-                <a href="#">
-                    <span class="banner-link-copy">Learn more</span><span class="arrow-2023"></span>                            
-                </a>
-              </div>
-                      </div>
-                      <a class="overlay-link" href="https://www.criteo.com/go/" target="_blank"></a>
-                  </div>
-      </div>
         
     <div class="header-main-nav desktop sticky">
 
@@ -2426,8 +2409,10 @@ img:is([sizes=auto i],[sizes^="auto," i]){contain-intrinsic-size:3000px 1500px}
       position: absolute;
       inset: 0;
       display: flex;
+      flex-direction: column;
       align-items: center;
       justify-content: center;
+      gap: 16px;
       background: #fff;
       z-index: 1;
       transition: opacity .2s ease;
@@ -2435,6 +2420,24 @@ img:is([sizes=auto i],[sizes^="auto," i]){contain-intrinsic-size:3000px 1500px}
     #modalEmbedDemo .demo-embed-loading.is-done {
       opacity: 0;
       pointer-events: none;
+    }
+    #modalEmbedDemo .demo-embed-loading.is-error .demo-embed-spinner {
+      display: none;
+    }
+    #modalEmbedDemo .demo-embed-error {
+      display: none;
+      text-align: center;
+      padding: 0 24px;
+      color: #2a2e33;
+      font-size: 16px;
+      line-height: 1.4;
+    }
+    #modalEmbedDemo .demo-embed-loading.is-error .demo-embed-error {
+      display: block;
+    }
+    #modalEmbedDemo .demo-embed-error a {
+      color: #fe5000;
+      text-decoration: underline;
     }
     #modalEmbedDemo .demo-embed-spinner {
       width: 40px;
@@ -2463,41 +2466,52 @@ img:is([sizes=auto i],[sizes^="auto," i]){contain-intrinsic-size:3000px 1500px}
 
 <script>
 // modal video embed auto-play and auto-shut-up
-// Demo/Guideflow: inject iframe on shown.bs.modal so it initializes with real
-// dimensions. Loader is scoped to #modalEmbedDemo only.
+// Read src/type from Bootstrap's event.relatedTarget so we never stash across
+// handlers (survives button re-renders from A/B, GTM, etc.).
 jQuery(document).ready(function() {
-  var btn = jQuery('body').find('[data-toggle="modal"][data-type]');
-
-  btn.on('click', function() {
-    var $trigger = jQuery(this);
-    var modal = jQuery($trigger.data('target'));
-    modal.data('embedSrc', $trigger.data('src'));
-    modal.data('embedType', $trigger.data('type'));
-  });
+  function getEmbedTrigger(event) {
+    var related = event.relatedTarget;
+    if (!related) {
+      return jQuery();
+    }
+    var $related = jQuery(related);
+    if ($related.is('[data-toggle="modal"][data-type]')) {
+      return $related;
+    }
+    return $related.closest('[data-toggle="modal"][data-type]');
+  }
 
   // Demo only: show loader as soon as the modal starts opening
-  jQuery('#modalEmbedDemo').on('show.bs.modal', function() {
-    var modal = jQuery(this);
-    if (modal.data('embedType') !== 'demo') {
+  jQuery('#modalEmbedDemo').on('show.bs.modal', function(event) {
+    var $trigger = getEmbedTrigger(event);
+    if ($trigger.data('type') !== 'demo' || !$trigger.data('src')) {
       return;
     }
-    modal.find('.modal-body').html(
+
+    jQuery(this).find('.modal-body').html(
       '<div class="demo-embed-wrap">' +
         '<div class="demo-embed-loading" aria-live="polite" aria-busy="true">' +
           '<span class="demo-embed-spinner" role="status" aria-label="Loading demo"></span>' +
+          '<div class="demo-embed-error">' +
+            'Unable to load the demo. ' +
+            '<a href="' + $trigger.data('src') + '" target="_blank" rel="noopener noreferrer">Open it in a new tab</a>.' +
+          '</div>' +
         '</div>' +
       '</div>'
     );
   });
 
   // Demo only: inject Guideflow after modal is fully shown/sized
-  jQuery('#modalEmbedDemo').on('shown.bs.modal', function() {
+  jQuery('#modalEmbedDemo').on('shown.bs.modal', function(event) {
     var modal = jQuery(this);
-    var src = modal.data('embedSrc');
+    var $trigger = getEmbedTrigger(event);
+    var src = $trigger.data('src');
     var $wrap = modal.find('.demo-embed-wrap');
     var $loading = modal.find('.demo-embed-loading');
+    var revealed = false;
+    var loadTimedOut = false;
 
-    if (modal.data('embedType') !== 'demo' || !src || !$wrap.length) {
+    if ($trigger.data('type') !== 'demo' || !src || !$wrap.length) {
       return;
     }
 
@@ -2507,23 +2521,36 @@ jQuery(document).ready(function() {
     );
 
     function revealDemo() {
+      if (revealed || loadTimedOut) {
+        return;
+      }
+      revealed = true;
       $loading.addClass('is-done').attr('aria-busy', 'false');
       $iframe.addClass('is-ready');
+    }
+
+    function showDemoError() {
+      if (revealed) {
+        return;
+      }
+      loadTimedOut = true;
+      $loading.addClass('is-error').attr('aria-busy', 'false');
     }
 
     $iframe.on('load', revealDemo);
     $wrap.append($iframe);
     $iframe.attr('src', src);
 
-    // Fallback if the iframe load event is delayed/missed
-    window.setTimeout(revealDemo, 8000);
+    // If Guideflow never loads, show an error + direct link instead of a blank iframe
+    window.setTimeout(showDemoError, 8000);
   });
 
-  // Other embed modals (unchanged behavior)
-  jQuery('#modalEmbed, #modalEmbedDarkMode').on('shown.bs.modal', function() {
+  // Other embed modals: same relatedTarget pattern, no visual changes
+  jQuery('#modalEmbed, #modalEmbedDarkMode').on('shown.bs.modal', function(event) {
     var modal = jQuery(this);
-    var src = modal.data('embedSrc');
-    var type = modal.data('embedType');
+    var $trigger = getEmbedTrigger(event);
+    var src = $trigger.data('src');
+    var type = $trigger.data('type');
     var modalBody = modal.find('.modal-body');
     var iframe;
 
@@ -2548,9 +2575,7 @@ jQuery(document).ready(function() {
   });
 
   jQuery('.modal-in-footer').on('hidden.bs.modal', function() {
-    var modal = jQuery(this);
-    modal.find('.modal-body').html('');
-    modal.removeData('embedSrc').removeData('embedType');
+    jQuery(this).find('.modal-body').html('');
   });
 });
 </script>
@@ -2566,7 +2591,7 @@ var qpprFrontData = {"linkData":{"https://www.criteo.com/blog/apparel-trend-repo
 <script id="criteoBootstrap4-js" src="https://www.criteo.com/wp-content/themes/criteo2017/js/bs4.min.js"></script>
 <script id="iframe-resizer-js" src="https://www.criteo.com/wp-content/themes/criteo2017/js/iframe.min.js"></script>
 <script id="select2-js" src="https://www.criteo.com/wp-content/themes/criteo2017/js/select2.min.js"></script>
-<script id="Criteo2017-scripts-js" src="https://www.criteo.com/wp-content/themes/criteo2017/js/theme.min.js?ver=2026080338"></script>
+<script id="Criteo2017-scripts-js" src="https://www.criteo.com/wp-content/themes/criteo2017/js/theme.min.js?ver=2026080432"></script>
 <script id="scrolllock-js" src="https://www.criteo.com/wp-content/themes/criteo2017/js/scrolllock.min.js"></script>
 <script id="match-height-js" src="//cdnjs.cloudflare.com/ajax/libs/jquery.matchHeight/0.7.0/jquery.matchHeight-min.js"></script>
 <script id="sticky-kit-js" src="https://www.criteo.com/wp-content/themes/criteo2017/js/jquery.sticky-kit.min.js?ver=0.6.2"></script>
@@ -2574,7 +2599,7 @@ var qpprFrontData = {"linkData":{"https://www.criteo.com/blog/apparel-trend-repo
 <script id="slickJS-js" src="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.5.9/slick.min.js?ver=7.0.2"></script>
 <div style="display: none">
     </div>
-<script type="text/javascript">window.NREUM||(NREUM={});NREUM.info={"beacon":"bam.nr-data.net","licenseKey":"bb94583995","applicationID":"72531584","transactionName":"b1YBYkFZWBBYBURaDVYcIlVHUVkNFgRRQAtb","queueTime":0,"applicationTime":696,"atts":"QxEWFAlDS08bBxIJGUVO","errorBeacon":"bam.nr-data.net","agent":""}</script></body>
+<script type="text/javascript">window.NREUM||(NREUM={});NREUM.info={"beacon":"bam.nr-data.net","licenseKey":"bb94583995","applicationID":"72531584","transactionName":"b1YBYkFZWBBYBURaDVYcIlVHUVkNFgRRQAtb","queueTime":0,"applicationTime":731,"atts":"QxEWFAlDS08bBxIJGUVO","errorBeacon":"bam.nr-data.net","agent":""}</script></body>
 
 </html>
-<!-- plugin=object-cache-pro client=phpredis metric#hits=4427 metric#misses=27 metric#hit-ratio=99.4 metric#bytes=1702415 metric#prefetches=9 metric#store-reads=756 metric#store-writes=22 metric#store-hits=746 metric#store-misses=19 metric#sql-queries=26 metric#ms-total=695.59 metric#ms-cache=278.72 metric#ms-cache-avg=0.3587 metric#ms-cache-ratio=40.1 -->
+<!-- plugin=object-cache-pro client=phpredis metric#hits=4377 metric#misses=27 metric#hit-ratio=99.4 metric#bytes=1690855 metric#prefetches=9 metric#store-reads=745 metric#store-writes=22 metric#store-hits=735 metric#store-misses=19 metric#sql-queries=26 metric#ms-total=729.49 metric#ms-cache=309.61 metric#ms-cache-avg=0.4042 metric#ms-cache-ratio=42.4 -->
