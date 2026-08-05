@@ -47,22 +47,22 @@
 <link href='https://betterstack.com/privacy' rel='canonical'>
 <meta content='https://betterstack.com/privacy' property='og:url'>
 <meta name="csrf-param" content="authenticity_token" />
-<meta name="csrf-token" content="BVOKmWCCw2d6Nfsw_TyIwL9sX5McZ047uXs-3AsEVPDYohTUhCUbuXvyfKz3g5ck-m6B0Z2G8HkcN7qz78zcdA" />
-<meta name="csp-nonce" content="b432dc2b0a4eeb92efd1708935d62581" />
+<meta name="csrf-token" content="YD9Qb2tmj2UUdhuvNJYsLoI0D5uY1nKcykohPq5N1IlOC0SfUi5wXI9jbnRE8GHlYdrfhZhqJtRux6UaQJvWXQ" />
+<meta name="csp-nonce" content="8cb17831dc8d068b1831ddb36fa9bbbb" />
 <meta content='marketing.website' name='bs-surface'>
 
 
-<link rel="preload" href="/static/fonts/Helvetica/HelveticaNowText-Regular.woff2" as="font" type="font/woff2" crossorigin="anonymous">
-<link rel="preload" href="/static/fonts/Helvetica/HelveticaNowText-Medium.woff2" as="font" type="font/woff2" crossorigin="anonymous">
-<link rel="preload" href="/static/fonts/Helvetica/HelveticaNowText-Bold.woff2" as="font" type="font/woff2" crossorigin="anonymous">
-<link rel="preload" href="/static/fonts/Helvetica/HelveticaNowDisplay-Medium.woff2" as="font" type="font/woff2" crossorigin="anonymous">
-<link rel="preload" href="/static/fonts/Helvetica/HelveticaNowDisplay-Bold.woff2" as="font" type="font/woff2" crossorigin="anonymous">
+<link rel="preload" href="/static/fonts/Helvetica/HelveticaNowText-Regular-1.0.woff2" as="font" type="font/woff2" crossorigin="anonymous">
+<link rel="preload" href="/static/fonts/Helvetica/HelveticaNowText-Medium-1.0.woff2" as="font" type="font/woff2" crossorigin="anonymous">
+<link rel="preload" href="/static/fonts/Helvetica/HelveticaNowText-Bold-1.0.woff2" as="font" type="font/woff2" crossorigin="anonymous">
+<link rel="preload" href="/static/fonts/Helvetica/HelveticaNowDisplay-Medium-1.0.woff2" as="font" type="font/woff2" crossorigin="anonymous">
+<link rel="preload" href="/static/fonts/Helvetica/HelveticaNowDisplay-Bold-1.0.woff2" as="font" type="font/woff2" crossorigin="anonymous">
 <style>
   @font-face {
     font-family: 'Helvetica Now Text';
     src: local('Helvetica Now Text  Regular'),
          local('HelveticaNowText-Regular'),
-         url('/static/fonts/Helvetica/HelveticaNowText-Regular.woff2') format('woff2');
+         url('/static/fonts/Helvetica/HelveticaNowText-Regular-1.0.woff2') format('woff2');
     font-weight: 400;
     font-style: normal;
     font-display: swap;
@@ -72,7 +72,7 @@
     font-family: 'Helvetica Now Text';
     src: local('Helvetica Now Text  Medium'),
       local('HelveticaNowText-Medium'),
-      url('/static/fonts/Helvetica/HelveticaNowText-Medium.woff2') format('woff2');
+      url('/static/fonts/Helvetica/HelveticaNowText-Medium-1.0.woff2') format('woff2');
     font-weight: 500;
     font-style: normal;
     font-display: swap;
@@ -82,7 +82,7 @@
     font-family: 'Helvetica Now Text';
     src: local('Helvetica Now Text  Bold'),
       local('HelveticaNowText-Bold'),
-      url('/static/fonts/Helvetica/HelveticaNowText-Bold.woff2') format('woff2');
+      url('/static/fonts/Helvetica/HelveticaNowText-Bold-1.0.woff2') format('woff2');
     font-weight: 700;
     font-style: normal;
     font-display: swap;
@@ -92,7 +92,7 @@
     font-family: 'Helvetica Now Display';
     src: local('Helvetica Now Display Medium'),
       local('HelveticaNowDisplay-Medium'),
-      url('/static/fonts/Helvetica/HelveticaNowDisplay-Medium.woff2') format('woff2');
+      url('/static/fonts/Helvetica/HelveticaNowDisplay-Medium-1.0.woff2') format('woff2');
     font-weight: 500;
     font-style: normal;
     font-display: swap;
@@ -102,7 +102,7 @@
     font-family: 'Helvetica Now Display';
     src: local('Helvetica Now Display Bold'),
       local('HelveticaNowDisplay-Bold'),
-      url('/static/fonts/Helvetica/HelveticaNowDisplay-Bold.woff2') format('woff2');
+      url('/static/fonts/Helvetica/HelveticaNowDisplay-Bold-1.0.woff2') format('woff2');
     font-weight: 700;
     font-style: normal;
     font-display: swap;
@@ -111,8 +111,80 @@
 
 
 
-<link rel="stylesheet" href="https://betterstack.com/assets/betterstack_v2-88ef18ce.css" media="all" data-turbo-track="reload" />
-<script type="importmap" data-turbo-track="reload" nonce="b432dc2b0a4eeb92efd1708935d62581">{
+<link rel="stylesheet" href="https://betterstack.com/assets/betterstack_v2-42fd5898.css" media="all" data-turbo-track="reload" />
+<script type="application/javascript" nonce="8cb17831dc8d068b1831ddb36fa9bbbb">
+//<![CDATA[
+// Recovers from the module load failures a fresh page load fixes: hashed bundles gone stale after
+// a deploy, and an origin that briefly fails to serve a hashed module.
+//
+// partials/_javascript_importmap_tags inlines this as a classic script ahead of every module
+// script, which is the point of the file: when a module in the entry graph fails to fetch, no
+// module in that graph evaluates, so a handler living inside the graph is never installed for the
+// very failure it exists to catch. Never import it. Every byte here ships on every page, so keep
+// it small.
+;(function () {
+  // Our CSP nonce is per request, so Turbo sees this tag as a new head script on every visit and
+  // re-runs it (Snapshot#copyNewHeadScriptElements). The listeners are on window and outlive the
+  // visit, so without this guard they would stack up one set per navigation.
+  if (window.bsModuleLoadRecoveryInstalled) return
+  window.bsModuleLoadRecoveryInstalled = true
+
+  const RELOAD_FLAG_KEY = 'bs:module-load-reloaded'
+
+  // es-module-shims' doFetch throws "<status> <statusText> <url>[ imported from <parent>]" for an
+  // HTTP error (the reported "504 Gateway Timeout ...") and "Unable to fetch <url> ..." when the
+  // request never completes. Anchoring on the leading status instead of the "imported from" suffix
+  // also catches parentless top-level loads, and ignores prose that merely says "imported from".
+  const isRecoverableMessage = (message) =>
+    /Failed to fetch dynamically imported module/i.test(message) || // Chrome
+    /error loading dynamically imported module/i.test(message) || // Firefox
+    /Importing a module script failed/i.test(message) || // Safari
+    /^\d{3} .*https?:\/\//.test(message) ||
+    /^Unable to fetch https?:\/\/.* - see network log for details/i.test(message)
+
+  const reloadOnce = () => {
+    try {
+      if (window.sessionStorage.getItem(RELOAD_FLAG_KEY) === '1') return
+      window.sessionStorage.setItem(RELOAD_FLAG_KEY, '1')
+    } catch (_e) {
+      // Private browsing or storage disabled: without the flag we cannot bound the reloads
+      return
+    }
+
+    window.location.reload()
+  }
+
+  // A <script type="module"> fires `error` on the element when its graph fails to fetch or parse,
+  // and not when the graph throws while executing, so app bugs cannot reach this. Browsers without
+  // import map support never resolve our bare specifiers natively and so always fire it (they are
+  // the ones es-module-shims loads the page for), hence the check.
+  const isFailedModuleScript = (target) =>
+    target?.tagName === 'SCRIPT' &&
+    target.type === 'module' &&
+    HTMLScriptElement.supports?.('importmap')
+
+  window.addEventListener('error', (event) => {
+    if (isFailedModuleScript(event.target)) {
+      reloadOnce()
+      return
+    }
+
+    if (isRecoverableMessage(event.error?.message ?? event.message ?? '')) reloadOnce()
+  }, true)
+
+  window.addEventListener('unhandledrejection', (event) => {
+    if (!isRecoverableMessage(event.reason?.message ?? event.reason?.toString?.() ?? '')) return
+
+    // Drop the browser's own "Uncaught (in promise)" reporting since we are handling it by
+    // reloading. Error tracking still sees the rejection through its own listener.
+    event.preventDefault?.()
+    reloadOnce()
+  })
+})()
+
+//]]>
+</script>
+<script type="importmap" data-turbo-track="reload" nonce="8cb17831dc8d068b1831ddb36fa9bbbb">{
   "imports": {
     "admin_controllers/article_form_controller": "/assets/admin_controllers/article_form_controller-95d029c4.js",
     "admin_controllers": "/assets/admin_controllers/index-577d86b7.js",
@@ -176,7 +248,8 @@
     "common/linkedInSignupConversion": "/assets/common/linkedInSignupConversion-87a73ad8.js",
     "common/links": "/assets/common/links-ae98a9e4.js",
     "common/modals": "/assets/common/modals-3906d5a2.js",
-    "common/railsSetup": "/assets/common/railsSetup-c91838cb.js",
+    "common/moduleLoadRecovery": "/assets/common/moduleLoadRecovery-8bffe4b6.js",
+    "common/railsSetup": "/assets/common/railsSetup-25c4cf53.js",
     "common/recaptchaSubmit": "/assets/common/recaptchaSubmit-e4783e18.js",
     "common/side-menu-scroll": "/assets/common/side-menu-scroll-4d201e25.js",
     "common/site_settings_bootstrap": "/assets/common/site_settings_bootstrap-c104a0e6.js",
@@ -217,7 +290,7 @@
     "common_controllers/video_modal_controller": "/assets/common_controllers/video_modal_controller-41524ff9.js",
     "common_controllers/warehouse_code_block_controller": "/assets/common_controllers/warehouse_code_block_controller-c2c3abe7.js",
     "components/DatePicker": "/assets/components/DatePicker-01cabcd0.js",
-    "components/InviteLinkDropdown": "/assets/components/InviteLinkDropdown-99faa2e0.js",
+    "components/InviteLinkDropdown": "/assets/components/InviteLinkDropdown-4ebe5dd1.js",
     "components/Modal": "/assets/components/Modal-61a5d1df.js",
     "components/NativeSelect": "/assets/components/NativeSelect-64e2ccec.js",
     "components/SideNavigation": "/assets/components/SideNavigation-a1dc27bc.js",
@@ -255,37 +328,37 @@
     "components/forms/AIPromptEditor": "/assets/components/forms/AIPromptEditor-11cf1b3b.js",
     "components/forms/AuditLogsToggle": "/assets/components/forms/AuditLogsToggle-0af5a9c0.js",
     "components/forms/BasicForm": "/assets/components/forms/BasicForm-a9f858ec.js",
-    "components/forms/Collapse": "/assets/components/forms/Collapse-20f9cecf.js",
+    "components/forms/Collapse": "/assets/components/forms/Collapse-90b78017.js",
     "components/forms/CopyOnClick": "/assets/components/forms/CopyOnClick-83ef9213.js",
     "components/forms/DotsDropdown": "/assets/components/forms/DotsDropdown-ddb29fb4.js",
     "components/forms/DotsDropdownNew": "/assets/components/forms/DotsDropdownNew-c8a8344d.js",
     "components/forms/Dropdown": "/assets/components/forms/Dropdown-3327ca7b.js",
     "components/forms/GatedToggle": "/assets/components/forms/GatedToggle-9a5537f3.js",
-    "components/forms/HeadersJson": "/assets/components/forms/HeadersJson-08d2835c.js",
+    "components/forms/HeadersJson": "/assets/components/forms/HeadersJson-1a0a512a.js",
     "components/forms/HighlightedTextarea": "/assets/components/forms/HighlightedTextarea-96109202.js",
     "components/forms/HolidayModeForm": "/assets/components/forms/HolidayModeForm-96ac5c5f.js",
-    "components/forms/LogoField": "/assets/components/forms/LogoField-c3b326ad.js",
+    "components/forms/LogoField": "/assets/components/forms/LogoField-98969a59.js",
     "components/forms/ModalTemplate": "/assets/components/forms/ModalTemplate-abdf9367.js",
     "components/forms/MultiplyingInput": "/assets/components/forms/MultiplyingInput-92ae04d5.js",
     "components/forms/Select": "/assets/components/forms/Select-daa3512c.js",
     "components/forms/SelectWithSearch": "/assets/components/forms/SelectWithSearch-ba686dc3.js",
-    "components/forms/SessionsForm": "/assets/components/forms/SessionsForm-d2ac2c9e.js",
+    "components/forms/SessionsForm": "/assets/components/forms/SessionsForm-7dff6538.js",
     "components/forms/Slider": "/assets/components/forms/Slider-d2c532b7.js",
     "components/forms/Spinner": "/assets/components/forms/Spinner-b7c5b935.js",
     "components/forms/TimezoneSelect": "/assets/components/forms/TimezoneSelect-8182a9fb.js",
     "components/forms/Toggle": "/assets/components/forms/Toggle-b9019d80.js",
     "components/forms/Tooltip": "/assets/components/forms/Tooltip-18ae06ee.js",
     "components/forms/uppyLoader": "/assets/components/forms/uppyLoader-16803d05.js",
-    "components": "/assets/components/index-721cc1fe.js",
+    "components": "/assets/components/index-1dbb26b3.js",
     "components/monaco/editor": "/assets/components/monaco/editor-9a29c5e4.js",
-    "components/notifications/Dropdown": "/assets/components/notifications/Dropdown-c9b37fc7.js",
+    "components/notifications/Dropdown": "/assets/components/notifications/Dropdown-252c2272.js",
     "components/notifications/Item": "/assets/components/notifications/Item-bdf035ef.js",
-    "components/onboarding/PhonePrefixSelect": "/assets/components/onboarding/PhonePrefixSelect-5fc9e68f.js",
+    "components/onboarding/PhonePrefixSelect": "/assets/components/onboarding/PhonePrefixSelect-b8286b88.js",
     "components/roles/CollectorPermissions": "/assets/components/roles/CollectorPermissions-8115af3a.js",
     "components/roles/IntegrationPermissions": "/assets/components/roles/IntegrationPermissions-415b2e26.js",
     "components/roles/ResourceGroupPermissions": "/assets/components/roles/ResourceGroupPermissions-d9694759.js",
     "components/roles/ServicePermissions": "/assets/components/roles/ServicePermissions-ab8f6141.js",
-    "components/sessions/EmailPrompt": "/assets/components/sessions/EmailPrompt-c36331a9.js",
+    "components/sessions/EmailPrompt": "/assets/components/sessions/EmailPrompt-5145f5b7.js",
     "components/shared/DatePickerRangeSelector": "/assets/components/shared/DatePickerRangeSelector-13f9d0a6.js",
     "components/shared/DateRangeSelector": "/assets/components/shared/DateRangeSelector-66c9d492.js",
     "components/stores/DocsStore": "/assets/components/stores/DocsStore-7fbbd320.js",
@@ -300,7 +373,7 @@
     "components/usage/ProductLink": "/assets/components/usage/ProductLink-d51b03f1.js",
     "components/usage/ResolutionSelector": "/assets/components/usage/ResolutionSelector-679dded4.js",
     "components/usage/Table": "/assets/components/usage/Table-f27294b3.js",
-    "composables/useCollapseHeight": "/assets/composables/useCollapseHeight-d31fa7ce.js",
+    "composables/useCollapseHeight": "/assets/composables/useCollapseHeight-9d34f482.js",
     "composables/useCommand": "/assets/composables/useCommand-54188fbb.js",
     "composables/useHotkey": "/assets/composables/useHotkey-1b637420.js",
     "composables/useTheme": "/assets/composables/useTheme-4aeb28da.js",
@@ -355,7 +428,8 @@
     "utils/isTouchDevice": "/assets/utils/isTouchDevice-ef97088e.js",
     "utils/levenshtein": "/assets/utils/levenshtein-a23ae51b.js",
     "utils/loadScript": "/assets/utils/loadScript-b2fe518e.js",
-    "utils/miniBindVueApp": "/assets/utils/miniBindVueApp-b4e65366.js",
+    "utils/miniBindVueApp": "/assets/utils/miniBindVueApp-8a84a29c.js",
+    "utils/mountVueApp": "/assets/utils/mountVueApp-0112390e.js",
     "utils/naturalLanguageTimeParser": "/assets/utils/naturalLanguageTimeParser-204bd710.js",
     "utils/permissions": "/assets/utils/permissions-60f6a799.js",
     "utils/platformDetection": "/assets/utils/platformDetection-ab98f3d1.js",
@@ -365,6 +439,7 @@
     "utils/timeago": "/assets/utils/timeago-d754ee58.js",
     "utils/timestampToDayjs": "/assets/utils/timestampToDayjs-ec6d48be.js",
     "utils/timezone": "/assets/utils/timezone-88296191.js",
+    "utils/vueProps": "/assets/utils/vueProps-a58a1369.js",
     "vendor/aos@2.3.4": "/assets/vendor/aos@2.3.4-516f027d.js",
     "vendor/cuid@2.1.8": "/assets/vendor/cuid@2.1.8-da32fb7d.js",
     "vendor/domurl@2.3.4": "/assets/vendor/domurl@2.3.4-4f2f3541.js",
@@ -466,12 +541,12 @@
     "marked": "https://cdnjs.betterstack.com/marked@4.3.0/lib/marked.esm.js"
   }
 }</script>
-<link rel="modulepreload" href="https://cdnjs.betterstack.com/vue@3.5.13/dist/vue.esm-browser.prod.js" nonce="b432dc2b0a4eeb92efd1708935d62581">
-<link rel="modulepreload" href="/assets/vendor/pinia@3.0.0.prod-dc83e9f4.js" nonce="b432dc2b0a4eeb92efd1708935d62581">
-<link rel="modulepreload" href="https://cdnjs.betterstack.com/vue-turbolinks@2.2.2/index.js" nonce="b432dc2b0a4eeb92efd1708935d62581">
-<script type="esms-options" nonce="b432dc2b0a4eeb92efd1708935d62581">{"nonce":"b432dc2b0a4eeb92efd1708935d62581"}</script>
-<script src="/assets/es-module-shims.min-806a0b27.js" defer="defer" data-turbo-track="reload" nonce="b432dc2b0a4eeb92efd1708935d62581"></script>
-<script type="module" nonce="b432dc2b0a4eeb92efd1708935d62581">
+<link rel="modulepreload" href="https://cdnjs.betterstack.com/vue@3.5.13/dist/vue.esm-browser.prod.js" nonce="8cb17831dc8d068b1831ddb36fa9bbbb">
+<link rel="modulepreload" href="/assets/vendor/pinia@3.0.0.prod-dc83e9f4.js" nonce="8cb17831dc8d068b1831ddb36fa9bbbb">
+<link rel="modulepreload" href="https://cdnjs.betterstack.com/vue-turbolinks@2.2.2/index.js" nonce="8cb17831dc8d068b1831ddb36fa9bbbb">
+<script type="esms-options" nonce="8cb17831dc8d068b1831ddb36fa9bbbb">{"nonce":"8cb17831dc8d068b1831ddb36fa9bbbb"}</script>
+<script src="/assets/es-module-shims.min-806a0b27.js" defer="defer" data-turbo-track="reload" nonce="8cb17831dc8d068b1831ddb36fa9bbbb"></script>
+<script type="module" nonce="8cb17831dc8d068b1831ddb36fa9bbbb">
 //<![CDATA[
 !function(b,e,t,r){
   b[t]=b[t]||function(...args){(b[t].q=b[t].q||[]).push(args)};
@@ -497,7 +572,7 @@ document.addEventListener('turbo:load', setBetterstackUser)
 
 //]]>
 </script>
-<script nonce='b432dc2b0a4eeb92efd1708935d62581' type='module'>import "common/aos"
+<script nonce='8cb17831dc8d068b1831ddb36fa9bbbb' type='module'>import "common/aos"
 import "common/lazy"
 import "common/recaptchaSubmit"
 import "common/data-disable-with-spinner"
@@ -520,9 +595,9 @@ import "common/site_settings_panel"
 
 </head>
 <body class='helvetica bg-[#0B0C14] text-neutral-200'>
-<script type="application/javascript" nonce="b432dc2b0a4eeb92efd1708935d62581">
+<script type="application/javascript" nonce="8cb17831dc8d068b1831ddb36fa9bbbb">
 //<![CDATA[
-window.cfg = {"base_host":"betterstack.com","base_url":"https://betterstack.com","better_stack_url":"https://betterstack.com","uptime_url":"https://uptime.betterstack.com","logtail_url":"https://telemetry.betterstack.com","errors_url":"https://errors.betterstack.com","aisre_url":"https://chat.betterstack.com","rum_url":"https://rum.betterstack.com","cloud_url":"https://cloud.betterstack.com","warehouse_url":"https://warehouse.betterstack.com","controller":"betterstack","action":"privacy","app":"betterstack","environment":"production"};
+window.cfg = {"base_host":"betterstack.com","base_url":"https://betterstack.com","better_stack_url":"https://betterstack.com","uptime_url":"https://uptime.betterstack.com","logtail_url":"https://telemetry.betterstack.com","errors_url":"https://errors.betterstack.com","aisre_url":"https://chat.betterstack.com","rum_url":"https://rum.betterstack.com","cloud_url":"https://cloud.betterstack.com","warehouse_url":"https://warehouse.betterstack.com","controller":"betterstack","action":"privacy","app":"betterstack","environment":"production","app_version":"b16709ff3f8bdca196a347517621349cfe234055"};
 
 
 //]]>
@@ -1134,7 +1209,7 @@ System status
 </footer>
 </div>
 
-<script nonce='b432dc2b0a4eeb92efd1708935d62581' type='module'>
+<script nonce='8cb17831dc8d068b1831ddb36fa9bbbb' type='module'>
 import { front_identity_path } from 'routes'
 import WebStorageService from 'services/WebStorageService'
 
@@ -1193,7 +1268,7 @@ fetchIdentityAndInit()
 <img alt='' height='1' src='https://px.ads.linkedin.com/collect/?pid=8770794&amp;fmt=gif' style='display:none' width='1'>
 </noscript>
 
-<script type="application/javascript" nonce="b432dc2b0a4eeb92efd1708935d62581">
+<script type="application/javascript" nonce="8cb17831dc8d068b1831ddb36fa9bbbb">
 //<![CDATA[
 window.recaptchaLoaded = false
 window.recaptchaSiteKey = '6LcqMUUaAAAAAB9e71hGegt9lvZ2v_mO1lFsvlRX'
