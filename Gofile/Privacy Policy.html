@@ -1,561 +1,495 @@
-<!DOCTYPE html><html lang="en"><head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Gofile - Cloud Storage Made Simple</title>
-    <meta name="description" content="Secure, fast and free cloud storage solution. Upload and share files instantly with Gofile's simple cloud storage platform.">
-    <meta name="keywords" content="cloud storage, file sharing, file upload, secure storage, free storage">
-    <meta name="author" content="Gofile Team">
-    <meta property="og:type" content="website">
-    <meta property="og:url" content="https://gofile.io/privacy">
-    <meta property="og:title" content="Gofile - Cloud Storage Made Simple">
-    <meta property="og:description" content="Secure, fast and free cloud storage solution. Upload and share files instantly.">
-    <meta property="og:image" content="https://gofile.io/dist/img/logo-small-og.png">
-    <meta name="popads-verification-3578301" value="2e287dd9c5d32c7e30a9b1fd44ddde0a">
-    <link rel="canonical" href="https://gofile.io/privacy">
-    <link rel="icon" type="image/png" sizes="16x16" href="/dist/img/favicon16.png">
-    <link rel="icon" type="image/png" sizes="32x32" href="/dist/img/favicon32.png">
-    <link rel="icon" type="image/png" sizes="96x96" href="/dist/img/favicon96.png">
-    <link rel="stylesheet" href="/dist/css/output.css">
-    <link rel="stylesheet" href="/plugins/fontawesome/css/all.min.css">
-    <!-- <script src="https://cdn.tailwindcss.com"></script> -->
-    <script src="/dist/js/config.js"></script>
-    <script src="/dist/js/utils.js"></script>
-    <script src="/dist/js/ui.js"></script>
-    <script src="/dist/js/account.js"></script>
-    <script src="/dist/js/wt.obf.js"></script>
-    <!-- filemanager modules — must load before filemanager.js -->
-    <script src="/dist/js/filemanager/behaviorRegistry.js"></script>
-    <script src="/dist/js/filemanager/behaviors/standard.js"></script>
-    <script src="/dist/js/filemanager/behaviors/recycle.js"></script>
-    <script src="/dist/js/filemanager/permissions.js"></script>
-    <script src="/dist/js/filemanager/contentLookup.js"></script>
-    <script src="/dist/js/filemanager/api.js"></script>
-    <script src="/dist/js/filemanager/selection.js"></script>
-    <script src="/dist/js/filemanager/render/items.js"></script>
-    <script src="/dist/js/filemanager/render/header.js"></script>
-    <script src="/dist/js/filemanager/render/toolbar.js"></script>
-    <script src="/dist/js/filemanager.js"></script>
-    <script src="/dist/js/filemanager/actions.js"></script>
-    <script src="/dist/js/upload.js"></script>
-    <script src="/dist/js/profile.js"></script>
-    <script src="/dist/js/payment.js"></script>
-    <script src="/dist/js/contact.js"></script>
-    <script src="/dist/js/ads.js"></script>
-    <script src="/dist/js/framework.js"></script>
-    <script src="/dist/js/shortcuts.js"></script>
-    <script src="/dist/js/main.js"></script>
-    <script src="/dist/js/blockies.min.js"></script>
+<!DOCTYPE html><html lang="en" class="h-full"><head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Privacy Policy · Gofile</title>
+  <meta name="description" content="Gofile Privacy Policy — what personal data we collect, why we collect it, how we use it, and the rights you have regarding your information.">
+  <!-- The robots value is filled per request. -->
+  <meta name="robots" content="index, follow">
+  <meta name="color-scheme" content="dark">
+  <meta name="theme-color" content="#162036">
+
+  <link rel="canonical" href="https://gofile.io/privacy">
+
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="Gofile">
+  <meta property="og:locale" content="en_US">
+  <meta property="og:title" content="Privacy Policy · Gofile">
+  <meta property="og:description" content="Gofile Privacy Policy — what personal data we collect, why we collect it, how we use it, and the rights you have regarding your information.">
+  <meta property="og:url" content="https://gofile.io/privacy">
+  <meta property="og:image" content="https://gofile.io/assets/img/logo-small-og.png">
+  <meta property="og:image:width" content="300">
+  <meta property="og:image:height" content="300">
+  <meta property="og:image:alt" content="Gofile logo">
+
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:site" content="@Gofile_io">
+  <meta name="twitter:title" content="Privacy Policy · Gofile">
+  <meta name="twitter:description" content="Gofile Privacy Policy — what personal data we collect, why we collect it, how we use it, and the rights you have regarding your information.">
+  <meta name="twitter:image" content="https://gofile.io/assets/img/logo-small-og.png">
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/assets/img/favicon16.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/assets/img/favicon32.png">
+  <link rel="icon" type="image/png" sizes="96x96" href="/assets/img/favicon96.png">
+
+  <link rel="preload" href="/assets/fonts/inter-latin-wght-normal.woff2" as="font" type="font/woff2" crossorigin="">
+  <link rel="stylesheet" href="/assets/css/app.css">
+
+  <!-- Rendered-page signal for crawler-serving middleware. -->
+  <script>window.prerenderReady = false;</script>
+  <script src="/js/wt.obf.js" defer=""></script>
+  <script src="/assets/vendor/lucide.min.js" defer=""></script>
+  <script type="module" src="/js/app.js"></script>
 <script data-domain="gofile.io" src="https://s.gofile.io/js/script.js"></script></head>
-<body id="index_appBody" class="font-sans antialiased bg-gray-900 text-white">
-    <div id="index_notification" class="fixed top-4 right-4 w-80 max-w-full z-50 space-y-2"></div>
-    <div id="index_app" class="min-h-screen flex gap-4 p-1 lg:p-4">
-        <div id="index_sidebarOverlay" class="fixed inset-0 bg-gray-900 bg-opacity-50 z-5 hidden lg:hidden"></div>
-        <div id="index_sidebar" class="min-w-64 max-w-72 bg-gray-800 text-white p-4 transform transition-transform lg:translate-x-0 fixed lg:relative top-0 left-0 h-[calc(100vh-0.5rem)] lg:h-auto shadow-lg overflow-y-auto z-10 rounded-lg mt-1 mb-1 lg:mt-0 lg:mb-0 translate-x-0">
-            <div id="index_sidebarHeader" class="flex justify-between items-center mb-6">
-                <a href="/" id="index_branding" class="flex items-center gap-2">
-                    <img id="index_logo" src="/dist/img/logo-small-70.png" alt="Gofile Logo" class="h-8">
-                    <h2 id="index_brandName" class="text-2xl font-bold">Gofile</h2>
-                </a>
-                <button id="index_closeSidebar" aria-label="Close Sidebar" class="lg:hidden bg-blue-600 hover:bg-blue-700 text-white p-1 rounded text-xs">
-                    <i class="fas fa-chevron-left"></i>
-                </button>
-            </div>
-            <div id="index_accounts" class="flex flex-col items-start mb-6">
-                <div id="index_accountList" class="space-y-2 w-full"><div class="relative account_accountItem border-2 border-blue-500 rounded" data-email="guest0175724645">
-            <div class="dropdown-toggle flex items-center justify-between p-2 bg-gray-700 rounded hover:bg-gray-600 transition-colors cursor-pointer">
-                <div class="flex items-center gap-2 truncate">
-                    <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAEAAAABACAYAAACqaXHeAAACcElEQVR4AeyaMUpEQRBEh594AmOvYWpo5jHMPIBgIAimYrJ4CjNDz7KnEKOVyoq3yzTNx2V3poWCru2enp6eLv5Xd2k/lzvH5vp914PHyt6+fuwc+qyHXm75emvl871k6zOHcvTgsbKXNvlPNWDyAWjL9u2lOW7vLloPaxvWyy3ff+f3s8ouCazt+LmvrwmIbvDq4bE5onj6pTMH/eQeK5v+iHutsqP4moCoQ6P7awJ4w9KNQzrsgevJPZds+skV46CfvFebfJ5LNtfXBLAjs/HpJoAXvLoB0pWDG5B77CGb8eRcQ3+Wr25AdsNTi68GnNqNHLuecAKoOXI9ax2bm6fm4IE89pDNeM8lm2tYDznzkYcN4ILReDVgtBvNnmeJNEPNZTdgPPcjZ3yWR/Vyv5JAtsOjxdcEUDPk1IyexQ5OxP33c3MwX5Z7Ltncz2uRzXqj/WoC2NHZ+PATEF3o3nsANSRdOfT/Owc3oOboz/Ion9ci22uVzfOQ1wRkb2S0+JoA3ig1J105qKGIf33+tjWI8tPvtcrmeXjemgB2ZDZeE8Abp6bIGR9pTDp06H2+B4+Vnd2P9ZIzX00AOzIbrwmIbjzSeKQx+pmPnPGsL/IzH9eT1wSwI7Px4SYge4F73xXW79AOai7SmK+VnS2I8crhoJ/1sF5fK5vxNQHs6Gy8JoA3rvdvh3TjoMaoKb7nM3+WMx/3Yz1eq2w/i2zuXxPAjszGawL49zpqSrpxRBrkBEmHDuYn91jZzMd41uO1ymY8z1sTwA7PxmsCpBMHNUUNkXNiuD56jmfjuR/rIWd+P6vsmgB2dDZ+9hOw9sL+AAAA///z2TXBAAAABklEQVQDACVNuk7WggBUAAAAAElFTkSuQmCC" alt="Avatar" class="h-7 w-7 rounded-full">
-                    <span class="text-white truncate">guest0175724645</span>
-                </div>
-                <i class="fas fa-angle-down text-white"></i>
-            </div>
-            <div class="dropdown hidden absolute bg-gray-700 text-white w-full mt-1 rounded shadow-lg z-10 border border-gray-600">
-                <a href="/myprofile" class="block p-2 flex items-center gap-2 hover:bg-gray-600 hover:text-white"><i class="fas fa-user"></i> My Profile</a>
-                <a href="/myfiles" class="block p-2 flex items-center gap-2 hover:bg-gray-600 hover:text-white"><i class="fas fa-folder"></i> My Files</a>
-                <a href="/recyclebin" class="block p-2 flex items-center gap-2 hover:bg-gray-600 hover:text-white text-gray-400"><i class="fas fa-trash"></i> Recycle Bin</a>
-                <hr class="border-gray-600">
-                
-                <button type="button" class="logout block w-full text-left p-2 flex items-center gap-2 hover:bg-gray-600 hover:text-white"><i class="fas fa-sign-out-alt"></i> Logout</button>
-            </div>
-        </div><button role="button" aria-label="Add Account" class="index_addAccount mt-4 flex items-center justify-center gap-2 p-2 text-white bg-blue-600 hover:bg-blue-700 rounded w-full"><i class="fas fa-plus-circle"></i> Add Account</button></div>
-                <ul id="index_mainNav" class="space-y-4">
-                    <li class="border-b border-gray-700"></li>
-                    <li>
-                        <a href="/" id="index_navHome" class="hover:text-blue-500 flex items-center gap-2" aria-label="Home"><i class="fas fa-home"></i> Home</a>
-                    </li>
-                    <li>
-                        <a href="/premium" id="index_navPremium" class="hover:text-blue-500 flex items-center gap-2" aria-label="Premium"><i class="fas fa-crown"></i> Premium</a>
-                    </li>
-                    <!-- Desktop App link temporarily disabled (page kept at /desktopapp).
-                     To re-enable, uncomment the <li> below. -->
-                    <!-- <li><a href="/desktopapp" id="index_navDesktopapp" class="hover:text-blue-500 flex items-center gap-2" aria-label="Desktop App"><i class="fas fa-desktop"></i> Desktop App</a></li> -->
-                    <li>
-                        <a href="/api" id="index_navApi" class="hover:text-blue-500 flex items-center gap-2" aria-label="API"><i class="fas fa-cogs"></i> API</a>
-                    </li>
-                    <li>
-                        <a href="/faq" id="index_navFaq" class="hover:text-blue-500 flex items-center gap-2" aria-label="FAQ"><i class="fas fa-question-circle"></i> FAQ</a>
-                    </li>
-                    <li>
-                        <a href="/contact" id="index_navContact" class="hover:text-blue-500 flex items-center gap-2" aria-label="Contact"><i class="fas fa-envelope"></i> Contact</a>
-                    </li>
-                </ul>
-                <div id="index_footerSocial" class="mt-4 border-t border-gray-700 pt-4">
-                    <ul>
-                        <li>
-                            <a href="https://x.com/Gofile_io" target="_blank" rel="noopener noreferrer" class="hover:text-blue-500 flex items-center gap-2" aria-label="Gofile Twitter"><i class="fa-brands fa-x-twitter"></i>
-                                @gofile_io</a>
-                        </li>
-                    </ul>
-                </div>
-            </div>
-        </div>
-        <div id="index_content" class="flex-1 bg-gray-800 rounded-lg shadow-lg flex flex-col overflow-auto">
-                <header id="index_header" class="bg-gray-800 p-2 flex items-center justify-between rounded-t-lg border-b border-gray-700">
-                    <button id="index_toggleSidebar" aria-label="Toggle Sidebar" class="px-2 py-1 bg-blue-600 hover:bg-blue-700 text-white rounded">
-                        <i class="fas fa-bars"></i>
-                    </button>
-                    <input type="file" multiple="" class="uploadInput hidden">
-                </header>
-                <div id="index_upload" class="p-2 border-b border-gray-700 space-y-2 max-w-full md:max-w-5xl md:mx-auto hidden"></div>
-                <div id="index_ads" class="flex flex-col justify-center items-center p-4 border-b border-gray-700 hidden"></div>
-                <main id="index_main" class="flex-1 p-3 lg:p-6"><div class="max-w-4xl mx-auto space-y-8">
+<body class="h-full bg-surface-base font-sans text-slate-200 antialiased">
+  <a href="#page" class="sr-only focus:not-sr-only focus:fixed focus:left-4 focus:top-4 focus:z-[100] focus:rounded-lg focus:bg-brand-600 focus:px-4 focus:py-2 focus:text-sm focus:font-semibold focus:text-white">
+    Skip to content
+  </a>
 
-    <!-- Header -->
-    <div class="text-center mb-12">
-        <h1 class="text-2xl md:text-3xl font-bold text-white mb-4">
-            <i class="fas fa-user-shield text-blue-400 mr-2"></i>Privacy Policy
-        </h1>
-        <p class="text-gray-400 text-sm max-w-2xl mx-auto leading-relaxed">
-            Gofile is designed with privacy at its core. This policy explains what personal data we collect, 
-            why we collect it, how we use it, and the rights you have regarding your information.
-        </p>
+  <div id="app" class="h-full">
+    <div class="relative flex min-h-dvh">
+      <div class="pointer-events-none fixed inset-0 -z-10 overflow-hidden" aria-hidden="true">
+        <div class="absolute inset-0 bg-[linear-gradient(to_right,rgb(148_163_184/0.05)_1px,transparent_1px),linear-gradient(to_bottom,rgb(148_163_184/0.05)_1px,transparent_1px)] bg-[size:44px_44px] [mask-image:radial-gradient(ellipse_75%_60%_at_50%_0%,black,transparent)]"></div>
+        <div class="absolute -top-32 left-1/2 h-96 w-[56rem] max-w-none -translate-x-1/2 rounded-full bg-brand-600/10 blur-3xl"></div>
+        <div class="absolute -right-32 bottom-0 h-80 w-[28rem] rounded-full bg-cyan-500/5 blur-3xl"></div>
+      </div>
+
+      <div id="sidebar-overlay" class="pointer-events-none fixed inset-0 z-40 bg-surface-base/70 opacity-0 backdrop-blur-sm transition-opacity duration-300 lg:hidden"></div>
+
+      <aside id="sidebar" data-collapsed="false" class="group/sidebar fixed inset-y-0 left-0 z-50 flex w-72 -translate-x-full flex-col border-r border-white/10 bg-surface-raised/95 backdrop-blur transition-[width,transform] duration-300 ease-out lg:sticky lg:top-0 lg:z-auto lg:h-dvh lg:translate-x-0 lg:bg-surface-raised/60 lg:data-[collapsed=true]:w-[4.5rem]">
+        
+    <div class="flex h-full flex-col gap-5 overflow-y-auto overscroll-y-contain p-4">
+      <div class="flex items-center gap-2.5 px-1 pt-1 lg:group-data-[collapsed=true]/sidebar:justify-center lg:group-data-[collapsed=true]/sidebar:px-0">
+        <a href="/" class="flex min-w-0 items-center gap-2.5" aria-label="Gofile home">
+          <img src="/assets/img/logo-small-70.png" alt="" width="70" height="48" class="h-9 w-auto shrink-0 lg:group-data-[collapsed=true]/sidebar:h-6">
+          <span class="truncate text-xl font-bold text-white lg:group-data-[collapsed=true]/sidebar:hidden">Gofile</span>
+        </a>
+        <button id="sidebar-close" class="icon-btn ml-auto lg:hidden" aria-label="Close sidebar">
+          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" data-lucide="x" class="lucide lucide-x size-5" aria-hidden="true"><path d="M18 6 6 18"></path><path d="m6 6 12 12"></path></svg>
+        </button>
+      </div>
+
+      <!-- Boot skeleton; account rows render after boot. -->
+      <div>
+        <div id="account-list" class="flex max-h-60 flex-col gap-1 overflow-y-auto overscroll-y-contain">
+    <button type="button" data-account-id="9b6ab54b-f200-468b-91d5-cd09ce166cde" class="group/acc relative flex w-full touch-pan-y items-center gap-3 rounded-xl px-3 py-2.5 text-left select-none touch-callout-none transition-colors duration-150 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-brand-400 lg:group-data-[collapsed=true]/sidebar:justify-center lg:group-data-[collapsed=true]/sidebar:px-2 bg-brand-500/10 shadow-[inset_0_0_0_1px_rgb(59_130_246/0.25)]" aria-current="true" aria-haspopup="menu" aria-expanded="false">
+      <span class="relative flex size-9 shrink-0 items-center justify-center">
+        <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAEAAAABACAYAAACqaXHeAAACRklEQVR4AeyavU1DUQyFr15FmzJLsAYzsAKbUNLQMAAzMAItI9CkTENBF3S6oy9Pz7KSoOTZSJZ8sK/tax9z+Zs+X34OLt/Pb4clcd85nWfnfDKfy8ajPzFzT6P4RzegOAHGEQN2d49jSba/78MlaqD7Sr+0/1LtsjH/UQPosHbcDVj7hKP7pRmgPXJhArdJv9/uh4u+DiyJ+0pXDJcoH+0RTjcgCnhr9m7ArU3s3PVOD5vX4cIEbpNOO/eZ9q/dZrj4Ps/p7iud8aJ8qtGF590mvVeAHaqGyzGAA54+9k/DRXvh4jbp3EHucdae9Y/yqUYXv4t0t0lvBpAS1XAzgDuovXChPdpB2sko2okj/2w9fhfpPN8MYMer4WYAJ6630oV27hB3mHae99hzOv0Z79R8jN8MYEeq4WYAJ66fwV24c8TcUcaj3WPP6fSP4rEeYuZgvGYAO1INr54B0UAn7ox+F+8SBbh2u99FOu/bDLj2CV66vmYA312+m7RzItyp/8ash/VG92kGsIPVcDOAE9db6cKdpj93jnZi+hPTnzjyZ71+F+mM1wxgR6rhZgAnzneTdmLuHHeUmOeJ6U/MfDxPHN2nGcCOVcOrY0B2gEe/D+COcQezCRgvi7P5WG+UrxmQ7fDa/JsBc3+f889xh8gA95VO+7mxcrgwPut13zm9GcAOVsPNAE48+t6Z72zWn/mIGZ925sv6M14zgB2phpsB+t85l4gBfGeJeZ527iwx/aN4kT/P+12lNwPYoWr45hlw6sD+AAAA//+XbXcAAAAABklEQVQDAGEzNT3pjC5mAAAAAElFTkSuQmCC" alt="" width="36" height="36" draggable="false" class="size-9 rounded-full shadow-lg shadow-brand-950/50 ring-1 ring-brand-400/60">
+        
+        <span class="absolute -bottom-0.5 -right-0.5 size-2.5 rounded-full bg-brand-400 ring-2 ring-surface-raised" title="Active account"></span>
+      </span>
+      <span class="min-w-0 flex-1 lg:group-data-[collapsed=true]/sidebar:hidden">
+        <span class="block truncate text-sm font-semibold text-white">Guest 3812782946</span>
+        <span class="block truncate text-xs text-slate-500">
+          Guest account
+        </span>
+      </span>
+      <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" data-lucide="ellipsis-vertical" class="lucide lucide-ellipsis-vertical size-4 shrink-0 text-slate-500 lg:group-data-[collapsed=true]/sidebar:hidden" aria-hidden="true"><circle cx="12" cy="12" r="1"></circle><circle cx="12" cy="5" r="1"></circle><circle cx="12" cy="19" r="1"></circle></svg>
+    </button>
+  </div>
+        <button id="add-account" type="button" class="mt-1 flex w-full items-center gap-3 rounded-xl border border-dashed border-white/15 px-3 py-2.5 text-sm font-medium text-slate-400 transition-colors duration-150 hover:border-white/30 hover:bg-white/5 hover:text-white focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-brand-400 lg:group-data-[collapsed=true]/sidebar:justify-center lg:group-data-[collapsed=true]/sidebar:border-transparent lg:group-data-[collapsed=true]/sidebar:px-2">
+          <span class="flex size-9 shrink-0 items-center justify-center rounded-full bg-white/5">
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" data-lucide="plus" class="lucide lucide-plus size-4 shrink-0" aria-hidden="true"><path d="M5 12h14"></path><path d="M12 5v14"></path></svg>
+          </span>
+          <span class="lg:group-data-[collapsed=true]/sidebar:hidden">Add account</span>
+        </button>
+      </div>
+
+      <nav class="flex flex-col gap-1" aria-label="Main">
+        
+    <a href="/" data-nav="" data-nav-path="/" class="group/link relative flex items-center gap-3 rounded-xl px-3 py-2.5 text-sm font-medium text-slate-400 transition-colors duration-150 hover:bg-white/5 hover:text-white lg:group-data-[collapsed=true]/sidebar:justify-center">
+      <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" data-lucide="house" class="lucide lucide-house size-5 shrink-0" aria-hidden="true"><path d="M15 21v-8a1 1 0 0 0-1-1h-4a1 1 0 0 0-1 1v8"></path><path d="M3 10a2 2 0 0 1 .709-1.528l7-5.999a2 2 0 0 1 2.582 0l7 5.999A2 2 0 0 1 21 10v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path></svg>
+      <span class="truncate lg:group-data-[collapsed=true]/sidebar:hidden">Home</span>
+      <span class="pointer-events-none absolute left-full top-1/2 z-50 ml-3 hidden -translate-y-1/2 rounded-lg border border-white/10 bg-surface-overlay px-2.5 py-1 text-xs font-medium whitespace-nowrap text-white shadow-xl lg:group-data-[collapsed=true]/sidebar:group-hover/link:block">Home</span>
+    </a>
+  
+    <a href="/myfiles" data-nav="" data-nav-path="/myfiles" class="group/link relative flex items-center gap-3 rounded-xl px-3 py-2.5 text-sm font-medium text-slate-400 transition-colors duration-150 hover:bg-white/5 hover:text-white lg:group-data-[collapsed=true]/sidebar:justify-center">
+      <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" data-lucide="folder-open" class="lucide lucide-folder-open size-5 shrink-0" aria-hidden="true"><path d="m6 14 1.5-2.9A2 2 0 0 1 9.24 10H20a2 2 0 0 1 1.94 2.5l-1.54 6a2 2 0 0 1-1.95 1.5H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h3.9a2 2 0 0 1 1.69.9l.81 1.2a2 2 0 0 0 1.67.9H18a2 2 0 0 1 2 2v2"></path></svg>
+      <span class="truncate lg:group-data-[collapsed=true]/sidebar:hidden">File Manager</span>
+      <span class="pointer-events-none absolute left-full top-1/2 z-50 ml-3 hidden -translate-y-1/2 rounded-lg border border-white/10 bg-surface-overlay px-2.5 py-1 text-xs font-medium whitespace-nowrap text-white shadow-xl lg:group-data-[collapsed=true]/sidebar:group-hover/link:block">File Manager</span>
+    </a>
+  
+    <a href="/premium" data-nav="" data-nav-path="/premium" class="group/link relative flex items-center gap-3 rounded-xl px-3 py-2.5 text-sm font-medium text-slate-400 transition-colors duration-150 hover:bg-white/5 hover:text-white lg:group-data-[collapsed=true]/sidebar:justify-center">
+      <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" data-lucide="crown" class="lucide lucide-crown size-5 shrink-0" aria-hidden="true"><path d="M11.562 3.266a.5.5 0 0 1 .876 0L15.39 8.87a1 1 0 0 0 1.516.294L21.183 5.5a.5.5 0 0 1 .798.519l-2.834 10.246a1 1 0 0 1-.956.734H5.81a1 1 0 0 1-.957-.734L2.02 6.02a.5.5 0 0 1 .798-.519l4.276 3.664a1 1 0 0 0 1.516-.294z"></path><path d="M5 21h14"></path></svg>
+      <span class="truncate lg:group-data-[collapsed=true]/sidebar:hidden">Premium</span>
+      <span class="pointer-events-none absolute left-full top-1/2 z-50 ml-3 hidden -translate-y-1/2 rounded-lg border border-white/10 bg-surface-overlay px-2.5 py-1 text-xs font-medium whitespace-nowrap text-white shadow-xl lg:group-data-[collapsed=true]/sidebar:group-hover/link:block">Premium</span>
+    </a>
+  
+    <a href="/api" data-nav="" data-nav-path="/api" class="group/link relative flex items-center gap-3 rounded-xl px-3 py-2.5 text-sm font-medium text-slate-400 transition-colors duration-150 hover:bg-white/5 hover:text-white lg:group-data-[collapsed=true]/sidebar:justify-center">
+      <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" data-lucide="braces" class="lucide lucide-braces size-5 shrink-0" aria-hidden="true"><path d="M8 3H7a2 2 0 0 0-2 2v5a2 2 0 0 1-2 2 2 2 0 0 1 2 2v5c0 1.1.9 2 2 2h1"></path><path d="M16 21h1a2 2 0 0 0 2-2v-5c0-1.1.9-2 2-2a2 2 0 0 1-2-2V5a2 2 0 0 0-2-2h-1"></path></svg>
+      <span class="truncate lg:group-data-[collapsed=true]/sidebar:hidden">API</span>
+      <span class="pointer-events-none absolute left-full top-1/2 z-50 ml-3 hidden -translate-y-1/2 rounded-lg border border-white/10 bg-surface-overlay px-2.5 py-1 text-xs font-medium whitespace-nowrap text-white shadow-xl lg:group-data-[collapsed=true]/sidebar:group-hover/link:block">API</span>
+    </a>
+  
+    <a href="/faq" data-nav="" data-nav-path="/faq" class="group/link relative flex items-center gap-3 rounded-xl px-3 py-2.5 text-sm font-medium text-slate-400 transition-colors duration-150 hover:bg-white/5 hover:text-white lg:group-data-[collapsed=true]/sidebar:justify-center">
+      <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" data-lucide="circle-help" class="lucide lucide-circle-help size-5 shrink-0" aria-hidden="true"><circle cx="12" cy="12" r="10"></circle><path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"></path><path d="M12 17h.01"></path></svg>
+      <span class="truncate lg:group-data-[collapsed=true]/sidebar:hidden">FAQ</span>
+      <span class="pointer-events-none absolute left-full top-1/2 z-50 ml-3 hidden -translate-y-1/2 rounded-lg border border-white/10 bg-surface-overlay px-2.5 py-1 text-xs font-medium whitespace-nowrap text-white shadow-xl lg:group-data-[collapsed=true]/sidebar:group-hover/link:block">FAQ</span>
+    </a>
+  
+    <a href="/contact" data-nav="" data-nav-path="/contact" class="group/link relative flex items-center gap-3 rounded-xl px-3 py-2.5 text-sm font-medium text-slate-400 transition-colors duration-150 hover:bg-white/5 hover:text-white lg:group-data-[collapsed=true]/sidebar:justify-center">
+      <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" data-lucide="mail" class="lucide lucide-mail size-5 shrink-0" aria-hidden="true"><path d="m22 7-8.991 5.727a2 2 0 0 1-2.009 0L2 7"></path><rect x="2" y="4" width="20" height="16" rx="2"></rect></svg>
+      <span class="truncate lg:group-data-[collapsed=true]/sidebar:hidden">Contact</span>
+      <span class="pointer-events-none absolute left-full top-1/2 z-50 ml-3 hidden -translate-y-1/2 rounded-lg border border-white/10 bg-surface-overlay px-2.5 py-1 text-xs font-medium whitespace-nowrap text-white shadow-xl lg:group-data-[collapsed=true]/sidebar:group-hover/link:block">Contact</span>
+    </a>
+  
+      </nav>
+
+      <div class="mt-auto flex flex-col gap-1 border-t border-white/10 pt-3">
+        <a href="https://x.com/Gofile_io" target="_blank" rel="noopener noreferrer" aria-label="Gofile on X" class="group/link relative flex items-center gap-3 rounded-xl px-3 py-2.5 text-sm font-medium text-slate-400 transition-colors duration-150 hover:bg-white/5 hover:text-white lg:group-data-[collapsed=true]/sidebar:justify-center">
+          <svg viewBox="0 0 24 24" class="size-5 shrink-0" fill="currentColor" aria-hidden="true"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"></path></svg>
+          <span class="truncate lg:group-data-[collapsed=true]/sidebar:hidden">@gofile_io</span>
+          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" data-lucide="external-link" class="lucide lucide-external-link size-3.5 ml-auto text-slate-600 lg:group-data-[collapsed=true]/sidebar:hidden" aria-hidden="true"><path d="M15 3h6v6"></path><path d="M10 14 21 3"></path><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path></svg>
+          <span class="pointer-events-none absolute left-full top-1/2 z-50 ml-3 hidden -translate-y-1/2 rounded-lg border border-white/10 bg-surface-overlay px-2.5 py-1 text-xs font-medium whitespace-nowrap text-white shadow-xl lg:group-data-[collapsed=true]/sidebar:group-hover/link:block">@gofile_io</span>
+        </a>
+      </div>
     </div>
+  
+      </aside>
 
-    <!-- Section 1: Introduction & Scope -->
-    <div class="bg-gray-700 bg-opacity-40 p-8 rounded-xl shadow">
-        <h2 class="text-lg font-semibold text-white mb-4 flex items-center gap-2">
-            <i class="fas fa-info-circle text-blue-400"></i> Introduction &amp; Scope
-        </h2>
-        <p class="text-gray-300 text-sm mb-4 leading-relaxed">
-            Gofile is an online cloud storage and file sharing platform operated by WOJTEK SAS, a company 
-            registered in France. We are committed to protecting the privacy of all individuals who use our 
-            Service, and we have designed our platform to collect as little personal data as possible.
-        </p>
-        <p class="text-gray-300 text-sm mb-4 leading-relaxed">
-            This Privacy Policy applies to all Users of the Gofile platform, whether accessing the Service 
-            as a guest, a registered free user, or a Premium subscriber. It describes our practices regarding 
-            the collection, use, storage, and disclosure of personal data, as well as the choices and rights 
-            available to you.
-        </p>
-        <p class="text-gray-300 text-sm leading-relaxed">
-            By using Gofile, you acknowledge that you have read and understood this Privacy Policy. If you 
-            do not agree with any part of it, you should discontinue use of the Service.
-        </p>
+      <div class="flex min-h-dvh min-w-0 flex-1 flex-col">
+        <!-- Transparent header (blur only): the ambient background continues
+             underneath, so the header/page transition stays seamless -->
+        <header id="app-header" class="sticky top-0 z-30 border-b border-white/10 backdrop-blur-md">
+          
+    <!-- Asymmetric padding on desktop: the sidebar toggle hugs the sidebar
+         (same 16px offset as mobile, mirroring the sidebar's own p-4), while
+         the right side keeps the page content's wider lg:px-10 alignment. -->
+    <div class="flex h-16 items-center gap-3 px-4 sm:px-6 lg:pl-4 lg:pr-10">
+      <button id="sidebar-toggle" class="icon-btn" aria-label="Toggle sidebar" aria-expanded="true" aria-controls="sidebar">
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" data-lucide="menu" class="lucide lucide-menu size-5" aria-hidden="true"><path d="M4 12h16"></path><path d="M4 18h16"></path><path d="M4 6h16"></path></svg>
+      </button>
+
+      <!-- Chrome page label, deliberately NOT an h1: each page provides its
+           own single h1 (home hero, folder name, legal/api/faq headers…). -->
+      <div id="header-title" class="min-w-0 truncate text-base font-semibold text-white sm:text-lg">Privacy Policy</div>
     </div>
+  
+        </header>
 
-    <!-- Section 2: Data Controller -->
-    <div class="bg-gray-700 bg-opacity-40 p-8 rounded-xl shadow">
-        <h2 class="text-lg font-semibold text-white mb-4 flex items-center gap-2">
-            <i class="fas fa-building text-blue-400"></i> Data Controller
-        </h2>
-        <p class="text-gray-300 text-sm mb-4 leading-relaxed">
-            The data controller responsible for the processing of personal data collected through the Gofile 
-            platform is:
-        </p>
-        <div class="bg-gray-800 bg-opacity-60 p-4 rounded-lg space-y-2 text-sm">
-            <div class="flex gap-3">
-                <span class="text-gray-400 w-32 flex-shrink-0">Company:</span>
-                <span class="text-white">WOJTEK SAS</span>
-            </div>
-            <div class="flex gap-3">
-                <span class="text-gray-400 w-32 flex-shrink-0">Address:</span>
-                <span class="text-white">78, Avenue des Champs-Élysées, 75008 Paris, France</span>
-            </div>
-            <div class="flex gap-3">
-                <span class="text-gray-400 w-32 flex-shrink-0">Registration:</span>
-                <span class="text-white">889 963 708 R.C.S. Paris</span>
-            </div>
-            <div class="flex gap-3">
-                <span class="text-gray-400 w-32 flex-shrink-0">Contact:</span>
-                <span class="text-white"><a href="/contact" class="text-blue-400 hover:text-blue-300 transition-colors">Contact Form</a></span>
-            </div>
-        </div>
-        <p class="text-gray-300 text-sm mt-4 leading-relaxed">
-            For subscription payments, the independent data controller for billing-related personal data is 
-            Number X Europe OÜ (reg. 16634149, Vesivärava tn 50-201, 10152 Tallinn, Estonia). Please refer 
-            to their privacy policy for information on how they process payment data.
-        </p>
-    </div>
+        <!-- Ad slot (core/ads.js) — outside #page so route swaps never touch it. -->
+        <div id="ad-slot" class="hidden flex-col items-center gap-1 border-b border-white/10 px-4 py-3"></div>
 
-    <!-- Section 3: Data We Collect -->
-    <div class="bg-gray-700 bg-opacity-40 p-8 rounded-xl shadow">
-        <h2 class="text-lg font-semibold text-white mb-4 flex items-center gap-2">
-            <i class="fas fa-database text-blue-400"></i> Data We Collect
-        </h2>
-        <p class="text-gray-300 text-sm mb-6 leading-relaxed">
-            Gofile collects only the minimum data necessary to provide the Service. The information we 
-            collect depends on how you use the platform:
-        </p>
+        <main id="page" class="w-full flex-1 px-4 py-6 transition duration-150 ease-out focus:outline-none sm:px-6 lg:px-10 lg:py-8" tabindex="-1">
+        <div class="mx-auto max-w-4xl animate-fade-up">
+          <header class="mb-10 text-center sm:mb-12">
+            <span class="mb-5 inline-flex size-14 items-center justify-center rounded-2xl bg-brand-500/10 text-brand-400 ring-1 ring-brand-500/25">
+              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" data-lucide="shield-check" class="lucide lucide-shield-check size-7" aria-hidden="true"><path d="M20 13c0 5-3.5 7.5-7.66 8.95a1 1 0 0 1-.67-.01C7.5 20.5 4 18 4 13V6a1 1 0 0 1 1-1c2 0 4.5-1.2 6.24-2.72a1.17 1.17 0 0 1 1.52 0C14.51 3.81 17 5 19 5a1 1 0 0 1 1 1z"></path><path d="m9 12 2 2 4-4"></path></svg>
+            </span>
+            <h1 class="text-2xl font-bold tracking-tight text-white sm:text-3xl">Privacy Policy</h1>
+            <p class="mx-auto mt-4 max-w-2xl text-sm leading-relaxed text-slate-400">Gofile is designed with privacy at its core. This policy explains what personal data we collect, why we collect it, how we use it, and the rights you have regarding your information.</p>
+          </header>
 
-        <div class="space-y-5">
-            <div class="border-l-2 border-green-500 pl-4">
-                <h3 class="text-white text-sm font-medium mb-1">Guest Access</h3>
-                <p class="text-gray-400 text-xs leading-relaxed">
-                    When using Gofile as a guest without creating an account, we do not collect any personal 
-                    data. A temporary session identifier is generated for technical purposes but is not linked 
-                    to any identifiable individual.
-                </p>
-            </div>
-
-            <div class="border-l-2 border-blue-500 pl-4">
-                <h3 class="text-white text-sm font-medium mb-1">Free Account</h3>
-                <p class="text-gray-400 text-xs leading-relaxed">
-                    When you create a free account, we collect and store your email address. This serves as 
-                    your account identifier and is used exclusively to send you secure login links. No password 
-                    is required or stored. We do not collect your name, phone number, physical address, or any 
-                    other personal identifiers.
-                </p>
-            </div>
-
-            <div class="border-l-2 border-yellow-500 pl-4">
-                <h3 class="text-white text-sm font-medium mb-1">Premium Account</h3>
-                <p class="text-gray-400 text-xs leading-relaxed">
-                    When you upgrade to Premium, additional billing-related information is collected as 
-                    necessary to process payments and generate invoices. This may include your name, billing 
-                    address, and payment method details. For recurring subscriptions, this data is processed 
-                    by our merchant of record, Number X Europe OÜ. For Pay-as-You-Go and one-shot yearly 
-                    payments, this data is processed directly by WOJTEK SAS.
-                </p>
-            </div>
-
-            <div class="border-l-2 border-gray-500 pl-4">
-                <h3 class="text-white text-sm font-medium mb-1">Automatically Collected Data</h3>
-                <p class="text-gray-400 text-xs leading-relaxed">
-                    Like most online services, our servers automatically log certain technical information 
-                    when you access the platform, including your IP address, browser type, operating system, 
-                    referring URLs, and timestamps of requests. These logs are retained for a limited period 
-                    and are used exclusively for security, abuse prevention, rate limiting, and platform 
-                    diagnostics. They are not used for profiling, tracking, or marketing purposes.
-                </p>
-            </div>
-        </div>
-    </div>
-
-    <!-- Section 4: How We Use Data -->
-    <div class="bg-gray-700 bg-opacity-40 p-8 rounded-xl shadow">
-        <h2 class="text-lg font-semibold text-white mb-4 flex items-center gap-2">
-            <i class="fas fa-cogs text-blue-400"></i> Purpose &amp; Legal Basis for Processing
-        </h2>
-        <p class="text-gray-300 text-sm mb-4 leading-relaxed">
-            We process personal data only for specified, explicit, and legitimate purposes, and we do not 
-            process data in a manner incompatible with those purposes. The legal basis for each processing 
-            activity is set out below:
-        </p>
-
-        <div class="overflow-hidden rounded-lg border border-gray-600">
-            <table class="w-full text-sm">
-                <thead class="bg-gray-800">
-                    <tr>
-                        <th class="text-left p-3 text-white font-medium">Purpose</th>
-                        <th class="text-left p-3 text-white font-medium">Data Involved</th>
-                        <th class="text-left p-3 text-white font-medium">Legal Basis</th>
-                    </tr>
-                </thead>
-                <tbody class="divide-y divide-gray-700">
-                    <tr class="bg-gray-800 bg-opacity-40">
-                        <td class="p-3 text-gray-300">Account creation &amp; authentication</td>
-                        <td class="p-3 text-gray-400">Email address</td>
-                        <td class="p-3 text-gray-400">Performance of contract</td>
-                    </tr>
-                    <tr class="bg-gray-800 bg-opacity-20">
-                        <td class="p-3 text-gray-300">Premium payment processing</td>
-                        <td class="p-3 text-gray-400">Billing details, payment information</td>
-                        <td class="p-3 text-gray-400">Performance of contract</td>
-                    </tr>
-                    <tr class="bg-gray-800 bg-opacity-40">
-                        <td class="p-3 text-gray-300">Service communication (login links, payment confirmations, account notifications)</td>
-                        <td class="p-3 text-gray-400">Email address</td>
-                        <td class="p-3 text-gray-400">Performance of contract</td>
-                    </tr>
-                    <tr class="bg-gray-800 bg-opacity-20">
-                        <td class="p-3 text-gray-300">Security, abuse prevention &amp; rate limiting</td>
-                        <td class="p-3 text-gray-400">IP address, server logs</td>
-                        <td class="p-3 text-gray-400">Legitimate interest</td>
-                    </tr>
-                    <tr class="bg-gray-800 bg-opacity-40">
-                        <td class="p-3 text-gray-300">Legal compliance (responding to lawful requests, maintaining records)</td>
-                        <td class="p-3 text-gray-400">All collected data as necessary</td>
-                        <td class="p-3 text-gray-400">Legal obligation</td>
-                    </tr>
-                </tbody>
-            </table>
-        </div>
-    </div>
-
-    <!-- Section 5: Data Sharing -->
-    <div class="bg-gray-700 bg-opacity-40 p-8 rounded-xl shadow">
-        <h2 class="text-lg font-semibold text-white mb-4 flex items-center gap-2">
-            <i class="fas fa-share-alt text-blue-400"></i> Data Sharing &amp; Third Parties
-        </h2>
-        <p class="text-gray-300 text-sm mb-4 leading-relaxed">
-            We do not sell, rent, or trade personal data to third parties. We do not share personal data 
-            with advertisers, data brokers, or analytics companies. Data is only shared in the following 
-            limited circumstances:
-        </p>
-
-        <ul class="space-y-3 text-sm">
-            <li class="flex items-start gap-2">
-                <i class="fas fa-check-circle text-green-500 mt-1 text-xs"></i>
-                <span class="text-gray-300"><strong class="text-white">Payment Processors:</strong> For subscription payments, billing data is processed by our merchant of record, Number X Europe OÜ. For other payment methods, data may be shared with the payment provider strictly as necessary to complete the transaction.</span>
-            </li>
-            <li class="flex items-start gap-2">
-                <i class="fas fa-check-circle text-green-500 mt-1 text-xs"></i>
-                <span class="text-gray-300"><strong class="text-white">Infrastructure Providers:</strong> Our servers and network infrastructure are operated by trusted hosting providers. These providers process data solely on our instructions and under contractual obligations that ensure equivalent data protection.</span>
-            </li>
-            <li class="flex items-start gap-2">
-                <i class="fas fa-check-circle text-green-500 mt-1 text-xs"></i>
-                <span class="text-gray-300"><strong class="text-white">Legal Compliance:</strong> We may disclose data when required by law, such as in response to a valid court order, subpoena, or law enforcement request. We carefully review each request and only disclose the minimum data necessary to comply. Where permitted, we notify affected Users before disclosure.</span>
-            </li>
-        </ul>
-    </div>
-
-    <!-- Section 6: Data Retention -->
-    <div class="bg-gray-700 bg-opacity-40 p-8 rounded-xl shadow">
-        <h2 class="text-lg font-semibold text-white mb-4 flex items-center gap-2">
-            <i class="fas fa-clock text-blue-400"></i> Data Retention
-        </h2>
-        <p class="text-gray-300 text-sm mb-4 leading-relaxed">
-            Personal data is retained only for as long as necessary to fulfill the purposes for which it 
-            was collected, or as required by applicable law:
-        </p>
-        <ul class="space-y-3 text-sm">
-            <li class="flex items-start gap-2">
-                <i class="fas fa-circle text-gray-600 mt-2 text-[4px]"></i>
-                <span class="text-gray-300"><strong class="text-white">Account Data:</strong> Email addresses are retained for the duration of the account's existence. Upon account deletion, the email address is removed from our active systems.</span>
-            </li>
-            <li class="flex items-start gap-2">
-                <i class="fas fa-circle text-gray-600 mt-2 text-[4px]"></i>
-                <span class="text-gray-300"><strong class="text-white">Billing Data:</strong> Invoicing records are retained for the period required by applicable tax and accounting laws (typically 10 years under French law).</span>
-            </li>
-            <li class="flex items-start gap-2">
-                <i class="fas fa-circle text-gray-600 mt-2 text-[4px]"></i>
-                <span class="text-gray-300"><strong class="text-white">Server Logs:</strong> Technical logs containing IP addresses are retained for a short period (generally up to 30 days) and are then automatically purged, unless preservation is required for an ongoing security investigation or legal matter.</span>
-            </li>
-            <li class="flex items-start gap-2">
-                <i class="fas fa-circle text-gray-600 mt-2 text-[4px]"></i>
-                <span class="text-gray-300"><strong class="text-white">User Content:</strong> Files and folders uploaded by Users are retained according to the storage terms applicable to their account tier. Free accounts are subject to ephemeral storage; Premium accounts enjoy permanent storage. Deleted content is removed from our servers in a timely manner.</span>
-            </li>
-        </ul>
-    </div>
-
-    <!-- Section 7: Security -->
-    <div class="bg-gray-700 bg-opacity-40 p-8 rounded-xl shadow">
-        <h2 class="text-lg font-semibold text-white mb-4 flex items-center gap-2">
-            <i class="fas fa-lock text-blue-400"></i> Data Security
-        </h2>
-        <p class="text-gray-300 text-sm mb-4 leading-relaxed">
-            We implement and maintain appropriate technical and organizational measures to protect personal 
-            data against unauthorized access, alteration, disclosure, or destruction:
-        </p>
-
-        <div class="grid md:grid-cols-2 gap-4">
-            <div class="bg-gray-800 bg-opacity-60 p-4 rounded-lg">
-                <h3 class="text-white text-sm font-medium mb-2 flex items-center gap-1.5">
-                    <i class="fas fa-shield-alt text-blue-400 text-xs"></i> Encryption
-                </h3>
-                <p class="text-gray-400 text-xs leading-relaxed">
-                    All data transmitted to and from Gofile is encrypted in transit using TLS. Content stored 
-                    on our servers is encrypted at rest. We strongly recommend Users encrypt sensitive files 
-                    locally before uploading for an additional layer of protection.
-                </p>
-            </div>
-
-            <div class="bg-gray-800 bg-opacity-60 p-4 rounded-lg">
-                <h3 class="text-white text-sm font-medium mb-2 flex items-center gap-1.5">
-                    <i class="fas fa-key text-blue-400 text-xs"></i> Access Control
-                </h3>
-                <p class="text-gray-400 text-xs leading-relaxed">
-                    Access to our servers and infrastructure is strictly limited to authorized personnel. 
-                    Physical access to our datacenters is monitored, logged, and restricted through multiple 
-                    layers of security.
-                </p>
-            </div>
-
-            <div class="bg-gray-800 bg-opacity-60 p-4 rounded-lg">
-                <h3 class="text-white text-sm font-medium mb-2 flex items-center gap-1.5">
-                    <i class="fas fa-user-lock text-blue-400 text-xs"></i> Authentication
-                </h3>
-                <p class="text-gray-400 text-xs leading-relaxed">
-                    Gofile uses a passwordless authentication system. Login links are sent exclusively to 
-                    the User's registered email address and expire after use. This eliminates the risk of 
-                    password-based attacks such as credential stuffing and brute force.
-                </p>
-            </div>
-
-            <div class="bg-gray-800 bg-opacity-60 p-4 rounded-lg">
-                <h3 class="text-white text-sm font-medium mb-2 flex items-center gap-1.5">
-                    <i class="fas fa-sync-alt text-blue-400 text-xs"></i> Continuous Improvement
-                </h3>
-                <p class="text-gray-400 text-xs leading-relaxed">
-                    We regularly review and update our security practices to address evolving threats. 
-                    Our infrastructure is designed with defense-in-depth principles, and we monitor for 
-                    anomalies that may indicate unauthorized activity.
-                </p>
-            </div>
-        </div>
-    </div>
-
-    <!-- Section 8: Cookies -->
-    <div class="bg-gray-700 bg-opacity-40 p-8 rounded-xl shadow">
-        <h2 class="text-lg font-semibold text-white mb-4 flex items-center gap-2">
-            <i class="fas fa-cookie-bite text-blue-400"></i> Cookies &amp; Similar Technologies
-        </h2>
-        <p class="text-gray-300 text-sm mb-4 leading-relaxed">
-            Gofile uses only essential cookies and local storage that are strictly necessary for the 
-            operation of the platform. These include:
-        </p>
-        <ul class="space-y-3 text-sm">
-            <li class="flex items-start gap-2">
-                <i class="fas fa-circle text-gray-600 mt-2 text-[4px]"></i>
-                <span class="text-gray-300"><strong class="text-white">Session &amp; Authentication:</strong> Technical tokens stored in your browser to maintain your login session and remember your preferences (such as selected upload proxy). These are essential for the Service to function.</span>
-            </li>
-            <li class="flex items-start gap-2">
-                <i class="fas fa-circle text-gray-600 mt-2 text-[4px]"></i>
-                <span class="text-gray-300"><strong class="text-white">Guest Sessions:</strong> A temporary identifier stored locally to associate your browser with a guest session for the duration of your visit.</span>
-            </li>
-        </ul>
-        <p class="text-gray-300 text-sm mt-4 leading-relaxed">
-            We do not use tracking cookies, advertising cookies, analytics cookies, or any third-party 
-            cookies. We do not deploy fingerprinting scripts, beacons, or similar tracking technologies.
-        </p>
-    </div>
-
-    <!-- Section 9: User Rights -->
-    <div class="bg-gray-700 bg-opacity-40 p-8 rounded-xl shadow">
-        <h2 class="text-lg font-semibold text-white mb-4 flex items-center gap-2">
-            <i class="fas fa-hand-paper text-blue-400"></i> Your Rights
-        </h2>
-        <p class="text-gray-300 text-sm mb-6 leading-relaxed">
-            Under applicable data protection laws — including the General Data Protection Regulation (GDPR) 
-            for Users in the European Economic Area — you have the following rights regarding your personal data:
-        </p>
-
-        <div class="grid md:grid-cols-2 gap-4">
-            <div class="bg-gray-800 bg-opacity-60 p-4 rounded-lg">
-                <h3 class="text-white text-sm font-medium mb-1">Right of Access</h3>
-                <p class="text-gray-400 text-xs leading-relaxed">You may request confirmation of whether we process your personal data and obtain a copy of that data.</p>
-            </div>
-            <div class="bg-gray-800 bg-opacity-60 p-4 rounded-lg">
-                <h3 class="text-white text-sm font-medium mb-1">Right of Rectification</h3>
-                <p class="text-gray-400 text-xs leading-relaxed">You may request correction of inaccurate or incomplete personal data we hold about you.</p>
-            </div>
-            <div class="bg-gray-800 bg-opacity-60 p-4 rounded-lg">
-                <h3 class="text-white text-sm font-medium mb-1">Right of Erasure</h3>
-                <p class="text-gray-400 text-xs leading-relaxed">You may request deletion of your personal data, subject to legal retention obligations. You can delete your account and associated data at any time.</p>
-            </div>
-            <div class="bg-gray-800 bg-opacity-60 p-4 rounded-lg">
-                <h3 class="text-white text-sm font-medium mb-1">Right to Restrict Processing</h3>
-                <p class="text-gray-400 text-xs leading-relaxed">You may request that we limit how we process your data in certain circumstances defined by law.</p>
-            </div>
-            <div class="bg-gray-800 bg-opacity-60 p-4 rounded-lg">
-                <h3 class="text-white text-sm font-medium mb-1">Right to Data Portability</h3>
-                <p class="text-gray-400 text-xs leading-relaxed">You may request a copy of your data in a structured, machine-readable format for transfer to another service.</p>
-            </div>
-            <div class="bg-gray-800 bg-opacity-60 p-4 rounded-lg">
-                <h3 class="text-white text-sm font-medium mb-1">Right to Object</h3>
-                <p class="text-gray-400 text-xs leading-relaxed">You may object to processing based on legitimate interests. We will cease processing unless we demonstrate compelling legitimate grounds.</p>
-            </div>
-        </div>
-
-        <p class="text-gray-300 text-sm mt-6 leading-relaxed">
-            To exercise any of these rights, please contact us through our 
-            <a href="/contact" class="text-blue-400 hover:text-blue-300 transition-colors">contact page</a>. 
-            We will respond to your request within the timeframe required by applicable law (generally within 
-            one month). We may need to verify your identity before processing your request. There is no fee 
-            for exercising these rights unless the request is manifestly unfounded or excessive.
-        </p>
-        <p class="text-gray-300 text-sm mt-4 leading-relaxed">
-            If you believe our processing of your personal data violates applicable law, you have the right 
-            to lodge a complaint with a supervisory authority — in France, the 
-            <strong class="text-white">Commission Nationale de l'Informatique et des Libertés (CNIL)</strong> 
-            at <a href="https://www.cnil.fr" target="_blank" rel="noopener noreferrer" class="text-blue-400 hover:text-blue-300 transition-colors">www.cnil.fr</a>.
-        </p>
-    </div>
-
-    <!-- Section 10: International Transfers -->
-    <div class="bg-gray-700 bg-opacity-40 p-8 rounded-xl shadow">
-        <h2 class="text-lg font-semibold text-white mb-4 flex items-center gap-2">
-            <i class="fas fa-globe text-blue-400"></i> International Data Transfers
-        </h2>
-        <p class="text-gray-300 text-sm mb-4 leading-relaxed">
-            Gofile operates storage datacenters in Paris (France) and Phoenix (United States), with a 
-            global network of upload and download proxy servers. As a result, your Content may be stored 
-            and processed in jurisdictions outside your country of residence.
-        </p>
-        <p class="text-gray-300 text-sm leading-relaxed">
-            When we transfer personal data outside the European Economic Area, we ensure that appropriate 
-            safeguards are in place in accordance with applicable data protection laws. For transfers to 
-            the United States, we rely on standard contractual clauses or other legally recognized transfer 
-            mechanisms. Users concerned about data locality may select their preferred upload proxy region 
-            in their profile settings.
-        </p>
-    </div>
-
-    <!-- Section 11: Changes -->
-    <div class="bg-gray-700 bg-opacity-40 p-8 rounded-xl shadow">
-        <h2 class="text-lg font-semibold text-white mb-4 flex items-center gap-2">
-            <i class="fas fa-history text-blue-400"></i> Changes to This Policy
-        </h2>
-        <p class="text-gray-300 text-sm leading-relaxed">
-            We may update this Privacy Policy from time to time to reflect changes in our practices, 
-            technology, legal requirements, or the features of our Service. Material changes will be 
-            communicated to registered Users by email or through a notice on the platform. The latest 
-            version will always be available on this page. Continued use of the Service after changes 
-            take effect constitutes acceptance of the revised policy.
-        </p>
-    </div>
-
-    <!-- Section 12: Contact -->
-    <div class="bg-gray-700 bg-opacity-40 p-8 rounded-xl shadow">
-        <h2 class="text-lg font-semibold text-white mb-4 flex items-center gap-2">
-            <i class="fas fa-envelope text-blue-400"></i> Contact &amp; Questions
-        </h2>
-        <p class="text-gray-300 text-sm leading-relaxed">
-            For any questions about this Privacy Policy, to exercise your data protection rights, or to 
-            raise a concern about how we handle your personal data, please reach out through our 
-            <a href="/contact" class="text-blue-400 hover:text-blue-300 transition-colors font-medium">contact page</a>. 
-            We are committed to addressing all privacy-related inquiries promptly and transparently.
-        </p>
-    </div>
-
-</div>
-</main>
-                <footer id="index_footer" class="bg-gray-800 px-4 py-3 text-center text-sm text-gray-400 border-t border-gray-700 rounded-b-lg flex flex-col items-center space-y-2">
-                    <div class="flex flex-wrap justify-center items-center gap-x-3 md:gap-x-5 gap-y-1">
-                        <a href="/" class="hover:text-blue-500 transition-colors">Home</a>
-                        <span class="inline-block w-1.5 h-1.5 rounded-full bg-gray-500"></span>
-                        <a href="/terms" class="hover:text-blue-500 transition-colors">Terms of Service</a>
-                        <span class="inline-block w-1.5 h-1.5 rounded-full bg-gray-500"></span>
-                        <a href="/privacy" class="hover:text-blue-500 transition-colors">Privacy Policy</a>
-                        <span class="inline-block w-1.5 h-1.5 rounded-full bg-gray-500"></span>
-                        <a href="/abusepolicy" class="hover:text-blue-500 transition-colors">Abuse Policy</a>
-                        <span class="inline-block w-1.5 h-1.5 rounded-full bg-gray-500"></span>
-                        <a href="/contact" class="hover:text-blue-500 transition-colors">Contact</a>
+          <div class="space-y-5">
+            
+                  <section class="panel p-5 sm:p-8">
+                    <h2 class="mb-4 flex items-center gap-2.5 text-lg font-semibold text-white">
+                      <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" data-lucide="info" class="lucide lucide-info size-5 shrink-0 text-brand-400" aria-hidden="true"><circle cx="12" cy="12" r="10"></circle><path d="M12 16v-4"></path><path d="M12 8h.01"></path></svg>
+                      <span><span class="text-brand-400">1.</span> Introduction &amp; Scope</span>
+                    </h2>
+                    <div class="space-y-4">
+                      
+        <p class="text-sm leading-relaxed text-slate-300">Gofile is an online cloud storage and file sharing platform operated by WOJTEK SAS, a company registered in France. We are committed to protecting the privacy of all individuals who use our Service, and we have designed our platform to collect as little personal data as possible.</p>
+        <p class="text-sm leading-relaxed text-slate-300">This Privacy Policy applies to all Users of the Gofile platform, whether accessing the Service as a guest, a registered free user, or a Premium subscriber. It describes our practices regarding the collection, use, storage, and disclosure of personal data, as well as the choices and rights available to you.</p>
+        <p class="text-sm leading-relaxed text-slate-300">By using Gofile, you acknowledge that you have read and understood this Privacy Policy. If you do not agree with any part of it, you should discontinue use of the Service.</p>
+      
                     </div>
-                    <p class="text-xs text-gray-500 leading-relaxed max-w-2xl">
-                        Payments on this website are processed by a Merchant of Record: Number X Europe OÜ, 
-                        reg. number 16634149, Vesivärava tn 50-201, Kesklinna linnaosa, 10152 Tallinn, 
-                        Harju maakond, Estonia.
-                    </p>
-                    <p>
-                        WOJTEK SAS ©
-                        <script>document.write(new Date().getFullYear());</script>2026
-                        <span class="mx-1.5 text-gray-600">·</span>
-                        Made with <span class="text-red-500">❤️</span> by Gofile Team
-                    </p>
-                </footer>
+                  </section>
+                  <section class="panel p-5 sm:p-8">
+                    <h2 class="mb-4 flex items-center gap-2.5 text-lg font-semibold text-white">
+                      <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" data-lucide="building-2" class="lucide lucide-building-2 size-5 shrink-0 text-brand-400" aria-hidden="true"><path d="M6 22V4a2 2 0 0 1 2-2h8a2 2 0 0 1 2 2v18Z"></path><path d="M6 12H4a2 2 0 0 0-2 2v6a2 2 0 0 0 2 2h2"></path><path d="M18 9h2a2 2 0 0 1 2 2v9a2 2 0 0 1-2 2h-2"></path><path d="M10 6h4"></path><path d="M10 10h4"></path><path d="M10 14h4"></path><path d="M10 18h4"></path></svg>
+                      <span><span class="text-brand-400">2.</span> Data Controller</span>
+                    </h2>
+                    <div class="space-y-4">
+                      
+        <p class="text-sm leading-relaxed text-slate-300">The data controller responsible for the processing of personal data collected through the Gofile platform is:</p>
+        
+    <div class="space-y-2 rounded-xl bg-white/[0.04] p-4 text-sm ring-1 ring-white/10">
+      
+            <div class="flex flex-col gap-0.5 sm:flex-row sm:gap-3">
+              <span class="shrink-0 text-slate-400 sm:w-32">Company:</span>
+              <span class="text-white">WOJTEK SAS</span>
             </div>
+            <div class="flex flex-col gap-0.5 sm:flex-row sm:gap-3">
+              <span class="shrink-0 text-slate-400 sm:w-32">Address:</span>
+              <span class="text-white">78, Avenue des Champs-Élysées, 75008 Paris, France</span>
+            </div>
+            <div class="flex flex-col gap-0.5 sm:flex-row sm:gap-3">
+              <span class="shrink-0 text-slate-400 sm:w-32">Registration:</span>
+              <span class="text-white">889 963 708 R.C.S. Paris</span>
+            </div>
+            <div class="flex flex-col gap-0.5 sm:flex-row sm:gap-3">
+              <span class="shrink-0 text-slate-400 sm:w-32">Contact:</span>
+              <span class="text-white"><a href="/contact" class="font-medium text-brand-400 underline decoration-brand-400/40 underline-offset-2 transition-colors hover:text-brand-300 hover:decoration-brand-300">Contact Form</a></span>
+            </div>
+    </div>
+        <p class="text-sm leading-relaxed text-slate-300">For subscription payments, the independent data controller for billing-related personal data is Number X Europe OÜ (reg. 16634149, Vesivärava tn 50-201, 10152 Tallinn, Estonia). Please refer to their privacy policy for information on how they process payment data.</p>
+      
+                    </div>
+                  </section>
+                  <section class="panel p-5 sm:p-8">
+                    <h2 class="mb-4 flex items-center gap-2.5 text-lg font-semibold text-white">
+                      <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" data-lucide="database" class="lucide lucide-database size-5 shrink-0 text-brand-400" aria-hidden="true"><ellipse cx="12" cy="5" rx="9" ry="3"></ellipse><path d="M3 5V19A9 3 0 0 0 21 19V5"></path><path d="M3 12A9 3 0 0 0 21 12"></path></svg>
+                      <span><span class="text-brand-400">3.</span> Data We Collect</span>
+                    </h2>
+                    <div class="space-y-4">
+                      
+        <p class="text-sm leading-relaxed text-slate-300">Gofile collects only the minimum data necessary to provide the Service. The information we collect depends on how you use the platform:</p>
+        <div class="space-y-5">
+          
+    <div class="border-l-2 border-emerald-500/70 pl-4">
+      <h3 class="mb-1 text-sm font-medium text-white">Guest Access</h3>
+      <p class="text-sm leading-relaxed text-slate-400">When using Gofile as a guest without creating an account, we do not collect any personal data. A temporary session identifier is generated for technical purposes but is not linked to any identifiable individual.</p>
+    </div>
+          
+    <div class="border-l-2 border-sky-500/70 pl-4">
+      <h3 class="mb-1 text-sm font-medium text-white">Free Account</h3>
+      <p class="text-sm leading-relaxed text-slate-400">When you create a free account, we collect and store your email address. This serves as your account identifier and is used exclusively to send you secure login links. No password is required or stored. We do not collect your name, phone number, physical address, or any other personal identifiers.</p>
+    </div>
+          
+    <div class="border-l-2 border-amber-500/70 pl-4">
+      <h3 class="mb-1 text-sm font-medium text-white">Premium Account</h3>
+      <p class="text-sm leading-relaxed text-slate-400">When you upgrade to Premium, additional billing-related information is collected as necessary to process payments and generate invoices. This may include your name, billing address, and payment method details. For recurring subscriptions, this data is processed by our merchant of record, Number X Europe OÜ. For Pay-as-You-Go and one-shot yearly payments, this data is processed directly by WOJTEK SAS.</p>
+    </div>
+          
+    <div class="border-l-2 border-slate-500/70 pl-4">
+      <h3 class="mb-1 text-sm font-medium text-white">Automatically Collected Data</h3>
+      <p class="text-sm leading-relaxed text-slate-400">Like most online services, our servers automatically log certain technical information when you access the platform, including your IP address, browser type, operating system, referring URLs, and timestamps of requests. These logs are retained for a limited period and are used exclusively for security, abuse prevention, rate limiting, and platform diagnostics. They are not used for profiling, tracking, or marketing purposes.</p>
+    </div>
         </div>
-    
+      
+                    </div>
+                  </section>
+                  <section class="panel p-5 sm:p-8">
+                    <h2 class="mb-4 flex items-center gap-2.5 text-lg font-semibold text-white">
+                      <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" data-lucide="clipboard-list" class="lucide lucide-clipboard-list size-5 shrink-0 text-brand-400" aria-hidden="true"><rect width="8" height="4" x="8" y="2" rx="1" ry="1"></rect><path d="M16 4h2a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h2"></path><path d="M12 11h4"></path><path d="M12 16h4"></path><path d="M8 11h.01"></path><path d="M8 16h.01"></path></svg>
+                      <span><span class="text-brand-400">4.</span> Purpose &amp; Legal Basis for Processing</span>
+                    </h2>
+                    <div class="space-y-4">
+                      
+        <p class="text-sm leading-relaxed text-slate-300">We process personal data only for specified, explicit, and legitimate purposes, and we do not process data in a manner incompatible with those purposes. The legal basis for each processing activity is set out below:</p>
+        
+    <div class="overflow-x-auto rounded-xl ring-1 ring-white/10">
+      <table class="w-full min-w-[34rem] text-left text-sm">
+        <thead>
+          <tr class="bg-white/[0.06]">
+            <th class="p-3 font-medium text-white">Purpose</th><th class="p-3 font-medium text-white">Data Involved</th><th class="p-3 font-medium text-white">Legal Basis</th>
+          </tr>
+        </thead>
+        <tbody class="divide-y divide-white/[0.06]">
+          
+                <tr>
+                  <td class="p-3 align-top leading-relaxed text-slate-300">Account creation &amp; authentication</td><td class="p-3 align-top leading-relaxed text-slate-400">Email address</td><td class="p-3 align-top leading-relaxed text-slate-400">Performance of contract</td>
+                </tr>
+                <tr>
+                  <td class="p-3 align-top leading-relaxed text-slate-300">Premium payment processing</td><td class="p-3 align-top leading-relaxed text-slate-400">Billing details, payment information</td><td class="p-3 align-top leading-relaxed text-slate-400">Performance of contract</td>
+                </tr>
+                <tr>
+                  <td class="p-3 align-top leading-relaxed text-slate-300">Service communication (login links, payment confirmations, account notifications)</td><td class="p-3 align-top leading-relaxed text-slate-400">Email address</td><td class="p-3 align-top leading-relaxed text-slate-400">Performance of contract</td>
+                </tr>
+                <tr>
+                  <td class="p-3 align-top leading-relaxed text-slate-300">Security, abuse prevention &amp; rate limiting</td><td class="p-3 align-top leading-relaxed text-slate-400">IP address, server logs</td><td class="p-3 align-top leading-relaxed text-slate-400">Legitimate interest</td>
+                </tr>
+                <tr>
+                  <td class="p-3 align-top leading-relaxed text-slate-300">Legal compliance (responding to lawful requests, maintaining records)</td><td class="p-3 align-top leading-relaxed text-slate-400">All collected data as necessary</td><td class="p-3 align-top leading-relaxed text-slate-400">Legal obligation</td>
+                </tr>
+        </tbody>
+      </table>
+    </div>
+      
+                    </div>
+                  </section>
+                  <section class="panel p-5 sm:p-8">
+                    <h2 class="mb-4 flex items-center gap-2.5 text-lg font-semibold text-white">
+                      <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" data-lucide="share-2" class="lucide lucide-share-2 size-5 shrink-0 text-brand-400" aria-hidden="true"><circle cx="18" cy="5" r="3"></circle><circle cx="6" cy="12" r="3"></circle><circle cx="18" cy="19" r="3"></circle><line x1="8.59" x2="15.42" y1="13.51" y2="17.49"></line><line x1="15.41" x2="8.59" y1="6.51" y2="10.49"></line></svg>
+                      <span><span class="text-brand-400">5.</span> Data Sharing &amp; Third Parties</span>
+                    </h2>
+                    <div class="space-y-4">
+                      
+        <p class="text-sm leading-relaxed text-slate-300">We do not sell, rent, or trade personal data to third parties. We do not share personal data with advertisers, data brokers, or analytics companies. Data is only shared in the following limited circumstances:</p>
+        
+    <ul class="space-y-3 text-sm">
+      
+            <li class="flex items-start gap-2.5">
+              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" data-lucide="circle-check" class="lucide lucide-circle-check mt-0.5 size-4 shrink-0 text-slate-500" aria-hidden="true"><circle cx="12" cy="12" r="10"></circle><path d="m9 12 2 2 4-4"></path></svg>
+              <span class="leading-relaxed text-slate-300"><strong class="text-white">Payment Processors:</strong> For subscription payments, billing data is processed by our merchant of record, Number X Europe OÜ. For other payment methods, data may be shared with the payment provider strictly as necessary to complete the transaction.</span>
+            </li>
+            <li class="flex items-start gap-2.5">
+              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" data-lucide="circle-check" class="lucide lucide-circle-check mt-0.5 size-4 shrink-0 text-slate-500" aria-hidden="true"><circle cx="12" cy="12" r="10"></circle><path d="m9 12 2 2 4-4"></path></svg>
+              <span class="leading-relaxed text-slate-300"><strong class="text-white">Infrastructure Providers:</strong> Our servers and network infrastructure are operated by trusted hosting providers. These providers process data solely on our instructions and under contractual obligations that ensure equivalent data protection.</span>
+            </li>
+            <li class="flex items-start gap-2.5">
+              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" data-lucide="circle-check" class="lucide lucide-circle-check mt-0.5 size-4 shrink-0 text-slate-500" aria-hidden="true"><circle cx="12" cy="12" r="10"></circle><path d="m9 12 2 2 4-4"></path></svg>
+              <span class="leading-relaxed text-slate-300"><strong class="text-white">Legal Compliance:</strong> We may disclose data when required by law, such as in response to a valid court order, subpoena, or law enforcement request. We carefully review each request and only disclose the minimum data necessary to comply. Where permitted, we notify affected Users before disclosure.</span>
+            </li>
+    </ul>
+      
+                    </div>
+                  </section>
+                  <section class="panel p-5 sm:p-8">
+                    <h2 class="mb-4 flex items-center gap-2.5 text-lg font-semibold text-white">
+                      <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" data-lucide="clock" class="lucide lucide-clock size-5 shrink-0 text-brand-400" aria-hidden="true"><path d="M12 6v6l4 2"></path><circle cx="12" cy="12" r="10"></circle></svg>
+                      <span><span class="text-brand-400">6.</span> Data Retention</span>
+                    </h2>
+                    <div class="space-y-4">
+                      
+        <p class="text-sm leading-relaxed text-slate-300">Personal data is retained only for as long as necessary to fulfill the purposes for which it was collected, or as required by applicable law:</p>
+        
+    <ul class="list-disc space-y-1 pl-5 text-sm text-slate-300 marker:text-slate-500">
+      <li><strong class="text-white">Account Data:</strong> Email addresses are retained for the duration of the account's existence. Upon account deletion, the email address is removed from our active systems.</li><li><strong class="text-white">Billing Data:</strong> Invoicing records are retained for the period required by applicable tax and accounting laws (typically 10 years under French law).</li><li><strong class="text-white">Server Logs:</strong> Technical logs containing IP addresses are retained for a short period (generally up to 30 days) and are then automatically purged, unless preservation is required for an ongoing security investigation or legal matter.</li><li><strong class="text-white">User Content:</strong> Files and folders uploaded by Users are retained according to the storage terms applicable to their account tier. Free accounts are subject to ephemeral storage; Premium accounts enjoy permanent storage. Deleted content is removed from our servers in a timely manner.</li>
+    </ul>
+      
+                    </div>
+                  </section>
+                  <section class="panel p-5 sm:p-8">
+                    <h2 class="mb-4 flex items-center gap-2.5 text-lg font-semibold text-white">
+                      <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" data-lucide="lock-keyhole" class="lucide lucide-lock-keyhole size-5 shrink-0 text-brand-400" aria-hidden="true"><circle cx="12" cy="16" r="1"></circle><rect x="3" y="10" width="18" height="12" rx="2"></rect><path d="M7 10V7a5 5 0 0 1 10 0v3"></path></svg>
+                      <span><span class="text-brand-400">7.</span> Data Security</span>
+                    </h2>
+                    <div class="space-y-4">
+                      
+        <p class="text-sm leading-relaxed text-slate-300">We implement and maintain appropriate technical and organizational measures to protect personal data against unauthorized access, alteration, disclosure, or destruction:</p>
+        
+    <div class="grid gap-4 sm:grid-cols-2">
+      
+            <div class="rounded-xl bg-white/[0.04] p-4 ring-1 ring-white/10">
+              <h3 class="mb-1.5 flex items-center gap-1.5 text-sm font-medium text-white"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" data-lucide="shield-check" class="lucide lucide-shield-check size-4 shrink-0 text-brand-400" aria-hidden="true"><path d="M20 13c0 5-3.5 7.5-7.66 8.95a1 1 0 0 1-.67-.01C7.5 20.5 4 18 4 13V6a1 1 0 0 1 1-1c2 0 4.5-1.2 6.24-2.72a1.17 1.17 0 0 1 1.52 0C14.51 3.81 17 5 19 5a1 1 0 0 1 1 1z"></path><path d="m9 12 2 2 4-4"></path></svg>Encryption</h3>
+              <p class="text-sm leading-relaxed text-slate-400">All data transmitted to and from Gofile is encrypted in transit using TLS. Content stored on our servers is encrypted at rest. We strongly recommend Users encrypt sensitive files locally before uploading for an additional layer of protection.</p>
+            </div>
+            <div class="rounded-xl bg-white/[0.04] p-4 ring-1 ring-white/10">
+              <h3 class="mb-1.5 flex items-center gap-1.5 text-sm font-medium text-white"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" data-lucide="key-round" class="lucide lucide-key-round size-4 shrink-0 text-brand-400" aria-hidden="true"><path d="M2.586 17.414A2 2 0 0 0 2 18.828V21a1 1 0 0 0 1 1h3a1 1 0 0 0 1-1v-1a1 1 0 0 1 1-1h1a1 1 0 0 0 1-1v-1a1 1 0 0 1 1-1h.172a2 2 0 0 0 1.414-.586l.814-.814a6.5 6.5 0 1 0-4-4z"></path><circle cx="16.5" cy="7.5" r=".5" fill="currentColor"></circle></svg>Access Control</h3>
+              <p class="text-sm leading-relaxed text-slate-400">Access to our servers and infrastructure is strictly limited to authorized personnel. Physical access to our datacenters is monitored, logged, and restricted through multiple layers of security.</p>
+            </div>
+            <div class="rounded-xl bg-white/[0.04] p-4 ring-1 ring-white/10">
+              <h3 class="mb-1.5 flex items-center gap-1.5 text-sm font-medium text-white"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" data-lucide="user-lock" class="lucide lucide-user-lock size-4 shrink-0 text-brand-400" aria-hidden="true"><circle cx="10" cy="7" r="4"></circle><path d="M10.3 15H7a4 4 0 0 0-4 4v2"></path><path d="M15 15.5V14a2 2 0 0 1 4 0v1.5"></path><rect width="8" height="5" x="13" y="16" rx=".899"></rect></svg>Authentication</h3>
+              <p class="text-sm leading-relaxed text-slate-400">Gofile uses a passwordless authentication system. Login links are sent exclusively to the User's registered email address and expire after use. This eliminates the risk of password-based attacks such as credential stuffing and brute force.</p>
+            </div>
+            <div class="rounded-xl bg-white/[0.04] p-4 ring-1 ring-white/10">
+              <h3 class="mb-1.5 flex items-center gap-1.5 text-sm font-medium text-white"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" data-lucide="refresh-cw" class="lucide lucide-refresh-cw size-4 shrink-0 text-brand-400" aria-hidden="true"><path d="M3 12a9 9 0 0 1 9-9 9.75 9.75 0 0 1 6.74 2.74L21 8"></path><path d="M21 3v5h-5"></path><path d="M21 12a9 9 0 0 1-9 9 9.75 9.75 0 0 1-6.74-2.74L3 16"></path><path d="M8 16H3v5"></path></svg>Continuous Improvement</h3>
+              <p class="text-sm leading-relaxed text-slate-400">We regularly review and update our security practices to address evolving threats. Our infrastructure is designed with defense-in-depth principles, and we monitor for anomalies that may indicate unauthorized activity.</p>
+            </div>
+    </div>
+      
+                    </div>
+                  </section>
+                  <section class="panel p-5 sm:p-8">
+                    <h2 class="mb-4 flex items-center gap-2.5 text-lg font-semibold text-white">
+                      <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" data-lucide="cookie" class="lucide lucide-cookie size-5 shrink-0 text-brand-400" aria-hidden="true"><path d="M12 2a10 10 0 1 0 10 10 4 4 0 0 1-5-5 4 4 0 0 1-5-5"></path><path d="M8.5 8.5v.01"></path><path d="M16 15.5v.01"></path><path d="M12 12v.01"></path><path d="M11 17v.01"></path><path d="M7 14v.01"></path></svg>
+                      <span><span class="text-brand-400">8.</span> Cookies &amp; Similar Technologies</span>
+                    </h2>
+                    <div class="space-y-4">
+                      
+        <p class="text-sm leading-relaxed text-slate-300">Gofile uses only essential cookies and local storage that are strictly necessary for the operation of the platform. These include:</p>
+        
+    <ul class="list-disc space-y-1 pl-5 text-sm text-slate-300 marker:text-slate-500">
+      <li><strong class="text-white">Session &amp; Authentication:</strong> Technical tokens stored in your browser to maintain your login session and remember your preferences (such as selected upload proxy). These are essential for the Service to function.</li><li><strong class="text-white">Guest Sessions:</strong> A temporary identifier stored locally to associate your browser with a guest session for the duration of your visit.</li>
+    </ul>
+        <p class="text-sm leading-relaxed text-slate-300">We do not use tracking cookies, advertising cookies, analytics cookies, or any third-party cookies. We do not deploy fingerprinting scripts, beacons, or similar tracking technologies.</p>
+      
+                    </div>
+                  </section>
+                  <section class="panel p-5 sm:p-8">
+                    <h2 class="mb-4 flex items-center gap-2.5 text-lg font-semibold text-white">
+                      <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" data-lucide="hand" class="lucide lucide-hand size-5 shrink-0 text-brand-400" aria-hidden="true"><path d="M18 11V6a2 2 0 0 0-2-2a2 2 0 0 0-2 2"></path><path d="M14 10V4a2 2 0 0 0-2-2a2 2 0 0 0-2 2v2"></path><path d="M10 10.5V6a2 2 0 0 0-2-2a2 2 0 0 0-2 2v8"></path><path d="M18 8a2 2 0 1 1 4 0v6a8 8 0 0 1-8 8h-2c-2.8 0-4.5-.86-5.99-2.34l-3.6-3.6a2 2 0 0 1 2.83-2.82L7 15"></path></svg>
+                      <span><span class="text-brand-400">9.</span> Your Rights</span>
+                    </h2>
+                    <div class="space-y-4">
+                      
+        <p class="text-sm leading-relaxed text-slate-300">Under applicable data protection laws — including the General Data Protection Regulation (GDPR) for Users in the European Economic Area — you have the following rights regarding your personal data:</p>
+        
+    <div class="grid gap-4 sm:grid-cols-2">
+      
+            <div class="rounded-xl bg-white/[0.04] p-4 ring-1 ring-white/10">
+              <h3 class="mb-1.5 flex items-center gap-1.5 text-sm font-medium text-white">Right of Access</h3>
+              <p class="text-sm leading-relaxed text-slate-400">You may request confirmation of whether we process your personal data and obtain a copy of that data.</p>
+            </div>
+            <div class="rounded-xl bg-white/[0.04] p-4 ring-1 ring-white/10">
+              <h3 class="mb-1.5 flex items-center gap-1.5 text-sm font-medium text-white">Right of Rectification</h3>
+              <p class="text-sm leading-relaxed text-slate-400">You may request correction of inaccurate or incomplete personal data we hold about you.</p>
+            </div>
+            <div class="rounded-xl bg-white/[0.04] p-4 ring-1 ring-white/10">
+              <h3 class="mb-1.5 flex items-center gap-1.5 text-sm font-medium text-white">Right of Erasure</h3>
+              <p class="text-sm leading-relaxed text-slate-400">You may request deletion of your personal data, subject to legal retention obligations. You can delete your account and associated data at any time.</p>
+            </div>
+            <div class="rounded-xl bg-white/[0.04] p-4 ring-1 ring-white/10">
+              <h3 class="mb-1.5 flex items-center gap-1.5 text-sm font-medium text-white">Right to Restrict Processing</h3>
+              <p class="text-sm leading-relaxed text-slate-400">You may request that we limit how we process your data in certain circumstances defined by law.</p>
+            </div>
+            <div class="rounded-xl bg-white/[0.04] p-4 ring-1 ring-white/10">
+              <h3 class="mb-1.5 flex items-center gap-1.5 text-sm font-medium text-white">Right to Data Portability</h3>
+              <p class="text-sm leading-relaxed text-slate-400">You may request a copy of your data in a structured, machine-readable format for transfer to another service.</p>
+            </div>
+            <div class="rounded-xl bg-white/[0.04] p-4 ring-1 ring-white/10">
+              <h3 class="mb-1.5 flex items-center gap-1.5 text-sm font-medium text-white">Right to Object</h3>
+              <p class="text-sm leading-relaxed text-slate-400">You may object to processing based on legitimate interests. We will cease processing unless we demonstrate compelling legitimate grounds.</p>
+            </div>
+    </div>
+        <p class="text-sm leading-relaxed text-slate-300">To exercise any of these rights, please contact us through our <a href="/contact" class="font-medium text-brand-400 underline decoration-brand-400/40 underline-offset-2 transition-colors hover:text-brand-300 hover:decoration-brand-300">contact page</a>. We will respond to your request within the timeframe required by applicable law (generally within one month). We may need to verify your identity before processing your request. There is no fee for exercising these rights unless the request is manifestly unfounded or excessive.</p>
+        <p class="text-sm leading-relaxed text-slate-300">If you believe our processing of your personal data violates applicable law, you have the right to lodge a complaint with a supervisory authority — in France, the <strong class="text-white">Commission Nationale de l'Informatique et des Libertés (CNIL)</strong> at <a href="https://www.cnil.fr" target="_blank" rel="noopener noreferrer" class="font-medium text-brand-400 underline decoration-brand-400/40 underline-offset-2 transition-colors hover:text-brand-300 hover:decoration-brand-300">www.cnil.fr</a>.</p>
+      
+                    </div>
+                  </section>
+                  <section class="panel p-5 sm:p-8">
+                    <h2 class="mb-4 flex items-center gap-2.5 text-lg font-semibold text-white">
+                      <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" data-lucide="globe" class="lucide lucide-globe size-5 shrink-0 text-brand-400" aria-hidden="true"><circle cx="12" cy="12" r="10"></circle><path d="M12 2a14.5 14.5 0 0 0 0 20 14.5 14.5 0 0 0 0-20"></path><path d="M2 12h20"></path></svg>
+                      <span><span class="text-brand-400">10.</span> International Data Transfers</span>
+                    </h2>
+                    <div class="space-y-4">
+                      
+        <p class="text-sm leading-relaxed text-slate-300">Gofile operates storage datacenters in Paris (France) and Phoenix (United States), with a global network of upload and download proxy servers. As a result, your Content may be stored and processed in jurisdictions outside your country of residence.</p>
+        <p class="text-sm leading-relaxed text-slate-300">When we transfer personal data outside the European Economic Area, we ensure that appropriate safeguards are in place in accordance with applicable data protection laws. For transfers to the United States, we rely on standard contractual clauses or other legally recognized transfer mechanisms. Users concerned about data locality may select their preferred upload proxy region in their profile settings.</p>
+      
+                    </div>
+                  </section>
+                  <section class="panel p-5 sm:p-8">
+                    <h2 class="mb-4 flex items-center gap-2.5 text-lg font-semibold text-white">
+                      <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" data-lucide="history" class="lucide lucide-history size-5 shrink-0 text-brand-400" aria-hidden="true"><path d="M3 12a9 9 0 1 0 9-9 9.75 9.75 0 0 0-6.74 2.74L3 8"></path><path d="M3 3v5h5"></path><path d="M12 7v5l4 2"></path></svg>
+                      <span><span class="text-brand-400">11.</span> Changes to This Policy</span>
+                    </h2>
+                    <div class="space-y-4">
+                      <p class="text-sm leading-relaxed text-slate-300">We may update this Privacy Policy from time to time to reflect changes in our practices, technology, legal requirements, or the features of our Service. Material changes will be communicated to registered Users by email or through a notice on the platform. The latest version will always be available on this page. Continued use of the Service after changes take effect constitutes acceptance of the revised policy.</p>
+                    </div>
+                  </section>
+                  <section class="panel p-5 sm:p-8">
+                    <h2 class="mb-4 flex items-center gap-2.5 text-lg font-semibold text-white">
+                      <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" data-lucide="mail" class="lucide lucide-mail size-5 shrink-0 text-brand-400" aria-hidden="true"><path d="m22 7-8.991 5.727a2 2 0 0 1-2.009 0L2 7"></path><rect x="2" y="4" width="20" height="16" rx="2"></rect></svg>
+                      <span><span class="text-brand-400">12.</span> Contact &amp; Questions</span>
+                    </h2>
+                    <div class="space-y-4">
+                      <p class="text-sm leading-relaxed text-slate-300">For any questions about this Privacy Policy, to exercise your data protection rights, or to raise a concern about how we handle your personal data, please reach out through our <a href="/contact" class="font-medium text-brand-400 underline decoration-brand-400/40 underline-offset-2 transition-colors hover:text-brand-300 hover:decoration-brand-300">contact page</a>. We are committed to addressing all privacy-related inquiries promptly and transparently.</p>
+                    </div>
+                  </section>
+          </div>
+        </div>
+      </main>
 
-</body></html>
+        <footer id="app-footer" class="border-t border-white/10 px-4 py-6 sm:px-6 lg:px-10">
+          
+    <div class="mx-auto flex w-full max-w-6xl flex-col items-center gap-4 text-center">
+      <nav class="flex flex-wrap items-center justify-center gap-x-5 gap-y-2 text-sm" aria-label="Footer">
+        <a href="/" class="text-slate-400 transition-colors hover:text-brand-400">Home</a><a href="/terms" class="text-slate-400 transition-colors hover:text-brand-400">Terms of Service</a><a href="/privacy" class="text-slate-400 transition-colors hover:text-brand-400">Privacy Policy</a><a href="/abusepolicy" class="text-slate-400 transition-colors hover:text-brand-400">Abuse Policy</a><a href="/contact" class="text-slate-400 transition-colors hover:text-brand-400">Contact</a>
+      </nav>
+
+      <p class="flex flex-wrap items-center justify-center gap-x-1.5 gap-y-1 text-xs text-slate-400">
+        <span>WOJTEK SAS © 2026</span>
+        <span class="text-slate-700">·</span>
+        <span class="inline-flex items-center gap-1">
+          Made with <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" data-lucide="heart" class="lucide lucide-heart size-3.5 fill-red-500 text-red-500" aria-hidden="true"><path d="M19 14c1.49-1.46 3-3.21 3-5.5A5.5 5.5 0 0 0 16.5 3c-1.76 0-3 .5-4.5 2-1.5-1.5-2.74-2-4.5-2A5.5 5.5 0 0 0 2 8.5c0 2.3 1.5 4.05 3 5.5l7 7Z"></path></svg> by Gofile Team
+        </span>
+      </p>
+    </div>
+  
+        </footer>
+      </div>
+    </div>
+  </div>
+
+  <!-- Overlays (toasts, popups, menus) create their own containers on demand. -->
+
+  <noscript>
+    <div style="position:fixed;inset:0;display:flex;align-items:center;justify-content:center;background:#162036;color:#e2e8f0;font-family:sans-serif;text-align:center;padding:2rem;">
+      Gofile needs JavaScript to run. Please enable it and reload the page.
+    </div>
+  </noscript>
+
+
+<div id="upload-tray" class="fixed bottom-[max(1.25rem,env(safe-area-inset-bottom))] right-[max(1rem,env(safe-area-inset-right))] z-40 hidden sm:right-[max(1.25rem,env(safe-area-inset-right))]"></div></body></html>
