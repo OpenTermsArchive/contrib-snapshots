@@ -47,15 +47,9 @@
 
   <div id="app" class="h-full">
     <div class="relative flex min-h-dvh">
-      <div class="pointer-events-none fixed inset-0 -z-10 overflow-hidden" aria-hidden="true">
-        <div class="absolute inset-0 bg-[linear-gradient(to_right,rgb(148_163_184/0.05)_1px,transparent_1px),linear-gradient(to_bottom,rgb(148_163_184/0.05)_1px,transparent_1px)] bg-[size:44px_44px] [mask-image:radial-gradient(ellipse_75%_60%_at_50%_0%,black,transparent)]"></div>
-        <div class="absolute -top-32 left-1/2 h-96 w-[56rem] max-w-none -translate-x-1/2 rounded-full bg-brand-600/10 blur-3xl"></div>
-        <div class="absolute -right-32 bottom-0 h-80 w-[28rem] rounded-full bg-cyan-500/5 blur-3xl"></div>
-      </div>
+      <div id="sidebar-overlay" class="pointer-events-none fixed inset-0 z-40 bg-surface-base/70 opacity-0 lg:hidden"></div>
 
-      <div id="sidebar-overlay" class="pointer-events-none fixed inset-0 z-40 bg-surface-base/70 opacity-0 backdrop-blur-sm transition-opacity duration-300 lg:hidden"></div>
-
-      <aside id="sidebar" data-collapsed="false" class="group/sidebar fixed inset-y-0 left-0 z-50 flex w-72 -translate-x-full flex-col border-r border-white/10 bg-surface-raised/95 backdrop-blur transition-[width,transform] duration-300 ease-out lg:sticky lg:top-0 lg:z-auto lg:h-dvh lg:translate-x-0 lg:bg-surface-raised/60 lg:data-[collapsed=true]:w-[4.5rem]">
+      <aside id="sidebar" data-collapsed="false" class="group/sidebar fixed inset-y-0 left-0 z-50 flex w-72 -translate-x-full flex-col border-r border-white/10 bg-surface-raised lg:sticky lg:top-0 lg:z-auto lg:h-dvh lg:translate-x-0 lg:data-[collapsed=true]:w-[4.5rem]">
         
     <div class="flex h-full flex-col gap-5 overflow-y-auto overscroll-y-contain p-4">
       <div class="flex items-center gap-2.5 px-1 pt-1 lg:group-data-[collapsed=true]/sidebar:justify-center lg:group-data-[collapsed=true]/sidebar:px-0">
@@ -71,14 +65,14 @@
       <!-- Boot skeleton; account rows render after boot. -->
       <div>
         <div id="account-list" class="flex max-h-60 flex-col gap-1 overflow-y-auto overscroll-y-contain">
-    <button type="button" data-account-id="f430e7ca-92d3-4535-941f-f917dbd8ce47" class="group/acc relative flex w-full touch-pan-y items-center gap-3 rounded-xl px-3 py-2.5 text-left select-none touch-callout-none transition-colors duration-150 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-brand-400 lg:group-data-[collapsed=true]/sidebar:justify-center lg:group-data-[collapsed=true]/sidebar:px-2 bg-brand-500/10 shadow-[inset_0_0_0_1px_rgb(59_130_246/0.25)]" aria-current="true" aria-haspopup="menu" aria-expanded="false">
+    <button type="button" data-account-id="c1966b63-8153-49a7-a288-854ba5f1d210" class="group/acc relative flex w-full touch-pan-y items-center gap-3 rounded-xl px-3 py-2.5 text-left select-none touch-callout-none transition-colors duration-150 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-brand-400 lg:group-data-[collapsed=true]/sidebar:justify-center lg:group-data-[collapsed=true]/sidebar:px-2 bg-brand-500/10 shadow-[inset_0_0_0_1px_rgb(59_130_246/0.25)]" aria-current="true" aria-haspopup="menu" aria-expanded="false">
       <span class="relative flex size-9 shrink-0 items-center justify-center">
-        <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAEAAAABACAYAAACqaXHeAAACa0lEQVR4AeyaPU7EQAyFR6m25gC0CNFwFApOwRWg5AycgpJTUK6EuAX1dkFO9fI5ihmlYmwkS/PGP/F4npns7E6fH8+zyvn+Ye4R9d0an69vZpUtG51TWxurbmvck6vZMsbUkv9VAZIToE2nl6+m4gry893ansBBY9n48vbYVGDuoNra2GKoOIe93EwHB41l42oBFCgdLAZcXu/anpAS1pcq1kcqjEV/td0a057x6KO52DjyZ7xiACuWDRcD2FPE1lcq1EeMoT17kJj23fHx3sF4xMWAqMKj69MxgBvqCnC4J5/e20mED+zFGsvGkT97nOuhvysADUbHVYDRdzha3+Q+68ODPRRinMO0R3gHaa/vIMs4+OxCf/cAuyMQqRZwFUo2UQxoV7dNhecoCWFn8Upwp0j/la28H/x5vjO+yxf+ulYbFwNYsWy4GBCem6QE/mdQ7TDte7ELiAnGg5qQ6y0GsELZ8PAMiDbUFYA9wnOd+ghHCUT6KD71Ub58nisADUbHVYDRdzhaX/z7AERgj0WYPdqLo/jUI10HaV8t4EqUbKIYwJ4kAZxe7tPsPpF6YsZjDxLTnvGILQcVp0dA6osBKFA6WAxgD0bY7tFWAs5E/uxB4sgfj1vdZ1pekT/1xQBX0WQTwzGgd/8m9mAU4Kg9e5D4aPze/IsBUcVG1xcDwh3Guz97lv7sYX4HSD1xZM/nuXyQL+2JiwGsSDZcDGAPsSeX3+XI737IEPpTT3/aE9Oe8WhPPf25HvoXA1jBbLgYwB3nOUy9wzh32WO98WjPeHr/t4xdQusJxltrWysGsCLZ8L9nwNEN+wUAAP//hBlxEwAAAAZJREFUAwByRTyt2pHq+AAAAABJRU5ErkJggg==" alt="" width="36" height="36" draggable="false" class="size-9 rounded-full shadow-lg shadow-brand-950/50 ring-1 ring-brand-400/60">
+        <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAEAAAABACAYAAACqaXHeAAACdElEQVR4AeyZPU4EMQyFoynoOAMX4AQUNHAtKk7AfaBBiIaWC1BSgURHs+h1T19G442mQBsb6Un2+i9xnklYlpfPh8MefH+9HRx7ch0T67UkHxOz5bO05D/VgOQEaMv57VNzsCFuW5Pff1+bg/HU13L4Z/Sn7rUke+yazHj61AiwQ9n0YsDP401zcEbICPeVTPtovHI49uaL4r2W5GIAO5ZNLwZwZi+e75pDc+IYZcjl2VVzsB5195U8Ws/XKtn3Ipn1igGjHZ7NPx0DeICL5sSh97WDM8MEtHsuyR/X983BeOruK1k5HKzHeNp9L5I9l+RiADuYTS8GcGZ09zrICPprjhy0M95912T6Mx9jaGe870Uy/YsB7Fg2vRig97FDd6XDbZI5g5orB+1klPuuyfRnPsbQrjU6fC+S3Sa5GMCOZ9OLAXpvO3hPam4cZIjbJDM+8leMg/7M576S6a/PHIz3vUouBrCD2fTpGRAdaPd9AO9VzhB1FmC87loH46m7r2TmYz3GU2c89WIAO5pNLwZwZvjWJiM4Q1G87loH81F3X8lcD+txPcwXxRcD2LFsejFg9MQ5g4z3d7hk2nW3b4H+yuGgPVoP/akXA9iRbHoxgCfu8yaZ92ykRzOpnFvgepgvqk87azF/MYAdyaZPx4DRA+wawJnjWzoqwBmkP/NTp3+Uj/5cb5S/awATzq5XA2Y/4Wh/HQM4c/qb3BEl/G+7r1Uy98P1dQ2gw+x6NWD2E4721zGA92Y0QyywN571mI/1qI/Gdw1gwtn1asDsJxztL/zfYJSAdn7fNzrD9Gc+1ot0/k6gXiMQdXB2+8kzYO8B/QEAAP//LIXdGQAAAAZJREFUAwBqgmQ9WbFRVQAAAABJRU5ErkJggg==" alt="" width="36" height="36" draggable="false" class="size-9 rounded-full shadow-lg shadow-brand-950/50 ring-1 ring-brand-400/60">
         
         <span class="absolute -bottom-0.5 -right-0.5 size-2.5 rounded-full bg-brand-400 ring-2 ring-surface-raised" title="Active account"></span>
       </span>
       <span class="min-w-0 flex-1 lg:group-data-[collapsed=true]/sidebar:hidden">
-        <span class="block truncate text-sm font-semibold text-white">Guest 7555871633</span>
+        <span class="block truncate text-sm font-semibold text-white">Guest 9257588405</span>
         <span class="block truncate text-xs text-slate-500">
           Guest account
         </span>
@@ -99,37 +93,37 @@
     <a href="/" data-nav="" data-nav-path="/" class="group/link relative flex items-center gap-3 rounded-xl px-3 py-2.5 text-sm font-medium text-slate-400 transition-colors duration-150 hover:bg-white/5 hover:text-white lg:group-data-[collapsed=true]/sidebar:justify-center">
       <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" data-lucide="house" class="lucide lucide-house size-5 shrink-0" aria-hidden="true"><path d="M15 21v-8a1 1 0 0 0-1-1h-4a1 1 0 0 0-1 1v8"></path><path d="M3 10a2 2 0 0 1 .709-1.528l7-5.999a2 2 0 0 1 2.582 0l7 5.999A2 2 0 0 1 21 10v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path></svg>
       <span class="truncate lg:group-data-[collapsed=true]/sidebar:hidden">Home</span>
-      <span class="pointer-events-none absolute left-full top-1/2 z-50 ml-3 hidden -translate-y-1/2 rounded-lg border border-white/10 bg-surface-overlay px-2.5 py-1 text-xs font-medium whitespace-nowrap text-white shadow-xl lg:group-data-[collapsed=true]/sidebar:group-hover/link:block">Home</span>
+      <span class="pointer-events-none absolute left-full top-1/2 z-50 ml-3 hidden -translate-y-1/2 rounded-lg border border-white/10 bg-surface-overlay px-2.5 py-1 text-xs font-medium whitespace-nowrap text-white shadow-md lg:group-data-[collapsed=true]/sidebar:group-hover/link:block">Home</span>
     </a>
   
     <a href="/myfiles" data-nav="" data-nav-path="/myfiles" class="group/link relative flex items-center gap-3 rounded-xl px-3 py-2.5 text-sm font-medium text-slate-400 transition-colors duration-150 hover:bg-white/5 hover:text-white lg:group-data-[collapsed=true]/sidebar:justify-center">
       <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" data-lucide="folder-open" class="lucide lucide-folder-open size-5 shrink-0" aria-hidden="true"><path d="m6 14 1.5-2.9A2 2 0 0 1 9.24 10H20a2 2 0 0 1 1.94 2.5l-1.54 6a2 2 0 0 1-1.95 1.5H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h3.9a2 2 0 0 1 1.69.9l.81 1.2a2 2 0 0 0 1.67.9H18a2 2 0 0 1 2 2v2"></path></svg>
       <span class="truncate lg:group-data-[collapsed=true]/sidebar:hidden">File Manager</span>
-      <span class="pointer-events-none absolute left-full top-1/2 z-50 ml-3 hidden -translate-y-1/2 rounded-lg border border-white/10 bg-surface-overlay px-2.5 py-1 text-xs font-medium whitespace-nowrap text-white shadow-xl lg:group-data-[collapsed=true]/sidebar:group-hover/link:block">File Manager</span>
+      <span class="pointer-events-none absolute left-full top-1/2 z-50 ml-3 hidden -translate-y-1/2 rounded-lg border border-white/10 bg-surface-overlay px-2.5 py-1 text-xs font-medium whitespace-nowrap text-white shadow-md lg:group-data-[collapsed=true]/sidebar:group-hover/link:block">File Manager</span>
     </a>
   
     <a href="/premium" data-nav="" data-nav-path="/premium" class="group/link relative flex items-center gap-3 rounded-xl px-3 py-2.5 text-sm font-medium text-slate-400 transition-colors duration-150 hover:bg-white/5 hover:text-white lg:group-data-[collapsed=true]/sidebar:justify-center">
       <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" data-lucide="crown" class="lucide lucide-crown size-5 shrink-0" aria-hidden="true"><path d="M11.562 3.266a.5.5 0 0 1 .876 0L15.39 8.87a1 1 0 0 0 1.516.294L21.183 5.5a.5.5 0 0 1 .798.519l-2.834 10.246a1 1 0 0 1-.956.734H5.81a1 1 0 0 1-.957-.734L2.02 6.02a.5.5 0 0 1 .798-.519l4.276 3.664a1 1 0 0 0 1.516-.294z"></path><path d="M5 21h14"></path></svg>
       <span class="truncate lg:group-data-[collapsed=true]/sidebar:hidden">Premium</span>
-      <span class="pointer-events-none absolute left-full top-1/2 z-50 ml-3 hidden -translate-y-1/2 rounded-lg border border-white/10 bg-surface-overlay px-2.5 py-1 text-xs font-medium whitespace-nowrap text-white shadow-xl lg:group-data-[collapsed=true]/sidebar:group-hover/link:block">Premium</span>
+      <span class="pointer-events-none absolute left-full top-1/2 z-50 ml-3 hidden -translate-y-1/2 rounded-lg border border-white/10 bg-surface-overlay px-2.5 py-1 text-xs font-medium whitespace-nowrap text-white shadow-md lg:group-data-[collapsed=true]/sidebar:group-hover/link:block">Premium</span>
     </a>
   
     <a href="/api" data-nav="" data-nav-path="/api" class="group/link relative flex items-center gap-3 rounded-xl px-3 py-2.5 text-sm font-medium text-slate-400 transition-colors duration-150 hover:bg-white/5 hover:text-white lg:group-data-[collapsed=true]/sidebar:justify-center">
       <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" data-lucide="braces" class="lucide lucide-braces size-5 shrink-0" aria-hidden="true"><path d="M8 3H7a2 2 0 0 0-2 2v5a2 2 0 0 1-2 2 2 2 0 0 1 2 2v5c0 1.1.9 2 2 2h1"></path><path d="M16 21h1a2 2 0 0 0 2-2v-5c0-1.1.9-2 2-2a2 2 0 0 1-2-2V5a2 2 0 0 0-2-2h-1"></path></svg>
       <span class="truncate lg:group-data-[collapsed=true]/sidebar:hidden">API</span>
-      <span class="pointer-events-none absolute left-full top-1/2 z-50 ml-3 hidden -translate-y-1/2 rounded-lg border border-white/10 bg-surface-overlay px-2.5 py-1 text-xs font-medium whitespace-nowrap text-white shadow-xl lg:group-data-[collapsed=true]/sidebar:group-hover/link:block">API</span>
+      <span class="pointer-events-none absolute left-full top-1/2 z-50 ml-3 hidden -translate-y-1/2 rounded-lg border border-white/10 bg-surface-overlay px-2.5 py-1 text-xs font-medium whitespace-nowrap text-white shadow-md lg:group-data-[collapsed=true]/sidebar:group-hover/link:block">API</span>
     </a>
   
     <a href="/faq" data-nav="" data-nav-path="/faq" class="group/link relative flex items-center gap-3 rounded-xl px-3 py-2.5 text-sm font-medium text-slate-400 transition-colors duration-150 hover:bg-white/5 hover:text-white lg:group-data-[collapsed=true]/sidebar:justify-center">
       <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" data-lucide="circle-help" class="lucide lucide-circle-help size-5 shrink-0" aria-hidden="true"><circle cx="12" cy="12" r="10"></circle><path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"></path><path d="M12 17h.01"></path></svg>
       <span class="truncate lg:group-data-[collapsed=true]/sidebar:hidden">FAQ</span>
-      <span class="pointer-events-none absolute left-full top-1/2 z-50 ml-3 hidden -translate-y-1/2 rounded-lg border border-white/10 bg-surface-overlay px-2.5 py-1 text-xs font-medium whitespace-nowrap text-white shadow-xl lg:group-data-[collapsed=true]/sidebar:group-hover/link:block">FAQ</span>
+      <span class="pointer-events-none absolute left-full top-1/2 z-50 ml-3 hidden -translate-y-1/2 rounded-lg border border-white/10 bg-surface-overlay px-2.5 py-1 text-xs font-medium whitespace-nowrap text-white shadow-md lg:group-data-[collapsed=true]/sidebar:group-hover/link:block">FAQ</span>
     </a>
   
     <a href="/contact" data-nav="" data-nav-path="/contact" class="group/link relative flex items-center gap-3 rounded-xl px-3 py-2.5 text-sm font-medium text-slate-400 transition-colors duration-150 hover:bg-white/5 hover:text-white lg:group-data-[collapsed=true]/sidebar:justify-center">
       <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" data-lucide="mail" class="lucide lucide-mail size-5 shrink-0" aria-hidden="true"><path d="m22 7-8.991 5.727a2 2 0 0 1-2.009 0L2 7"></path><rect x="2" y="4" width="20" height="16" rx="2"></rect></svg>
       <span class="truncate lg:group-data-[collapsed=true]/sidebar:hidden">Contact</span>
-      <span class="pointer-events-none absolute left-full top-1/2 z-50 ml-3 hidden -translate-y-1/2 rounded-lg border border-white/10 bg-surface-overlay px-2.5 py-1 text-xs font-medium whitespace-nowrap text-white shadow-xl lg:group-data-[collapsed=true]/sidebar:group-hover/link:block">Contact</span>
+      <span class="pointer-events-none absolute left-full top-1/2 z-50 ml-3 hidden -translate-y-1/2 rounded-lg border border-white/10 bg-surface-overlay px-2.5 py-1 text-xs font-medium whitespace-nowrap text-white shadow-md lg:group-data-[collapsed=true]/sidebar:group-hover/link:block">Contact</span>
     </a>
   
       </nav>
@@ -139,7 +133,7 @@
           <svg viewBox="0 0 24 24" class="size-5 shrink-0" fill="currentColor" aria-hidden="true"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"></path></svg>
           <span class="truncate lg:group-data-[collapsed=true]/sidebar:hidden">@gofile_io</span>
           <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" data-lucide="external-link" class="lucide lucide-external-link size-3.5 ml-auto text-slate-600 lg:group-data-[collapsed=true]/sidebar:hidden" aria-hidden="true"><path d="M15 3h6v6"></path><path d="M10 14 21 3"></path><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path></svg>
-          <span class="pointer-events-none absolute left-full top-1/2 z-50 ml-3 hidden -translate-y-1/2 rounded-lg border border-white/10 bg-surface-overlay px-2.5 py-1 text-xs font-medium whitespace-nowrap text-white shadow-xl lg:group-data-[collapsed=true]/sidebar:group-hover/link:block">@gofile_io</span>
+          <span class="pointer-events-none absolute left-full top-1/2 z-50 ml-3 hidden -translate-y-1/2 rounded-lg border border-white/10 bg-surface-overlay px-2.5 py-1 text-xs font-medium whitespace-nowrap text-white shadow-md lg:group-data-[collapsed=true]/sidebar:group-hover/link:block">@gofile_io</span>
         </a>
       </div>
     </div>
@@ -147,9 +141,10 @@
       </aside>
 
       <div class="flex min-h-dvh min-w-0 flex-1 flex-col">
-        <!-- Transparent header (blur only): the ambient background continues
-             underneath, so the header/page transition stays seamless -->
-        <header id="app-header" class="sticky top-0 z-30 border-b border-white/10 backdrop-blur-md">
+        <!-- Solid header: backdrop blur was dropped (CPU cost without GPU);
+             bg-surface-base matches the page background, so the header/page
+             transition stays seamless -->
+        <header id="app-header" class="sticky top-0 z-30 border-b border-white/10 bg-surface-base">
           
     <!-- Asymmetric padding on desktop: the sidebar toggle hugs the sidebar
          (same 16px offset as mobile, mirroring the sidebar's own p-4), while
@@ -169,8 +164,8 @@
         <!-- Ad slot (core/ads.js) — outside #page so route swaps never touch it. -->
         <div id="ad-slot" class="hidden flex-col items-center gap-1 border-b border-white/10 px-4 py-3"></div>
 
-        <main id="page" class="w-full flex-1 px-4 py-6 transition duration-150 ease-out focus:outline-none sm:px-6 lg:px-10 lg:py-8" tabindex="-1">
-        <div class="mx-auto max-w-4xl animate-fade-up">
+        <main id="page" class="w-full flex-1 px-4 py-6 focus:outline-none sm:px-6 lg:px-10 lg:py-8" tabindex="-1">
+        <div class="mx-auto max-w-4xl">
           <header class="mb-10 text-center sm:mb-12">
             <span class="mb-5 inline-flex size-14 items-center justify-center rounded-2xl bg-brand-500/10 text-brand-400 ring-1 ring-brand-500/25">
               <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" data-lucide="scroll-text" class="lucide lucide-scroll-text size-7" aria-hidden="true"><path d="M15 12h-5"></path><path d="M15 8h-5"></path><path d="M19 17V5a2 2 0 0 0-2-2H4"></path><path d="M8 21h12a2 2 0 0 0 2-2v-1a1 1 0 0 0-1-1H11a1 1 0 0 0-1 1v1a2 2 0 1 1-4 0V5a2 2 0 1 0-4 0v2a1 1 0 0 0 1 1h3"></path></svg>
