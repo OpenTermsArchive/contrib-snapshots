@@ -27,6 +27,10 @@
     <meta name="primaryTopic" content="IBM"/>
     <meta name="productName"/>
     <meta name="pageType" content="Legal - Article"/>
+      
+      
+          <meta name="featuredContent" content="false"/>
+      
     
     <title>Terms of use | IBM</title>
       <meta name="content-page-ref" content="eROxip4tByGTXXkYPHZou1pZVt7H2eXofw-EKs6fLOAH0gZz-_KlKcLcJSSXGNFxCEr7PPJW3YeU9IjZ7gVokA"/>
@@ -58,11 +62,11 @@
     <link rel="canonical" href="https://www.ibm.com/legal/terms"/>
 
       
-          <link rel="preload" as="image" href="/content/adobe-cms/us/en/legal/terms/jcr:content/root/leadspace_container/leadspace/image.coreimg.jpeg/1787099803505/Leadspace-bg-img-desktop.png" fetchpriority="high"/>
+          <link rel="preload" as="image" href="/content/adobe-cms/us/en/legal/terms/jcr:content/root/leadspace_container/leadspace/image.coreimg.jpeg/1787142962071/Leadspace-bg-img-desktop.png" fetchpriority="high"/>
       
 
     
-    <link rel="preload" href="/etc.clientlibs/adobe-cms/clientlibs/clientlib-masthead-container.lc-4cfcec2dafd8eaa8fe2cb5acfc2cef10-lc.min.js" as="script">
+    <link rel="preload" href="/etc.clientlibs/adobe-cms/clientlibs/clientlib-masthead-container.lc-1faea730e67c940d05aba6ae2faa69f4-lc.min.js" as="script">
 
 
 
@@ -176,6 +180,13 @@
         var productName = document.getElementsByName('productName')[0]?.content?.trim() || '';
         var pageType = document.getElementsByName('pageType')[0]?.content?.trim() || '';
 
+        var promptTitle = '';
+        var prompt1 = '';
+        var prompt2 = '';
+        var prompt3 = '';
+        var prompts = [prompt1, prompt2, prompt3].filter(Boolean);
+        var promptConfig = promptTitle || prompts.length ? { title: promptTitle, prompts: prompts } : null;
+
         /* Define digital data object based on _appInfo object */
           window._ibmAnalytics = {
               settings: {
@@ -188,11 +199,11 @@
                 category: {
                     primaryCategory: '',
                 },
-                taxonomy: {
+                taxonomy: Object.assign({
                     primaryTopic: primaryTopic,
                     productName: productName,
                     pageType: pageType
-                },
+                }, promptConfig ? { promptConfig: promptConfig } : {}),
                 pageInfo: {
                     language: languageCode + '-' + countryCode,
                     ibm: {
@@ -221,10 +232,10 @@
             },
         };
     </script>
-    
-    
-    
-    
+      
+      
+      
+      
 
       <!-- Instana script specific to Dev environment start -->
 <!--      <script>
@@ -251,6 +262,8 @@
     
         
     
+        <meta property="article:published_time" content="2024-09-02"/>
+    
     
         <meta property="og:image" content="https://www.ibm.com/content/dam/adobe-cms/default-images/Leadspace-bg-img-desktop.png/_jcr_content/renditions/cq5dam.web.1280.1280.jpeg"/>
     
@@ -265,8 +278,8 @@
     
     
 <link rel="stylesheet" href="/etc.clientlibs/adobe-cms/clientlibs/clientlib-base.lc-30313e00669f877069f15dd099f23454-lc.min.css" type="text/css">
-<link rel="stylesheet" href="/etc.clientlibs/adobe-cms/clientlibs/clientlib-idlStylesCarbon.lc-bbea3f173b1da6a378f1adc1919b096f-lc.min.css" type="text/css">
-<link rel="stylesheet" href="/etc.clientlibs/adobe-cms/clientlibs/clientlib-idlStyles.lc-66f935f7c4a6766510db631dbcce45f0-lc.min.css" type="text/css">
+<link rel="stylesheet" href="/etc.clientlibs/adobe-cms/clientlibs/clientlib-idlStylesCarbon.lc-8bc6b4ed853f1f95c73246c6ed45f6a5-lc.min.css" type="text/css">
+<link rel="stylesheet" href="/etc.clientlibs/adobe-cms/clientlibs/clientlib-idlStyles.lc-33aab4f663c119355f00a99b9f7879d5-lc.min.css" type="text/css">
 
 
 
@@ -361,7 +374,7 @@
 
 
 
-    <script defer src="/etc.clientlibs/adobe-cms/clientlibs/clientlib-masthead-container.lc-4cfcec2dafd8eaa8fe2cb5acfc2cef10-lc.min.js"></script>
+    <script defer src="/etc.clientlibs/adobe-cms/clientlibs/clientlib-masthead-container.lc-1faea730e67c940d05aba6ae2faa69f4-lc.min.js"></script>
 
 
 
@@ -601,8 +614,8 @@
 
 
 
-    <script defer src="/etc.clientlibs/adobe-cms/clientlibs/clientlib-button-group.lc-c96dbbbb8a0af783f26eb069c04832b2-lc.min.js"></script>
-<script defer src="/etc.clientlibs/adobe-cms/clientlibs/clientlib-background-media.lc-0519728b63897f60fe9bf8aface2e1bc-lc.min.js"></script>
+    <script defer src="/etc.clientlibs/adobe-cms/clientlibs/clientlib-button-group.lc-bf68d60634f96cd672515bd0d7769d2f-lc.min.js"></script>
+<script defer src="/etc.clientlibs/adobe-cms/clientlibs/clientlib-background-media.lc-4d1355b28c81a9f10db57b2f1c5b72a7-lc.min.js"></script>
 <script defer src="/etc.clientlibs/adobe-cms/clientlibs/clientlib-star-rating.lc-ac9e6f485abb5e9caac490f8b09edc80-lc.min.js"></script>
 
 </div>
@@ -728,7 +741,7 @@
 
 
     
-    <script defer src="/etc.clientlibs/adobe-cms/clientlibs/clientlib-content-block-segmented.lc-0e805ac1f004ffee7ecdecebcc5890da-lc.min.js"></script>
+    <script defer src="/etc.clientlibs/adobe-cms/clientlibs/clientlib-content-block-segmented.lc-893badb387de7fde6653d81d7cfb2cd2-lc.min.js"></script>
 
 
 
@@ -1447,7 +1460,7 @@
 
 
     
-    <script defer src="/etc.clientlibs/adobe-cms/clientlibs/clientlib-footer.lc-3e5303794b44ace32742152d403e4610-lc.min.js"></script>
+    <script defer src="/etc.clientlibs/adobe-cms/clientlibs/clientlib-footer.lc-52bd226e234a6fb9626cc6c15ea1ae3a-lc.min.js"></script>
 
 
 
@@ -1551,7 +1564,7 @@
 
 
     
-    <script defer src="/etc.clientlibs/adobe-cms/clientlibs/clientlib-video-player-v7.lc-622f084e9e7c5c84dc0d2b7590847fd9-lc.min.js"></script>
+    <script defer src="/etc.clientlibs/adobe-cms/clientlibs/clientlib-video-player-v7.lc-dfddece7cd538ff9639b2619a5a90585-lc.min.js"></script>
 <script defer src="/etc.clientlibs/adobe-cms/clientlibs/clientlib-cweb-loading.lc-bf5f1bc1d22a37b7b50b2e8cc6ac9710-lc.min.js"></script>
 
 
@@ -1562,7 +1575,7 @@
 <c4d-lightbox-video-player-container></c4d-lightbox-video-player-container>
 
     
-    <script defer src="/etc.clientlibs/adobe-cms/clientlibs/clientlib-cibm-cta.lc-e963b8f933c1160e08eedf1fca75f4cc-lc.min.js"></script>
+    <script defer src="/etc.clientlibs/adobe-cms/clientlibs/clientlib-cibm-cta.lc-16dc6a1fb1e3df283505ff7c8a22a81b-lc.min.js"></script>
 
 
 
@@ -1582,8 +1595,8 @@
     
     <script src="/etc.clientlibs/adobe-cms/clientlibs/clientlib-ibm-logger.lc-36e5d2891df65964c169c81e085bcb76-lc.min.js"></script>
 <script src="/etc.clientlibs/adobe-cms/clientlibs/clientlib-base.lc-c7d8c8a31404fb2a97939ee4096001bf-lc.min.js"></script>
-<script src="/etc.clientlibs/adobe-cms/clientlibs/clientlib-components-main.lc-be11c3cda360417dbcdd7d537087bb4a-lc.min.js"></script>
-<script src="/etc.clientlibs/adobe-cms/clientlibs/clientlib-idlStyles.lc-7cde8961a7cf068927fda2808187053a-lc.min.js"></script>
+<script src="/etc.clientlibs/adobe-cms/clientlibs/clientlib-components-main.lc-0971fd03f4b9e546b0fb0a7248997a21-lc.min.js"></script>
+<script src="/etc.clientlibs/adobe-cms/clientlibs/clientlib-idlStyles.lc-64385c828aec641093e28e8a04dc0885-lc.min.js"></script>
 <script src="/etc.clientlibs/adobe-cms/components/content/atoms/image-dm/clientlibs/site.lc-5b82812ce0e4df5fba3f663936a1830a-lc.min.js"></script>
 
 
@@ -1632,26 +1645,6 @@
 
 
 
-<!-- Added for Adobe analytics implementation ADCMS-5834
-<script type="text/javascript">
-
-    adobeDataLayer.push({
-        "event": "linkClick",
-        "web": {
-            "webPageDetails": {
-                "URL": document.URL,
-                "name": "home"
-            },
-            "webInteraction": {
-                "linkClick":"event",
-                "value":"1",
-                "type": "other",
-                "URL": document.URL,
-                "name": "linkClick: " +  document.URL
-            }
-        },
-    })
-</script>  !-->
 
 <!-- Added for Adobe analytics implementation ADCMS-5834 & ADCMS-6152 !-->
 <script type="text/javascript">
@@ -1740,207 +1733,6 @@
             return modifiedUrl;
         }
 
-        /* */
-
-        window.addEventListener('load', function () {
-            setTimeout(initializeDDSTracking, 1000);
-        });
-
-        if (!window.ddsVideoTrackingInitialized) {
-            window.ddsVideoTrackingInitialized = false;
-        }
-
-        function initializeDDSTracking() {
-            if (window.ddsVideoTrackingInitialized) {
-                return;
-            }
-            window.ddsVideoTrackingInitialized = true;
-
-            var videoPlayersContainers = document.querySelectorAll('c4d-video-player-container-v7');
-
-            if (videoPlayersContainers.length > 0) {
-                videoPlayersContainers.forEach(function (videoPlayerContainer) {
-                    var c4dAnalyticsData =
-                        videoPlayerContainer.parentElement?.querySelector('#c4d-analytics-data') ||
-                        videoPlayerContainer.closest('.video-dm')?.querySelector('#c4d-analytics-data') ||
-                        document.querySelector('[cta-type=videoinmodal]')?.nextElementSibling ||
-                        null;
-                    if (!c4dAnalyticsData) {
-                        return;
-                    }
-                    var videoId = videoPlayerContainer.getAttribute('video-id') ||
-                        document.querySelector('[cta-type=videoinmodal]')?.querySelector('c4d-video-player-v7')?.getAttribute('video-id') ||
-                        "";
-                    var pageTitle = c4dAnalyticsData.getAttribute('data-title-c4d');
-                    var lastModified = c4dAnalyticsData.getAttribute('data-last-modified-c4d');
-                    var videoTags = c4dAnalyticsData.getAttribute('data-tags-c4d') || "";
-                    var playingMode = c4dAnalyticsData.getAttribute('data-playing-mode-c4d') ||
-                        "";
-                    var isoDate = "";
-                    if (lastModified.includes("UTC")) {
-                        const date = new Date(lastModified);
-                        isoDate = date.toISOString();
-                    } else {
-                        isoDate = lastModified;
-                    }
-
-                    function getUserAuthStatus() {
-                        return digitalData.user.segment.isAuthenticated ? "logged in" : "logged out";
-                    }
-
-                    let loginStatus = getUserAuthStatus();
-                    const currentUrl = document.URL;
-                    const parts = currentUrl.split("/");
-                    const sectionOne = parts.length > 3 ? parts[3].split("?")[0] : "";
-
-                    function getVideoName() {
-                        var embeddedVideoPlayer = videoPlayerContainer.querySelector('c4d-video-player-v7');
-                        return embeddedVideoPlayer ? embeddedVideoPlayer.getAttribute('name') || "" : "";
-                    }
-
-                    function pushVideoEvent(eventType) {
-                        adobeDataLayer.push({
-                            "event": eventType,
-                            "_ibm": {
-                                "video": {
-                                    "videoId": videoId,
-                                    "videoName": getVideoName(),
-                                    "videoType": "mp4",
-                                    "videoPublishDate": isoDate,
-                                    "videoEditDate": isoDate,
-                                    "videoPlaylistName": "",
-                                    "videoPlayType": playingMode,
-                                    "videoTagKeywords": videoTags,
-                                    [eventType]: {
-                                        "value": 1
-                                    }
-                                },
-                                "user": {
-                                    "userAgent": navigator.userAgent,
-                                    "loginStatus": loginStatus
-                                }
-                            },
-                            "web": {
-                                "webPageDetails": {
-                                    "URL": document.URL,
-                                    "name": pageTitle,
-                                    "siteSection": sectionOne
-                                },
-                                "webReferrer": {
-                                    "URL": document.referrer
-                                }
-                            }
-                        });
-                    }
-
-                    function findVideoElement() {
-                        if (playingMode === "modal") {
-                            return document.querySelector(
-                                '.video-modal-overlay .playkit-video-player video'
-                            ) || null;
-                        }
-
-                        if (playingMode === "lightbox") {
-                            return document.querySelector('c4d-lightbox-video-player [data-video-id="' + videoId + '"] .playkit-video-player video') || null;
-                        }
-
-                        return videoPlayerContainer.querySelector('.playkit-video-player video, .playkit-player video, video') || null;
-                    }
-
-                    function trackVideoProgress(video) {
-                        if (video.hasTracking) return;
-                        video.hasTracking = true;
-
-                        var milestones = {
-                            reachedStart: false,
-                            reached25: false,
-                            reached50: false,
-                            reached75: false,
-                            completed: false
-                        };
-
-                        video.addEventListener("timeupdate", function () {
-                            const percentageWatched = (video.currentTime / video.duration) * 100;
-
-                            if (percentageWatched >= 0.01 && !milestones.reachedStart) {
-                                milestones.reachedStart = true;
-                                pushVideoEvent("videoStart");
-                            }
-
-                            if (percentageWatched >= 25 && !milestones.reached25) {
-                                milestones.reached25 = true;
-                                pushVideoEvent("video25");
-                            }
-
-                            if (percentageWatched >= 50 && !milestones.reached50) {
-                                milestones.reached50 = true;
-                                pushVideoEvent("video50");
-                            }
-
-                            if (percentageWatched >= 75 && !milestones.reached75) {
-                                milestones.reached75 = true;
-                                pushVideoEvent("video75");
-                            }
-
-                            if (percentageWatched >= 100 && !milestones.completed) {
-                                milestones.completed = true;
-                                video.removeEventListener("timeupdate", arguments.callee);
-                                pushVideoEvent("videoComplete");
-                            }
-                        });
-                    }
-
-                    function getObserverRoot() {
-                        if (playingMode === "modal") {
-                            return document.querySelector('.video-modal-overlay') || document.body;
-                        }
-
-                        if (playingMode === "lightbox") {
-                            return document.querySelector('c4d-lightbox-video-player') || document.body;
-                        }
-
-                        return videoPlayerContainer;
-                    }
-
-                    function shouldUseObserver() {
-                        return playingMode === "modal" || playingMode === "lightbox";
-                    }
-
-                    function setupVideoTracking() {
-                        var video = findVideoElement();
-                        var observerRoot = getObserverRoot();
-                        var persistentObserver = shouldUseObserver();
-
-                        if (video) {
-                            trackVideoProgress(video);
-
-                            if (!persistentObserver) {
-                                return;
-                            }
-                        }
-
-                        var observer = new MutationObserver(function () {
-                            video = findVideoElement();
-
-                            if (video) {
-                                if (!persistentObserver) {
-                                    observer.disconnect();
-                                }
-
-                                trackVideoProgress(video);
-                            }
-                        });
-
-                        observer.observe(observerRoot, {
-                            childList: true,
-                            subtree: true
-                        });
-                    }
-
-                    setupVideoTracking();
-                });
-            }
-        }
 
         function getVisitDepth() {
             let pageVisitCount = sessionStorage.getItem('pageVisitCount');
