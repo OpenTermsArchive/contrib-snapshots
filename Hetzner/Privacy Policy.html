@@ -49,7 +49,7 @@
 
 <link
     rel="stylesheet preload"
-    href="/_resources/themes/general/dist/fonts.css?m=1786353632"
+    href="/_resources/themes/general/dist/fonts.css?m=1787209176"
     as="style"
     crossorigin="anonymous"
 />
@@ -84,11 +84,11 @@
 <!-- End Matomo Code -->
 
 
-<link rel="stylesheet" type="text/css" href="/_resources/themes/general/dist/vendors.css?m=1786353632">
-<link rel="stylesheet" type="text/css" href="/_resources/themes/general/dist/fonts.css?m=1786353632">
-<link rel="stylesheet" type="text/css" href="/_resources/themes/hetzner/dist/vendors.css?m=1786353638">
-<link rel="stylesheet" type="text/css" href="/_resources/themes/hetzner/dist/app.css?m=1786353638">
-<link rel="stylesheet" type="text/css" href="/_resources/themes/hetzner/dist/company.css?m=1786353638">
+<link rel="stylesheet" type="text/css" href="/_resources/themes/general/dist/vendors.css?m=1787209176">
+<link rel="stylesheet" type="text/css" href="/_resources/themes/general/dist/fonts.css?m=1787209176">
+<link rel="stylesheet" type="text/css" href="/_resources/themes/hetzner/dist/vendors.css?m=1787209181">
+<link rel="stylesheet" type="text/css" href="/_resources/themes/hetzner/dist/app.css?m=1787209181">
+<link rel="stylesheet" type="text/css" href="/_resources/themes/hetzner/dist/company.css?m=1787209181">
 </head>
 <body class="">
 
@@ -515,13 +515,13 @@
     </div>
 </div>
 <script type="application/javascript" src="/_resources/vendor/silverstripe/admin/client/dist/js/i18n.js?m=1772024856"></script>
-<script type="application/javascript" src="/_resources/themes/languages/javascript/static/lang/en.js?m=1786353602"></script>
-<script type="application/javascript" src="/_resources/themes/languages/javascript/static/lang/de.js?m=1786353602"></script>
-<script type="application/javascript" src="/_resources/themes/hetzner/dist/vendors.js?m=1786353638"></script>
-<script type="application/javascript" src="/_resources/themes/hetzner/dist/app.js?m=1786353638"></script>
-<script type="application/javascript" src="/_resources/themes/static/dist/vendors.js?m=1786353632"></script>
-<script type="application/javascript" src="/_resources/themes/static/dist/bundle.js?m=1786353632"></script>
-<script type="application/javascript" src="/_resources/themes/hetzner/dist/initmodal.js?m=1786353638"></script>
+<script type="application/javascript" src="/_resources/themes/languages/javascript/static/lang/en.js?m=1787209151"></script>
+<script type="application/javascript" src="/_resources/themes/languages/javascript/static/lang/de.js?m=1787209151"></script>
+<script type="application/javascript" src="/_resources/themes/hetzner/dist/vendors.js?m=1787209181"></script>
+<script type="application/javascript" src="/_resources/themes/hetzner/dist/app.js?m=1787209181"></script>
+<script type="application/javascript" src="/_resources/themes/static/dist/vendors.js?m=1787209176"></script>
+<script type="application/javascript" src="/_resources/themes/static/dist/bundle.js?m=1787209176"></script>
+<script type="application/javascript" src="/_resources/themes/hetzner/dist/initmodal.js?m=1787209181"></script>
 <script>
     document.addEventListener("DOMContentLoaded", function() {
         const route = ['/', '/de','/de/'].includes(window.location.pathname) ? 'hetzner.com' : window.location.pathname
@@ -751,15 +751,6 @@
                 </a>
             </li>
         
-            <li>
-                <a href="https://dns.hetzner.com" data-title="DNS" class="pre-header-button-track">
-                    
-                        <img src="https://cdn.hetzner.com/assets/Uploads/icon-dns-console.svg" class="login-img" alt="icon dns console">
-                    
-                    DNS
-                </a>
-            </li>
-        
     </ul>
 </div>
 
@@ -792,7 +783,7 @@
         </button>
         <a class="navbar-brand" href="https://www.hetzner.com/">
             <img
-                src="/_resources/themes/hetzner/images/logo/hetzner-logo.svg?m=1786353602"
+                src="/_resources/themes/hetzner/images/logo/hetzner-logo.svg?m=1787209151"
                 class="navbar-logo" alt="Logo Hetzner Online"
                 height="21px"
                 width="171.297px"
@@ -866,7 +857,6 @@
                 <div class="row">
                     <div class="col-lg-9 col-md-9">
                         <ul class="list-unstyled list-inline margin-0 sub-nav-product-list">
-                            <ho-localization-provider>
                             
                                 <li>
     <a href="/sb/" data-title="Server Auction" class="nav-sub-menu-track">
@@ -882,15 +872,17 @@
             
                 
                     <br/>
-                    <ho-price-container
-                        class="highlight-price price"
-                        price-view="auction"
-                        product-key="auction"
-                    >
-                        
-                            <span slot="start">from </span>
-                        
-                    </ho-price-container>
+                    <ho-localization-provider>
+                        <ho-price-container
+                            class="highlight-price price"
+                            price-view="auction"
+                            product-key="auction"
+                        >
+                            
+                                <span slot="start">from </span>
+                            
+                        </ho-price-container>
+                    </ho-localization-provider>
                 
             
         </div>
@@ -912,16 +904,18 @@
             
                 
                     <br/>
-                    <ho-price-container
-                        class="price"
-                        price-view="nav_prices"
-                        product-key="10003"
-                        price-type="monthly"
-                    >
-                        
-                            <span slot="start">from </span>
-                        
-                    </ho-price-container>
+                    <ho-localization-provider>
+                        <ho-price-container
+                            class="price"
+                            price-view="nav_prices"
+                            product-key="10003"
+                            price-type="monthly"
+                        >
+                            
+                                <span slot="start">from </span>
+                            
+                        </ho-price-container>
+                    </ho-localization-provider>
                 
             
         </div>
@@ -943,16 +937,18 @@
             
                 
                     <br/>
-                    <ho-price-container
-                        class="price"
-                        price-view="nav_prices"
-                        product-key="8703"
-                        price-type="monthly"
-                    >
-                        
-                            <span slot="start">from </span>
-                        
-                    </ho-price-container>
+                    <ho-localization-provider>
+                        <ho-price-container
+                            class="price"
+                            price-view="nav_prices"
+                            product-key="8703"
+                            price-type="monthly"
+                        >
+                            
+                                <span slot="start">from </span>
+                            
+                        </ho-price-container>
+                    </ho-localization-provider>
                 
             
         </div>
@@ -974,16 +970,18 @@
             
                 
                     <br/>
-                    <ho-price-container
-                        class="price"
-                        price-view="nav_prices"
-                        product-key="168047"
-                        price-type="monthly"
-                    >
-                        
-                            <span slot="start">from </span>
-                        
-                    </ho-price-container>
+                    <ho-localization-provider>
+                        <ho-price-container
+                            class="price"
+                            price-view="nav_prices"
+                            product-key="168047"
+                            price-type="monthly"
+                        >
+                            
+                                <span slot="start">from </span>
+                            
+                        </ho-price-container>
+                    </ho-localization-provider>
                 
             
         </div>
@@ -1025,16 +1023,18 @@
             
                 
                     <br/>
-                    <ho-price-container
-                        class="price"
-                        price-view="nav_prices"
-                        product-key="398"
-                        price-type="monthly"
-                    >
-                        
-                            <span slot="start">from </span>
-                        
-                    </ho-price-container>
+                    <ho-localization-provider>
+                        <ho-price-container
+                            class="price"
+                            price-view="nav_prices"
+                            product-key="398"
+                            price-type="monthly"
+                        >
+                            
+                                <span slot="start">from </span>
+                            
+                        </ho-price-container>
+                    </ho-localization-provider>
                 
             
         </div>
@@ -1056,16 +1056,18 @@
             
                 
                     <br/>
-                    <ho-price-container
-                        class="price"
-                        price-view="nav_prices"
-                        product-key="168983"
-                        price-type="monthly"
-                    >
-                        
-                            <span slot="start">from </span>
-                        
-                    </ho-price-container>
+                    <ho-localization-provider>
+                        <ho-price-container
+                            class="price"
+                            price-view="nav_prices"
+                            product-key="168983"
+                            price-type="monthly"
+                        >
+                            
+                                <span slot="start">from </span>
+                            
+                        </ho-price-container>
+                    </ho-localization-provider>
                 
             
         </div>
@@ -1087,16 +1089,18 @@
             
                 
                     <br/>
-                    <ho-price-container
-                        class="price"
-                        price-view="nav_prices"
-                        product-key="9537"
-                        price-type="monthly"
-                    >
-                        
-                            <span slot="start">from </span>
-                        
-                    </ho-price-container>
+                    <ho-localization-provider>
+                        <ho-price-container
+                            class="price"
+                            price-view="nav_prices"
+                            product-key="9537"
+                            price-type="monthly"
+                        >
+                            
+                                <span slot="start">from </span>
+                            
+                        </ho-price-container>
+                    </ho-localization-provider>
                 
             
         </div>
@@ -1104,7 +1108,6 @@
 </li>
 
                             
-                            </ho-localization-provider>
                         </ul>
                     </div>
                     <div class="col-lg-3 col-md-3">
@@ -1118,13 +1121,15 @@
     Prices drop &amp; excitement mounts. Place bids in our Server Auction!
     
         
-            <ho-price-container
-                class="price sub-nav-price"
-                price-view="auction"
-                product-key="auction"
-            >
-                <span slot="start">from </span>
-            </ho-price-container>
+            <ho-localization-provider>
+                <ho-price-container
+                    class="price sub-nav-price"
+                    price-view="auction"
+                    product-key="auction"
+                >
+                    <span slot="start">from </span>
+                </ho-price-container>
+            </ho-localization-provider>
         
     
 </div>
@@ -1301,7 +1306,6 @@
                 <div class="row">
                     <div class="col-lg-9 col-md-9">
                         <ul class="list-unstyled list-inline margin-0 sub-nav-product-list">
-                            <ho-localization-provider>
                             
                                 <li>
     <a href="/webhosting/" data-title="Web Hosting" class="nav-sub-menu-track">
@@ -1317,16 +1321,18 @@
             
                 
                     <br/>
-                    <ho-price-container
-                        class="price"
-                        price-view="nav_prices"
-                        product-key="394"
-                        price-type="monthly"
-                    >
-                        
-                            <span slot="start">from </span>
-                        
-                    </ho-price-container>
+                    <ho-localization-provider>
+                        <ho-price-container
+                            class="price"
+                            price-view="nav_prices"
+                            product-key="394"
+                            price-type="monthly"
+                        >
+                            
+                                <span slot="start">from </span>
+                            
+                        </ho-price-container>
+                    </ho-localization-provider>
                 
             
         </div>
@@ -1348,16 +1354,18 @@
             
                 
                     <br/>
-                    <ho-price-container
-                        class="price"
-                        price-view="nav_prices"
-                        product-key="10442"
-                        price-type="monthly"
-                    >
-                        
-                            <span slot="start">from </span>
-                        
-                    </ho-price-container>
+                    <ho-localization-provider>
+                        <ho-price-container
+                            class="price"
+                            price-view="nav_prices"
+                            product-key="10442"
+                            price-type="monthly"
+                        >
+                            
+                                <span slot="start">from </span>
+                            
+                        </ho-price-container>
+                    </ho-localization-provider>
                 
             
         </div>
@@ -1365,7 +1373,6 @@
 </li>
 
                             
-                            </ho-localization-provider>
                         </ul>
                     </div>
                     <div class="col-lg-3 col-md-3">
@@ -1430,7 +1437,6 @@
                 <div class="row">
                     <div class="col-lg-9 col-md-9">
                         <ul class="list-unstyled list-inline margin-0 sub-nav-product-list">
-                            <ho-localization-provider>
                             
                                 <li>
     <a href="/storage/object-storage/" data-title="Object Storage" class="nav-sub-menu-track">
@@ -1446,16 +1452,18 @@
             
                 
                     <br/>
-                    <ho-price-container
-                        class="price"
-                        price-view="nav_prices"
-                        product-key="10007"
-                        price-type="monthly"
-                    >
-                        
-                            <span slot="start">from </span>
-                        
-                    </ho-price-container>
+                    <ho-localization-provider>
+                        <ho-price-container
+                            class="price"
+                            price-view="nav_prices"
+                            product-key="10007"
+                            price-type="monthly"
+                        >
+                            
+                                <span slot="start">from </span>
+                            
+                        </ho-price-container>
+                    </ho-localization-provider>
                 
             
         </div>
@@ -1477,16 +1485,18 @@
             
                 
                     <br/>
-                    <ho-price-container
-                        class="price"
-                        price-view="nav_prices"
-                        product-key="217"
-                        price-type="monthly"
-                    >
-                        
-                            <span slot="start">from </span>
-                        
-                    </ho-price-container>
+                    <ho-localization-provider>
+                        <ho-price-container
+                            class="price"
+                            price-view="nav_prices"
+                            product-key="217"
+                            price-type="monthly"
+                        >
+                            
+                                <span slot="start">from </span>
+                            
+                        </ho-price-container>
+                    </ho-localization-provider>
                 
             
         </div>
@@ -1508,16 +1518,18 @@
             
                 
                     <br/>
-                    <ho-price-container
-                        class="price"
-                        price-view="nav_prices"
-                        product-key="166886"
-                        price-type="monthly"
-                    >
-                        
-                            <span slot="start">from </span>
-                        
-                    </ho-price-container>
+                    <ho-localization-provider>
+                        <ho-price-container
+                            class="price"
+                            price-view="nav_prices"
+                            product-key="166886"
+                            price-type="monthly"
+                        >
+                            
+                                <span slot="start">from </span>
+                            
+                        </ho-price-container>
+                    </ho-localization-provider>
                 
             
         </div>
@@ -1525,7 +1537,6 @@
 </li>
 
                             
-                            </ho-localization-provider>
                         </ul>
                     </div>
                     <div class="col-lg-3 col-md-3">
@@ -1614,7 +1625,6 @@
                 <div class="row">
                     <div class="col-lg-9 col-md-9">
                         <ul class="list-unstyled list-inline margin-0 sub-nav-product-list">
-                            <ho-localization-provider>
                             
                                 <li>
     <a href="/cloud/load-balancer/" data-title="Load Balancer" class="nav-sub-menu-track">
@@ -1630,16 +1640,18 @@
             
                 
                     <br/>
-                    <ho-price-container
-                        class="price"
-                        price-view="nav_prices"
-                        product-key="167933"
-                        price-type="monthly"
-                    >
-                        
-                            <span slot="start">from </span>
-                        
-                    </ho-price-container>
+                    <ho-localization-provider>
+                        <ho-price-container
+                            class="price"
+                            price-view="nav_prices"
+                            product-key="167933"
+                            price-type="monthly"
+                        >
+                            
+                                <span slot="start">from </span>
+                            
+                        </ho-price-container>
+                    </ho-localization-provider>
                 
             
         </div>
@@ -1661,16 +1673,18 @@
             
                 
                     <br/>
-                    <ho-price-container
-                        class="price"
-                        price-view="nav_prices"
-                        product-key="10006"
-                        price-type="domain"
-                    >
-                        
-                            <span slot="start">from </span>
-                        
-                    </ho-price-container>
+                    <ho-localization-provider>
+                        <ho-price-container
+                            class="price"
+                            price-view="nav_prices"
+                            product-key="10006"
+                            price-type="domain"
+                        >
+                            
+                                <span slot="start">from </span>
+                            
+                        </ho-price-container>
+                    </ho-localization-provider>
                 
             
         </div>
@@ -1714,16 +1728,18 @@
             
                 
                     <br/>
-                    <ho-price-container
-                        class="price"
-                        price-view="nav_prices"
-                        product-key="10005"
-                        price-type="hourly"
-                    >
-                        
-                            <span slot="start">from </span>
-                        
-                    </ho-price-container>
+                    <ho-localization-provider>
+                        <ho-price-container
+                            class="price"
+                            price-view="nav_prices"
+                            product-key="10005"
+                            price-type="hourly"
+                        >
+                            
+                                <span slot="start">from </span>
+                            
+                        </ho-price-container>
+                    </ho-localization-provider>
                 
             
         </div>
@@ -1745,16 +1761,18 @@
             
                 
                     <br/>
-                    <ho-price-container
-                        class="price"
-                        price-view="nav_prices"
-                        product-key="10002"
-                        price-type="setup"
-                    >
-                        
-                            <span slot="start">from </span>
-                        
-                    </ho-price-container>
+                    <ho-localization-provider>
+                        <ho-price-container
+                            class="price"
+                            price-view="nav_prices"
+                            product-key="10002"
+                            price-type="setup"
+                        >
+                            
+                                <span slot="start">from </span>
+                            
+                        </ho-price-container>
+                    </ho-localization-provider>
                 
             
         </div>
@@ -1784,7 +1802,6 @@
 </li>
 
                             
-                            </ho-localization-provider>
                         </ul>
                     </div>
                     <div class="col-lg-3 col-md-3">
@@ -2761,18 +2778,6 @@
             </a>
         </li>
     
-        <li>
-            <a href="https://dns.hetzner.com" data-target="">
-                <span class="mobile-nav-title-name">
-                    
-                    DNS
-                </span>
-                
-                    
-                
-            </a>
-        </li>
-    
 </ul>
 
             </div>
@@ -3540,7 +3545,7 @@
                 <div class="footer-brand-section">
 <a class="footer-brand" href="https://www.hetzner.com/">
     <img
-        src="/_resources/themes/hetzner/images/logo/hetzner-logo.svg?m=1786353602"
+        src="/_resources/themes/hetzner/images/logo/hetzner-logo.svg?m=1787209151"
         class="footer-logo" alt="Logo Hetzner Online"
         height="21px"
         width="171.297px"
@@ -3757,7 +3762,7 @@
     rel="noopener noreferrer"
 >
     <img
-        src="/_resources/themes/hetzner/images/icons/social-media/ICO-facebook-hover.svg?m=1786353602"
+        src="/_resources/themes/hetzner/images/icons/social-media/ICO-facebook-hover.svg?m=1787209151"
         alt="facebook logo"
     >
 </a>
@@ -3769,7 +3774,7 @@
     rel="noopener noreferrer"
 >
     <img
-        src="/_resources/themes/hetzner/images/icons/social-media/ICO-instagram-hover.svg?m=1786353602"
+        src="/_resources/themes/hetzner/images/icons/social-media/ICO-instagram-hover.svg?m=1787209151"
         alt="instagram logo"
     >
 </a>
@@ -3781,7 +3786,7 @@
     rel="noopener noreferrer"
 >
     <img
-        src="/_resources/themes/hetzner/images/icons/social-media/ICO-youtube-hover.svg?m=1786353602"
+        src="/_resources/themes/hetzner/images/icons/social-media/ICO-youtube-hover.svg?m=1787209151"
         alt="youtube logo"
     >
 </a>
@@ -3793,7 +3798,7 @@
     rel="me"
 >
     <img
-        src="/_resources/themes/hetzner/images/icons/social-media/ICO-mastodon-hover.svg?m=1786353602"
+        src="/_resources/themes/hetzner/images/icons/social-media/ICO-mastodon-hover.svg?m=1787209151"
         alt="mastodon logo"
     >
 </a>
@@ -3805,7 +3810,7 @@
     rel="noopener noreferrer"
 >
     <img
-        src="/_resources/themes/hetzner/images/icons/social-media/ICO-x-twitter-hover.svg?m=1786353602"
+        src="/_resources/themes/hetzner/images/icons/social-media/ICO-x-twitter-hover.svg?m=1787209151"
         alt="twitter logo"
     >
 </a>
@@ -3817,7 +3822,7 @@
     rel="noopener noreferrer"
 >
     <img
-        src="/_resources/themes/hetzner/images/icons/social-media/ICO-linkedin-hover.svg?m=1786353602"
+        src="/_resources/themes/hetzner/images/icons/social-media/ICO-linkedin-hover.svg?m=1787209151"
         alt="linkedin logo"
     >
 </a>
