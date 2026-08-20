@@ -60,7 +60,7 @@
 
     
 
-    <link rel="stylesheet" href="/static-assets/css-old/main.min.6153d2a32663de25abe63aafb7668ec53399f4d189b168d448fdb092d1328d52.css" integrity="sha256-YVPSoyZj3iWr5jqvt2aOxTOZ9NGJsWjUSP2wktEyjVI=" crossorigin="anonymous" />
+    <link rel="stylesheet" href="/static-assets/css-old/main.min.2db237b7146df11364eab8e48e62b60105173b7f996fd2ace2d63918469c4c73.css" integrity="sha256-LbI3txRt8RNk6rjkjmK2AQUXO3+Zb9Ks4tY5GEacTHM=" crossorigin="anonymous" />
 
     
 
@@ -566,12 +566,19 @@ Support: <a href="https://community.brave.app/" target="_blank" rel="noopener">c
 
     
 
-    <div id="interstitial" class="ie:hidden -desktop:hidden linux:hidden perfundo__overlay flex transition-opacity duration-300 ease-in opacity-0 invisible open:opacity-100 open:visible group overflow-y-auto overflow-x-hidden" data-theme="light">
-        <section class="bg-white overflow-y-auto p-16 relative max-w-[1360px] w-[calc(100%-5rem)] rounded-[1rem] z-1001">
-            <button class="close absolute right-0 w-24" aria-label="close modal"><img src="/static-assets/icons/close-icon.svg" alt="close"/></button>
+    <dialog
+        id="interstitial"
+        class="ie:hidden -desktop:hidden linux:hidden group overflow-x-hidden bg-white p-16 max-w-[1360px] w-[calc(100%-5rem)] rounded-[1rem]"
+        closedby="any"
+        data-theme="light"
+        aria-labelledby="interstitial-heading"
+    >
             <div class="layout">
-                <img src="/static-assets/images/brave-logo-sans-text.svg" alt="Brave logo" class="w-[42px]">
-                <h3 class="tracking-tighter text-6.5xl font-medium mt-[2.5rem] p-0 font-serif">Almost there…</h3>
+                <div class="flex items-center justify-between">
+                    <img src="/static-assets/images/brave-logo-sans-text.svg" alt="Brave logo" class="w-[42px]">
+                    <button type="button" class="inline-flex items-center justify-center w-11 h-11 -me-2" aria-label="close modal" command="close" commandfor="interstitial"><img src="/static-assets/icons/close-icon.svg" alt="close"/></button>
+                </div>
+                <h3 id="interstitial-heading" class="tracking-tighter text-6.5xl font-medium mt-[2.5rem] p-0 font-serif">Almost there…</h3>
                 <div class="-android:hidden">
                     <h4 class="text-3xl font-semibold leading-10 tracking-tighter max-w-[582px] mb-8 mt-4 p-0">
                         Please continue the installation of Brave in the
@@ -647,12 +654,11 @@ Support: <a href="https://community.brave.app/" target="_blank" rel="noopener">c
                 </div>
                 <p class="font-semibold leading-7 text-xl"><a href="https://support.brave.app/hc/articles/360025390311" target="_blank" rel="noopener">Need help?</a></p>
             </div>
-        </section>
         <div id="mobile-qr-banner" class="fixed right-0 top-[40%] hidden lg:flex justify-center text-center flex-wrap border-2 border-e-0 p-4 pe-8 max-w-[150px] rounded-s-[1rem] bg-white translate-x-full group-open:translate-x-0 transition-transform group-open:delay-[4000ms] duration-200 ease-in border-gray-800">
             <img class="h-20" src="/static-assets/images/interstitial-download-qr.png" alt="Download QR code" />
             <span class="uppercase font-bold text-sm leading-5">Scan to get the app</span>
         </div>
-    </div>
+    </dialog>
 
 
     
@@ -669,7 +675,10 @@ Support: <a href="https://community.brave.app/" target="_blank" rel="noopener">c
             <script src="/js/dev.730af03ea8ceb4d931331d7b8b5624ffabb540a8ce32625c718017c593720e4d.js" defer data-integrity="sha256-cwrwPqjOtNkxMx17i1Yk/6u1QKjOMmJccYAXxZNyDk0="></script>
         
             
-            <script src="/js/interstitial.ed54a6886dab8f7e38d1a18b72dd8100d64ccad1cb0094f216a5d86ebb5313f4.js" defer data-integrity="sha256-7VSmiG2rj3440aGLct2BANZMytHLAJTyFqXYbrtTE/Q="></script>
+            <script src="/js/download-interstitial.3f8d22367543318b52184eaa20940c22e494e8178a1ecf27b6b2c8daf6f2bb48.js" defer data-integrity="sha256-P40iNnVDMYtSGE6qIJQMIuSU6BeKHs8ntrLI2vbyu0g="></script>
+        
+            
+            <script src="/js/modal.859090ed55c89e45bc0087cd0ce7d71399d0a7af17de2d4718138389e2f65c8d.js" defer data-integrity="sha256-hZCQ7VXInkW8AIfNDOfXE5nQp68X3i1HGBODieL2XI0="></script>
         
             
             <script src="/js/navigation.64d33acd702cfd2fc482dab7059026714ac48beabd53cb01cc768b7ebfd5a09b.js" defer data-integrity="sha256-ZNM6zXAs/S/Egtq3BZAmcUrEi&#43;q9U8sBzHaLfr/VoJs="></script>
