@@ -81,7 +81,25 @@
 
 <!-- OpenAI Ads Measurement Pixel -->
 <script>
-!function(w,d,s,u){if(w.oaiq)return;var q=function(){q.q.push(arguments)};q.q=[];w.oaiq=q;var j=d.createElement(s);j.async=1;j.src=u;var f=d.getElementsByTagName(s)[0];f.parentNode.insertBefore(j,f)}(window,document,"script","https://bzrcdn.openai.com/sdk/oaiq.min.js");oaiq("init",{pixelId:"THNZa12VVHYQfe7iSTCLHa"});
+	(function(w, d, s, u) {
+		if (w.oaiq) return;
+		const q = function() { q.q.push(arguments); };
+		q.q = [];
+		w.oaiq = q;
+
+		// Consent is granted by default; an explicitly stored denial overrides it.
+		const storedConsent = readJsonStorage('consentMode');
+		const hasMarketingConsent = storedConsent === null || storedConsent.ad_storage === 'granted';
+		w.oaiq('consent', Boolean(hasMarketingConsent));
+
+		// Initialize the pixel. Pings will not be sent if consent becomes denied.
+		const script = d.createElement(s);
+		script.async = true;
+		script.src = u;
+		const firstScript = d.getElementsByTagName(s)[0];
+		firstScript.parentNode.insertBefore(script, firstScript);
+		w.oaiq('init', { pixelId: 'THNZa12VVHYQfe7iSTCLHa' });
+	})(window, document, 'script', 'https://bzrcdn.openai.com/sdk/oaiq.min.js');
 </script>
 <!-- End OpenAI Ads Measurement Pixel -->
  
@@ -270,7 +288,10 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
       <p>Bing is a web search engine owned and operated by Microsoft.</p>
       <p>Bing advertising cookies used for user tracking and ad targeting purposes.</p>
       <p><a href="https://privacy.microsoft.com/en-gb/privacystatement" target="_blank" rel="noopener" class="bodylink">More information on Bing cookies</a>.</p>
-      
+
+      <h3>OpenAI Ads Measurement</h3>
+      <p>We use OpenAI Ads Measurement to measure advertising conversions. This service may set cookies or use similar technologies when marketing cookies are accepted.</p>
+      <p><a href="https://openai.com/policies/privacy-policy/" target="_blank" rel="noopener" class="bodylink">More information on OpenAI privacy</a>.</p>
       
       <h3>Stripe</h3>
       <p>Stripe is used to make credit card payments. Stripe uses a cookie to remember who you are and to enable Wide Angle Software to process payments without storing any credit card information on its own servers.</p>
@@ -327,7 +348,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
         return null;
     }
 
-    // Set consent for both Google and Microsoft UET
+    // Set consent for Google, Microsoft UET, and OpenAI Ads Measurement
     function setConsent(consent) {
         const consentMode = {
         'ad_user_data': consent.marketing ? 'granted' : 'denied',
@@ -346,6 +367,11 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
         // Update Microsoft UET consent
         window.uetq.push('consent', 'update', uetConsentMode);
         localStorage.setItem('uetConsent', JSON.stringify(uetConsentMode));
+
+        // Update OpenAI consent
+        if (typeof window.oaiq === 'function') {
+            window.oaiq('consent', consent.marketing);
+        }
     }
 
     // ---- Updated decision logic ----
