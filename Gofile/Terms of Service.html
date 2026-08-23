@@ -65,19 +65,14 @@
       <!-- Boot skeleton; account rows render after boot. -->
       <div>
         <div id="account-list" class="flex max-h-60 flex-col gap-1 overflow-y-auto overscroll-y-contain">
-    <button type="button" data-account-id="c18d0e81-90af-4258-ab11-56861176b24f" class="group/acc relative flex w-full touch-pan-y items-center gap-3 rounded-xl px-3 py-2.5 text-left select-none touch-callout-none transition-colors duration-150 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-brand-400 lg:group-data-[collapsed=true]/sidebar:justify-center lg:group-data-[collapsed=true]/sidebar:px-2 bg-brand-500/10 shadow-[inset_0_0_0_1px_rgb(59_130_246/0.25)]" aria-current="true" aria-haspopup="menu" aria-expanded="false">
-      <span class="relative flex size-9 shrink-0 items-center justify-center">
-        <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAEAAAABACAYAAACqaXHeAAACW0lEQVR4AeyasU1tQQxEr24Hv4bfAiKlBGLKgIQugCogRlRAimiBAogo4aHJRkfIo9UlYddII9nPXnvXO8M+CfbPx5dThdvTw2kEVS3FUi3lVEjrGa9qKbZvi//0ABYnwLbfXX1sDg7k5un/VoH5Xusnu6ql2E9r/DP205oKzPdaslsCnNBqfjPgt2/8+fpsq5D6VWsVS+tH482A0YnNlt8MkK4cehtHwDf48v59q5AYVK1VjP1G9qpcP6vsZkC6kdnjyzGAF7pLVw5qjD4LSFeOlH/x9m+rwPqs571kp3yu97PKbgZwgqv5zQBqRLpyUK/M11vqSPnSXQXWZz3vJTvl+1lkM78ZsJrmed5mACdC//X8a3OMxqU7h3RbwXNlj/bzvcrmevrNAE5kNb8ZwBvnO8m4dOlgXLpzsF71HUAx5nst2ezne5HNOOsx3gzgRFbzp2dAutCd37XTAmrq6HrWS/3Z7+j6ZkCa+OzxZoDeXgdvnJpjXG+zQ29xBdajX61VzHvJ5n5Yj3E/q+xmACe0mt8M4I1LZw7pxMH8pLnRdzrlp36+V9l+FtncfzOAE1nNbwZQc8knQ/QWO7heunNIlxU8VzbreS/Z3A/zk98M4ARX86djwOgFxv8VTu9uivNvAGmDKT/1S3H9XnE0A9KNzB5vBqQb1lvrcP3I5puuzxypfop7Ldmpn+9VdqrfDEgTmj3eDOB3ZenMcZQB0qGD/eh7ruyj/f0sstmvGXB0wn99fTNAunCkG6WGku+1ZfO7On3lOFJ9xtP+vbbsZkCa2OzxP8+Aoxf0DQAA//8GPPEAAAAABklEQVQDAMsKVC2BsUOaAAAAAElFTkSuQmCC" alt="" width="36" height="36" draggable="false" class="size-9 rounded-full shadow-lg shadow-brand-950/50 ring-1 ring-brand-400/60">
-        
-        <span class="absolute -bottom-0.5 -right-0.5 size-2.5 rounded-full bg-brand-400 ring-2 ring-surface-raised" title="Active account"></span>
+    <button type="button" id="account-retry" class="flex w-full items-center gap-3 rounded-xl px-3 py-2.5 text-left transition-colors duration-150 hover:bg-white/5 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-brand-400 lg:group-data-[collapsed=true]/sidebar:justify-center lg:group-data-[collapsed=true]/sidebar:px-2">
+      <span class="flex size-9 shrink-0 items-center justify-center rounded-full bg-amber-500/15 text-amber-400 ring-1 ring-amber-500/30">
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" data-lucide="cloud-off" class="lucide lucide-cloud-off size-5" aria-hidden="true"><path d="m2 2 20 20"></path><path d="M5.782 5.782A7 7 0 0 0 9 19h8.5a4.5 4.5 0 0 0 1.307-.193"></path><path d="M21.532 16.5A4.5 4.5 0 0 0 17.5 10h-1.79A7.008 7.008 0 0 0 10 5.07"></path></svg>
       </span>
       <span class="min-w-0 flex-1 lg:group-data-[collapsed=true]/sidebar:hidden">
-        <span class="block truncate text-sm font-semibold text-white">Guest 5424598779</span>
-        <span class="block truncate text-xs text-slate-500">
-          Guest account
-        </span>
+        <span class="block truncate text-sm font-semibold text-white">No connection</span>
+        <span class="block truncate text-xs text-amber-400">Click to retry</span>
       </span>
-      <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" data-lucide="ellipsis-vertical" class="lucide lucide-ellipsis-vertical size-4 shrink-0 text-slate-500 lg:group-data-[collapsed=true]/sidebar:hidden" aria-hidden="true"><circle cx="12" cy="12" r="1"></circle><circle cx="12" cy="5" r="1"></circle><circle cx="12" cy="19" r="1"></circle></svg>
     </button>
   </div>
         <button id="add-account" type="button" class="mt-1 flex w-full items-center gap-3 rounded-xl border border-dashed border-white/15 px-3 py-2.5 text-sm font-medium text-slate-400 transition-colors duration-150 hover:border-white/30 hover:bg-white/5 hover:text-white focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-brand-400 lg:group-data-[collapsed=true]/sidebar:justify-center lg:group-data-[collapsed=true]/sidebar:border-transparent lg:group-data-[collapsed=true]/sidebar:px-2">
