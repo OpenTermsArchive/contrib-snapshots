@@ -65,14 +65,19 @@
       <!-- Boot skeleton; account rows render after boot. -->
       <div>
         <div id="account-list" class="flex max-h-60 flex-col gap-1 overflow-y-auto overscroll-y-contain">
-    <button type="button" id="account-retry" class="flex w-full items-center gap-3 rounded-xl px-3 py-2.5 text-left transition-colors duration-150 hover:bg-white/5 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-brand-400 lg:group-data-[collapsed=true]/sidebar:justify-center lg:group-data-[collapsed=true]/sidebar:px-2">
-      <span class="flex size-9 shrink-0 items-center justify-center rounded-full bg-amber-500/15 text-amber-400 ring-1 ring-amber-500/30">
-        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" data-lucide="cloud-off" class="lucide lucide-cloud-off size-5" aria-hidden="true"><path d="m2 2 20 20"></path><path d="M5.782 5.782A7 7 0 0 0 9 19h8.5a4.5 4.5 0 0 0 1.307-.193"></path><path d="M21.532 16.5A4.5 4.5 0 0 0 17.5 10h-1.79A7.008 7.008 0 0 0 10 5.07"></path></svg>
+    <button type="button" data-account-id="bd55864f-2017-4f33-b274-96ae3805bdc2" class="group/acc relative flex w-full touch-pan-y items-center gap-3 rounded-xl px-3 py-2.5 text-left select-none touch-callout-none transition-colors duration-150 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-brand-400 lg:group-data-[collapsed=true]/sidebar:justify-center lg:group-data-[collapsed=true]/sidebar:px-2 bg-brand-500/10 shadow-[inset_0_0_0_1px_rgb(59_130_246/0.25)]" aria-current="true" aria-haspopup="menu" aria-expanded="false">
+      <span class="relative flex size-9 shrink-0 items-center justify-center">
+        <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAEAAAABACAYAAACqaXHeAAACaklEQVR4AezYMW6UQQwF4F9/xwGoKdNyCioKTkFFxwEQB6Cj5BhUtNyALiUVEhxikbunL6vfWi1IyY4jWfKLPR6P573MZve3z76f0n79/nJK+/HyzenIMrd8c+t311hXz7jYvfOs5e/b4j8zgMUJsO0ff95vaQ7k8/37Lc34n1dft7Tn315vaV1+ri3f/KxVfuWkmZ+9lm88z1r+SMAJrYaHAR9e3G1H9u7u05bWMST1Wb61u/XmV420bn32Wr71xMOAbqK3Hh8GlE6OTAbUW5xmXFxvbVquPednbvnWE1vD+NHZKjYMcGKr4eUY4AU/GICaEuebXL5xceWk2YA4c8u3nrhy0oyL3e/BAEy4dTwDuPUb7s631//MaS7ws7Nxceqx/E6Drje/aqSZL+76zbOWPxJwgqvhYUB93k6TAfV5Oa3TqHE1mXo+55tvPdcYz17L9zx51vKHAU5oNTwM6G5cjXUatF7pMK3e3iPL3PKtd20/1hsGOJHV8M0zoLvQXU2LuwLGu/X19h7ZpfXMF9uPeBjgxFbDwwDfVd9oNfPYGWK/nsfzDgMe+43+7/6GAWrGN9obUEPGxea7n9h864m7fM/jfsMAJ7oaHgb4TqqRTmMdY6z3r/OtZ7/u73mHAU5wNXxzDLj0Avf63i3NAmpI7Pf4rleTxsVdvvvZj9j6edbyhwFOaDU8DOg057tpfukozXinSRlnvvVyr/KN26/1zR8GOKHV8DDAd1UGdP9PqynXG1ejYvO7ev7NsF/Xe95hgBNaDQ8D6i1NkwFqTI0a79bnXuf8S+td2o97DgO8sdXwk2fAtRf2FwAA//8yqmq/AAAABklEQVQDAJ6nPq3eaHI0AAAAAElFTkSuQmCC" alt="" width="36" height="36" draggable="false" class="size-9 rounded-full shadow-lg shadow-brand-950/50 ring-1 ring-brand-400/60">
+        
+        <span class="absolute -bottom-0.5 -right-0.5 size-2.5 rounded-full bg-brand-400 ring-2 ring-surface-raised" title="Active account"></span>
       </span>
       <span class="min-w-0 flex-1 lg:group-data-[collapsed=true]/sidebar:hidden">
-        <span class="block truncate text-sm font-semibold text-white">No connection</span>
-        <span class="block truncate text-xs text-amber-400">Click to retry</span>
+        <span class="block truncate text-sm font-semibold text-white">Guest 6370528885</span>
+        <span class="block truncate text-xs text-slate-500">
+          Guest account
+        </span>
       </span>
+      <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" data-lucide="ellipsis-vertical" class="lucide lucide-ellipsis-vertical size-4 shrink-0 text-slate-500 lg:group-data-[collapsed=true]/sidebar:hidden" aria-hidden="true"><circle cx="12" cy="12" r="1"></circle><circle cx="12" cy="5" r="1"></circle><circle cx="12" cy="19" r="1"></circle></svg>
     </button>
   </div>
         <button id="add-account" type="button" class="mt-1 flex w-full items-center gap-3 rounded-xl border border-dashed border-white/15 px-3 py-2.5 text-sm font-medium text-slate-400 transition-colors duration-150 hover:border-white/30 hover:bg-white/5 hover:text-white focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-brand-400 lg:group-data-[collapsed=true]/sidebar:justify-center lg:group-data-[collapsed=true]/sidebar:border-transparent lg:group-data-[collapsed=true]/sidebar:px-2">
