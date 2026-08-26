@@ -76,6 +76,18 @@
 	} else {
 		window.uetq.push('consent', 'update', storedUetConsent);
 	}
+	/* Capture Microsoft Click ID if user came from an ad, and store the ID as a cookie.
+	Cookie expires after 90 days and is overwritten with a new click ID */
+	if (storedUetConsent === null || storedUetConsent.ad_storage === 'granted') {
+		(function () {
+			var m = /[?&]msclkid=([^&]+)/.exec(location.search);
+			if (!m) return;
+			var d = new Date();
+			d.setTime(d.getTime() + 90 * 864e5);
+			document.cookie = 'msclkid=' + encodeURIComponent(m[1]) +
+				';expires=' + d.toUTCString() + ';path=/;SameSite=Lax';
+		})();
+	}
 </script>
 <!-- End Set default consent -->
 
@@ -367,6 +379,11 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
         // Update Microsoft UET consent
         window.uetq.push('consent', 'update', uetConsentMode);
         localStorage.setItem('uetConsent', JSON.stringify(uetConsentMode));
+
+        // Delete Microsoft Click ID cookie if consent declined
+        if (!consent.marketing) {
+            document.cookie = 'msclkid=;Max-Age=0;path=/;SameSite=Lax';
+        }
 
         // Update OpenAI consent
         if (typeof window.oaiq === 'function') {
