@@ -297,6 +297,9 @@ th, td {
 #lanyard_root * .ketch-relative {
   position: relative;
 }
+#lanyard_root * .ketch-sticky {
+  position: sticky;
+}
 #lanyard_root * .ketch-inset-0 {
   inset: 0;
 }
@@ -366,6 +369,9 @@ th, td {
 }
 #lanyard_root * .ketch-z-10 {
   z-index: 10;
+}
+#lanyard_root * .ketch-z-\[1\] {
+  z-index: 1;
 }
 #lanyard_root * .ketch-z-ketch-max-z-index {
   z-index: 2147483647;
@@ -456,14 +462,8 @@ th, td {
 #lanyard_root * .ketch-mt-1 {
   margin-top: 4px;
 }
-#lanyard_root * .ketch-mt-3 {
-  margin-top: 12px;
-}
 #lanyard_root * .ketch-mt-4 {
   margin-top: 16px;
-}
-#lanyard_root * .ketch-mt-5 {
-  margin-top: 20px;
 }
 #lanyard_root * .ketch-mt-8 {
   margin-top: 32px;
@@ -1979,9 +1979,6 @@ th, td {
 #lanyard_root * .ketch-pr-\[max\(16px\,var\(--safe-area-inset-right\)\)\] {
   padding-right: max(16px,var(--safe-area-inset-right));
 }
-#lanyard_root * .ketch-pt-0\.5 {
-  padding-top: 2px;
-}
 #lanyard_root * .ketch-pt-1 {
   padding-top: 4px;
 }
@@ -2002,6 +1999,12 @@ th, td {
 }
 #lanyard_root * .ketch-pt-\[--safe-area-inset-top\] {
   padding-top: var(--safe-area-inset-top);
+}
+#lanyard_root * .ketch-pt-\[14px\] {
+  padding-top: 14px;
+}
+#lanyard_root * .ketch-pt-\[22px\] {
+  padding-top: 22px;
 }
 #lanyard_root * .ketch-pt-\[max\(16px\,var\(--safe-area-inset-top\)\)\] {
   padding-top: max(16px,var(--safe-area-inset-top));
