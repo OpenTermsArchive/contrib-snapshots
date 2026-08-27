@@ -68,18 +68,6 @@
 	} else {
 		window.uetq.push('consent', 'update', storedUetConsent);
 	}
-	/* Capture Microsoft Click ID if user came from an ad, and store the ID as a cookie.
-	Cookie expires after 90 days and is overwritten with a new click ID */
-	if (storedUetConsent === null || storedUetConsent.ad_storage === 'granted') {
-		(function () {
-			var m = /[?&]msclkid=([^&]+)/.exec(location.search);
-			if (!m) return;
-			var d = new Date();
-			d.setTime(d.getTime() + 90 * 864e5);
-			document.cookie = 'msclkid=' + encodeURIComponent(m[1]) +
-				';expires=' + d.toUTCString() + ';path=/;SameSite=Lax';
-		})();
-	}
 </script>
 <!-- End Set default consent -->
 
@@ -394,6 +382,15 @@ and all Data collected by us in relation to your use of the Website. Wide Angle 
         return null;
     }
 
+    // ------------ msclkid changes start ------------
+    // New function: Set a browser cookie to store current consent setting
+    function setMarketingConsentCookie(granted) {
+        document.cookie =
+            'marketing_consent=' + (granted ? 'granted' : 'denied') +
+            ';path=/;max-age=31536000;SameSite=Lax';
+    }
+    // ------------ msclkid changes end ------------
+
     // Set consent for Google, Microsoft UET, and OpenAI Ads Measurement
     function setConsent(consent) {
         const consentMode = {
@@ -406,6 +403,17 @@ and all Data collected by us in relation to your use of the Website. Wide Angle 
         'ad_storage': consent.marketing ? 'granted' : 'denied'
         };
 
+        // ------------ msclkid changes start ------------
+        // ------------ deleting msclkid cookie ------------
+        // Store marketing consent in a cookie so PHP can read it
+        setMarketingConsentCookie(consent.marketing);
+        // If marketing consent is declined, remove any stored Microsoft Click ID
+        if (!consent.marketing) {
+            document.cookie =
+                'msclkid=;expires=Thu, 01 Jan 1970 00:00:00 GMT;path=/;SameSite=Lax';
+        }
+        // ------------ msclkid changes end ------------
+
         // Update Google consent
         gtag('consent', 'update', consentMode);
         localStorage.setItem('consentMode', JSON.stringify(consentMode));
@@ -413,11 +421,6 @@ and all Data collected by us in relation to your use of the Website. Wide Angle 
         // Update Microsoft UET consent
         window.uetq.push('consent', 'update', uetConsentMode);
         localStorage.setItem('uetConsent', JSON.stringify(uetConsentMode));
-
-        // Delete Microsoft Click ID cookie if consent declined
-        if (!consent.marketing) {
-            document.cookie = 'msclkid=;Max-Age=0;path=/;SameSite=Lax';
-        }
 
         // Update OpenAI consent
         if (typeof window.oaiq === 'function') {
