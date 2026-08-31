@@ -14,7 +14,7 @@
 
 </head>
 <body data-spm='8038972'><script>
-with(document)with(body)with(insertBefore(createElement("script"),firstChild))setAttribute("exparams","category=&userid=&aplus&yunid=&&trid=210313ec17881363395797810e0b6b&asid=AQAAAACTy5RqSY4pNwAAAAC93fp+88ShSA==",id="tb-beacon-aplus",src=(location>"https"?"//g":"//g")+".alicdn.com/alilog/mlog/aplus_v2.js")
+with(document)with(body)with(insertBefore(createElement("script"),firstChild))setAttribute("exparams","category=&userid=&aplus&yunid=&&trid=210313ea17881795389856905e0cee&asid=AQAAAABTdJVqMkU7RwAAAABhB2v7Nx6jJA==",id="tb-beacon-aplus",src=(location>"https"?"//g":"//g")+".alicdn.com/alilog/mlog/aplus_v2.js")
 </script>
 
 <script>
@@ -37,11 +37,135 @@ with(document)with(body)with(insertBefore(createElement("script"),firstChild))se
 </script>
 
     
-    
         
     
             
     
+<script>
+    (function () {
+        var serverRuleLanguageLocked = 'true' === 'true';
+        // Hash SPA 不会重新渲染 VM；详情与普通页面切换时刷新一次，以同步服务端规则语言状态。
+        var isNumericId = function (value) {
+            return /^\d+$/.test(value || '');
+        };
+        var syncRuleLanguageRoute = function () {
+            var hash = window.location.hash || '';
+            var hashQueryIndex = hash.indexOf('?');
+            var hashPath = hash.substring(1, hashQueryIndex < 0 ? hash.length : hashQueryIndex);
+            var hashParams = new URLSearchParams(hashQueryIndex < 0 ? '' : hash.substring(hashQueryIndex + 1));
+            var searchParams = new URLSearchParams(window.location.search);
+            var isRuleDetail = hashPath === '/rule/detail';
+
+            if (isRuleDetail) {
+                var hashRuleId = hashParams.get('ruleId');
+                var hashCategoryId = hashParams.get('cId');
+                if (isNumericId(hashRuleId) && isNumericId(hashCategoryId) &&
+                    (searchParams.get('type') !== 'detail' ||
+                        searchParams.get('ruleId') !== hashRuleId ||
+                        searchParams.get('cId') !== hashCategoryId)) {
+                    searchParams.set('type', 'detail');
+                    searchParams.set('ruleId', hashRuleId);
+                    searchParams.set('cId', hashCategoryId);
+                    replacePageSearch(searchParams, hash);
+                    return true;
+                }
+                return false;
+            }
+
+            if (serverRuleLanguageLocked || searchParams.get('type') === 'detail') {
+                searchParams.delete('type');
+                searchParams.delete('ruleId');
+                searchParams.delete('cId');
+                replacePageSearch(searchParams, hash);
+                return true;
+            }
+            return false;
+        };
+        var replacePageSearch = function (searchParams, hash) {
+            var search = searchParams.toString();
+            window.location.replace(
+                window.location.pathname + (search ? '?' + search : '') + hash
+            );
+        };
+
+        if (syncRuleLanguageRoute()) {
+            return;
+        }
+        window.addEventListener('hashchange', syncRuleLanguageRoute);
+
+        var createLanguageControl = function () {
+            var languageLabel = document.createElement('span');
+            languageLabel.className = 'rulechannel-language-control rulechannel-language-label';
+            languageLabel.textContent = 'en_US' === 'en_US' ? 'English' : '简体中文';
+            languageLabel.setAttribute('aria-label', 'Language');
+            return languageLabel;
+        };
+        var languageSwitcherObserver = new MutationObserver(function () {
+            var desktopLanguageContainer = document.querySelector(
+                '#J_SC_header .sc-hd-links-box .sc-hd-lan .J-header-lan'
+            );
+            var mobileLanguageContainer = document.querySelector(
+                '#J_SC_header .sc-hd-row.sc-hd-show-s .sc-hd-lan .J-header-lan'
+            );
+
+            if (desktopLanguageContainer) {
+                desktopLanguageContainer.parentNode.replaceChild(
+                    createLanguageControl(),
+                    desktopLanguageContainer
+                );
+            }
+
+            if (mobileLanguageContainer &&
+                !mobileLanguageContainer.parentNode.querySelector('.rulechannel-language-control')) {
+                mobileLanguageContainer.classList.add('rulechannel-language-placeholder');
+                mobileLanguageContainer.setAttribute('aria-hidden', 'true');
+                mobileLanguageContainer.parentNode.insertBefore(
+                    createLanguageControl(),
+                    mobileLanguageContainer
+                );
+            }
+
+            if (document.querySelector(
+                    '#J_SC_header .sc-hd-links-box .rulechannel-language-control'
+                ) && document.querySelector(
+                    '#J_SC_header .sc-hd-row.sc-hd-show-s .rulechannel-language-control'
+                )) {
+                languageSwitcherObserver.disconnect();
+            }
+        });
+        languageSwitcherObserver.observe(document.documentElement, {
+            childList: true,
+            subtree: true
+        });
+    })();
+</script>
+<style>
+    #J_SC_header .sc-hd-links-box .sc-hd-lan .J-header-lan,
+    #J_SC_header .sc-hd-row.sc-hd-show-s .sc-hd-lan .J-header-lan,
+    #J_SC_header .rulechannel-language-placeholder {
+        display: none !important;
+    }
+    #J_SC_header .rulechannel-language-select {
+        height: 36px;
+        padding: 0 8px;
+        border: 0;
+        background: transparent;
+        color: #333;
+        cursor: pointer;
+        font-size: 14px;
+        outline: none;
+    }
+    #J_SC_header .rulechannel-language-label {
+        display: inline-block;
+        height: 36px;
+        padding: 0 8px;
+        color: #333;
+        font-size: 14px;
+        line-height: 36px;
+        white-space: nowrap;
+    }
+</style>
+
         <!-- tangram:3772 begin-->
 
 
@@ -73,7 +197,7 @@ with(document)with(body)with(insertBefore(createElement("script"),firstChild))se
                 window.HEADER_DATA = window.HEADER_DATA || {};
                 window.HEADER_DATA["sc-header-config"] = window.HEADER_DATA["sc-header-config"] || {};
                 window.HEADER_DATA["sc-header-config"]["currentLocale"] = "en_US";
-                window.HEADER_DATA["sc-header-config"]["hdLanguageType"] = "ml_refresh";
+                window.HEADER_DATA["sc-header-config"]["hdLanguageType"] = "ml_reload";
                 window.HEADER_DATA["sc-header-config"]["languageMaps"] = {"en_US":"www","de_DE":"german","pt_PT":"portuguese","es_ES":"spanish","fr_FR":"french","it_IT":"italian","hi_IN":"hindi","ru_RU":"russian","ko_KR":"korean","ja_JP":"japanese","ar_SA":"arabic","th_TH":"thai","tr_TR":"turkish","vi_VN":"vietnamese","nl_NL":"dutch","iw_IL":"hebrew","in_ID":"indonesian"};
                 window.HEADER_DATA["sc-header-config"]["mod"] = window.HEADER_DATA["sc-header-config"]["mod"] || {};
                 window.HEADER_DATA["sc-header-config"]["mod"]["sundry"] = window.HEADER_DATA["sc-header-config"]["mod"]["sundry"] || [];
@@ -144,7 +268,7 @@ with(document)with(body)with(insertBefore(createElement("script"),firstChild))se
                 window.HEADER_DATA = window.HEADER_DATA || {};
                 window.HEADER_DATA["sc-header-config"] = window.HEADER_DATA["sc-header-config"] || {};
                 window.HEADER_DATA["sc-header-config"]["currentLocale"] = "en_US";
-                window.HEADER_DATA["sc-header-config"]["hdLanguageType"] = "ml_refresh";
+                window.HEADER_DATA["sc-header-config"]["hdLanguageType"] = "ml_reload";
                 window.HEADER_DATA["sc-header-config"]["languageMaps"] = {"en_US":"www","de_DE":"german","pt_PT":"portuguese","es_ES":"spanish","fr_FR":"french","it_IT":"italian","hi_IN":"hindi","ru_RU":"russian","ko_KR":"korean","ja_JP":"japanese","ar_SA":"arabic","th_TH":"thai","tr_TR":"turkish","vi_VN":"vietnamese","nl_NL":"dutch","iw_IL":"hebrew","in_ID":"indonesian"};
                 window.HEADER_DATA["sc-header-config"]["mod"] = window.HEADER_DATA["sc-header-config"]["mod"] || {};
                 window.HEADER_DATA["sc-header-config"]["mod"]["sundry"] = window.HEADER_DATA["sc-header-config"]["mod"]["sundry"] || [];
@@ -215,8 +339,7 @@ with(document)with(body)with(insertBefore(createElement("script"),firstChild))se
         
     window.HEADER_DATA['sc-header-config']['headertab-i18n'] = {"Products":"Products","manufactures":"Manufacturers"};
     window.HEADER_DATA['sc-header-config']['categories-i18n'] = {"allCategories":"All categories","viewMore":"View more","categories":"Categories"};
-            window.HEADER_DATA['sc-header-config']['currencyAB'] = true;
-        window.HEADER_DATA['sc-header-config']['currency-i18n'] = {"RegionalSettings":"Region settings","CountryRegion":"Ship to","PopularCountry":"Popular countries/regions","AllCountries":"All countries/regions","Language":"Language","Currency":"Currency","PopularCurrencies":"Popular currencies","AllCurrencies":"All currencies","Save":"Save","TypeYourCountryName":"Type your country/region name","TypeYourCurrencyName":"Type your currency name","CurrencyMessage":"The price for this currency is subject to change with foreign exchange rate. For reference only."};
+            window.HEADER_DATA['sc-header-config']['currency-i18n'] = {"RegionalSettings":"Region settings","CountryRegion":"Ship to","PopularCountry":"Popular countries/regions","AllCountries":"All countries/regions","Language":"Language","Currency":"Currency","PopularCurrencies":"Popular currencies","AllCurrencies":"All currencies","Save":"Save","TypeYourCountryName":"Type your country/region name","TypeYourCurrencyName":"Type your currency name","CurrencyMessage":"The price for this currency is subject to change with foreign exchange rate. For reference only."};
     window.HEADER_DATA['sc-header-config']['ship-to-i18n'] = {"Desc":"Delivery options and fees may vary based on your location","TypeYourCountryName":"Enter keyword to search.","ShipToTitle":"Ship to: ","Save":"Save","ZipPlaceholder":"Enter city or ZIP code","Add":"Add an address","SeeAll":"See all addresses","Title":"Choose your location","AllCountries":"All countries/regions","SignInTips":"Sign in to see your address","PopularCountry":"Popular countries/regions"};
     window.HEADER_DATA['sc-header-config']['currency-checkout'] = ['USD'];
                 (function(){
@@ -3127,20 +3250,6 @@ background-size: 10px 16px;
 <!-- tangram:4377 end-->
 
     <div id="app-root"></div>
-<script>
-    setTimeout((s) => {
-        var J = window.SCHeader.J;
-    J(window.SCHeader).on('languageChange', function (ev, params) {
-        ev.preventDefault();
-        params = params || {};
-        if (typeof(params.stopCall) == 'function') {
-            params.stopCall();
-        }
-        window.location.reload();
-    });
-    },3000);
-</script>
-
 
 <link rel="stylesheet" type="text/css" href="//g.alicdn.com/aidc-products-frontend/rule-taobao/0.1.2/icbu.css "/>
 <script src="//g.alicdn.com/aidc-products-frontend/rule-taobao/0.1.2/icbu.js" charset="utf-8" crossorigin="anonymous"></script>
