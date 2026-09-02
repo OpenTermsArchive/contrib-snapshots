@@ -38,12 +38,15 @@
 
     
 
-    <link rel="stylesheet" href="https://cdn.helpdocs.io/css/highlightjs-github-gist.min.css?v=a99fcab">
+
+    
+    <script src="https://cdn.helpdocs.io/js/js.cookie.min.js?v=1da3a62"></script>
+
+    <link id="gist-css" rel="stylesheet" href="https://cdn.helpdocs.io/css/highlightjs-github-gist.min.css?v=1da3a62" async>
 
     
 
 
-    
 
         <script type="text/javascript">
   window.hd_util_params = {
@@ -134,11 +137,10 @@
         </style>
     
 
-
-
-
-
-
+    
+    
+    
+    
     
 
     <meta property="hd-render" content="hbs">
@@ -286,7 +288,7 @@
                     />
           
                   <div class="text-yuka-gray font-open">
-                    Updated 1 week ago by Louise
+                    Updated 2 weeks ago by Louise
                   </div>
                 </div>
           
@@ -364,7 +366,7 @@
                     style="display: initial !important; visibility: visible !important; text-decoration: none !important;"
                   >
                     <img
-                      src="https://cdn.helpdocs.io/img/logo_grey.png?v=a99fcab"
+                      src="https://cdn.helpdocs.io/img/logo_grey.png?v=1da3a62"
                       alt="Powered by HelpDocs"
                       style="display: initial !important; visibility: visible !important; filter: brightness(0.6) !important; max-height: 30px !important;"
                     />
@@ -603,71 +605,21 @@
     </div>
 
 
-    <script src="https://cdn.helpdocs.io/js/js.cookie.min.js?v=a99fcab"></script>
 
-    <script src="https://cdn.helpdocs.io/js/highlight.min.js?v=a99fcab"></script>
+    <script src="https://cdn.helpdocs.io/js/highlight.min.js?v=1da3a62"></script>
 
-
-                                                            
-                
-
-    <script src="https://cdn.helpdocs.io/js/libs/hdanalytics.js?v=a99fcab" type="text/javascript"></script>
-    <script src="https://cdn.helpdocs.io/js/libs/instantsearch.js?v=a99fcab" type="text/javascript"></script>
+    
+                        
+        
+    <script src="https://cdn.helpdocs.io/js/libs/hdanalytics.js?v=1da3a62"></script>
+    <script src="https://cdn.helpdocs.io/js/libs/instantsearch.js?v=1da3a62"></script>
 
     
 
-    <script src="https://cdn.helpdocs.io/js/libs/hdthemeutils.js?v=a99fcab" type="text/javascript"></script>
+    <script src="https://cdn.helpdocs.io/js/libs/hdthemeutils.js?v=1da3a62"></script>
 
     
 
-    <script>
-      // ** Resize videos **
-      (function() {
-        function ready(fn) {
-          if (document.readyState != 'loading'){
-            fn();
-          } else if (document.addEventListener) {
-            document.addEventListener('DOMContentLoaded', fn);
-          } else {
-            document.attachEvent('onreadystatechange', function() {
-              if (document.readyState != 'loading')
-                fn();
-            });
-          }
-        }
-        ready(function () {
-          var allVideos = document.querySelectorAll('iframe[src*="//www.youtube.com"], iframe[src*="//player.vimeo.com"], .hd--embed iframe, .hd--embed span[id^="vidyard_span_"]');
-          if (allVideos.length < 1) return;
-          var isBackup = false;
 
-          var fluidEl = document.querySelector('#article .card-block');
-          // Might be V4+ style of template
-          if (!fluidEl) fluidEl = document.querySelector('#articleBody');
-          if (!fluidEl) {
-            isBackup = true;
-            fluidEl = document.querySelector('#article #body');
-          }
-
-          Array.prototype.forEach.call(allVideos, function(video) {
-            window.addEventListener('resize', function() {
-              // Only set aspect ratio on resize of window
-              video.setAttribute('aspectratio', (video.height / video.width) || 0.5625);
-              if (video.getAttribute('aspectratio')) {
-                video.removeAttribute('width');
-                video.removeAttribute('height');
-              }
-
-              var newWidth = fluidEl.offsetWidth - (isBackup ? 200 : 0);
-              if (!newWidth) return;
-              Array.prototype.forEach.call(allVideos, function(video) {
-                var ar = video.getAttribute('aspectratio');
-                video.setAttribute('width', newWidth);
-                video.setAttribute('height', newWidth * ar);
-              });
-            });
-          });
-        });
-      })();
-    </script>
   </body>
 </html>
