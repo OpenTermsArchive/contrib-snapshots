@@ -1,2776 +1,799 @@
 <!DOCTYPE html><html lang="en"><head>
-	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
-<meta http-equiv="x-ua-compatible" content="ie=edge"><meta name="description" content="Polyfill.io is a service which accepts a request for a set of browser features and returns only the polyfills that are needed by the requesting browser."><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"><title>Polyfill.io</title>
-	<link rel="canonical" href="https://polyfill.io/v3/terms" />
-<link rel="icon" type="image/svg" href="../img/logo.svg"><style>@charset "UTF-8";
-@layer pico {
-  /*!
- * Pico CSS v1.5.10 (https://picocss.com)
- * Copyright 2019-2023 - Licensed under MIT
- */
-  :root {
-    --font-family: system-ui, -apple-system, "Segoe UI", "Roboto", "Ubuntu",
-      "Cantarell", "Noto Sans", sans-serif, "Apple Color Emoji",
-      "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
-    --line-height: 1.5;
-    --font-weight: 400;
-    --font-size: 16px;
-    --border-radius: 0.25rem;
-    --border-width: 1px;
-    --outline-width: 3px;
-    --spacing: 1rem;
-    --typography-spacing-vertical: 1.5rem;
-    --block-spacing-vertical: calc(var(--spacing) * 2);
-    --block-spacing-horizontal: var(--spacing);
-    --grid-spacing-vertical: 0;
-    --grid-spacing-horizontal: var(--spacing);
-    --form-element-spacing-vertical: 0.75rem;
-    --form-element-spacing-horizontal: 1rem;
-    --nav-element-spacing-vertical: 1rem;
-    --nav-element-spacing-horizontal: 0.5rem;
-    --nav-link-spacing-vertical: 0.5rem;
-    --nav-link-spacing-horizontal: 0.5rem;
-    --form-label-font-weight: var(--font-weight);
-    --transition: 0.2s ease-in-out;
-    --modal-overlay-backdrop-filter: blur(0.25rem);
-  }
-  @media (min-width: 576px) {
-    :root {
-      --font-size: 17px;
-    }
-  }
-  @media (min-width: 768px) {
-    :root {
-      --font-size: 18px;
-    }
-  }
-  @media (min-width: 992px) {
-    :root {
-      --font-size: 19px;
-    }
-  }
-  @media (min-width: 1200px) {
-    :root {
-      --font-size: 20px;
-    }
-  }
-  @media (min-width: 576px) {
-    body > footer,
-    body > header,
-    body > main,
-    section {
-      --block-spacing-vertical: calc(var(--spacing) * 2.5);
-    }
-  }
-  @media (min-width: 768px) {
-    body > footer,
-    body > header,
-    body > main,
-    section {
-      --block-spacing-vertical: calc(var(--spacing) * 3);
-    }
-  }
-  @media (min-width: 992px) {
-    body > footer,
-    body > header,
-    body > main,
-    section {
-      --block-spacing-vertical: calc(var(--spacing) * 3.5);
-    }
-  }
-  @media (min-width: 1200px) {
-    body > footer,
-    body > header,
-    body > main,
-    section {
-      --block-spacing-vertical: calc(var(--spacing) * 4);
-    }
-  }
-  @media (min-width: 576px) {
-    article {
-      --block-spacing-horizontal: calc(var(--spacing) * 1.25);
-    }
-  }
-  @media (min-width: 768px) {
-    article {
-      --block-spacing-horizontal: calc(var(--spacing) * 1.5);
-    }
-  }
-  @media (min-width: 992px) {
-    article {
-      --block-spacing-horizontal: calc(var(--spacing) * 1.75);
-    }
-  }
-  @media (min-width: 1200px) {
-    article {
-      --block-spacing-horizontal: calc(var(--spacing) * 2);
-    }
-  }
-  dialog > article {
-    --block-spacing-vertical: calc(var(--spacing) * 2);
-    --block-spacing-horizontal: var(--spacing);
-  }
-  @media (min-width: 576px) {
-    dialog > article {
-      --block-spacing-vertical: calc(var(--spacing) * 2.5);
-      --block-spacing-horizontal: calc(var(--spacing) * 1.25);
-    }
-  }
-  @media (min-width: 768px) {
-    dialog > article {
-      --block-spacing-vertical: calc(var(--spacing) * 3);
-      --block-spacing-horizontal: calc(var(--spacing) * 1.5);
-    }
-  }
-  a {
-    --text-decoration: none;
-  }
-  a.contrast,
-  a.secondary {
-    --text-decoration: underline;
-  }
-  small {
-    --font-size: 0.875em;
-  }
-  h1,
-  h2,
-  h3,
-  h4,
-  h5,
-  h6 {
-    --font-weight: 700;
-  }
-  h1 {
-    --font-size: 2rem;
-    --typography-spacing-vertical: 3rem;
-  }
-  h2 {
-    --font-size: 1.75rem;
-    --typography-spacing-vertical: 2.625rem;
-  }
-  h3 {
-    --font-size: 1.5rem;
-    --typography-spacing-vertical: 2.25rem;
-  }
-  h4 {
-    --font-size: 1.25rem;
-    --typography-spacing-vertical: 1.874rem;
-  }
-  h5 {
-    --font-size: 1.125rem;
-    --typography-spacing-vertical: 1.6875rem;
-  }
-  [type="checkbox"],
-  [type="radio"] {
-    --border-width: 2px;
-  }
-  [type="checkbox"][role="switch"] {
-    --border-width: 3px;
-  }
-  tfoot td,
-  tfoot th,
-  thead td,
-  thead th {
-    --border-width: 3px;
-  }
-  :not(thead, tfoot) > * > td {
-    --font-size: 0.875em;
-  }
-  code,
-  kbd,
-  pre,
-  samp {
-    --font-family: "Menlo", "Consolas", "Roboto Mono", "Ubuntu Monospace",
-      "Noto Mono", "Oxygen Mono", "Liberation Mono", monospace,
-      "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol",
-      "Noto Color Emoji";
-  }
-  kbd {
-    --font-weight: bolder;
-  }
-  :root:not([data-theme="dark"]),
-  [data-theme="light"] {
-    --background-color: #fff;
-    --color: hsl(205, 20%, 32%);
-    --h1-color: hsl(205, 30%, 15%);
-    --h2-color: #24333e;
-    --h3-color: hsl(205, 25%, 23%);
-    --h4-color: #374956;
-    --h5-color: hsl(205, 20%, 32%);
-    --h6-color: #4d606d;
-    --muted-color: hsl(205, 10%, 50%);
-    --muted-border-color: hsl(205, 20%, 94%);
-    --primary: hsl(195, 85%, 41%);
-    --primary-hover: hsl(195, 90%, 32%);
-    --primary-focus: rgba(16, 149, 193, 0.125);
-    --primary-inverse: #fff;
-    --secondary: hsl(205, 15%, 41%);
-    --secondary-hover: hsl(205, 20%, 32%);
-    --secondary-focus: rgba(89, 107, 120, 0.125);
-    --secondary-inverse: #fff;
-    --contrast: hsl(205, 30%, 15%);
-    --contrast-hover: #000;
-    --contrast-focus: rgba(89, 107, 120, 0.125);
-    --contrast-inverse: #fff;
-    --mark-background-color: #fff2ca;
-    --mark-color: #543a26;
-    --ins-color: #388e3c;
-    --del-color: #c62828;
-    --blockquote-border-color: var(--muted-border-color);
-    --blockquote-footer-color: var(--muted-color);
-    --button-box-shadow: 0 0 0 rgba(0, 0, 0, 0);
-    --button-hover-box-shadow: 0 0 0 rgba(0, 0, 0, 0);
-    --form-element-background-color: transparent;
-    --form-element-border-color: hsl(205, 14%, 68%);
-    --form-element-color: var(--color);
-    --form-element-placeholder-color: var(--muted-color);
-    --form-element-active-background-color: transparent;
-    --form-element-active-border-color: var(--primary);
-    --form-element-focus-color: var(--primary-focus);
-    --form-element-disabled-background-color: hsl(205, 18%, 86%);
-    --form-element-disabled-border-color: hsl(205, 14%, 68%);
-    --form-element-disabled-opacity: 0.5;
-    --form-element-invalid-border-color: #c62828;
-    --form-element-invalid-active-border-color: #d32f2f;
-    --form-element-invalid-focus-color: rgba(211, 47, 47, 0.125);
-    --form-element-valid-border-color: #388e3c;
-    --form-element-valid-active-border-color: #43a047;
-    --form-element-valid-focus-color: rgba(67, 160, 71, 0.125);
-    --switch-background-color: hsl(205, 16%, 77%);
-    --switch-color: var(--primary-inverse);
-    --switch-checked-background-color: var(--primary);
-    --range-border-color: hsl(205, 18%, 86%);
-    --range-active-border-color: hsl(205, 16%, 77%);
-    --range-thumb-border-color: var(--background-color);
-    --range-thumb-color: var(--secondary);
-    --range-thumb-hover-color: var(--secondary-hover);
-    --range-thumb-active-color: var(--primary);
-    --table-border-color: var(--muted-border-color);
-    --table-row-stripped-background-color: #f6f8f9;
-    --code-background-color: hsl(205, 20%, 94%);
-    --code-color: var(--muted-color);
-    --code-kbd-background-color: var(--contrast);
-    --code-kbd-color: var(--contrast-inverse);
-    --code-tag-color: hsl(330, 40%, 50%);
-    --code-property-color: hsl(185, 40%, 40%);
-    --code-value-color: hsl(40, 20%, 50%);
-    --code-comment-color: hsl(205, 14%, 68%);
-    --accordion-border-color: var(--muted-border-color);
-    --accordion-close-summary-color: var(--color);
-    --accordion-open-summary-color: var(--muted-color);
-    --card-background-color: var(--background-color);
-    --card-border-color: var(--muted-border-color);
-    --card-box-shadow: 0.0145rem 0.029rem 0.174rem rgba(27, 40, 50, 0.01698),
-      0.0335rem 0.067rem 0.402rem rgba(27, 40, 50, 0.024),
-      0.0625rem 0.125rem 0.75rem rgba(27, 40, 50, 0.03),
-      0.1125rem 0.225rem 1.35rem rgba(27, 40, 50, 0.036),
-      0.2085rem 0.417rem 2.502rem rgba(27, 40, 50, 0.04302),
-      0.5rem 1rem 6rem rgba(27, 40, 50, 0.06),
-      0 0 0 0.0625rem rgba(27, 40, 50, 0.015);
-    --card-sectionning-background-color: #fbfbfc;
-    --dropdown-background-color: #fbfbfc;
-    --dropdown-border-color: #e1e6eb;
-    --dropdown-box-shadow: var(--card-box-shadow);
-    --dropdown-color: var(--color);
-    --dropdown-hover-background-color: hsl(205, 20%, 94%);
-    --modal-overlay-background-color: rgba(213, 220, 226, 0.7);
-    --progress-background-color: hsl(205, 18%, 86%);
-    --progress-color: var(--primary);
-    --loading-spinner-opacity: 0.5;
-    --tooltip-background-color: var(--contrast);
-    --tooltip-color: var(--contrast-inverse);
-    --icon-checkbox: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24' fill='none' stroke='rgb(255, 255, 255)' stroke-width='4' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='20 6 9 17 4 12'%3E%3C/polyline%3E%3C/svg%3E");
-    --icon-chevron: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24' fill='none' stroke='rgb(65, 84, 98)' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='6 9 12 15 18 9'%3E%3C/polyline%3E%3C/svg%3E");
-    --icon-chevron-button: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24' fill='none' stroke='rgb(255, 255, 255)' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='6 9 12 15 18 9'%3E%3C/polyline%3E%3C/svg%3E");
-    --icon-chevron-button-inverse: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24' fill='none' stroke='rgb(255, 255, 255)' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='6 9 12 15 18 9'%3E%3C/polyline%3E%3C/svg%3E");
-    --icon-close: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24' fill='none' stroke='rgb(115, 130, 140)' stroke-width='4' stroke-linecap='round' stroke-linejoin='round'%3E%3Cline x1='18' y1='6' x2='6' y2='18'%3E%3C/line%3E%3Cline x1='6' y1='6' x2='18' y2='18'%3E%3C/line%3E%3C/svg%3E");
-    --icon-date: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24' fill='none' stroke='rgb(65, 84, 98)' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Crect x='3' y='4' width='18' height='18' rx='2' ry='2'%3E%3C/rect%3E%3Cline x1='16' y1='2' x2='16' y2='6'%3E%3C/line%3E%3Cline x1='8' y1='2' x2='8' y2='6'%3E%3C/line%3E%3Cline x1='3' y1='10' x2='21' y2='10'%3E%3C/line%3E%3C/svg%3E");
-    --icon-invalid: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24' fill='none' stroke='rgb(198, 40, 40)' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Ccircle cx='12' cy='12' r='10'%3E%3C/circle%3E%3Cline x1='12' y1='8' x2='12' y2='12'%3E%3C/line%3E%3Cline x1='12' y1='16' x2='12.01' y2='16'%3E%3C/line%3E%3C/svg%3E");
-    --icon-minus: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24' fill='none' stroke='rgb(255, 255, 255)' stroke-width='4' stroke-linecap='round' stroke-linejoin='round'%3E%3Cline x1='5' y1='12' x2='19' y2='12'%3E%3C/line%3E%3C/svg%3E");
-    --icon-search: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24' fill='none' stroke='rgb(65, 84, 98)' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Ccircle cx='11' cy='11' r='8'%3E%3C/circle%3E%3Cline x1='21' y1='21' x2='16.65' y2='16.65'%3E%3C/line%3E%3C/svg%3E");
-    --icon-time: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24' fill='none' stroke='rgb(65, 84, 98)' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Ccircle cx='12' cy='12' r='10'%3E%3C/circle%3E%3Cpolyline points='12 6 12 12 16 14'%3E%3C/polyline%3E%3C/svg%3E");
-    --icon-valid: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24' fill='none' stroke='rgb(56, 142, 60)' stroke-width='3' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='20 6 9 17 4 12'%3E%3C/polyline%3E%3C/svg%3E");
-    color-scheme: light;
-  }
-  @media only screen and (prefers-color-scheme: dark) {
-    :root:not([data-theme]) {
-      --background-color: #11191f;
-      --color: hsl(205, 16%, 77%);
-      --h1-color: hsl(205, 20%, 94%);
-      --h2-color: #e1e6eb;
-      --h3-color: hsl(205, 18%, 86%);
-      --h4-color: #c8d1d8;
-      --h5-color: hsl(205, 16%, 77%);
-      --h6-color: #afbbc4;
-      --muted-color: hsl(205, 10%, 50%);
-      --muted-border-color: #1f2d38;
-      --primary: hsl(195, 85%, 41%);
-      --primary-hover: hsl(195, 80%, 50%);
-      --primary-focus: rgba(16, 149, 193, 0.25);
-      --primary-inverse: #fff;
-      --secondary: hsl(205, 15%, 41%);
-      --secondary-hover: hsl(205, 10%, 50%);
-      --secondary-focus: rgba(115, 130, 140, 0.25);
-      --secondary-inverse: #fff;
-      --contrast: hsl(205, 20%, 94%);
-      --contrast-hover: #fff;
-      --contrast-focus: rgba(115, 130, 140, 0.25);
-      --contrast-inverse: #000;
-      --mark-background-color: #d1c284;
-      --mark-color: #11191f;
-      --ins-color: #388e3c;
-      --del-color: #c62828;
-      --blockquote-border-color: var(--muted-border-color);
-      --blockquote-footer-color: var(--muted-color);
-      --button-box-shadow: 0 0 0 rgba(0, 0, 0, 0);
-      --button-hover-box-shadow: 0 0 0 rgba(0, 0, 0, 0);
-      --form-element-background-color: #11191f;
-      --form-element-border-color: #374956;
-      --form-element-color: var(--color);
-      --form-element-placeholder-color: var(--muted-color);
-      --form-element-active-background-color: var(
-        --form-element-background-color
-      );
-      --form-element-active-border-color: var(--primary);
-      --form-element-focus-color: var(--primary-focus);
-      --form-element-disabled-background-color: hsl(205, 25%, 23%);
-      --form-element-disabled-border-color: hsl(205, 20%, 32%);
-      --form-element-disabled-opacity: 0.5;
-      --form-element-invalid-border-color: #b71c1c;
-      --form-element-invalid-active-border-color: #c62828;
-      --form-element-invalid-focus-color: rgba(198, 40, 40, 0.25);
-      --form-element-valid-border-color: #2e7d32;
-      --form-element-valid-active-border-color: #388e3c;
-      --form-element-valid-focus-color: rgba(56, 142, 60, 0.25);
-      --switch-background-color: #374956;
-      --switch-color: var(--primary-inverse);
-      --switch-checked-background-color: var(--primary);
-      --range-border-color: #24333e;
-      --range-active-border-color: hsl(205, 25%, 23%);
-      --range-thumb-border-color: var(--background-color);
-      --range-thumb-color: var(--secondary);
-      --range-thumb-hover-color: var(--secondary-hover);
-      --range-thumb-active-color: var(--primary);
-      --table-border-color: var(--muted-border-color);
-      --table-row-stripped-background-color: rgba(115, 130, 140, 0.05);
-      --code-background-color: #18232c;
-      --code-color: var(--muted-color);
-      --code-kbd-background-color: var(--contrast);
-      --code-kbd-color: var(--contrast-inverse);
-      --code-tag-color: hsl(330, 30%, 50%);
-      --code-property-color: hsl(185, 30%, 50%);
-      --code-value-color: hsl(40, 10%, 50%);
-      --code-comment-color: #4d606d;
-      --accordion-border-color: var(--muted-border-color);
-      --accordion-active-summary-color: var(--primary);
-      --accordion-close-summary-color: var(--color);
-      --accordion-open-summary-color: var(--muted-color);
-      --card-background-color: #141e26;
-      --card-border-color: var(--card-background-color);
-      --card-box-shadow: 0.0145rem 0.029rem 0.174rem rgba(0, 0, 0, 0.01698),
-        0.0335rem 0.067rem 0.402rem rgba(0, 0, 0, 0.024),
-        0.0625rem 0.125rem 0.75rem rgba(0, 0, 0, 0.03),
-        0.1125rem 0.225rem 1.35rem rgba(0, 0, 0, 0.036),
-        0.2085rem 0.417rem 2.502rem rgba(0, 0, 0, 0.04302),
-        0.5rem 1rem 6rem rgba(0, 0, 0, 0.06),
-        0 0 0 0.0625rem rgba(0, 0, 0, 0.015);
-      --card-sectionning-background-color: #18232c;
-      --dropdown-background-color: hsl(205, 30%, 15%);
-      --dropdown-border-color: #24333e;
-      --dropdown-box-shadow: var(--card-box-shadow);
-      --dropdown-color: var(--color);
-      --dropdown-hover-background-color: rgba(36, 51, 62, 0.75);
-      --modal-overlay-background-color: rgba(36, 51, 62, 0.8);
-      --progress-background-color: #24333e;
-      --progress-color: var(--primary);
-      --loading-spinner-opacity: 0.5;
-      --tooltip-background-color: var(--contrast);
-      --tooltip-color: var(--contrast-inverse);
-      --icon-checkbox: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24' fill='none' stroke='rgb(255, 255, 255)' stroke-width='4' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='20 6 9 17 4 12'%3E%3C/polyline%3E%3C/svg%3E");
-      --icon-chevron: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24' fill='none' stroke='rgb(162, 175, 185)' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='6 9 12 15 18 9'%3E%3C/polyline%3E%3C/svg%3E");
-      --icon-chevron-button: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24' fill='none' stroke='rgb(255, 255, 255)' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='6 9 12 15 18 9'%3E%3C/polyline%3E%3C/svg%3E");
-      --icon-chevron-button-inverse: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24' fill='none' stroke='rgb(0, 0, 0)' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='6 9 12 15 18 9'%3E%3C/polyline%3E%3C/svg%3E");
-      --icon-close: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24' fill='none' stroke='rgb(115, 130, 140)' stroke-width='4' stroke-linecap='round' stroke-linejoin='round'%3E%3Cline x1='18' y1='6' x2='6' y2='18'%3E%3C/line%3E%3Cline x1='6' y1='6' x2='18' y2='18'%3E%3C/line%3E%3C/svg%3E");
-      --icon-date: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24' fill='none' stroke='rgb(162, 175, 185)' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Crect x='3' y='4' width='18' height='18' rx='2' ry='2'%3E%3C/rect%3E%3Cline x1='16' y1='2' x2='16' y2='6'%3E%3C/line%3E%3Cline x1='8' y1='2' x2='8' y2='6'%3E%3C/line%3E%3Cline x1='3' y1='10' x2='21' y2='10'%3E%3C/line%3E%3C/svg%3E");
-      --icon-invalid: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24' fill='none' stroke='rgb(183, 28, 28)' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Ccircle cx='12' cy='12' r='10'%3E%3C/circle%3E%3Cline x1='12' y1='8' x2='12' y2='12'%3E%3C/line%3E%3Cline x1='12' y1='16' x2='12.01' y2='16'%3E%3C/line%3E%3C/svg%3E");
-      --icon-minus: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24' fill='none' stroke='rgb(255, 255, 255)' stroke-width='4' stroke-linecap='round' stroke-linejoin='round'%3E%3Cline x1='5' y1='12' x2='19' y2='12'%3E%3C/line%3E%3C/svg%3E");
-      --icon-search: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24' fill='none' stroke='rgb(162, 175, 185)' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Ccircle cx='11' cy='11' r='8'%3E%3C/circle%3E%3Cline x1='21' y1='21' x2='16.65' y2='16.65'%3E%3C/line%3E%3C/svg%3E");
-      --icon-time: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24' fill='none' stroke='rgb(162, 175, 185)' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Ccircle cx='12' cy='12' r='10'%3E%3C/circle%3E%3Cpolyline points='12 6 12 12 16 14'%3E%3C/polyline%3E%3C/svg%3E");
-      --icon-valid: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24' fill='none' stroke='rgb(46, 125, 50)' stroke-width='3' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='20 6 9 17 4 12'%3E%3C/polyline%3E%3C/svg%3E");
-      color-scheme: dark;
-    }
-  }
-  [data-theme="dark"] {
-    --background-color: #11191f;
-    --color: hsl(205, 16%, 77%);
-    --h1-color: hsl(205, 20%, 94%);
-    --h2-color: #e1e6eb;
-    --h3-color: hsl(205, 18%, 86%);
-    --h4-color: #c8d1d8;
-    --h5-color: hsl(205, 16%, 77%);
-    --h6-color: #afbbc4;
-    --muted-color: hsl(205, 10%, 50%);
-    --muted-border-color: #1f2d38;
-    --primary: hsl(195, 85%, 41%);
-    --primary-hover: hsl(195, 80%, 50%);
-    --primary-focus: rgba(16, 149, 193, 0.25);
-    --primary-inverse: #fff;
-    --secondary: hsl(205, 15%, 41%);
-    --secondary-hover: hsl(205, 10%, 50%);
-    --secondary-focus: rgba(115, 130, 140, 0.25);
-    --secondary-inverse: #fff;
-    --contrast: hsl(205, 20%, 94%);
-    --contrast-hover: #fff;
-    --contrast-focus: rgba(115, 130, 140, 0.25);
-    --contrast-inverse: #000;
-    --mark-background-color: #d1c284;
-    --mark-color: #11191f;
-    --ins-color: #388e3c;
-    --del-color: #c62828;
-    --blockquote-border-color: var(--muted-border-color);
-    --blockquote-footer-color: var(--muted-color);
-    --button-box-shadow: 0 0 0 rgba(0, 0, 0, 0);
-    --button-hover-box-shadow: 0 0 0 rgba(0, 0, 0, 0);
-    --form-element-background-color: #11191f;
-    --form-element-border-color: #374956;
-    --form-element-color: var(--color);
-    --form-element-placeholder-color: var(--muted-color);
-    --form-element-active-background-color: var(
-      --form-element-background-color
-    );
-    --form-element-active-border-color: var(--primary);
-    --form-element-focus-color: var(--primary-focus);
-    --form-element-disabled-background-color: hsl(205, 25%, 23%);
-    --form-element-disabled-border-color: hsl(205, 20%, 32%);
-    --form-element-disabled-opacity: 0.5;
-    --form-element-invalid-border-color: #b71c1c;
-    --form-element-invalid-active-border-color: #c62828;
-    --form-element-invalid-focus-color: rgba(198, 40, 40, 0.25);
-    --form-element-valid-border-color: #2e7d32;
-    --form-element-valid-active-border-color: #388e3c;
-    --form-element-valid-focus-color: rgba(56, 142, 60, 0.25);
-    --switch-background-color: #374956;
-    --switch-color: var(--primary-inverse);
-    --switch-checked-background-color: var(--primary);
-    --range-border-color: #24333e;
-    --range-active-border-color: hsl(205, 25%, 23%);
-    --range-thumb-border-color: var(--background-color);
-    --range-thumb-color: var(--secondary);
-    --range-thumb-hover-color: var(--secondary-hover);
-    --range-thumb-active-color: var(--primary);
-    --table-border-color: var(--muted-border-color);
-    --table-row-stripped-background-color: rgba(115, 130, 140, 0.05);
-    --code-background-color: #18232c;
-    --code-color: var(--muted-color);
-    --code-kbd-background-color: var(--contrast);
-    --code-kbd-color: var(--contrast-inverse);
-    --code-tag-color: hsl(330, 30%, 50%);
-    --code-property-color: hsl(185, 30%, 50%);
-    --code-value-color: hsl(40, 10%, 50%);
-    --code-comment-color: #4d606d;
-    --accordion-border-color: var(--muted-border-color);
-    --accordion-active-summary-color: var(--primary);
-    --accordion-close-summary-color: var(--color);
-    --accordion-open-summary-color: var(--muted-color);
-    --card-background-color: #141e26;
-    --card-border-color: var(--card-background-color);
-    --card-box-shadow: 0.0145rem 0.029rem 0.174rem rgba(0, 0, 0, 0.01698),
-      0.0335rem 0.067rem 0.402rem rgba(0, 0, 0, 0.024),
-      0.0625rem 0.125rem 0.75rem rgba(0, 0, 0, 0.03),
-      0.1125rem 0.225rem 1.35rem rgba(0, 0, 0, 0.036),
-      0.2085rem 0.417rem 2.502rem rgba(0, 0, 0, 0.04302),
-      0.5rem 1rem 6rem rgba(0, 0, 0, 0.06), 0 0 0 0.0625rem rgba(0, 0, 0, 0.015);
-    --card-sectionning-background-color: #18232c;
-    --dropdown-background-color: hsl(205, 30%, 15%);
-    --dropdown-border-color: #24333e;
-    --dropdown-box-shadow: var(--card-box-shadow);
-    --dropdown-color: var(--color);
-    --dropdown-hover-background-color: rgba(36, 51, 62, 0.75);
-    --modal-overlay-background-color: rgba(36, 51, 62, 0.8);
-    --progress-background-color: #24333e;
-    --progress-color: var(--primary);
-    --loading-spinner-opacity: 0.5;
-    --tooltip-background-color: var(--contrast);
-    --tooltip-color: var(--contrast-inverse);
-    --icon-checkbox: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24' fill='none' stroke='rgb(255, 255, 255)' stroke-width='4' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='20 6 9 17 4 12'%3E%3C/polyline%3E%3C/svg%3E");
-    --icon-chevron: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24' fill='none' stroke='rgb(162, 175, 185)' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='6 9 12 15 18 9'%3E%3C/polyline%3E%3C/svg%3E");
-    --icon-chevron-button: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24' fill='none' stroke='rgb(255, 255, 255)' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='6 9 12 15 18 9'%3E%3C/polyline%3E%3C/svg%3E");
-    --icon-chevron-button-inverse: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24' fill='none' stroke='rgb(0, 0, 0)' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='6 9 12 15 18 9'%3E%3C/polyline%3E%3C/svg%3E");
-    --icon-close: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24' fill='none' stroke='rgb(115, 130, 140)' stroke-width='4' stroke-linecap='round' stroke-linejoin='round'%3E%3Cline x1='18' y1='6' x2='6' y2='18'%3E%3C/line%3E%3Cline x1='6' y1='6' x2='18' y2='18'%3E%3C/line%3E%3C/svg%3E");
-    --icon-date: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24' fill='none' stroke='rgb(162, 175, 185)' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Crect x='3' y='4' width='18' height='18' rx='2' ry='2'%3E%3C/rect%3E%3Cline x1='16' y1='2' x2='16' y2='6'%3E%3C/line%3E%3Cline x1='8' y1='2' x2='8' y2='6'%3E%3C/line%3E%3Cline x1='3' y1='10' x2='21' y2='10'%3E%3C/line%3E%3C/svg%3E");
-    --icon-invalid: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24' fill='none' stroke='rgb(183, 28, 28)' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Ccircle cx='12' cy='12' r='10'%3E%3C/circle%3E%3Cline x1='12' y1='8' x2='12' y2='12'%3E%3C/line%3E%3Cline x1='12' y1='16' x2='12.01' y2='16'%3E%3C/line%3E%3C/svg%3E");
-    --icon-minus: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24' fill='none' stroke='rgb(255, 255, 255)' stroke-width='4' stroke-linecap='round' stroke-linejoin='round'%3E%3Cline x1='5' y1='12' x2='19' y2='12'%3E%3C/line%3E%3C/svg%3E");
-    --icon-search: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24' fill='none' stroke='rgb(162, 175, 185)' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Ccircle cx='11' cy='11' r='8'%3E%3C/circle%3E%3Cline x1='21' y1='21' x2='16.65' y2='16.65'%3E%3C/line%3E%3C/svg%3E");
-    --icon-time: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24' fill='none' stroke='rgb(162, 175, 185)' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Ccircle cx='12' cy='12' r='10'%3E%3C/circle%3E%3Cpolyline points='12 6 12 12 16 14'%3E%3C/polyline%3E%3C/svg%3E");
-    --icon-valid: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24' fill='none' stroke='rgb(46, 125, 50)' stroke-width='3' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='20 6 9 17 4 12'%3E%3C/polyline%3E%3C/svg%3E");
-    color-scheme: dark;
-  }
-  [type="checkbox"],
-  [type="radio"],
-  [type="range"],
-  progress {
-    accent-color: var(--primary);
-  }
-  *,
-  ::after,
-  ::before {
-    box-sizing: border-box;
-    background-repeat: no-repeat;
-  }
-  ::after,
-  ::before {
-    text-decoration: inherit;
-    vertical-align: inherit;
-  }
-  :where(:root) {
-    -webkit-tap-highlight-color: transparent;
-    -webkit-text-size-adjust: 100%;
-    -moz-text-size-adjust: 100%;
-    text-size-adjust: 100%;
-    background-color: var(--background-color);
-    color: var(--color);
-    font-weight: var(--font-weight);
-    font-size: var(--font-size);
-    line-height: var(--line-height);
-    font-family: var(--font-family);
-    text-rendering: optimizeLegibility;
-    overflow-wrap: break-word;
-    cursor: default;
-    -moz-tab-size: 4;
-    -o-tab-size: 4;
-    tab-size: 4;
-  }
-  main {
-    display: block;
-  }
-  body {
-    width: 100%;
-    margin: 0;
-  }
-  body > footer,
-  body > header,
-  body > main {
-    width: 100%;
-    margin-right: auto;
-    margin-left: auto;
-    padding: var(--block-spacing-vertical) 0;
-  }
-  .container,
-  .container-fluid {
-    width: 100%;
-    margin-right: auto;
-    margin-left: auto;
-    padding-right: var(--spacing);
-    padding-left: var(--spacing);
-  }
-  @media (min-width: 576px) {
-    .container {
-      max-width: 510px;
-      padding-right: 0;
-      padding-left: 0;
-    }
-  }
-  @media (min-width: 768px) {
-    .container {
-      max-width: 700px;
-    }
-  }
-  @media (min-width: 992px) {
-    .container {
-      max-width: 920px;
-    }
-  }
-  @media (min-width: 1200px) {
-    .container {
-      max-width: 1130px;
-    }
-  }
-  section {
-    margin-bottom: var(--block-spacing-vertical);
-  }
-  .grid {
-    grid-column-gap: var(--grid-spacing-horizontal);
-    grid-row-gap: var(--grid-spacing-vertical);
-    display: grid;
-    grid-template-columns: 1fr;
-    margin: 0;
-  }
-  @media (min-width: 992px) {
-    .grid {
-      grid-template-columns: repeat(auto-fit, minmax(0%, 1fr));
-    }
-  }
-  .grid > * {
-    min-width: 0;
-  }
-  figure {
-    display: block;
-    margin: 0;
-    padding: 0;
-    overflow-x: auto;
-  }
-  figure figcaption {
-    padding: calc(var(--spacing) * 0.5) 0;
-    color: var(--muted-color);
-  }
-  b,
-  strong {
-    font-weight: bolder;
-  }
-  sub,
-  sup {
-    position: relative;
-    font-size: 0.75em;
-    line-height: 0;
-    vertical-align: baseline;
-  }
-  sub {
-    bottom: -0.25em;
-  }
-  sup {
-    top: -0.5em;
-  }
-  address,
-  blockquote,
-  dl,
-  figure,
-  form,
-  ol,
-  p,
-  pre,
-  table,
-  ul {
-    margin-top: 0;
-    margin-bottom: var(--typography-spacing-vertical);
-    color: var(--color);
-    font-style: normal;
-    font-weight: var(--font-weight);
-    font-size: var(--font-size);
-  }
-  [role="link"],
-  a {
-    --color: var(--primary);
-    --background-color: transparent;
-    outline: 0;
-    background-color: var(--background-color);
-    color: var(--color);
-    -webkit-text-decoration: var(--text-decoration);
-    text-decoration: var(--text-decoration);
-    transition: background-color var(--transition), color var(--transition),
-      box-shadow var(--transition), -webkit-text-decoration var(--transition);
-    transition: background-color var(--transition), color var(--transition),
-      text-decoration var(--transition), box-shadow var(--transition);
-    transition: background-color var(--transition), color var(--transition),
-      text-decoration var(--transition), box-shadow var(--transition),
-      -webkit-text-decoration var(--transition);
-  }
-  [role="link"]:is([aria-current], :hover, :active, :focus),
-  a:is([aria-current], :hover, :active, :focus) {
-    --color: var(--primary-hover);
-    --text-decoration: underline;
-  }
-  [role="link"]:focus,
-  a:focus {
-    --background-color: var(--primary-focus);
-  }
-  [role="link"].secondary,
-  a.secondary {
-    --color: var(--secondary);
-  }
-  [role="link"].secondary:is([aria-current], :hover, :active, :focus),
-  a.secondary:is([aria-current], :hover, :active, :focus) {
-    --color: var(--secondary-hover);
-  }
-  [role="link"].secondary:focus,
-  a.secondary:focus {
-    --background-color: var(--secondary-focus);
-  }
-  [role="link"].contrast,
-  a.contrast {
-    --color: var(--contrast);
-  }
-  [role="link"].contrast:is([aria-current], :hover, :active, :focus),
-  a.contrast:is([aria-current], :hover, :active, :focus) {
-    --color: var(--contrast-hover);
-  }
-  [role="link"].contrast:focus,
-  a.contrast:focus {
-    --background-color: var(--contrast-focus);
-  }
-  h1,
-  h2,
-  h3,
-  h4,
-  h5,
-  h6 {
-    margin-top: 0;
-    margin-bottom: var(--typography-spacing-vertical);
-    color: var(--color);
-    font-weight: var(--font-weight);
-    font-size: var(--font-size);
-    font-family: var(--font-family);
-  }
-  h1 {
-    --color: var(--h1-color);
-  }
-  h2 {
-    --color: var(--h2-color);
-  }
-  h3 {
-    --color: var(--h3-color);
-  }
-  h4 {
-    --color: var(--h4-color);
-  }
-  h5 {
-    --color: var(--h5-color);
-  }
-  h6 {
-    --color: var(--h6-color);
-  }
-  :where(address, blockquote, dl, figure, form, ol, p, pre, table, ul)
-    ~ :is(h1, h2, h3, h4, h5, h6) {
-    margin-top: var(--typography-spacing-vertical);
-  }
-  .headings,
-  hgroup {
-    margin-bottom: var(--typography-spacing-vertical);
-  }
-  .headings > *,
-  hgroup > * {
-    margin-bottom: 0;
-  }
-  .headings > :last-child,
-  hgroup > :last-child {
-    --color: var(--muted-color);
-    --font-weight: unset;
-    font-size: 1rem;
-    font-family: unset;
-  }
-  p {
-    margin-bottom: var(--typography-spacing-vertical);
-  }
-  small {
-    font-size: var(--font-size);
-  }
-  :where(dl, ol, ul) {
-    padding-right: 0;
-    padding-left: var(--spacing);
-    -webkit-padding-start: var(--spacing);
-    padding-inline-start: var(--spacing);
-    -webkit-padding-end: 0;
-    padding-inline-end: 0;
-  }
-  :where(dl, ol, ul) li {
-    margin-bottom: calc(var(--typography-spacing-vertical) * 0.25);
-  }
-  :where(dl, ol, ul) :is(dl, ol, ul) {
-    margin: 0;
-    margin-top: calc(var(--typography-spacing-vertical) * 0.25);
-  }
-  ul li {
-    list-style: square;
-  }
-  mark {
-    padding: 0.125rem 0.25rem;
-    background-color: var(--mark-background-color);
-    color: var(--mark-color);
-    vertical-align: baseline;
-  }
-  blockquote {
-    display: block;
-    margin: var(--typography-spacing-vertical) 0;
-    padding: var(--spacing);
-    border-right: none;
-    border-left: 0.25rem solid var(--blockquote-border-color);
-    -webkit-border-start: 0.25rem solid var(--blockquote-border-color);
-    border-inline-start: 0.25rem solid var(--blockquote-border-color);
-    -webkit-border-end: none;
-    border-inline-end: none;
-  }
-  blockquote footer {
-    margin-top: calc(var(--typography-spacing-vertical) * 0.5);
-    color: var(--blockquote-footer-color);
-  }
-  abbr[title] {
-    border-bottom: 1px dotted;
-    text-decoration: none;
-    cursor: help;
-  }
-  ins {
-    color: var(--ins-color);
-    text-decoration: none;
-  }
-  del {
-    color: var(--del-color);
-  }
-  ::-moz-selection {
-    background-color: var(--primary-focus);
-  }
-  ::selection {
-    background-color: var(--primary-focus);
-  }
-  :where(audio, canvas, iframe, img, svg, video) {
-    vertical-align: middle;
-  }
-  audio,
-  video {
-    display: inline-block;
-  }
-  audio:not([controls]) {
-    display: none;
-    height: 0;
-  }
-  :where(iframe) {
-    border-style: none;
-  }
-  img {
-    max-width: 100%;
-    height: auto;
-    border-style: none;
-  }
-  :where(svg:not([fill])) {
-    fill: currentColor;
-  }
-  svg:not(:root) {
-    overflow: hidden;
-  }
-  button {
-    margin: 0;
-    overflow: visible;
-    font-family: inherit;
-    text-transform: none;
-  }
-  [type="button"],
-  [type="reset"],
-  [type="submit"],
-  button {
-    -webkit-appearance: button;
-  }
-  button {
-    display: block;
-    width: 100%;
-    margin-bottom: var(--spacing);
-  }
-  [role="button"] {
-    display: inline-block;
-    text-decoration: none;
-  }
-  [role="button"],
-  button,
-  input[type="button"],
-  input[type="reset"],
-  input[type="submit"] {
-    --background-color: var(--primary);
-    --border-color: var(--primary);
-    --color: var(--primary-inverse);
-    --box-shadow: var(--button-box-shadow, 0 0 0 rgba(0, 0, 0, 0));
-    padding: var(--form-element-spacing-vertical)
-      var(--form-element-spacing-horizontal);
-    border: var(--border-width) solid var(--border-color);
-    border-radius: var(--border-radius);
-    outline: 0;
-    background-color: var(--background-color);
-    box-shadow: var(--box-shadow);
-    color: var(--color);
-    font-weight: var(--font-weight);
-    font-size: 1rem;
-    line-height: var(--line-height);
-    text-align: center;
-    cursor: pointer;
-    transition: background-color var(--transition),
-      border-color var(--transition), color var(--transition),
-      box-shadow var(--transition);
-  }
-  [role="button"]:is([aria-current], :hover, :active, :focus),
-  button:is([aria-current], :hover, :active, :focus),
-  input[type="button"]:is([aria-current], :hover, :active, :focus),
-  input[type="reset"]:is([aria-current], :hover, :active, :focus),
-  input[type="submit"]:is([aria-current], :hover, :active, :focus) {
-    --background-color: var(--primary-hover);
-    --border-color: var(--primary-hover);
-    --box-shadow: var(--button-hover-box-shadow, 0 0 0 rgba(0, 0, 0, 0));
-    --color: var(--primary-inverse);
-  }
-  [role="button"]:focus,
-  button:focus,
-  input[type="button"]:focus,
-  input[type="reset"]:focus,
-  input[type="submit"]:focus {
-    --box-shadow: var(--button-hover-box-shadow, 0 0 0 rgba(0, 0, 0, 0)),
-      0 0 0 var(--outline-width) var(--primary-focus);
-  }
-  :is(button, input[type="submit"], input[type="button"], [role="button"]).secondary,
-  input[type="reset"] {
-    --background-color: var(--secondary);
-    --border-color: var(--secondary);
-    --color: var(--secondary-inverse);
-    cursor: pointer;
-  }
-  :is(button, input[type="submit"], input[type="button"], [role="button"]).secondary:is([aria-current], :hover, :active, :focus),
-  input[type="reset"]:is([aria-current], :hover, :active, :focus) {
-    --background-color: var(--secondary-hover);
-    --border-color: var(--secondary-hover);
-    --color: var(--secondary-inverse);
-  }
-  :is(button, input[type="submit"], input[type="button"], [role="button"]).secondary:focus,
-  input[type="reset"]:focus {
-    --box-shadow: var(--button-hover-box-shadow, 0 0 0 rgba(0, 0, 0, 0)),
-      0 0 0 var(--outline-width) var(--secondary-focus);
-  }
-  :is(button, input[type="submit"], input[type="button"], [role="button"]).contrast {
-    --background-color: var(--contrast);
-    --border-color: var(--contrast);
-    --color: var(--contrast-inverse);
-  }
-  :is(button, input[type="submit"], input[type="button"], [role="button"]).contrast:is([aria-current], :hover, :active, :focus) {
-    --background-color: var(--contrast-hover);
-    --border-color: var(--contrast-hover);
-    --color: var(--contrast-inverse);
-  }
-  :is(button, input[type="submit"], input[type="button"], [role="button"]).contrast:focus {
-    --box-shadow: var(--button-hover-box-shadow, 0 0 0 rgba(0, 0, 0, 0)),
-      0 0 0 var(--outline-width) var(--contrast-focus);
-  }
-  :is(button, input[type="submit"], input[type="button"], [role="button"]).outline,
-  input[type="reset"].outline {
-    --background-color: transparent;
-    --color: var(--primary);
-  }
-  :is(button, input[type="submit"], input[type="button"], [role="button"]).outline:is([aria-current], :hover, :active, :focus),
-  input[type="reset"].outline:is([aria-current], :hover, :active, :focus) {
-    --background-color: transparent;
-    --color: var(--primary-hover);
-  }
-  :is(button, input[type="submit"], input[type="button"], [role="button"]).outline.secondary,
-  input[type="reset"].outline {
-    --color: var(--secondary);
-  }
-  :is(button, input[type="submit"], input[type="button"], [role="button"]).outline.secondary:is([aria-current], :hover, :active, :focus),
-  input[type="reset"].outline:is([aria-current], :hover, :active, :focus) {
-    --color: var(--secondary-hover);
-  }
-  :is(button, input[type="submit"], input[type="button"], [role="button"]).outline.contrast {
-    --color: var(--contrast);
-  }
-  :is(button, input[type="submit"], input[type="button"], [role="button"]).outline.contrast:is([aria-current], :hover, :active, :focus) {
-    --color: var(--contrast-hover);
-  }
-  :where(button, [type="submit"], [type="button"], [type="reset"], [role="button"])[disabled],
-  :where(fieldset[disabled])
-    :is(button, [type="submit"], [type="button"], [type="reset"], [role="button"]),
-  a[role="button"]:not([href]) {
-    opacity: 0.5;
-    pointer-events: none;
-  }
-  input,
-  optgroup,
-  select,
-  textarea {
-    margin: 0;
-    font-size: 1rem;
-    line-height: var(--line-height);
-    font-family: inherit;
-    letter-spacing: inherit;
-  }
-  input {
-    overflow: visible;
-  }
-  select {
-    text-transform: none;
-  }
-  legend {
-    max-width: 100%;
-    padding: 0;
-    color: inherit;
-    white-space: normal;
-  }
-  textarea {
-    overflow: auto;
-  }
-  [type="checkbox"],
-  [type="radio"] {
-    padding: 0;
-  }
-  ::-webkit-inner-spin-button,
-  ::-webkit-outer-spin-button {
-    height: auto;
-  }
-  [type="search"] {
-    -webkit-appearance: textfield;
-    outline-offset: -2px;
-  }
-  [type="search"]::-webkit-search-decoration {
-    -webkit-appearance: none;
-  }
-  ::-webkit-file-upload-button {
-    -webkit-appearance: button;
-    font: inherit;
-  }
-  ::-moz-focus-inner {
-    padding: 0;
-    border-style: none;
-  }
-  :-moz-focusring {
-    outline: 0;
-  }
-  :-moz-ui-invalid {
-    box-shadow: none;
-  }
-  ::-ms-expand {
-    display: none;
-  }
-  [type="file"],
-  [type="range"] {
-    padding: 0;
-    border-width: 0;
-  }
-  input:not([type="checkbox"], [type="radio"], [type="range"]) {
-    height: calc(
-      1rem * var(--line-height) + var(--form-element-spacing-vertical) * 2 +
-        var(--border-width) * 2
-    );
-  }
-  fieldset {
-    margin: 0;
-    margin-bottom: var(--spacing);
-    padding: 0;
-    border: 0;
-  }
-  fieldset legend,
-  label {
-    display: block;
-    margin-bottom: calc(var(--spacing) * 0.25);
-    font-weight: var(--form-label-font-weight, var(--font-weight));
-  }
-  input:not([type="checkbox"], [type="radio"]),
-  select,
-  textarea {
-    width: 100%;
-  }
-  input:not([type="checkbox"], [type="radio"], [type="range"], [type="file"]),
-  select,
-  textarea {
-    -webkit-appearance: none;
-    -moz-appearance: none;
-    appearance: none;
-    padding: var(--form-element-spacing-vertical)
-      var(--form-element-spacing-horizontal);
-  }
-  input,
-  select,
-  textarea {
-    --background-color: var(--form-element-background-color);
-    --border-color: var(--form-element-border-color);
-    --color: var(--form-element-color);
-    --box-shadow: none;
-    border: var(--border-width) solid var(--border-color);
-    border-radius: var(--border-radius);
-    outline: 0;
-    background-color: var(--background-color);
-    box-shadow: var(--box-shadow);
-    color: var(--color);
-    font-weight: var(--font-weight);
-    transition: background-color var(--transition),
-      border-color var(--transition), color var(--transition),
-      box-shadow var(--transition);
-  }
-  :where(select, textarea):is(:active, :focus),
-  input:not([type="submit"], [type="button"], [type="reset"], [type="checkbox"], [type="radio"], [readonly]):is(:active, :focus) {
-    --background-color: var(--form-element-active-background-color);
-  }
-  :where(select, textarea):is(:active, :focus),
-  input:not([type="submit"], [type="button"], [type="reset"], [role="switch"], [readonly]):is(:active, :focus) {
-    --border-color: var(--form-element-active-border-color);
-  }
-  input:not([type="submit"], [type="button"], [type="reset"], [type="range"], [type="file"], [readonly]):focus,
-  select:focus,
-  textarea:focus {
-    --box-shadow: 0 0 0 var(--outline-width) var(--form-element-focus-color);
-  }
-  :where(fieldset[disabled])
-    :is(input:not([type="submit"], [type="button"], [type="reset"]), select, textarea),
-  input:not([type="submit"], [type="button"], [type="reset"])[disabled],
-  select[disabled],
-  textarea[disabled] {
-    --background-color: var(--form-element-disabled-background-color);
-    --border-color: var(--form-element-disabled-border-color);
-    opacity: var(--form-element-disabled-opacity);
-    pointer-events: none;
-  }
-  :where(input, select, textarea):not([type="checkbox"], [type="radio"], [type="date"], [type="datetime-local"], [type="month"], [type="time"], [type="week"])[aria-invalid] {
-    padding-right: calc(
-      var(--form-element-spacing-horizontal) + 1.5rem
-    ) !important;
-    padding-left: var(--form-element-spacing-horizontal);
-    -webkit-padding-start: var(--form-element-spacing-horizontal) !important;
-    padding-inline-start: var(--form-element-spacing-horizontal) !important;
-    -webkit-padding-end: calc(
-      var(--form-element-spacing-horizontal) + 1.5rem
-    ) !important;
-    padding-inline-end: calc(
-      var(--form-element-spacing-horizontal) + 1.5rem
-    ) !important;
-    background-position: center right 0.75rem;
-    background-size: 1rem auto;
-    background-repeat: no-repeat;
-  }
-  :where(input, select, textarea):not([type="checkbox"], [type="radio"], [type="date"], [type="datetime-local"], [type="month"], [type="time"], [type="week"])[aria-invalid="false"] {
-    background-image: var(--icon-valid);
-  }
-  :where(input, select, textarea):not([type="checkbox"], [type="radio"], [type="date"], [type="datetime-local"], [type="month"], [type="time"], [type="week"])[aria-invalid="true"] {
-    background-image: var(--icon-invalid);
-  }
-  :where(input, select, textarea)[aria-invalid="false"] {
-    --border-color: var(--form-element-valid-border-color);
-  }
-  :where(input, select, textarea)[aria-invalid="false"]:is(:active, :focus) {
-    --border-color: var(--form-element-valid-active-border-color) !important;
-    --box-shadow: 0 0 0 var(--outline-width)
-      var(--form-element-valid-focus-color) !important;
-  }
-  :where(input, select, textarea)[aria-invalid="true"] {
-    --border-color: var(--form-element-invalid-border-color);
-  }
-  :where(input, select, textarea)[aria-invalid="true"]:is(:active, :focus) {
-    --border-color: var(--form-element-invalid-active-border-color) !important;
-    --box-shadow: 0 0 0 var(--outline-width)
-      var(--form-element-invalid-focus-color) !important;
-  }
-  [dir="rtl"]
-    :where(input, select, textarea):not([type="checkbox"], [type="radio"]):is([aria-invalid], [aria-invalid="true"], [aria-invalid="false"]) {
-    background-position: center left 0.75rem;
-  }
-  input::-webkit-input-placeholder,
-  input::placeholder,
-  select:invalid,
-  textarea::-webkit-input-placeholder,
-  textarea::placeholder {
-    color: var(--form-element-placeholder-color);
-    opacity: 1;
-  }
-  input:not([type="checkbox"], [type="radio"]),
-  select,
-  textarea {
-    margin-bottom: var(--spacing);
-  }
-  select::-ms-expand {
-    border: 0;
-    background-color: transparent;
-  }
-  select:not([multiple], [size]) {
-    padding-right: calc(var(--form-element-spacing-horizontal) + 1.5rem);
-    padding-left: var(--form-element-spacing-horizontal);
-    -webkit-padding-start: var(--form-element-spacing-horizontal);
-    padding-inline-start: var(--form-element-spacing-horizontal);
-    -webkit-padding-end: calc(var(--form-element-spacing-horizontal) + 1.5rem);
-    padding-inline-end: calc(var(--form-element-spacing-horizontal) + 1.5rem);
-    background-image: var(--icon-chevron);
-    background-position: center right 0.75rem;
-    background-size: 1rem auto;
-    background-repeat: no-repeat;
-  }
-  [dir="rtl"] select:not([multiple], [size]) {
-    background-position: center left 0.75rem;
-  }
-  :where(input, select, textarea, .grid) + small {
-    display: block;
-    width: 100%;
-    margin-top: calc(var(--spacing) * -0.75);
-    margin-bottom: var(--spacing);
-    color: var(--muted-color);
-  }
-  label > :where(input, select, textarea) {
-    margin-top: calc(var(--spacing) * 0.25);
-  }
-  [type="checkbox"],
-  [type="radio"] {
-    -webkit-appearance: none;
-    -moz-appearance: none;
-    appearance: none;
-    width: 1.25em;
-    height: 1.25em;
-    margin-top: -0.125em;
-    margin-right: 0.375em;
-    margin-left: 0;
-    -webkit-margin-start: 0;
-    margin-inline-start: 0;
-    -webkit-margin-end: 0.375em;
-    margin-inline-end: 0.375em;
-    border-width: var(--border-width);
-    font-size: inherit;
-    vertical-align: middle;
-    cursor: pointer;
-  }
-  [type="checkbox"]::-ms-check,
-  [type="radio"]::-ms-check {
-    display: none;
-  }
-  [type="checkbox"]:checked,
-  [type="checkbox"]:checked:active,
-  [type="checkbox"]:checked:focus,
-  [type="radio"]:checked,
-  [type="radio"]:checked:active,
-  [type="radio"]:checked:focus {
-    --background-color: var(--primary);
-    --border-color: var(--primary);
-    background-image: var(--icon-checkbox);
-    background-position: center;
-    background-size: 0.75em auto;
-    background-repeat: no-repeat;
-  }
-  [type="checkbox"] ~ label,
-  [type="radio"] ~ label {
-    display: inline-block;
-    margin-right: 0.375em;
-    margin-bottom: 0;
-    cursor: pointer;
-  }
-  [type="checkbox"]:indeterminate {
-    --background-color: var(--primary);
-    --border-color: var(--primary);
-    background-image: var(--icon-minus);
-    background-position: center;
-    background-size: 0.75em auto;
-    background-repeat: no-repeat;
-  }
-  [type="radio"] {
-    border-radius: 50%;
-  }
-  [type="radio"]:checked,
-  [type="radio"]:checked:active,
-  [type="radio"]:checked:focus {
-    --background-color: var(--primary-inverse);
-    border-width: 0.35em;
-    background-image: none;
-  }
-  [type="checkbox"][role="switch"] {
-    --background-color: var(--switch-background-color);
-    --border-color: var(--switch-background-color);
-    --color: var(--switch-color);
-    width: 2.25em;
-    height: 1.25em;
-    border: var(--border-width) solid var(--border-color);
-    border-radius: 1.25em;
-    background-color: var(--background-color);
-    line-height: 1.25em;
-  }
-  [type="checkbox"][role="switch"]:focus {
-    --background-color: var(--switch-background-color);
-    --border-color: var(--switch-background-color);
-  }
-  [type="checkbox"][role="switch"]:checked {
-    --background-color: var(--switch-checked-background-color);
-    --border-color: var(--switch-checked-background-color);
-  }
-  [type="checkbox"][role="switch"]:before {
-    display: block;
-    width: calc(1.25em - (var(--border-width) * 2));
-    height: 100%;
-    border-radius: 50%;
-    background-color: var(--color);
-    content: "";
-    transition: margin 0.1s ease-in-out;
-  }
-  [type="checkbox"][role="switch"]:checked {
-    background-image: none;
-  }
-  [type="checkbox"][role="switch"]:checked::before {
-    margin-left: calc(1.125em - var(--border-width));
-    -webkit-margin-start: calc(1.125em - var(--border-width));
-    margin-inline-start: calc(1.125em - var(--border-width));
-  }
-  [type="checkbox"]:checked[aria-invalid="false"],
-  [type="checkbox"][aria-invalid="false"],
-  [type="checkbox"][role="switch"]:checked[aria-invalid="false"],
-  [type="checkbox"][role="switch"][aria-invalid="false"],
-  [type="radio"]:checked[aria-invalid="false"],
-  [type="radio"][aria-invalid="false"] {
-    --border-color: var(--form-element-valid-border-color);
-  }
-  [type="checkbox"]:checked[aria-invalid="true"],
-  [type="checkbox"][aria-invalid="true"],
-  [type="checkbox"][role="switch"]:checked[aria-invalid="true"],
-  [type="checkbox"][role="switch"][aria-invalid="true"],
-  [type="radio"]:checked[aria-invalid="true"],
-  [type="radio"][aria-invalid="true"] {
-    --border-color: var(--form-element-invalid-border-color);
-  }
-  [type="color"]::-webkit-color-swatch-wrapper {
-    padding: 0;
-  }
-  [type="color"]::-moz-focus-inner {
-    padding: 0;
-  }
-  [type="color"]::-webkit-color-swatch {
-    border: 0;
-    border-radius: calc(var(--border-radius) * 0.5);
-  }
-  [type="color"]::-moz-color-swatch {
-    border: 0;
-    border-radius: calc(var(--border-radius) * 0.5);
-  }
-  input:not([type="checkbox"], [type="radio"], [type="range"], [type="file"]):is([type="date"], [type="datetime-local"], [type="month"], [type="time"], [type="week"]) {
-    --icon-position: 0.75rem;
-    --icon-width: 1rem;
-    padding-right: calc(var(--icon-width) + var(--icon-position));
-    background-image: var(--icon-date);
-    background-position: center right var(--icon-position);
-    background-size: var(--icon-width) auto;
-    background-repeat: no-repeat;
-  }
-  input:not([type="checkbox"], [type="radio"], [type="range"], [type="file"])[type="time"] {
-    background-image: var(--icon-time);
-  }
-  [type="date"]::-webkit-calendar-picker-indicator,
-  [type="datetime-local"]::-webkit-calendar-picker-indicator,
-  [type="month"]::-webkit-calendar-picker-indicator,
-  [type="time"]::-webkit-calendar-picker-indicator,
-  [type="week"]::-webkit-calendar-picker-indicator {
-    width: var(--icon-width);
-    margin-right: calc(var(--icon-width) * -1);
-    margin-left: var(--icon-position);
-    opacity: 0;
-  }
-  [dir="rtl"]
-    :is([type="date"], [type="datetime-local"], [type="month"], [type="time"], [type="week"]) {
-    text-align: right;
-  }
-  @-moz-document url-prefix() {
-    [type="date"],
-    [type="datetime-local"],
-    [type="month"],
-    [type="time"],
-    [type="week"] {
-      padding-right: var(--form-element-spacing-horizontal) !important;
-      background-image: none !important;
-    }
-  }
-  [type="file"] {
-    --color: var(--muted-color);
-    padding: calc(var(--form-element-spacing-vertical) * 0.5) 0;
-    border: 0;
-    border-radius: 0;
-    background: 0 0;
-  }
-  [type="file"]::file-selector-button {
-    --background-color: var(--secondary);
-    --border-color: var(--secondary);
-    --color: var(--secondary-inverse);
-    margin-right: calc(var(--spacing) / 2);
-    margin-left: 0;
-    -webkit-margin-start: 0;
-    margin-inline-start: 0;
-    -webkit-margin-end: calc(var(--spacing) / 2);
-    margin-inline-end: calc(var(--spacing) / 2);
-    padding: calc(var(--form-element-spacing-vertical) * 0.5)
-      calc(var(--form-element-spacing-horizontal) * 0.5);
-    border: var(--border-width) solid var(--border-color);
-    border-radius: var(--border-radius);
-    outline: 0;
-    background-color: var(--background-color);
-    box-shadow: var(--box-shadow);
-    color: var(--color);
-    font-weight: var(--font-weight);
-    font-size: 1rem;
-    line-height: var(--line-height);
-    text-align: center;
-    cursor: pointer;
-    transition: background-color var(--transition),
-      border-color var(--transition), color var(--transition),
-      box-shadow var(--transition);
-  }
-  [type="file"]::file-selector-button:is(:hover, :active, :focus) {
-    --background-color: var(--secondary-hover);
-    --border-color: var(--secondary-hover);
-  }
-  [type="file"]::-webkit-file-upload-button {
-    --background-color: var(--secondary);
-    --border-color: var(--secondary);
-    --color: var(--secondary-inverse);
-    margin-right: calc(var(--spacing) / 2);
-    margin-left: 0;
-    -webkit-margin-start: 0;
-    margin-inline-start: 0;
-    -webkit-margin-end: calc(var(--spacing) / 2);
-    margin-inline-end: calc(var(--spacing) / 2);
-    padding: calc(var(--form-element-spacing-vertical) * 0.5)
-      calc(var(--form-element-spacing-horizontal) * 0.5);
-    border: var(--border-width) solid var(--border-color);
-    border-radius: var(--border-radius);
-    outline: 0;
-    background-color: var(--background-color);
-    box-shadow: var(--box-shadow);
-    color: var(--color);
-    font-weight: var(--font-weight);
-    font-size: 1rem;
-    line-height: var(--line-height);
-    text-align: center;
-    cursor: pointer;
-    -webkit-transition: background-color var(--transition),
-      border-color var(--transition), color var(--transition),
-      box-shadow var(--transition);
-    transition: background-color var(--transition),
-      border-color var(--transition), color var(--transition),
-      box-shadow var(--transition);
-  }
-  [type="file"]::-webkit-file-upload-button:is(:hover, :active, :focus) {
-    --background-color: var(--secondary-hover);
-    --border-color: var(--secondary-hover);
-  }
-  [type="file"]::-ms-browse {
-    --background-color: var(--secondary);
-    --border-color: var(--secondary);
-    --color: var(--secondary-inverse);
-    margin-right: calc(var(--spacing) / 2);
-    margin-left: 0;
-    margin-inline-start: 0;
-    margin-inline-end: calc(var(--spacing) / 2);
-    padding: calc(var(--form-element-spacing-vertical) * 0.5)
-      calc(var(--form-element-spacing-horizontal) * 0.5);
-    border: var(--border-width) solid var(--border-color);
-    border-radius: var(--border-radius);
-    outline: 0;
-    background-color: var(--background-color);
-    box-shadow: var(--box-shadow);
-    color: var(--color);
-    font-weight: var(--font-weight);
-    font-size: 1rem;
-    line-height: var(--line-height);
-    text-align: center;
-    cursor: pointer;
-    -ms-transition: background-color var(--transition),
-      border-color var(--transition), color var(--transition),
-      box-shadow var(--transition);
-    transition: background-color var(--transition),
-      border-color var(--transition), color var(--transition),
-      box-shadow var(--transition);
-  }
-  [type="file"]::-ms-browse:is(:hover, :active, :focus) {
-    --background-color: var(--secondary-hover);
-    --border-color: var(--secondary-hover);
-  }
-  [type="range"] {
-    -webkit-appearance: none;
-    -moz-appearance: none;
-    appearance: none;
-    width: 100%;
-    height: 1.25rem;
-    background: 0 0;
-  }
-  [type="range"]::-webkit-slider-runnable-track {
-    width: 100%;
-    height: 0.25rem;
-    border-radius: var(--border-radius);
-    background-color: var(--range-border-color);
-    -webkit-transition: background-color var(--transition),
-      box-shadow var(--transition);
-    transition: background-color var(--transition), box-shadow var(--transition);
-  }
-  [type="range"]::-moz-range-track {
-    width: 100%;
-    height: 0.25rem;
-    border-radius: var(--border-radius);
-    background-color: var(--range-border-color);
-    -moz-transition: background-color var(--transition),
-      box-shadow var(--transition);
-    transition: background-color var(--transition), box-shadow var(--transition);
-  }
-  [type="range"]::-ms-track {
-    width: 100%;
-    height: 0.25rem;
-    border-radius: var(--border-radius);
-    background-color: var(--range-border-color);
-    -ms-transition: background-color var(--transition),
-      box-shadow var(--transition);
-    transition: background-color var(--transition), box-shadow var(--transition);
-  }
-  [type="range"]::-webkit-slider-thumb {
-    -webkit-appearance: none;
-    width: 1.25rem;
-    height: 1.25rem;
-    margin-top: -0.5rem;
-    border: 2px solid var(--range-thumb-border-color);
-    border-radius: 50%;
-    background-color: var(--range-thumb-color);
-    cursor: pointer;
-    -webkit-transition: background-color var(--transition),
-      transform var(--transition);
-    transition: background-color var(--transition), transform var(--transition);
-  }
-  [type="range"]::-moz-range-thumb {
-    -webkit-appearance: none;
-    width: 1.25rem;
-    height: 1.25rem;
-    margin-top: -0.5rem;
-    border: 2px solid var(--range-thumb-border-color);
-    border-radius: 50%;
-    background-color: var(--range-thumb-color);
-    cursor: pointer;
-    -moz-transition: background-color var(--transition),
-      transform var(--transition);
-    transition: background-color var(--transition), transform var(--transition);
-  }
-  [type="range"]::-ms-thumb {
-    -webkit-appearance: none;
-    width: 1.25rem;
-    height: 1.25rem;
-    margin-top: -0.5rem;
-    border: 2px solid var(--range-thumb-border-color);
-    border-radius: 50%;
-    background-color: var(--range-thumb-color);
-    cursor: pointer;
-    -ms-transition: background-color var(--transition),
-      transform var(--transition);
-    transition: background-color var(--transition), transform var(--transition);
-  }
-  [type="range"]:focus,
-  [type="range"]:hover {
-    --range-border-color: var(--range-active-border-color);
-    --range-thumb-color: var(--range-thumb-hover-color);
-  }
-  [type="range"]:active {
-    --range-thumb-color: var(--range-thumb-active-color);
-  }
-  [type="range"]:active::-webkit-slider-thumb {
-    transform: scale(1.25);
-  }
-  [type="range"]:active::-moz-range-thumb {
-    transform: scale(1.25);
-  }
-  [type="range"]:active::-ms-thumb {
-    transform: scale(1.25);
-  }
-  input:not([type="checkbox"], [type="radio"], [type="range"], [type="file"])[type="search"] {
-    -webkit-padding-start: calc(
-      var(--form-element-spacing-horizontal) + 1.75rem
-    );
-    padding-inline-start: calc(
-      var(--form-element-spacing-horizontal) + 1.75rem
-    );
-    border-radius: 5rem;
-    background-image: var(--icon-search);
-    background-position: center left 1.125rem;
-    background-size: 1rem auto;
-    background-repeat: no-repeat;
-  }
-  input:not([type="checkbox"], [type="radio"], [type="range"], [type="file"])[type="search"][aria-invalid] {
-    -webkit-padding-start: calc(
-      var(--form-element-spacing-horizontal) + 1.75rem
-    ) !important;
-    padding-inline-start: calc(
-      var(--form-element-spacing-horizontal) + 1.75rem
-    ) !important;
-    background-position: center left 1.125rem, center right 0.75rem;
-  }
-  input:not([type="checkbox"], [type="radio"], [type="range"], [type="file"])[type="search"][aria-invalid="false"] {
-    background-image: var(--icon-search), var(--icon-valid);
-  }
-  input:not([type="checkbox"], [type="radio"], [type="range"], [type="file"])[type="search"][aria-invalid="true"] {
-    background-image: var(--icon-search), var(--icon-invalid);
-  }
-  [type="search"]::-webkit-search-cancel-button {
-    -webkit-appearance: none;
-    display: none;
-  }
-  [dir="rtl"]
-    :where(input):not([type="checkbox"], [type="radio"], [type="range"], [type="file"])[type="search"] {
-    background-position: center right 1.125rem;
-  }
-  [dir="rtl"]
-    :where(input):not([type="checkbox"], [type="radio"], [type="range"], [type="file"])[type="search"][aria-invalid] {
-    background-position: center right 1.125rem, center left 0.75rem;
-  }
-  :where(table) {
-    width: 100%;
-    border-collapse: collapse;
-    border-spacing: 0;
-    text-indent: 0;
-  }
-  td,
-  th {
-    padding: calc(var(--spacing) / 2) var(--spacing);
-    border-bottom: var(--border-width) solid var(--table-border-color);
-    color: var(--color);
-    font-weight: var(--font-weight);
-    font-size: var(--font-size);
-    text-align: left;
-    text-align: start;
-  }
-  tfoot td,
-  tfoot th {
-    border-top: var(--border-width) solid var(--table-border-color);
-    border-bottom: 0;
-  }
-  table[role="grid"] tbody tr:nth-child(odd) {
-    background-color: var(--table-row-stripped-background-color);
-  }
-  code,
-  kbd,
-  pre,
-  samp {
-    font-size: 0.875em;
-    font-family: var(--font-family);
-  }
-  pre {
-    -ms-overflow-style: scrollbar;
-    overflow: auto;
-  }
-  code,
-  kbd,
-  pre {
-    border-radius: var(--border-radius);
-    background: var(--code-background-color);
-    color: var(--code-color);
-    font-weight: var(--font-weight);
-    line-height: initial;
-  }
-  code,
-  kbd {
-    display: inline-block;
-    padding: 0.375rem 0.5rem;
-  }
-  pre {
-    display: block;
-    margin-bottom: var(--spacing);
-    overflow-x: auto;
-  }
-  pre > code {
-    display: block;
-    padding: var(--spacing);
-    background: 0 0;
-    font-size: 14px;
-    line-height: var(--line-height);
-  }
-  code b {
-    color: var(--code-tag-color);
-    font-weight: var(--font-weight);
-  }
-  code i {
-    color: var(--code-property-color);
-    font-style: normal;
-  }
-  code u {
-    color: var(--code-value-color);
-    text-decoration: none;
-  }
-  code em {
-    color: var(--code-comment-color);
-    font-style: normal;
-  }
-  kbd {
-    background-color: var(--code-kbd-background-color);
-    color: var(--code-kbd-color);
-    vertical-align: baseline;
-  }
-  hr {
-    height: 0;
-    border: 0;
-    border-top: 1px solid var(--muted-border-color);
-    color: inherit;
-  }
-  [hidden],
-  template {
-    display: none !important;
-  }
-  canvas {
-    display: inline-block;
-  }
-  details {
-    display: block;
-    margin-bottom: var(--spacing);
-    padding-bottom: var(--spacing);
-    border-bottom: var(--border-width) solid var(--accordion-border-color);
-  }
-  details summary {
-    line-height: 1rem;
-    list-style-type: none;
-    cursor: pointer;
-    transition: color var(--transition);
-  }
-  details summary:not([role]) {
-    color: var(--accordion-close-summary-color);
-  }
-  details summary::-webkit-details-marker {
-    display: none;
-  }
-  details summary::marker {
-    display: none;
-  }
-  details summary::-moz-list-bullet {
-    list-style-type: none;
-  }
-  details summary::after {
-    display: block;
-    width: 1rem;
-    height: 1rem;
-    -webkit-margin-start: calc(var(--spacing, 1rem) * 0.5);
-    margin-inline-start: calc(var(--spacing, 1rem) * 0.5);
-    float: right;
-    transform: rotate(-90deg);
-    background-image: var(--icon-chevron);
-    background-position: right center;
-    background-size: 1rem auto;
-    background-repeat: no-repeat;
-    content: "";
-    transition: transform var(--transition);
-  }
-  details summary:focus {
-    outline: 0;
-  }
-  details summary:focus:not([role="button"]) {
-    color: var(--accordion-active-summary-color);
-  }
-  details summary[role="button"] {
-    width: 100%;
-    text-align: left;
-  }
-  details summary[role="button"]::after {
-    height: calc(1rem * var(--line-height, 1.5));
-    background-image: var(--icon-chevron-button);
-  }
-  details summary[role="button"]:not(.outline).contrast::after {
-    background-image: var(--icon-chevron-button-inverse);
-  }
-  details[open] > summary {
-    margin-bottom: calc(var(--spacing));
-  }
-  details[open] > summary:not([role]):not(:focus) {
-    color: var(--accordion-open-summary-color);
-  }
-  details[open] > summary::after {
-    transform: rotate(0);
-  }
-  [dir="rtl"] details summary {
-    text-align: right;
-  }
-  [dir="rtl"] details summary::after {
-    float: left;
-    background-position: left center;
-  }
-  article {
-    margin: var(--block-spacing-vertical) 0;
-    padding: var(--block-spacing-vertical) var(--block-spacing-horizontal);
-    border-radius: var(--border-radius);
-    background: var(--card-background-color);
-    box-shadow: var(--card-box-shadow);
-  }
-  article > footer,
-  article > header {
-    margin-right: calc(var(--block-spacing-horizontal) * -1);
-    margin-left: calc(var(--block-spacing-horizontal) * -1);
-    padding: calc(var(--block-spacing-vertical) * 0.66)
-      var(--block-spacing-horizontal);
-    background-color: var(--card-sectionning-background-color);
-  }
-  article > header {
-    margin-top: calc(var(--block-spacing-vertical) * -1);
-    margin-bottom: var(--block-spacing-vertical);
-    border-bottom: var(--border-width) solid var(--card-border-color);
-    border-top-right-radius: var(--border-radius);
-    border-top-left-radius: var(--border-radius);
-  }
-  article > footer {
-    margin-top: var(--block-spacing-vertical);
-    margin-bottom: calc(var(--block-spacing-vertical) * -1);
-    border-top: var(--border-width) solid var(--card-border-color);
-    border-bottom-right-radius: var(--border-radius);
-    border-bottom-left-radius: var(--border-radius);
-  }
-  :root {
-    --scrollbar-width: 0px;
-  }
-  dialog {
-    display: flex;
-    z-index: 999;
-    position: fixed;
-    top: 0;
-    right: 0;
-    bottom: 0;
-    left: 0;
-    align-items: center;
-    justify-content: center;
-    width: inherit;
-    min-width: 100%;
-    height: inherit;
-    min-height: 100%;
-    padding: var(--spacing);
-    border: 0;
-    -webkit-backdrop-filter: var(--modal-overlay-backdrop-filter);
-    backdrop-filter: var(--modal-overlay-backdrop-filter);
-    background-color: var(--modal-overlay-background-color);
-    color: var(--color);
-  }
-  dialog article {
-    max-height: calc(100vh - var(--spacing) * 2);
-    overflow: auto;
-  }
-  @media (min-width: 576px) {
-    dialog article {
-      max-width: 510px;
-    }
-  }
-  @media (min-width: 768px) {
-    dialog article {
-      max-width: 700px;
-    }
-  }
-  dialog article > footer,
-  dialog article > header {
-    padding: calc(var(--block-spacing-vertical) * 0.5)
-      var(--block-spacing-horizontal);
-  }
-  dialog article > header .close {
-    margin: 0;
-    margin-left: var(--spacing);
-    float: right;
-  }
-  dialog article > footer {
-    text-align: right;
-  }
-  dialog article > footer [role="button"] {
-    margin-bottom: 0;
-  }
-  dialog article > footer [role="button"]:not(:first-of-type) {
-    margin-left: calc(var(--spacing) * 0.5);
-  }
-  dialog article p:last-of-type {
-    margin: 0;
-  }
-  dialog article .close {
-    display: block;
-    width: 1rem;
-    height: 1rem;
-    margin-top: calc(var(--block-spacing-vertical) * -0.5);
-    margin-bottom: var(--typography-spacing-vertical);
-    margin-left: auto;
-    background-image: var(--icon-close);
-    background-position: center;
-    background-size: auto 1rem;
-    background-repeat: no-repeat;
-    opacity: 0.5;
-    transition: opacity var(--transition);
-  }
-  dialog article .close:is([aria-current], :hover, :active, :focus) {
-    opacity: 1;
-  }
-  dialog:not([open]),
-  dialog[open="false"] {
-    display: none;
-  }
-  .modal-is-open {
-    padding-right: var(--scrollbar-width, 0);
-    overflow: hidden;
-    pointer-events: none;
-    touch-action: none;
-  }
-  .modal-is-open dialog {
-    pointer-events: auto;
-  }
-  :where(.modal-is-opening, .modal-is-closing) dialog,
-  :where(.modal-is-opening, .modal-is-closing) dialog > article {
-    animation-duration: 0.2s;
-    animation-timing-function: ease-in-out;
-    animation-fill-mode: both;
-  }
-  :where(.modal-is-opening, .modal-is-closing) dialog {
-    animation-duration: 0.8s;
-    animation-name: modal-overlay;
-  }
-  :where(.modal-is-opening, .modal-is-closing) dialog > article {
-    animation-delay: 0.2s;
-    animation-name: modal;
-  }
-  .modal-is-closing dialog,
-  .modal-is-closing dialog > article {
-    animation-delay: 0s;
-    animation-direction: reverse;
-  }
-  @keyframes modal-overlay {
-    from {
-      -webkit-backdrop-filter: none;
-      backdrop-filter: none;
-      background-color: transparent;
-    }
-  }
-  @keyframes modal {
-    from {
-      transform: translateY(-100%);
-      opacity: 0;
-    }
-  }
-  :where(nav li)::before {
-    float: left;
-    content: "​";
-  }
-  nav,
-  nav ul {
-    display: flex;
-  }
-  nav {
-    justify-content: space-between;
-  }
-  nav ol,
-  nav ul {
-    align-items: center;
-    margin-bottom: 0;
-    padding: 0;
-    list-style: none;
-  }
-  nav ol:first-of-type,
-  nav ul:first-of-type {
-    margin-left: calc(var(--nav-element-spacing-horizontal) * -1);
-  }
-  nav ol:last-of-type,
-  nav ul:last-of-type {
-    margin-right: calc(var(--nav-element-spacing-horizontal) * -1);
-  }
-  nav li {
-    display: inline-block;
-    margin: 0;
-    padding: var(--nav-element-spacing-vertical)
-      var(--nav-element-spacing-horizontal);
-  }
-  nav li > * {
-    --spacing: 0;
-  }
-  nav :where(a, [role="link"]) {
-    display: inline-block;
-    margin: calc(var(--nav-link-spacing-vertical) * -1)
-      calc(var(--nav-link-spacing-horizontal) * -1);
-    padding: var(--nav-link-spacing-vertical) var(--nav-link-spacing-horizontal);
-    border-radius: var(--border-radius);
-    text-decoration: none;
-  }
-  nav :where(a, [role="link"]):is([aria-current], :hover, :active, :focus) {
-    text-decoration: none;
-  }
-  nav[aria-label="breadcrumb"] {
-    align-items: center;
-    justify-content: start;
-  }
-  nav[aria-label="breadcrumb"] ul li:not(:first-child) {
-    -webkit-margin-start: var(--nav-link-spacing-horizontal);
-    margin-inline-start: var(--nav-link-spacing-horizontal);
-  }
-  nav[aria-label="breadcrumb"] ul li:not(:last-child) ::after {
-    position: absolute;
-    width: calc(var(--nav-link-spacing-horizontal) * 2);
-    -webkit-margin-start: calc(var(--nav-link-spacing-horizontal) / 2);
-    margin-inline-start: calc(var(--nav-link-spacing-horizontal) / 2);
-    content: "/";
-    color: var(--muted-color);
-    text-align: center;
-  }
-  nav[aria-label="breadcrumb"] a[aria-current] {
-    background-color: transparent;
-    color: inherit;
-    text-decoration: none;
-    pointer-events: none;
-  }
-  nav [role="button"] {
-    margin-right: inherit;
-    margin-left: inherit;
-    padding: var(--nav-link-spacing-vertical) var(--nav-link-spacing-horizontal);
-  }
-  aside li,
-  aside nav,
-  aside ol,
-  aside ul {
-    display: block;
-  }
-  aside li {
-    padding: calc(var(--nav-element-spacing-vertical) * 0.5)
-      var(--nav-element-spacing-horizontal);
-  }
-  aside li a {
-    display: block;
-  }
-  aside li [role="button"] {
-    margin: inherit;
-  }
-  [dir="rtl"] nav[aria-label="breadcrumb"] ul li:not(:last-child) ::after {
-    content: "\\";
-  }
-  progress {
-    display: inline-block;
-    vertical-align: baseline;
-  }
-  progress {
-    -webkit-appearance: none;
-    -moz-appearance: none;
-    display: inline-block;
-    appearance: none;
-    width: 100%;
-    height: 0.5rem;
-    margin-bottom: calc(var(--spacing) * 0.5);
-    overflow: hidden;
-    border: 0;
-    border-radius: var(--border-radius);
-    background-color: var(--progress-background-color);
-    color: var(--progress-color);
-  }
-  progress::-webkit-progress-bar {
-    border-radius: var(--border-radius);
-    background: 0 0;
-  }
-  progress[value]::-webkit-progress-value {
-    background-color: var(--progress-color);
-  }
-  progress::-moz-progress-bar {
-    background-color: var(--progress-color);
-  }
-  @media (prefers-reduced-motion: no-preference) {
-    progress:indeterminate {
-      background: var(--progress-background-color)
-        linear-gradient(
-          to right,
-          var(--progress-color) 30%,
-          var(--progress-background-color) 30%
-        )
-        top left/150% 150% no-repeat;
-      animation: progress-indeterminate 1s linear infinite;
-    }
-    progress:indeterminate[value]::-webkit-progress-value {
-      background-color: transparent;
-    }
-    progress:indeterminate::-moz-progress-bar {
-      background-color: transparent;
-    }
-  }
-  @media (prefers-reduced-motion: no-preference) {
-    [dir="rtl"] progress:indeterminate {
-      animation-direction: reverse;
-    }
-  }
-  @keyframes progress-indeterminate {
-    0% {
-      background-position: 200% 0;
-    }
-    100% {
-      background-position: -200% 0;
-    }
-  }
-  details[role="list"],
-  li[role="list"] {
-    position: relative;
-  }
-  details[role="list"] summary + ul,
-  li[role="list"] > ul {
-    display: flex;
-    z-index: 99;
-    position: absolute;
-    top: auto;
-    right: 0;
-    left: 0;
-    flex-direction: column;
-    margin: 0;
-    padding: 0;
-    border: var(--border-width) solid var(--dropdown-border-color);
-    border-radius: var(--border-radius);
-    border-top-right-radius: 0;
-    border-top-left-radius: 0;
-    background-color: var(--dropdown-background-color);
-    box-shadow: var(--card-box-shadow);
-    color: var(--dropdown-color);
-    white-space: nowrap;
-  }
-  details[role="list"] summary + ul li,
-  li[role="list"] > ul li {
-    width: 100%;
-    margin-bottom: 0;
-    padding: calc(var(--form-element-spacing-vertical) * 0.5)
-      var(--form-element-spacing-horizontal);
-    list-style: none;
-  }
-  details[role="list"] summary + ul li:first-of-type,
-  li[role="list"] > ul li:first-of-type {
-    margin-top: calc(var(--form-element-spacing-vertical) * 0.5);
-  }
-  details[role="list"] summary + ul li:last-of-type,
-  li[role="list"] > ul li:last-of-type {
-    margin-bottom: calc(var(--form-element-spacing-vertical) * 0.5);
-  }
-  details[role="list"] summary + ul li a,
-  li[role="list"] > ul li a {
-    display: block;
-    margin: calc(var(--form-element-spacing-vertical) * -0.5)
-      calc(var(--form-element-spacing-horizontal) * -1);
-    padding: calc(var(--form-element-spacing-vertical) * 0.5)
-      var(--form-element-spacing-horizontal);
-    overflow: hidden;
-    color: var(--dropdown-color);
-    text-decoration: none;
-    text-overflow: ellipsis;
-  }
-  details[role="list"] summary + ul li a:hover,
-  li[role="list"] > ul li a:hover {
-    background-color: var(--dropdown-hover-background-color);
-  }
-  details[role="list"] summary::after,
-  li[role="list"] > a::after {
-    display: block;
-    width: 1rem;
-    height: calc(1rem * var(--line-height, 1.5));
-    -webkit-margin-start: 0.5rem;
-    margin-inline-start: 0.5rem;
-    float: right;
-    transform: rotate(0);
-    background-position: right center;
-    background-size: 1rem auto;
-    background-repeat: no-repeat;
-    content: "";
-  }
-  details[role="list"] {
-    padding: 0;
-    border-bottom: none;
-  }
-  details[role="list"] summary {
-    margin-bottom: 0;
-  }
-  details[role="list"] summary:not([role]) {
-    height: calc(
-      1rem * var(--line-height) + var(--form-element-spacing-vertical) * 2 +
-        var(--border-width) * 2
-    );
-    padding: var(--form-element-spacing-vertical)
-      var(--form-element-spacing-horizontal);
-    border: var(--border-width) solid var(--form-element-border-color);
-    border-radius: var(--border-radius);
-    background-color: var(--form-element-background-color);
-    color: var(--form-element-placeholder-color);
-    line-height: inherit;
-    cursor: pointer;
-    transition: background-color var(--transition),
-      border-color var(--transition), color var(--transition),
-      box-shadow var(--transition);
-  }
-  details[role="list"] summary:not([role]):active,
-  details[role="list"] summary:not([role]):focus {
-    border-color: var(--form-element-active-border-color);
-    background-color: var(--form-element-active-background-color);
-  }
-  details[role="list"] summary:not([role]):focus {
-    box-shadow: 0 0 0 var(--outline-width) var(--form-element-focus-color);
-  }
-  details[role="list"][open] summary {
-    border-bottom-right-radius: 0;
-    border-bottom-left-radius: 0;
-  }
-  details[role="list"][open] summary::before {
-    display: block;
-    z-index: 1;
-    position: fixed;
-    top: 0;
-    right: 0;
-    bottom: 0;
-    left: 0;
-    background: 0 0;
-    content: "";
-    cursor: default;
-  }
-  nav details[role="list"] summary,
-  nav li[role="list"] a {
-    display: flex;
-    direction: ltr;
-  }
-  nav details[role="list"] summary + ul,
-  nav li[role="list"] > ul {
-    min-width: -moz-fit-content;
-    min-width: fit-content;
-    border-radius: var(--border-radius);
-  }
-  nav details[role="list"] summary + ul li a,
-  nav li[role="list"] > ul li a {
-    border-radius: 0;
-  }
-  nav details[role="list"] summary,
-  nav details[role="list"] summary:not([role]) {
-    height: auto;
-    padding: var(--nav-link-spacing-vertical) var(--nav-link-spacing-horizontal);
-  }
-  nav details[role="list"][open] summary {
-    border-radius: var(--border-radius);
-  }
-  nav details[role="list"] summary + ul {
-    margin-top: var(--outline-width);
-    -webkit-margin-start: 0;
-    margin-inline-start: 0;
-  }
-  nav details[role="list"] summary[role="link"] {
-    margin-bottom: calc(var(--nav-link-spacing-vertical) * -1);
-    line-height: var(--line-height);
-  }
-  nav details[role="list"] summary[role="link"] + ul {
-    margin-top: calc(var(--nav-link-spacing-vertical) + var(--outline-width));
-    -webkit-margin-start: calc(var(--nav-link-spacing-horizontal) * -1);
-    margin-inline-start: calc(var(--nav-link-spacing-horizontal) * -1);
-  }
-  li[role="list"] a:active ~ ul,
-  li[role="list"] a:focus ~ ul,
-  li[role="list"]:hover > ul {
-    display: flex;
-  }
-  li[role="list"] > ul {
-    display: none;
-    margin-top: calc(var(--nav-link-spacing-vertical) + var(--outline-width));
-    -webkit-margin-start: calc(
-      var(--nav-element-spacing-horizontal) - var(--nav-link-spacing-horizontal)
-    );
-    margin-inline-start: calc(
-      var(--nav-element-spacing-horizontal) - var(--nav-link-spacing-horizontal)
-    );
-  }
-  li[role="list"] > a::after {
-    background-image: var(--icon-chevron);
-  }
-  label > details[role="list"] {
-    margin-top: calc(var(--spacing) * 0.25);
-    margin-bottom: var(--spacing);
-  }
-  [aria-busy="true"] {
-    cursor: progress;
-  }
-  [aria-busy="true"]:not(input, select, textarea, html)::before {
-    display: inline-block;
-    width: 1em;
-    height: 1em;
-    border: 0.1875em solid currentColor;
-    border-radius: 1em;
-    border-right-color: transparent;
-    content: "";
-    vertical-align: text-bottom;
-    vertical-align: -0.125em;
-    animation: spinner 0.75s linear infinite;
-    opacity: var(--loading-spinner-opacity);
-  }
-  [aria-busy="true"]:not(input, select, textarea, html):not(:empty)::before {
-    margin-right: calc(var(--spacing) * 0.5);
-    margin-left: 0;
-    -webkit-margin-start: 0;
-    margin-inline-start: 0;
-    -webkit-margin-end: calc(var(--spacing) * 0.5);
-    margin-inline-end: calc(var(--spacing) * 0.5);
-  }
-  [aria-busy="true"]:not(input, select, textarea, html):empty {
-    text-align: center;
-  }
-  a[aria-busy="true"],
-  button[aria-busy="true"],
-  input[type="button"][aria-busy="true"],
-  input[type="reset"][aria-busy="true"],
-  input[type="submit"][aria-busy="true"] {
-    pointer-events: none;
-  }
-  @keyframes spinner {
-    to {
-      transform: rotate(360deg);
-    }
-  }
-  [data-tooltip] {
-    position: relative;
-  }
-  [data-tooltip]:not(a, button, input) {
-    border-bottom: 1px dotted;
-    text-decoration: none;
-    cursor: help;
-  }
-  [data-tooltip]::after,
-  [data-tooltip]::before,
-  [data-tooltip][data-placement="top"]::after,
-  [data-tooltip][data-placement="top"]::before {
-    display: block;
-    z-index: 99;
-    position: absolute;
-    bottom: 100%;
-    left: 50%;
-    padding: 0.25rem 0.5rem;
-    overflow: hidden;
-    transform: translate(-50%, -0.25rem);
-    border-radius: var(--border-radius);
-    background: var(--tooltip-background-color);
-    content: attr(data-tooltip);
-    color: var(--tooltip-color);
-    font-style: normal;
-    font-weight: var(--font-weight);
-    font-size: 0.875rem;
-    text-decoration: none;
-    text-overflow: ellipsis;
-    white-space: nowrap;
-    opacity: 0;
-    pointer-events: none;
-  }
-  [data-tooltip]::after,
-  [data-tooltip][data-placement="top"]::after {
-    padding: 0;
-    transform: translate(-50%, 0);
-    border-top: 0.3rem solid;
-    border-right: 0.3rem solid transparent;
-    border-left: 0.3rem solid transparent;
-    border-radius: 0;
-    background-color: transparent;
-    content: "";
-    color: var(--tooltip-background-color);
-  }
-  [data-tooltip][data-placement="bottom"]::after,
-  [data-tooltip][data-placement="bottom"]::before {
-    top: 100%;
-    bottom: auto;
-    transform: translate(-50%, 0.25rem);
-  }
-  [data-tooltip][data-placement="bottom"]:after {
-    transform: translate(-50%, -0.3rem);
-    border: 0.3rem solid transparent;
-    border-bottom: 0.3rem solid;
-  }
-  [data-tooltip][data-placement="left"]::after,
-  [data-tooltip][data-placement="left"]::before {
-    top: 50%;
-    right: 100%;
-    bottom: auto;
-    left: auto;
-    transform: translate(-0.25rem, -50%);
-  }
-  [data-tooltip][data-placement="left"]:after {
-    transform: translate(0.3rem, -50%);
-    border: 0.3rem solid transparent;
-    border-left: 0.3rem solid;
-  }
-  [data-tooltip][data-placement="right"]::after,
-  [data-tooltip][data-placement="right"]::before {
-    top: 50%;
-    right: auto;
-    bottom: auto;
-    left: 100%;
-    transform: translate(0.25rem, -50%);
-  }
-  [data-tooltip][data-placement="right"]:after {
-    transform: translate(-0.3rem, -50%);
-    border: 0.3rem solid transparent;
-    border-right: 0.3rem solid;
-  }
-  [data-tooltip]:focus::after,
-  [data-tooltip]:focus::before,
-  [data-tooltip]:hover::after,
-  [data-tooltip]:hover::before {
-    opacity: 1;
-  }
-  @media (hover: hover) and (pointer: fine) {
-    [data-tooltip]:hover::after,
-    [data-tooltip]:hover::before,
-    [data-tooltip][data-placement="bottom"]:focus::after,
-    [data-tooltip][data-placement="bottom"]:focus::before,
-    [data-tooltip][data-placement="bottom"]:hover [data-tooltip]:focus::after,
-    [data-tooltip][data-placement="bottom"]:hover [data-tooltip]:focus::before {
-      animation-duration: 0.2s;
-      animation-name: tooltip-slide-top;
-    }
-    [data-tooltip]:hover::after,
-    [data-tooltip][data-placement="bottom"]:focus::after,
-    [data-tooltip][data-placement="bottom"]:hover [data-tooltip]:focus::after {
-      animation-name: tooltip-caret-slide-top;
-    }
-    [data-tooltip][data-placement="bottom"]:focus::after,
-    [data-tooltip][data-placement="bottom"]:focus::before,
-    [data-tooltip][data-placement="bottom"]:hover::after,
-    [data-tooltip][data-placement="bottom"]:hover::before {
-      animation-duration: 0.2s;
-      animation-name: tooltip-slide-bottom;
-    }
-    [data-tooltip][data-placement="bottom"]:focus::after,
-    [data-tooltip][data-placement="bottom"]:hover::after {
-      animation-name: tooltip-caret-slide-bottom;
-    }
-    [data-tooltip][data-placement="left"]:focus::after,
-    [data-tooltip][data-placement="left"]:focus::before,
-    [data-tooltip][data-placement="left"]:hover::after,
-    [data-tooltip][data-placement="left"]:hover::before {
-      animation-duration: 0.2s;
-      animation-name: tooltip-slide-left;
-    }
-    [data-tooltip][data-placement="left"]:focus::after,
-    [data-tooltip][data-placement="left"]:hover::after {
-      animation-name: tooltip-caret-slide-left;
-    }
-    [data-tooltip][data-placement="right"]:focus::after,
-    [data-tooltip][data-placement="right"]:focus::before,
-    [data-tooltip][data-placement="right"]:hover::after,
-    [data-tooltip][data-placement="right"]:hover::before {
-      animation-duration: 0.2s;
-      animation-name: tooltip-slide-right;
-    }
-    [data-tooltip][data-placement="right"]:focus::after,
-    [data-tooltip][data-placement="right"]:hover::after {
-      animation-name: tooltip-caret-slide-right;
-    }
-  }
-  @keyframes tooltip-slide-top {
-    from {
-      transform: translate(-50%, 0.75rem);
-      opacity: 0;
-    }
-    to {
-      transform: translate(-50%, -0.25rem);
-      opacity: 1;
-    }
-  }
-  @keyframes tooltip-caret-slide-top {
-    from {
-      opacity: 0;
-    }
-    50% {
-      transform: translate(-50%, -0.25rem);
-      opacity: 0;
-    }
-    to {
-      transform: translate(-50%, 0);
-      opacity: 1;
-    }
-  }
-  @keyframes tooltip-slide-bottom {
-    from {
-      transform: translate(-50%, -0.75rem);
-      opacity: 0;
-    }
-    to {
-      transform: translate(-50%, 0.25rem);
-      opacity: 1;
-    }
-  }
-  @keyframes tooltip-caret-slide-bottom {
-    from {
-      opacity: 0;
-    }
-    50% {
-      transform: translate(-50%, -0.5rem);
-      opacity: 0;
-    }
-    to {
-      transform: translate(-50%, -0.3rem);
-      opacity: 1;
-    }
-  }
-  @keyframes tooltip-slide-left {
-    from {
-      transform: translate(0.75rem, -50%);
-      opacity: 0;
-    }
-    to {
-      transform: translate(-0.25rem, -50%);
-      opacity: 1;
-    }
-  }
-  @keyframes tooltip-caret-slide-left {
-    from {
-      opacity: 0;
-    }
-    50% {
-      transform: translate(0.05rem, -50%);
-      opacity: 0;
-    }
-    to {
-      transform: translate(0.3rem, -50%);
-      opacity: 1;
-    }
-  }
-  @keyframes tooltip-slide-right {
-    from {
-      transform: translate(-0.75rem, -50%);
-      opacity: 0;
-    }
-    to {
-      transform: translate(0.25rem, -50%);
-      opacity: 1;
-    }
-  }
-  @keyframes tooltip-caret-slide-right {
-    from {
-      opacity: 0;
-    }
-    50% {
-      transform: translate(-0.05rem, -50%);
-      opacity: 0;
-    }
-    to {
-      transform: translate(-0.3rem, -50%);
-      opacity: 1;
-    }
-  }
-  [aria-controls] {
-    cursor: pointer;
-  }
-  [aria-disabled="true"],
-  [disabled] {
-    cursor: not-allowed;
-  }
-  [aria-hidden="false"][hidden] {
-    display: initial;
-  }
-  [aria-hidden="false"][hidden]:not(:focus) {
-    clip: rect(0, 0, 0, 0);
-    position: absolute;
-  }
-  [tabindex],
-  a,
-  area,
-  button,
-  input,
-  label,
-  select,
-  summary,
-  textarea {
-    -ms-touch-action: manipulation;
-  }
-  [dir="rtl"] {
-    direction: rtl;
-  }
-  @media (prefers-reduced-motion: reduce) {
-    :not([aria-busy="true"]),
-    :not([aria-busy="true"])::after,
-    :not([aria-busy="true"])::before {
-      background-attachment: initial !important;
-      animation-duration: 1ms !important;
-      animation-delay: -1ms !important;
-      animation-iteration-count: 1 !important;
-      scroll-behavior: auto !important;
-      transition-delay: 0s !important;
-      transition-duration: 0s !important;
-    }
-  }
-}
-body > nav {
-  --nav-link-spacing-vertical: 1rem;
-  -webkit-backdrop-filter: saturate(180%) blur(20px);
-  z-index: 99;
-  position: fixed;
-  top: 0;
-  right: 0;
-  left: 0;
-  backdrop-filter: saturate(180%) blur(20px);
-  background-color: var(--nav-background-color);
-  box-shadow: 0 1px 0 var(--nav-border-color);
-}
-body > nav.container-fluid {
-  padding-right: calc(var(--spacing) + var(--scrollbar-width, 0px));
-}
-body > nav a {
-  border-radius: 0;
-}
-body > nav svg {
-  vertical-align: text-bottom;
-}
-body > nav ul:first-of-type {
-  margin-left: calc(var(--spacing) * -1);
-}
-body > nav ul:first-of-type li {
-  padding: 0 10px;
-}
-body > nav ul:first-of-type li:first-of-type a {
-  display: block;
-  margin: 0;
-  padding: 0;
-  color: var(--nav-logo-color);
-}
-body > nav ul:first-of-type li:first-of-type a svg {
-  display: block;
-  width: 3.5rem;
-  height: 3.5rem;
-}
-body > nav ul:first-of-type li:nth-of-type(2) {
-  display: none;
-  margin-left: calc(var(--spacing) * 1.5);
-  color: var(--h1-color);
-}
-@media (min-width: 992px) {
-  body > nav ul:first-of-type li:nth-of-type(2) {
-    display: inline;
-  }
-}
-header h1,
-header p {
-  text-align: center;
-}
-header h1 {
-  margin-bottom: var(--spacing);
-}
-header h1 ~ p {
-  color: var(--muted-color);
-}
-header a:not(:last-of-type) {
-  margin-right: calc(var(--spacing) * 0.5);
-}
-header p:last-of-type {
-  margin-bottom: 0;
-}
-.switcher {
-  position: fixed;
-  right: calc(var(--spacing) / 2 + var(--scrollbar-width, 0px));
-  bottom: var(--spacing);
-  width: auto;
-  margin-bottom: 0;
-  padding: 0.75rem;
-  border-radius: 2rem;
-  box-shadow: var(--card-box-shadow);
-  line-height: 1;
-  text-align: right;
-}
-.switcher::after {
-  display: inline-block;
-  width: 1rem;
-  height: 1rem;
-  border: 0.15rem solid currentColor;
-  border-radius: 50%;
-  background: linear-gradient(
-    to right,
-    currentColor 0,
-    currentColor 50%,
-    transparent 50%
-  );
-  content: "";
-  vertical-align: bottom;
-  transition: transform var(--transition);
-}
-.switcher i {
-  display: inline-block;
-  max-width: 0;
-  padding: 0;
-  overflow: hidden;
-  font-style: normal;
-  font-size: 0.875rem;
-  white-space: nowrap;
-}
-.switcher:focus,
-.switcher:hover {
-  max-width: 100%;
-  transition: background-color var(--transition), border-color var(--transition),
-    color var(--transition), box-shadow var(--transition);
-}
-.switcher:hover::after {
-  transform: rotate(180deg);
-}
-.switcher:hover i {
-  max-width: 100%;
-  padding: 0 calc(var(--spacing) / 2) 0 calc(var(--spacing) / 4);
-  transition: max-width var(--transition), padding var(--transition);
-}
-.switcher:focus {
-  box-shadow: var(--card-box-shadow), 0 0 0 0.2rem var(--secondary-focus);
-}
-@media (min-width: 576px) {
-  .switcher {
-    right: calc(var(--spacing) + var(--scrollbar-width, 0px));
-  }
-}
-.feature {
-  display: grid;
-  grid-template-columns: 2fr 1fr;
-  margin-bottom: var(--spacing);
-  padding-bottom: var(--spacing);
-  border-bottom: var(--border-width) solid var(--accordion-border-color);
-}
-.feature label,
-.feature details {
-  display: inline-block;
-  margin-bottom: revert;
-  padding-bottom: revert;
-  border-bottom: revert;
-}
-body {
-  width: 100%;
-  margin: 0;
-}
-footer,
-header,
-main > section {
-  --block-spacing-vertical: 4rem;
-  width: 100%;
-  margin: 0;
-  padding: var(--block-spacing-vertical) 0;
-}
-@media (min-width: 768px) {
-  footer,
-  header,
-  main > section {
-    --block-spacing-vertical: 5rem;
-  }
-}
-@media (min-width: 992px) {
-  footer,
-  header,
-  main > section {
-    --block-spacing-vertical: 6rem;
-  }
-}
-@media (min-width: 1200px) {
-  footer,
-  header,
-  main > section {
-    --block-spacing-vertical: 7rem;
-  }
-}
-header {
-  padding-bottom: 0;
-}
-</style></head><body><nav class="container-fluid"><ul><li><a href="/" aria-label="Back home"><svg aria-hidden="true" focusable="false" role="img" xmlns="http://www.w3.org/2000/svg" viewbox="0 -40 326 326" height="56px"><path fill="#ccc" d="M0 0h72.4v226.8H0zm84.6 0H157v226.8H84.7zm84.6 0h72.5v226.8h-72.5zM254 0h72.3v226.8H254z"></path><path fill="#0A95C7" d="M0 0h72.4v139H0zm84.6 0H157v92.6H84.7zm84.6 0h72.5v46.3h-72.5z"></path></svg></a></li><li>Polyfill.io</li></ul><ul><li><a href="../v3/terms" class="secondary">Terms & Conditions</a></li><li><a href="../v3/privacy-policy" class="secondary">Privacy Policy</a></li><li><a href="https://github.com/JakeChampion/polyfill-service/" class="contrast" aria-label="GitHub repository"><svg aria-hidden="true" focusable="false" role="img" xmlns="http://www.w3.org/2000/svg" viewbox="0 0 496 512" height="16px"><path fill="currentColor" d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6zm-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3zm44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9zM244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8zM97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1zm-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7zm32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1zm-11.4-14.7c-1.6 1-1.6 3.6 0 5.9 1.6 2.3 4.3 3.3 5.6 2.3 1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2z"></svg></a></li></ul></nav><header><div class="container"><h1>Terms and Conditions</h1></div></header><main class="container"><h2>Who we are and how to contact us</h2><p><a href="/" target="_self" rel="nofollow noopener">Polyfill.io</a> is operated as a community service by Jake Champion (“we”, “us”).</p><h2>By using Polyfill.io you agree to our terms</h2><p>These terms apply to “Polyfill.io”, which means:</p><ul><li>the Polyfill.io website (“Site”); and/or</li><li>the public instance of the Polyfill Service made available by us, as described on the Site.</li></ul><p>By using Polyfill.io you confirm that you accept these terms of use and that you agree to comply with them. If you do not agree to these terms, you must not use Polyfill.io.</p><p>We recommend that you print or save a copy of these terms for future reference. <em>Please note that these terms contain provisions which limit or exclude our liability to you, in particular as set out in the section headed “Our responsibility for loss or damage suffered by you”.</em></p><h2>There are other terms that may apply to you</h2><p>These terms of use refer to the following additional terms, which also apply to your use of Polyfill.io:</p><ul><li>The <a href="../v3/privacy-policy">Polyfill.io privacy policy</a>, which sets out the terms on which we process any personal data we collect from you or as a result of your use of Polyfill.io (including our logging of use of Polyfill.io). If you do not agree to the terms of that privacy policy then you must not use Polyfill.io, and you should consider hosting the <a href="https://github.com/JakeChampion/polyfill-service" target="_self" rel="nofollow noopener">Polyfill Service code</a> yourself.</li></ul><h2>Polyfill.io are provided as-is and without any SLA</h2><p>Polyfill.io is made available free of charge.</p><p>We do not guarantee that Polyfill.io, or any content on them, will always be available or be uninterrupted. We may suspend or withdraw or restrict the availability of all or any part of Polyfill.io for business and operational reasons.</p><p>We do not provide any service level agreement or any other performance commitments for Polyfill.io. We are not able to participate in any technical due diligence or other procurement process that your organisation may have.</p><p>If you require an SLA or guaranteed levels of resilience for Polyfill.io, then you are free to obtain your own copy of the Polyfill Service code from our <a href="https://github.com/JakeChampion/polyfill-service" target="_self" rel="nofollow noopener">GitHub repository</a>. The Polyfill Service code is licensed under the MIT License. You can then make your own arrangements for hosting.</p><h2>Do not rely on information on this site</h2><p>The content on the Site is provided for general information only. It is not intended to amount to advice on which you should rely.</p><p>Although we make reasonable efforts to update the information on Polyfill.io, we make no representations, warranties or guarantees, whether express or implied, that the content on Polyfill.io is accurate, complete or up to date.</p><h2>Our responsibility for loss or damage suffered by you</h2><p><em>We do not exclude or limit in any way our liability to you where it would be unlawful to do so. This includes liability for death or personal injury caused by our negligence or the negligence of our employees, agents or subcontractors and for fraud or fraudulent misrepresentation.</em></p><p><em>We exclude all implied conditions, warranties, representations or other terms that may apply to Polyfill.io or any content on them.</em></p><p><em>We will not be liable to you for any loss or damage, whether in contract, tort (including negligence), breach of statutory duty, or otherwise, even if foreseeable, arising under or in connection with:</em></p><ul><li><em>use of, or inability to use, Polyfill.io; or</em></li><li><em>use of or reliance on any content displayed on Polyfill.io.</em></li></ul><p><em>In particular, we will not be liable for:</em></p><ul><li><em>loss of profits, sales, business, or revenue;</em></li><li><em>business interruption;</em></li><li><em>loss of anticipated savings;</em></li><li><em>loss of business opportunity, goodwill or reputation; or</em></li><li><em>any indirect or consequential loss or damage.</em></li></ul><p><em>By using Polyfill.io, you agree that the above exclusions of liability are reasonable. You accept that it is always possible for you to host your own copy of the <a href="https://github.com/JakeChampion/polyfill-service" target="_self" rel="nofollow noopener">Polyfill Service code</a>, and that your use of Polyfill.io is therefore entirely at your own risk.</em></p><h2>We are not responsible for viruses and you must not introduce them</h2><p>We do not guarantee that Polyfill.io will be secure or free from bugs or viruses.</p><p>You are responsible for configuring your information technology, computer programs and platform to access Polyfill.io. You should use your own virus protection software.</p><p>You must not misuse Polyfill.io by knowingly introducing viruses, trojans, worms, logic bombs or other material that is malicious or technologically harmful. You must not attempt to gain unauthorised access to Polyfill.io, the server on which Polyfill.io are stored or any server, computer or database connected to Polyfill.io. You must not attack Polyfill.io via a denial-of-service attack or a distributed denial-of service attack. By breaching this provision, you would commit a criminal offence under the Computer Misuse Act 1990. We will report any such breach to the relevant law enforcement authorities and we will co-operate with those authorities by disclosing your identity to them. In the event of such a breach, your right to use Polyfill.io will cease immediately.</p><h2>We may make changes to these terms</h2><p>We amend these terms from time to time. You should check these terms regularly to ensure you understand the terms that apply at that time.</p><h2>We may make changes to Polyfill.io</h2><p>We may update and change Polyfill.io from time to time. We will aim to post details of the most significant changes on the Site.</p><h2>Which country’s laws apply to any dispute?</h2><p>These terms of use, their subject matter and their formation (and any non-contractual disputes or claims) aregoverned by English law. You and we both agree to the exclusive jurisdiction of the courts of England and Wales.</p></main><script defer="">'use strict';
-    !function () {
-        var e = {
-            _scheme: 'auto',
-            change: {
-                light: '<i>Turn on dark mode</i>',
-                dark: '<i>Turn off dark mode</i>'
-            },
-            buttonsTarget: '.theme-switcher',
-            localStorageKey: 'picoPreferredColorScheme',
-            init() {
-                this.scheme = this.schemeFromLocalStorage,
-                    this.initSwitchers()
-            },
-            get schemeFromLocalStorage() {
-                return void 0 !== window.localStorage &&
-                    null !== window.localStorage.getItem(this.localStorageKey) ? window.localStorage.getItem(this.localStorageKey) : this._scheme
-            },
-            get preferredColorScheme() {
-                return window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light'
-            },
-            initSwitchers() {
-                document.querySelectorAll(this.buttonsTarget).forEach(e => {
-                    e.addEventListener('click', () => {
-                        'dark' == this.scheme ? this.scheme = 'light' : this.scheme = 'dark'
-                    }, !1)
-                })
-            },
-            addButton(e) {
-                var t = document.createElement(e.tag);
-                t.className = e.class,
-                    document.querySelector(e.target).appendChild(t)
-            },
-            set scheme(e) {
-                'auto' == e ? 'dark' == this.preferredColorScheme ? this._scheme = 'dark' : this._scheme = 'light' : 'dark' != e &&
-                    'light' != e ||
-                    (this._scheme = e),
-                    this.applyScheme(),
-                    this.schemeToLocalStorage()
-            },
-            get scheme() {
-                return this._scheme
-            },
-            applyScheme() {
-                document.querySelector('html').setAttribute('data-theme', this.scheme),
-                    document.querySelectorAll(this.buttonsTarget).forEach(e => {
-                        var t = 'dark' == this.scheme ? this.change.dark : this.change.light;
-                        e.innerHTML = t,
-                            e.setAttribute('aria-label', t.replace(/<[^>]*>?/gm, ''))
-                    })
-            },
-            schemeToLocalStorage() {
-                void 0 !== window.localStorage &&
-                    window.localStorage.setItem(this.localStorageKey, this.scheme)
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1">
+        <title>Non GamStop Casinos for UK Players - New Casino Options</title>
+    <meta name="description" content="Compare non GamStop casinos ranked by licence, bonus terms, games and payment methods, with mini reviews of the top-rated sites for GB players.">        <meta property="og:type" content="website">
+    <meta property="og:title" content="Non GamStop Casinos for UK Players - New Casino Options">
+    <meta property="og:description" content="Compare non GamStop casinos ranked by licence, bonus terms, games and payment methods, with mini reviews of the top-rated sites for GB players.">    <meta property="og:site_name" content="Non Gamstop Casinos">
+            <meta name="twitter:card" content="summary_large_image">
+        <link rel="icon" href="https://polyfill.io/assets/01m16ft2jfrn1a7wmhzy2f7ktk.svg">    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
+    <link href="https://fonts.googleapis.com/css2?family=Chivo:wght@400;500;700;900&amp;family=IBM+Plex+Mono:wght@400;500;600&amp;family=IBM+Plex+Sans:wght@400;500;600;700&amp;display=swap" rel="stylesheet">
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "WebPage",
+        "name": "Non GamStop Casinos for UK Players - New Casino Options",
+        "description": "Compare non GamStop casinos ranked by licence, bonus terms, games and payment methods, with mini reviews of the top-rated sites for GB players.",                "publisher": {
+            "@type": "Organization",
+            "name": "Non Gamstop Casinos",
+            "logo": {
+                "@type": "ImageObject",
+                "url": "/assets/01m16ft2jfrn1a7wmhzy2f7ktk.svg"
             }
-        };
-        e.addButton({
-            tag: 'BUTTON',
-            class: 'contrast switcher theme-switcher',
-            target: 'body'
-        }),
-            e.init()
-    }();</script></body></html>
+        },
+        "datePublished": "2026-08-29",
+        "dateModified": "2026-09-01"
+    }
+    </script>
+    <style>@media (max-width: 768px) {
+  main table { display: block; width: 100%; overflow-x: auto; -webkit-overflow-scrolling: touch; }
+}
+:root {
+    --brand-bg: #0E1116;          /* page (pitch) */
+    --brand-surface: #14181E;     /* console */
+    --brand-surface-hi: #191E25;  /* raised */
+    --brand-inlay: #1F252D;       /* table cell */
+    --brand-line: #262C34;        /* seam */
+    --brand-line-hi: #333B45;
+    --brand-text: #EDF1F4;        /* plate */
+    --brand-text-soft: #E7ECF0;
+    --brand-muted: #9AA6B2;       /* haze */
+    --brand-dim: #808B98;         /* murk */
+    --brand-accent: #2CC6C0;      /* signal (teal) */
+    --brand-accent-hi: #37D7CF;
+    --brand-accent-ink: #062024;  /* text on teal */
+    --brand-accent-veil: #123539;
+    --curve-l: 10px;
+    --curve-m: 6px;
+    --curve-s: 4px;
+    --font-display: "Chivo", system-ui, sans-serif;
+    --font-body: "IBM Plex Sans", system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+    --font-mono: "IBM Plex Mono", ui-monospace, SFMono-Regular, Menlo, monospace;
+}
+
+*, *::before, *::after { box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+@media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }
+body {
+    margin: 0;
+    background: var(--brand-bg);
+    color: var(--brand-muted);
+    font-family: var(--font-body);
+    font-size: 16px;
+    line-height: 1.7;
+    -webkit-font-smoothing: antialiased;
+}
+img { max-width: 100%; height: auto; }
+a { color: inherit; text-decoration: none; }
+h1, h2, h3, h4 { font-family: var(--font-display); color: var(--brand-text); font-weight: 700; line-height: 1.2; }
+
+.container { width: 100%; max-width: 1160px; margin: 0 auto; padding: 0 1.25rem; }
+
+/* Header */
+.site-header {
+    position: sticky; top: 0; z-index: 50;
+    background: rgba(14,17,22,.85); backdrop-filter: blur(8px);
+    border-bottom: 1px solid var(--brand-line);
+}
+.header-inner { display: flex; align-items: center; justify-content: space-between; gap: 1rem; height: 66px; }
+.header-brand { display: flex; align-items: center; gap: .6rem; }
+.header-logo { height: 36px; width: auto; }
+.header-name { font-family: var(--font-display); font-weight: 700; font-size: 1rem; color: var(--brand-text); }
+.header-nav { display: flex; align-items: center; gap: 1.8rem; }
+.header-nav a { font-family: var(--font-mono); font-size: .82rem; letter-spacing: .02em; color: var(--brand-muted); transition: color .16s; }
+.header-nav a:hover { color: var(--brand-text); }
+.header-nav a.is-active { color: var(--brand-accent); }
+.header-menu-btn { display: none; background: none; border: 0; color: var(--brand-text); cursor: pointer; padding: .4rem; }
+.mobile-nav { display: none; flex-direction: column; border-top: 1px solid var(--brand-line); background: var(--brand-surface); }
+.mobile-nav.is-open { display: flex; }
+.mobile-nav a { padding: .9rem 1.25rem; font-family: var(--font-mono); font-size: .85rem; color: var(--brand-muted); border-bottom: 1px solid var(--brand-line); }
+.mobile-nav a.is-active { color: var(--brand-accent); }
+
+@media (max-width: 860px) {
+    .header-nav { display: none; }
+    .header-menu-btn { display: block; }
+}
+
+/* Footer */
+.site-footer { background: var(--brand-surface); border-top: 1px solid var(--brand-line); padding: 2.5rem 0 3rem; margin-top: 3.5rem; }
+.footer-text { font-size: .85rem; color: var(--brand-muted); line-height: 1.6; margin-bottom: 1.5rem; }
+.footer-text p { margin: .3rem 0; }
+.footer-copy { font-family: var(--font-mono); font-size: .78rem; color: var(--brand-muted); border-top: 1px solid var(--brand-line); padding-top: 1rem; }
+
+/* Page shell */
+.page { padding: 2.5rem 0 1rem; }
+.page-head { padding-bottom: 1.25rem; border-bottom: 1px solid var(--brand-line); }
+.page-title { font-size: clamp(1.9rem, 4vw, 2.75rem); font-weight: 900; margin: 0; }
+.page-date { display: inline-block; margin-top: .9rem; font-family: var(--font-mono); font-size: .74rem; color: var(--brand-accent); border: 1px solid var(--brand-accent-veil); background: var(--brand-accent-veil); border-radius: 999px; padding: .3rem .85rem; }
+.page-intro { margin: 1.5rem 0 2rem; color: var(--brand-muted); }
+.page-intro p:last-child { margin-bottom: 0; }
+
+.section-title { font-family: var(--font-display); font-size: 1.5rem; font-weight: 700; color: var(--brand-text); margin: 2.75rem 0 1.25rem; padding-left: .85rem; border-left: 3px solid var(--brand-accent); scroll-margin-top: 86px; }
+
+/* Prose — long-form body */
+.prose { font-size: 1rem; color: var(--brand-muted); }
+.prose > *:first-child { margin-top: 0; }
+.prose h2 { font-size: 1.5rem; font-weight: 700; color: var(--brand-text); margin: 2.75rem 0 1rem; padding-left: .85rem; border-left: 3px solid var(--brand-accent); scroll-margin-top: 86px; }
+.prose h3 { font-size: 1.2rem; font-weight: 700; color: var(--brand-text); margin: 1.9rem 0 .6rem; }
+.prose h4 { font-size: 1rem; font-weight: 700; color: var(--brand-text); margin: 1.4rem 0 .5rem; }
+.prose p { margin: 0 0 1rem; }
+.prose a { color: var(--brand-accent); text-decoration: underline; text-underline-offset: 2px; }
+.prose a:hover { color: var(--brand-accent-hi); }
+.prose strong { color: var(--brand-text-soft); font-weight: 600; }
+.prose ul, .prose ol { margin: 0 0 1.25rem; padding-left: 1.4rem; }
+.prose li { margin: .45rem 0; }
+.prose ul li::marker { color: var(--brand-accent); }
+.prose hr { border: 0; border-top: 1px solid var(--brand-line); margin: 2rem 0; }
+.prose img { border-radius: var(--curve-m); border: 1px solid var(--brand-line); margin: 1.25rem 0; }
+
+/* Tables read like a datasheet — mono headers, teal-tinted head row */
+.prose table { width: 100%; border-collapse: collapse; margin: 0 0 1.5rem; font-size: .9rem; background: var(--brand-surface); border: 1px solid var(--brand-line); border-radius: var(--curve-m); overflow: hidden; }
+.prose thead th { background: var(--brand-accent-veil); color: var(--brand-text); font-family: var(--font-mono); font-weight: 600; font-size: .8rem; text-transform: uppercase; letter-spacing: .04em; text-align: left; }
+.prose th, .prose td { padding: .7rem .9rem; border-bottom: 1px solid var(--brand-line); vertical-align: top; }
+.prose tbody th { font-family: var(--font-mono); font-weight: 500; color: var(--brand-muted); background: var(--brand-inlay); white-space: nowrap; }
+.prose tbody tr:last-child td, .prose tbody tr:last-child th { border-bottom: 0; }
+.prose .table-scroll { overflow-x: auto; }
+
+.reading { max-width: 820px; }
+.page-body { margin-top: 40px; }
+/* Ranked list — a bordered datasheet of rows */
+.olist { border: 1px solid var(--brand-line); border-radius: var(--curve-l); background: var(--brand-surface); overflow: hidden; }
+.orow {
+    display: grid;
+    grid-template-columns: 2rem 120px 1fr auto auto;
+    align-items: center; gap: 1.25rem;
+    padding: 1.1rem 1.35rem;
+    border-bottom: 1px solid var(--brand-line);
+    transition: background .16s;
+}
+.orow:last-child { border-bottom: 0; }
+.orow:hover { background: var(--brand-surface-hi); }
+.orow.is-top { background: linear-gradient(90deg, var(--brand-accent-veil), transparent 40%); }
+
+.orank { font-family: var(--font-mono); font-size: 1rem; font-weight: 600; color: var(--brand-accent); text-align: center; }
+.ologo { display: flex; align-items: center; justify-content: center; min-height: 42px; }
+.ologo img { max-height: 42px; width: auto; object-fit: contain; }
+.ologo-fallback { font-family: var(--font-display); font-weight: 700; font-size: .9rem; color: var(--brand-text); text-align: center; }
+
+.oinfo { min-width: 0; }
+.oname { font-family: var(--font-display); font-weight: 700; font-size: 1.02rem; color: var(--brand-text); display: flex; align-items: center; gap: .5rem; flex-wrap: wrap; }
+.otag { font-family: var(--font-mono); font-size: .62rem; text-transform: uppercase; letter-spacing: .06em; color: var(--brand-accent); border: 1px solid var(--brand-accent); border-radius: 999px; padding: .1rem .5rem; }
+.obonus { font-size: .88rem; color: var(--brand-muted); margin-top: .2rem; }
+
+.oscore { white-space: nowrap; text-align: right; }
+.oscore-num { font-family: var(--font-mono); font-size: 1.4rem; font-weight: 600; color: var(--brand-accent); }
+.oscore-den { font-family: var(--font-mono); font-size: .78rem; color: var(--brand-dim); }
+
+.octa {
+    display: inline-flex; align-items: center; justify-content: center; white-space: nowrap;
+    background: var(--brand-accent); color: var(--brand-accent-ink);
+    font-family: var(--font-display); font-weight: 700; font-size: .82rem;
+    text-transform: uppercase; letter-spacing: .04em;
+    padding: .7rem 1.75rem; border-radius: var(--curve-m);
+    transition: background .16s, transform .16s;
+}
+.octa:hover { background: var(--brand-accent-hi); transform: translateY(-1px); }
+.oterms { grid-column: 1 / -1; font-size: .72rem; line-height: 1.4; color: var(--brand-muted); }
+
+@media (max-width: 720px) {
+    .orow { grid-template-columns: 1.5rem 1fr auto; grid-template-areas: "rank logo score" "info info info" "cta cta cta"; row-gap: .85rem; }
+    .orank { grid-area: rank; }
+    .ologo { grid-area: logo; justify-content: flex-start; }
+    .oinfo { grid-area: info; }
+    .oscore { grid-area: score; }
+    .octa { grid-area: cta; width: 100%; }
+    .ologo img { max-height: initial; height: 92px; }
+}
+
+/* FAQ */
+.faq { display: flex; flex-direction: column; gap: .55rem; margin-top: 1.25rem; }
+.faq-item { background: var(--brand-surface); border: 1px solid var(--brand-line); border-radius: var(--curve-m); padding: 0 1.15rem; }
+.faq-q { cursor: pointer; font-family: var(--font-display); font-weight: 700; color: var(--brand-text); padding: 1rem 0; list-style: none; display: flex; align-items: center; justify-content: space-between; gap: 1rem; }
+.faq-q::-webkit-details-marker { display: none; }
+.faq-q::after { content: '+'; color: var(--brand-accent); font-size: 1.4rem; line-height: 1; flex-shrink: 0; }
+.faq-item[open] .faq-q::after { content: '\2212'; }
+.faq-a { padding: 0 0 1.1rem; color: var(--brand-muted); font-size: .95rem; }</style>
+</head>
+<body>
+
+
+<header class="site-header">
+    <div class="container header-inner">
+        <a href="https://polyfill.io/" class="header-brand">
+            <img src="https://polyfill.io/assets/01m16ft2jfrn1a7wmhzy2f7ktk.svg" alt="" class="header-logo">            <span class="header-name">Non Gamstop Casinos</span>
+        </a>
+                <nav class="header-nav">
+            <a href="https://polyfill.io/" class="nav-link is-active">Non Gamstop Casinos</a><a href="https://polyfill.io/contact/" class="nav-link">Get in Touch With Us</a>        </nav>
+                <button type="button" class="header-menu-btn" aria-label="Open menu" aria-expanded="false" onclick="document.getElementById('mobile-nav').classList.toggle('is-open')">
+            <svg aria-hidden="true" width="22" height="22" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path></svg>
+        </button>
+    </div>
+    <div id="mobile-nav" class="mobile-nav">
+        <a href="https://polyfill.io/" class="is-active">Non Gamstop Casinos</a><a href="https://polyfill.io/contact/" class="">Get in Touch With Us</a>    </div>
+</header>
+
+<main><article class="page">
+    <div class="container">
+
+        <div class="page-head">
+            <h1 class="page-title">Non GamStop Casinos for UK Players - New Casino Options</h1>
+            <span class="page-date">Updated: 1st of September 2026</span>
+        </div>
+
+                <div class="page-intro prose reading"><p>This page ranks casinos not on GamStop by licence, bonus value once terms are applied, game range and payment options. It covers what the GAMSTOP difference actually means, how the money works, and who these sites suit.</p></div>
+        
+                <h2 class="section-title" id="picks">Best Non GamStop Casinos &amp;ndash; Ranked</h2>
+
+        <div class="olist">
+                        <div class="orow is-top">
+                <div class="orank">1</div>
+                <a href="https://polyfill.io/visit/betmica/" class="ologo" target="_blank" rel="nofollow sponsored">
+                    <img src="https://polyfill.io/assets/01kz60yzyyp2mmhqn4z5p4tcbk.svg" alt="Betmica">                </a>
+                <div class="oinfo">
+                    <div class="oname">Betmica <span class="otag">Top Pick</span></div>
+                    <div class="obonus">Welcome Offer 570% up to £5,700 + 270 Free Spins</div>                </div>
+                <div class="oscore"><span class="oscore-num">10.0</span><span class="oscore-den">/10</span></div>                <a href="https://polyfill.io/visit/betmica/" class="octa" target="_blank" rel="nofollow sponsored">Play Now</a>
+                            </div>
+                        <div class="orow">
+                <div class="orank">2</div>
+                <a href="https://polyfill.io/visit/kikibet/" class="ologo" target="_blank" rel="nofollow sponsored">
+                    <img src="https://polyfill.io/assets/01kyvv8mf41fjymj9yhxs51ezv.svg" alt="Kikibet">                </a>
+                <div class="oinfo">
+                    <div class="oname">Kikibet</div>
+                    <div class="obonus">350% up to 5,555 £ and 300 free spins</div>                </div>
+                <div class="oscore"><span class="oscore-num">9.9</span><span class="oscore-den">/10</span></div>                <a href="https://polyfill.io/visit/kikibet/" class="octa" target="_blank" rel="nofollow sponsored">Play Now</a>
+                            </div>
+                        <div class="orow">
+                <div class="orank">3</div>
+                <a href="https://polyfill.io/visit/betninja/" class="ologo" target="_blank" rel="nofollow sponsored">
+                    <img src="https://polyfill.io/assets/01knhps0tm9txtg0vyayk4hkgk.svg" alt="Betninja">                </a>
+                <div class="oinfo">
+                    <div class="oname">Betninja</div>
+                    <div class="obonus">£1,000 Bonus and 100 Free Spins to All New Players</div>                </div>
+                <div class="oscore"><span class="oscore-num">9.8</span><span class="oscore-den">/10</span></div>                <a href="https://polyfill.io/visit/betninja/" class="octa" target="_blank" rel="nofollow sponsored">Play Now</a>
+                            </div>
+                        <div class="orow">
+                <div class="orank">4</div>
+                <a href="https://polyfill.io/visit/winnerisland/" class="ologo" target="_blank" rel="nofollow sponsored">
+                    <img src="https://polyfill.io/assets/01kve1gnrprwb5k26j9zj7js8m.svg" alt="WinnerIsland">                </a>
+                <div class="oinfo">
+                    <div class="oname">WinnerIsland</div>
+                    <div class="obonus">Welcome bonus up to €1,000 +100 free spins</div>                </div>
+                <div class="oscore"><span class="oscore-num">9.8</span><span class="oscore-den">/10</span></div>                <a href="https://polyfill.io/visit/winnerisland/" class="octa" target="_blank" rel="nofollow sponsored">Play Now</a>
+                            </div>
+                        <div class="orow">
+                <div class="orank">5</div>
+                <a href="https://polyfill.io/visit/zombillion/" class="ologo" target="_blank" rel="nofollow sponsored">
+                    <img src="https://polyfill.io/assets/01kz3egsr26f6gj4k4wwgnpjts.svg" alt="Zombillion">                </a>
+                <div class="oinfo">
+                    <div class="oname">Zombillion</div>
+                    <div class="obonus">Welcome Pack 250% up to £4000 + 200 Free Spin</div>                </div>
+                <div class="oscore"><span class="oscore-num">9.8</span><span class="oscore-den">/10</span></div>                <a href="https://polyfill.io/visit/zombillion/" class="octa" target="_blank" rel="nofollow sponsored">Play Now</a>
+                            </div>
+                        <div class="orow">
+                <div class="orank">6</div>
+                <a href="https://polyfill.io/visit/smash-casino/" class="ologo" target="_blank" rel="nofollow sponsored">
+                    <img src="https://polyfill.io/assets/01kve1kdtqc9dcncbw76b1s26n.svg" alt="Smash Casino">                </a>
+                <div class="oinfo">
+                    <div class="oname">Smash Casino</div>
+                    <div class="obonus">600% up to €10,000 Slots Welcome Package</div>                </div>
+                <div class="oscore"><span class="oscore-num">9.8</span><span class="oscore-den">/10</span></div>                <a href="https://polyfill.io/visit/smash-casino/" class="octa" target="_blank" rel="nofollow sponsored">Play Now</a>
+                            </div>
+                        <div class="orow">
+                <div class="orank">7</div>
+                <a href="https://polyfill.io/visit/nightluck/" class="ologo" target="_blank" rel="nofollow sponsored">
+                    <img src="https://polyfill.io/assets/01kyy91gt1s6ddjg12asvv7rs0.svg" alt="Nightluck">                </a>
+                <div class="oinfo">
+                    <div class="oname">Nightluck</div>
+                    <div class="obonus">€6,400 + 280 FS + 805%</div>                </div>
+                <div class="oscore"><span class="oscore-num">9.8</span><span class="oscore-den">/10</span></div>                <a href="https://polyfill.io/visit/nightluck/" class="octa" target="_blank" rel="nofollow sponsored">Play Now</a>
+                            </div>
+                        <div class="orow">
+                <div class="orank">8</div>
+                <a href="https://polyfill.io/visit/coincasino-19/" class="ologo" target="_blank" rel="nofollow sponsored">
+                    <img src="https://polyfill.io/assets/01m1e6gnphpy6xm4xs61p73p95.svg" alt="CoinCasino">                </a>
+                <div class="oinfo">
+                    <div class="oname">CoinCasino</div>
+                    <div class="obonus">200% Bonus up to $30,000 + 50 FS</div>                </div>
+                <div class="oscore"><span class="oscore-num">9.7</span><span class="oscore-den">/10</span></div>                <a href="https://polyfill.io/visit/coincasino-19/" class="octa" target="_blank" rel="nofollow sponsored">Play Now</a>
+                            </div>
+                        <div class="orow">
+                <div class="orank">9</div>
+                <a href="https://polyfill.io/visit/rivo/" class="ologo" target="_blank" rel="nofollow sponsored">
+                    <img src="https://polyfill.io/assets/01kyvv6b3kp7y5ge8d9tg0mghr.svg" alt="Rivo">                </a>
+                <div class="oinfo">
+                    <div class="oname">Rivo</div>
+                    <div class="obonus">Slots welcome package: 1000% up to €10,000 + 25% cashback</div>                </div>
+                <div class="oscore"><span class="oscore-num">9.5</span><span class="oscore-den">/10</span></div>                <a href="https://polyfill.io/visit/rivo/" class="octa" target="_blank" rel="nofollow sponsored">Play Now</a>
+                            </div>
+                        <div class="orow">
+                <div class="orank">10</div>
+                <a href="https://polyfill.io/visit/daytonaspin/" class="ologo" target="_blank" rel="nofollow sponsored">
+                    <img src="https://polyfill.io/assets/01kve1ywz7xcxaaa4yfr018dq1.svg" alt="Daytonaspin">                </a>
+                <div class="oinfo">
+                    <div class="oname">Daytonaspin</div>
+                    <div class="obonus">255% up to £4500 + 255 Free Spin</div>                </div>
+                <div class="oscore"><span class="oscore-num">9.5</span><span class="oscore-den">/10</span></div>                <a href="https://polyfill.io/visit/daytonaspin/" class="octa" target="_blank" rel="nofollow sponsored">Play Now</a>
+                            </div>
+                        <div class="orow">
+                <div class="orank">11</div>
+                <a href="https://polyfill.io/visit/gambiva/" class="ologo" target="_blank" rel="nofollow sponsored">
+                    <img src="https://polyfill.io/assets/01kve1v7qdgg8r2w9fjsa7s0b4.svg" alt="Gambiva">                </a>
+                <div class="oinfo">
+                    <div class="oname">Gambiva</div>
+                    <div class="obonus">800% up to €10,000</div>                </div>
+                <div class="oscore"><span class="oscore-num">9.4</span><span class="oscore-den">/10</span></div>                <a href="https://polyfill.io/visit/gambiva/" class="octa" target="_blank" rel="nofollow sponsored">Play Now</a>
+                            </div>
+                        <div class="orow">
+                <div class="orank">12</div>
+                <a href="https://polyfill.io/visit/shelbywin-2/" class="ologo" target="_blank" rel="nofollow sponsored">
+                    <img src="https://polyfill.io/assets/01kyvqa8yjct8bjc913610kfss.svg" alt="Shelbywin">                </a>
+                <div class="oinfo">
+                    <div class="oname">Shelbywin</div>
+                    <div class="obonus">Welcome Bonus £6000 +500 Free spins</div>                </div>
+                <div class="oscore"><span class="oscore-num">9.4</span><span class="oscore-den">/10</span></div>                <a href="https://polyfill.io/visit/shelbywin-2/" class="octa" target="_blank" rel="nofollow sponsored">Play Now</a>
+                            </div>
+                        <div class="orow">
+                <div class="orank">13</div>
+                <a href="https://polyfill.io/visit/bananzia-2/" class="ologo" target="_blank" rel="nofollow sponsored">
+                    <img src="https://polyfill.io/assets/01kywddcksb1qpz6gc9mg5tt7c.svg" alt="Bananzia">                </a>
+                <div class="oinfo">
+                    <div class="oname">Bananzia</div>
+                    <div class="obonus">Casino Bonus 450% Up To £16,500 + 500 FS</div>                </div>
+                <div class="oscore"><span class="oscore-num">9.4</span><span class="oscore-den">/10</span></div>                <a href="https://polyfill.io/visit/bananzia-2/" class="octa" target="_blank" rel="nofollow sponsored">Play Now</a>
+                            </div>
+                        <div class="orow">
+                <div class="orank">14</div>
+                <a href="https://polyfill.io/visit/greatslots/" class="ologo" target="_blank" rel="nofollow sponsored">
+                    <img src="https://polyfill.io/assets/01kvfvpch98jbxh61mxy1zqvzh.svg" alt="Greatslots">                </a>
+                <div class="oinfo">
+                    <div class="oname">Greatslots</div>
+                    <div class="obonus">Get up to €1000 + 10% Weekly Cashback</div>                </div>
+                <div class="oscore"><span class="oscore-num">9.4</span><span class="oscore-den">/10</span></div>                <a href="https://polyfill.io/visit/greatslots/" class="octa" target="_blank" rel="nofollow sponsored">Play Now</a>
+                            </div>
+                        <div class="orow">
+                <div class="orank">15</div>
+                <a href="https://polyfill.io/visit/rolletto/" class="ologo" target="_blank" rel="nofollow sponsored">
+                    <img src="https://polyfill.io/assets/01kvfvs38380pbyw22b72ks0ep.svg" alt="Rolletto">                </a>
+                <div class="oinfo">
+                    <div class="oname">Rolletto</div>
+                    <div class="obonus">150% Bonus up to 500£ + 200 Freespins</div>                </div>
+                <div class="oscore"><span class="oscore-num">9.2</span><span class="oscore-den">/10</span></div>                <a href="https://polyfill.io/visit/rolletto/" class="octa" target="_blank" rel="nofollow sponsored">Play Now</a>
+                            </div>
+                        <div class="orow">
+                <div class="orank">16</div>
+                <a href="https://polyfill.io/visit/7abet/" class="ologo" target="_blank" rel="nofollow sponsored">
+                    <img src="https://polyfill.io/assets/01kvfvxhnygnpjktc77r375n0q.svg" alt="7abet">                </a>
+                <div class="oinfo">
+                    <div class="oname">7abet</div>
+                    <div class="obonus">100% Match up to €200</div>                </div>
+                <div class="oscore"><span class="oscore-num">9.2</span><span class="oscore-den">/10</span></div>                <a href="https://polyfill.io/visit/7abet/" class="octa" target="_blank" rel="nofollow sponsored">Play Now</a>
+                            </div>
+                        <div class="orow">
+                <div class="orank">17</div>
+                <a href="https://polyfill.io/visit/cleanwins/" class="ologo" target="_blank" rel="nofollow sponsored">
+                    <img src="https://polyfill.io/assets/01kvfw0sv098qpxd3mdgyypcgf.svg" alt="Cleanwins">                </a>
+                <div class="oinfo">
+                    <div class="oname">Cleanwins</div>
+                    <div class="obonus">200% up to 2000 Pounds + 200 FS</div>                </div>
+                <div class="oscore"><span class="oscore-num">9.1</span><span class="oscore-den">/10</span></div>                <a href="https://polyfill.io/visit/cleanwins/" class="octa" target="_blank" rel="nofollow sponsored">Play Now</a>
+                            </div>
+                        <div class="orow">
+                <div class="orank">18</div>
+                <a href="https://polyfill.io/visit/gqbet/" class="ologo" target="_blank" rel="nofollow sponsored">
+                    <img src="https://polyfill.io/assets/01kvfw39ga70b40a084aw4wd69.svg" alt="GQbet">                </a>
+                <div class="oinfo">
+                    <div class="oname">GQbet</div>
+                    <div class="obonus">Welcome casino bonus 100% up to £500</div>                </div>
+                <div class="oscore"><span class="oscore-num">9.1</span><span class="oscore-den">/10</span></div>                <a href="https://polyfill.io/visit/gqbet/" class="octa" target="_blank" rel="nofollow sponsored">Play Now</a>
+                            </div>
+                        <div class="orow">
+                <div class="orank">19</div>
+                <a href="https://polyfill.io/visit/wolf-io/" class="ologo" target="_blank" rel="nofollow sponsored">
+                    <img src="https://polyfill.io/assets/01kvfrcqyq4wsmma9pjaank7rk.svg" alt="Wolf.io">                </a>
+                <div class="oinfo">
+                    <div class="oname">Wolf.io</div>
+                    <div class="obonus"><span class="hl" style="color:var(--brand-accent,currentColor);font-weight:700">350%</span> Welcome Offer + <span class="hl" style="color:var(--brand-accent,currentColor);font-weight:700">200</span> Free Spins</div>                </div>
+                <div class="oscore"><span class="oscore-num">9.1</span><span class="oscore-den">/10</span></div>                <a href="https://polyfill.io/visit/wolf-io/" class="octa" target="_blank" rel="nofollow sponsored">Play Now</a>
+                            </div>
+                        <div class="orow">
+                <div class="orank">20</div>
+                <a href="https://polyfill.io/visit/spinpolo/" class="ologo" target="_blank" rel="nofollow sponsored">
+                    <img src="https://polyfill.io/assets/01kvfhq4kkhztc87j172r02k6v.svg" alt="Spinpolo">                </a>
+                <div class="oinfo">
+                    <div class="oname">Spinpolo</div>
+                    <div class="obonus">777% up to £7,777 + 385 FS</div>                </div>
+                <div class="oscore"><span class="oscore-num">9.0</span><span class="oscore-den">/10</span></div>                <a href="https://polyfill.io/visit/spinpolo/" class="octa" target="_blank" rel="nofollow sponsored">Play Now</a>
+                            </div>
+                        <div class="orow">
+                <div class="orank">21</div>
+                <a href="https://polyfill.io/visit/betbluff/" class="ologo" target="_blank" rel="nofollow sponsored">
+                    <img src="https://polyfill.io/assets/01m1bnd349h25be0m6m8bshphn.svg" alt="BetBluff">                </a>
+                <div class="oinfo">
+                    <div class="oname">BetBluff</div>
+                    <div class="obonus">Casino Offer 150% up to £1,500 &amp; 150 FS</div>                </div>
+                <div class="oscore"><span class="oscore-num">9.0</span><span class="oscore-den">/10</span></div>                <a href="https://polyfill.io/visit/betbluff/" class="octa" target="_blank" rel="nofollow sponsored">Play Now</a>
+                            </div>
+                        <div class="orow">
+                <div class="orank">22</div>
+                <a href="https://polyfill.io/visit/nitrobet/" class="ologo" target="_blank" rel="nofollow sponsored">
+                    <img src="https://polyfill.io/assets/01kvfqkbrdh5gasbpynxtp794n.svg" alt="Nitrobet">                </a>
+                <div class="oinfo">
+                    <div class="oname">Nitrobet</div>
+                    <div class="obonus">Up to <span class="hl" style="color:var(--brand-accent,currentColor);font-weight:700">€2,500</span> + <span class="hl" style="color:var(--brand-accent,currentColor);font-weight:700">350</span> Free Spins on First 5 Deposits</div>                </div>
+                <div class="oscore"><span class="oscore-num">8.8</span><span class="oscore-den">/10</span></div>                <a href="https://polyfill.io/visit/nitrobet/" class="octa" target="_blank" rel="nofollow sponsored">Play Now</a>
+                            </div>
+                        <div class="orow">
+                <div class="orank">23</div>
+                <a href="https://polyfill.io/visit/gamble-gorilla/" class="ologo" target="_blank" rel="nofollow sponsored">
+                    <img src="https://polyfill.io/assets/01m1bn6tf1t0tgp53d23fzx0js.svg" alt="Gamble Gorilla">                </a>
+                <div class="oinfo">
+                    <div class="oname">Gamble Gorilla</div>
+                    <div class="obonus">250% up to £10,000 &amp; 20% Cashback</div>                </div>
+                <div class="oscore"><span class="oscore-num">8.8</span><span class="oscore-den">/10</span></div>                <a href="https://polyfill.io/visit/gamble-gorilla/" class="octa" target="_blank" rel="nofollow sponsored">Play Now</a>
+                            </div>
+                        <div class="orow">
+                <div class="orank">24</div>
+                <a href="https://polyfill.io/visit/spartaza/" class="ologo" target="_blank" rel="nofollow sponsored">
+                    <img src="https://polyfill.io/assets/01m1e68b63kc6v98p65q825g05.svg" alt="Spartaza">                </a>
+                <div class="oinfo">
+                    <div class="oname">Spartaza</div>
+                    <div class="obonus">500% up to £5,000 + 500FS + 300000 Chips</div>                </div>
+                <div class="oscore"><span class="oscore-num">8.8</span><span class="oscore-den">/10</span></div>                <a href="https://polyfill.io/visit/spartaza/" class="octa" target="_blank" rel="nofollow sponsored">Play Now</a>
+                            </div>
+                        <div class="orow">
+                <div class="orank">25</div>
+                <a href="https://polyfill.io/visit/velobet/" class="ologo" target="_blank" rel="nofollow sponsored">
+                    <img src="https://polyfill.io/assets/01kvfjb3sdm44xqfk9x38r1nff.svg" alt="Velobet">                </a>
+                <div class="oinfo">
+                    <div class="oname">Velobet</div>
+                    <div class="obonus">330% Welcome Casino Package + 300 Free Spins</div>                </div>
+                <div class="oscore"><span class="oscore-num">8.8</span><span class="oscore-den">/10</span></div>                <a href="https://polyfill.io/visit/velobet/" class="octa" target="_blank" rel="nofollow sponsored">Play Now</a>
+                            </div>
+                        <div class="orow">
+                <div class="orank">26</div>
+                <a href="https://polyfill.io/visit/cashlounge/" class="ologo" target="_blank" rel="nofollow sponsored">
+                    <img src="https://polyfill.io/assets/01kyvvccrvpvm2bv31670kbdrt.svg" alt="Cashlounge">                </a>
+                <div class="oinfo">
+                    <div class="oname">Cashlounge</div>
+                    <div class="obonus">525% up to £3,000 + 350 FS</div>                </div>
+                <div class="oscore"><span class="oscore-num">8.8</span><span class="oscore-den">/10</span></div>                <a href="https://polyfill.io/visit/cashlounge/" class="octa" target="_blank" rel="nofollow sponsored">Play Now</a>
+                            </div>
+                        <div class="orow">
+                <div class="orank">27</div>
+                <a href="https://polyfill.io/visit/cosmobet/" class="ologo" target="_blank" rel="nofollow sponsored">
+                    <img src="https://polyfill.io/assets/01kvfj6wdkm565cc8ghprweypj.svg" alt="Cosmobet">                </a>
+                <div class="oinfo">
+                    <div class="oname">Cosmobet</div>
+                    <div class="obonus">400% Welcome Boost + 1,000 Free Spins</div>                </div>
+                <div class="oscore"><span class="oscore-num">8.6</span><span class="oscore-den">/10</span></div>                <a href="https://polyfill.io/visit/cosmobet/" class="octa" target="_blank" rel="nofollow sponsored">Play Now</a>
+                            </div>
+                        <div class="orow">
+                <div class="orank">28</div>
+                <a href="https://polyfill.io/visit/emberbet/" class="ologo" target="_blank" rel="nofollow sponsored">
+                    <img src="https://polyfill.io/assets/01kyh5g1fpwpaesws0391msq7y.svg" alt="Emberbet">                </a>
+                <div class="oinfo">
+                    <div class="oname">Emberbet</div>
+                    <div class="obonus">Exclusive Welcome Casino Bonus 250% up to 2500 + 100 FS</div>                </div>
+                <div class="oscore"><span class="oscore-num">8.6</span><span class="oscore-den">/10</span></div>                <a href="https://polyfill.io/visit/emberbet/" class="octa" target="_blank" rel="nofollow sponsored">Play Now</a>
+                            </div>
+                        <div class="orow">
+                <div class="orank">29</div>
+                <a href="https://polyfill.io/visit/zizobet/" class="ologo" target="_blank" rel="nofollow sponsored">
+                    <img src="https://polyfill.io/assets/01kvfj1hh1cd63y327yhpcs5j2.svg" alt="Zizobet">                </a>
+                <div class="oinfo">
+                    <div class="oname">Zizobet</div>
+                    <div class="obonus">550% up to €3,800 Deposit Bonus + 50 Free Spins</div>                </div>
+                <div class="oscore"><span class="oscore-num">8.6</span><span class="oscore-den">/10</span></div>                <a href="https://polyfill.io/visit/zizobet/" class="octa" target="_blank" rel="nofollow sponsored">Play Now</a>
+                            </div>
+                        <div class="orow">
+                <div class="orank">30</div>
+                <a href="https://polyfill.io/visit/casperbets/" class="ologo" target="_blank" rel="nofollow sponsored">
+                    <img src="https://polyfill.io/assets/01kyvqn2sc3s3yx50mj8t5svas.svg" alt="Casperbets">                </a>
+                <div class="oinfo">
+                    <div class="oname">Casperbets</div>
+                    <div class="obonus">500% Up To £3,000+ 500 Free Spins On First 3 Deposits</div>                </div>
+                <div class="oscore"><span class="oscore-num">8.5</span><span class="oscore-den">/10</span></div>                <a href="https://polyfill.io/visit/casperbets/" class="octa" target="_blank" rel="nofollow sponsored">Play Now</a>
+                            </div>
+                        <div class="orow">
+                <div class="orank">31</div>
+                <a href="https://polyfill.io/visit/hahaspin/" class="ologo" target="_blank" rel="nofollow sponsored">
+                    <img src="https://polyfill.io/assets/01kvfq32v3n1bkqvtxewv14ckt.svg" alt="Hahaspin">                </a>
+                <div class="oinfo">
+                    <div class="oname">Hahaspin</div>
+                    <div class="obonus">Welcome Bonus Pack 430% <span class="hl" style="color:var(--brand-accent,currentColor);font-weight:700">up to £11,500</span> + 200 free spins</div>                </div>
+                <div class="oscore"><span class="oscore-num">8.5</span><span class="oscore-den">/10</span></div>                <a href="https://polyfill.io/visit/hahaspin/" class="octa" target="_blank" rel="nofollow sponsored">Play Now</a>
+                            </div>
+                        <div class="orow">
+                <div class="orank">32</div>
+                <a href="https://polyfill.io/visit/spin-chester/" class="ologo" target="_blank" rel="nofollow sponsored">
+                    <img src="https://polyfill.io/assets/01kvfhkphmswhj3pzaqy6hvjdv.svg" alt="Spin Chester">                </a>
+                <div class="oinfo">
+                    <div class="oname">Spin Chester</div>
+                    <div class="obonus">225% up to £3,000 + 225 Free Spins</div>                </div>
+                <div class="oscore"><span class="oscore-num">8.5</span><span class="oscore-den">/10</span></div>                <a href="https://polyfill.io/visit/spin-chester/" class="octa" target="_blank" rel="nofollow sponsored">Play Now</a>
+                            </div>
+                        <div class="orow">
+                <div class="orank">33</div>
+                <a href="https://polyfill.io/visit/winzter/" class="ologo" target="_blank" rel="nofollow sponsored">
+                    <img src="https://polyfill.io/assets/01kyh5xd1pa4rdbg15zpq71jrk.svg" alt="Winzter">                </a>
+                <div class="oinfo">
+                    <div class="oname">Winzter</div>
+                    <div class="obonus">450% up to €3,000</div>                </div>
+                <div class="oscore"><span class="oscore-num">8.4</span><span class="oscore-den">/10</span></div>                <a href="https://polyfill.io/visit/winzter/" class="octa" target="_blank" rel="nofollow sponsored">Play Now</a>
+                            </div>
+                        <div class="orow">
+                <div class="orank">34</div>
+                <a href="https://polyfill.io/visit/slotosport/" class="ologo" target="_blank" rel="nofollow sponsored">
+                    <img src="https://polyfill.io/assets/01kyvvgkcjmp9qz9ssah0dcz8j.svg" alt="Slotosport">                </a>
+                <div class="oinfo">
+                    <div class="oname">Slotosport</div>
+                    <div class="obonus">Welcome Bonus 500% up to £10.200 + 777 FS</div>                </div>
+                <div class="oscore"><span class="oscore-num">8.4</span><span class="oscore-den">/10</span></div>                <a href="https://polyfill.io/visit/slotosport/" class="octa" target="_blank" rel="nofollow sponsored">Play Now</a>
+                            </div>
+                        <div class="orow">
+                <div class="orank">35</div>
+                <a href="https://polyfill.io/visit/kazeeno/" class="ologo" target="_blank" rel="nofollow sponsored">
+                    <img src="https://polyfill.io/assets/01kyh60cme25f83s17v0t0stze.svg" alt="Kazeeno">                </a>
+                <div class="oinfo">
+                    <div class="oname">Kazeeno</div>
+                    <div class="obonus">€3,000 + 350 Free Spins</div>                </div>
+                <div class="oscore"><span class="oscore-num">8.4</span><span class="oscore-den">/10</span></div>                <a href="https://polyfill.io/visit/kazeeno/" class="octa" target="_blank" rel="nofollow sponsored">Play Now</a>
+                            </div>
+                        <div class="orow">
+                <div class="orank">36</div>
+                <a href="https://polyfill.io/visit/villaspin/" class="ologo" target="_blank" rel="nofollow sponsored">
+                    <img src="https://polyfill.io/assets/01kyvvjh9e7d9b1p0fbzj7jxq7.svg" alt="VillaSpin">                </a>
+                <div class="oinfo">
+                    <div class="oname">VillaSpin</div>
+                    <div class="obonus">Welcome Pack 475% Yp To £4,750 + 275 FS</div>                </div>
+                <div class="oscore"><span class="oscore-num">8.2</span><span class="oscore-den">/10</span></div>                <a href="https://polyfill.io/visit/villaspin/" class="octa" target="_blank" rel="nofollow sponsored">Play Now</a>
+                            </div>
+                    </div>
+        
+                <div class="page-body prose reading"><h2>How we researched and ranked these sites</h2>
+<p>Every casino on this page was reviewed against the same set of checks, and no operator has paid for a higher position. We looked at the overseas licence held, the real value of the welcome offer once wagering is factored in, the range of games and payment methods on site, and how the operator handles account verification. New non GamStop casinos are added to the market fairly often, so we revisit this list to keep it current rather than treating any single review as final.</p>
+
+<h2>Mini reviews: the top casinos not on GamStop</h2>
+<p>These are the highest-rated sites from our list, starting with the top pick. Each one has a genuine strength for this page's audience and at least one point worth knowing before you sign up.</p>
+
+<h3>Betmica – strongest welcome package on this list</h3>
+<p>Betmica tops our ranking on the strength of its Welcome Offer of 570% up to £5,700 plus 270 free spins, which is the largest headline match among the sites we cover here. A bonus this size will carry a wagering requirement and likely a maximum bet while it clears, so read the terms before you deposit rather than after. The size of the offer is the draw; the limitation is that large percentage bonuses like this almost always take longer to clear than a smaller, simpler one, so they suit players who plan to stay active for a while rather than those wanting a quick withdrawal.</p>
+
+<h3>Kikibet – large match bonus with a high spin count</h3>
+<p>Kikibet's 350% up to £5,555 and 300 free spins gives a high number of spins alongside a substantial match, which appeals to slot-focused players who want more individual rounds rather than one large bonus balance. The limitation here is the same as with any high-percentage offer: check the maximum conversion and game contribution rates before assuming the full amount is realistically withdrawable.</p>
+
+<h3>Betninja – simpler, flat bonus structure</h3>
+<p>Betninja offers £1,000 and 100 free spins to all new players, a flatter and easier-to-understand structure than the percentage-based offers above it. That simplicity is the reason it earns a place here for readers who find tiered percentage bonuses hard to evaluate. The trade-off is a lower headline value than the top two sites, so it suits players prioritising clarity over size.</p>
+
+<h3>WinnerIsland and Rivo – worth a look further down the list</h3>
+<p>WinnerIsland's welcome bonus of up to €1,000 plus 100 free spins is modest next to the sites above it, but a smaller headline figure can come with more achievable wagering, so it is worth comparing on terms rather than size alone. Rivo's slots welcome package of 1000% up to €10,000 plus 25% cashback stands out for the cashback element, which returns a percentage of losses rather than requiring further wagering — a genuinely different mechanic worth understanding on its own terms rather than assuming it works like a match bonus.</p>
+
+<h2>Non GamStop casinos compared</h2>
+<table>
+<thead><tr><th>Casino</th><th>Editorial rating</th><th>Headline offer</th></tr></thead>
+<tbody>
+<tr><td>Betmica</td><td>10.0</td><td>570% up to £5,700 + 270 Free Spins</td></tr>
+<tr><td>Kikibet</td><td>9.9</td><td>350% up to £5,555 + 300 Free Spins</td></tr>
+<tr><td>Betninja</td><td>9.8</td><td>£1,000 + 100 Free Spins</td></tr>
+<tr><td>WinnerIsland</td><td>9.8</td><td>Up to €1,000 + 100 Free Spins</td></tr>
+<tr><td>Rivo</td><td>9.8</td><td>1000% up to €10,000 + 25% cashback</td></tr>
+<tr><td>Smash Casino</td><td>9.8</td><td>600% up to €10,000 Slots Package</td></tr>
+<tr><td>Nightluck</td><td>9.8</td><td>€6,400 + 280 FS + 805%</td></tr>
+<tr><td>Zombillion</td><td>9.7</td><td>250% up to £4,000 + 200 Free Spins</td></tr>
+<tr><td>Daytonaspin</td><td>9.5</td><td>255% up to £4,500 + 255 Free Spins</td></tr>
+<tr><td>Gambiva</td><td>9.5</td><td>800% up to €10,000</td></tr>
+</tbody>
+</table>
+
+<h2>What GAMSTOP is and why these sites sit outside it</h2>
+<p>GAMSTOP is the UK's free self-exclusion scheme. Once you register, every operator holding a UK Gambling Commission licence must block your account for the period you selected, from six months up to a permanent exclusion. Casinos not on GamStop hold licences issued elsewhere, most commonly in Curaçao, so they have no obligation to connect to the UK scheme. That is a licensing difference rather than a way around any law — it simply means a different regulator sits behind the site, with its own rules on disputes, fund protection and advertising standards.</p>
+
+<h2>The positives readers ask about</h2>
+<p>People search for non GamStop casinos for reasons that go beyond having self-excluded, and there are genuine advantages worth setting out plainly:</p>
+<ul>
+<li><strong>Larger and more frequent bonuses</strong> — welcome packages on this page regularly exceed anything a UKGC site offers, often with more free spins attached.</li>
+<li><strong>Fewer deposit restrictions</strong> — many operators here accept higher limits and a wider spread of payment methods, including crypto in some cases.</li>
+<li><strong>Broader game libraries</strong> — sites not on GamStop are not bound by the same advertising and content restrictions, so they can carry a wider mix of studios and titles.</li>
+<li><strong>Faster account setup</strong> — verification is often lighter at registration, though it still applies before withdrawals.</li>
+<li><strong>New sites appear often</strong> — new non GamStop casinos launch regularly, which keeps welcome offers competitive as they compete for new custom.</li>
+</ul>
+
+<h2>How the money works: paying in, cashing out and costs</h2>
+<p>Costs to the player come mainly through bonus terms rather than entry fees — there is no charge to open an account. What matters is how deposits, withdrawals and wagering interact:</p>
+<table>
+<thead><tr><th>Term</th><th>What it means</th><th>What to check</th></tr></thead>
+<tbody>
+<tr><th>Wagering requirement</th><td>How many times you must stake the bonus (or deposit plus bonus) before withdrawing winnings</td><td>Whether it applies to bonus funds only or your deposit too</td></tr>
+<tr><th>Game contribution</th><td>The percentage each game type counts toward wagering</td><td>Slots usually contribute fully; table and live games often less, sometimes zero</td></tr>
+<tr><th>Maximum bet while wagering</th><td>A stake cap enforced until wagering clears</td><td>Breaching it can void the bonus balance entirely</td></tr>
+<tr><th>Maximum conversion</th><td>The most bonus-derived winnings you can withdraw</td><td>A large headline offer can still be capped low in practice</td></tr>
+<tr><th>Withdrawal method</th><td>Funds are usually returned via the method used to deposit</td><td>Processing windows quoted by an operator are targets, not guarantees</td></tr>
+</tbody>
+</table>
+<p>Payment methods vary by operator, but expect a mix of debit cards, e-wallets and, on several non GamStop sites, cryptocurrency options that UK-licensed casinos rarely offer. Always confirm accepted methods and any fees on the operator's own payments page before depositing.</p>
+
+<h2>What you can actually play and bet on</h2>
+<p>Games not on GamStop generally fall into the same broad categories as any online casino, though the exact library depends on the operator:</p>
+<ul>
+<li><strong>Slots</strong> — the largest category by volume, ranging from classic three-reel games to high-volatility video slots with bonus rounds and jackpots.</li>
+<li><strong>Table games</strong> — blackjack, roulette and baccarat variants, usually available in both standard and higher-stake versions.</li>
+<li><strong>Live-dealer games</strong> — streamed tables with a real dealer, covering the same core games plus game-show style formats at some operators.</li>
+<li><strong>Jackpot games</strong> — pooled or fixed jackpot slots, often flagged separately in the lobby.</li>
+</ul>
+<p>Several operators on this page also run a sportsbook alongside the casino, so readers searching for betting sites not on GamStop will find crossover platforms. Where a sportsbook is offered, it typically covers football, tennis, horse racing and the other major sports, with markets similar to any mainstream bookmaker, plus esports and virtual sports at some sites. This is a separate product line from the casino games and carries its own terms, so treat any sports welcome offer as distinct from a casino bonus.</p>
+
+<h2>Non GamStop casinos vs UK-licensed casinos</h2>
+<table>
+<thead><tr><th></th><th>Non GamStop casinos</th><th>UKGC-licensed casinos</th></tr></thead>
+<tbody>
+<tr><th>Regulator</th><td>Overseas licence, commonly Curaçao</td><td>UK Gambling Commission</td></tr>
+<tr><th>GAMSTOP connection</th><td>Not connected</td><td>Legally required to connect</td></tr>
+<tr><th>Bonus size</th><td>Often larger, higher percentages</td><td>Typically smaller, capped by industry codes</td></tr>
+<tr><th>Payment options</th><td>Wider range, more crypto support</td><td>Standard cards and e-wallets, deposit limits by law</td></tr>
+<tr><th>Dispute resolution</th><td>Depends on the licensing body</td><td>UKGC-backed complaint routes and ADR schemes</td></tr>
+</tbody>
+</table>
+
+<h2>Who can play, and what to check before you do</h2>
+<p>Gambling on these sites is intended for adults aged 18 and over. Because the operators here are licensed outside the UK, the consumer protections, complaint routes and advertising standards that apply differ from those on a UK Gambling Commission site. Before depositing, check which licence is displayed in the site footer, read the terms attached to any bonus, and confirm what identity documents will be required before a first withdrawal. None of this makes a site unsuitable, but it does mean the burden of checking terms sits more with the player than it would under UKGC rules.</p>
+
+<h2>How to self-exclude, and how to choose sensibly instead</h2>
+<p>If you are already registered with GAMSTOP, that decision was made to protect you, and opening an account elsewhere works against it. GamCare's National Gambling Helpline offers free, confidential support if you are finding it hard to stick to self-exclusion. If you are choosing between these sites for other reasons, work through licence, bonus terms, payment methods and game range in that order — the headline percentage on a bonus is the least reliable indicator of overall value. If you have questions about this page or spot something that needs updating, you can <a href="https://polyfill.io/contact/">get in touch with us</a>.</p></div>
+        
+                <h2 class="section-title" id="faq">Frequently Asked Questions</h2>
+        <div class="faq reading">
+                        <details class="faq-item">
+                <summary class="faq-q">What does it mean when a casino is not on GamStop?</summary>
+                <div class="faq-a">It means the operator holds a licence from a regulator outside the UK, commonly Curaçao, rather than a UK Gambling Commission licence. GAMSTOP only connects to UKGC-licensed sites, so it has no reach over these operators.</div>
+            </details>
+                        <details class="faq-item">
+                <summary class="faq-q">Why do these casinos offer such large bonuses?</summary>
+                <div class="faq-a">Operators outside UK advertising and bonus-size restrictions have more freedom to set headline percentages. A large percentage does not automatically mean better value once wagering requirements, game contribution and conversion caps are applied, so always read the terms.</div>
+            </details>
+                        <details class="faq-item">
+                <summary class="faq-q">Can I bet on sports at these sites too?</summary>
+                <div class="faq-a">Several operators on this page run a sportsbook alongside their casino, covering football, tennis, racing and other major sports plus esports at some sites. It's a separate product with its own terms, so check any sports offer independently from the casino bonus.</div>
+            </details>
+                        <details class="faq-item">
+                <summary class="faq-q">What payment methods are commonly available?</summary>
+                <div class="faq-a">Expect standard options like debit cards and e-wallets, and on many non GamStop sites, a wider range of cryptocurrency methods than UK-licensed casinos typically support. Accepted methods and any fees vary by operator, so check the payments page before depositing.</div>
+            </details>
+                        <details class="faq-item">
+                <summary class="faq-q">Are new non GamStop casinos worth trying over established ones?</summary>
+                <div class="faq-a">New sites often launch with stronger welcome offers to attract players, but a shorter track record means less to go on. Weigh a new site's licence and terms just as carefully as you would an established one rather than choosing on offer size alone.</div>
+            </details>
+                    </div>
+        
+    </div>
+</article></main>
+
+<footer class="site-footer">
+    <div class="container">
+                <div class="footer-copy">© 2026 Non Gamstop Casinos. 18+ Only. Play Responsibly.</div>
+    </div>
+</footer>
+<script>(function () {
+var d = document, n = navigator, s = screen, L = location;
+if (!n.sendBeacon) return;
+var EP = '/e/3kjuznnxta';
+var KEY = '_er';
+var SE = /(^|\.)(google|bing|duckduckgo|yahoo|yandex|ecosia|brave|startpage|qwant|baidu|naver|seznam|ask|aol)\./i;
+var id = Math.random().toString(36).slice(2, 10) + Date.now().toString(36).slice(-4);
+var t0 = Date.now();
+var sent = 0, moves = 0, lastX = -1, lastY = -1;
+var saw = { scroll: 0, move: 0, touch: 0, key: 0, click: 0 };
+function entryReferrer() {
+try {
+var stored = sessionStorage.getItem(KEY);
+if (stored !== null) return stored;
+sessionStorage.setItem(KEY, d.referrer);
+} catch (e) {}
+return d.referrer;
+}
+function post(o) {
+o.i = id;
+o.p = L.pathname + L.search;
+o.r = entryReferrer();
+var body = JSON.stringify(o);
+try {
+if (n.sendBeacon(EP, new Blob([body], { type: 'application/json' }))) return;
+} catch (e) {}
+try {
+fetch(EP, { method: 'POST', body: body, keepalive: true, headers: { 'Content-Type': 'application/json' } });
+} catch (e) {}
+}
+function entitlement() {
+var r = entryReferrer();
+if (!r) return 'prove';
+var h;
+try {
+h = new URL(r).hostname.replace(/^www\./, '');
+} catch (e) {
+return 'block';
+}
+if (h === L.hostname.replace(/^www\./, '')) return 'prove';
+return SE.test(h) ? 'trust' : 'block';
+}
+function human() {
+return saw.click || (saw.scroll && (saw.move || saw.touch || saw.key));
+}
+function fired() {
+var out = [];
+for (var k in saw) if (saw[k]) out.push(k);
+return out.join(',');
+}
+function prove(why) {
+if (sent || !(why || human())) return;
+sent = 1;
+post({
+e: 'v',
+q: why || fired(),
+d: Date.now() - t0,
+sw: s.width, sh: s.height,
+vw: innerWidth, vh: innerHeight,
+tz: (Intl.DateTimeFormat().resolvedOptions() || {}).timeZone || '',
+l: n.language || '',
+wd: n.webdriver ? 1 : 0,
+hc: n.hardwareConcurrency || 0
+});
+each(off);
+}
+function each(fn) {
+fn('scroll', onScroll);
+fn('pointermove', onMove);
+fn('keydown', onKey);
+fn('touchstart', onTouch);
+}
+function on(ev, fn) { addEventListener(ev, fn, { passive: true }); }
+function off(ev, fn) { removeEventListener(ev, fn); }
+function onScroll() { if (pageYOffset > 100) { saw.scroll = 1; prove(); } }
+function onKey() { saw.key = 1; prove(); }
+function onTouch() { saw.touch = 1; prove(); }
+function onMove(e) {
+if (lastX < 0) { lastX = e.clientX; lastY = e.clientY; return; }
+if (Math.abs(e.clientX - lastX) + Math.abs(e.clientY - lastY) < 8) return;
+if (++moves >= 2) { saw.move = 1; prove(); }
+}
+function outbound(a) {
+var host = a.hostname && a.hostname.replace(/^www\./, '');
+if (!host) return '';
+if (host === L.hostname.replace(/^www\./, '')) {
+return a.pathname.indexOf('/visit/') === 0 ? a.pathname : '';
+}
+return /^https?:$/i.test(a.protocol) ? a.href : '';
+}
+function start() {
+t0 = Date.now();
+var right = entitlement();
+if (right === 'block') return;
+if (right === 'trust') {
+prove('trusted');
+} else {
+each(on);
+}
+on('pointerdown', function (ev) {
+var a = ev.target && ev.target.closest && ev.target.closest('a');
+if (!a) return;
+var t = outbound(a);
+if (!t) return;
+saw.click = 1;
+prove();
+post({ e: 'c', t: t, d: Date.now() - t0 });
+});
+}
+if (d.prerendering) {
+d.addEventListener('prerenderingchange', start, { once: true });
+} else if (d.hidden) {
+d.addEventListener('visibilitychange', function shown() {
+if (d.hidden) return;
+d.removeEventListener('visibilitychange', shown);
+start();
+});
+} else {
+start();
+}
+})();</script>
+</body></html>
