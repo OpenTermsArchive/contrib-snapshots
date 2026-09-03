@@ -35,8 +35,8 @@
 <link rel="preload" href="/lib/fonts/source-sans-pro-v14-latin-600.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="preload" href="/lib/fonts/SourceSansPro-Regular.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="preload" href="/lib/fonts/freckle-face-v9-latin-regular.woff2" as="font" type="font/woff2" crossorigin> 
-<link rel="stylesheet" href="/lib/topnav/main.v1.0.135.css">
-<link rel="stylesheet" href="/lib/my-learning/main.v1.0.105.css">
+<link rel="stylesheet" href="/lib/topnav/main.v1.0.137.css">
+<link rel="stylesheet" href="/lib/my-learning/main.v1.0.106.css">
 <link rel="stylesheet" href="/lib/pathfinder/main.v1.0.12.css">
 <link rel="stylesheet" href="/w3css/5/w3.css?v=5.01">
 <link rel="stylesheet" href="/lib/w3schools/main.v1.0.2.css">
@@ -139,8 +139,8 @@ function w3_getStyleValue(elmnt,style) {
 
 <script src="/lib/common-deps/main.v1.0.24.js"></script>
 <script src="/lib/user-session/main.v1.0.52.js"></script>
-<script src="/lib/topnav/main.v1.0.135.js"></script>
-<script src="/lib/my-learning/main.v1.0.105.js"></script>
+<script src="/lib/topnav/main.v1.0.137.js"></script>
+<script src="/lib/my-learning/main.v1.0.106.js"></script>
 
 </head><body>
 
@@ -371,6 +371,28 @@ function w3_getStyleValue(elmnt,style) {
       </a>
     </div>
     <div class="tnb-right-section">
+      <a
+        href="/adventure/index.php"
+        class="tnb-adventure-badge w3-bar-item ga-top ga-adventure-top"
+        target="_blank"
+        rel="noopener noreferrer"
+        title="W3Schools Adventure App - iOS and Android"
+        aria-label="W3Schools Adventure App - iOS and Android"
+      >
+        <span class="tnb-adventure-badge-new">NEW</span>
+        <img
+          class="tnb-adventure-badge-mascot"
+          src="/adventure/img/mascot-lynx.png"
+          width="64"
+          height="82"
+          alt=""
+          loading="eager"
+        />
+        <span class="tnb-adventure-badge-text">
+          <span class="tnb-adventure-badge-title">Adventure app</span>
+          <span class="tnb-adventure-badge-sub">iOS &amp; Android</span>
+        </span>
+      </a>
       <!-- < user-anonymous -->
       <div
         id="tnb-login-btn"
@@ -480,6 +502,7 @@ function w3_getStyleValue(elmnt,style) {
       -->
       <!-- > user-authenticated -->
       <!-- < user-anonymous - action-btn -->
+      <!-- TEMP HIDDEN 2026-09-01: Get Certified / Upgrade / Academy / Spaces / Practice buttons hidden, being replaced with something new (expected ~a couple of weeks). Delete this comment line and the closing comment marker a few lines below (right before the "user-anonymous/user-authenticated - action-btn" end marker) to restore.
       <a
         target="_blank"
         href="https://campus.w3schools.com/collections/course-catalog"
@@ -588,8 +611,10 @@ function w3_getStyleValue(elmnt,style) {
         </svg>
         Practice
       </a>
+      -->
       <!-- > user-anonymous - action-btn -->
       <!-- < user-authenticated - action-btn -->
+      <!-- TEMP HIDDEN 2026-09-01: Get Certified / Upgrade / Academy / Spaces / Practice buttons hidden, being replaced with something new (expected ~a couple of weeks). Delete this comment line and the closing comment marker a few lines below (right before the "user-anonymous/user-authenticated - action-btn" end marker) to restore.
       <a
         target="_blank"
         href="https://campus.w3schools.com/collections/course-catalog"
@@ -698,6 +723,7 @@ function w3_getStyleValue(elmnt,style) {
         </svg>
         Practice
       </a>
+      -->
       <!-- > user-authenticated - action-btn -->
     </div>
   </div>
@@ -830,6 +856,28 @@ function w3_getStyleValue(elmnt,style) {
           &nbsp;
         </div>
       </div>
+      <a
+        href="/adventure/index.php"
+        class="w3-button tnb-adventure-menu-item ga-top-drop ga-mobile-menu-adventure"
+        target="_blank"
+        rel="noopener noreferrer"
+        title="W3Schools Adventure App - iOS and Android"
+        aria-label="W3Schools Adventure App - iOS and Android"
+      >
+        <img
+          class="tnb-adventure-menu-mascot"
+          src="/adventure/img/mascot-lynx.png"
+          width="64"
+          height="82"
+          alt=""
+          loading="lazy"
+        />
+        <span class="tnb-adventure-menu-text">
+          <span class="tnb-adventure-menu-title">Adventure app</span>
+          <span class="tnb-adventure-menu-sub">iOS &amp; Android</span>
+        </span>
+        <span class="tnb-adventure-menu-new">NEW</span>
+      </a>
       <a
         href="/spaces/index.php"
         class="w3-button ga-top ga-top-menu-spaces"
@@ -2433,6 +2481,52 @@ function w3_getStyleValue(elmnt,style) {
                   <div class="w3-padding services w3-round services-color-2">
                     <h4>References</h4>
                     <p>Explore our selection of references covering all popular coding languages</p>
+                  </div>
+                </a>
+              </div>
+              <div class="servicebox">
+                <a
+                  href="/adventure/index.php"
+                  class="serviceslink ga-top-drop ga-menu-services-adventure"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  title="W3Schools Adventure App"
+                  aria-label="W3Schools Adventure App - iOS and Android"
+                >
+                  <div
+                    class="w3-padding services w3-round services-color-adventure"
+                    style="position: relative"
+                  >
+                    <div class="services-adventure-box">
+                      <div class="services-adventure-text">
+                        <h4>
+                          Adventure app
+                          <span class="services-adventure-new">NEW</span>
+                        </h4>
+                        <p>
+                          For iOS &amp; Android,
+                          <br />
+                          start a new learning adventure.
+                        </p>
+                      </div>
+                      <div class="services-adventure-phone">
+                        <img
+                          src="/adventure/img/screen-map.png"
+                          width="420"
+                          height="868"
+                          alt=""
+                          loading="lazy"
+                        />
+                        <img
+                          class="services-adventure-mascot"
+                          src="/adventure/img/mascot-lynx.png"
+                          width="230"
+                          height="295"
+                          alt=""
+                          loading="lazy"
+                        />
+                      </div>
+                    </div>
                   </div>
                 </a>
               </div>
@@ -4201,565 +4295,997 @@ a.track-progress-btn {
 </style>
 
 <style>
-.signup-journey {
-  background:
-    radial-gradient(
-      circle at 95px 70px,
-      rgba(255, 255, 255, 0.65) 0 20px,
-      transparent 21px
-    ),
-    radial-gradient(
-      circle at 120px 55px,
-      rgba(255, 255, 255, 0.65) 0 26px,
-      transparent 27px
-    ),
-    radial-gradient(
-      circle at 150px 72px,
-      rgba(255, 255, 255, 0.65) 0 18px,
-      transparent 19px
-    ),
-    radial-gradient(
-      circle at 300px 170px,
-      rgba(255, 255, 255, 0.35) 0 14px,
-      transparent 15px
-    ),
-    radial-gradient(
-      circle at 320px 160px,
-      rgba(255, 255, 255, 0.35) 0 18px,
-      transparent 19px
-    ),
-    radial-gradient(
-      circle at 342px 170px,
-      rgba(255, 255, 255, 0.35) 0 13px,
-      transparent 14px
-    ),
-    radial-gradient(
-      circle at 82% 65px,
-      rgba(255, 255, 255, 0.55) 0 22px,
-      transparent 23px
-    ),
-    radial-gradient(
-      circle at calc(82% + 26px) 50px,
-      rgba(255, 255, 255, 0.55) 0 28px,
-      transparent 29px
-    ),
-    radial-gradient(
-      circle at calc(82% + 58px) 67px,
-      rgba(255, 255, 255, 0.55) 0 20px,
-      transparent 21px
-    ),
-    linear-gradient(
-      135deg,
-      #f7f4ff 0%,
-      #ebe4ff 55%,
-      #e2d8ff 100%
-    );
+.adventure-footer-banner {
+  --sky: #A9CFF9;
+  --green: #04AA6D;
+  --ink: #16181D;
 
-  font-family: 'Source Sans Pro', sans-serif;
-}
-
-.signup-journey-inner {
   position: relative;
-  min-height: 350px;
-  max-width: 1270px;
-  margin: auto;
-  padding: 50px 20px;
+  width: 100%;
+  height: 260px;
   overflow: hidden;
-  border-radius: 14px;
-  box-sizing: border-box;
-  text-align:left;
+
+  background: linear-gradient(135deg, #EAF3FD 0%, var(--sky) 100%);
+  color: var(--ink);
+  font-family: "Source Sans Pro", Arial, sans-serif;
 }
 
-.signup-journey-content {
+.adventure-footer-banner,
+.adventure-footer-banner * {
+  box-sizing: border-box;
+}
+
+
+/* =========================================================
+   CONTENT
+   ========================================================= */
+
+.adventure-footer-inner {
   position: relative;
-  z-index: 20;
-  width: 54%;
-  max-width: 590px;
-}
+  z-index: 3;
 
-.signup-journey h2 {
-  max-width: 570px;
-  margin: 0 0 14px;
-  color: #17141d;
-  font-family: 'Source Sans Pro', sans-serif;
-  font-size: 33px;
-  line-height: 1.15;
-}
-
-.signup-journey-description {
-  max-width: 550px;
-  margin: 0;
-  color: #4d4859;
-  font-size: 16px;
-  line-height: 1.7;
-}
-
-.signup-journey-badges {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 8px;
-  margin-top: 20px;
-}
-
-.signup-journey-badge {
-  display: inline-flex;
-  align-items: center;
-  gap: 7px;
-  min-height: 36px;
-  padding: 6px 11px;
-  color: #383243;
-  background-color: rgba(255, 255, 255, 0.94);
-  border: 1px solid rgba(115, 85, 217, 0.16);
-  border-radius: 6px;
-  box-sizing: border-box;
-  box-shadow: 0 2px 8px rgba(67, 47, 110, 0.05);
-  font-size: 12px;
-  font-weight: 600;
-}
-
-.signup-badge-icon {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  width: 18px;
-  height: 20px;
-  flex-shrink: 0;
-}
-
-.signup-badge-icon svg,
-.signup-badge-icon img {
-  display: block;
   width: 100%;
+  max-width: 1300px;
   height: 100%;
-  object-fit: contain;
-}
 
-.signup-badge-streak {
-  width: 18px;
-  height: 21px;
-}
+  margin: 0 auto;
+  padding: 24px 16px;
 
-.signup-badge-league {
-  width: 22px;
-  height: 22px;
-}
-
-.signup-journey-action {
-  margin-top: 25px;
-}
-
-.signup-journey-action .ws-btn {
-  display: inline-block;
-}
-
-/* Scene */
-
-.signup-journey-scene {
-  position: absolute;
-  inset: 0;
-  overflow: hidden;
-  pointer-events: none;
-}
-
-/* Background mountains */
-
-.signup-mountain-back {
-  position: absolute;
-  bottom: 0;
-  z-index: 2;
-  width: 320px;
-  height: 210px;
-  background-color: rgba(130, 104, 215, 0.12);
-  clip-path: polygon(
-    0 100%,
-    18% 72%,
-    31% 82%,
-    52% 28%,
-    66% 62%,
-    78% 48%,
-    100% 100%
-  );
-}
-
-.signup-mountain-back-one {
-  right: 360px;
-}
-
-.signup-mountain-back-two {
-  right: 40px;
-  width: 390px;
-  height: 255px;
-  background-color: rgba(115, 85, 217, 0.16);
-}
-
-.signup-mountain-back-three {
-  right: -140px;
-  width: 350px;
-  height: 185px;
-  background-color: rgba(115, 85, 217, 0.1);
-}
-
-/* Mountain, lynx and flag group */
-
-.signup-summit {
-  position: absolute;
-  right: 135px;
-  bottom: -72px;
-  z-index: 4;
-  width: 390px;
-  height: 430px;
-}
-
-/* Foreground mountain */
-
-.signup-mountain-front {
-  position: absolute;
-  right: 0;
-  bottom: 0;
-  width: 370px;
-  height: 255px;
-  background: linear-gradient(
-    145deg,
-    #695497 0%,
-    #493768 100%
-  );
-  clip-path: polygon(
-    5% 100%,
-    18% 52%,
-    34% 43%,
-    43% 13%,
-    57% 5%,
-    72% 26%,
-    85% 55%,
-    100% 100%
-  );
-}
-
-.signup-mountain-front::before {
-  content: "";
-  position: absolute;
-  inset: 0;
-  background-color: rgba(255, 255, 255, 0.1);
-  clip-path: polygon(
-    43% 13%,
-    57% 5%,
-    50% 48%,
-    34% 43%
-  );
-}
-
-.signup-mountain-front::after {
-  content: "";
-  position: absolute;
-  inset: 0;
-  background-color: rgba(32, 22, 55, 0.18);
-  clip-path: polygon(
-    57% 5%,
-    72% 26%,
-    85% 55%,
-    64% 47%
-  );
-}
-
-/* Lynx */
-
-.signup-hero {
-  position: absolute;
-  right: 110px;
-  bottom: 126px;
-  z-index: 9;
-  width: 135px;
-  height: 245px;
-}
-
-.signup-hero-body {
-  display: block;
-  width: 100%;
-  height: 100%;
-  object-fit: contain;
-}
-
-/* Flag */
-
-.signup-flag-pole {
-  position: absolute;
-  right: 235px;
-  bottom: 157px;
-  z-index: 8;
-  width: 5px;
-  height: 224px;
-  background-color: #2e2735;
-  border-radius: 4px;
-  transform: rotate(-2deg);
-  transform-origin: bottom;
-}
-
-.signup-flag-pole::before {
-  content: "";
-  position: absolute;
-  top: -8px;
-  left: -4px;
-  width: 13px;
-  height: 13px;
-  background-color: #2e2735;
-  border-radius: 50%;
-}
-
-.signup-flag {
-  position: absolute;
-  top: 4px;
-  left: 4px;
-  width: 105px;
-  height: 65px;
-  overflow: hidden;
-  background-color: #27222e;
-  clip-path: polygon(
-    0 0,
-    88% 8%,
-    100% 3%,
-    91% 50%,
-    100% 94%,
-    84% 88%,
-    0 82%
-  );
-}
-
-.signup-flag .fa-logo {
-  position: absolute;
-  top: 15px;
-  left: 35px;
-  color: #ffffff;
-  font-size: 28px;
-  line-height: 1;
-  transform: rotate(2.5deg);
-}
-
-
-/* Progress card */
-
-.signup-progress {
-  position: absolute;
-  right: 80px;
-  bottom: 25px;
-  z-index: 12;
-  width: 165px;
-  padding: 18px;
-  background-color: rgba(255, 255, 255, 0.96);
-  border: 1px solid #e2dced;
-  border-radius: 9px;
-  box-sizing: border-box;
-  box-shadow: 0 8px 22px rgba(57, 43, 88, 0.1);
-}
-
-.signup-progress-top {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  margin-bottom: 11px;
-  color: #373142;
+  gap: 36px;
+}
+
+
+/* =========================================================
+   LEFT
+   ========================================================= */
+
+.adventure-footer-copy {
+  position: relative;
+  z-index: 5;
+
+  flex: 1 1 auto;
+  max-width: 700px;
+}
+
+.adventure-footer-eyebrow {
+  margin: 0 0 6px;
+
+  color: #08764f;
+
   font-size: 11px;
+  line-height: 1;
   font-weight: 700;
+
+  letter-spacing: 2.2px;
+  text-transform: uppercase;
 }
 
-.signup-progress-top strong {
-  color: #6346d8;
-  font-size: 17px;
+.adventure-footer-title {
+  margin: 0;
+
+  color: #0d0d0f;
+
+  font-size: clamp(32px, 2.5vw, 42px);
+  line-height: 1.05;
+  font-weight: 700;
+
+  letter-spacing: -.5px;
 }
 
-.signup-progress-bar {
-  height: 8px;
+.adventure-footer-text {
+  max-width: 620px;
+
+  margin: 12px 0 0;
+
+  color: #29445f;
+
+  font-size: 16px;
+  line-height: 1.5;
+}
+
+
+/* =========================================================
+   STORE BUTTONS
+   ========================================================= */
+
+.adventure-footer-actions {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+
+  gap: 14px;
+
+  margin-top: 16px;
+}
+
+.adventure-footer-actions a {
+  text-decoration: none;
+}
+
+.adventure-footer-badge {
+  display: block;
+
+  width: auto;
+  height: 48px;
+
+  transition:
+    opacity .15s ease,
+    transform .15s ease;
+}
+
+.adventure-footer-actions a:hover .adventure-footer-badge {
+  opacity: .84;
+  transform: translateY(-1px);
+}
+
+.adventure-footer-more {
+  display: inline-flex;
+  align-items: center;
+
+  min-height: 48px;
+  margin-left: 4px;
+
+  color: #08764f !important;
+
+  font-size: 13.5px;
+  font-weight: 700;
+
+  text-decoration: none !important;
+}
+
+.adventure-footer-more:hover {
+  text-decoration: underline !important;
+}
+
+
+/* =========================================================
+   RIGHT SCENE
+   ========================================================= */
+
+.adventure-footer-scene {
+  position: relative;
+
+  flex: 0 0 400px;
+  width: 400px;
+  height: 260px;
+
+  align-self: stretch;
+
+  transform: translateX(-75px);
+}
+
+
+/* =========================================================
+   PHONE
+   ========================================================= */
+
+.adventure-footer-phone {
+  position: absolute;
+
+  right: 0;
+  bottom: -110px;
+
+  z-index: 2;
+
+  width: 188px;
+  height: 385px;
+
+  background: #eef2f6;
+
+  border: 3px solid #1f1f1f;
+  border-radius: 22px;
+
+  box-shadow:
+    0 16px 30px rgba(22,24,29,.16);
+
   overflow: hidden;
-  background-color: #e9e5ef;
-  border-radius: 5px;
 }
 
-.signup-progress-fill {
-  width: 5%;
-  height: 100%;
-  background-color: #04aa6d;
-  border-radius: 5px;
+
+/* phone speaker */
+
+.adventure-footer-phone::before {
+  content: "";
+
+  position: absolute;
+
+  top: 8px;
+  left: 50%;
+
+  width: 72px;
+  height: 8px;
+
+  transform: translateX(-50%);
+
+  background: #c7d0d8;
+
+  border-radius: 999px;
+
+  z-index: 4;
 }
 
-.signup-progress-lessons {
-  margin-top: 11px;
-  color: #4e4858;
+
+/* subtle inner phone border */
+
+.adventure-footer-phone::after {
+  content: "";
+
+  position: absolute;
+
+  inset: 11px 10px 12px;
+
+  border-radius: 16px;
+
+  border: 1px solid rgba(0,0,0,.08);
+
+  pointer-events: none;
+
+  z-index: 4;
+}
+
+
+/* =========================================================
+   PHONE SCREEN
+   ========================================================= */
+
+.adventure-footer-screen {
+  position: absolute;
+
+  inset: 14px 12px 14px;
+
+  overflow: hidden;
+
+  border-radius: 15px;
+
+  background: #8bb969;
+}
+
+.adventure-footer-screen img {
+  display: block;
+
+  width: 100%;
+  height: auto;
+
+  image-rendering: pixelated;
+}
+
+
+/* slight fade into banner */
+
+.adventure-footer-screen::before {
+  content: "";
+
+  position: absolute;
+
+  inset: 0;
+
+  z-index: 2;
+
+  background:
+    linear-gradient(
+      90deg,
+      rgba(169,207,249,.58) 0%,
+      rgba(169,207,249,.10) 18%,
+      transparent 32%
+    );
+
+  pointer-events: none;
+}
+
+
+/* =========================================================
+   MOOSE
+   Pinned to bottom
+   ========================================================= */
+
+.adventure-footer-moose {
+  position: absolute;
+
+  z-index: 6;
+
+  left: 62px;
+  bottom: 0;
+
+  width: 152px;
+  height: auto;
+
+  display: block;
+
+  image-rendering: pixelated;
+
+  filter:
+    drop-shadow(0 7px 12px rgba(22,24,29,.10));
+}
+
+
+/* =========================================================
+   SPEECH BUBBLE
+   ========================================================= */
+
+.adventure-footer-bubble {
+  position: absolute;
+
+  z-index: 7;
+
+  left: 0;
+  top: 52px;
+
+  width: 178px;
+
+  padding: 9px 11px;
+
+  background: #fff;
+
+  border: 2px solid #252525;
+
+  box-shadow:
+    3px 3px 0 #252525;
+
+  color: #222;
+
+  font-family: "Courier New", monospace;
+}
+
+.adventure-footer-bubble strong {
+  display: block;
+
+  font-size: 14px;
+  line-height: 1.3;
+}
+
+.adventure-footer-bubble span {
+  display: block;
+
+  margin-top: 3px;
+
+  color: #555;
+
   font-size: 11px;
+  line-height: 1.3;
 }
 
-@media (max-width: 1000px) {
-  .signup-journey-content {
-    width: 57%;
+.adventure-footer-bubble::after {
+  content: "";
+
+  position: absolute;
+
+  right: -9px;
+  bottom: 12px;
+
+  width: 11px;
+  height: 11px;
+
+  background: #fff;
+
+  border-top: 2px solid #252525;
+  border-right: 2px solid #252525;
+
+  transform: rotate(45deg);
+}
+
+
+/* =========================================================
+   XP
+   ========================================================= */
+
+.adventure-footer-xp {
+  position: absolute;
+
+  z-index: 8;
+
+  right: 38px;
+  top: 36px;
+
+  padding: 5px 9px;
+
+  background: #FFF4A3;
+
+  border: 2px solid #252525;
+  border-radius: 3px;
+
+  box-shadow:
+    2px 2px 0 #252525;
+
+  color: #222;
+
+  font-family: "Courier New", monospace;
+
+  font-size: 10px;
+  font-weight: 700;
+
+  transform: rotate(2deg);
+}
+
+
+/* =========================================================
+   PIXEL CLOUDS
+   ========================================================= */
+
+.adventure-cloud {
+  position: absolute;
+
+  z-index: 1;
+
+  width: 68px;
+  height: 34px;
+
+  background: rgba(255,255,255,.92);
+
+  clip-path: polygon(
+    0 70%,
+    12% 70%,
+    12% 52%,
+    25% 52%,
+    25% 28%,
+    38% 28%,
+    38% 8%,
+    62% 8%,
+    62% 28%,
+    75% 28%,
+    75% 52%,
+    88% 52%,
+    88% 70%,
+    100% 70%,
+    100% 100%,
+    0 100%
+  );
+
+  pointer-events: none;
+
+  image-rendering: pixelated;
+
+  will-change: transform;
+}
+
+
+/* =========================================================
+   CLOUD MOVEMENT
+   ========================================================= */
+
+@keyframes adventureCloudDriftRight {
+
+  from {
+    transform:
+      translateX(-8px)
+      scale(var(--cloud-scale,1));
   }
 
-  .signup-progress {
+  to {
+    transform:
+      translateX(14px)
+      scale(var(--cloud-scale,1));
+  }
+
+}
+
+@keyframes adventureCloudDriftLeft {
+
+  from {
+    transform:
+      translateX(10px)
+      scale(var(--cloud-scale,1));
+  }
+
+  to {
+    transform:
+      translateX(-10px)
+      scale(var(--cloud-scale,1));
+  }
+
+}
+
+
+/* =========================================================
+   CLOUD POSITIONS
+   ========================================================= */
+
+.adventure-cloud-1 {
+  --cloud-scale: .82;
+
+  left: 2%;
+  top: 38px;
+
+  opacity: .82;
+
+  animation:
+    adventureCloudDriftRight
+    18s
+    ease-in-out
+    infinite alternate;
+}
+
+.adventure-cloud-2 {
+  --cloud-scale: .52;
+
+  left: 42%;
+  top: 18px;
+
+  opacity: .6;
+
+  animation:
+    adventureCloudDriftLeft
+    22s
+    ease-in-out
+    infinite alternate;
+}
+
+.adventure-cloud-3 {
+  --cloud-scale: .95;
+
+  right: 27%;
+  top: 42px;
+
+  opacity: .72;
+
+  animation:
+    adventureCloudDriftRight
+    21s
+    ease-in-out
+    infinite alternate;
+}
+
+.adventure-cloud-4 {
+  --cloud-scale: .48;
+
+  right: 9%;
+  top: 20px;
+
+  opacity: .55;
+
+  animation:
+    adventureCloudDriftLeft
+    24s
+    ease-in-out
+    infinite alternate;
+}
+
+.adventure-cloud-5 {
+  --cloud-scale: .62;
+
+  left: 30%;
+  bottom: 26px;
+
+  opacity: .35;
+
+  animation:
+    adventureCloudDriftRight
+    25s
+    ease-in-out
+    infinite alternate;
+}
+
+
+/* =========================================================
+   SMALL DESKTOP
+   ========================================================= */
+
+@media (max-width: 1100px) {
+
+  .adventure-footer-scene {
+    transform: translateX(-50px);
+  }
+
+
+}
+
+
+/* =========================================================
+   TABLET
+   ========================================================= */
+
+@media (max-width: 950px) {
+
+  .adventure-footer-scene {
+    flex: 0 0 310px;
+
+    width: 310px;
+    height: 260px;
+
+    transform: translateX(-16px);
+  }
+
+  .adventure-footer-phone {
+    width: 160px;
+    height: 330px;
+
+    bottom: -105px;
+  }
+
+  .adventure-footer-moose {
+    left: 38px;
+
+    width: 128px;
+  }
+
+  .adventure-footer-bubble {
     display: none;
   }
 
-  .signup-summit {
-    right: 0;
+  .adventure-footer-xp {
+    right: 18px;
   }
+
+
 }
 
-@media (max-width: 780px) {
-  .signup-journey-inner {
-    min-height: auto;
-    padding: 34px 28px;
+
+/* =========================================================
+   820px &#8594; 701px
+   ========================================================= */
+
+@media (max-width: 820px) and (min-width: 701px) {
+
+  .adventure-footer-banner {
+    height: 220px;
   }
 
-  .signup-journey-content {
-    width: 100%;
+  .adventure-footer-inner {
+    padding: 18px 22px;
+
+    gap: 18px;
+  }
+
+  .adventure-footer-copy {
+    max-width: 475px;
+  }
+
+  .adventure-footer-eyebrow {
+    font-size: 9.5px;
+
+    letter-spacing: 1.8px;
+  }
+
+  .adventure-footer-title {
+    font-size: 24px;
+
+    line-height: 1.02;
+  }
+
+  .adventure-footer-text {
+    max-width: 450px;
+
+    margin-top: 7px;
+
+    font-size: 12.5px;
+    line-height: 1.35;
+  }
+
+  .adventure-footer-actions {
+    gap: 8px;
+
+    margin-top: 10px;
+  }
+
+  .adventure-footer-badge {
+    height: 36px;
+  }
+
+  .adventure-footer-more {
+    min-height: 36px;
+
+    margin-left: 0;
+
+    font-size: 11.5px;
+  }
+
+  .adventure-footer-scene {
+    flex: 0 0 245px;
+
+    width: 245px;
+    height: 220px;
+
+    transform: translateX(0);
+  }
+
+  .adventure-footer-phone {
+    width: 138px;
+    height: 286px;
+
+    right: -6px;
+    bottom: -88px;
+  }
+
+  .adventure-footer-moose {
+    left: 14px;
+    bottom: 0;
+
+    width: 112px;
+  }
+
+  .adventure-footer-xp {
+    right: 4px;
+    top: 24px;
+
+    padding: 4px 7px;
+
+    font-size: 9px;
+  }
+
+  .adventure-cloud-2,
+  .adventure-cloud-5 {
+    display: none;
+  }
+
+}
+
+
+/* =========================================================
+   MOBILE
+   ========================================================= */
+
+@media (max-width: 700px) {
+
+  .adventure-footer-banner {
+    height: auto;
+
+    min-height: 185px;
+  }
+
+  .adventure-footer-inner {
+    padding: 24px 20px;
+  }
+
+  .adventure-footer-copy {
     max-width: 100%;
   }
 
-  .signup-journey-scene {
+  .adventure-footer-title {
+    font-size: 25px;
+  }
+
+  .adventure-footer-text {
+    font-size: 14px;
+  }
+
+  .adventure-footer-actions {
+    gap: 10px;
+  }
+
+  .adventure-footer-badge {
+    height: 40px;
+  }
+
+  .adventure-footer-more {
+    min-height: 40px;
+  }
+
+  .adventure-footer-scene {
     display: none;
   }
+
+  .adventure-cloud-2,
+  .adventure-cloud-3,
+  .adventure-cloud-5 {
+    display: none;
+  }
+
 }
 
-@media (max-width: 600px) {
-  .signup-journey {
-    padding: 16px 12px;
-  }
 
-  .signup-journey-inner {
-    padding: 28px 22px;
-  }
+/* =========================================================
+   REDUCED MOTION
+   ========================================================= */
 
-  .signup-journey h2 {
-    font-size: 28px;
-  }
+@media (prefers-reduced-motion: reduce) {
 
-  .signup-journey-description {
-    font-size: 15px;
+  .adventure-cloud {
+    animation: none !important;
   }
 
 }
 </style>
 
-<div class="signup-journey ws-hide-on-logged-in">
-  <div class="signup-journey-inner">
 
-    <div class="signup-journey-content">
-      <h2>Create a W3Schools Account</h2>
+<div class="adventure-footer-banner">
 
-      <p class="signup-journey-description">
-Ad-free learning, track your progress, earn XP, streaks, compete in leagues,
-build and host websites, unlock coding challenges, and much more!      </p>
+  <!-- PIXEL CLOUDS -->
+  <span class="adventure-cloud adventure-cloud-1"></span>
+  <span class="adventure-cloud adventure-cloud-2"></span>
+  <span class="adventure-cloud adventure-cloud-3"></span>
+  <span class="adventure-cloud adventure-cloud-4"></span>
+  <span class="adventure-cloud adventure-cloud-5"></span>
 
-      <div class="signup-journey-badges">
 
-        <div class="signup-journey-badge">
-          <span class="signup-badge-icon">
-            <svg viewBox="0 0 24 24" aria-hidden="true">
+  <div class="adventure-footer-inner">
+
+    <!-- LEFT -->
+    <div class="adventure-footer-copy">
+
+      <p class="adventure-footer-eyebrow">
+        New
+      </p>
+
+      <h2 class="adventure-footer-title">
+        W3Schools Adventure App
+      </h2>
+
+      <p class="adventure-footer-text">
+        Coding fundamentals as a game. Bite-sized lessons and challenges.
+      </p>
+
+
+      <div class="adventure-footer-actions">
+
+        <!-- APP STORE -->
+        <a
+          href="https://apps.apple.com/us/app/w3schools/id6770531503"
+          rel="noopener"
+          target="_blank"
+          aria-label="Download on the App Store"
+          class="ga-bottom ga-appstore-footer" title="Get W3Schools Adventure App on App Store">
+
+          <svg
+            class="adventure-footer-badge"
+            viewBox="0 0 216 64"
+            xmlns="http://www.w3.org/2000/svg">
+
+            <rect
+              x="1"
+              y="1"
+              width="214"
+              height="62"
+              rx="12"
+              fill="#000"/>
+
+            <g transform="translate(20,12) scale(0.078)">
+
               <path
-                fill="#FFD23F"
-                d="M13 2L4.5 13.5H11l-1 8.5L19.5 10H12.5z">
-              </path>
-            </svg>
-          </span>
+                fill="#fff"
+                d="M318.7 268.7c-.2-36.7 16.4-64.4 50-84.8-18.8-26.9-47.2-41.7-84.7-44.6-35.5-2.8-74.3 20.7-88.5 20.7-15 0-49.4-19.7-76.4-19.7C63.3 141.2 4 184.8 4 273.5q0 39.3 14.4 81.2c12.8 36.7 59 126.7 107.2 125.2 25.2-.6 43-17.9 75.8-17.9 31.8 0 48.3 17.9 76.4 17.9 48.6-.7 90.4-82.5 102.6-119.3-65.2-30.7-61.7-90-61.7-91.9zm-56.6-164.2c27.3-32.4 24.8-61.9 24-72.5-24.1 1.4-52 16.4-67.9 34.9-17.5 19.8-27.8 44.3-25.6 71.9 26.1 2 49.9-11.4 69.5-34.3z"
+                transform="translate(30,-10)"/>
 
-          <span>Earn XP</span>
-        </div>
+            </g>
 
-        <div class="signup-journey-badge">
-          <span class="signup-badge-icon signup-badge-streak">
-            <svg
-              viewBox="0 0 43 48"
-              fill="none"
-              xmlns="http://www.w3.org/2000/svg"
-              aria-hidden="true">
+            <text
+              x="66"
+              y="27"
+              fill="#fff"
+              font-family="Helvetica,Arial,sans-serif"
+              font-size="12">
+              Download on the
+            </text>
+
+            <text
+              x="66"
+              y="49"
+              fill="#fff"
+              font-family="Helvetica,Arial,sans-serif"
+              font-size="21"
+              font-weight="600">
+              App Store
+            </text>
+
+          </svg>
+
+        </a>
+
+
+        <!-- GOOGLE PLAY -->
+        <a
+          href="https://play.google.com/store/apps/details?id=com.w3schools.app.prod"
+          rel="noopener"
+          target="_blank"
+          aria-label="Get it on Google Play"
+          class="ga-bottom ga-googleplay-footer" title="Get W3Schools Adventure App on Google Play">
+
+          <svg
+            class="adventure-footer-badge"
+            viewBox="0 0 216 64"
+            xmlns="http://www.w3.org/2000/svg">
+
+            <rect
+              x="1"
+              y="1"
+              width="214"
+              height="62"
+              rx="12"
+              fill="#000"/>
+
+            <g transform="translate(20,14) scale(0.070)">
 
               <path
-                fill-rule="evenodd"
-                clip-rule="evenodd"
-                d="M0 28.3147C0 39.1866 8.62988 48 20.648 48C32.6662 48 42.4089 39.1866 42.4089 28.3147C42.4089 16.4391 34.0874 7.3021 26.6681 0.526583C26.3281 0.216026 25.8182 0.179203 25.4495 0.455052C23.0134 2.27727 21.0501 4.77236 19.5597 7.94034C18.0644 11.1186 17.0726 14.8936 16.5843 19.2653C16.5189 19.8511 15.971 20.2697 15.4048 20.1058C13.7124 19.6161 12.2029 18.7388 10.8762 17.4737C9.5416 16.2011 8.22419 14.4474 6.92394 12.2125C6.55348 11.5758 5.64722 11.513 5.23907 12.1263C1.82501 17.2561 0 22.9643 0 28.3147Z"
-                fill="#FF9600">
-              </path>
+                fill="#00C9FF"
+                d="M47 0C34 6.8 25.3 19.2 25.3 35.3v441.3c0 16.1 8.7 28.5 21.7 35.3l256.6-256L47 0z"/>
 
               <path
-                d="M33.894 28.9292C33.2264 33.1276 29.8718 36.4211 25.5957 37.0766"
-                stroke="#FF5D39"
-                stroke-width="4"
-                stroke-linecap="round"
-                stroke-linejoin="round">
-              </path>
-            </svg>
-          </span>
+                fill="#00E981"
+                d="M325.3 234.3L104.6 13l280.8 161.2-60.1 60.1z"/>
 
-          <span>Streaks</span>
-        </div>
+              <path
+                fill="#FFC900"
+                d="M472.2 225.6l-58.9-34.1-65.7 64.5 65.7 64.5 60.1-34.1c18-14.3 18-46.5-1.2-60.8z"/>
 
-        <div class="signup-journey-badge">
-          <span class="signup-badge-icon signup-badge-league">
-            <img
-              src="https://pathfinder.w3schools.com/images/leagues/wood.svg"
-              alt="">
-          </span>
+              <path
+                fill="#FF3A44"
+                d="M104.6 499l280.8-161.2-60.1-60.1L104.6 499z"/>
 
-          <span>Leagues</span>
-        </div>
+            </g>
 
-        <div class="signup-journey-badge w3-hide-medium w3-hide-small">
-          <span>Your Own Space</span>
-        </div>
+            <text
+              x="66"
+              y="27"
+              fill="#fff"
+              font-family="Helvetica,Arial,sans-serif"
+              font-size="12"
+              letter-spacing="1">
+              GET IT ON
+            </text>
+
+            <text
+              x="66"
+              y="49"
+              fill="#fff"
+              font-family="Helvetica,Arial,sans-serif"
+              font-size="21"
+              font-weight="600">
+              Google Play
+            </text>
+
+          </svg>
+
+        </a>
+
+
+        <!-- LEARN MORE -->
+        <a
+          class="adventure-footer-more ga-bottom ga-adventure-learnmore"
+          href="/adventure/" title="Learn more about the W3Schools Adventure App">
+          Learn more &raquo;
+        </a>
 
       </div>
 
-      <div class="signup-journey-action">
-        <a href="https://profile.w3schools.com/sign-up" target="_blank" id="myLearningFromFooterPHP" title="Sign up to try W3Schools Hero" class="ws-btn ga-bottom ga-myLearningFromFooterPHP">Sign Up for Free</a>
-      </div>
     </div>
 
-    <div class="signup-journey-scene">
 
-      <div class="signup-mountain-back signup-mountain-back-one"></div>
-      <div class="signup-mountain-back signup-mountain-back-two"></div>
-      <div class="signup-mountain-back signup-mountain-back-three"></div>
+    <!-- RIGHT -->
+    <div class="adventure-footer-scene">
 
-      <div class="signup-summit">
+      <div class="adventure-footer-bubble">
 
-        <div class="signup-mountain-front"></div>
+        <strong>
+          Ready to start your journey?
+        </strong>
 
-        <div class="signup-flag-pole">
-          <div class="signup-flag">
-            <i class="fa fa-logo" aria-hidden="true"></i>
-          </div>
-        </div>
+        <span>
+          Your streak is waiting.
+        </span>
 
-        <div class="signup-hero">
+      </div>
+
+
+      <div class="adventure-footer-xp">
+        +60 XP
+      </div>
+
+
+      <img
+        class="adventure-footer-moose"
+        src="/adventure/img/tutor-moose.png"
+        alt="W3Schools Adventure tutor">
+
+
+      <div class="adventure-footer-phone">
+
+        <div class="adventure-footer-screen">
+
           <img
-            class="signup-hero-body"
-            src="/w3s_superhero_happy.svg"
-            alt="W3Schools superhero companion">
+            src="/adventure/img/screen-map.png"
+            alt="W3Schools Adventure map">
+
         </div>
 
-        <div class="signup-flag-grip"></div>
-
-      </div>
-
-      <div class="signup-progress">
-        <div class="signup-progress-top">
-          <span>Your Progress</span>
-          <strong>0%</strong>
-        </div>
-
-        <div class="signup-progress-bar">
-          <div class="signup-progress-fill"></div>
-        </div>
-
-        <div class="signup-progress-lessons">
-          0 / 50 lessons
-        </div>
-
-        <div class="signup-progress-lessons">
-          0 / 100 challenges
-        </div>
       </div>
 
     </div>
+
   </div>
 
 </div>
+
 
 <div id="spacemyfooter">
 
@@ -4913,9 +5439,9 @@ of all content. While using W3Schools, you agree to have read and accepted our <
 
 
 </div>
-<!-- <script src="/lib/topnav/main.v1.0.135.js"></script> --> -->
+<!-- <script src="/lib/topnav/main.v1.0.137.js"></script> -->
 <script src="/lib/w3schools_footer.js?update=20260819"></script>
-<script src="/lib/w3schools_features.js?update=20260805"></script>
+<script src="/lib/w3schools_features.js?update=20260902"></script>
 <script src="https://www.google.com/recaptcha/api.js?render=explicit"></script>
 
 <script>
