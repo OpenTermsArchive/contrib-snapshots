@@ -848,6 +848,23 @@ Your payment details are saved to enable payment processing and invoicing for th
   if (!isPrivacyPolicy || isFirstPage) {
     ttt.init('production');
     ttt.pageview('wbm/Privacy_Hub', 'wbm/Privacy_Hub/privacy_policy', null, {'PropApplicationLanguage' : 'en' });
+
+    var screenPages = {
+      'wbm/Privacy_Hub/responsibility': 'privacy_hub/responsibility',
+      'wbm/Privacy_Hub/privacy_policy/information_automated/service_provision/contextual_measurement': 'privacy_hub/privacy_policy/information_automated/service_provision/contextual_tracking'
+    };
+    var screenPage = screenPages['wbm/Privacy_Hub/privacy_policy'];
+
+    if (screenPage) {
+      ttt.event('viewed_screen', {
+        application: 'wbm',
+        application_language: 'en',
+        event_schema: 'basic',
+        schema_version: '1.38.2',
+        sent_by: 'privacy_hub',
+        page: screenPage
+      });
+    }
   }
 </script>
 
