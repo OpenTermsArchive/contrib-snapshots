@@ -81,7 +81,18 @@ function gtag(){dataLayer.push(arguments);}
 var useGoogleConsentModeV2 = true;
 var waitForUpdateMillis = 1000;
 
+if (useGoogleConsentModeV2) {
 
+  gtag('set','developer_id.dZTQ1Zm',true);
+
+  gtag('consent', 'default', {
+  'ad_storage': 'denied',
+  'analytics_storage': 'denied',
+  'ad_user_data': 'denied',
+  'ad_personalization': 'denied',
+  'wait_for_update': waitForUpdateMillis
+  });
+}
 
 var hsLoadGtm = function loadGtm() {
     if(window._hsGtmLoadOnce) {
@@ -89,17 +100,6 @@ var hsLoadGtm = function loadGtm() {
     }
 
     if (useGoogleConsentModeV2) {
-
-      gtag('set','developer_id.dZTQ1Zm',true);
-
-      gtag('consent', 'default', {
-      'ad_storage': 'denied',
-      'analytics_storage': 'denied',
-      'ad_user_data': 'denied',
-      'ad_personalization': 'denied',
-      'wait_for_update': waitForUpdateMillis
-      });
-
       _hsp.push(['useGoogleConsentModeV2'])
     }
 
@@ -179,7 +179,7 @@ _hsp.push(['addPrivacyConsentListener', function(consent){
 <meta property="og:url" content="https://www.epassi.fi/terms-of-use">
 <meta name="twitter:card" content="summary_large_image">
 <meta http-equiv="content-language" content="fi">
-<link rel="stylesheet" href="//7052064.fs1.hubspotusercontent-na1.net/hubfs/7052064/hub_generated/template_assets/DEFAULT_ASSET/1786972676531/template_layout.min.css">
+<link rel="stylesheet" href="//7052064.fs1.hubspotusercontent-na1.net/hubfs/7052064/hub_generated/template_assets/DEFAULT_ASSET/1789156615796/template_layout.min.css">
 
 
 <link rel="stylesheet" href="https://www.epassi.fi/hubfs/hub_generated/template_assets/1/47678572478/1759743694578/template_Styles_2020.min.css">
@@ -1570,8 +1570,8 @@ _hsq.push(["setContentMetadata", {
 
 <script type="text/javascript">
 var hsVars = {
-    render_id: "08b467f4-6461-491a-9028-5831f2db0584",
-    ticks: 1786974442072,
+    render_id: "b1acbc4c-9b8e-438c-8f85-52067a60b5db",
+    ticks: 1789278277213,
     page_id: 48300866784,
     
     content_group_id: 0,
