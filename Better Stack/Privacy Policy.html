@@ -47,8 +47,8 @@
 <link href='https://betterstack.com/privacy' rel='canonical'>
 <meta content='https://betterstack.com/privacy' property='og:url'>
 <meta name="csrf-param" content="authenticity_token" />
-<meta name="csrf-token" content="nVoPKWnOSAACa9w9cVL8slZlRnmoJk6-BLnUboVfw0-8sMFtE4iQ4C1djFc3vkR3gfS8wlZrkb9vK3uOL39CEg" />
-<meta name="csp-nonce" content="9080bb6847df5cef1854ed5f4f7a8827" />
+<meta name="csrf-token" content="TcryYm4ttzUAANhHJN8B_NwSm4ko9M3MYhjiZJ8TMLkjDVsJAwZZLSjDhhWSLLLSp9d6SytOQw3RvEQKCwWB4w" />
+<meta name="csp-nonce" content="667e8471c2214421f5de851f18d56ed6" />
 <meta content='marketing.website' name='bs-surface'>
 
 
@@ -112,7 +112,7 @@
 
 
 <link rel="stylesheet" href="https://betterstack.com/assets/betterstack_v2-58e660cf.css" media="all" data-turbo-track="reload" />
-<script type="application/javascript" nonce="9080bb6847df5cef1854ed5f4f7a8827">
+<script type="application/javascript" nonce="667e8471c2214421f5de851f18d56ed6">
 //<![CDATA[
 // Recovers from the module load failures a fresh page load fixes: hashed bundles gone stale after
 // a deploy, and an origin that briefly fails to serve a hashed module.
@@ -131,16 +131,11 @@
 
   const RELOAD_FLAG_KEY = 'bs:module-load-reloaded'
 
-  // es-module-shims' doFetch throws "<status> <statusText> <url>[ imported from <parent>]" for an
-  // HTTP error (the reported "504 Gateway Timeout ...") and "Unable to fetch <url> ..." when the
-  // request never completes. Anchoring on the leading status instead of the "imported from" suffix
-  // also catches parentless top-level loads, and ignores prose that merely says "imported from".
+  // Each browser words a failed dynamic import differently.
   const isRecoverableMessage = (message) =>
     /Failed to fetch dynamically imported module/i.test(message) || // Chrome
     /error loading dynamically imported module/i.test(message) || // Firefox
-    /Importing a module script failed/i.test(message) || // Safari
-    /^\d{3} .*https?:\/\//.test(message) ||
-    /^Unable to fetch https?:\/\/.* - see network log for details/i.test(message)
+    /Importing a module script failed/i.test(message) // Safari
 
   const reloadOnce = () => {
     try {
@@ -156,8 +151,8 @@
 
   // A <script type="module"> fires `error` on the element when its graph fails to fetch or parse,
   // and not when the graph throws while executing, so app bugs cannot reach this. Browsers without
-  // import map support never resolve our bare specifiers natively and so always fire it (they are
-  // the ones es-module-shims loads the page for), hence the check.
+  // import map support never resolve our bare specifiers and so always fire it; they get the
+  // unsupported-browser alert instead of a reload loop, hence the check.
   const isFailedModuleScript = (target) =>
     target?.tagName === 'SCRIPT' &&
     target.type === 'module' &&
@@ -184,7 +179,7 @@
 
 //]]>
 </script>
-<script type="importmap" data-turbo-track="reload" nonce="9080bb6847df5cef1854ed5f4f7a8827">{
+<script type="importmap" data-turbo-track="reload" nonce="667e8471c2214421f5de851f18d56ed6">{
   "imports": {
     "admin_controllers/article_form_controller": "/assets/admin_controllers/article_form_controller-95d029c4.js",
     "admin_controllers": "/assets/admin_controllers/index-577d86b7.js",
@@ -249,7 +244,7 @@
     "common/lazy": "/assets/common/lazy-3f5ba6f1.js",
     "common/links": "/assets/common/links-ae98a9e4.js",
     "common/modals": "/assets/common/modals-3906d5a2.js",
-    "common/moduleLoadRecovery": "/assets/common/moduleLoadRecovery-8bffe4b6.js",
+    "common/moduleLoadRecovery": "/assets/common/moduleLoadRecovery-524ff3da.js",
     "common/railsSetup": "/assets/common/railsSetup-25c4cf53.js",
     "common/recaptchaSubmit": "/assets/common/recaptchaSubmit-e4783e18.js",
     "common/side-menu-scroll": "/assets/common/side-menu-scroll-4d201e25.js",
@@ -352,7 +347,7 @@
     "components/forms/Toggle": "/assets/components/forms/Toggle-cf1a8471.js",
     "components/forms/Tooltip": "/assets/components/forms/Tooltip-18ae06ee.js",
     "components/forms/uppyLoader": "/assets/components/forms/uppyLoader-16803d05.js",
-    "components": "/assets/components/index-d406f1c5.js",
+    "components": "/assets/components/index-990e0168.js",
     "components/monaco/editor": "/assets/components/monaco/editor-0590c3fb.js",
     "components/notifications/Dropdown": "/assets/components/notifications/Dropdown-35167b74.js",
     "components/notifications/Item": "/assets/components/notifications/Item-bdf035ef.js",
@@ -547,12 +542,10 @@
     "marked": "https://cdnjs.betterstack.com/marked@4.3.0/lib/marked.esm.js"
   }
 }</script>
-<link rel="modulepreload" href="https://cdnjs.betterstack.com/vue@3.5.13/dist/vue.esm-browser.prod.js" nonce="9080bb6847df5cef1854ed5f4f7a8827">
-<link rel="modulepreload" href="/assets/vendor/pinia@3.0.0.prod-dc83e9f4.js" nonce="9080bb6847df5cef1854ed5f4f7a8827">
-<link rel="modulepreload" href="https://cdnjs.betterstack.com/vue-turbolinks@2.2.2/index.js" nonce="9080bb6847df5cef1854ed5f4f7a8827">
-<script type="esms-options" nonce="9080bb6847df5cef1854ed5f4f7a8827">{"nonce":"9080bb6847df5cef1854ed5f4f7a8827"}</script>
-<script src="/assets/es-module-shims.min-806a0b27.js" defer="defer" data-turbo-track="reload" nonce="9080bb6847df5cef1854ed5f4f7a8827"></script>
-<script type="module" nonce="9080bb6847df5cef1854ed5f4f7a8827">
+<link rel="modulepreload" href="https://cdnjs.betterstack.com/vue@3.5.13/dist/vue.esm-browser.prod.js" nonce="667e8471c2214421f5de851f18d56ed6">
+<link rel="modulepreload" href="/assets/vendor/pinia@3.0.0.prod-dc83e9f4.js" nonce="667e8471c2214421f5de851f18d56ed6">
+<link rel="modulepreload" href="https://cdnjs.betterstack.com/vue-turbolinks@2.2.2/index.js" nonce="667e8471c2214421f5de851f18d56ed6">
+<script type="module" nonce="667e8471c2214421f5de851f18d56ed6">
 //<![CDATA[
 !function(b,e,t,r){
   b[t]=b[t]||function(...args){(b[t].q=b[t].q||[]).push(args)};
@@ -578,7 +571,7 @@ document.addEventListener('turbo:load', setBetterstackUser)
 
 //]]>
 </script>
-<script nonce='9080bb6847df5cef1854ed5f4f7a8827' type='module'>import "common/aos"
+<script nonce='667e8471c2214421f5de851f18d56ed6' type='module'>import "common/aos"
 import "common/lazy"
 import "common/recaptchaSubmit"
 import "common/data-disable-with-spinner"
@@ -601,9 +594,9 @@ import "common/site_settings_panel"
 
 </head>
 <body class='helvetica bg-[#0B0C14] text-neutral-200'>
-<script type="application/javascript" nonce="9080bb6847df5cef1854ed5f4f7a8827">
+<script type="application/javascript" nonce="667e8471c2214421f5de851f18d56ed6">
 //<![CDATA[
-window.cfg = {"base_host":"betterstack.com","base_url":"https://betterstack.com","better_stack_url":"https://betterstack.com","uptime_url":"https://uptime.betterstack.com","logtail_url":"https://telemetry.betterstack.com","errors_url":"https://errors.betterstack.com","aisre_url":"https://chat.betterstack.com","rum_url":"https://rum.betterstack.com","cloud_url":"https://cloud.betterstack.com","warehouse_url":"https://warehouse.betterstack.com","controller":"betterstack","action":"privacy","app":"betterstack","environment":"production","app_version":"0b657bb26a289a454d8daa174d40cf587b5943e7"};
+window.cfg = {"base_host":"betterstack.com","base_url":"https://betterstack.com","better_stack_url":"https://betterstack.com","uptime_url":"https://uptime.betterstack.com","logtail_url":"https://telemetry.betterstack.com","errors_url":"https://errors.betterstack.com","aisre_url":"https://chat.betterstack.com","rum_url":"https://rum.betterstack.com","cloud_url":"https://cloud.betterstack.com","warehouse_url":"https://warehouse.betterstack.com","controller":"betterstack","action":"privacy","app":"betterstack","environment":"production","app_version":"18122ce7cf5010861068a22faf4bdae71920315e"};
 
 
 //]]>
@@ -1215,7 +1208,7 @@ System status
 </footer>
 </div>
 
-<script nonce='9080bb6847df5cef1854ed5f4f7a8827' type='module'>
+<script nonce='667e8471c2214421f5de851f18d56ed6' type='module'>
 import { front_identity_path } from 'routes'
 import WebStorageService from 'services/WebStorageService'
 
@@ -1274,7 +1267,7 @@ fetchIdentityAndInit()
 <img alt='' height='1' src='https://px.ads.linkedin.com/collect/?pid=8770794&amp;fmt=gif' style='display:none' width='1'>
 </noscript>
 
-<script type="application/javascript" nonce="9080bb6847df5cef1854ed5f4f7a8827">
+<script type="application/javascript" nonce="667e8471c2214421f5de851f18d56ed6">
 //<![CDATA[
 window.recaptchaLoaded = false
 window.recaptchaSiteKey = '6LcqMUUaAAAAAB9e71hGegt9lvZ2v_mO1lFsvlRX'
