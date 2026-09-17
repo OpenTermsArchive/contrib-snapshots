@@ -28,12 +28,10 @@
     (function (win, doc) {
         "use strict";
 
-        var CFG = {"tool":"SINCHAB","settings":{"cookieDays":90,"excludeInternalTraffic":true},"context":{"internalTraffic":false},"experiments":[{"id":"build_cta_label","enabled":true,"type":"dom","targeting":{"paths":["*"]},"variants":[{"id":"control","weight":1,"changes":[]},{"id":"start_free","weight":1,"changes":[{"selector":"a[href*=\"dashboard.sinch.com/signup\"]","match":"ry for ","text":"Start free","persist":true}]},{"id":"get_api_keys","weight":1,"changes":[{"selector":"a[href*=\"dashboard.sinch.com/signup\"]","match":"ry for ","text":"Get API keys","persist":true}]}]}]};
+        var CFG = {"tool":"SINCHAB","settings":{"cookieDays":90},"experiments":[{"id":"build_cta_label","enabled":true,"type":"dom","targeting":{"paths":["*"]},"variants":[{"id":"control","weight":1,"changes":[]},{"id":"start_free","weight":1,"changes":[{"selector":"a[href*=\"dashboard.sinch.com/signup\"]","match":"ry for ","text":"Start free","persist":true}]},{"id":"get_api_keys","weight":1,"changes":[{"selector":"a[href*=\"dashboard.sinch.com/signup\"]","match":"ry for ","text":"Get API keys","persist":true}]}]}]};
         if (!CFG || !CFG.experiments || !CFG.experiments.length) return;
 
-        var TOOL = CFG.tool || "SINCHAB";
         var SETTINGS = CFG.settings || {};
-        var CONTEXT = CFG.context || {};
         var COOKIE_PREFIX = "sinch_ab_";
 
         /* ---------------------------------------------------------------
@@ -206,76 +204,10 @@
         }
 
         /* ---------------------------------------------------------------
-         * GA4 / GTM reporting.
-         * Fires once per page load per experiment. GTM Consent Mode gates
-         * whether the hit actually reaches GA4 (same as page_view).
+         * No GA4 reporting here. The THEME pushes the impression
+         * (inc/data-layer-events/template-parts/sinch-ab-impressions.php) right after the
+         * page_view event, reading the assignment from window.sinchAB below.
          * ------------------------------------------------------------- */
-        var reported = {};
-
-        function expVariantString(expId, variantId) {
-            return TOOL + "-" + expId + "-" + variantId;
-        }
-
-        // Shallow-merge src into dst (ES5-safe).
-        function merge(dst, src) {
-            if (src) for (var k in src) if (src.hasOwnProperty(k)) dst[k] = src[k];
-            return dst;
-        }
-
-        function report(exp, variant) {
-            if (reported[exp.id]) return;
-            reported[exp.id] = true;
-
-            // Internal (logged-in) traffic: bucket for preview, but don't
-            // pollute experiment data.
-            if (SETTINGS.excludeInternalTraffic && CONTEXT.internalTraffic) {
-                return;
-            }
-
-            var evs = expVariantString(exp.id, variant.id);
-
-            // Build the parameter set:
-            //   1. experiment-level custom params (exp.ga4)
-            //   2. variant-level custom params (variant.ga4) — override experiment
-            //   3. the three identity params — always win, never overridable
-            var params = {};
-            merge(params, exp.ga4);
-            merge(params, variant.ga4);
-            params.experiment_id = exp.id;
-            params.variant_id = variant.id;
-            params.exp_variant_string = evs;
-
-            // dataLayer push for GTM routing / custom-dimension mapping.
-            // Event name defaults to experience_impression (the GA4-standard
-            // name, same as the direct gtag event below); override via
-            // exp.event. NOTE: GTM must not ALSO forward this event to GA4 —
-            // the direct gtag call already delivers it (double-count risk).
-            var eventName = exp.event || "experience_impression";
-            win.dataLayer = win.dataLayer || [];
-            win.dataLayer.push(merge({ event: eventName }, params));
-
-            // Direct gtag event per Google's third-party integration guidance.
-            // gtag is injected by GTM, so it may not exist yet — poll briefly.
-            // Also tag the USER with their variant (user property ab_<expId>):
-            // impression events carry exp_variant_string, but conversion events
-            // don't — a user-scoped custom dimension lets GA4 slice any metric
-            // (key events included) by variant. Names are capped at 24 chars.
-            waitForGtag(function (gtag) {
-                var up = {};
-                up[("ab_" + exp.id).slice(0, 24)] = variant.id;
-                gtag("set", "user_properties", up);
-                gtag("event", "experience_impression", params);
-            });
-        }
-
-        function waitForGtag(cb) {
-            var start = Date.now();
-            (function poll() {
-                if (typeof win.gtag === "function") { cb(win.gtag); return; }
-                if (Date.now() - start >= 4000) return; // give up quietly
-                setTimeout(poll, 100);
-            })();
-        }
 
         /* ---------------------------------------------------------------
          * Warnings only — fired when a change genuinely can't apply (bad or
@@ -304,20 +236,17 @@
 
             if (exp.type === "redirect") {
                 // Cookie assignment deliberately ignores targeting (the destination
-                // page must resolve the variant to report), so scope the actions
-                // here: redirect ONLY from targeted entry paths, report only on
-                // entry + destination. A bucketed visitor elsewhere on the site is
-                // left alone entirely.
+                // page must resolve the variant), so scope the action here:
+                // redirect ONLY from targeted entry paths. A bucketed visitor
+                // elsewhere on the site is left alone entirely. (The theme
+                // reporter must apply the same entry/destination scoping — see
+                // AGENT-GUIDE §5 when delivering a redirect test.)
                 if (isTargeted(exp, path)) {
                     if (applyRedirect(exp, variant)) {
-                        // Navigating away — impression fires on the destination load.
+                        // Navigating away — the impression belongs to the
+                        // destination page load.
                         return;
                     }
-                    // Staying (control, or already on destination) -> count it.
-                    report(exp, variant);
-                } else if (variant.url && samePath(path, variant.url)) {
-                    // Arrived on this variant's destination page -> count it.
-                    report(exp, variant);
                 }
             } else {
                 flickerSelectors = flickerSelectors.concat(domSelectors(variant));
@@ -438,10 +367,10 @@
             persistObserver.observe(doc.documentElement, { childList: true, subtree: true, characterData: true, attributes: true });
         }
 
-        // Apply whatever is ready; report experiments whose changes are all done.
+        // Apply whatever is ready; mark experiments whose changes are all done.
         function tryApplyAll() {
             if (finished) return;
-            var allReported = true;
+            var allResolved = true;
             pendingDom.forEach(function (item) {
                 if (item.reported) return;
                 item.tasks.forEach(function (t) {
@@ -449,18 +378,17 @@
                     try { if (tryApplyChange(t.c)) t.done = true; }
                     catch (e) { warn("change failed: " + t.c.selector, e); t.done = true; }
                 });
-                // every() on an empty task list (control) is true -> reports at once.
+                // every() on an empty task list (control) is true -> resolves at once.
                 if (item.tasks.every(function (t) { return t.done; })) {
-                    report(item.exp, item.variant);
                     item.reported = true;
                 } else {
-                    allReported = false;
+                    allResolved = false;
                 }
             });
-            if (allReported) finishDom();
+            if (allResolved) finishDom();
         }
 
-        // Failsafe: report any leftovers (selector never appeared) and clean up.
+        // Failsafe: warn about leftovers (selector never appeared) and clean up.
         function finalizeDom() {
             if (finished) return;
             pendingDom.forEach(function (item) {
@@ -468,7 +396,6 @@
                 item.tasks.forEach(function (t) {
                     if (!t.done) warn("selector never matched: " + t.c.selector);
                 });
-                report(item.exp, item.variant);
                 item.reported = true;
             });
             finishDom();
@@ -627,21 +554,21 @@ else{w.loadCSS=loadCSS}}(typeof global!=="undefined"?global:this))
         </li>
                 <li class="menu-item  ">
 
-            <a id="support-5891"  rel="" href="https://sinch.com/help-center/" role="button"  >
+            <a id="support-5774"  rel="" href="https://sinch.com/help-center/" role="button"  >
                                 <span>
                     Support                </span>
                             </a>
                     </li>
             <li class="menu-item  ">
 
-            <a id="all-logins-3897"  rel="" href="https://sinch.com/portals/" role="button"  >
+            <a id="all-logins-2996"  rel="" href="https://sinch.com/portals/" role="button"  >
                                 <span>
                     All logins                </span>
                             </a>
                     </li>
             <li class="menu-item menu-item__dropdown ">
 
-            <a id="english-2147"  rel="" href="#english-2147-content" role="button"  aria-haspopup="true" aria-expanded="false" aria-controls="english-2147-content" data-menu-expand-trigger="english-2147-content">
+            <a id="english-1371"  rel="" href="#english-1371-content" role="button"  aria-haspopup="true" aria-expanded="false" aria-controls="english-1371-content" data-menu-expand-trigger="english-1371-content">
                                     <span class="m-0 menu-item__icon d-flex align-self-center">
                         <svg aria-hidden="true" data-url="https://sinch.com/wp-content/plugins/sinch-core/assets/icons/layout/language.svg"></svg>
                     </span>
@@ -649,7 +576,7 @@ else{w.loadCSS=loadCSS}}(typeof global!=="undefined"?global:this))
                     English                </span>
                                     <svg aria-hidden="true" class="menu-item__dropdown_chevron menu-item__pill_chevron menu-item__pill_chevron_color d-flex align-self-center" data-url="https://sinch.com/wp-content/plugins/sinch-core/assets/icons/layout/chevron-down.svg"></svg>
                             </a>
-                            <div id="english-2147-content" class="menu-item__dropdown-body is-fixed sub-menu" data-menu-expand-content="english-2147-content" aria-labelledby="english-2147" role="menuitem">
+                            <div id="english-1371-content" class="menu-item__dropdown-body is-fixed sub-menu" data-menu-expand-content="english-1371-content" aria-labelledby="english-1371" role="menuitem">
                                         <div class="menu-item__dropdown-content">
                         <ul class="fs-sm">
                         <a href="https://sinch.com/legal/terms-and-conditions/other-sinch-terms-conditions/data-processing-agreement/"  rel="" class="sub-menu__item ">
@@ -724,14 +651,14 @@ else{w.loadCSS=loadCSS}}(typeof global!=="undefined"?global:this))
             <ul class="top-nav__menu navbar-menu navbar-menu-mobile align-items-lg-center justify-content-lg-center" id="topNavMenu">
                         <li class="menu-item menu-item__dropdown menu-item__dropdown_megamenu">
 
-            <a id="products-9124"  rel="" href="#products-9124-content" role="button" data-overlay="true" aria-haspopup="true" aria-expanded="false" aria-controls="products-9124-content" data-menu-expand-trigger="products-9124-content">
+            <a id="products-4080"  rel="" href="#products-4080-content" role="button" data-overlay="true" aria-haspopup="true" aria-expanded="false" aria-controls="products-4080-content" data-menu-expand-trigger="products-4080-content">
                                 <span>
                     Products                </span>
                                     <svg aria-hidden="true" class="menu-item__dropdown_chevron menu-item__pill_chevron menu-item__pill_chevron_color d-flex align-self-center" data-url="https://sinch.com/wp-content/plugins/sinch-core/assets/icons/layout/chevron-down.svg"></svg>
                             </a>
-                            <div id="products-9124-content" class="menu-item__dropdown-body is-fixed sub-menu" data-menu-expand-content="products-9124-content" aria-labelledby="products-9124" role="menuitem">
+                            <div id="products-4080-content" class="menu-item__dropdown-body is-fixed sub-menu" data-menu-expand-content="products-4080-content" aria-labelledby="products-4080" role="menuitem">
                                             <div class="menu-item__offcanvas-close-level menu-item__dropdown-close fs-sm">
-                            <a href="#products-9124-content" aria-controls="products-9124-content" class="sub-menu__item sub-menu__item-icon-sm d-flex align-items-start px-3 py-2 gap-2">
+                            <a href="#products-4080-content" aria-controls="products-4080-content" class="sub-menu__item sub-menu__item-icon-sm d-flex align-items-start px-3 py-2 gap-2">
                                 <p class="m-0 sub-menu__icon">
                                     <svg aria-hidden="true" class="menu-item__pill_chevron_color" data-url="https://sinch.com/wp-content/plugins/sinch-core/assets/icons/layout/chevron-left.svg"></svg>
                                 </p>
@@ -938,14 +865,14 @@ else{w.loadCSS=loadCSS}}(typeof global!=="undefined"?global:this))
                     </li>
             <li class="menu-item menu-item__dropdown menu-item__dropdown_megamenu">
 
-            <a id="solutions-4922"  rel="" href="#solutions-4922-content" role="button" data-overlay="true" aria-haspopup="true" aria-expanded="false" aria-controls="solutions-4922-content" data-menu-expand-trigger="solutions-4922-content">
+            <a id="solutions-8257"  rel="" href="#solutions-8257-content" role="button" data-overlay="true" aria-haspopup="true" aria-expanded="false" aria-controls="solutions-8257-content" data-menu-expand-trigger="solutions-8257-content">
                                 <span>
                     Solutions                </span>
                                     <svg aria-hidden="true" class="menu-item__dropdown_chevron menu-item__pill_chevron menu-item__pill_chevron_color d-flex align-self-center" data-url="https://sinch.com/wp-content/plugins/sinch-core/assets/icons/layout/chevron-down.svg"></svg>
                             </a>
-                            <div id="solutions-4922-content" class="menu-item__dropdown-body is-fixed sub-menu" data-menu-expand-content="solutions-4922-content" aria-labelledby="solutions-4922" role="menuitem">
+                            <div id="solutions-8257-content" class="menu-item__dropdown-body is-fixed sub-menu" data-menu-expand-content="solutions-8257-content" aria-labelledby="solutions-8257" role="menuitem">
                                             <div class="menu-item__offcanvas-close-level menu-item__dropdown-close fs-sm">
-                            <a href="#solutions-4922-content" aria-controls="solutions-4922-content" class="sub-menu__item sub-menu__item-icon-sm d-flex align-items-start px-3 py-2 gap-2">
+                            <a href="#solutions-8257-content" aria-controls="solutions-8257-content" class="sub-menu__item sub-menu__item-icon-sm d-flex align-items-start px-3 py-2 gap-2">
                                 <p class="m-0 sub-menu__icon">
                                     <svg aria-hidden="true" class="menu-item__pill_chevron_color" data-url="https://sinch.com/wp-content/plugins/sinch-core/assets/icons/layout/chevron-left.svg"></svg>
                                 </p>
@@ -1121,14 +1048,14 @@ else{w.loadCSS=loadCSS}}(typeof global!=="undefined"?global:this))
                     </li>
             <li class="menu-item menu-item__dropdown menu-item__dropdown_megamenu">
 
-            <a id="developers-5409"  rel="" href="#developers-5409-content" role="button" data-overlay="true" aria-haspopup="true" aria-expanded="false" aria-controls="developers-5409-content" data-menu-expand-trigger="developers-5409-content">
+            <a id="developers-1143"  rel="" href="#developers-1143-content" role="button" data-overlay="true" aria-haspopup="true" aria-expanded="false" aria-controls="developers-1143-content" data-menu-expand-trigger="developers-1143-content">
                                 <span>
                     Developers                </span>
                                     <svg aria-hidden="true" class="menu-item__dropdown_chevron menu-item__pill_chevron menu-item__pill_chevron_color d-flex align-self-center" data-url="https://sinch.com/wp-content/plugins/sinch-core/assets/icons/layout/chevron-down.svg"></svg>
                             </a>
-                            <div id="developers-5409-content" class="menu-item__dropdown-body is-fixed sub-menu" data-menu-expand-content="developers-5409-content" aria-labelledby="developers-5409" role="menuitem">
+                            <div id="developers-1143-content" class="menu-item__dropdown-body is-fixed sub-menu" data-menu-expand-content="developers-1143-content" aria-labelledby="developers-1143" role="menuitem">
                                             <div class="menu-item__offcanvas-close-level menu-item__dropdown-close fs-sm">
-                            <a href="#developers-5409-content" aria-controls="developers-5409-content" class="sub-menu__item sub-menu__item-icon-sm d-flex align-items-start px-3 py-2 gap-2">
+                            <a href="#developers-1143-content" aria-controls="developers-1143-content" class="sub-menu__item sub-menu__item-icon-sm d-flex align-items-start px-3 py-2 gap-2">
                                 <p class="m-0 sub-menu__icon">
                                     <svg aria-hidden="true" class="menu-item__pill_chevron_color" data-url="https://sinch.com/wp-content/plugins/sinch-core/assets/icons/layout/chevron-left.svg"></svg>
                                 </p>
@@ -1241,14 +1168,14 @@ else{w.loadCSS=loadCSS}}(typeof global!=="undefined"?global:this))
                     </li>
             <li class="menu-item menu-item__dropdown menu-item__dropdown_megamenu">
 
-            <a id="partners-2607"  rel="" href="#partners-2607-content" role="button" data-overlay="true" aria-haspopup="true" aria-expanded="false" aria-controls="partners-2607-content" data-menu-expand-trigger="partners-2607-content">
+            <a id="partners-4434"  rel="" href="#partners-4434-content" role="button" data-overlay="true" aria-haspopup="true" aria-expanded="false" aria-controls="partners-4434-content" data-menu-expand-trigger="partners-4434-content">
                                 <span>
                     Partners                </span>
                                     <svg aria-hidden="true" class="menu-item__dropdown_chevron menu-item__pill_chevron menu-item__pill_chevron_color d-flex align-self-center" data-url="https://sinch.com/wp-content/plugins/sinch-core/assets/icons/layout/chevron-down.svg"></svg>
                             </a>
-                            <div id="partners-2607-content" class="menu-item__dropdown-body is-fixed sub-menu" data-menu-expand-content="partners-2607-content" aria-labelledby="partners-2607" role="menuitem">
+                            <div id="partners-4434-content" class="menu-item__dropdown-body is-fixed sub-menu" data-menu-expand-content="partners-4434-content" aria-labelledby="partners-4434" role="menuitem">
                                             <div class="menu-item__offcanvas-close-level menu-item__dropdown-close fs-sm">
-                            <a href="#partners-2607-content" aria-controls="partners-2607-content" class="sub-menu__item sub-menu__item-icon-sm d-flex align-items-start px-3 py-2 gap-2">
+                            <a href="#partners-4434-content" aria-controls="partners-4434-content" class="sub-menu__item sub-menu__item-icon-sm d-flex align-items-start px-3 py-2 gap-2">
                                 <p class="m-0 sub-menu__icon">
                                     <svg aria-hidden="true" class="menu-item__pill_chevron_color" data-url="https://sinch.com/wp-content/plugins/sinch-core/assets/icons/layout/chevron-left.svg"></svg>
                                 </p>
@@ -1421,14 +1348,14 @@ else{w.loadCSS=loadCSS}}(typeof global!=="undefined"?global:this))
                     </li>
             <li class="menu-item menu-item__dropdown menu-item__dropdown_megamenu">
 
-            <a id="resources-4489"  rel="" href="#resources-4489-content" role="button" data-overlay="true" aria-haspopup="true" aria-expanded="false" aria-controls="resources-4489-content" data-menu-expand-trigger="resources-4489-content">
+            <a id="resources-2838"  rel="" href="#resources-2838-content" role="button" data-overlay="true" aria-haspopup="true" aria-expanded="false" aria-controls="resources-2838-content" data-menu-expand-trigger="resources-2838-content">
                                 <span>
                     Resources                </span>
                                     <svg aria-hidden="true" class="menu-item__dropdown_chevron menu-item__pill_chevron menu-item__pill_chevron_color d-flex align-self-center" data-url="https://sinch.com/wp-content/plugins/sinch-core/assets/icons/layout/chevron-down.svg"></svg>
                             </a>
-                            <div id="resources-4489-content" class="menu-item__dropdown-body is-fixed sub-menu" data-menu-expand-content="resources-4489-content" aria-labelledby="resources-4489" role="menuitem">
+                            <div id="resources-2838-content" class="menu-item__dropdown-body is-fixed sub-menu" data-menu-expand-content="resources-2838-content" aria-labelledby="resources-2838" role="menuitem">
                                             <div class="menu-item__offcanvas-close-level menu-item__dropdown-close fs-sm">
-                            <a href="#resources-4489-content" aria-controls="resources-4489-content" class="sub-menu__item sub-menu__item-icon-sm d-flex align-items-start px-3 py-2 gap-2">
+                            <a href="#resources-2838-content" aria-controls="resources-2838-content" class="sub-menu__item sub-menu__item-icon-sm d-flex align-items-start px-3 py-2 gap-2">
                                 <p class="m-0 sub-menu__icon">
                                     <svg aria-hidden="true" class="menu-item__pill_chevron_color" data-url="https://sinch.com/wp-content/plugins/sinch-core/assets/icons/layout/chevron-left.svg"></svg>
                                 </p>
@@ -1578,7 +1505,7 @@ else{w.loadCSS=loadCSS}}(typeof global!=="undefined"?global:this))
                     </li>
             <li class="menu-item  ">
 
-            <a id="pricing-3275"  rel="" href="https://sinch.com/pricing/" role="button"  >
+            <a id="pricing-2893"  rel="" href="https://sinch.com/pricing/" role="button"  >
                                 <span>
                     Pricing                </span>
                             </a>
@@ -1588,21 +1515,21 @@ else{w.loadCSS=loadCSS}}(typeof global!=="undefined"?global:this))
              <ul class="top-nav__menu navbar-menu navbar-menu-mobile align-items-lg-center justify-content-lg-center d-md-none">
             <li class="menu-item  ">
 
-            <a id="support-3729"  rel="" href="https://sinch.com/help-center/" role="button"  >
+            <a id="support-3485"  rel="" href="https://sinch.com/help-center/" role="button"  >
                                 <span>
                     Support                </span>
                             </a>
                     </li>
             <li class="menu-item menu-item__dropdown ">
 
-            <a id="all-logins-1766"  rel="" href="#all-logins-1766-content" role="button"  aria-haspopup="true" aria-expanded="false" aria-controls="all-logins-1766-content" data-menu-expand-trigger="all-logins-1766-content">
+            <a id="all-logins-9245"  rel="" href="#all-logins-9245-content" role="button"  aria-haspopup="true" aria-expanded="false" aria-controls="all-logins-9245-content" data-menu-expand-trigger="all-logins-9245-content">
                                 <span>
                     All logins                </span>
                                     <svg aria-hidden="true" class="menu-item__dropdown_chevron menu-item__pill_chevron menu-item__pill_chevron_color d-flex align-self-center" data-url="https://sinch.com/wp-content/plugins/sinch-core/assets/icons/layout/chevron-down.svg"></svg>
                             </a>
-                            <div id="all-logins-1766-content" class="menu-item__dropdown-body is-fixed sub-menu" data-menu-expand-content="all-logins-1766-content" aria-labelledby="all-logins-1766" role="menuitem">
+                            <div id="all-logins-9245-content" class="menu-item__dropdown-body is-fixed sub-menu" data-menu-expand-content="all-logins-9245-content" aria-labelledby="all-logins-9245" role="menuitem">
                                             <div class="menu-item__offcanvas-close-level menu-item__dropdown-close fs-sm">
-                            <a href="#all-logins-1766-content" aria-controls="all-logins-1766-content" class="sub-menu__item sub-menu__item-icon-sm d-flex align-items-start px-3 py-2 gap-2">
+                            <a href="#all-logins-9245-content" aria-controls="all-logins-9245-content" class="sub-menu__item sub-menu__item-icon-sm d-flex align-items-start px-3 py-2 gap-2">
                                 <p class="m-0 sub-menu__icon">
                                     <svg aria-hidden="true" class="menu-item__pill_chevron_color" data-url="https://sinch.com/wp-content/plugins/sinch-core/assets/icons/layout/chevron-left.svg"></svg>
                                 </p>
@@ -1636,7 +1563,7 @@ else{w.loadCSS=loadCSS}}(typeof global!=="undefined"?global:this))
                     </li>
             <li class="menu-item menu-item__dropdown ">
 
-            <a id="english-4431"  rel="" href="#english-4431-content" role="button"  aria-haspopup="true" aria-expanded="false" aria-controls="english-4431-content" data-menu-expand-trigger="english-4431-content">
+            <a id="english-5571"  rel="" href="#english-5571-content" role="button"  aria-haspopup="true" aria-expanded="false" aria-controls="english-5571-content" data-menu-expand-trigger="english-5571-content">
                                     <span class="m-0 menu-item__icon d-flex align-self-center">
                         <svg aria-hidden="true" data-url="https://sinch.com/wp-content/plugins/sinch-core/assets/icons/layout/language.svg"></svg>
                     </span>
@@ -1644,9 +1571,9 @@ else{w.loadCSS=loadCSS}}(typeof global!=="undefined"?global:this))
                     English                </span>
                                     <svg aria-hidden="true" class="menu-item__dropdown_chevron menu-item__pill_chevron menu-item__pill_chevron_color d-flex align-self-center" data-url="https://sinch.com/wp-content/plugins/sinch-core/assets/icons/layout/chevron-down.svg"></svg>
                             </a>
-                            <div id="english-4431-content" class="menu-item__dropdown-body is-fixed sub-menu" data-menu-expand-content="english-4431-content" aria-labelledby="english-4431" role="menuitem">
+                            <div id="english-5571-content" class="menu-item__dropdown-body is-fixed sub-menu" data-menu-expand-content="english-5571-content" aria-labelledby="english-5571" role="menuitem">
                                             <div class="menu-item__offcanvas-close-level menu-item__dropdown-close fs-sm">
-                            <a href="#english-4431-content" aria-controls="english-4431-content" class="sub-menu__item sub-menu__item-icon-sm d-flex align-items-start px-3 py-2 gap-2">
+                            <a href="#english-5571-content" aria-controls="english-5571-content" class="sub-menu__item sub-menu__item-icon-sm d-flex align-items-start px-3 py-2 gap-2">
                                 <p class="m-0 sub-menu__icon">
                                     <svg aria-hidden="true" class="menu-item__pill_chevron_color" data-url="https://sinch.com/wp-content/plugins/sinch-core/assets/icons/layout/chevron-left.svg"></svg>
                                 </p>
@@ -1709,12 +1636,12 @@ else{w.loadCSS=loadCSS}}(typeof global!=="undefined"?global:this))
 <ul class="navbar-menu d-none d-lg-flex">
             <li class="menu-item menu-item__dropdown ">
 
-            <a id="log-in-7436"  rel="" href="#log-in-7436-content" role="button"  aria-haspopup="true" aria-expanded="false" aria-controls="log-in-7436-content" data-menu-expand-trigger="log-in-7436-content">
+            <a id="log-in-8736"  rel="" href="#log-in-8736-content" role="button"  aria-haspopup="true" aria-expanded="false" aria-controls="log-in-8736-content" data-menu-expand-trigger="log-in-8736-content">
                                 <span>
                     Log in                </span>
                                     <svg aria-hidden="true" class="menu-item__dropdown_chevron menu-item__pill_chevron menu-item__pill_chevron_color d-flex align-self-center" data-url="https://sinch.com/wp-content/plugins/sinch-core/assets/icons/layout/chevron-down.svg"></svg>
                             </a>
-                            <div id="log-in-7436-content" class="menu-item__dropdown-body is-fixed sub-menu" data-menu-expand-content="log-in-7436-content" aria-labelledby="log-in-7436" role="menuitem">
+                            <div id="log-in-8736-content" class="menu-item__dropdown-body is-fixed sub-menu" data-menu-expand-content="log-in-8736-content" aria-labelledby="log-in-8736" role="menuitem">
                                         <div class="menu-item__dropdown-content">
                         <ul class="fs-sm">
                         <a href="https://dashboard.sinch.com/login" target="_blank" rel="" class="sub-menu__item ">
@@ -4952,6 +4879,24 @@ else{w.loadCSS=loadCSS}}(typeof global!=="undefined"?global:this))
                 }
             });
 
+            // A/B test impressions (sinch-core ab-testing) — pushed right
+            // after page_view; one block per running test.
+            if (window.sinchAB) {
+                // ---- build_cta_label (SI-1532 — signup CTA copy) --------
+                const buildCta = window.sinchAB.getVariant('build_cta_label');
+                if (buildCta) {
+                    const buildCtaParams = {
+                        experiment_id: 'build_cta_label',
+                        variant_id: buildCta,
+                        exp_variant_string: 'SINCHAB-build_cta_label-' + buildCta
+                    };
+                    dataLayer.push(Object.assign({ event: 'experience_impression' }, buildCtaParams));
+                    if (typeof gtag === 'function') {
+                        gtag('set', 'user_properties', { ab_build_cta_label: buildCta });
+                        gtag('event', 'experience_impression', buildCtaParams);
+                    }
+                }
+            }
         }
 
         // Consent behaviour differs by region:
@@ -5251,14 +5196,14 @@ else{w.loadCSS=loadCSS}}(typeof global!=="undefined"?global:this))
 <script type="speculationrules">
 {"prefetch":[{"source":"document","where":{"and":[{"href_matches":"/*"},{"not":{"href_matches":["/wp-*.php","/wp-admin/*","/wp-content/uploads/*","/wp-content/*","/wp-content/plugins/*","/wp-content/themes/simpletexting-theme-blank/*","/*\\?(.+)"]}},{"not":{"selector_matches":"a[rel~=\"nofollow\"]"}},{"not":{"selector_matches":".no-prefetch, .no-prefetch a"}}]},"eagerness":"conservative"}]}
 </script>
-<link rel='preload'  href='https://sinch.com/wp-content/themes/simpletexting-theme-blank/assets/stylesheets/templates/legal.min.css?ver=1789564174' data-rocket-async="style" as="style" onload="this.onload=null;this.rel='stylesheet'" onerror="this.removeAttribute('data-rocket-async')"  media='all' />
-<link rel='preload'  href='https://sinch.com/wp-content/themes/simpletexting-theme-blank/assets/stylesheets/components/list-light.min.css?ver=1789564167' data-rocket-async="style" as="style" onload="this.onload=null;this.rel='stylesheet'" onerror="this.removeAttribute('data-rocket-async')"  media='all' />
-<link rel='preload'  href='https://sinch.com/wp-content/themes/simpletexting-theme-blank/assets/stylesheets/layout-blocks/sidebar.min.css?ver=1789564174' data-rocket-async="style" as="style" onload="this.onload=null;this.rel='stylesheet'" onerror="this.removeAttribute('data-rocket-async')"  media='all' />
-<link rel='preload'  href='https://sinch.com/wp-content/themes/simpletexting-theme-blank/assets/stylesheets/components/accordion.min.css?ver=1789564167' data-rocket-async="style" as="style" onload="this.onload=null;this.rel='stylesheet'" onerror="this.removeAttribute('data-rocket-async')"  media='all' />
-<link rel='preload'  href='https://sinch.com/wp-content/themes/simpletexting-theme-blank/assets/stylesheets/layout-blocks/onetrust-cmp.min.css?ver=1789564174' data-rocket-async="style" as="style" onload="this.onload=null;this.rel='stylesheet'" onerror="this.removeAttribute('data-rocket-async')"  media='all' />
-<link rel='preload'  href='https://sinch.com/wp-content/themes/simpletexting-theme-blank/assets/stylesheets/design-system.min.css?ver=1789564165' data-rocket-async="style" as="style" onload="this.onload=null;this.rel='stylesheet'" onerror="this.removeAttribute('data-rocket-async')"  media='all' />
-<link rel='preload'  href='https://sinch.com/wp-content/themes/simpletexting-theme-blank/assets/stylesheets/layout-blocks/navbar.min.css?ver=1789564169' data-rocket-async="style" as="style" onload="this.onload=null;this.rel='stylesheet'" onerror="this.removeAttribute('data-rocket-async')"  media='all' />
-<link rel='preload'  href='https://sinch.com/wp-content/themes/simpletexting-theme-blank/assets/stylesheets/layout-blocks/longform-content.min.css?ver=1789564169' data-rocket-async="style" as="style" onload="this.onload=null;this.rel='stylesheet'" onerror="this.removeAttribute('data-rocket-async')"  media='all' />
+<link rel='preload'  href='https://sinch.com/wp-content/themes/simpletexting-theme-blank/assets/stylesheets/templates/legal.min.css?ver=1789640702' data-rocket-async="style" as="style" onload="this.onload=null;this.rel='stylesheet'" onerror="this.removeAttribute('data-rocket-async')"  media='all' />
+<link rel='preload'  href='https://sinch.com/wp-content/themes/simpletexting-theme-blank/assets/stylesheets/components/list-light.min.css?ver=1789640699' data-rocket-async="style" as="style" onload="this.onload=null;this.rel='stylesheet'" onerror="this.removeAttribute('data-rocket-async')"  media='all' />
+<link rel='preload'  href='https://sinch.com/wp-content/themes/simpletexting-theme-blank/assets/stylesheets/layout-blocks/sidebar.min.css?ver=1789640702' data-rocket-async="style" as="style" onload="this.onload=null;this.rel='stylesheet'" onerror="this.removeAttribute('data-rocket-async')"  media='all' />
+<link rel='preload'  href='https://sinch.com/wp-content/themes/simpletexting-theme-blank/assets/stylesheets/components/accordion.min.css?ver=1789640694' data-rocket-async="style" as="style" onload="this.onload=null;this.rel='stylesheet'" onerror="this.removeAttribute('data-rocket-async')"  media='all' />
+<link rel='preload'  href='https://sinch.com/wp-content/themes/simpletexting-theme-blank/assets/stylesheets/layout-blocks/onetrust-cmp.min.css?ver=1789640701' data-rocket-async="style" as="style" onload="this.onload=null;this.rel='stylesheet'" onerror="this.removeAttribute('data-rocket-async')"  media='all' />
+<link rel='preload'  href='https://sinch.com/wp-content/themes/simpletexting-theme-blank/assets/stylesheets/design-system.min.css?ver=1789640693' data-rocket-async="style" as="style" onload="this.onload=null;this.rel='stylesheet'" onerror="this.removeAttribute('data-rocket-async')"  media='all' />
+<link rel='preload'  href='https://sinch.com/wp-content/themes/simpletexting-theme-blank/assets/stylesheets/layout-blocks/navbar.min.css?ver=1789640701' data-rocket-async="style" as="style" onload="this.onload=null;this.rel='stylesheet'" onerror="this.removeAttribute('data-rocket-async')"  media='all' />
+<link rel='preload'  href='https://sinch.com/wp-content/themes/simpletexting-theme-blank/assets/stylesheets/layout-blocks/longform-content.min.css?ver=1789640701' data-rocket-async="style" as="style" onload="this.onload=null;this.rel='stylesheet'" onerror="this.removeAttribute('data-rocket-async')"  media='all' />
 <script type="text/rocketlazyloadscript" id="rocket-browser-checker-js-after">
 "use strict";var _createClass=function(){function defineProperties(target,props){for(var i=0;i<props.length;i++){var descriptor=props[i];descriptor.enumerable=descriptor.enumerable||!1,descriptor.configurable=!0,"value"in descriptor&&(descriptor.writable=!0),Object.defineProperty(target,descriptor.key,descriptor)}}return function(Constructor,protoProps,staticProps){return protoProps&&defineProperties(Constructor.prototype,protoProps),staticProps&&defineProperties(Constructor,staticProps),Constructor}}();function _classCallCheck(instance,Constructor){if(!(instance instanceof Constructor))throw new TypeError("Cannot call a class as a function")}var RocketBrowserCompatibilityChecker=function(){function RocketBrowserCompatibilityChecker(options){_classCallCheck(this,RocketBrowserCompatibilityChecker),this.passiveSupported=!1,this._checkPassiveOption(this),this.options=!!this.passiveSupported&&options}return _createClass(RocketBrowserCompatibilityChecker,[{key:"_checkPassiveOption",value:function(self){try{var options={get passive(){return!(self.passiveSupported=!0)}};window.addEventListener("test",null,options),window.removeEventListener("test",null,options)}catch(err){self.passiveSupported=!1}}},{key:"initRequestIdleCallback",value:function(){!1 in window&&(window.requestIdleCallback=function(cb){var start=Date.now();return setTimeout(function(){cb({didTimeout:!1,timeRemaining:function(){return Math.max(0,50-(Date.now()-start))}})},1)}),!1 in window&&(window.cancelIdleCallback=function(id){return clearTimeout(id)})}},{key:"isDataSaverModeOn",value:function(){return"connection"in navigator&&!0===navigator.connection.saveData}},{key:"supportsLinkPrefetch",value:function(){var elem=document.createElement("link");return elem.relList&&elem.relList.supports&&elem.relList.supports("prefetch")&&window.IntersectionObserver&&"isIntersecting"in IntersectionObserverEntry.prototype}},{key:"isSlowConnection",value:function(){return"connection"in navigator&&"effectiveType"in navigator.connection&&("2g"===navigator.connection.effectiveType||"slow-2g"===navigator.connection.effectiveType)}}]),RocketBrowserCompatibilityChecker}();
 //# sourceURL=rocket-browser-checker-js-after
@@ -5275,21 +5220,21 @@ var RocketPreloadLinksConfig = {"excludeUris":"/(?:.+/)?feed(?:/(?:.+/?)?)?$|/(?
 //# sourceURL=rocket-preload-links-js-after
 </script>
 <script type="text/rocketlazyloadscript" id="bs-main-js-js" data-rocket-src="https://sinch.com/wp-content/plugins/sinch-core/libraries/bootstrap-scripts/bootstrap.min.js?ver=2e7c752b83213a6b7c13f232bdadcdb8" data-rocket-defer defer></script>
-<script type="text/rocketlazyloadscript" id="utm-cookies-js-js" data-rocket-src="https://sinch.com/wp-content/themes/simpletexting-theme-blank/assets/javascripts/utilities/utm-cookies.min.js?ver=1789564196" data-rocket-defer defer></script>
-<script type="text/rocketlazyloadscript" id="navbar-js-js" data-rocket-src="https://sinch.com/wp-content/themes/simpletexting-theme-blank/assets/javascripts/layout-blocks/navbar.min.js?ver=1789564196" data-rocket-defer defer></script>
-<script type="text/rocketlazyloadscript" id="scroll-direction-js-js" data-rocket-src="https://sinch.com/wp-content/themes/simpletexting-theme-blank/assets/javascripts/components/scroll-direction.min.js?ver=1789564196" data-rocket-defer defer></script>
-<script type="text/rocketlazyloadscript" id="offcanvas-js-js" data-rocket-src="https://sinch.com/wp-content/themes/simpletexting-theme-blank/assets/javascripts/components/offcanvas.min.js?ver=1789564196" data-rocket-defer defer></script>
-<script type="text/rocketlazyloadscript" id="lazy-svg-js-js" data-rocket-src="https://sinch.com/wp-content/themes/simpletexting-theme-blank/assets/javascripts/components/lazy-svg.min.js?ver=1789564196" data-rocket-defer defer></script>
+<script type="text/rocketlazyloadscript" id="utm-cookies-js-js" data-rocket-src="https://sinch.com/wp-content/themes/simpletexting-theme-blank/assets/javascripts/utilities/utm-cookies.min.js?ver=1789640711" data-rocket-defer defer></script>
+<script type="text/rocketlazyloadscript" id="navbar-js-js" data-rocket-src="https://sinch.com/wp-content/themes/simpletexting-theme-blank/assets/javascripts/layout-blocks/navbar.min.js?ver=1789640711" data-rocket-defer defer></script>
+<script type="text/rocketlazyloadscript" id="scroll-direction-js-js" data-rocket-src="https://sinch.com/wp-content/themes/simpletexting-theme-blank/assets/javascripts/components/scroll-direction.min.js?ver=1789640711" data-rocket-defer defer></script>
+<script type="text/rocketlazyloadscript" id="offcanvas-js-js" data-rocket-src="https://sinch.com/wp-content/themes/simpletexting-theme-blank/assets/javascripts/components/offcanvas.min.js?ver=1789640711" data-rocket-defer defer></script>
+<script type="text/rocketlazyloadscript" id="lazy-svg-js-js" data-rocket-src="https://sinch.com/wp-content/themes/simpletexting-theme-blank/assets/javascripts/components/lazy-svg.min.js?ver=1789640711" data-rocket-defer defer></script>
 <script id="algolia-js-js-extra">
 var algoliaVars = {"countryCode":"en-us","corePluginDirectory":"https://sinch.com/wp-content/plugins/sinch-core/","indexName":"Sinch"};
 //# sourceURL=algolia-js-js-extra
 </script>
-<script type="text/rocketlazyloadscript" id="algolia-js-js" data-rocket-src="https://sinch.com/wp-content/themes/simpletexting-theme-blank/assets/javascripts/components/algolia.min.js?ver=1789564196" data-rocket-defer defer></script>
+<script type="text/rocketlazyloadscript" id="algolia-js-js" data-rocket-src="https://sinch.com/wp-content/themes/simpletexting-theme-blank/assets/javascripts/components/algolia.min.js?ver=1789640711" data-rocket-defer defer></script>
 <script>window.lazyLoadOptions=[{elements_selector:"img[data-lazy-src],.rocket-lazyload,iframe[data-lazy-src]",data_src:"lazy-src",data_srcset:"lazy-srcset",data_sizes:"lazy-sizes",class_loading:"lazyloading",class_loaded:"lazyloaded",threshold:300,callback_loaded:function(element){if(element.tagName==="IFRAME"&&element.dataset.rocketLazyload=="fitvidscompatible"){if(element.classList.contains("lazyloaded")){if(typeof window.jQuery!="undefined"){if(jQuery.fn.fitVids){jQuery(element).parent().fitVids()}}}}}},{elements_selector:".rocket-lazyload",data_src:"lazy-src",data_srcset:"lazy-srcset",data_sizes:"lazy-sizes",class_loading:"lazyloading",class_loaded:"lazyloaded",threshold:300,}];window.addEventListener('LazyLoad::Initialized',function(e){var lazyLoadInstance=e.detail.instance;if(window.MutationObserver){var observer=new MutationObserver(function(mutations){var image_count=0;var iframe_count=0;var rocketlazy_count=0;mutations.forEach(function(mutation){for(var i=0;i<mutation.addedNodes.length;i++){if(typeof mutation.addedNodes[i].getElementsByTagName!=='function'){continue}
 if(typeof mutation.addedNodes[i].getElementsByClassName!=='function'){continue}
 images=mutation.addedNodes[i].getElementsByTagName('img');is_image=mutation.addedNodes[i].tagName=="IMG";iframes=mutation.addedNodes[i].getElementsByTagName('iframe');is_iframe=mutation.addedNodes[i].tagName=="IFRAME";rocket_lazy=mutation.addedNodes[i].getElementsByClassName('rocket-lazyload');image_count+=images.length;iframe_count+=iframes.length;rocketlazy_count+=rocket_lazy.length;if(is_image){image_count+=1}
 if(is_iframe){iframe_count+=1}}});if(image_count>0||iframe_count>0||rocketlazy_count>0){lazyLoadInstance.update()}});var b=document.getElementsByTagName("body")[0];var config={childList:!0,subtree:!0};observer.observe(b,config)}},!1)</script><script data-no-minify="1" async src="https://sinch.com/wp-content/plugins/wp-rocket/assets/js/lazyload/17.8.3/lazyload.min.js"></script>
-<script>"use strict";function wprRemoveCPCSS(){var preload_stylesheets=document.querySelectorAll('link[data-rocket-async="style"][rel="preload"]');if(preload_stylesheets&&0<preload_stylesheets.length)for(var stylesheet_index=0;stylesheet_index<preload_stylesheets.length;stylesheet_index++){var media=preload_stylesheets[stylesheet_index].getAttribute("media")||"all";if(window.matchMedia(media).matches)return void setTimeout(wprRemoveCPCSS,200)}var elem=document.getElementById("rocket-critical-css");elem&&"remove"in elem&&elem.remove()}window.addEventListener?window.addEventListener("load",wprRemoveCPCSS):window.attachEvent&&window.attachEvent("onload",wprRemoveCPCSS);</script><noscript><link rel='stylesheet' id='legal-css-css' href='https://sinch.com/wp-content/themes/simpletexting-theme-blank/assets/stylesheets/templates/legal.min.css?ver=1789564174' media='all' /><link rel='stylesheet' id='list-light-css-css' href='https://sinch.com/wp-content/themes/simpletexting-theme-blank/assets/stylesheets/components/list-light.min.css?ver=1789564167' media='all' /><link rel='stylesheet' id='sidebar-css-css' href='https://sinch.com/wp-content/themes/simpletexting-theme-blank/assets/stylesheets/layout-blocks/sidebar.min.css?ver=1789564174' media='all' /><link rel='stylesheet' id='accordion-css-css' href='https://sinch.com/wp-content/themes/simpletexting-theme-blank/assets/stylesheets/components/accordion.min.css?ver=1789564167' media='all' /><link rel='stylesheet' id='onetrust-cmp-css-css' href='https://sinch.com/wp-content/themes/simpletexting-theme-blank/assets/stylesheets/layout-blocks/onetrust-cmp.min.css?ver=1789564174' media='all' /><link rel='stylesheet' id='design-system-css-css' href='https://sinch.com/wp-content/themes/simpletexting-theme-blank/assets/stylesheets/design-system.min.css?ver=1789564165' media='all' /><link rel='stylesheet' id='navbar-css-css' href='https://sinch.com/wp-content/themes/simpletexting-theme-blank/assets/stylesheets/layout-blocks/navbar.min.css?ver=1789564169' media='all' /><link rel='stylesheet' id='longform-content-css-css' href='https://sinch.com/wp-content/themes/simpletexting-theme-blank/assets/stylesheets/layout-blocks/longform-content.min.css?ver=1789564169' media='all' /></noscript><script>(function(){function c(){var b=a.contentDocument||(a.contentWindow&&a.contentWindow.document);if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'a3c418bf8bf293b4',t:'MTc4OTYwNjAxNQ=='};var a=document.createElement('script');a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
+<script>"use strict";function wprRemoveCPCSS(){var preload_stylesheets=document.querySelectorAll('link[data-rocket-async="style"][rel="preload"]');if(preload_stylesheets&&0<preload_stylesheets.length)for(var stylesheet_index=0;stylesheet_index<preload_stylesheets.length;stylesheet_index++){var media=preload_stylesheets[stylesheet_index].getAttribute("media")||"all";if(window.matchMedia(media).matches)return void setTimeout(wprRemoveCPCSS,200)}var elem=document.getElementById("rocket-critical-css");elem&&"remove"in elem&&elem.remove()}window.addEventListener?window.addEventListener("load",wprRemoveCPCSS):window.attachEvent&&window.attachEvent("onload",wprRemoveCPCSS);</script><noscript><link rel='stylesheet' id='legal-css-css' href='https://sinch.com/wp-content/themes/simpletexting-theme-blank/assets/stylesheets/templates/legal.min.css?ver=1789640702' media='all' /><link rel='stylesheet' id='list-light-css-css' href='https://sinch.com/wp-content/themes/simpletexting-theme-blank/assets/stylesheets/components/list-light.min.css?ver=1789640699' media='all' /><link rel='stylesheet' id='sidebar-css-css' href='https://sinch.com/wp-content/themes/simpletexting-theme-blank/assets/stylesheets/layout-blocks/sidebar.min.css?ver=1789640702' media='all' /><link rel='stylesheet' id='accordion-css-css' href='https://sinch.com/wp-content/themes/simpletexting-theme-blank/assets/stylesheets/components/accordion.min.css?ver=1789640694' media='all' /><link rel='stylesheet' id='onetrust-cmp-css-css' href='https://sinch.com/wp-content/themes/simpletexting-theme-blank/assets/stylesheets/layout-blocks/onetrust-cmp.min.css?ver=1789640701' media='all' /><link rel='stylesheet' id='design-system-css-css' href='https://sinch.com/wp-content/themes/simpletexting-theme-blank/assets/stylesheets/design-system.min.css?ver=1789640693' media='all' /><link rel='stylesheet' id='navbar-css-css' href='https://sinch.com/wp-content/themes/simpletexting-theme-blank/assets/stylesheets/layout-blocks/navbar.min.css?ver=1789640701' media='all' /><link rel='stylesheet' id='longform-content-css-css' href='https://sinch.com/wp-content/themes/simpletexting-theme-blank/assets/stylesheets/layout-blocks/longform-content.min.css?ver=1789640701' media='all' /></noscript><script>(function(){function c(){var b=a.contentDocument||(a.contentWindow&&a.contentWindow.document);if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'a3c837abac9456d5',t:'MTc4OTY0OTIyNQ=='};var a=document.createElement('script');a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
 
 </html>
 <!-- This website is like a Rocket, isn't it? Performance optimized by WP Rocket. Learn more: https://wp-rocket.me -->
