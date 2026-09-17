@@ -24,7 +24,7 @@
 <meta name="msapplication-TileImage" content="/ms-icon-144x144.png">
 <meta name="theme-color" content="#ffffff">
 <script>
-serverTime = new Date('2026-09-16 12:37:33 GMT');
+serverTime = new Date('2026-09-17 12:37:28 GMT');
 </script>
 <title>Terms of Service | DistroKid</title>
 <meta name="description" content="Read DistroKid's Terms of Service">
@@ -74,9 +74,9 @@ initializeDKModal();
 captchaSiteKey = "6Ld_vDcUAAAAABBf4b4MfIPqz5XA53JWQyOh6MX0";
 turnstileSiteKey = "0x4AAAAAAAwjnOrGSKrIkAR9";
 </script>
-<script src="/js/header.js?cacheHash=40c81de6635dd866" 1789562252427></script>
-<script src="/js/distro.js?cacheHash=49d2eb81fcda5299" 1789562252427></script>
-<script src="/js/fixCaps.js?cacheHash=4d712b9355dbb337" 1789562252427></script>
+<script src="/js/header.js?cacheHash=40c81de6635dd866" 1789605444602></script>
+<script src="/js/distro.js?cacheHash=49d2eb81fcda5299" 1789605444602></script>
+<script src="/js/fixCaps.js?cacheHash=4d712b9355dbb337" 1789605444602></script>
 <script src="/js/jquery.kenburns-0.1.js"></script>
 <script src="/js/lazysizes.min.js"></script>
 <script>
@@ -302,7 +302,7 @@ window.captchaProcessor = "recaptcha_v2";
 <div style="position:relative;" class="outer2 navNotLoggedIn">
 <div class="headerLoggedOutNav nav inner2">
 <div class="navInner">
-<input type="hidden" id="forgotPasswordSessionID" name="forgotPasswordSessionID" value="distrokid_883f3d83-5ed6-423c-8af9-3ebc8ffee332_0">
+<input type="hidden" id="forgotPasswordSessionID" name="forgotPasswordSessionID" value="distrokid_aba90d06-83ae-45f1-abc7-bf697d875300_0">
 <script type="text/template" id="templateForgotPassword">
 <div class="signinBoxNotification">
 Done! Instructions to reset your password have been emailed.
@@ -370,20 +370,7 @@ Done. We just emailed instructions to you.
 </div>
 </div>
 </div>
-<script>
-(function(){
-window.addEventListener('storage', function(e){
-if (e.key !== 'resultSocialLogin' || !e.newValue) return;
-try {
-var st = JSON.parse(e.newValue);
-localStorage.removeItem('resultSocialLogin');
-if (!st.error || st.error === 'no set') {
-window.location.href = st.urlForward || '/';
-}
-} catch (err) {}
-});
-})();
-</script>
+<script src="/js/social-signin-opener.js?cacheHash=17eccd28670fbf11" type="module"></script>
 <div style="clear:both;"></div>
 </div>
 </div>
@@ -501,7 +488,7 @@ Copyright Agent
 DistroKid LLC
 34 Third Ave #183
 New York, NY 10003
-Email: <a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="6d01080a0c012d09041e191f02060409430e0200">[email&#160;protected]</a> <br>
+Email: <a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="38545d5f5954785c514b4c4a5753515c165b5755">[email&#160;protected]</a> <br>
 In accordance with the DMCA and other applicable law, DistroKid has adopted a policy of terminating, in appropriate circumstances and in DistroKid's sole discretion, users who are deemed to be repeat infringers. For the avoidance of doubt, the foregoing sentence in no way limits DistroKid's right to limit access to the Services and/or terminate the Accounts of any users for any reason, in DistroKid's sole discretion, including, without limitation, in the case of users who infringe, or allegedly infringe, any Intellectual Property Rights of others, whether or not there is any repeat infringement. <br>
 Please be advised that pursuant to federal law you may be held liable for damages if you make material misrepresentations in a Notice. Thus, if you are not sure that material located on or linked to by the infringes your copyright, you should consider first contacting an attorney. <br>
 <strong>Links to Third-Party Websites or Services</strong><br>
@@ -575,7 +562,7 @@ aria-label="DistroKid on Instagram"
 <div id="sitetran_translate_element"></div>
 <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script src="/js/page-locale.js?cacheHash=3f5b671542614595" type="module"></script>
 <script>
-window.__sitetranWidgetConfig = {"scriptUrl":"//c.sitetran.com/widget/v3.js","isSeoPage":true,"isLoggedIn":false,"seoPagePath":"/terms/","sitetran":{"url_type":"none","auto_switch_from_browser_lang":true,"refresh_translation_seconds":0.1,"site_default_language_code":"en","phrase_discovery_enabled":true,"preferredLanguage":"en","zendeskLanguageCode":"en-us","site_id":1566,"static_url_language_code_lookup":{},"update_direction":true,"widget_type":"styled-select"},"zendeskLanguageMapping":{"ja":"ja","sv":"sv","tr":"tr","es-ES":"es-es","hu":"hu","en-GB":"en-us","da":"da","ro":"ro","ms":"ms","de":"de","cs":"cs","fr":"fr","el":"el","ko":"ko","fi":"fi","pt-BR":"pt-br","pl":"pl","ar":"ar","hi":"hi","th":"th","es":"es","nb":"nb","sw":"sw","nl":"nl","id":"id","he":"he","uk":"uk","it":"it","pt-PT":"pt-pt","fr-CA":"fr-ca","vi":"vi"},"sitetranCommands":[],"accessToken":"eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJjbGkiOjEsImlhdCI6MTc4OTU2MjI1MywiaXNzIjoiaHR0cHM6Ly9kaXN0cm9raWQuY29tIiwic3ViIjowLCJleHAiOjE3ODk1NjU4NTMsImRldiI6IiIsInNjb3BlIjoicmVhZC1wcm9maWxlIiwiYXVkIjoiIn0.qTGxnXH5Bt8a_0_xuYsXqhHsnFTwek9odwvv7ia72oY"};
+window.__sitetranWidgetConfig = {"scriptUrl":"//c.sitetran.com/widget/v3.js","isSeoPage":true,"isLoggedIn":false,"seoPagePath":"/terms/","sitetran":{"url_type":"none","auto_switch_from_browser_lang":true,"refresh_translation_seconds":0.1,"site_default_language_code":"en","phrase_discovery_enabled":true,"preferredLanguage":"en","zendeskLanguageCode":"en-us","site_id":1566,"static_url_language_code_lookup":{},"update_direction":true,"widget_type":"styled-select"},"zendeskLanguageMapping":{"ja":"ja","sv":"sv","tr":"tr","es-ES":"es-es","hu":"hu","en-GB":"en-us","da":"da","ro":"ro","ms":"ms","de":"de","cs":"cs","fr":"fr","el":"el","ko":"ko","fi":"fi","pt-BR":"pt-br","pl":"pl","ar":"ar","hi":"hi","th":"th","es":"es","nb":"nb","sw":"sw","nl":"nl","id":"id","he":"he","uk":"uk","it":"it","pt-PT":"pt-pt","fr-CA":"fr-ca","vi":"vi"},"sitetranCommands":[],"accessToken":"eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJjbGkiOjEsImlhdCI6MTc4OTYwNTQ0OCwiaXNzIjoiaHR0cHM6Ly9kaXN0cm9raWQuY29tIiwic3ViIjowLCJleHAiOjE3ODk2MDkwNDgsImRldiI6IiIsInNjb3BlIjoicmVhZC1wcm9maWxlIiwiYXVkIjoiIn0.eaYKMzGQXNUeeU4QbHbbADez5EHUPqDkA8qUrXOLwEc"};
 </script>
 <script src="/js/sitetran-widget.js?cacheHash=66b3101c2c89c027" type="module"></script>
 </div>
