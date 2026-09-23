@@ -36,10 +36,17 @@
             <link rel="preload" href="/dist/assets/fonts/inter/inter-latin.woff2" as="font" type="font/woff2" crossorigin fetchpriority="high" />
             <link rel="preconnect" href="https://cdn.optimizely.com" crossorigin />
             <link rel="preconnect" href="https://logx.optimizely.com" crossorigin />
-        <link rel="stylesheet" href="/dist/main.v1.css?t=639252559960000000" media="screen,print" />
+        <link rel="stylesheet" href="/dist/main.v1.css?t=639257424200000000" media="screen,print" />
        
             <link rel="preload" as="fetch" crossorigin href="https://cdn.optimizely.com/datafiles/Cqoy8odRGzRELg3xLX9M1.json" />
-        <style> html[data-ab-variation="variation_b"] .nav-search__input input[readonly] {
+        <style>
+.nav-workspace .dropdown.is-open>.action-btn {
+    background: rgb(110 118 128 / 0.12);
+}
+.nav-workspace .discover-row {
+    display: none;
+}
+ html[data-ab-variation="variation_b"] .nav-search__input input[readonly] {
   cursor: pointer;
   caret-color: transparent;
   user-select: none;
@@ -165,7 +172,7 @@ header.is-sticky .nav-primary__item:has(.nav-primary__item--hub-active-item):bef
 .icon-translation,.icon-translation\:regular{background-image: url("data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTQiIGhlaWdodD0iMTQiIHZpZXdCb3g9IjAgMCAxNCAxNCIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KPHBhdGggZmlsbC1ydWxlPSJldmVub2RkIiBjbGlwLXJ1bGU9ImV2ZW5vZGQiIGQ9Ik05LjA5OTYxIDVDOS4zMjY4NyA1IDkuNTM1MDggNS4xMjc3OSA5LjYzNjcyIDUuMzMxMDVMMTMuMTM2NyAxMi4zMzExQzEzLjI4NDkgMTIuNjI3NCAxMy4xNjQ2IDEyLjk4ODUgMTIuODY4MiAxMy4xMzY3QzEyLjU3MTggMTMuMjg0OSAxMi4yMTA3IDEzLjE2NDUgMTIuMDYyNSAxMi44NjgyTDExLjIyODUgMTEuMTk5Mkw2Ljk3MDcgMTEuMTk5Mkw2LjEzNjcyIDEyLjg2ODJDNS45ODg1MiAxMy4xNjQ1IDUuNjI3NDQgMTMuMjg0OSA1LjMzMTA1IDEzLjEzNjdDNS4wMzQ2OCAxMi45ODg1IDQuOTE0MzEgMTIuNjI3NCA1LjA2MjUgMTIuMzMxMUw4LjU2MjUgNS4zMzEwNUw4LjYwNTQ3IDUuMjU4NzlDOC43MTY0MSA1LjA5Nzg4IDguOTAwNjUgNSA5LjA5OTYxIDVaTTcuNTcwMzEgMTBMMTAuNjI4OSAxMEw5LjA5OTYxIDYuOTQyMzhMNy41NzAzMSAxMFoiIGZpbGw9IiMwQjVDRkYiLz4KPHBhdGggZD0iTTQuNTk5NjEgMEM0LjkzMDk4IDAgNS4xOTkyMiAwLjI2ODIzOSA1LjE5OTIyIDAuNTk5NjA5TDUuMTk5MjIgMS41TDguNTk5NjEgMS41QzguOTMwOTggMS41IDkuMTk5MjIgMS43NjgyNCA5LjE5OTIyIDIuMDk5NjFDOS4xOTkyMiAyLjQzMDk4IDguOTMwOTggMi42OTkyMiA4LjU5OTYxIDIuNjk5MjJMNy4xNzY3NiAyLjY5OTIyQzcuMDYxNjMgNC4zMzc5NCA2LjQ3MTk4IDUuNjg4NTEgNS41MzgwOSA2LjY5NTMxQzUuNjk4MTYgNi43OTMwMSA1Ljg2NDA2IDYuODgyNzQgNi4wMzYxMyA2Ljk2Mjg5QzYuMzM2NSA3LjEwMjc2IDYuNDY2OTYgNy40NjAzNiA2LjMyNzE1IDcuNzYwNzRDNi4xODcyMiA4LjA2MDkzIDUuODMwNTYgOC4xOTA1IDUuNTMwMjcgOC4wNTA3OEM1LjIwMjUgNy44OTgxNSA0Ljg5MjE4IDcuNzE3MjYgNC41OTk2MSA3LjUxMjdDMy40NzQyOSA4LjI5OTY4IDIuMDgyNDUgOC42OTkyMiAwLjU5OTYwOSA4LjY5OTIyQzAuMjY4MjM5IDguNjk5MjIgMS42NzY0OWUtMTAgOC40MzA5OCAxLjYxMDZlLTEwIDguMDk5NjFDMS41NDQ3ZS0xMCA3Ljc2ODI0IDAuMjY4MjM5IDcuNSAwLjU5OTYwOSA3LjVDMS43NTM5MSA3LjUgMi44MDMwOCA3LjIxOTA5IDMuNjYwMTYgNi42OTYyOUMzLjA0ODk0IDYuMDM3NDUgMi41Nzc5OSA1LjIyNDkzIDIuMjk2ODggNC4yNjg1NUMyLjIwMzY4IDMuOTUwODIgMi4zODU0OCAzLjYxNzk0IDIuNzAzMTMgMy41MjQ0MUMzLjAyMSAzLjQzMSAzLjM1NDc2IDMuNjEyODIgMy40NDgyNCAzLjkzMDY2QzMuNjg0ODkgNC43MzU2MyA0LjA4MjAzIDUuNDA4MzMgNC41OTk2MSA1Ljk0NTMxQzUuMzQ5OTUgNS4xNjY3IDUuODYwNTIgNC4wODY0IDUuOTc0NjEgMi42OTkyMkwwLjU5OTYwOSAyLjY5OTIyQzAuMjY4MjM5IDIuNjk5MjIgMCAyLjQzMDk4IDAgMi4wOTk2MUMwIDEuNzY4MjQgMC4yNjgyMzkgMS41IDAuNTk5NjA5IDEuNUw0IDEuNUw0IDAuNTk5NjA5QzQgMC4yNjgyMzkgNC4yNjgyNCAwIDQuNTk5NjEgMFoiIGZpbGw9IiMwQjVDRkYiLz4KPC9zdmc+Cg=="); background-repeat:no-repeat;}
 .icon-translation-dims{width:22px;height:22px}
 </style>
-<script nonce="FvS6xHHHcAeqiqy23cKFpZB45s/YQJOffDm2vXFFsUw=">
+<script nonce="KKJ41tA1IX9lNhWm/zjuoZEMXfNXlHLFqIHuRjTvr98=">
     document.addEventListener('DOMContentLoaded', function () {
         try {
             function excludeUrls() {
@@ -540,7 +547,7 @@ document.querySelectorAll('a[href]').forEach((a) => {
     });
 </script>
 
-<script nonce="FvS6xHHHcAeqiqy23cKFpZB45s/YQJOffDm2vXFFsUw=">
+<script nonce="KKJ41tA1IX9lNhWm/zjuoZEMXfNXlHLFqIHuRjTvr98=">
  // Step 1: Normalize "Zoom Team Chat" → "Team Chat"
   const ZOOM_TEAM_CHAT_REGEX = /Zoom(?:\s|\u00A0|&nbsp;)*Team(?:\s|\u00A0|&nbsp;)*Chat/gi;
 
@@ -619,7 +626,7 @@ document.querySelectorAll('a[href]').forEach((a) => {
   });
 
 </script>
-<script nonce="FvS6xHHHcAeqiqy23cKFpZB45s/YQJOffDm2vXFFsUw=">
+<script nonce="KKJ41tA1IX9lNhWm/zjuoZEMXfNXlHLFqIHuRjTvr98=">
 document.addEventListener("click", function (e) {
     const anchor = e.target.closest(".nav-footer__desc a");
 
@@ -668,7 +675,7 @@ document.addEventListener("click", function (e) {
 <meta name="twitter:description" content="The latest Zoom Privacy Statement describes the personal data we collect and/or process to provide products and services offered directly by Zoom.">
 <meta name="twitter:image" content="https://media.zoom.com/images/assets/Main-OG.png/Zz1hMDE4MDc2Y2U1MTMxMWVkYTVhYzkyZGQ1NzJiYmNiYg==">
 
-            <script type="application/ld+json" nonce="FvS6xHHHcAeqiqy23cKFpZB45s/YQJOffDm2vXFFsUw=">
+            <script type="application/ld+json" nonce="KKJ41tA1IX9lNhWm/zjuoZEMXfNXlHLFqIHuRjTvr98=">
 {
     "@context": "https://schema.org",
     "@type": "Corporation",
@@ -722,7 +729,7 @@ document.addEventListener("click", function (e) {
     }
 }
 </script>
-            <script type="text/javascript" nonce="FvS6xHHHcAeqiqy23cKFpZB45s/YQJOffDm2vXFFsUw=">
+            <script type="text/javascript" nonce="KKJ41tA1IX9lNhWm/zjuoZEMXfNXlHLFqIHuRjTvr98=">
 (function () {
   // Function to get URL parameter value
   function getFromParam(name) {
@@ -796,12 +803,12 @@ document.addEventListener("click", function (e) {
   });
 
 })()</script>
-        <script type="text/javascript" charset="UTF-8" data-domain-script="054bb50c-9aa4-49a0-8c41-57b963195b3a" src="https://cdn.cookielaw.org/scripttemplates/otSDKStub.js" async="" nonce="FvS6xHHHcAeqiqy23cKFpZB45s/YQJOffDm2vXFFsUw="></script>
-        <script defer="" nonce="FvS6xHHHcAeqiqy23cKFpZB45s/YQJOffDm2vXFFsUw=" type="text/javascript">
+        <script type="text/javascript" charset="UTF-8" data-domain-script="054bb50c-9aa4-49a0-8c41-57b963195b3a" src="https://cdn.cookielaw.org/scripttemplates/otSDKStub.js" async="" nonce="KKJ41tA1IX9lNhWm/zjuoZEMXfNXlHLFqIHuRjTvr98="></script>
+        <script defer="" nonce="KKJ41tA1IX9lNhWm/zjuoZEMXfNXlHLFqIHuRjTvr98=" type="text/javascript">
 window.dataLayer = window.dataLayer || [];
 
 </script>
-        <script nonce="FvS6xHHHcAeqiqy23cKFpZB45s/YQJOffDm2vXFFsUw=" type="text/javascript">window.__experimentViewedData={entries:[],ts:null,pending:true};
+        <script nonce="KKJ41tA1IX9lNhWm/zjuoZEMXfNXlHLFqIHuRjTvr98=" type="text/javascript">window.__experimentViewedData={entries:[],ts:null,pending:true};
 (function(){
 var cfg=window.__experimentViewedData;
 var consented=false,clientDone=!cfg.pending,flushed=false;
@@ -823,19 +830,19 @@ clientDone=true;flush();
 };
 if(cfg.pending)window.setTimeout(function(){clientDone=true;flush();},8000);
 })();</script>
-        <script defer="" nonce="FvS6xHHHcAeqiqy23cKFpZB45s/YQJOffDm2vXFFsUw=" type="text/javascript">(async function () { window.zoomCmsGuidSyncRecoveryEnabled = false; const domainMap = { "int.zoom.com": "https://dev-integration.zoomdev.us", "int.zoomdev.us": "https://dev-integration.zoomdev.us", "localhost": "https://dev-integration.zoomdev.us", "stage.zoom.com": "https://zoom.us", "www.zoom.com": "https://zoom.us" }; function isChromeUserAgent() { const userAgent = navigator.userAgent; return ![ "Chrome", "Chromium", "CriOS", "Edg", "Brave", "OPR", "SamsungBrowser", "Vivaldi" ].some(browserId => userAgent.includes(browserId)); } function removeUrlExtraParams(paramsToRemove) { let url = new URL(window.location); let searchParams = new URLSearchParams(url.search); paramsToRemove.forEach(param => { searchParams.delete(param); }); url.search = searchParams.toString(); history.pushState({}, document.title, url.toString()); } function getCookie(name) { var nameEQ = name + "="; var ca = document.cookie.split(';'); let isJSON = function isJson(str) { try { JSON.parse(str); } catch (e) { return false; } return true; }; for (var i = 0; i < ca.length; i++) { var c = ca[i]; while (c.charAt(0) == ' ') c = c.substring(1, c.length); if (c.indexOf(nameEQ) == 0) { let content = c.substring(nameEQ.length, c.length); if (isJSON(content)) { content = JSON.parse(content); for (const [key, item] of Object.entries(content)) { if (typeof item == 'string') content[key] = item.replace('U+0002C',',') } } return content; } } return null; } function isThirdPartyCookieDisabled(timeoutMs = 3000) { return new Promise(async (resolve) => { const iframe = document.createElement('iframe'); const targetOrigin = getCurrentDomain(true); let resolved = false; iframe.style.display = 'none'; iframe.src = `${targetOrigin}/third_party_cookie_check.html`; const timeout = setTimeout(() => { if (!resolved) { resolved = true; iframe.remove(); resolve(true); } }, timeoutMs); iframe.onload = () => { try { iframe.contentWindow.postMessage({ type: 'checkCookies' }, targetOrigin); } catch (e) { clearTimeout(timeout); resolved = true; iframe.remove(); resolve(true); } }; function handleMessage(event) { if ( event.origin === targetOrigin && event.source === iframe.contentWindow && event.data.type === 'cookieStatus' ) { clearTimeout(timeout); resolved = true; window.removeEventListener('message', handleMessage); iframe.remove(); resolve(!event.data.status); } } window.addEventListener('message', handleMessage); async function waitForBody() { while (!document.body) { await new Promise((resolve) => setTimeout(resolve, 10)); } } await waitForBody(); document.body.appendChild(iframe); }); } function getCurrentDomain() { const hostname = window.location.hostname; return domainMap[hostname] || "https://zoom.us"; } function deleteCookie(cookieName) { document.cookie = `${cookieName}=; Max-Age=-99999999; path=/;`; const pathParts = location.pathname.split("/"); for (let i = 0; i < pathParts.length; i++) { const path = pathParts.slice(0, i + 1).join("/"); document.cookie = `${cookieName}=; Max-Age=-99999999; path=${path};`; } const hostname = location.hostname; document.cookie = `${cookieName}=; Max-Age=-99999999; path=/; domain=${hostname};`; document.cookie = `${cookieName}=; Max-Age=-99999999; path=/; domain=.${hostname};`; const domainParts = hostname.split("."); if (domainParts.length > 1) { for (let i = 0; i < domainParts.length - 1; i++) { const domain = domainParts.slice(-i - 1).join("."); document.cookie = `${cookieName}=; Max-Age=-99999999; path=/; domain=.${domain};`; } } } function setSecureCookie(cookieName, cookieValue, domain) { try { const expirationDate = new Date(); expirationDate.setTime(expirationDate.getTime() + 30 * 60 * 1000); const expiresAttribute = `; expires=${expirationDate.toUTCString()}`; let valueToStore; if (typeof cookieValue === "object") { const escapedObject = {}; for (const [key, value] of Object.entries(cookieValue)) { escapedObject[key] = (typeof value === "string") ? value.replace(/,/, "U+0002C") : value; } valueToStore = JSON.stringify(escapedObject); } else { valueToStore = cookieValue || ""; } document.cookie = `${cookieName}=${valueToStore}${expiresAttribute}; path=/; secure; samesite=none; domain=.${domain}`; } catch (error) { } } function setSecureCookieWithExpiry(cookieName, cookieValue, expiryDays, domain) { try { let expiresAttribute = ""; if (expiryDays) { const expirationDate = new Date(); expirationDate.setTime( expirationDate.getTime() + 30 * 60 * 1000 ); expiresAttribute = `; expires=${expirationDate.toUTCString()}`; } let valueToStore; if (typeof cookieValue === "object") { const escapedObject = {}; for (const [key, value] of Object.entries(cookieValue)) { escapedObject[key] = (typeof value === "string") ? value.replace(/,/, "U+0002C") : value; } valueToStore = JSON.stringify(escapedObject); } else { valueToStore = cookieValue || ""; } document.cookie = `${cookieName}=${valueToStore}${expiresAttribute}; path=/; secure; samesite=none; domain=.${domain}`; } catch (error) { } } function syncStatus(queryString) { let adjustedQuery = queryString || ""; if (adjustedQuery.startsWith("&")) { adjustedQuery = "?" + adjustedQuery.substring(1); } else if (adjustedQuery && !adjustedQuery.startsWith("?")) { adjustedQuery = "?" + adjustedQuery; } const continueUrl = window.location.origin + window.location.pathname + adjustedQuery; const newUrl = `https://zoom.us/syncStatus?continue=` + encodeURIComponent(continueUrl); window.location.href = newUrl; } var authorized = false; async function handleCmsGuidFlow() { const thirdPartyCookiesDisabled = await isThirdPartyCookieDisabled(); const urlParams = new URLSearchParams(window.location.search); const cmsGuidFromUrl = urlParams.get("cms_guid"); const fromParam = urlParams.get("from"); if (cmsGuidFromUrl === "false" && fromParam === "logout") { deleteCookie("_zm_cms_guid"); authorized = false; removeUrlExtraParams(["cms_guid", "from","lang"]); return thirdPartyCookiesDisabled; } removeUrlExtraParams(["cms_guid", "from","lang"]); if (thirdPartyCookiesDisabled) { const cmsGuidCookie = getCookie("_zm_cms_guid"); if(cmsGuidCookie === "" || cmsGuidCookie === null ) { syncStatus(window.location.search); } } return thirdPartyCookiesDisabled; } async function handleMarketVerifyFlow() { window.addEventListener('message', (event) => { if (event.origin !== 'https://www.zoom.com' && event.origin !== 'https://support.zoom.com') { return; } if (event.data && event.data.type === 'checkCookies') { document.cookie = "thirdparty_test=1; SameSite=None; Secure"; const hasCookie = document.cookie.includes('thirdparty_test='); event.source.postMessage({ type: 'cookieStatus', status: hasCookie }, event.origin); } }); const result = await handleCmsGuidFlow(); function dispatch() { window.isThirdPartyCookieDisabled=result; document.dispatchEvent(new CustomEvent('isThirdPartyCookieDisabled', { detail: { body: result } })); } if (document.readyState === 'loading') { document.addEventListener('DOMContentLoaded', dispatch); } else { dispatch(); } } if (window.zoomCmsGuidSyncRecoveryEnabled === true) { (function () { var isSynced = false; try { var searchParams = new URLSearchParams(window.location.search); var cmsGuidFromUrl = searchParams.get('cms_guid'); if (cmsGuidFromUrl != null) { if (cmsGuidFromUrl === 'false') { setSecureCookie('_zm_cms_guid', 'false', 'zoom.com'); } else { setSecureCookieWithExpiry('_zm_cms_guid', cmsGuidFromUrl, 1, 'zoom.com'); } } isSynced = searchParams.get('synced') === 'true'; if (isSynced) { try { var url = new URL(window.location.href); url.searchParams.delete('synced'); history.replaceState({}, document.title, url.toString()); } catch (_) {} } } catch (_) {} function forceSync() { if (isSynced) return; try { deleteCookie('_zm_cms_guid'); } catch (_) {} try { var currentSearch = window.location.search; var cleanSearch = currentSearch ? currentSearch + (currentSearch.includes('?') ? '&' : '?') + 'synced=true' : '?synced=true'; syncStatus(cleanSearch); } catch (_) {} } document.addEventListener('marketVerifyResponse', function (event) { try { var body = event && event.detail && event.detail.body; if (body && body.userStatus === 'unauthenticated' && window.isThirdPartyCookieDisabled === true) { forceSync(); } } catch (_) {} }); })(); } let process= await handleMarketVerifyFlow(); })();</script>
+        <script defer="" nonce="KKJ41tA1IX9lNhWm/zjuoZEMXfNXlHLFqIHuRjTvr98=" type="text/javascript">(async function () { window.zoomCmsGuidSyncRecoveryEnabled = false; const domainMap = { "int.zoom.com": "https://dev-integration.zoomdev.us", "int.zoomdev.us": "https://dev-integration.zoomdev.us", "localhost": "https://dev-integration.zoomdev.us", "stage.zoom.com": "https://zoom.us", "www.zoom.com": "https://zoom.us" }; function isChromeUserAgent() { const userAgent = navigator.userAgent; return ![ "Chrome", "Chromium", "CriOS", "Edg", "Brave", "OPR", "SamsungBrowser", "Vivaldi" ].some(browserId => userAgent.includes(browserId)); } function removeUrlExtraParams(paramsToRemove) { let url = new URL(window.location); let searchParams = new URLSearchParams(url.search); paramsToRemove.forEach(param => { searchParams.delete(param); }); url.search = searchParams.toString(); history.pushState({}, document.title, url.toString()); } function getCookie(name) { var nameEQ = name + "="; var ca = document.cookie.split(';'); let isJSON = function isJson(str) { try { JSON.parse(str); } catch (e) { return false; } return true; }; for (var i = 0; i < ca.length; i++) { var c = ca[i]; while (c.charAt(0) == ' ') c = c.substring(1, c.length); if (c.indexOf(nameEQ) == 0) { let content = c.substring(nameEQ.length, c.length); if (isJSON(content)) { content = JSON.parse(content); for (const [key, item] of Object.entries(content)) { if (typeof item == 'string') content[key] = item.replace('U+0002C',',') } } return content; } } return null; } function isThirdPartyCookieDisabled(timeoutMs = 3000) { return new Promise(async (resolve) => { const iframe = document.createElement('iframe'); const targetOrigin = getCurrentDomain(true); let resolved = false; iframe.style.display = 'none'; iframe.src = `${targetOrigin}/third_party_cookie_check.html`; const timeout = setTimeout(() => { if (!resolved) { resolved = true; iframe.remove(); resolve(true); } }, timeoutMs); iframe.onload = () => { try { iframe.contentWindow.postMessage({ type: 'checkCookies' }, targetOrigin); } catch (e) { clearTimeout(timeout); resolved = true; iframe.remove(); resolve(true); } }; function handleMessage(event) { if ( event.origin === targetOrigin && event.source === iframe.contentWindow && event.data.type === 'cookieStatus' ) { clearTimeout(timeout); resolved = true; window.removeEventListener('message', handleMessage); iframe.remove(); resolve(!event.data.status); } } window.addEventListener('message', handleMessage); async function waitForBody() { while (!document.body) { await new Promise((resolve) => setTimeout(resolve, 10)); } } await waitForBody(); document.body.appendChild(iframe); }); } function getCurrentDomain() { const hostname = window.location.hostname; return domainMap[hostname] || "https://zoom.us"; } function deleteCookie(cookieName) { document.cookie = `${cookieName}=; Max-Age=-99999999; path=/;`; const pathParts = location.pathname.split("/"); for (let i = 0; i < pathParts.length; i++) { const path = pathParts.slice(0, i + 1).join("/"); document.cookie = `${cookieName}=; Max-Age=-99999999; path=${path};`; } const hostname = location.hostname; document.cookie = `${cookieName}=; Max-Age=-99999999; path=/; domain=${hostname};`; document.cookie = `${cookieName}=; Max-Age=-99999999; path=/; domain=.${hostname};`; const domainParts = hostname.split("."); if (domainParts.length > 1) { for (let i = 0; i < domainParts.length - 1; i++) { const domain = domainParts.slice(-i - 1).join("."); document.cookie = `${cookieName}=; Max-Age=-99999999; path=/; domain=.${domain};`; } } } function setSecureCookie(cookieName, cookieValue, domain) { try { const expirationDate = new Date(); expirationDate.setTime(expirationDate.getTime() + 30 * 60 * 1000); const expiresAttribute = `; expires=${expirationDate.toUTCString()}`; let valueToStore; if (typeof cookieValue === "object") { const escapedObject = {}; for (const [key, value] of Object.entries(cookieValue)) { escapedObject[key] = (typeof value === "string") ? value.replace(/,/, "U+0002C") : value; } valueToStore = JSON.stringify(escapedObject); } else { valueToStore = cookieValue || ""; } document.cookie = `${cookieName}=${valueToStore}${expiresAttribute}; path=/; secure; samesite=none; domain=.${domain}`; } catch (error) { } } function setSecureCookieWithExpiry(cookieName, cookieValue, expiryDays, domain) { try { let expiresAttribute = ""; if (expiryDays) { const expirationDate = new Date(); expirationDate.setTime( expirationDate.getTime() + 30 * 60 * 1000 ); expiresAttribute = `; expires=${expirationDate.toUTCString()}`; } let valueToStore; if (typeof cookieValue === "object") { const escapedObject = {}; for (const [key, value] of Object.entries(cookieValue)) { escapedObject[key] = (typeof value === "string") ? value.replace(/,/, "U+0002C") : value; } valueToStore = JSON.stringify(escapedObject); } else { valueToStore = cookieValue || ""; } document.cookie = `${cookieName}=${valueToStore}${expiresAttribute}; path=/; secure; samesite=none; domain=.${domain}`; } catch (error) { } } function syncStatus(queryString) { let adjustedQuery = queryString || ""; if (adjustedQuery.startsWith("&")) { adjustedQuery = "?" + adjustedQuery.substring(1); } else if (adjustedQuery && !adjustedQuery.startsWith("?")) { adjustedQuery = "?" + adjustedQuery; } const continueUrl = window.location.origin + window.location.pathname + adjustedQuery; const newUrl = `https://zoom.us/syncStatus?continue=` + encodeURIComponent(continueUrl); window.location.href = newUrl; } var authorized = false; async function handleCmsGuidFlow() { const thirdPartyCookiesDisabled = await isThirdPartyCookieDisabled(); const urlParams = new URLSearchParams(window.location.search); const cmsGuidFromUrl = urlParams.get("cms_guid"); const fromParam = urlParams.get("from"); if (cmsGuidFromUrl === "false" && fromParam === "logout") { deleteCookie("_zm_cms_guid"); authorized = false; removeUrlExtraParams(["cms_guid", "from","lang"]); return thirdPartyCookiesDisabled; } removeUrlExtraParams(["cms_guid", "from","lang"]); if (thirdPartyCookiesDisabled) { const cmsGuidCookie = getCookie("_zm_cms_guid"); if(cmsGuidCookie === "" || cmsGuidCookie === null ) { syncStatus(window.location.search); } } return thirdPartyCookiesDisabled; } async function handleMarketVerifyFlow() { window.addEventListener('message', (event) => { if (event.origin !== 'https://www.zoom.com' && event.origin !== 'https://support.zoom.com') { return; } if (event.data && event.data.type === 'checkCookies') { document.cookie = "thirdparty_test=1; SameSite=None; Secure"; const hasCookie = document.cookie.includes('thirdparty_test='); event.source.postMessage({ type: 'cookieStatus', status: hasCookie }, event.origin); } }); const result = await handleCmsGuidFlow(); function dispatch() { window.isThirdPartyCookieDisabled=result; document.dispatchEvent(new CustomEvent('isThirdPartyCookieDisabled', { detail: { body: result } })); } if (document.readyState === 'loading') { document.addEventListener('DOMContentLoaded', dispatch); } else { dispatch(); } } if (window.zoomCmsGuidSyncRecoveryEnabled === true) { (function () { var isSynced = false; try { var searchParams = new URLSearchParams(window.location.search); var cmsGuidFromUrl = searchParams.get('cms_guid'); if (cmsGuidFromUrl != null) { if (cmsGuidFromUrl === 'false') { setSecureCookie('_zm_cms_guid', 'false', 'zoom.com'); } else { setSecureCookieWithExpiry('_zm_cms_guid', cmsGuidFromUrl, 1, 'zoom.com'); } } isSynced = searchParams.get('synced') === 'true'; if (isSynced) { try { var url = new URL(window.location.href); url.searchParams.delete('synced'); history.replaceState({}, document.title, url.toString()); } catch (_) {} } } catch (_) {} function forceSync() { if (isSynced) return; try { deleteCookie('_zm_cms_guid'); } catch (_) {} try { var currentSearch = window.location.search; var cleanSearch = currentSearch ? currentSearch + (currentSearch.includes('?') ? '&' : '?') + 'synced=true' : '?synced=true'; syncStatus(cleanSearch); } catch (_) {} } document.addEventListener('marketVerifyResponse', function (event) { try { var body = event && event.detail && event.detail.body; if (body && body.userStatus === 'unauthenticated' && window.isThirdPartyCookieDisabled === true) { forceSync(); } } catch (_) {} }); })(); } let process= await handleMarketVerifyFlow(); })();</script>
         
-        <!-- Google Tag Manager --><script nonce="FvS6xHHHcAeqiqy23cKFpZB45s/YQJOffDm2vXFFsUw=">(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src='https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);})(window,document,'script','dataLayer','GTM-5WKFT9');</script><!-- End Google Tag Manager -->
+        <!-- Google Tag Manager --><script nonce="KKJ41tA1IX9lNhWm/zjuoZEMXfNXlHLFqIHuRjTvr98=">(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src='https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);})(window,document,'script','dataLayer','GTM-5WKFT9');</script><!-- End Google Tag Manager -->
         
         
             
-            <script nonce="FvS6xHHHcAeqiqy23cKFpZB45s/YQJOffDm2vXFFsUw=">
+            <script nonce="KKJ41tA1IX9lNhWm/zjuoZEMXfNXlHLFqIHuRjTvr98=">
 !function(T,l,y){var S=T.location,k="script",D="instrumentationKey",C="ingestionendpoint",I="disableExceptionTracking",E="ai.device.",b="toLowerCase",w="crossOrigin",N="POST",e="appInsightsSDK",t=y.name||"appInsights";(y.name||T[e])&&(T[e]=t);var n=T[t]||function(d){var g=!1,f=!1,m={initialize:!0,queue:[],sv:"5",version:2,config:d};function v(e,t){var n={},a="Browser";return n[E+"id"]=a[b](),n[E+"type"]=a,n["ai.operation.name"]=S&&S.pathname||"_unknown_",n["ai.internal.sdkVersion"]="javascript:snippet_"+(m.sv||m.version),{time:function(){var e=new Date;function t(e){var t=""+e;return 1===t.length&&(t="0"+t),t}return e.getUTCFullYear()+"-"+t(1+e.getUTCMonth())+"-"+t(e.getUTCDate())+"T"+t(e.getUTCHours())+":"+t(e.getUTCMinutes())+":"+t(e.getUTCSeconds())+"."+((e.getUTCMilliseconds()/1e3).toFixed(3)+"").slice(2,5)+"Z"}(),iKey:e,name:"Microsoft.ApplicationInsights."+e.replace(/-/g,"")+"."+t,sampleRate:100,tags:n,data:{baseData:{ver:2}}}}var h=d.url||y.src;if(h){function a(e){var t,n,a,i,r,o,s,c,u,p,l;g=!0,m.queue=[],f||(f=!0,t=h,s=function(){var e={},t=d.connectionString;if(t)for(var n=t.split(";"),a=0;a<n.length;a++){var i=n[a].split("=");2===i.length&&(e[i[0][b]()]=i[1])}if(!e[C]){var r=e.endpointsuffix,o=r?e.location:null;e[C]="https://"+(o?o+".":"")+"dc."+(r||"services.visualstudio.com")}return e}(),c=s[D]||d[D]||"",u=s[C],p=u?u+"/v2/track":d.endpointUrl,(l=[]).push((n="SDK LOAD Failure: Failed to load Application Insights SDK script (See stack for details)",a=t,i=p,(o=(r=v(c,"Exception")).data).baseType="ExceptionData",o.baseData.exceptions=[{typeName:"SDKLoadFailed",message:n.replace(/\./g,"-"),hasFullStack:!1,stack:n+"\nSnippet failed to load ["+a+"] -- Telemetry is disabled\nHelp Link: https://go.microsoft.com/fwlink/?linkid=2128109\nHost: "+(S&&S.pathname||"_unknown_")+"\nEndpoint: "+i,parsedStack:[]}],r)),l.push(function(e,t,n,a){var i=v(c,"Message"),r=i.data;r.baseType="MessageData";var o=r.baseData;return o.message='AI (Internal): 99 message:"'+("SDK LOAD Failure: Failed to load Application Insights SDK script (See stack for details) ("+n+")").replace(/\"/g,"")+'"',o.properties={endpoint:a},i}(0,0,t,p)),function(e,t){if(JSON){var n=T.fetch;if(n&&!y.useXhr)n(t,{method:N,body:JSON.stringify(e),mode:"cors"});else if(XMLHttpRequest){var a=new XMLHttpRequest;a.open(N,t),a.setRequestHeader("Content-type","application/json"),a.send(JSON.stringify(e))}}}(l,p))}function i(e,t){f||setTimeout(function(){!t&&m.core||a()},500)}var e=function(){var n=l.createElement(k);n.src=h;var e=y[w];return!e&&""!==e||"undefined"==n[w]||(n[w]=e),n.onload=i,n.onerror=a,n.onreadystatechange=function(e,t){"loaded"!==n.readyState&&"complete"!==n.readyState||i(0,t)},n}();y.ld<0?l.getElementsByTagName("head")[0].appendChild(e):setTimeout(function(){l.getElementsByTagName(k)[0].parentNode.appendChild(e)},y.ld||0)}try{m.cookie=l.cookie}catch(p){}function t(e){for(;e.length;)!function(t){m[t]=function(){var e=arguments;g||m.queue.push(function(){m[t].apply(m,e)})}}(e.pop())}var n="track",r="TrackPage",o="TrackEvent";t([n+"Event",n+"PageView",n+"Exception",n+"Trace",n+"DependencyData",n+"Metric",n+"PageViewPerformance","start"+r,"stop"+r,"start"+o,"stop"+o,"addTelemetryInitializer","setAuthenticatedUserContext","clearAuthenticatedUserContext","flush"]),m.SeverityLevel={Verbose:0,Information:1,Warning:2,Error:3,Critical:4};var s=(d.extensionConfig||{}).ApplicationInsightsAnalytics||{};if(!0!==d[I]&&!0!==s[I]){var c="onerror";t(["_"+c]);var u=T[c];T[c]=function(e,t,n,a,i){var r=u&&u(e,t,n,a,i);return!0!==r&&m["_"+c]({message:e,url:t,lineNumber:n,columnNumber:a,error:i}),r},d.autoExceptionInstrumented=!0}return m}(y.cfg);function a(){y.onInit&&y.onInit(n)}(T[t]=n).queue&&0===n.queue.length?(n.queue.push(a),n.trackPageView({})):a()}(window,document,{src: "https://js.monitor.azure.com/scripts/b/ai.2.gbl.min.js", crossOrigin: "anonymous", cfg: { instrumentationKey:'19a17737-94f4-4af6-b75e-bd513bb1c305', disableCookiesUsage: false }});
 </script>
 
         
         
-        <script defer src="https://cdn.bc0a.com/autopilot/f00000000314502/autopilot_sdk.js" nonce="FvS6xHHHcAeqiqy23cKFpZB45s/YQJOffDm2vXFFsUw="></script>
+        <script defer src="https://cdn.bc0a.com/autopilot/f00000000314502/autopilot_sdk.js" nonce="KKJ41tA1IX9lNhWm/zjuoZEMXfNXlHLFqIHuRjTvr98="></script>
     </head>
     <body data-layer-site="" class="fonts-loaded font-migration " data-lazy-images="false" data-ab-testing="true" data-visitor-guid-sync="true">
         <style>
@@ -1435,7 +1442,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
                                         </a>
 
                                         <a href="/en/contact/contact-sales/" class="nav-drawer__contact-sales">
-                                            Contact Sales
+                                            Contact sales
                                         </a>
 
                                         <div class="nav-drawer__ctas-group">
@@ -1450,11 +1457,11 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
                                         </a>
 
                                         <a href="/en/contact/contact-sales/" class="nav-drawer__btn nav-drawer__btn--primary nav-drawer__btn--contact-sales-anon " data-user-for="97af72b4-4108-4885-b753-f02a39956839">
-                                            Contact Sales
+                                            Contact sales
                                         </a>
 
                                         <a href="/en/contact/contact-sales/" class="nav-drawer__btn nav-drawer__btn--primary nav-drawer__btn--contact-sales-auth authorized-access" data-user-for="82c0350d-4c26-4b95-8feb-330fef53cda3">
-                                            Contact Sales
+                                            Contact sales
                                         </a>
 
                                          <a href="/en/products/whats-new/" class="nav-drawer__btn nav-drawer__btn--primary nav-drawer__btn--whats-new-auth authorized-access" data-user-for="82c0350d-4c26-4b95-8feb-330fef53cda3">
@@ -1607,6 +1614,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
                                          hidden="">
                                         <a href="https://zoom.us/join" class="nav-utils__dropdown-item" role="menuitem">Join a meeting</a>
 <a href="https://zoom.us/start/videomeeting" class="nav-utils__dropdown-item" role="menuitem">Host a meeting</a>
+<a href="https://zoom.us/meeting/schedule" class="nav-utils__dropdown-item" role="menuitem">Schedule a meeting</a>
 <a href="https://zoom.us/download" class="nav-utils__dropdown-item" role="menuitem">Download app</a>
 
                                     </div>
@@ -1624,7 +1632,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
                         <div class="nav-utils__group nav-utils__group--authentication">
                                 <a href="/en/contact/contact-sales/"
                                    class="nav-utils__btn nav-utils__btn--secondary">
-                                    Contact Sales
+                                    Contact sales
                                 </a>
                                 <a href="https://zoom.us/signup" class="nav-utils__btn nav-utils__btn--primary " data-user-for="97af72b4-4108-4885-b753-f02a39956839">
                                     Sign Up Free
@@ -1634,9 +1642,100 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
                                 </a>
                         </div>
 
+                        <div class="nav-utils__group nav-utils__group--trailing is-sdk-pending">
+                            <div class="nav-utils__dropdown nav-utils__dropdown--more">
+                                <button type="button"
+                                        class="nav-utils__more"
+                                        id="nav-more-trigger"
+                                        aria-label="More products and services"
+                                        aria-expanded="false"
+                                        aria-haspopup="true"
+                                        aria-controls="nav-more-menu">
+                                    <span class="nav-utils__more-dots" aria-hidden="true"></span>
+                                </button>
+                                <div class="nav-utils__more-panel"
+                                     id="nav-more-menu"
+                                     role="region"
+                                     hidden=""
+                                     aria-hidden="true">
+                                    <div class="nav-utils__more-scroll">
+                                        <section class="nav-utils__more-section"><div class="nav-utils__more-section-head"><div class="nav-utils__more-section-title">Zoom Workplace</div><a href="/en/products/" class="nav-utils__more-view-all">View All</a></div><div class="nav-utils__more-grid"><a href="/en/products/virtual-meetings/" class="nav-utils__more-item"><span class="nav-utils__more-icon icon-meetings icon-meetings-dims"></span><span class="nav-utils__more-label">Meetings</span></a><a href="/en/products/team-chat/" class="nav-utils__more-item"><span class="nav-utils__more-icon icon-chat icon-chat-dims"></span><span class="nav-utils__more-label">Chat</span></a><a href="/en/products/voip-phone/" class="nav-utils__more-item"><span class="nav-utils__more-icon icon-phone icon-phone-dims"></span><span class="nav-utils__more-label">Phone</span></a><a href="/en/products/email-calendar/" class="nav-utils__more-item"><span class="nav-utils__more-icon icon-mail-calendar icon-mail-calendar-dims"></span><span class="nav-utils__more-label">Mail &amp; Calendar</span></a><a href="/en/products/appointment-scheduler/" class="nav-utils__more-item"><span class="nav-utils__more-icon icon-scheduler icon-scheduler-dims"></span><span class="nav-utils__more-label">Scheduler</span></a><a href="/en/products/online-whiteboard/" class="nav-utils__more-item"><span class="nav-utils__more-icon icon-whiteboard icon-whiteboard-dims"></span><span class="nav-utils__more-label">Whiteboard</span></a><a href="/en/products/screen-recorder/" class="nav-utils__more-item"><span class="nav-utils__more-icon icon-clips icon-clips-dims"></span><span class="nav-utils__more-label">Clips</span></a><a href="https://marketplace.zoom.us/" class="nav-utils__more-item" target="_blank" rel="noopener noreferrer"><span class="nav-utils__more-icon icon-zoom-marketplace icon-zoom-marketplace-dims"></span><span class="nav-utils__more-label">Zoom Marketplace</span></a></div></section><section class="nav-utils__more-section"><div class="nav-utils__more-section-head"><div class="nav-utils__more-section-title">Business Services</div></div><div class="nav-utils__more-grid"><a href="/en/products/conversation-intelligence/" class="nav-utils__more-item"><span class="nav-utils__more-icon icon-revenue-accelerator icon-revenue-accelerator-dims"></span><span class="nav-utils__more-label">Revenue Accelerator</span></a><a href="/en/products/webinars/" class="nav-utils__more-item"><span class="nav-utils__more-icon icon-webinars-events icon-webinars-events-dims"></span><span class="nav-utils__more-label">Webinars &amp; Events</span></a><a href="/en/products/bonsai/" class="nav-utils__more-item"><span class="nav-utils__more-icon icon-bonsai icon-bonsai-dims"></span><span class="nav-utils__more-label">Bonsai</span></a><a href="/en/products/brighthire/" class="nav-utils__more-item"><span class="nav-utils__more-icon icon-bright-hire icon-bright-hire-dims"></span><span class="nav-utils__more-label">BrightHire</span></a></div></section><section class="nav-utils__more-section"><div class="nav-utils__more-section-head"><div class="nav-utils__more-section-title">Zoom CX</div></div><div class="nav-utils__more-grid"><a href="/en/products/contact-center/" class="nav-utils__more-item"><span class="nav-utils__more-icon icon-contact-center icon-contact-center-dims"></span><span class="nav-utils__more-label">Contact Center</span></a><a href="/en/products/ai-expert-assist/" class="nav-utils__more-item"><span class="nav-utils__more-icon icon-ai-expert-assist icon-ai-expert-assist-dims"></span><span class="nav-utils__more-label">AI Expert Assist</span></a><a href="/en/products/workforce-management/" class="nav-utils__more-item"><span class="nav-utils__more-icon icon-workforce-engagement icon-workforce-engagement-dims"></span><span class="nav-utils__more-label">Workforce Management</span></a><a href="/en/products/quality-management/" class="nav-utils__more-item"><span class="nav-utils__more-icon icon-quality-management icon-quality-management-dims"></span><span class="nav-utils__more-label">Quality Management</span></a><a href="/en/products/cx-insights/" class="nav-utils__more-item"><span class="nav-utils__more-icon icon-cx-insights icon-cx-insights-dims"></span><span class="nav-utils__more-label">CX Insights</span></a></div></section><section class="nav-utils__more-section"><div class="nav-utils__more-section-head"><div class="nav-utils__more-section-title">Zoom AI</div></div><div class="nav-utils__more-grid"><a href="/en/products/ai-assistant/" class="nav-utils__more-item"><span class="nav-utils__more-icon icon-zoom-mate icon-zoom-mate-dims"></span><span class="nav-utils__more-label">ZoomMate</span></a><a href="/en/products/ai-assistant/features/ai-note-taking/" class="nav-utils__more-item"><span class="nav-utils__more-icon icon-my-notes icon-my-notes-dims"></span><span class="nav-utils__more-label">My Notes</span></a><a href="/en/products/virtual-agent/" class="nav-utils__more-item"><span class="nav-utils__more-icon icon-virtual-agent icon-virtual-agent-dims"></span><span class="nav-utils__more-label">Virtual Agent</span></a><a href="/en/products/ai-services/" class="nav-utils__more-item"><span class="nav-utils__more-icon icon-ai-services icon-ai-services-dims"></span><span class="nav-utils__more-label">AI Services</span></a><a href="/en/products/on-premise-ai/" class="nav-utils__more-item"><span class="nav-utils__more-icon icon-ai-on-prem icon-ai-on-prem-dims"></span><span class="nav-utils__more-label">AI On-Prem</span></a><a href="https://www.zoom.com/en/products/ai-productivity-suite" class="nav-utils__more-item"><span class="nav-utils__more-icon icon-ai-suite icon-ai-suite-dims"></span><span class="nav-utils__more-label">AI Productivity Suite</span></a><a href="/en/products/collaborative-docs/" class="nav-utils__more-item"><span class="nav-utils__more-icon icon-ai-docs icon-ai-docs-dims"></span><span class="nav-utils__more-label">Canvas</span></a><a href="/en/products/ai-slides/" class="nav-utils__more-item"><span class="nav-utils__more-icon icon-ai-slides-color icon-ai-slides-color-dims"></span><span class="nav-utils__more-label">Slides</span></a><a href="/en/products/ai-sheets/" class="nav-utils__more-item"><span class="nav-utils__more-icon icon-ai-sheets icon-ai-sheets-dims"></span><span class="nav-utils__more-label">Sheets</span></a><a href="https://www.zoom.com/en/products/ai-productivity-suite/paper" class="nav-utils__more-item"><span class="nav-utils__more-icon icon-ai-papper-color icon-ai-papper-color-dims"></span><span class="nav-utils__more-label">Paper</span></a></div></section><section class="nav-utils__more-section"><div class="nav-utils__more-section-head"><div class="nav-utils__more-section-title">Developers</div></div><div class="nav-utils__more-grid"><a href="https://developers.zoom.us/docs/build/" class="nav-utils__more-item"><span class="nav-utils__more-icon icon-dev-tool icon-dev-tool-dims"></span><span class="nav-utils__more-label">Overview</span></a><a href="/en/video-sdk/" class="nav-utils__more-item"><span class="nav-utils__more-icon icon-dev-tool icon-dev-tool-dims"></span><span class="nav-utils__more-label">Video SDK</span></a><a href="https://developers.zoom.us/docs/cobrowse-sdk/" class="nav-utils__more-item"><span class="nav-utils__more-icon icon-client-browser icon-client-browser-dims"></span><span class="nav-utils__more-label">Co-Browse</span></a></div></section>
+                                     </div>
+
+                                     <div class="nav-utils__more-footer">
+                                        <div class="waffle-menu">
+                                            <div class="waffle-menu-section-body waffle-menu-section-body-discover discover-row">
+                                                <a href="/en/products/" class="discover-btn">
+                                                    <i aria-hidden="true">
+                                                        <svg viewBox="0 0 16 16" xmlns="http://www.w3.org/2000/svg">
+                                                            <path
+                                                                d="M13.1328 2.27681C13.5124 2.16516 13.8655 2.51824 13.7539 2.8979L12.4824 7.22017C12.3753 7.58428 11.9168 7.70143 11.6484 7.43306L10.5322 6.31685L3.42574 13.4243C3.19147 13.6585 2.81241 13.6584 2.57808 13.4243C2.34377 13.19 2.34377 12.8109 2.57808 12.5766L9.68453 5.46919L8.59761 4.3813C8.32931 4.113 8.44562 3.65552 8.80953 3.54829L13.1328 2.27681Z" />
+                                                        </svg>
+                                                    </i>
+                                                    <span>Discover Product</span>
+                                                </a>
+                                            </div>
+                                            <section class="waffle-menu-section">
+                                                <div class="waffle-menu-section-body waffle-menu-section-body-shortcut">
+                                                    <div class="waffle-shortcut-list waffle-menu-grid">
+                                                        <span class="dropdown" id="hostDropdown">
+                                                            <button type="button" class="action-btn" id="hostTrigger" aria-haspopup="true"
+                                                                aria-expanded="false" aria-controls="hostMenu">
+                                                                <span class="tile tile-host">
+                                                                    <svg width="19" height="18" viewBox="0 0 19 18" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                                                    <path d="M9.5 3.95178C11.2954 3.95178 12.7505 5.33034 12.7505 7.03125V12.4453C12.7505 13.3307 11.9931 14.0482 11.0586 14.0482H4.30469C2.50928 14.0482 1.05414 12.6697 1.05414 10.9688V5.55469C1.05414 4.66933 1.81155 3.95178 2.74609 3.95178H9.5Z" fill="white"/>
+                                                                    <path d="M16.4858 4.86255C17.0877 4.43529 17.9459 4.8421 17.9459 5.55469V12.4453L17.9366 12.575C17.8403 13.2053 17.0501 13.5379 16.4858 13.1375L14.2001 11.5137C13.7741 11.2109 13.5229 10.735 13.5229 10.2305V7.76953C13.5229 7.26497 13.774 6.7891 14.2001 6.48633L16.4858 4.86255Z" fill="white"/>
+                                                                    </svg>
+                                                                </span>
+                                                                <span class="label">New Meeting
+                                                                    <svg class="caret" viewBox="0 0 8 8" xmlns="http://www.w3.org/2000/svg">
+                                                                        <path
+                                                                            d="M6.57616 2.07619C6.81047 1.84187 7.1895 1.84187 7.42381 2.07619C7.65813 2.3105 7.65813 2.68953 7.42381 2.92384L4.42381 5.92384C4.1895 6.15816 3.81047 6.15816 3.57616 5.92384L0.576157 2.92384C0.341842 2.68953 0.341842 2.3105 0.576157 2.07619C0.810472 1.84187 1.1895 1.84187 1.42381 2.07619L3.99999 4.65236L6.57616 2.07619Z" />
+                                                                    </svg>
+                                                                </span>
+                                                            </button>
+                                                            <div class="dropdown-menu" id="hostMenu" role="menu" aria-labelledby="hostTrigger">
+                                                                    <a href="https://zoom.us/start/webmeeting" target="_blank" rel="noopener noreferrer" class="dropdown-item" role="menuitem">With Video Off</a>
+                                                                    <a href="https://zoom.us/start/videomeeting" target="_blank" rel="noopener noreferrer" class="dropdown-item" role="menuitem">With Video On</a>
+                                                            </div>
+                                                        </span>
+                                                        <a href="https://zoom.us/join" target="_blank" rel="noopener noreferrer" class="action-btn">
+                                                            <span class="tile tile-join">
+                                                                <svg viewBox="0 0 16 16" xmlns="http://www.w3.org/2000/svg">
+                                                                    <path fill-rule="evenodd" clip-rule="evenodd"
+                                                                        d="M8.60072 0.918945L8.59863 0.918945H7.39941L7.39733 0.918945C6.2796 0.918945 5.43552 0.918945 4.76465 0.973633C4.09291 1.02843 3.58652 1.13768 3.14551 1.3623C2.37785 1.75354 1.75256 2.37883 1.36133 3.14648C1.1367 3.58749 1.02745 4.09389 0.972656 4.76562C0.917969 5.43649 0.917969 6.28057 0.917969 7.39831L0.917969 7.40039V8.59961L0.917969 8.60169C0.917969 9.71943 0.917969 10.5635 0.972656 11.2344C1.02745 11.9061 1.1367 12.4125 1.36133 12.8535C1.75256 13.6212 2.37785 14.2465 3.14551 14.6377C3.58652 14.8623 4.09291 14.9716 4.76465 15.0264C5.43551 15.0811 6.27959 15.0811 7.39731 15.0811H7.39941H8.59863H8.60074C9.71846 15.0811 10.5625 15.0811 11.2334 15.0264C11.9051 14.9716 12.4115 14.8623 12.8525 14.6377C13.6202 14.2465 14.2455 13.6212 14.6367 12.8535C14.8613 12.4125 14.9706 11.9061 15.0254 11.2344C15.0801 10.5635 15.0801 9.71943 15.0801 8.60171V8.59961V7.40039V7.39829C15.0801 6.28057 15.0801 5.43649 15.0254 4.76562C14.9706 4.09389 14.8613 3.58749 14.6367 3.14648C14.2455 2.37883 13.6202 1.75354 12.8525 1.3623C12.4115 1.13768 11.9051 1.02843 11.2334 0.973633C10.5625 0.918945 9.71845 0.918945 8.60072 0.918945ZM8.58008 4.5C8.58008 4.17898 8.32004 3.91895 7.99902 3.91895C7.67801 3.91895 7.41797 4.17898 7.41797 4.5V7.41895H4.49902C4.17801 7.41895 3.91797 7.67898 3.91797 8C3.91797 8.32102 4.17801 8.58105 4.49902 8.58105H7.41797V11.5C7.41797 11.821 7.67801 12.0811 7.99902 12.0811C8.32004 12.0811 8.58008 11.821 8.58008 11.5V8.58105H11.499C11.82 8.58105 12.0801 8.32102 12.0801 8C12.0801 7.67898 11.82 7.41895 11.499 7.41895H8.58008V4.5Z" />
+                                                                </svg>
+                                                            </span>
+                                                            <span class="label">Join</span>
+                                                        </a>
+                                                        <a href="https://zoom.us/meeting/schedule" target="_blank" rel="noopener noreferrer" class="action-btn">
+                                                            <span class="tile tile-schedule">
+                                                                <svg viewBox="0 0 16 16" xmlns="http://www.w3.org/2000/svg">
+                                                                    <path fill-rule="evenodd" clip-rule="evenodd"
+                                                                        d="M9.40039 3.39648C9.4004 4.2823 10.1163 5 11 5C11.8837 5 12.5996 4.2823 12.5996 3.39648V2.00391C13.2156 2.01562 13.597 2.0592 13.9082 2.21777C14.2845 2.40951 14.5905 2.71554 14.7822 3.0918C15.0002 3.51962 15 4.08009 15 5.2002V11.7998C15 12.9199 15.0002 13.4804 14.7822 13.9082C14.5905 14.2845 14.2845 14.5905 13.9082 14.7822C13.4804 15.0002 12.9199 15 11.7998 15H4.2002C3.08009 15 2.51962 15.0002 2.0918 14.7822C1.71554 14.5905 1.40951 14.2845 1.21777 13.9082C0.999786 13.4804 1 12.9199 1 11.7998V5.2002C1 4.08009 0.999786 3.51962 1.21777 3.0918C1.40951 2.71554 1.71554 2.40951 2.0918 2.21777C2.40302 2.0592 2.78442 2.01562 3.40039 2.00391V3.39648C3.4004 4.2823 4.11635 5 5 5C5.88365 5 6.5996 4.2823 6.59961 3.39648V2H9.40039V3.39648ZM5.7793 6.87207C5.50225 6.8721 5.22778 6.90636 4.95605 6.97559C4.68941 7.04491 4.44123 7.14696 4.21191 7.28027C4.08925 7.34427 4.00405 7.42699 3.95605 7.52832C3.91343 7.62961 3.90002 7.73074 3.91602 7.83203C3.93736 7.92799 3.97997 8.01325 4.04395 8.08789C4.11327 8.16252 4.1985 8.21109 4.2998 8.23242C4.40108 8.25369 4.51067 8.23441 4.62793 8.17578C4.81982 8.07453 4.99881 8.00509 5.16406 7.96777C5.32927 7.92518 5.49744 7.9043 5.66797 7.9043C5.94516 7.90433 6.15585 7.9603 6.2998 8.07227C6.4489 8.18418 6.52333 8.34655 6.52344 8.55957C6.52344 8.70866 6.48653 8.8343 6.41211 8.93555C6.34278 9.03688 6.24323 9.11712 6.11523 9.17578C5.99272 9.22898 5.84114 9.25581 5.66016 9.25586H5.30762C5.13169 9.25587 4.9954 9.30098 4.89941 9.3916C4.80879 9.47689 4.76372 9.59988 4.76367 9.75977C4.76367 9.91433 4.80887 10.0373 4.89941 10.1279C4.9954 10.2133 5.13165 10.2558 5.30762 10.2559H5.7793C6.07796 10.2559 6.30529 10.3118 6.45996 10.4238C6.6145 10.5358 6.69134 10.7039 6.69141 10.9277C6.69141 11.0877 6.6547 11.2215 6.58008 11.3281C6.50544 11.4347 6.39587 11.5175 6.25195 11.5762C6.10798 11.6295 5.9291 11.6562 5.71582 11.6562C5.52915 11.6562 5.34194 11.6345 5.15527 11.5918C4.96874 11.5491 4.77131 11.4772 4.56348 11.376C4.43022 11.312 4.30726 11.2902 4.19531 11.3115C4.08879 11.3329 4.00091 11.384 3.93164 11.4639C3.86241 11.5384 3.81977 11.6264 3.80371 11.7275C3.79305 11.8288 3.81141 11.9334 3.85938 12.04C3.91267 12.1413 4.00896 12.2291 4.14746 12.3037C4.36072 12.4263 4.61154 12.5225 4.89941 12.5918C5.19274 12.6558 5.48101 12.6885 5.76367 12.6885C6.20092 12.6885 6.57697 12.6216 6.8916 12.4883C7.2116 12.3549 7.45726 12.1653 7.62793 11.9199C7.79851 11.6693 7.88378 11.3759 7.88379 11.04C7.88379 10.6614 7.77681 10.3464 7.56348 10.0957C7.38742 9.88895 7.15481 9.74668 6.86621 9.66699C7.00309 9.61527 7.12399 9.54892 7.22754 9.46387C7.38221 9.33587 7.50256 9.18133 7.58789 9C7.67315 8.81879 7.71577 8.61887 7.71582 8.40039C7.71582 8.08039 7.63806 7.80798 7.4834 7.58398C7.32874 7.35473 7.10727 7.1783 6.81934 7.05566C6.53142 6.93312 6.18443 6.87207 5.7793 6.87207ZM10.6797 6.8877C10.5678 6.88775 10.4531 6.90954 10.3359 6.95215C10.224 6.9948 10.1119 7.05083 10 7.12012L8.8877 7.79199C8.77053 7.86662 8.69107 7.95788 8.64844 8.06445C8.60587 8.1657 8.5949 8.26941 8.61621 8.37598C8.64288 8.47731 8.69389 8.56498 8.76855 8.63965C8.84321 8.7143 8.93091 8.76037 9.03223 8.77637C9.13876 8.79231 9.25349 8.76296 9.37598 8.68848L9.95996 8.33203V11.584H9.15234C8.98168 11.584 8.85043 11.6266 8.75977 11.7119C8.66922 11.7972 8.62404 11.9227 8.62402 12.0879C8.62402 12.2477 8.66927 12.3732 8.75977 12.4639C8.85043 12.5545 8.98168 12.5996 9.15234 12.5996H11.9277C12.0931 12.5996 12.2218 12.557 12.3125 12.4717C12.4029 12.381 12.4482 12.253 12.4482 12.0879C12.4482 11.9227 12.403 11.7972 12.3125 11.7119C12.2218 11.6266 12.0931 11.584 11.9277 11.584H11.2002V7.3916C11.2001 7.22114 11.1516 7.09556 11.0557 7.01562C10.965 6.93057 10.8394 6.8877 10.6797 6.8877Z" />
+                                                                    <path
+                                                                        d="M5 0.879883C5.33137 0.879883 5.59961 1.14812 5.59961 1.47949V3.40137C5.5994 3.73256 5.33124 4.00098 5 4.00098C4.66876 4.00098 4.4006 3.73256 4.40039 3.40137V1.47949C4.40039 1.14812 4.66863 0.879883 5 0.879883Z" />
+                                                                    <path
+                                                                        d="M11 0.879883C11.3314 0.879883 11.5996 1.14812 11.5996 1.47949V3.40137C11.5994 3.73256 11.3312 4.00098 11 4.00098C10.6688 4.00098 10.4006 3.73256 10.4004 3.40137V1.47949C10.4004 1.14812 10.6686 0.879883 11 0.879883Z" />
+                                                                </svg>
+                                                            </span>
+                                                            <span class="label">Schedule</span>
+                                                        </a>
+                                                    </div>
+                                                </div>
+                                                <div class="waffle-menu--contact-sales">
+                                                    <a href="/en/contact/contact-sales/" class="nav-utils__more-cta">Contact sales</a>
+                                                </div>
+                                            </section>
+                                        </div>
+                                    </div>   
+                                </div>
+                            </div>
+                        </div>
+
                                 <div class="nav-utils__group nav-utils__group--common-header-sdk authorized-access" data-user-for="82c0350d-4c26-4b95-8feb-330fef53cda3">
+                                     <div data-zoom-waffle-menu></div>
                                     <div data-zoom-profile-menu></div>
-                                    <div data-zoom-waffle-menu></div>
                                 </div>
                             <div class="nav-utils__group nav-utils__group--profile is-sdk-fallback authorized-access" data-user-for="82c0350d-4c26-4b95-8feb-330fef53cda3">
                                 <div class="nav-utils__dropdown nav-utils__dropdown--profile">
@@ -1729,38 +1828,6 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
                                     </div>
                                 </div>
                             </div>
-
-                        <div class="nav-utils__group nav-utils__group--trailing is-sdk-pending">
-                            <div class="nav-utils__dropdown nav-utils__dropdown--more">
-                                <button type="button"
-                                        class="nav-utils__more"
-                                        id="nav-more-trigger"
-                                        aria-label="More products and services"
-                                        aria-expanded="false"
-                                        aria-haspopup="true"
-                                        aria-controls="nav-more-menu">
-                                    <span class="nav-utils__more-dots" aria-hidden="true"></span>
-                                </button>
-                                <div class="nav-utils__more-panel"
-                                     id="nav-more-menu"
-                                     role="region"
-                                     aria-label="Products overview"
-                                     hidden=""
-                                     aria-hidden="true">
-                                    <div class="nav-utils__more-scroll">
-                                        <section class="nav-utils__more-section"><div class="nav-utils__more-section-head"><div class="nav-utils__more-section-title">Zoom Workplace</div><a href="/en/products/" class="nav-utils__more-view-all">View All</a></div><div class="nav-utils__more-grid"><a href="/en/products/virtual-meetings/" class="nav-utils__more-item"><span class="nav-utils__more-icon icon-meetings icon-meetings-dims"></span><span class="nav-utils__more-label">Meetings</span></a><a href="/en/products/team-chat/" class="nav-utils__more-item"><span class="nav-utils__more-icon icon-chat icon-chat-dims"></span><span class="nav-utils__more-label">Chat</span></a><a href="/en/products/voip-phone/" class="nav-utils__more-item"><span class="nav-utils__more-icon icon-phone icon-phone-dims"></span><span class="nav-utils__more-label">Phone</span></a><a href="/en/products/email-calendar/" class="nav-utils__more-item"><span class="nav-utils__more-icon icon-mail-calendar icon-mail-calendar-dims"></span><span class="nav-utils__more-label">Mail &amp; Calendar</span></a><a href="/en/products/appointment-scheduler/" class="nav-utils__more-item"><span class="nav-utils__more-icon icon-scheduler icon-scheduler-dims"></span><span class="nav-utils__more-label">Scheduler</span></a><a href="/en/products/online-whiteboard/" class="nav-utils__more-item"><span class="nav-utils__more-icon icon-whiteboard icon-whiteboard-dims"></span><span class="nav-utils__more-label">Whiteboard</span></a><a href="/en/products/screen-recorder/" class="nav-utils__more-item"><span class="nav-utils__more-icon icon-clips icon-clips-dims"></span><span class="nav-utils__more-label">Clips</span></a><a href="https://marketplace.zoom.us/" class="nav-utils__more-item" target="_blank" rel="noopener noreferrer"><span class="nav-utils__more-icon icon-zoom-marketplace icon-zoom-marketplace-dims"></span><span class="nav-utils__more-label">Zoom Marketplace</span></a></div></section><section class="nav-utils__more-section"><div class="nav-utils__more-section-head"><div class="nav-utils__more-section-title">Business Services</div></div><div class="nav-utils__more-grid"><a href="/en/products/conversation-intelligence/" class="nav-utils__more-item"><span class="nav-utils__more-icon icon-revenue-accelerator icon-revenue-accelerator-dims"></span><span class="nav-utils__more-label">Revenue Accelerator</span></a><a href="/en/products/webinars/" class="nav-utils__more-item"><span class="nav-utils__more-icon icon-webinars-events icon-webinars-events-dims"></span><span class="nav-utils__more-label">Webinars &amp; Events</span></a><a href="/en/products/bonsai/" class="nav-utils__more-item"><span class="nav-utils__more-icon icon-bonsai icon-bonsai-dims"></span><span class="nav-utils__more-label">Bonsai</span></a><a href="/en/products/brighthire/" class="nav-utils__more-item"><span class="nav-utils__more-icon icon-bright-hire icon-bright-hire-dims"></span><span class="nav-utils__more-label">BrightHire</span></a></div></section><section class="nav-utils__more-section"><div class="nav-utils__more-section-head"><div class="nav-utils__more-section-title">Zoom CX</div></div><div class="nav-utils__more-grid"><a href="/en/products/contact-center/" class="nav-utils__more-item"><span class="nav-utils__more-icon icon-contact-center icon-contact-center-dims"></span><span class="nav-utils__more-label">Contact Center</span></a><a href="/en/products/ai-expert-assist/" class="nav-utils__more-item"><span class="nav-utils__more-icon icon-ai-expert-assist icon-ai-expert-assist-dims"></span><span class="nav-utils__more-label">AI Expert Assist</span></a><a href="/en/products/workforce-management/" class="nav-utils__more-item"><span class="nav-utils__more-icon icon-workforce-engagement icon-workforce-engagement-dims"></span><span class="nav-utils__more-label">Workforce Management</span></a><a href="/en/products/quality-management/" class="nav-utils__more-item"><span class="nav-utils__more-icon icon-quality-management icon-quality-management-dims"></span><span class="nav-utils__more-label">Quality Management</span></a><a href="/en/products/cx-insights/" class="nav-utils__more-item"><span class="nav-utils__more-icon icon-cx-insights icon-cx-insights-dims"></span><span class="nav-utils__more-label">CX Insights</span></a></div></section><section class="nav-utils__more-section"><div class="nav-utils__more-section-head"><div class="nav-utils__more-section-title">Zoom AI</div></div><div class="nav-utils__more-grid"><a href="/en/products/ai-assistant/" class="nav-utils__more-item"><span class="nav-utils__more-icon icon-zoom-mate icon-zoom-mate-dims"></span><span class="nav-utils__more-label">ZoomMate</span></a><a href="/en/products/ai-assistant/features/ai-note-taking/" class="nav-utils__more-item"><span class="nav-utils__more-icon icon-my-notes icon-my-notes-dims"></span><span class="nav-utils__more-label">My Notes</span></a><a href="/en/products/virtual-agent/" class="nav-utils__more-item"><span class="nav-utils__more-icon icon-virtual-agent icon-virtual-agent-dims"></span><span class="nav-utils__more-label">Virtual Agent</span></a><a href="/en/products/ai-services/" class="nav-utils__more-item"><span class="nav-utils__more-icon icon-ai-services icon-ai-services-dims"></span><span class="nav-utils__more-label">AI Services</span></a><a href="/en/products/on-premise-ai/" class="nav-utils__more-item"><span class="nav-utils__more-icon icon-ai-on-prem icon-ai-on-prem-dims"></span><span class="nav-utils__more-label">AI On-Prem</span></a><a href="https://www.zoom.com/en/products/ai-productivity-suite" class="nav-utils__more-item"><span class="nav-utils__more-icon icon-ai-suite icon-ai-suite-dims"></span><span class="nav-utils__more-label">AI Productivity Suite</span></a><a href="/en/products/collaborative-docs/" class="nav-utils__more-item"><span class="nav-utils__more-icon icon-ai-docs icon-ai-docs-dims"></span><span class="nav-utils__more-label">Canvas</span></a><a href="/en/products/ai-slides/" class="nav-utils__more-item"><span class="nav-utils__more-icon icon-ai-slides-color icon-ai-slides-color-dims"></span><span class="nav-utils__more-label">Slides</span></a><a href="/en/products/ai-sheets/" class="nav-utils__more-item"><span class="nav-utils__more-icon icon-ai-sheets icon-ai-sheets-dims"></span><span class="nav-utils__more-label">Sheets</span></a><a href="https://www.zoom.com/en/products/ai-productivity-suite/paper" class="nav-utils__more-item"><span class="nav-utils__more-icon icon-ai-papper-color icon-ai-papper-color-dims"></span><span class="nav-utils__more-label">Paper</span></a></div></section><section class="nav-utils__more-section"><div class="nav-utils__more-section-head"><div class="nav-utils__more-section-title">Developers</div></div><div class="nav-utils__more-grid"><a href="https://developers.zoom.us/docs/build/" class="nav-utils__more-item"><span class="nav-utils__more-icon icon-dev-tool icon-dev-tool-dims"></span><span class="nav-utils__more-label">Overview</span></a><a href="/en/video-sdk/" class="nav-utils__more-item"><span class="nav-utils__more-icon icon-dev-tool icon-dev-tool-dims"></span><span class="nav-utils__more-label">Video SDK</span></a><a href="https://developers.zoom.us/docs/cobrowse-sdk/" class="nav-utils__more-item"><span class="nav-utils__more-icon icon-client-browser icon-client-browser-dims"></span><span class="nav-utils__more-label">Co-Browse</span></a></div></section>
-                                     </div>
-
-                                        <div class="nav-utils__more-footer">
-                                            <a href="/en/contact/contact-sales/"
-                                               class="nav-utils__more-cta">
-                                                Contact Sales
-                                            </a>
-                                        </div>
-                                </div>
-                            </div>
-                        </div>
-
                         <div class="nav-utils__group nav-utils__group--cart">
                             <div class="zoom-shopping-cart" data-nav-shopping-cart="" tabindex="0" role="button" aria-label="Shopping cart"></div>
                         </div>
@@ -1923,7 +1990,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 
 
 
-    <section class="hero hero--dark    hero--simple-text   hero-max-width       " data-cmp-is="hero" id="5fac2922-03ba-482f-848f-ec53469e2c22" aria-labelledby="hero-title">
+    <section class="hero hero--dark    hero--simple-text   hero-max-width       " data-cmp-is="hero" id="5fbd62b3-25ea-484c-ba83-0f27dda5daed" aria-labelledby="hero-title">
         <div class="hero__container">
             <div class="hero__content">
                 
@@ -2205,7 +2272,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 
         <footer class="zdcm-module-footer zdcm-module-footer-v2" id="" data-cmp-is="zdcm-module-footer">
             <input id="GeoLocation" name="GeoLocation" type="hidden" value="IE" />
-            <script type="text/javascript" nonce="FvS6xHHHcAeqiqy23cKFpZB45s/YQJOffDm2vXFFsUw=">
+            <script type="text/javascript" nonce="KKJ41tA1IX9lNhWm/zjuoZEMXfNXlHLFqIHuRjTvr98=">
                 const allCurrencyList = [{"currencyAbbreviation":"ARS","displayName":"Argentine Peso","currencySymbol":"$","isSelected":false},{"currencyAbbreviation":"AUD","displayName":"Australian Dollar","currencySymbol":"AU$","isSelected":false},{"currencyAbbreviation":"BRL","displayName":"Brazillian Real","currencySymbol":"R$","isSelected":false},{"currencyAbbreviation":"CAD","displayName":"Canadian Dollar","currencySymbol":"CA$","isSelected":false},{"currencyAbbreviation":"CLP","displayName":"Chilean Peso","currencySymbol":"$","isSelected":false},{"currencyAbbreviation":"DKK","displayName":"Danish Krone","currencySymbol":"kr","isSelected":false},{"currencyAbbreviation":"AED","displayName":"Emirati Dirham","currencySymbol":"د.إ","isSelected":false},{"currencyAbbreviation":"EUR","displayName":"Euro","currencySymbol":"€","isSelected":true},{"currencyAbbreviation":"HKD","displayName":"Hong Kong Dollars","currencySymbol":"$","isSelected":false},{"currencyAbbreviation":"INR","displayName":"Indian Rupee","currencySymbol":"₹","isSelected":false},{"currencyAbbreviation":"IDR","displayName":"Indonesian Rupiah","currencySymbol":"Rp","isSelected":false},{"currencyAbbreviation":"ILS","displayName":"Israeli Shekel","currencySymbol":"₪","isSelected":false},{"currencyAbbreviation":"JPY","displayName":"Japanese Yen","currencySymbol":"￥","isSelected":false},{"currencyAbbreviation":"MYR","displayName":"Malaysian Ringgit","currencySymbol":"RM","isSelected":false},{"currencyAbbreviation":"MXN","displayName":"Mexican Peso","currencySymbol":"$","isSelected":false},{"currencyAbbreviation":"NZD","displayName":"New Zealand Dollar","currencySymbol":"NZ$","isSelected":false},{"currencyAbbreviation":"NOK","displayName":"Norwegian Krone","currencySymbol":"kr","isSelected":false},{"currencyAbbreviation":"PEN","displayName":"Peruvian Sol","currencySymbol":"S/","isSelected":false},{"currencyAbbreviation":"PHP","displayName":"Philippine Peso","currencySymbol":"₱","isSelected":false},{"currencyAbbreviation":"PLN","displayName":"Polish Zloty","currencySymbol":"zł","isSelected":false},{"currencyAbbreviation":"GBP","displayName":"Pound Sterling","currencySymbol":"£","isSelected":false},{"currencyAbbreviation":"SAR","displayName":"Saudi Riyal","currencySymbol":"﷼","isSelected":false},{"currencyAbbreviation":"SGD","displayName":"Singapore Dollars","currencySymbol":"$","isSelected":false},{"currencyAbbreviation":"R","displayName":"South African Rand","currencySymbol":"R","isSelected":false},{"currencyAbbreviation":"KRW","displayName":"South Korean Won","currencySymbol":"₩","isSelected":false},{"currencyAbbreviation":"SEK","displayName":"Swedish Krona","currencySymbol":"kr","isSelected":false},{"currencyAbbreviation":"CHF","displayName":"Swiss Fran","currencySymbol":"CHF","isSelected":false},{"currencyAbbreviation":"USD","displayName":"US Dollar","currencySymbol":"$","isSelected":false},{"currencyAbbreviation":"VND","displayName":"Vietnamese Dong","currencySymbol":"₫","isSelected":false}]
             </script>
             <div class="footer-content">
@@ -2738,7 +2805,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 
     <a href="https://www.linkedin.com/company/zoom/" rel="noopener noreferrer" target="_blank" class="social__link" title="Linked In">
         
-    <img alt="" loading="lazy" fetchpriority="auto" src="https://media.zoom.com/images/assets/social-linkedin.svg/Zz1kMWM5ZTI4NmEzY2MxMWVkOWJmZTU2NjcwZmJiNzBlNQ==?t=20260922120000" />   
+    <img alt="" loading="lazy" fetchpriority="auto" src="https://media.zoom.com/images/assets/social-linkedin.svg/Zz1kMWM5ZTI4NmEzY2MxMWVkOWJmZTU2NjcwZmJiNzBlNQ==?t=20260923120000" />   
 
         
     </a>
@@ -2749,7 +2816,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 
     <a href="https://twitter.com/zoom" rel="noopener noreferrer" target="_blank" class="social__link" title="Twitter">
         
-    <img alt="" loading="lazy" fetchpriority="auto" src="https://media.zoom.com/images/assets/twitter-x.svg/Zz0yMTQxYzM5NDVkMzQxMWVlYmZjMGQ2ZWM3ZWM3MGU2OQ==?t=20260922120000" />   
+    <img alt="" loading="lazy" fetchpriority="auto" src="https://media.zoom.com/images/assets/twitter-x.svg/Zz0yMTQxYzM5NDVkMzQxMWVlYmZjMGQ2ZWM3ZWM3MGU2OQ==?t=20260923120000" />   
 
         
     </a>
@@ -2760,7 +2827,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 
     <a href="https://www.youtube.com/zoommeetings" rel="noopener noreferrer" target="_blank" class="social__link" title="YouTube">
         
-    <img alt="" loading="lazy" fetchpriority="auto" src="https://media.zoom.com/images/assets/social-youtube.svg/Zz1kMWViYTM5NGEzY2MxMWVkYmExMGJhNjNmYjRkMmQyYQ==?t=20260922120000" />   
+    <img alt="" loading="lazy" fetchpriority="auto" src="https://media.zoom.com/images/assets/social-youtube.svg/Zz1kMWViYTM5NGEzY2MxMWVkYmExMGJhNjNmYjRkMmQyYQ==?t=20260923120000" />   
 
         
     </a>
@@ -2771,7 +2838,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 
     <a href="https://www.facebook.com/zoom" rel="noopener noreferrer" target="_blank" class="social__link" title="Facebook">
         
-    <img alt="" loading="lazy" fetchpriority="auto" src="https://media.zoom.com/images/assets/social-facebook.svg/Zz1kMWMzYzNlMmEzY2MxMWVkYjhkYzU2NjcwZmJiNzBlNQ==?t=20260922120000" />   
+    <img alt="" loading="lazy" fetchpriority="auto" src="https://media.zoom.com/images/assets/social-facebook.svg/Zz1kMWMzYzNlMmEzY2MxMWVkYjhkYzU2NjcwZmJiNzBlNQ==?t=20260923120000" />   
 
         
     </a>
@@ -2782,7 +2849,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 
     <a href="https://www.instagram.com/zoom/" rel="noopener noreferrer" target="_blank" class="social__link" title="Instagram">
         
-    <img alt="" loading="lazy" fetchpriority="auto" src="https://media.zoom.com/images/assets/social-instagram.svg/Zz1kMWNiMGZmOGEzY2MxMWVkODkwM2U2ZWE4YmQ4Y2E3MQ==?t=20260922120000" />   
+    <img alt="" loading="lazy" fetchpriority="auto" src="https://media.zoom.com/images/assets/social-instagram.svg/Zz1kMWNiMGZmOGEzY2MxMWVkODkwM2U2ZWE4YmQ4Y2E3MQ==?t=20260923120000" />   
 
         
     </a>
@@ -2953,15 +3020,15 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         </footer>
 
         
-        <script src="/dist/zoom.v1.main.min.js?t=639252559960000000" nonce="FvS6xHHHcAeqiqy23cKFpZB45s/YQJOffDm2vXFFsUw="></script>
-            <script defer="defer" nonce="FvS6xHHHcAeqiqy23cKFpZB45s/YQJOffDm2vXFFsUw=" src="/Util/Find/epi-util/find.js"></script>
-<script nonce="FvS6xHHHcAeqiqy23cKFpZB45s/YQJOffDm2vXFFsUw=">
+        <script src="/dist/zoom.v1.main.min.js?t=639257424200000000" nonce="KKJ41tA1IX9lNhWm/zjuoZEMXfNXlHLFqIHuRjTvr98="></script>
+            <script defer="defer" nonce="KKJ41tA1IX9lNhWm/zjuoZEMXfNXlHLFqIHuRjTvr98=" src="/Util/Find/epi-util/find.js"></script>
+<script nonce="KKJ41tA1IX9lNhWm/zjuoZEMXfNXlHLFqIHuRjTvr98=">
 document.addEventListener('DOMContentLoaded',function(){if(typeof FindApi === 'function'){var api = new FindApi();api.setApplicationUrl('/');api.setServiceApiBaseUrl('/find_v2/');api.processEventFromCurrentUri();api.bindWindowEvents();api.bindAClickEvent();api.sendBufferedEvents();}})
 </script>
 
         
 
-        <script opt-use-csp-nonce="true" type="text/javascript" nonce="FvS6xHHHcAeqiqy23cKFpZB45s/YQJOffDm2vXFFsUw=">
+        <script opt-use-csp-nonce="true" type="text/javascript" nonce="KKJ41tA1IX9lNhWm/zjuoZEMXfNXlHLFqIHuRjTvr98=">
 function OptanonWrapper() {
     let trustDom = document.getElementById('ot-do-not-sell');
     if (trustDom)
@@ -2988,7 +3055,7 @@ function OptanonWrapper() {
 	var expires = "; expires=" + date.toUTCString();
 	document.cookie = "OnetrustActiveGroups=" + oneTrustActiveCookie + expires + "; path=/; secure=true; domain=" + ".zoom.com";
 }</script>
-        <script nonce="FvS6xHHHcAeqiqy23cKFpZB45s/YQJOffDm2vXFFsUw=">
+        <script nonce="KKJ41tA1IX9lNhWm/zjuoZEMXfNXlHLFqIHuRjTvr98=">
   (function() {
     document.addEventListener('click', function(event) {
       const searchSelectors = '.nav-search__input input, #nav-search-trigger-desktop, .nav-utils__search-trigger, #standaloneSearchboxMobile input';
@@ -3025,7 +3092,7 @@ function OptanonWrapper() {
     });
   })();
 </script>
-<script nonce="FvS6xHHHcAeqiqy23cKFpZB45s/YQJOffDm2vXFFsUw=">
+<script nonce="KKJ41tA1IX9lNhWm/zjuoZEMXfNXlHLFqIHuRjTvr98=">
 let resizeTimer;
 window.addEventListener('resize', () => {
     document.body.classList.add('is-resizing');
@@ -3072,14 +3139,14 @@ window.addEventListener('resize', () => {
 .zdcm-header-v1 .zdcm-mobile-menu__footer {padding: 12px;}
 .zdcm-header-v1 .zdcm-mobile-menu:has(#accordion-content-ai[aria-hidden=false]) .zdcm-mobile-menu__sidebar, .zdcm-header-v1 .zdcm-mobile-menu:has(#accordion-content-solutions[aria-hidden=false]) .zdcm-mobile-menu__sidebar {border-radius: 20px;}
 </style>
-<script nonce="FvS6xHHHcAeqiqy23cKFpZB45s/YQJOffDm2vXFFsUw=">
+<script nonce="KKJ41tA1IX9lNhWm/zjuoZEMXfNXlHLFqIHuRjTvr98=">
 document.querySelectorAll(".blog-detail-hero__date").forEach(el => {
   if (el.textContent.includes("Updated")) {
     el.style.display = "none";
   }
 });
 </script>
-<script nonce="FvS6xHHHcAeqiqy23cKFpZB45s/YQJOffDm2vXFFsUw=">
+<script nonce="KKJ41tA1IX9lNhWm/zjuoZEMXfNXlHLFqIHuRjTvr98=">
 // This script is added on hub page launch & related to profile menu clip happening on mobile device.
 window.addEventListener('load', () => {
 setTimeout(() => {
@@ -3094,7 +3161,7 @@ setTimeout(() => {
 });
 </script>
 
-<script nonce="FvS6xHHHcAeqiqy23cKFpZB45s/YQJOffDm2vXFFsUw=">
+<script nonce="KKJ41tA1IX9lNhWm/zjuoZEMXfNXlHLFqIHuRjTvr98=">
 (() => {
   if (!/CriOS/i.test(navigator.userAgent)) return;
 
@@ -3123,7 +3190,7 @@ setTimeout(() => {
   setTimeout(() => mo.disconnect(), 10000);
 })();
 </script>
-<script nonce="FvS6xHHHcAeqiqy23cKFpZB45s/YQJOffDm2vXFFsUw=">
+<script nonce="KKJ41tA1IX9lNhWm/zjuoZEMXfNXlHLFqIHuRjTvr98=">
 (function () {
 
   const NEW_HTML = `
@@ -3168,7 +3235,7 @@ setTimeout(() => {
 
 })();
 </script>
-<script nonce="FvS6xHHHcAeqiqy23cKFpZB45s/YQJOffDm2vXFFsUw=">
+<script nonce="KKJ41tA1IX9lNhWm/zjuoZEMXfNXlHLFqIHuRjTvr98=">
 (function(){
 function replaceTextOnPage(oldText, newText) {
     const walk = document.createTreeWalker(
@@ -3187,7 +3254,7 @@ function replaceTextOnPage(oldText, newText) {
 replaceTextOnPage("My Notes", "My Notes");
 })();
 </script>
-<script nonce="FvS6xHHHcAeqiqy23cKFpZB45s/YQJOffDm2vXFFsUw=">
+<script nonce="KKJ41tA1IX9lNhWm/zjuoZEMXfNXlHLFqIHuRjTvr98=">
 document.addEventListener('DOMContentLoaded', function () {
   const classReplacements = {
     'icon-meetings-white': 'iconzdcm-meetings',
@@ -3243,7 +3310,7 @@ document.addEventListener('DOMContentLoaded', function () {
   window.addEventListener('resize', closeSdkMenus);
 })();
 </script>
-<script nonce="FvS6xHHHcAeqiqy23cKFpZB45s/YQJOffDm2vXFFsUw=">
+<script nonce="KKJ41tA1IX9lNhWm/zjuoZEMXfNXlHLFqIHuRjTvr98=">
 (function() {
     function fixCurrencyCaretImage() {
         const currencyButtons = document.querySelectorAll('[data-template="js-currency-content"], [data-template="js-currency-mobile-content"]');
@@ -3267,24 +3334,24 @@ document.addEventListener('DOMContentLoaded', function () {
 })();
 </script>
 
- <script nonce="FvS6xHHHcAeqiqy23cKFpZB45s/YQJOffDm2vXFFsUw=">
+ <script nonce="KKJ41tA1IX9lNhWm/zjuoZEMXfNXlHLFqIHuRjTvr98=">
  if( (document.cookie.indexOf('geolocation=KR') != -1) && (window.location.pathname == '/ko/trust/privacy/privacy-statement/') )
         {
               window.location.href = 'https://www.zoom.com/ko/trust/privacy/south-korea-privacy-statement/';
         } 
 </script>
         
-        <script type="text/javascript" data-lazy-load-campaign-url="_blank" data-apikey="AM_FKF55QOG_vdWum455Vg" src="https://us01ccistatic.zoom.us/us01cci/web-sdk/chat-client.js" defer nonce="FvS6xHHHcAeqiqy23cKFpZB45s/YQJOffDm2vXFFsUw="></script>
-        <script nonce="FvS6xHHHcAeqiqy23cKFpZB45s/YQJOffDm2vXFFsUw=">(function(){var sel='.zoom-shopping-cart';var BTN='.billing-shopping-bag__container-badge-btn';window.addEventListener('message',function(e){var d=e&&e.data;if(!d||d.type!=='persist-shopping-bag')return;var hasItems=typeof d.planCount==='number'&&d.planCount>0;document.querySelectorAll(sel).forEach(function(el){el.classList.toggle('zoom-shopping-cart--has-items',hasItems);});});document.addEventListener('click',function(e){var c=e.target.closest&&e.target.closest(sel);if(!c)return;if(e.target.closest(BTN))return;var b=c.querySelector(BTN);if(b)b.click();});document.addEventListener('keydown',function(e){if(e.key!=='Enter'&&e.key!==' ')return;var c=e.target;if(!c||!c.classList||!c.classList.contains('zoom-shopping-cart'))return;e.preventDefault();var b=c.querySelector(BTN);if(b)b.click();});})();</script><script src="https://file-paa.zoom.us/9hLEVHv2RxyHd_FdTG_Egg/MS4zLmML9SbRrRyfT6XA8P3QNPQHfYgjtOfWkAxzVs4snQxQ/zm-cart.js" data-domain="zoom.us" data-selector=".zoom-shopping-cart" async nonce="FvS6xHHHcAeqiqy23cKFpZB45s/YQJOffDm2vXFFsUw="></script>
-            <script src="/dist/assets/vendor/optimizely.browser.umd.min.js" nonce="FvS6xHHHcAeqiqy23cKFpZB45s/YQJOffDm2vXFFsUw="></script>
+        <script type="text/javascript" data-lazy-load-campaign-url="_blank" data-apikey="AM_FKF55QOG_vdWum455Vg" src="https://us01ccistatic.zoom.us/us01cci/web-sdk/chat-client.js" defer nonce="KKJ41tA1IX9lNhWm/zjuoZEMXfNXlHLFqIHuRjTvr98="></script>
+        <script nonce="KKJ41tA1IX9lNhWm/zjuoZEMXfNXlHLFqIHuRjTvr98=">(function(){var sel='.zoom-shopping-cart';var BTN='.billing-shopping-bag__container-badge-btn';window.addEventListener('message',function(e){var d=e&&e.data;if(!d||d.type!=='persist-shopping-bag')return;var hasItems=typeof d.planCount==='number'&&d.planCount>0;document.querySelectorAll(sel).forEach(function(el){el.classList.toggle('zoom-shopping-cart--has-items',hasItems);});});document.addEventListener('click',function(e){var c=e.target.closest&&e.target.closest(sel);if(!c)return;if(e.target.closest(BTN))return;var b=c.querySelector(BTN);if(b)b.click();});document.addEventListener('keydown',function(e){if(e.key!=='Enter'&&e.key!==' ')return;var c=e.target;if(!c||!c.classList||!c.classList.contains('zoom-shopping-cart'))return;e.preventDefault();var b=c.querySelector(BTN);if(b)b.click();});})();</script><script src="https://file-paa.zoom.us/9hLEVHv2RxyHd_FdTG_Egg/MS4zLmML9SbRrRyfT6XA8P3QNPQHfYgjtOfWkAxzVs4snQxQ/zm-cart.js" data-domain="zoom.us" data-selector=".zoom-shopping-cart" async nonce="KKJ41tA1IX9lNhWm/zjuoZEMXfNXlHLFqIHuRjTvr98="></script>
+            <script src="/dist/assets/vendor/optimizely.browser.umd.min.js" nonce="KKJ41tA1IX9lNhWm/zjuoZEMXfNXlHLFqIHuRjTvr98="></script>
             <div data-cmp-is="optimizely-init" hidden="" data-sdk-key="Cqoy8odRGzRELg3xLX9M1"></div>
-        <script type="text/javascript" nonce="FvS6xHHHcAeqiqy23cKFpZB45s/YQJOffDm2vXFFsUw=">window.extraPageLoadFields = window.extraPageLoadFields || {};
+        <script type="text/javascript" nonce="KKJ41tA1IX9lNhWm/zjuoZEMXfNXlHLFqIHuRjTvr98=">window.extraPageLoadFields = window.extraPageLoadFields || {};
                     window.extraPageLoadFields = {
                         ...window.extraPageLoadFields,
                         pageType: 'marketing'
                     }</script>
         
-        <script type="text/javascript" nonce="FvS6xHHHcAeqiqy23cKFpZB45s/YQJOffDm2vXFFsUw=">var skip_to_chat = document.querySelector('.skip_to_chat');
+        <script type="text/javascript" nonce="KKJ41tA1IX9lNhWm/zjuoZEMXfNXlHLFqIHuRjTvr98=">var skip_to_chat = document.querySelector('.skip_to_chat');
                          if(skip_to_chat){
                              skip_to_chat.addEventListener('click', function(event) {
                                  event.preventDefault();
@@ -3299,6 +3366,6 @@ document.addEventListener('DOMContentLoaded', function () {
                                  }
                              });
                          }</script>
-    <script nonce="FvS6xHHHcAeqiqy23cKFpZB45s/YQJOffDm2vXFFsUw=">(function(){function c(){var b=a.contentDocument||(a.contentWindow&&a.contentWindow.document);if(b){var d=b.createElement('script');d.nonce='FvS6xHHHcAeqiqy23cKFpZB45s/YQJOffDm2vXFFsUw=';d.innerHTML="window.__CF$cv$params={r:'a3f5a897be70bda5',t:'MTc5MDEyNTcxMC4wMDAwMDA='};var a=document.createElement('script');a.nonce='FvS6xHHHcAeqiqy23cKFpZB45s/YQJOffDm2vXFFsUw=';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
+    <script nonce="KKJ41tA1IX9lNhWm/zjuoZEMXfNXlHLFqIHuRjTvr98=">(function(){function c(){var b=a.contentDocument||(a.contentWindow&&a.contentWindow.document);if(b){var d=b.createElement('script');d.nonce='KKJ41tA1IX9lNhWm/zjuoZEMXfNXlHLFqIHuRjTvr98=';d.innerHTML="window.__CF$cv$params={r:'a3f9c6423e2fbe1e',t:'MTc5MDE2ODg2OC4wMDAwMDA='};var a=document.createElement('script');a.nonce='KKJ41tA1IX9lNhWm/zjuoZEMXfNXlHLFqIHuRjTvr98=';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
 
 </html>
