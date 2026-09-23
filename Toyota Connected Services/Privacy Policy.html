@@ -1,5 +1,5 @@
 <!doctype html>
-<html class="tcom no-js is-mobile" data-country-code="US" lang="en" itemscope itemtype="http://schema.org/" xmlns:fb="http://ogp.me/ns/fb#">
+<html class="tcom no-js is-desktop" data-country-code="SE" lang="en" itemscope itemtype="http://schema.org/" xmlns:fb="http://ogp.me/ns/fb#">
  <head>
   <script defer="defer" type="text/javascript" src="https://rum.hlx.page/.rum/@adobe/helix-rum-js@%5E2/dist/rum-standalone.js" data-routing="env=prod,tier=publish,ams=Toyota Motor North America (ES)"></script>
 <link rel="preconnect" href="https://www.googleapis.com">
@@ -172,7 +172,7 @@ window.tcom_env = {
   <script src="https://cdn.dg.toyota.com/deploy/dg-ui/latest/dg-auth.min.js"></script>
   <script src="https://www.google.com/recaptcha/enterprise.js?render=6LdgInQiAAAAABpKJwK1emnxClOc_Zrv0pxGjvIP"></script><!--For testing purpose of TCM-43006
 <sly data-sly-use.clientLibsModel="com.toyota.tmna.tcom.core.models.ClientlibsResourceSelectorModel">--> <!--    <p></p>--> <!--    <p></p>--> <!--</sly>--> <!--For testing purpose of TCM-43007--> <!--<sly data-sly-use.clientLibsModel="com.toyota.tmna.tcom.core.models.ClientlibsResourceTemplateModel">--> <!--    <p></p>--> <!--    <p></p>--> <!--</sly>--> <!--For testing purpose of TCM-43009--> <!--<sly data-sly-use.clientLibsModel="com.toyota.tmna.tcom.core.models.ClientlibsResourceExcludeTemplateModel">--> <!--    <p></p>--> <!--    <p></p>--> <!--</sly>--> <!--For testing purpose of TCM-43010--> <!--<sly data-sly-use.clientLibsModel="com.toyota.tmna.tcom.core.models.ClientlibsResourceAllTypeModel">--> <!--    <p></p>--> <!--    <p></p>--> <!--</sly>--> <!--For testing purpose of TCM-43008--> <!--<sly data-sly-use.clientLibsModel="com.toyota.tmna.tcom.core.models.ClientlibsResourceUIFrameworkModel">--> <!--    <p></p>--> <!--    <p></p>--> <!--</sly>-->
-  <link rel="stylesheet" href="/etc.clientlibs/tcom/clientlibs/cloud/navigation/clientlib-globalheaderv2.min.00725a5b94232d6b1fa35142840544e4.css" type="text/css">
+  <link rel="stylesheet" href="/etc.clientlibs/tcom/clientlibs/cloud/navigation/clientlib-globalheaderv2.min.3b612fed80e84bafee016bd65d25a83d.css" type="text/css">
   <link rel="stylesheet" href="/etc.clientlibs/tcom/clientlibs/cloud/navigation/clientlib-globalfooter.min.1a85a210ab0705e3f39691b3c0767e90.css" type="text/css">
   <link rel="stylesheet" href="/etc.clientlibs/tcom/clientlibs/clientlib-customcode.min.428327da0b237deafe501370e12ae36c.css" type="text/css">
   <link rel="stylesheet" href="/etc.clientlibs/tcom/clientlibs/clientlib-welcome.min.826656d00519d8bae8d2014b867dca28.css" type="text/css">
@@ -331,35 +331,32 @@ window.Modernizr.addTest('ieTouch', function() {
                <li><button href="" class="main-nav-link main-nav-link shopping-tools" data-aa-skip="true"> Shop </button></li>
                <li><button href="" class="main-nav-link main-nav-link support" data-aa-skip="true"> Support &amp; Service </button></li>
               </ul>
-              <div class="shopping-cart">
-               <div class="icon-wrap">
-                <a class="purchase-link" href="/support/">
-                 <svg width="41" height="41" viewBox="0 0 41 41" fill="none" xmlns="http://www.w3.org/2000/svg">
-                  <path d="M6.52887 5.25488H11.5555L12.6356 9.37728M30.8881 27.178H17.2994L15.6544 20.8993M12.6356 9.37728H32.8909C33.5567 9.37728 34.0365 10.0156 33.8515 10.6552L30.8881 20.8993H15.6544M12.6356 9.37728L15.6544 20.8993" stroke="black" stroke-width="2" /> <ellipse cx="28.7877" cy="32.9472" rx="2.30769" ry="2.30769" fill="black" /> <ellipse cx="17.2448" cy="32.9472" rx="2.30769" ry="2.30769" fill="black" /> <circle cx="32.375" cy="8.25488" r="4" fill="#E10A1D" />
-                 </svg></a>
+              <div class="header-action-controls">
+               <div class="shopping-cart">
+                <div class="icon-wrap">
+                 <a class="purchase-link" href="/support/">
+                  <svg width="41" height="41" viewBox="0 0 41 41" fill="none" xmlns="http://www.w3.org/2000/svg">
+                   <path d="M6.52887 5.25488H11.5555L12.6356 9.37728M30.8881 27.178H17.2994L15.6544 20.8993M12.6356 9.37728H32.8909C33.5567 9.37728 34.0365 10.0156 33.8515 10.6552L30.8881 20.8993H15.6544M12.6356 9.37728L15.6544 20.8993" stroke="black" stroke-width="2" /> <ellipse cx="28.7877" cy="32.9472" rx="2.30769" ry="2.30769" fill="black" /> <ellipse cx="17.2448" cy="32.9472" rx="2.30769" ry="2.30769" fill="black" /> <circle cx="32.375" cy="8.25488" r="4" fill="#E10A1D" />
+                  </svg></a>
+                </div>
                </div>
-              </div>
-              <div class="user-icon-wrap mobile">
-               <button class="user-icons" aria-label="account" type="button" tabindex="0" data-aa-skip="true">
-                <div class="user-icon-logged-out">
-                 <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
-                  <circle cx="12" cy="12" r="11" stroke="#606060" stroke-width="2" /> <mask id="path-2-inside-1_5271_3659" fill="white">
-                   <path d="M18 14C19.1046 14 20 14.8954 20 16V20.9414C17.8768 22.8424 15.0741 24 12 24C8.92586 24 6.12321 22.8424 4 20.9414V16C4 14.8954 4.89543 14 6 14H18Z" />
-                  </mask> <path d="M20 20.9414L21.3341 22.4315L22 21.8352V20.9414H20ZM4 20.9414H2V21.8352L2.66592 22.4315L4 20.9414ZM4 16L2 16V16H4ZM18 14V16H20H22C22 13.7909 20.2091 12 18 12V14ZM20 16H18V20.9414H20H22V16H20ZM20 20.9414L18.6659 19.4514C16.8945 21.0374 14.562 22 12 22V24V26C15.5862 26 18.8591 24.6473 21.3341 22.4315L20 20.9414ZM12 24V22C9.43796 22 7.10553 21.0374 5.33408 19.4514L4 20.9414L2.66592 22.4315C5.14088 24.6473 8.41376 26 12 26V24ZM4 20.9414H6V16H4H2V20.9414H4ZM4 16L6 16V16V14V12C3.79086 12 2 13.7909 2 16L4 16ZM6 14V16H18V14V12H6V14Z" fill="#606060" mask="url(#path-2-inside-1_5271_3659)" /> <circle cx="12" cy="10" r="4" stroke="#606060" stroke-width="2" />
-                 </svg>
-                </div>
-                <div class="user-icon-logged-in">
-                 <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
-                  <circle cx="12" cy="12" r="11" stroke="#606060" stroke-width="2" /> <mask id="path-2-inside-1_5271_36592" fill="white">
-                   <path d="M18 14C19.1046 14 20 14.8954 20 16V20.9414C17.8768 22.8424 15.0741 24 12 24C8.92586 24 6.12321 22.8424 4 20.9414V16C4 14.8954 4.89543 14 6 14H18Z" />
-                  </mask> <path d="M20 20.9414L21.3341 22.4315L22 21.8352V20.9414H20ZM4 20.9414H2V21.8352L2.66592 22.4315L4 20.9414ZM4 16L2 16V16H4ZM18 14V16H20H22C22 13.7909 20.2091 12 18 12V14ZM20 16H18V20.9414H20H22V16H20ZM20 20.9414L18.6659 19.4514C16.8945 21.0374 14.562 22 12 22V24V26C15.5862 26 18.8591 24.6473 21.3341 22.4315L20 20.9414ZM12 24V22C9.43796 22 7.10553 21.0374 5.33408 19.4514L4 20.9414L2.66592 22.4315C5.14088 24.6473 8.41376 26 12 26V24ZM4 20.9414H6V16H4H2V20.9414H4ZM4 16L6 16V16V14V12C3.79086 12 2 13.7909 2 16L4 16ZM6 14V16H18V14V12H6V14Z" fill="#606060" mask="url(#path-2-inside-1_5271_36592)" /> <circle cx="12" cy="10" r="4" stroke="#606060" stroke-width="2" />
-                 </svg>
-                </div>
-                <div class="dot"></div></button>
-              </div>
-              <div class="hamburger-wrapper">
-               <div class="hamburger-notification">
-                <div></div>
+               <div class="user-icon-wrap mobile">
+                <button class="user-icons" aria-label="user icon" type="button" tabindex="0" data-aa-skip="true">
+                 <div class="user-icon-logged-out">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
+                   <circle cx="12" cy="12" r="11" stroke="#606060" stroke-width="2" /> <mask id="path-2-inside-1_5271_3659" fill="white">
+                    <path d="M18 14C19.1046 14 20 14.8954 20 16V20.9414C17.8768 22.8424 15.0741 24 12 24C8.92586 24 6.12321 22.8424 4 20.9414V16C4 14.8954 4.89543 14 6 14H18Z" />
+                   </mask> <path d="M20 20.9414L21.3341 22.4315L22 21.8352V20.9414H20ZM4 20.9414H2V21.8352L2.66592 22.4315L4 20.9414ZM4 16L2 16V16H4ZM18 14V16H20H22C22 13.7909 20.2091 12 18 12V14ZM20 16H18V20.9414H20H22V16H20ZM20 20.9414L18.6659 19.4514C16.8945 21.0374 14.562 22 12 22V24V26C15.5862 26 18.8591 24.6473 21.3341 22.4315L20 20.9414ZM12 24V22C9.43796 22 7.10553 21.0374 5.33408 19.4514L4 20.9414L2.66592 22.4315C5.14088 24.6473 8.41376 26 12 26V24ZM4 20.9414H6V16H4H2V20.9414H4ZM4 16L6 16V16V14V12C3.79086 12 2 13.7909 2 16L4 16ZM6 14V16H18V14V12H6V14Z" fill="#606060" mask="url(#path-2-inside-1_5271_3659)" /> <circle cx="12" cy="10" r="4" stroke="#606060" stroke-width="2" />
+                  </svg>
+                 </div>
+                 <div class="user-icon-logged-in">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
+                   <circle cx="12" cy="12" r="11" stroke="#606060" stroke-width="2" /> <mask id="path-2-inside-1_5271_36592" fill="white">
+                    <path d="M18 14C19.1046 14 20 14.8954 20 16V20.9414C17.8768 22.8424 15.0741 24 12 24C8.92586 24 6.12321 22.8424 4 20.9414V16C4 14.8954 4.89543 14 6 14H18Z" />
+                   </mask> <path d="M20 20.9414L21.3341 22.4315L22 21.8352V20.9414H20ZM4 20.9414H2V21.8352L2.66592 22.4315L4 20.9414ZM4 16L2 16V16H4ZM18 14V16H20H22C22 13.7909 20.2091 12 18 12V14ZM20 16H18V20.9414H20H22V16H20ZM20 20.9414L18.6659 19.4514C16.8945 21.0374 14.562 22 12 22V24V26C15.5862 26 18.8591 24.6473 21.3341 22.4315L20 20.9414ZM12 24V22C9.43796 22 7.10553 21.0374 5.33408 19.4514L4 20.9414L2.66592 22.4315C5.14088 24.6473 8.41376 26 12 26V24ZM4 20.9414H6V16H4H2V20.9414H4ZM4 16L6 16V16V14V12C3.79086 12 2 13.7909 2 16L4 16ZM6 14V16H18V14V12H6V14Z" fill="#606060" mask="url(#path-2-inside-1_5271_36592)" /> <circle cx="12" cy="10" r="4" stroke="#606060" stroke-width="2" />
+                  </svg>
+                 </div>
+                 <div class="dot"></div></button>
                </div>
                <div class="hamburger-wrapper">
                 <div class="hamburger-notification">
@@ -1904,11 +1901,11 @@ td {
     </div>
    </div>
   </div>
-  <script src="/etc.clientlibs/tcom/clientlibs/clientlib-site.min.db23c337622638c6f5458fda9842e3a5.js"></script>
-  <script type="module" src="/etc.clientlibs/maps/clientlibs/clientlib-globalhook.min.2238a5b448fb679a8ab562fe0393f9d2.js"></script>
+  <script src="/etc.clientlibs/tcom/clientlibs/clientlib-site.min.d7cef2d14bb0d0b34cd83d2a00d2cf18.js"></script>
+  <script type="module" src="/etc.clientlibs/maps/clientlibs/clientlib-globalhook.min.3004d28564cad23484af4514cc103ef0.js"></script>
   <script src="/etc.clientlibs/tcom/clientlibs/clientlib-base.min.2793850753c4a6fc3e4a6398ab23a3f8.js"></script>
-  <script type="module" src="/etc.clientlibs/tcom/clientlibs/cloud/navigation/clientlib-globalheaderv2.min.6e3b2c9d886bb29e0d7c3e8d55ff056b.js"></script>
-  <script type="module" src="/etc.clientlibs/tcom/clientlibs/cloud/navigation/clientlib-globalfooter.min.ff2f57a0acd72b2ab189dff9c8dc32d6.js"></script>
+  <script type="module" src="/etc.clientlibs/tcom/clientlibs/cloud/navigation/clientlib-globalheaderv2.min.20fa6b989ca9cf248a5cd53d9933375f.js"></script>
+  <script type="module" src="/etc.clientlibs/tcom/clientlibs/cloud/navigation/clientlib-globalfooter.min.93ac213dc58cb9a184ad3816e8990cce.js"></script>
   <script type="text/javascript" src="/etc.clientlibs/tcom/clientlibs/clientlib-welcome.min.c77b49eeba834a88465c0bbd0b421de9.js"></script>
   <script type="text/javascript" src="/etc.clientlibs/tcom/clientlibs/clientlib-tabbednav.min.e1b4d0f9bd48e22fa0099483ab318958.js"></script>
  </body>
