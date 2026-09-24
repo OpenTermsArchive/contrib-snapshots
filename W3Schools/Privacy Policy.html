@@ -4333,7 +4333,7 @@ a.track-progress-btn {
   height: 340px;
   overflow: hidden;
 
-  background: linear-gradient(90deg, #ffffff 0%, #ffffff 34%, var(--far) 100%);
+  background: var(--far);
   color: #16181D;
   font-family: "Source Sans Pro", Arial, sans-serif;
 }
@@ -4362,11 +4362,6 @@ a.track-progress-btn {
 
   background: url(/adventure/img/map/grass.webp) repeat;
   background-size: 32px 32px;
-
-  /* one tilted gradient, so the field dissolves out to the
-     left and to the top at once. No stacked strips. */
-  -webkit-mask-image: linear-gradient(101deg, transparent 16%, #000 40%);
-  mask-image: linear-gradient(101deg, transparent 16%, #000 40%);
 }
 
 .advb-road {
@@ -4379,8 +4374,6 @@ a.track-progress-btn {
   background-repeat: repeat;
   background-size: 32px 32px;
 
-  -webkit-mask-image: linear-gradient(90deg, transparent 30%, #000 44%);
-  mask-image: linear-gradient(90deg, transparent 30%, #000 44%);
 }
 
 .advb-road-top { bottom: 84px; height: 32px; z-index: 2;
@@ -4404,8 +4397,6 @@ a.track-progress-btn {
 
   pointer-events: none;
 
-  -webkit-mask-image: linear-gradient(101deg, transparent 22%, #000 44%);
-  mask-image: linear-gradient(101deg, transparent 22%, #000 44%);
 }
 
 .advb-prop {
@@ -4428,8 +4419,6 @@ a.track-progress-btn {
 
   background: linear-gradient(180deg, rgba(20,48,26,.16) 0%, rgba(20,48,26,.05) 100%);
 
-  -webkit-mask-image: linear-gradient(90deg, transparent 28%, #000 54%);
-  mask-image: linear-gradient(90deg, transparent 28%, #000 54%);
 }
 
 
@@ -4447,8 +4436,6 @@ a.track-progress-btn {
     rgba(220,233,239,.90) 0%,
     rgba(220,233,239,0) 100%);
 
-  -webkit-mask-image: linear-gradient(90deg, transparent 18%, #000 34%);
-  mask-image: linear-gradient(90deg, transparent 18%, #000 34%);
 }
 
 .advb-sign {
@@ -4477,7 +4464,7 @@ a.track-progress-btn {
 .advb-stage {
   position: absolute;
   top: 0; bottom: 0; left: 0; right: 0;
-  max-width: 1300px;
+  max-width: 1750px;
   margin: 0 auto;
   /* no z-index, so the children keep competing with .advb-inner
      rather than being trapped in a new stacking context */
@@ -4590,7 +4577,7 @@ a.track-progress-btn {
 .advb-walk {
   position: absolute;
   z-index: 9;
-  bottom: 62px;
+  bottom: 50px;
   left: 56%;
 
   display: flex;
@@ -4691,17 +4678,17 @@ a.track-progress-btn {
   align-items: flex-start;
 
   width: 100%;
-  max-width: 1300px;
+  max-width: 1750px;
   height: 100%;
 
   margin: 0 auto;
-  padding: 20px 24px;
+  padding: 20px 0;
 }
 
 /* centred, so the leftover height sits above and below the card
    rather than as one dead white block beneath it */
-.advb-left  { flex: 0 0 auto; min-width: 0; align-self: center; }
-.advb-right { flex: 1 1 auto; min-width: 0; padding-left: 54px; }
+.advb-left  { flex: 0 0 auto; min-width: 0; align-self: flex-start; margin-left: 8px; }
+.advb-right { flex: 1 1 auto; min-width: 0; padding-left: 54px; padding-top: 15px; }
 
 .advb-kicker {
   margin: 0 0 6px;
@@ -4733,8 +4720,8 @@ a.track-progress-btn {
 .advb-t-narrow { display: none; }
 
 .advb-text {
-  max-width: 300px;
-  margin: 8px 0 0;
+  max-width: 400px;
+  margin: 8px 0;
 
   color: #2f3d4a;
 
@@ -4750,7 +4737,7 @@ a.track-progress-btn {
 
   gap: 8px 14px;
 
-  margin-top: 12px;
+  margin-top: 0;
 }
 
 .advb-btn {
@@ -4760,7 +4747,7 @@ a.track-progress-btn {
 
   width: 100%;
   min-height: 38px;
-  padding: 7px 12px;
+  padding: 7px 8px;
 
   background: #04AA6D;
   border-radius: 5px;
@@ -4788,7 +4775,8 @@ a.track-progress-btn {
 .advb-badges {
   display: flex;
   align-items: center;
-  gap: 10px;
+  gap: 14px;
+  flex-wrap: wrap;
 }
 
 .advb-badges a { text-decoration: none; }
@@ -4796,7 +4784,7 @@ a.track-progress-btn {
 .advb-badge {
   display: block;
   width: auto;
-  height: 34px;
+  height: 50px;
 
   transition:
     opacity .15s ease,
@@ -4816,8 +4804,8 @@ a.track-progress-btn {
    ========================================================= */
 
 .advb-card {
-  width: 248px;
-  padding: 15px 16px 17px;
+  width: 207px;
+  padding: 15px 12px 17px;
 
   background: #fff;
   border: 1px solid #e4e4e4;
@@ -4831,7 +4819,7 @@ a.track-progress-btn {
   letter-spacing: 2.2px;
 }
 
-.advb-card .advb-title { font-size: 21px; line-height: 1.12; }
+.advb-card .advb-title { font-size: 19px; line-height: 1.12; }
 .advb-card .advb-cta { margin-top: 14px; }
 
 .advb-stats {
@@ -4873,21 +4861,11 @@ a.track-progress-btn {
    world edge to edge, flat ground colour, copy hard left.
    ========================================================= */
 
-body.w3s-user-authenticated .advb { background: var(--far); }
-body.w3s-user-authenticated .advb-right { padding-left: 0; }
+body.w3s-user-authenticated .advb-right { padding-left: 20px; padding-top: 0; }
 
 /* the signpost divides the two halves, so with no card there is
    nothing for it to divide. Tablet and mobile already drop it. */
 body.w3s-user-authenticated .advb-sign { display: none; }
-
-body.w3s-user-authenticated .advb-field,
-body.w3s-user-authenticated .advb-road,
-body.w3s-user-authenticated .advb-props,
-body.w3s-user-authenticated .advb-wash,
-body.w3s-user-authenticated .advb-mist {
-  -webkit-mask-image: none;
-  mask-image: none;
-}
 
 
 /* =========================================================
@@ -4897,23 +4875,33 @@ body.w3s-user-authenticated .advb-mist {
 
 @media (max-width: 992px) {
 
-  .advb { height: 300px; }
+  .advb { height: 320px; }
   .advb-inner { padding: 18px 20px; }
 
   .advb-sign { display: none; }
 
-  .advb-right { padding-left: 34px; }
+  .advb-right { padding-left: 34px; padding-top: 13px; }
+  body.w3s-user-authenticated .advb-right { padding-left: 22px; }
 
   .advb-card { width: 216px; padding: 13px 14px 15px; }
   .advb-card .advb-title { font-size: 18px; }
   .advb-kicker { font-size: 11px; letter-spacing: 2.2px; }
   .advb-text { font-size: 13px; max-width: 250px; }
 
-  .advb-badge { height: 30px; }
+  .advb-badge { height: 34px; }
+  .advb-badges { gap: 10px; }
 
-  .advb-walk { left: 46%; bottom: 58px; }
+  .advb-walk { left: 46%; bottom: 46px; }
   .advb-lynx { width: 74px; }
   .advb-bubble { width: 178px; font-size: 12px; }
+}
+
+
+@media (min-width: 601px) and (max-width: 768px) {
+
+  .advb-badge-browser { display: none; }
+  .advb-walk { bottom: 42px; }
+  .advb-right .advb-title { font-size: 20px; }
 
 }
 
@@ -4938,8 +4926,10 @@ body.w3s-user-authenticated .advb-mist {
     padding: 22px 20px 176px;
   }
 
-  .advb-left { display: none; }
+  .advb-left,
+  body.w3s-user-anonymous .advb .advb-left { display: none !important; }
   .advb-right { padding-left: 0; }
+  body.w3s-user-authenticated .advb-right { padding-left: 0; }
   .advb-right .advb-text { max-width: 100%; font-size: 14px; }
 
   .advb-t-wide { display: none; }
@@ -4952,16 +4942,6 @@ body.w3s-user-authenticated .advb-mist {
 
   /* the tall birch runs into the heading at this width */
   .advb-prop.-tall { display: none; }
-
-  /* nothing to fade into, so the world runs edge to edge */
-  .advb-field,
-  .advb-road,
-  .advb-props,
-  .advb-wash,
-  .advb-mist {
-    -webkit-mask-image: none;
-    mask-image: none;
-  }
 
   .advb-walk { left: 16px; bottom: 60px; }
   .advb-lynx { width: 78px; }
