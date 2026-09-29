@@ -4,15 +4,15 @@
  <meta charset="UTF-8" >
 
 <title>Privacy Policy | Project Gutenberg</title>
- <link rel="stylesheet" href="/gutenberg/gutenberg-globals.css?v=4">
+ <link rel="stylesheet" href="/gutenberg/gutenberg-globals.css?v=5">
 
  <meta name="viewport" content="width=device-width, initial-scale=1">
- <meta name="keywords" content="books, ebooks, free, kindle, android, iphone, ipad">
  <meta name="google-site-verification" content="wucOEvSnj5kP3Ts_36OfP64laakK-1mVTg-ptrGC9io">
- <meta name="alexaVerifyID" content="4WNaCljsE-A82vP_ih2H_UqXZvM">
+ <meta name="description"  content="Project Gutenberg is a library of over 75,000 free eBooks. Choose from ebook formats or read online. No fees, no registration, no ads." >
  
  <link rel="copyright" href="https://www.gnu.org/copyleft/fdl.html">
  <link rel="icon" type="image/png" href="/gutenberg/favicon.ico" sizes="16x16" >
+ <link rel="canonical" href="https://www.gutenberg.org/">
  
  <meta property="og:title"        content="Project Gutenberg" >
  <meta property="og:type"         content="website" >
@@ -44,8 +44,8 @@
       <label
         for="search-toggle"
         class="search-icon-btn"
-        aria-label="Open Search"
       >
+        <span class="visually-hidden">Open Search</span>
         <svg
           class="search-icon"
           xmlns="http://www.w3.org/2000/svg"
@@ -60,7 +60,7 @@
           <path d="M0 0h24v24H0z" fill="none" />
         </svg>
       </label>
-      <label for="search-close" class="search-close-btn" aria-label="Close Search">X</label>
+      <label for="search-close" class="search-close-btn"><span aria-hidden="true">X</span><span class="visually-hidden">Close Search</span></label>
       <input
         type="text"
         class="search-input"
@@ -99,7 +99,7 @@
 
   <div class="lower-header" role="navigation">
     <div class="dropdown" tabindex="0">
-      <label for="about-toggle" class="dropdown-button" aria-haspopup="true">About<span aria-hidden="true" class="dropdown-icon">▼</span></label>
+      <label for="about-toggle" class="dropdown-button">About<span aria-hidden="true" class="dropdown-icon">▼</span></label>
       <div class="dropdown-content">
         <a href="/about/">About Project Gutenberg </a>
         <a href="/help/reading_options.html">Reading Options & Kindle</a>
