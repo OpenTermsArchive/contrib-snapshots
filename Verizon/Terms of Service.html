@@ -80,6 +80,23 @@
 
 
 
+<script>
+    (function() {
+        function accessCookie(name) {
+            var n = name + "=", c = document.cookie.split(';');
+            for (var i = 0; i < c.length; i++) {
+                var t = c[i].trim();
+                if (t.indexOf(n) === 0) return t.substring(n.length);
+            }
+            return "";
+        }
+        var loggedIn = accessCookie("loggedIn") === "true" &&
+            (accessCookie("amID") !== "" || accessCookie("wlsssoid") !== "");
+        if (!loggedIn) {
+            sessionStorage.setItem('vzgptTargetEndpoint', 'vzgpt');
+        }
+    })();
+</script>
 <!--
 <sly data-sly-test="true" data-sly-use.clientLib="/apps/clientlib-async/sightly/templates/clientlib.html"
      data-sly-call=""/>
@@ -553,10 +570,7 @@ vzwDL.page.selfServiceType="general information page";
                 <div class="both">
                     
                     <div>
-                        <p>These Terms of Use govern your use and access to information and resources across websites operated by Verizon Communications, Inc and its subsidiaries or affiliates (collectively &quot;Verizon&quot;). Listed below, you can find terms for using Verizon's websites. Specific terms for Verizon business customers are found at <a href="/business/terms/" target="_blank">https://www.verizon.com/business/terms/</a>.<br>
-<br>
-This Website and other Websites operated or controlled by Verizon (collectively the &quot;Site(s)&quot;) include content, text, information, advertising, data, audio/visual materials, &quot;applets,&quot; and software (collectively, &quot;Content&quot;), as well as communication tools, access to email services (through Verizon or other email providers), online directories, administrative services, download areas, discussion forums, search, account management tools, access to certain content (e.g., community forums, support pages, news, or other supported content), certain diagnostic tools and other information (&quot;Services&quot;). The Services may themselves contain Content, and Content and Services are sometimes collectively referred to as the &quot;Resources&quot;.</p>
-
+                        <p>These Terms of Use govern your use and access to information and resources across websites operated by Verizon Communications, Inc and its subsidiaries or affiliates (collectively "Verizon"). Listed below, you can find terms for using Verizon's websites. Specific terms for Verizon business customers are found at <a href="/business/terms/" target="_blank" aria-label="https://www.verizon.com/business/terms/">https://www.verizon.com/business/terms/</a>.<br> <br> This Website and other Websites operated or controlled by Verizon (collectively the "Site(s)") include content, text, information, advertising, data, audio/visual materials, "applets," and software (collectively, "Content"), as well as communication tools, access to email services (through Verizon or other email providers), online directories, administrative services, download areas, discussion forums, search, account management tools, access to certain content (e.g., community forums, support pages, news, or other supported content), certain diagnostic tools and other information ("Services"). The Services may themselves contain Content, and Content and Services are sometimes collectively referred to as the "Resources".</p>
                     </div>
                  </div>
         </div>
