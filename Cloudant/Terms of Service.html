@@ -59,14 +59,12 @@
       
       
       
-    <link rel="canonical" href="https://www.ibm.com/legal/terms"/>
+    <link rel="canonical" href="https://www.ibm.com/content/adobe-cms/us/en/legal/terms"/>
 
-      
-          <link rel="preload" as="image" href="/content/adobe-cms/us/en/legal/terms/jcr:content/root/leadspace_container/leadspace/image.coreimg.png/1768245294647/Leadspace-bg-img-desktop.png" fetchpriority="high"/>
       
 
     
-    <link rel="preload" href="/etc.clientlibs/adobe-cms/clientlibs/clientlib-masthead-container.lc-e09ce7804d3d2c198173d7bf214c95a5-lc.min.js" as="script">
+    <link rel="preload" href="/etc.clientlibs/adobe-cms/clientlibs/clientlib-masthead-container.lc-3cdb154c362a652eae334101ff9c98db-lc.min.js" as="script">
 
 
 
@@ -147,11 +145,11 @@
     
         <link rel="alternate" hreflang="it-it" href="https://www.ibm.com/it-it/legal/terms"/>
     
-        <link rel="alternate" hreflang="x-default" href="https://www.ibm.com/legal/terms"/>
+        <link rel="alternate" hreflang="x-default" href="https://www.ibm.com/content/adobe-cms/us/en/legal/terms"/>
     
         <link rel="alternate" hreflang="de-de" href="https://www.ibm.com/de-de/legal/terms"/>
     
-        <link rel="alternate" hreflang="en-us" href="https://www.ibm.com/legal/terms"/>
+        <link rel="alternate" hreflang="en-us" href="https://www.ibm.com/content/adobe-cms/us/en/legal/terms"/>
     
         <link rel="alternate" hreflang="ko-kr" href="https://www.ibm.com/kr-ko/legal/terms"/>
     
@@ -282,7 +280,7 @@
             "@type": "WebPage",
             "name": "Terms of use",
             "description": "IBM terms of use",
-            "url": "https://www.ibm.com/legal/terms",
+            "url": "https://www.ibm.com/content/adobe-cms/us/en/legal/terms",
             "datePublished": "2024-09-02",
             "dateModified": "2024-10-15",
             "image": ["https://www.ibm.com/content/dam/adobe-cms/default-images/Leadspace-bg-img-desktop.png"],
@@ -307,7 +305,7 @@
 
     
     
-        <meta property="og:url" content="https://www.ibm.com/legal/terms"/>
+        <meta property="og:url" content="https://www.ibm.com/content/adobe-cms/us/en/legal/terms"/>
     
         <meta property="og:type" content="website"/>
     
@@ -320,7 +318,7 @@
         <meta property="article:published_time" content="2024-09-02"/>
     
     
-        <meta property="og:image" content="https://www.ibm.com/content/dam/adobe-cms/default-images/Leadspace-bg-img-desktop.png/_jcr_content/renditions/cq5dam.web.1280.1280.jpeg"/>
+        <meta property="og:image" content="https://assets.ibm.com/is/image/ibm/ibm-8bar-logo-2560x2560?$original$"/>
     
 
     
@@ -330,8 +328,8 @@
     
     
 <link rel="stylesheet" href="/etc.clientlibs/adobe-cms/clientlibs/clientlib-base.lc-30313e00669f877069f15dd099f23454-lc.min.css" type="text/css">
-<link rel="stylesheet" href="/etc.clientlibs/adobe-cms/clientlibs/clientlib-idlStylesCarbon.lc-8df45931bef99567943fdf7e9eaf7b76-lc.min.css" type="text/css">
-<link rel="stylesheet" href="/etc.clientlibs/adobe-cms/clientlibs/clientlib-idlStyles.lc-761565b36d387e54ba118aeca51892f2-lc.min.css" type="text/css">
+<link rel="stylesheet" href="/etc.clientlibs/adobe-cms/clientlibs/clientlib-idlStylesCarbon.lc-be7d2847dfdb7e200310550a1f065ccb-lc.min.css" type="text/css">
+<link rel="stylesheet" href="/etc.clientlibs/adobe-cms/clientlibs/clientlib-idlStyles.lc-3de231ecadcc9b6e4e349c29ebdffd00-lc.min.css" type="text/css">
 
 
 
@@ -419,7 +417,7 @@
 
 
 
-    <c4d-masthead-container data-endpoint="#" auth-method="profile-api" has-contact="false" has-global="true" has-profile="true" has-search="true" has-cart current-region-text="Your current region is" different-region-text="Select a different region" no-other-region-text="This page is not available in any other regions" light-theme-tooltip-text="Light Mode" dark-theme-tooltip-text="Dark Mode">
+    <c4d-masthead-container data-endpoint="#" auth-method="profile-api" has-contact="false" brand="ibm" has-global="true" has-profile="true" has-search="true" has-cart current-region-text="Your current region is" different-region-text="Select a different region" no-other-region-text="This page is not available in any other regions" light-theme-tooltip-text="Light Mode" dark-theme-tooltip-text="Dark Mode">
         
     </c4d-masthead-container>
 
@@ -428,7 +426,7 @@
 
 
 
-    <script defer src="/etc.clientlibs/adobe-cms/clientlibs/clientlib-masthead-container.lc-e09ce7804d3d2c198173d7bf214c95a5-lc.min.js"></script>
+    <script defer src="/etc.clientlibs/adobe-cms/clientlibs/clientlib-masthead-container.lc-3cdb154c362a652eae334101ff9c98db-lc.min.js"></script>
 
 
 
@@ -502,59 +500,6 @@
 
       }
 
-      if(window.location.hostname.includes("businessofgovernment") ||  window.location.href.includes("/businessofgovernment"))
-        {
-              // Start the function
-        updateTopNavHrefFromPlatform();
-        }
-
-     function updateTopNavHrefFromPlatform() {
-    // Step 1: get the masthead container
-    var mastheadContainer = document.querySelector('c4d-masthead-container');
-    if (!mastheadContainer) {
-        setTimeout(updateTopNavHrefFromPlatform, 5000); // retry if not yet loaded
-        return;
-    }
-
-    // Step 2: get the platform URL
-    var platformUrl = mastheadContainer.getAttribute('platformurl');
-    if (!platformUrl) {
-        console.log('No platformurl found');
-        return;
-    }
-
-    // Step 3: get the masthead shadow root
-    var masthead = document.querySelector('c4d-masthead');
-    if (!masthead || !masthead.shadowRoot) {
-        setTimeout(updateTopNavHrefFromPlatform, 5000);
-        return;
-    }
-
-    // Step 4: get the nav container inside shadow DOM
-    var navContainer = masthead.shadowRoot.querySelector('.cds--header__nav-container');
-    if (!navContainer) {
-        setTimeout(updateTopNavHrefFromPlatform, 5000);
-        return;
-    }
-
-    // Step 5: get the slot inside nav container
-    var slot = navContainer.querySelector('slot');
-    if (!slot) {
-        setTimeout(updateTopNavHrefFromPlatform, 5000);
-        return;
-    }
-
-    // Step 6: get all assigned nodes to the slot
-    var assignedNodes = slot.assignedNodes();
-    for (var i = 0; i < assignedNodes.length; i++) {
-        var node = assignedNodes[i];
-        if (node.tagName && node.tagName.toLowerCase() === 'c4d-top-nav-name') {
-            // Step 7: set href from platformurl
-            node.setAttribute('href', platformUrl);
-            console.log('Updated href to', platformUrl);
-        }
-    }
-}
        document.addEventListener("DOMContentLoaded", function() {
           const mastheadContainer = document.querySelector("c4d-masthead-container");
 
@@ -613,7 +558,7 @@
         </li>
     
         <li class="cmp-breadcrumb__item" itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem">
-            <a class="cmp-breadcrumb__item-link" itemprop="item" href="/legal">
+            <a class="cmp-breadcrumb__item-link" itemprop="item" href="/content/adobe-cms/us/en/legal.html">
                 <span class="body-short-01" itemprop="name">Legal</span>
             </a>
             <meta itemprop="position" content="2"/>
@@ -655,6 +600,7 @@
 
                             
                         </div>
+                        
                     </div>
                     
 
@@ -668,8 +614,8 @@
 
 
 
-    <script defer src="/etc.clientlibs/adobe-cms/clientlibs/clientlib-button-group.lc-9508c5034430c56bfda40d6018f054bc-lc.min.js"></script>
-<script defer src="/etc.clientlibs/adobe-cms/clientlibs/clientlib-background-media.lc-6a92b54b1c6eb626de1e12299a40c468-lc.min.js"></script>
+    <script defer src="/etc.clientlibs/adobe-cms/clientlibs/clientlib-button-group.lc-9a6721eb2e3a9efc7c83c374cd94b1e8-lc.min.js"></script>
+<script defer src="/etc.clientlibs/adobe-cms/clientlibs/clientlib-background-media.lc-a2656cda6e897d0f7bc6810fdb75a40e-lc.min.js"></script>
 <script defer src="/etc.clientlibs/adobe-cms/clientlibs/clientlib-star-rating.lc-ac9e6f485abb5e9caac490f8b09edc80-lc.min.js"></script>
 
 </div>
@@ -796,7 +742,7 @@
 
 
     
-    <script defer src="/etc.clientlibs/adobe-cms/clientlibs/clientlib-content-block-segmented.lc-32c9f882f44d757129a5f9930407ae5e-lc.min.js"></script>
+    <script defer src="/etc.clientlibs/adobe-cms/clientlibs/clientlib-content-block-segmented.lc-623dbcc7ea7a4705e553303815611718-lc.min.js"></script>
 
 
 
@@ -1518,7 +1464,7 @@
 
 
     
-    <script defer src="/etc.clientlibs/adobe-cms/clientlibs/clientlib-footer.lc-72c63980ce0465b7ab6efa452fd8d440-lc.min.js"></script>
+    <script defer src="/etc.clientlibs/adobe-cms/clientlibs/clientlib-footer.lc-e4556247b5eaa5ddf0bfeb0523232d4d-lc.min.js"></script>
 
 
 
@@ -1622,7 +1568,7 @@
 
 
     
-    <script defer src="/etc.clientlibs/adobe-cms/clientlibs/clientlib-video-player-v7.lc-53dc97ee9e6e3801f2baf845df5b71a1-lc.min.js"></script>
+    <script defer src="/etc.clientlibs/adobe-cms/clientlibs/clientlib-video-player-v7.lc-9b71d9d0818c16d4de96c11ca7238486-lc.min.js"></script>
 <script defer src="/etc.clientlibs/adobe-cms/clientlibs/clientlib-cweb-loading.lc-bf5f1bc1d22a37b7b50b2e8cc6ac9710-lc.min.js"></script>
 
 
@@ -1633,7 +1579,7 @@
 <c4d-lightbox-video-player-container></c4d-lightbox-video-player-container>
 
     
-    <script defer src="/etc.clientlibs/adobe-cms/clientlibs/clientlib-cibm-cta.lc-0f201b8bb2b37edf7a5ea4990978a4c8-lc.min.js"></script>
+    <script defer src="/etc.clientlibs/adobe-cms/clientlibs/clientlib-cibm-cta.lc-a53d0f07a2ef5cb431dbbb59015d4bd5-lc.min.js"></script>
 
 
 
@@ -1653,8 +1599,8 @@
     
     <script src="/etc.clientlibs/adobe-cms/clientlibs/clientlib-ibm-logger.lc-36e5d2891df65964c169c81e085bcb76-lc.min.js"></script>
 <script src="/etc.clientlibs/adobe-cms/clientlibs/clientlib-base.lc-c7d8c8a31404fb2a97939ee4096001bf-lc.min.js"></script>
-<script src="/etc.clientlibs/adobe-cms/clientlibs/clientlib-components-main.lc-3db2b3504bc68a5cbf0f065e999e29e3-lc.min.js"></script>
-<script src="/etc.clientlibs/adobe-cms/clientlibs/clientlib-idlStyles.lc-cbd28304527fb6e45e62519dad18c8e1-lc.min.js"></script>
+<script src="/etc.clientlibs/adobe-cms/clientlibs/clientlib-components-main.lc-e617909fe03f8b4b8511e8e21463a8dc-lc.min.js"></script>
+<script src="/etc.clientlibs/adobe-cms/clientlibs/clientlib-idlStyles.lc-1cdcd95be8967ff137bde26f49e9f773-lc.min.js"></script>
 <script src="/etc.clientlibs/adobe-cms/components/content/atoms/image-dm/clientlibs/site.lc-d8745ddb7348148535910a0ec30b1007-lc.min.js"></script>
 
 
@@ -2079,5 +2025,5 @@
 
     
 
-<script type="text/javascript"  src="/Q0EYpQGRjE/LthfXP/JVPr/3wVa4QLzDXb6rNaw/Ij1uUB8pAw/alwJLkY/yPU8"></script><link rel="stylesheet" type="text/css"  href="/Q0EYpQGRjE/LthfXP/JVPr/zXVa/NgFTUB8pAw/Yg1TKD9/tTFhX"><script  src="/Q0EYpQGRjE/LthfXP/JVPr/zXVa/NgFTUB8pAw/VgweWXx/PRg4p" async defer></script><div id="sec-overlay" style="display:none;"><div id="sec-container"></div></div></body>
+<script type="text/javascript"  src="/P2kv-CeVc5pKD/e8sPjSeDIt/_bnM/YEf78k8wVrXmVhSY/UVReGQE/HhE/ABDMaF10"></script><link rel="stylesheet" type="text/css"  href="/P2kv-CeVc5pKD/e8sPjSeDIt/_bnM/pff7/UTNCGQE/DSN/0dgg5LwRY"><script  src="/P2kv-CeVc5pKD/e8sPjSeDIt/_bnM/pff7/UTNCGQE/QF1/wS2I-WnQo" async defer></script><div id="sec-overlay" style="display:none;"><div id="sec-container"></div></div></body>
 </html>
