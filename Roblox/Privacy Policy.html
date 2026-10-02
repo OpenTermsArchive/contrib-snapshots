@@ -7,14 +7,14 @@
 
   
 
-  <meta name="description" content="Effective Date: April 30, 2026 Summary of Recent Changes We are updating our Roblox Privacy and Cookie Policy, effective April 30, 2026,..."><meta property="og:image" content="https://en.help.roblox.com/hc/theming_assets/01HZPAS6P8C1KHF2TQJ18XHPHE">
+  <meta name="description" content="Effective Date: November 1, 2026 Summary of Recent Changes We are updating our Roblox Privacy and Cookie Policy, effective November 1,..."><meta property="og:image" content="https://en.help.roblox.com/hc/theming_assets/01HZPAS6P8C1KHF2TQJ18XHPHE">
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="Roblox Support">
 <meta property="og:title" content="Roblox Privacy and Cookie Policy">
-<meta property="og:description" content="Effective Date: April 30, 2026
+<meta property="og:description" content="Effective Date: November 1, 2026
 Summary of Recent Changes
-We are updating our Roblox Privacy and Cookie Policy, effective April 30, 2026, to reflect certain changes we are making on Roblox.
-Here’s a...">
+We are updating our&nbsp;Roblox Privacy and Cookie Policy, effective November 1, 2026, to reflect certain changes we are making on Roblox.
+Here...">
 <meta property="og:url" content="https://en.help.roblox.com/hc/en-us/articles/115004630823-Roblox-Privacy-and-Cookie-Policy">
 <link rel="canonical" href="https://en.help.roblox.com/hc/en-us/articles/115004630823-Roblox-Privacy-and-Cookie-Policy">
 <link rel="alternate" hreflang="ar" href="https://en.help.roblox.com/hc/ar/articles/115004630823-%D8%B3%D9%8A%D8%A7%D8%B3%D8%A9-%D8%A7%D9%84%D8%AE%D8%B5%D9%88%D8%B5%D9%8A%D8%A9-%D9%88%D9%85%D9%84%D9%81-%D8%AA%D8%B9%D8%B1%D9%8A%D9%81-%D8%A7%D9%84%D8%A7%D8%B1%D8%AA%D8%A8%D8%A7%D8%B7-%D8%A7%D9%84%D8%AE%D8%A7%D8%B5%D8%A9-%D8%A8%D9%80-Roblox">
@@ -63,7 +63,7 @@ Here’s a...">
 <link rel="alternate" hreflang="zh-tw" href="https://en.help.roblox.com/hc/zh-tw/articles/115004630823-Roblox-%E9%9A%B1%E7%A7%81%E6%AC%8A%E5%92%8C-Cookie-%E6%94%BF%E7%AD%96">
 
   <link rel="stylesheet" href="//static.zdassets.com/hc/assets/application-b925b7498ff4356827db8a6064e91e2b.css" media="all" id="stylesheet">
-  <link rel="stylesheet" type="text/css" href="/hc/theming_assets/26563/325214/style.css?digest=53257224858900">
+  <link rel="stylesheet" type="text/css" href="/hc/theming_assets/26563/325214/style.css?digest=54140105326868">
 
   <link rel="icon" type="image/x-icon" href="/hc/theming_assets/01HZPAS6TBMWBFNK4DD9HN8EGZ">
 
@@ -162,6 +162,49 @@ Here’s a...">
 
 <!--Dictionary-->
 <script src="/hc/theming_assets/01KP9JMM678JBWFJM5DQPM8H08"></script>
+
+<!--Global and EU TOU Geo-Gating for Sidebar-->
+<script>
+(function () {
+  var ENDPOINT     = 'https://apis.roblox.com/guac-v2/v1/bundles/is-client-in-eea-uk-ch';
+  var GLOBAL_IDS   = ['115004647846', '14663412502676'];   // ToU, ToU Announcement
+  var REGIONAL_IDS = ['52986395990932', '52986438082068'];  // EEA/UK/CH ToU, ToU Announcement
+
+  // Hides navigation links to the given articles anywhere on the page:
+  // sidebar, section list, related, recently viewed, search results.
+  // Links inside the article body itself are left alone.
+  function hideRules(ids) {
+    var css = '';
+    for (var i = 0; i < ids.length; i++) {
+      var a = 'a[href*="/articles/' + ids[i] + '"]';
+      css +=
+        a + ':not(.article-body ' + a + '):not(.custom-article ' + a + ') { display: none !important; }' +
+        'li:has(> ' + a + '):not(.article-body li):not(.custom-article li) { display: none !important; }';
+    }
+    return css;
+  }
+
+  // Hide all four until we know the region, so neither version flashes.
+  var navStyle = document.createElement('style');
+  navStyle.id = 'rbx-geo-nav';
+  navStyle.textContent = hideRules(GLOBAL_IDS.concat(REGIONAL_IDS));
+  document.head.appendChild(navStyle);
+
+  fetch(ENDPOINT, { cache: 'no-store' })
+    .then(function (response) { return response.json(); })
+    .then(function (data) {
+      if (data.isClientInEeaUkCh === true) {
+        navStyle.textContent = hideRules(GLOBAL_IDS);      // show EEA/UK/CH links only
+      } else if (data.isClientInEeaUkCh === false) {
+        navStyle.textContent = hideRules(REGIONAL_IDS);    // show global links only
+      }
+      // Anything else: leave all four hidden.
+    })
+    .catch(function (error) {
+      console.error('[rbx-geo] nav check failed:', error);  // leave all four hidden
+    });
+})();
+</script><style id="rbx-geo-nav">a[href*="/articles/115004647846"]:not(.article-body a[href*="/articles/115004647846"]):not(.custom-article a[href*="/articles/115004647846"]) { display: none !important; }li:has(> a[href*="/articles/115004647846"]):not(.article-body li):not(.custom-article li) { display: none !important; }a[href*="/articles/14663412502676"]:not(.article-body a[href*="/articles/14663412502676"]):not(.custom-article a[href*="/articles/14663412502676"]) { display: none !important; }li:has(> a[href*="/articles/14663412502676"]):not(.article-body li):not(.custom-article li) { display: none !important; }</style>
   
 <style>/*!
  * Copyright Zendesk, Inc.
@@ -1098,11 +1141,27 @@ Here’s a...">
                 </li>
               
                 <li>
+                  <a href="/hc/en-us/articles/52986395990932-Roblox-Terms-of-Use" class="sidenav-item ">Roblox Terms of Use</a>
+                </li>
+              
+                <li>
                   <a href="/hc/en-us/articles/115004630823-Roblox-Privacy-and-Cookie-Policy" class="sidenav-item current-article">Roblox Privacy and Cookie Policy</a>
                 </li>
               
                 <li>
                   <a href="/hc/en-us/articles/203313410-Roblox-Community-Standards" class="sidenav-item ">Roblox Community Standards</a>
+                </li>
+              
+                <li>
+                  <a href="/hc/en-us/articles/52986438082068-Roblox-is-Updating-our-Terms-of-Use" class="sidenav-item ">Roblox is Updating our Terms of Use</a>
+                </li>
+              
+                <li>
+                  <a href="/hc/en-us/articles/14663412502676-Roblox-is-Updating-our-Terms-of-Use" class="sidenav-item ">Roblox is Updating our Terms of Use</a>
+                </li>
+              
+                <li>
+                  <a href="/hc/en-us/articles/14663460303380-Roblox-is-Updating-our-Roblox-Privacy-and-Cookie-Policy" class="sidenav-item ">Roblox is Updating our Roblox Privacy and Cookie Policy</a>
                 </li>
               
                 <li>
@@ -1115,22 +1174,6 @@ Here’s a...">
               
                 <li>
                   <a href="/hc/en-us/articles/360059080071-Roblox-Accessibility-Statement" class="sidenav-item ">Roblox Accessibility Statement</a>
-                </li>
-              
-                <li>
-                  <a href="/hc/en-us/articles/46804865425300-Roblox-Subscription-Terms" class="sidenav-item ">Roblox Subscription Terms</a>
-                </li>
-              
-                <li>
-                  <a href="/hc/en-us/articles/52737229124628-Roblox-Plus-Referral-Program-Terms" class="sidenav-item ">Roblox Plus Referral Program Terms</a>
-                </li>
-              
-                <li>
-                  <a href="/hc/en-us/articles/21416271342868-Content-Moderation-on-Roblox" class="sidenav-item ">Content Moderation on Roblox</a>
-                </li>
-              
-                <li>
-                  <a href="/hc/en-us/articles/21416941036564-Recommendations-and-Ranking-on-Roblox" class="sidenav-item ">Recommendations and Ranking on Roblox</a>
                 </li>
               
             </ul>
@@ -1154,15 +1197,17 @@ Here’s a...">
 
       <section class="article-info">
         <div class="article-content">
-          <div class="article-body"><div class="custom-sidebar-toc"><ul><li class="section-title"><a href="#welcome">Welcome to the Roblox Privacy Policy</a></li><li class="section-title"><a href="#under13">Are you Under 13 or responsible for an under-13-year-old?</a></li><li class="section-title"><a href="#when-collect-your-info">When we collect your information</a><ul><li class="blurb-title"><a href="#setting-up-Roblox-account">Setting up a Roblox account</a></li><li class="blurb-title"><a href="#purchases-on-roblox">Purchases on Roblox</a></li><li class="blurb-title"><a href="#posting-content">Posting content</a></li><li class="blurb-title"><a href="#asking-questions-tech-support">Asking questions or getting technical support</a></li><li class="blurb-title"><a href="#using-roblox-features">Using Roblox features</a></li><li class="blurb-title"><a href="#competitions-promotions-research">Competitions, promotions and research</a></li><li class="blurb-title"><a href="#advertising">Advertising</a></li><li class="blurb-title"><a href="#if-developer-creator">If you’re a developer or creator</a></li><li class="blurb-title"><a href="#other-purposes-collecting-info">Other purposes for collecting your information</a></li><li class="blurb-title"><a href="#cookies-similar-technology">Cookies and similar technologies</a></li><li class="blurb-title"><a href="#on-corporate-websites-job-applications">On our corporate websites or in job applications</a></li></ul></li><li class="section-title"><a href="#when-share-your-info">When we share your information</a><ul><li class="blurb-title"><a href="#may-share-info-where-necessary">We may share Personal Information where necessary</a></li><li class="blurb-title"><a href="#may-disclose-personal-info-to-third-parties">We may disclose Personal Information to third parties</a></li><li class="blurb-title"><a href="#may-share-info-doesnt-indentify-you">We may share information that does not identify you</a></li><li class="blurb-title"><a href="#not-responsible-if-you-share-your-own-info">We’re not responsible if you share your own Personal Information</a></li></ul></li><li class="section-title"><a href="#looking-after-your-info">Looking after your information</a><ul><li class="blurb-title"><a href="#security-measures">Security measures</a></li><li class="blurb-title"><a href="#well-tell-you-if-privacy-at-risk">We’ll tell you if your privacy is at risk</a></li><li class="blurb-title"><a href="#how-long-keep-info">How long we keep your information</a></li><li class="blurb-title"><a href="#where-store-info">Where we store your information</a></li></ul></li><li class="section-title"><a href="#privacy-policy-changes-and-updates">Privacy Policy Changes and Updates</a></li><li class="section-title"><a href="#additional-info-where-live">Additional information based on where you live</a><ul><li class="blurb-title"><a href="#live-us">If you live in the United States</a></li><li class="blurb-title"><a href="#live-korea">If you live in the Republic of Korea</a></li><li class="blurb-title"><a href="#live-eea-uk-switzerland">If you live in the European Economic Area (EEA), the United Kingdom (UK) or Switzerland</a><ul><li class="sub-blurb-title"><a href="#eea-uk-switzerland-categories-info-data-processing-purposes">Categories of Personal Information and Data Processing Purposes</a></li><li class="sub-blurb-title"><a href="#eea-uk-switzerland-automated-decision-making">Automated Decision-Making</a></li><li class="sub-blurb-title"><a href="#eea-uk-switzerland-pii-children-parental-consent">Personal Information of Children and Parental Consent</a></li><li class="sub-blurb-title"><a href="#eea-uk-switzerland-data-sharing">Data Sharing</a></li><li class="sub-blurb-title"><a href="#eea-uk-switzerland-legal-disclosure">Legal disclosure</a></li><li class="sub-blurb-title"><a href="#eea-uk-switzerland-storage-internation-transfer-pii">Storage and international transfer of your Personal Information</a></li><li class="sub-blurb-title"><a href="#eea-uk-switzerland-rights-as-data-subject">Your rights as a Data Subject</a></li></ul></li><li class="blurb-title"><a href="#live-brazil">If you live in Brazil</a><ul><li class="sub-blurb-title"><a href="#brazil-categories-info-data-processing-purposes">Categories of Personal Information and Data Processing Purposes</a></li><li class="sub-blurb-title"><a href="#brazil-automated-decision-making">Automated Decision-Making</a></li><li class="sub-blurb-title"><a href="#brazil-pii-children-parental-consent">Personal Information of Children and Parental Consent</a></li><li class="sub-blurb-title"><a href="#brazil-data-sharing">Data Sharing</a></li><li class="sub-blurb-title"><a href="#brazil-legal-disclosure">Legal disclosure</a></li><li class="sub-blurb-title"><a href="#brazil-storage-international-transfer-pii">Storage and international transfer of your Personal Information</a></li><li class="sub-blurb-title"><a href="#brazil-rights-as-data-subject">Your rights as a Data Subject</a></li></ul></li></ul></li><li class="section-title"><a href="#change-summary">Summary of Recent Changes</a></li></ul></div><div class="custom-article">
-<div class="last-updated">Effective Date: April 30, 2026</div>
+          <div class="article-body"><div class="“custom-sidebar-toc”"></div><div class="custom-article">
+<div>Effective Date: November 1, 2026</div>
 <p><a href="#change-summary">Summary of Recent Changes</a></p>
-<p>We are updating our <a href="https://www.roblox.com/info/privacy" target="_blank" rel="noopener noreferrer">Roblox Privacy and Cookie Policy</a>, effective April 30, 2026, to reflect certain changes we are making on Roblox.</p>
+<p>We are updating our&nbsp;<a href="https://www.roblox.com/info/privacy" target="_blank" rel="noopener noreferrer">Roblox Privacy and Cookie Policy</a>, effective November 1, 2026, to reflect certain changes we are making on Roblox.</p>
 <p>Here’s a high-level summary of the changes we are making:</p>
 <ul>
-<li data-list-item-id="e99992e4faeeefc8cac51bacd938f61b3">We added language clarifying who can see personalized ads and non-personalized ads on Roblox.</li>
-<li data-list-item-id="ec7302ef15cf867c66050b98886d976ad">We added language describing our practices for sharing information with authorities.</li>
+<li data-list-item-id="ed43d255c6220fcce0a15a14b01e0e726">We added language describing regional variation for access to certain features.</li>
+<li data-list-item-id="e594d21b7c0af0135f919a618af840e52">We added information about data collection from researchers.</li>
+<li data-list-item-id="e0a638f0f33e13c7787b5407ae0d62f86">We added language describing our practices for sharing information with authorities.</li>
 </ul>
+<p>Click&nbsp;<a href="https://en.help.roblox.com/hc/articles/14663460303380">here</a>&nbsp;to review the upcoming changes.</p>
 <p>You can also find the full Privacy Policy&nbsp;<a href="/hc/article_attachments/38873040764180" target="_blank" rel="noopener noreferrer">here</a>.</p>
 <ol class="custom-ol">
 <li data-list-item-id="e1c05d328f019679ce6dc323354d4165e"><details class="article-section" id="welcome" open="open"><summary>Welcome to the Roblox Privacy Policy</summary><div class="article-content">
@@ -1701,10 +1746,6 @@ Here’s a...">
 </div></details></div></details></div>
 </div></details></li>
 </ol>
-<details class="article-section" id="change-summary" open=""><summary>Summary of Recent Changes</summary><div class="article-content"><ul>
-<li data-list-item-id="e21e5395149784a287a5fac251d269621">We added language clarifying who can see personalized ads and non-personalized ads on Roblox.</li>
-<li data-list-item-id="e6ab925ec7afd58e91cc452ea488e4d3c">We added language describing our practices for sharing information with authorities.</li>
-</ul></div></details><div class="last-updated">Effective Date: April 30, 2026<br>Last Updated: April 30, 2026</div>
 </div><script id="ksp-seals-script" data-product="dinA41Z0ePfzIzW9sZWcvOokwNgdTpsQlDf5Ahb5" src="https://kidsafe.com/js/seals/seals.js"></script></div>
           
 <!--           Add content tags to articles and posts -->
@@ -1718,9 +1759,9 @@ Here’s a...">
                     <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" focusable="false" viewBox="0 0 16 16" class="attachment-icon">
                       <path fill="none" stroke="currentColor" stroke-linecap="round" d="M9.5 4v7.7c0 .8-.7 1.5-1.5 1.5s-1.5-.7-1.5-1.5V3C6.5 1.6 7.6.5 9 .5s2.5 1.1 2.5 2.5v9c0 1.9-1.6 3.5-3.5 3.5S4.5 13.9 4.5 12V4"></path>
                     </svg>
-                    <a href="/hc/en-us/article_attachments/38873022122644" target="_blank"> AR - شروط استخدام Roblox 20260430.pdf</a>
+                    <a href="/hc/en-us/article_attachments/38873022122644" target="_blank">AR - سياسة الخصوصية وملفات تعريف الارتباط الخاصة بـ Roblox 20261101.pdf</a>
                     <div class="attachment-meta meta-group">
-                      <span class="attachment-meta-item meta-data">2 MB</span>
+                      <span class="attachment-meta-item meta-data">900 KB</span>
                       <a href="/hc/en-us/article_attachments/38873022122644" target="_blank" class="attachment-meta-item meta-data">Download</a>
                     </div>
                   </li>
@@ -1740,7 +1781,7 @@ Here’s a...">
                     <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" focusable="false" viewBox="0 0 16 16" class="attachment-icon">
                       <path fill="none" stroke="currentColor" stroke-linecap="round" d="M9.5 4v7.7c0 .8-.7 1.5-1.5 1.5s-1.5-.7-1.5-1.5V3C6.5 1.6 7.6.5 9 .5s2.5 1.1 2.5 2.5v9c0 1.9-1.6 3.5-3.5 3.5S4.5 13.9 4.5 12V4"></path>
                     </svg>
-                    <a href="/hc/en-us/article_attachments/38873040764180" target="_blank">EN - Roblox Privacy and Cookie Policy 20260430.pdf</a>
+                    <a href="/hc/en-us/article_attachments/38873040764180" target="_blank">EN-US - Roblox Privacy and Cookie Policy 20261101.pdf</a>
                     <div class="attachment-meta meta-group">
                       <span class="attachment-meta-item meta-data">500 KB</span>
                       <a href="/hc/en-us/article_attachments/38873040764180" target="_blank" class="attachment-meta-item meta-data">Download</a>
@@ -1817,9 +1858,9 @@ Here’s a...">
                     <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" focusable="false" viewBox="0 0 16 16" class="attachment-icon">
                       <path fill="none" stroke="currentColor" stroke-linecap="round" d="M9.5 4v7.7c0 .8-.7 1.5-1.5 1.5s-1.5-.7-1.5-1.5V3C6.5 1.6 7.6.5 9 .5s2.5 1.1 2.5 2.5v9c0 1.9-1.6 3.5-3.5 3.5S4.5 13.9 4.5 12V4"></path>
                     </svg>
-                    <a href="/hc/en-us/article_attachments/38873079243924" target="_blank">NL - privacy- en cookiebeleid van Roblox 20260430.pdf</a>
+                    <a href="/hc/en-us/article_attachments/38873079243924" target="_blank">NL - Privacy- en cookiebeleid van Roblox 20261101.pdf</a>
                     <div class="attachment-meta meta-group">
-                      <span class="attachment-meta-item meta-data">200 KB</span>
+                      <span class="attachment-meta-item meta-data">300 KB</span>
                       <a href="/hc/en-us/article_attachments/38873079243924" target="_blank" class="attachment-meta-item meta-data">Download</a>
                     </div>
                   </li>
@@ -2176,6 +2217,50 @@ Here’s a...">
                     </div>
                   </li>
                 
+                  <li class="attachment-item">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" focusable="false" viewBox="0 0 16 16" class="attachment-icon">
+                      <path fill="none" stroke="currentColor" stroke-linecap="round" d="M9.5 4v7.7c0 .8-.7 1.5-1.5 1.5s-1.5-.7-1.5-1.5V3C6.5 1.6 7.6.5 9 .5s2.5 1.1 2.5 2.5v9c0 1.9-1.6 3.5-3.5 3.5S4.5 13.9 4.5 12V4"></path>
+                    </svg>
+                    <a href="/hc/en-us/article_attachments/54135014188180" target="_blank">TE - Roblox గోప్యతా మరియు కుకీల పాలసీని 20261101.pdf</a>
+                    <div class="attachment-meta meta-group">
+                      <span class="attachment-meta-item meta-data">700 KB</span>
+                      <a href="/hc/en-us/article_attachments/54135014188180" target="_blank" class="attachment-meta-item meta-data">Download</a>
+                    </div>
+                  </li>
+                
+                  <li class="attachment-item">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" focusable="false" viewBox="0 0 16 16" class="attachment-icon">
+                      <path fill="none" stroke="currentColor" stroke-linecap="round" d="M9.5 4v7.7c0 .8-.7 1.5-1.5 1.5s-1.5-.7-1.5-1.5V3C6.5 1.6 7.6.5 9 .5s2.5 1.1 2.5 2.5v9c0 1.9-1.6 3.5-3.5 3.5S4.5 13.9 4.5 12V4"></path>
+                    </svg>
+                    <a href="/hc/en-us/article_attachments/54135014190996" target="_blank">EN-GB - Roblox Privacy and Cookie Policy 20261101.pdf</a>
+                    <div class="attachment-meta meta-group">
+                      <span class="attachment-meta-item meta-data">200 KB</span>
+                      <a href="/hc/en-us/article_attachments/54135014190996" target="_blank" class="attachment-meta-item meta-data">Download</a>
+                    </div>
+                  </li>
+                
+                  <li class="attachment-item">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" focusable="false" viewBox="0 0 16 16" class="attachment-icon">
+                      <path fill="none" stroke="currentColor" stroke-linecap="round" d="M9.5 4v7.7c0 .8-.7 1.5-1.5 1.5s-1.5-.7-1.5-1.5V3C6.5 1.6 7.6.5 9 .5s2.5 1.1 2.5 2.5v9c0 1.9-1.6 3.5-3.5 3.5S4.5 13.9 4.5 12V4"></path>
+                    </svg>
+                    <a href="/hc/en-us/article_attachments/54135014194580" target="_blank">TA - Roblox தனியுரிமை மற்றும் குக்கீ கொள்கையை 20261101.pdf</a>
+                    <div class="attachment-meta meta-group">
+                      <span class="attachment-meta-item meta-data">700 KB</span>
+                      <a href="/hc/en-us/article_attachments/54135014194580" target="_blank" class="attachment-meta-item meta-data">Download</a>
+                    </div>
+                  </li>
+                
+                  <li class="attachment-item">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" focusable="false" viewBox="0 0 16 16" class="attachment-icon">
+                      <path fill="none" stroke="currentColor" stroke-linecap="round" d="M9.5 4v7.7c0 .8-.7 1.5-1.5 1.5s-1.5-.7-1.5-1.5V3C6.5 1.6 7.6.5 9 .5s2.5 1.1 2.5 2.5v9c0 1.9-1.6 3.5-3.5 3.5S4.5 13.9 4.5 12V4"></path>
+                    </svg>
+                    <a href="/hc/en-us/article_attachments/54135014199188" target="_blank">HI - Roblox प्राइवेसी और कुकी पॉलिसी 20261101.pdf</a>
+                    <div class="attachment-meta meta-group">
+                      <span class="attachment-meta-item meta-data">700 KB</span>
+                      <a href="/hc/en-us/article_attachments/54135014199188" target="_blank" class="attachment-meta-item meta-data">Download</a>
+                    </div>
+                  </li>
+                
               </ul>
             </div>
           
@@ -2315,9 +2400,9 @@ Here’s a...">
             
             	
             		
-            	
-            
-            	
+                  <a href="/hc/change_language/bg-bg?return_to=%2Fhc%2Fbg-bg%2Farticles%2F115004630823-%25D0%259F%25D0%25BE%25D0%25BB%25D0%25B8%25D1%2582%25D0%25B8%25D0%25BA%25D0%25B0%25D1%2582%25D0%25B0-%25D0%25B7%25D0%25B0-%25D0%25BF%25D0%25BE%25D0%25B2%25D0%25B5%25D1%2580%25D0%25B8%25D1%2582%25D0%25B5%25D0%25BB%25D0%25BD%25D0%25BE%25D1%2581%25D1%2582-%25D0%25B8-%25D0%25B1%25D0%25B8%25D1%2581%25D0%25BA%25D0%25B2%25D0%25B8%25D1%2582%25D0%25BA%25D0%25B8-%25D0%25BD%25D0%25B0-Roblox" dir="ltr" rel="nofollow" role="menuitem" style="display: none;">
+                    Български (България)
+                  </a>
             		
             	
             
@@ -2327,9 +2412,9 @@ Here’s a...">
             
             	
             		
-            	
-            
-            	
+                  <a href="/hc/change_language/bn-in?return_to=%2Fhc%2Fbn-in%2Farticles%2F115004630823-Roblox-%25E0%25A6%2597%25E0%25A7%258B%25E0%25A6%25AA%25E0%25A6%25A8%25E0%25A7%2580%25E0%25A7%259F%25E0%25A6%25A4%25E0%25A6%25BE-%25E0%25A6%25A8%25E0%25A7%2580%25E0%25A6%25A4%25E0%25A6%25BF-%25E0%25A6%258F%25E0%25A6%25AC%25E0%25A6%2582-%25E0%25A6%2595%25E0%25A7%2581%25E0%25A6%2595%25E0%25A6%25BF-%25E0%25A6%25AA%25E0%25A6%25B2%25E0%25A6%25BF%25E0%25A6%25B8%25E0%25A6%25BF" dir="ltr" rel="nofollow" role="menuitem" style="display: none;">
+                    বাংলা (ভারত)
+                  </a>
             		
             	
             
@@ -2338,6 +2423,22 @@ Here’s a...">
             	
             
             	
+            		
+                  <a href="/hc/change_language/cs?return_to=%2Fhc%2Fcs%2Farticles%2F115004630823-Z%25C3%25A1sady-ochrany-osobn%25C3%25ADch-%25C3%25BAdaj%25C5%25AF-a-soubor%25C5%25AF-cookie-Robloxu" dir="ltr" rel="nofollow" role="menuitem">
+                    Čeština
+                  </a>
+            		
+            	
+            
+            	
+            		
+            	
+            
+            	
+            		
+                  <a href="/hc/change_language/da?return_to=%2Fhc%2Fda%2Farticles%2F115004630823-Privatlivs-og-cookie-politik-for-Roblox" dir="ltr" rel="nofollow" role="menuitem">
+                    Dansk
+                  </a>
             		
             	
             
@@ -2359,24 +2460,8 @@ Here’s a...">
             
             	
             		
-            	
-            
-            	
-            		
-            	
-            
-            	
-            		
-            	
-            
-            	
-            		
-            	
-            
-            	
-            		
-                  <a href="/hc/change_language/es?return_to=%2Fhc%2Fes%2Farticles%2F115004630823-Pol%25C3%25ADtica-de-privacidad-y-de-cookies-de-Roblox" dir="ltr" rel="nofollow" role="menuitem">
-                    Español
+                  <a href="/hc/change_language/el?return_to=%2Fhc%2Fel%2Farticles%2F115004630823-%25CE%25A0%25CE%25BF%25CE%25BB%25CE%25B9%25CF%2584%25CE%25B9%25CE%25BA%25CE%25AE-%25CE%25B1%25CF%2580%25CE%25BF%25CF%2581%25CF%2581%25CE%25AE%25CF%2584%25CE%25BF%25CF%2585-%25CE%25BA%25CE%25B1%25CE%25B9-Cookie-%25CF%2584%25CE%25BF%25CF%2585-Roblox" dir="ltr" rel="nofollow" role="menuitem">
+                    Ελληνικά
                   </a>
             		
             	
@@ -2390,6 +2475,42 @@ Here’s a...">
             	
             
             	
+            		
+                  <a href="/hc/change_language/en-gb?return_to=%2Fhc%2Fen-gb%2Farticles%2F115004630823-Roblox-Privacy-and-Cookie-Policy" dir="ltr" rel="nofollow" role="menuitem">
+                    English (United Kingdom)
+                  </a>
+            		
+            	
+            
+            	
+            		
+                  <a href="/hc/change_language/es?return_to=%2Fhc%2Fes%2Farticles%2F115004630823-Pol%25C3%25ADtica-de-privacidad-y-de-cookies-de-Roblox" dir="ltr" rel="nofollow" role="menuitem">
+                    Español
+                  </a>
+            		
+            	
+            
+            	
+            		
+                  <a href="/hc/change_language/es-es?return_to=%2Fhc%2Fes-es%2Farticles%2F115004630823-Pol%25C3%25ADtica-de-privacidad-y-de-cookies-de-Roblox" dir="ltr" rel="nofollow" role="menuitem">
+                    Español (España)
+                  </a>
+            		
+            	
+            
+            	
+            		
+                  <a href="/hc/change_language/et-ee?return_to=%2Fhc%2Fet-ee%2Farticles%2F115004630823-Robloxi-privaatsus-ja-k%25C3%25BCpsisepoliitikat" dir="ltr" rel="nofollow" role="menuitem" style="display: none;">
+                    eesti (Eesti)
+                  </a>
+            		
+            	
+            
+            	
+            		
+                  <a href="/hc/change_language/fi?return_to=%2Fhc%2Ffi%2Farticles%2F115004630823-Robloxin-tietosuoja-ja-ev%25C3%25A4stek%25C3%25A4yt%25C3%25A4nt%25C3%25B6%25C3%25A4" dir="ltr" rel="nofollow" role="menuitem">
+                    Suomi
+                  </a>
             		
             	
             
@@ -2415,6 +2536,10 @@ Here’s a...">
             
             	
             		
+                  <a href="/hc/change_language/ga?return_to=%2Fhc%2Fga%2Farticles%2F115004630823-Polasa%25C3%25AD-Pr%25C3%25ADobh%25C3%25A1ideachta-agus-Fian%25C3%25A1n-Roblox" dir="ltr" rel="nofollow" role="menuitem">
+                    Gaeilge
+                  </a>
+            		
             	
             
             	
@@ -2431,9 +2556,17 @@ Here’s a...">
             
             	
             		
+                  <a href="/hc/change_language/hr-hr?return_to=%2Fhc%2Fhr-hr%2Farticles%2F115004630823-Robloxova-Pravila-o-privatnosti-i-kola%25C4%258Di%25C4%2587ima" dir="ltr" rel="nofollow" role="menuitem" style="display: none;">
+                    hrvatski (Hrvatska)
+                  </a>
+            		
             	
             
             	
+            		
+                  <a href="/hc/change_language/hu-hu?return_to=%2Fhc%2Fhu-hu%2Farticles%2F115004630823-Roblox-Adatv%25C3%25A9delmi-%25C3%25A9s-cookie-kra-vonatkoz%25C3%25B3-szab%25C3%25A1lyzat%25C3%25A1t" dir="ltr" rel="nofollow" role="menuitem">
+                    Magyar (Magyarország)
+                  </a>
             		
             	
             
@@ -2503,9 +2636,17 @@ Here’s a...">
             
             	
             		
+                  <a href="/hc/change_language/lt-lt?return_to=%2Fhc%2Flt-lt%2Farticles%2F115004630823--Roblox-privatumo-ir-slapuk%25C5%25B3-politik%25C4%2585" dir="ltr" rel="nofollow" role="menuitem">
+                    Lietuvių (Lietuva)
+                  </a>
+            		
             	
             
             	
+            		
+                  <a href="/hc/change_language/lv-lv?return_to=%2Fhc%2Flv-lv%2Farticles%2F115004630823--Roblox-priv%25C4%2581tuma-un-s%25C4%25ABkdat%25C5%2586u-politiku" dir="ltr" rel="nofollow" role="menuitem">
+                    Latviešu (Latvija)
+                  </a>
             		
             	
             
@@ -2526,6 +2667,10 @@ Here’s a...">
             	
             
             	
+            		
+                  <a href="/hc/change_language/mt?return_to=%2Fhc%2Fmt%2Farticles%2F115004630823-Politika-tag%25C4%25A7na-ta-Roblox-dwar-il-Privatezza-u-l-Cookie" dir="ltr" rel="nofollow" role="menuitem">
+                    Malti
+                  </a>
             		
             	
             
@@ -2571,6 +2716,10 @@ Here’s a...">
             
             	
             		
+                  <a href="/hc/change_language/pt?return_to=%2Fhc%2Fpt%2Farticles%2F115004630823-Pol%25C3%25ADtica-de-Privacidade-e-Cookies-do-Roblox" dir="ltr" rel="nofollow" role="menuitem">
+                    Português
+                  </a>
+            		
             	
             
             	
@@ -2587,9 +2736,33 @@ Here’s a...">
             
             	
             		
+                  <a href="/hc/change_language/ro-ro?return_to=%2Fhc%2Fro-ro%2Farticles%2F115004630823-Politica-de-confiden%25C8%259Bialitate-%25C8%2599i-cookie-uri-Roblox" dir="ltr" rel="nofollow" role="menuitem">
+                    Română (România)
+                  </a>
+            		
             	
             
             	
+            		
+            	
+            
+            	
+            		
+                  <a href="/hc/change_language/sk?return_to=%2Fhc%2Fsk%2Farticles%2F115004630823-Z%25C3%25A1sady-ochrany-osobn%25C3%25BDch-%25C3%25BAdajov-a-s%25C3%25BAborov-cookie-Roblox" dir="ltr" rel="nofollow" role="menuitem">
+                    Slovenčina
+                  </a>
+            		
+            	
+            
+            	
+            		
+            	
+            
+            	
+            		
+                  <a href="/hc/change_language/sl-si?return_to=%2Fhc%2Fsl-si%2Farticles%2F115004630823-Pravilnik-o-zasebnosti-in-pi%25C5%25A1kotkih-dru%25C5%25BEbe-Roblox" dir="ltr" rel="nofollow" role="menuitem" style="display: none;">
+                    Slovenian (Slovenia)
+                  </a>
             		
             	
             
@@ -2603,17 +2776,9 @@ Here’s a...">
             
             	
             		
-            	
-            
-            	
-            		
-            	
-            
-            	
-            		
-            	
-            
-            	
+                  <a href="/hc/change_language/sv?return_to=%2Fhc%2Fsv%2Farticles%2F115004630823-Roblox-integritets-och-cookiepolicy" dir="ltr" rel="nofollow" role="menuitem">
+                    Svenska
+                  </a>
             		
             	
             
@@ -2729,7 +2894,7 @@ Here’s a...">
   
   
   <script src="//static.zdassets.com/hc/assets/hc_enduser-78af5281140b77ca7ddc939085b006b7.js"></script>
-  <script type="text/javascript" src="/hc/theming_assets/26563/325214/script.js?digest=53257224858900"></script>
+  <script type="text/javascript" src="/hc/theming_assets/26563/325214/script.js?digest=54140105326868"></script>
   
 
 <span class="algolia-autocomplete" style="position: absolute; z-index: 100; display: none; direction: ltr;"><span class="aa-dropdown-menu" role="listbox" id="algolia-autocomplete-listbox-0" style="display: block; left: 0px; right: auto;"><div class="aa-dataset-articles"></div></span></span><div id="_evidon_banner" class="evidon-banner" role="dialog" aria-label="Cookie notice banner" tabindex="1" style="position: fixed; display: block; background: rgb(22, 34, 39); font-size: 1rem; color: rgb(242, 244, 243); bottom: 0px; left: 0px; right: 0px; padding: 1.5rem; z-index: 2147483647; border-top: 1px solid rgb(52, 58, 64);"><div id="_evidon-title" class="evidon-banner-title" style="display: block; font-size: 1.5rem; font-weight: bold; text-align: center; color: rgb(242, 244, 243); margin: 0px auto 1.5rem;">About Cookies On This Site</div><div id="_evidon-message" class="evidon-banner-message" style="display: block; margin: 0px auto 1.5rem; color: rgb(242, 244, 243); font-size: 1rem; max-width: 960px;">We use cookies to personalize and enhance your experience on our site. Visit our  <a tabindex="2" href="https://en.help.roblox.com/hc/en-us/articles/115004630823-Roblox-Privacy-and-Cookie-Policy-" target="_blank" style="text-decoration: underline"><font color="FFFFFF">Privacy Policy</font></a> for more information on our data collection practices. By clicking Accept, you agree to our use of cookies for the purposes listed in our  <a tabindex="2" href="#" onclick="event.preventDefault(); window.evidon.notice.showOptions();" style="text-decoration: underline"><font color="FFFFFF">Cookie Consent Tool</font></a>. To see a complete list of the companies that use these cookies and other technologies and to tell us whether they can be used on your device or not, access our Cookie Consent Tool. You will see this message only once, but you will always be able to set your preferences at any time in the Cookie Consent Tool.</div><button id="_evidon-accept-button" class="evidon-banner-acceptbutton" aria-label="Accept All" tabindex="3" style="display: inline-block; border: 0px; color: rgb(57, 59, 61); background: rgb(242, 244, 243); padding: 7px 22px; cursor: pointer; border-radius: 8px; line-height: 22px; float: right; margin: 0px 12px 0px 0px;">Accept All</button><button id="_evidon-option-button" class="evidon-banner-optionbutton" role="button" aria-label="Cookie Consent, Opens the preference dialog." tabindex="3" style="display: inline-block; padding: 8px 0px; background: transparent; border-radius: 4px; color: rgb(242, 244, 243); cursor: pointer; border: 0px; text-decoration: underline; margin: 0px 6px 8px 0px !important;">Cookie Consent</button></div></body></html>
