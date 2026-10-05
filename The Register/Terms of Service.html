@@ -474,7 +474,61 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
                 <script type="application/ld+json">
                     [{"@context":"http://schema.org","@type":"WebSite","name":"theregister","url":"https://www.theregister.com"},{"@context":"https://schema.org","@type":"WebPage","url":"https://www.theregister.com/profile/terms_and_conditions_of_use","name":"Terms & Conditions | The Register","description":"","publisher":{"@type":"Organization","name":"theregister","url":"https://www.theregister.com","logo":{"@type":"ImageObject","url":"https://www.theregister.com/view-resources/dachser2/public/theregister/logo.svg"}}}]
                 </script>                
-                
+                <script >(function () {
+    const root = document.documentElement;
+    let current = null;
+
+    function screenWidth() {
+        const landscape = window.matchMedia('(orientation: landscape)').matches;
+        return landscape ? Math.max(screen.width, screen.height) : Math.min(screen.width, screen.height);
+    }
+
+    function detectZoom() {
+        const vv = window.visualViewport;
+        // Phones and tablets only, anything else counts as not zoomed
+        if (!vv || !window.matchMedia('(pointer: coarse)').matches) return 1;
+
+        // Page width: shrinks with page zoom, not affected by pinch zoom
+        const layoutWidth = root.clientWidth;
+        const sw = screenWidth();
+
+        if (vv.scale > 1.02) {
+            // Safari Aa: the page width has shrunk AND page width x scale is about the screen width.
+            // Pinch zoom doesn't shrink the page width, so it never matches this.
+            if (layoutWidth < sw * 0.92 && Math.abs(layoutWidth * vv.scale - sw) / sw < 0.08) return vv.scale;
+            // Pinch zoom: keep the last value
+            return null;
+        }
+
+        // Chrome on Android: scale stays 1, the page width shrinks while the window width stays the same
+        const ratio = window.outerWidth ? window.outerWidth / layoutWidth : 1;
+        return ratio >= 1.1 ? ratio : 1;
+    }
+
+    function update() {
+        let zoom = detectZoom();
+        if (zoom === null) return;
+
+        zoom = Math.round(zoom * 100) / 100;
+        if (zoom === current) return;
+        current = zoom;
+
+        // Only mark the page while zoomed in; at normal size nothing is added to the page
+        if (zoom > 1) {
+            root.style.setProperty('--lab-zoom', zoom);
+            root.classList.add('lab-zoomed');
+        } else {
+            root.style.removeProperty('--lab-zoom');
+            root.classList.remove('lab-zoomed');
+        }
+    }
+
+    update();
+    document.addEventListener('DOMContentLoaded', update);
+    window.addEventListener('pageshow', update);
+    window.addEventListener('resize', update);
+    if (window.visualViewport) window.visualViewport.addEventListener('resize', update);
+}());</script>
                 
                 <style >#pagination {
     text-align: center;
@@ -537,6 +591,32 @@ body.front .large-12.google-ad {
 padding-left: 0;
 padding-right: 0;
 }
+}</style><style >@media (max-width: 1023px) {
+    /* Keep login, logo and hamburger on one line, so the hamburger and menu stay in place */
+    .pageHeader .row.mainrow {
+        flex-wrap: nowrap;
+    }
+
+    /* Shrink the 70px slots around the logo by the zoom amount, so the logo keeps its size */
+    .pageHeader .row.mainrow .navigation.topBarMenu {
+        min-width: calc(70px / var(--lab-zoom, 1));
+    }
+
+    .pageHeader .row.mainrow .hamburger .hamburger-button {
+        width: calc(70px / var(--lab-zoom, 1));
+    }
+}
+
+/* Let the share icons (under the byline and below the article) wrap instead of making the page wider than the screen */
+.meta .social,
+.row.social > .column {
+    flex-wrap: wrap;
+    row-gap: 0.5rem;
+}</style><style >@media (max-width: 767px) {
+    /* Teaser text: magnify by the page zoom, whatever size it has (Font Styles or editor tm classes) */
+    .resp_fonts.lab-zoomed article.column .content :is(.headline, .subtitle, .kicker, .section) {
+        zoom: var(--lab-zoom, 1);
+    }
 }</style>
                 
 
@@ -1495,8 +1575,8 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 
         <section class="main front" id="main">
         <h1 class="hidden-heading">Terms &amp; Conditions | The Register</h1>
-            <div data-element-guid="feef0808-e049-418a-e47b-cb6c05afd104" class="placeholder placement-top">
-<div data-element-guid="392c2099-2e2e-4292-c038-0ce1536c1927" class="column google-ad small-12 large-12 small-abs-12 large-abs-12"  style="">
+            <div data-element-guid="0f826c41-3aec-4ca6-e35b-b593d917ff87" class="placeholder placement-top">
+<div data-element-guid="01e9d551-2832-4757-c03b-93a774575045" class="column google-ad small-12 large-12 small-abs-12 large-abs-12"  style="">
 
         <span class="ad-label">REG AD</span>
         <div class="adunit" id="labrador/thereg/front/desktop/a" style="min-height:90px;"></div>
