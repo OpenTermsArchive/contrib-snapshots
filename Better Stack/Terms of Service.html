@@ -47,8 +47,8 @@
 <link href='https://betterstack.com/terms' rel='canonical'>
 <meta content='https://betterstack.com/terms' property='og:url'>
 <meta name="csrf-param" content="authenticity_token" />
-<meta name="csrf-token" content="5IAiCMluosvzpldHP1JL1pk-cTdaBWk18VLJ4FsziBxI_2vpZ5T0lwmJjucrcBZamjMu3G0y7H3QfSzQtJoP0Q" />
-<meta name="csp-nonce" content="bc5c290aef3dd87f591f9ba808602818" />
+<meta name="csrf-token" content="uk4NXOu1zR-nYJo0PGjlNkoc56Qjjnn-32CKubrzfnVPOk9WPRhS-rXQSn9FmpKRihcjYdzOoZnenpVREuYa4Q" />
+<meta name="csp-nonce" content="beefa667cc935494f3585ee512de9db9" />
 <meta content='marketing.website' name='bs-surface'>
 
 
@@ -112,7 +112,7 @@
 
 
 <link rel="stylesheet" href="https://betterstack.com/assets/betterstack_v2-4aa073e1.css" media="all" data-turbo-track="reload" />
-<script type="application/javascript" nonce="bc5c290aef3dd87f591f9ba808602818">
+<script type="application/javascript" nonce="beefa667cc935494f3585ee512de9db9">
 //<![CDATA[
 // Recovers from the module load failures a fresh page load fixes: hashed bundles gone stale after
 // a deploy, and an origin that briefly fails to serve a hashed module.
@@ -179,7 +179,7 @@
 
 //]]>
 </script>
-<script type="importmap" data-turbo-track="reload" nonce="bc5c290aef3dd87f591f9ba808602818">{
+<script type="importmap" data-turbo-track="reload" nonce="beefa667cc935494f3585ee512de9db9">{
   "imports": {
     "admin_controllers/article_form_controller": "/assets/admin_controllers/article_form_controller-df8a7916.js",
     "admin_controllers": "/assets/admin_controllers/index-577d86b7.js",
@@ -354,7 +354,7 @@
     "components/forms/Toggle": "/assets/components/forms/Toggle-cf1a8471.js",
     "components/forms/Tooltip": "/assets/components/forms/Tooltip-4901b409.js",
     "components/forms/uppyLoader": "/assets/components/forms/uppyLoader-16803d05.js",
-    "components": "/assets/components/index-69630922.js",
+    "components": "/assets/components/index-8999294e.js",
     "components/monaco/editor": "/assets/components/monaco/editor-0590c3fb.js",
     "components/notifications/Dropdown": "/assets/components/notifications/Dropdown-35167b74.js",
     "components/notifications/Item": "/assets/components/notifications/Item-e945316f.js",
@@ -435,8 +435,8 @@
     "utils/isTouchDevice": "/assets/utils/isTouchDevice-ef97088e.js",
     "utils/levenshtein": "/assets/utils/levenshtein-a23ae51b.js",
     "utils/loadScript": "/assets/utils/loadScript-b2fe518e.js",
-    "utils/miniBindVueApp": "/assets/utils/miniBindVueApp-d1573a63.js",
-    "utils/mountVueApp": "/assets/utils/mountVueApp-d57cdb84.js",
+    "utils/miniBindVueApp": "/assets/utils/miniBindVueApp-80daf5b8.js",
+    "utils/mountVueApp": "/assets/utils/mountVueApp-7622d9ce.js",
     "utils/naturalLanguageTimeParser": "/assets/utils/naturalLanguageTimeParser-ecfa0c29.js",
     "utils/permissions": "/assets/utils/permissions-60f6a799.js",
     "utils/platformDetection": "/assets/utils/platformDetection-ab98f3d1.js",
@@ -551,10 +551,10 @@
     "marked": "https://cdnjs.betterstack.com/marked@4.3.0/lib/marked.esm.js"
   }
 }</script>
-<link rel="modulepreload" href="https://cdnjs.betterstack.com/vue@3.5.13/dist/vue.esm-browser.prod.js" nonce="bc5c290aef3dd87f591f9ba808602818">
-<link rel="modulepreload" href="/assets/vendor/pinia@3.0.0.prod-dc83e9f4.js" nonce="bc5c290aef3dd87f591f9ba808602818">
-<link rel="modulepreload" href="https://cdnjs.betterstack.com/vue-turbolinks@2.2.2/index.js" nonce="bc5c290aef3dd87f591f9ba808602818">
-<script type="module" nonce="bc5c290aef3dd87f591f9ba808602818">
+<link rel="modulepreload" href="https://cdnjs.betterstack.com/vue@3.5.13/dist/vue.esm-browser.prod.js" nonce="beefa667cc935494f3585ee512de9db9">
+<link rel="modulepreload" href="/assets/vendor/pinia@3.0.0.prod-dc83e9f4.js" nonce="beefa667cc935494f3585ee512de9db9">
+<link rel="modulepreload" href="https://cdnjs.betterstack.com/vue-turbolinks@2.2.2/index.js" nonce="beefa667cc935494f3585ee512de9db9">
+<script type="module" nonce="beefa667cc935494f3585ee512de9db9">
 //<![CDATA[
 !function(b,e,t,r){
   b[t]=b[t]||function(...args){(b[t].q=b[t].q||[]).push(args)};
@@ -563,6 +563,8 @@
   s.src='https://betterstack.net/b.js?t='+r;
   (e.head||e.getElementsByTagName('head')[0]).appendChild(s);
 }(window,document,'betterstack','aVNoLWfbToe2t8eM7abofTHL');
+// Every app reports into the one Better Stack tag, so tag events with the product they come from.
+betterstack('config', { sentry: { initialScope: { tags: { product: 'betterstack' } } } })
 betterstack('init', { environment: window.cfg.environment, release: window.cfg.app_version })
 function setBetterstackUser() {
   betterstack('user', {
@@ -580,7 +582,7 @@ document.addEventListener('turbo:load', setBetterstackUser)
 
 //]]>
 </script>
-<script nonce='bc5c290aef3dd87f591f9ba808602818' type='module'>import "common/aos"
+<script nonce='beefa667cc935494f3585ee512de9db9' type='module'>import "common/aos"
 import "common/lazy"
 import "common/recaptchaSubmit"
 import "common/data-disable-with-spinner"
@@ -603,9 +605,9 @@ import "common/site_settings_panel"
 
 </head>
 <body class='helvetica bg-[#0B0C14] text-neutral-200'>
-<script type="application/javascript" nonce="bc5c290aef3dd87f591f9ba808602818">
+<script type="application/javascript" nonce="beefa667cc935494f3585ee512de9db9">
 //<![CDATA[
-window.cfg = {"base_host":"betterstack.com","base_url":"https://betterstack.com","better_stack_url":"https://betterstack.com","uptime_url":"https://incidents.betterstack.com","logtail_url":"https://telemetry.betterstack.com","errors_url":"https://errors.betterstack.com","aisre_url":"https://chat.betterstack.com","rum_url":"https://rum.betterstack.com","cloud_url":"https://cloud.betterstack.com","warehouse_url":"https://warehouse.betterstack.com","controller":"betterstack","action":"terms","app":"betterstack","environment":"production","app_version":"a3d0185fc7763905126d13279d538812b2633c86"};
+window.cfg = {"base_host":"betterstack.com","base_url":"https://betterstack.com","better_stack_url":"https://betterstack.com","uptime_url":"https://incidents.betterstack.com","logtail_url":"https://telemetry.betterstack.com","errors_url":"https://errors.betterstack.com","aisre_url":"https://chat.betterstack.com","rum_url":"https://rum.betterstack.com","cloud_url":"https://cloud.betterstack.com","warehouse_url":"https://warehouse.betterstack.com","controller":"betterstack","action":"terms","app":"betterstack","environment":"production","app_version":"2da4c730dec8e57bb506cac7b673f417de64e66b"};
 
 
 //]]>
@@ -1168,7 +1170,7 @@ System status
 </footer>
 </div>
 
-<script nonce='bc5c290aef3dd87f591f9ba808602818' type='module'>
+<script nonce='beefa667cc935494f3585ee512de9db9' type='module'>
 import { front_identity_path } from 'routes'
 import WebStorageService from 'services/WebStorageService'
 
@@ -1227,7 +1229,7 @@ fetchIdentityAndInit()
 <img alt='' height='1' src='https://px.ads.linkedin.com/collect/?pid=8770794&amp;fmt=gif' style='display:none' width='1'>
 </noscript>
 
-<script type="application/javascript" nonce="bc5c290aef3dd87f591f9ba808602818">
+<script type="application/javascript" nonce="beefa667cc935494f3585ee512de9db9">
 //<![CDATA[
 window.recaptchaLoaded = false
 window.recaptchaLoading = null
