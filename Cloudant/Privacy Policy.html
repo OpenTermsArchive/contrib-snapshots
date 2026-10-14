@@ -69,11 +69,18 @@
       
 
     
-    <link rel="preload" href="/etc.clientlibs/adobe-cms/clientlibs/clientlib-masthead-container.lc-3cdb154c362a652eae334101ff9c98db-lc.min.js" as="script">
-
+    
 
 
     
+     <script type="text/javascript">
+        window.CARBON_LOADER_PATH = '/etc.clientlibs/adobe-cms/clientlibs/clientlib-carbon-dynamic-loader/resources/';
+     </script>
+
+    
+    <script src="/etc.clientlibs/adobe-cms/clientlibs/clientlib-carbon-dynamic-loader.lc-96bbcfdb94dd35ab81b4797a49db60fa-lc.min.js"></script>
+
+
 
     
     
@@ -110,10 +117,20 @@
       
     <style id="prevent-layout-shift-style">
     c4d-masthead-container:not(:defined) {
-        min-height: 114px; /* Reserve space before it loads */
+        min-height: 49px; /* Reserve space before it loads */
         display: block !important; 
         opacity: 0; /* Hide visually but keep space */
         transition: opacity 0.3s ease-in-out;
+    }
+
+    .masthead.hasNavigation c4d-masthead-container:not(:defined) {
+        min-height: 102px;
+    }
+
+    @media (min-width: 1056px) {
+        .masthead.hasNavigation c4d-masthead-container:not(:defined) {
+            min-height: 114px;
+        }
     }
 
     c4d-masthead-container:defined {
@@ -355,14 +372,14 @@
     
 
     
-    <script src="https://1.www.s81c.com/common/stats/ibm-common.js" type="text/javascript" async="async" fetchpriority="high"></script>
+    <script src="https://1.www.s81c.com/common/stats/ibm-common.js" type="text/javascript" async="async"></script>
 
     
     
     
 <link rel="stylesheet" href="/etc.clientlibs/adobe-cms/clientlibs/clientlib-base.lc-30313e00669f877069f15dd099f23454-lc.min.css" type="text/css">
 <link rel="stylesheet" href="/etc.clientlibs/adobe-cms/clientlibs/clientlib-idlStylesCarbon.lc-be7d2847dfdb7e200310550a1f065ccb-lc.min.css" type="text/css">
-<link rel="stylesheet" href="/etc.clientlibs/adobe-cms/clientlibs/clientlib-idlStyles.lc-3de231ecadcc9b6e4e349c29ebdffd00-lc.min.css" type="text/css">
+<link rel="stylesheet" href="/etc.clientlibs/adobe-cms/clientlibs/clientlib-idlStyles.lc-7dfb6b1d0ad1261af7aee0baa63f35c5-lc.min.css" type="text/css">
 
 
 
@@ -459,8 +476,7 @@
 
 
 
-    <script defer src="/etc.clientlibs/adobe-cms/clientlibs/clientlib-masthead-container.lc-3cdb154c362a652eae334101ff9c98db-lc.min.js"></script>
-
+    
 
 
     
@@ -526,24 +542,94 @@
 
 
 <script type="text/javascript">
-    if (window.location.href.includes("/careers"))
-      {
-         document.querySelector('c4d-masthead-container').setAttribute("has-search","false");
-         document.querySelector('c4d-masthead-container').setAttribute("has-profile","false");
+    if (window.location.href.includes("/careers")) {
+        document.querySelector('c4d-masthead-container').setAttribute("has-search","false");
+        document.querySelector('c4d-masthead-container').setAttribute("has-profile","false");
+    }
+    if (window.location.hostname.includes("businessofgovernment") ||  window.location.href.includes("/businessofgovernment")) {
+        // Start the function
+        updateTopNavHrefFromPlatform();
+    }
 
-      }
-
-       document.addEventListener("DOMContentLoaded", function() {
-          const mastheadContainer = document.querySelector("c4d-masthead-container");
-
-        if (mastheadContainer && mastheadContainer.getAttribute("has-global") === "false") {
-            document.querySelector('.earth-language-icon').style.display = 'none';
+    function updateTopNavHrefFromPlatform() {
+        // Step 1: get the masthead container
+        var mastheadContainer = document.querySelector('c4d-masthead-container');
+        if (!mastheadContainer) {
+            setTimeout(updateTopNavHrefFromPlatform, 5000); // retry if not yet loaded
+            return;
         }
-        else{
-            document.querySelector('.earth-language-icon').style.setProperty('display', 'block', 'important');
+
+        // Step 2: get the platform URL
+        var platformUrl = mastheadContainer.getAttribute('platformurl');
+        if (!platformUrl) {
+            console.log('No platformurl found');
+            return;
         }
 
-    if (mastheadContainer && mastheadContainer.getAttribute("brand") === "businessofgovernment") {
+        // Step 3: get the masthead shadow root
+        var masthead = document.querySelector('c4d-masthead');
+        if (!masthead || !masthead.shadowRoot) {
+            setTimeout(updateTopNavHrefFromPlatform, 5000);
+            return;
+        }
+
+        // Step 4: get the nav container inside shadow DOM
+        var navContainer = masthead.shadowRoot.querySelector('.cds--header__nav-container');
+        if (!navContainer) {
+            setTimeout(updateTopNavHrefFromPlatform, 5000);
+            return;
+        }
+
+        // Step 5: get the slot inside nav container
+        var slot = navContainer.querySelector('slot');
+        if (!slot) {
+            setTimeout(updateTopNavHrefFromPlatform, 5000);
+            return;
+        }
+
+        // Step 6: get all assigned nodes to the slot
+        var assignedNodes = slot.assignedNodes();
+        for (var i = 0; i < assignedNodes.length; i++) {
+            var node = assignedNodes[i];
+            if (node.tagName && node.tagName.toLowerCase() === 'c4d-top-nav-name') {
+                // Step 7: set href from platformurl
+                node.setAttribute('href', platformUrl);
+                console.log('Updated href to', platformUrl);
+            }
+        }
+    }
+
+    document.addEventListener("DOMContentLoaded", function() {
+        const mastheadContainer = document.querySelector("c4d-masthead-container");
+        const langIcon = document.querySelector('.earth-language-icon');
+
+        // Hide locale selector (globe icon) for Take Back Program pages
+        const takeBackPattern = /.*(?:\/[a-zA-Z]{2}(?:[-/][a-zA-Z]{2})?)?\/take-back-programs(\.html)?(\?.*)?$/;
+        function isValidTakeBackUrl(url) {
+            return takeBackPattern.test(url);
+        }
+
+        const handleMastheadLangIcon = () => {
+            if (mastheadContainer) {
+                if (isValidTakeBackUrl(window.location.href)) {
+                    mastheadContainer.setAttribute("has-global", "false");
+                    document.querySelector('.earth-language-icon').style.display = 'none';
+                }
+                mastheadObserver.disconnect();
+            }
+        };
+        const mastheadObserver = new MutationObserver(handleMastheadLangIcon);
+        mastheadObserver.observe(mastheadContainer, { subtree: true, childList: true });
+
+        if (langIcon) {
+            if (mastheadContainer && mastheadContainer.getAttribute("has-global") === "false") {
+                langIcon.style.setProperty('display', 'none', 'important');
+            } else {
+                langIcon.style.setProperty('display', 'block', 'important');
+            }
+        }
+
+        if (mastheadContainer && mastheadContainer.getAttribute("brand") === "businessofgovernment") {
             const isMobile = window.matchMedia("(max-width: 671px)").matches;
             if (isMobile) {
                 const langIcon = document.querySelector('.earth-language-icon');
@@ -555,9 +641,7 @@
                 if (globalBar) globalBar.style.display = 'none';
             }
         }
-
-
-      });
+    });
 </script>
 </div>
 <div data-component-name="leadspace" data-region="hero" class="leadspace">
@@ -676,13 +760,14 @@
 		
 		
 			
-    <script defer src="/etc.clientlibs/adobe-cms/clientlibs/clientlib-button.lc-43dfc9b4652059164c706bfc38af49d9-lc.min.js"></script>
-
+    
 
 		
 	
 
-     
+   
+
+   
 
 
     
@@ -705,10 +790,10 @@
 
 	
 
-	<div data-cmp-aspectratio="4x3|4x3|original|original|original" data-cmp-hook-image="imageV3IBM" data-cmp-is="image" data-cmp-widths="320,384,512,640,768,960,1024,1152,1280,1536,1584" data-cmp-dmimage data-cmp-src="https://www.ibm.com/privacy/_jcr_content/root/leadspace/image.coreimg{.width}.jpeg/1790701952447/privacypage-leadspace-black-2800x1400.jpeg" data-asset-id="7f856c94-5777-428c-b667-d3e3865736d1" data-cmp-filereference="/content/dam/connectedassets-adobe-cms/worldwide-content/other/ul/cms/7f/85/PrivacyPage_Leadspace_Black_2800x1400.jpg" id="image-dm-cc7f7a3339" data-cmp-data-layer="{&#34;image-dm-cc7f7a3339&#34;:{&#34;@type&#34;:&#34;adobe-cms/components/content/atoms/image-dm&#34;,&#34;repo:modifyDate&#34;:&#34;2026-09-29T17:12:32Z&#34;,&#34;dc:title&#34;:&#34;PrivacyPage_Leadspace_Black_2800x1400&#34;,&#34;image&#34;:{&#34;repo:id&#34;:&#34;7f856c94-5777-428c-b667-d3e3865736d1&#34;,&#34;repo:modifyDate&#34;:&#34;2026-08-24T10:09:59Z&#34;,&#34;@type&#34;:&#34;image/jpeg&#34;,&#34;repo:path&#34;:&#34;/content/dam/connectedassets-adobe-cms/worldwide-content/other/ul/cms/7f/85/PrivacyPage_Leadspace_Black_2800x1400.jpg&#34;,&#34;xdm:tags&#34;:[&#34;properties:orientation/landscape&#34;],&#34;xdm:smartTags&#34;:{&#34;shield&#34;:0.916,&#34;badge&#34;:0.813,&#34;guild&#34;:0.784,&#34;minimalist photography&#34;:0.888,&#34;touchpad&#34;:0.752,&#34;web icon&#34;:0.805,&#34;security system&#34;:0.804,&#34;stealth&#34;:0.822,&#34;silhouette&#34;:0.774}}}}" class="cmp-image overlaywatermark" data-cmp-aspectratio-max="original" data-cmp-aspectratio-xl="original" data-cmp-aspectratio-md="4x3" data-cmp-aspectratio-lg="original" data-cmp-aspectratio-sm="4x3">
+	<div data-cmp-aspectratio="4x3|4x3|original|original|original" data-cmp-hook-image="imageV3IBM" data-cmp-is="image" data-cmp-widths="256,320,384,512,640,768,960,1024,1152,1280,1536" data-cmp-dmimage data-cmp-src="https://www.ibm.com/privacy/_jcr_content/root/leadspace/image.coreimg{.width}.jpeg/1790701952447/privacypage-leadspace-black-2800x1400.jpeg" data-asset-id="7f856c94-5777-428c-b667-d3e3865736d1" data-cmp-filereference="/content/dam/connectedassets-adobe-cms/worldwide-content/other/ul/cms/7f/85/PrivacyPage_Leadspace_Black_2800x1400.jpg" id="image-dm-cc7f7a3339" data-cmp-data-layer="{&#34;image-dm-cc7f7a3339&#34;:{&#34;@type&#34;:&#34;adobe-cms/components/content/atoms/image-dm&#34;,&#34;repo:modifyDate&#34;:&#34;2026-09-29T17:12:32Z&#34;,&#34;dc:title&#34;:&#34;PrivacyPage_Leadspace_Black_2800x1400&#34;,&#34;image&#34;:{&#34;repo:id&#34;:&#34;7f856c94-5777-428c-b667-d3e3865736d1&#34;,&#34;repo:modifyDate&#34;:&#34;2026-08-24T10:09:59Z&#34;,&#34;@type&#34;:&#34;image/jpeg&#34;,&#34;repo:path&#34;:&#34;/content/dam/connectedassets-adobe-cms/worldwide-content/other/ul/cms/7f/85/PrivacyPage_Leadspace_Black_2800x1400.jpg&#34;,&#34;xdm:tags&#34;:[&#34;properties:orientation/landscape&#34;],&#34;xdm:smartTags&#34;:{&#34;shield&#34;:0.916,&#34;badge&#34;:0.813,&#34;guild&#34;:0.784,&#34;minimalist photography&#34;:0.888,&#34;touchpad&#34;:0.752,&#34;web icon&#34;:0.805,&#34;security system&#34;:0.804,&#34;stealth&#34;:0.822,&#34;silhouette&#34;:0.774}}}}" class="cmp-image overlaywatermark" data-cmp-aspectratio-max="original" data-cmp-aspectratio-xl="original" data-cmp-aspectratio-md="4x3" data-cmp-aspectratio-lg="original" data-cmp-aspectratio-sm="4x3">
 		<script type="application/json">
 			{
-				"widths": [320,384,512,640,768,960,1024,1152,1280,1536,1584],
+				"widths": [256,320,384,512,640,768,960,1024,1152,1280,1536],
 				"maximagesize": "5000",
 				"aspectratio": "4x3|4x3|original|original|original",
 				"urls": {
@@ -759,8 +844,7 @@
 
 
 
-    <script defer src="/etc.clientlibs/adobe-cms/clientlibs/clientlib-lightbox-media-viewer.lc-bbbda983369a47ebe68c956b05582571-lc.min.js"></script>
-
+    
 
 
                         
@@ -777,10 +861,7 @@
 </div>
 
 
-    <script defer src="/etc.clientlibs/adobe-cms/clientlibs/clientlib-button-group.lc-9a6721eb2e3a9efc7c83c374cd94b1e8-lc.min.js"></script>
-<script defer src="/etc.clientlibs/adobe-cms/clientlibs/clientlib-background-media.lc-a2656cda6e897d0f7bc6810fdb75a40e-lc.min.js"></script>
-<script defer src="/etc.clientlibs/adobe-cms/clientlibs/clientlib-star-rating.lc-ac9e6f485abb5e9caac490f8b09edc80-lc.min.js"></script>
-
+    
 </div>
 <div class="privacy-news-section-container news-section-container container responsivegrid"></div>
 <div class="table-of-contents container responsivegrid">
@@ -972,8 +1053,7 @@
 
 
     
-    <script defer src="/etc.clientlibs/adobe-cms/clientlibs/clientlib-link-list.lc-2e02203fb8b3424838b0fe951b6a5cea-lc.min.js"></script>
-
+    
 
 
 
@@ -3435,8 +3515,7 @@ Example:</p>
 
 
     
-    <script defer src="/etc.clientlibs/adobe-cms/clientlibs/clientlib-cweb-dropdown.lc-0dcd2524f6402a5c8ac3f3eb4739cf97-lc.min.js"></script>
-
+    
 
 
 </div>
@@ -3445,7 +3524,7 @@ Example:</p>
     
     
         
-    <c4d-link-list type="default" data-attribute1="link-list">
+    <c4d-link-list type="default" data-cmp-is="LinkList" data-attribute1="link-list">
         <c4d-link-list-heading role="heading" aria-level="4" slot="heading">
             
 
@@ -3506,8 +3585,7 @@ Example:</p>
     </a>
     
         
-    <script defer src="/etc.clientlibs/adobe-cms/clientlibs/clientlib-card.lc-9d69aa5b5105c1f9f30986a5db7eac18-lc.min.js"></script>
-
+    
 
     
 
@@ -3844,8 +3922,7 @@ Example:</p>
 </c4d-table-of-contents>
 
     
-    <script defer src="/etc.clientlibs/adobe-cms/clientlibs/clientlib-table-of-contents.lc-30fae8aad5d166c29b073b76bd8824e2-lc.min.js"></script>
-
+    
 </div>
 <div class="footnotes container responsivegrid">
 
@@ -3874,8 +3951,7 @@ Example:</p>
 
 
     
-    <script defer src="/etc.clientlibs/adobe-cms/clientlibs/clientlib-footer.lc-e4556247b5eaa5ddf0bfeb0523232d4d-lc.min.js"></script>
-
+    
 
 
     
@@ -3978,9 +4054,7 @@ Example:</p>
 
 
     
-    <script defer src="/etc.clientlibs/adobe-cms/clientlibs/clientlib-video-player-v7.lc-9b71d9d0818c16d4de96c11ca7238486-lc.min.js"></script>
-<script defer src="/etc.clientlibs/adobe-cms/clientlibs/clientlib-cweb-loading.lc-bf5f1bc1d22a37b7b50b2e8cc6ac9710-lc.min.js"></script>
-
+    
 
 
 
@@ -3989,8 +4063,7 @@ Example:</p>
 <c4d-lightbox-video-player-container></c4d-lightbox-video-player-container>
 
     
-    <script defer src="/etc.clientlibs/adobe-cms/clientlibs/clientlib-cibm-cta.lc-a53d0f07a2ef5cb431dbbb59015d4bd5-lc.min.js"></script>
-
+    
 
 
     
@@ -4009,9 +4082,9 @@ Example:</p>
     
     <script src="/etc.clientlibs/adobe-cms/clientlibs/clientlib-ibm-logger.lc-36e5d2891df65964c169c81e085bcb76-lc.min.js"></script>
 <script src="/etc.clientlibs/adobe-cms/clientlibs/clientlib-base.lc-c7d8c8a31404fb2a97939ee4096001bf-lc.min.js"></script>
-<script src="/etc.clientlibs/adobe-cms/clientlibs/clientlib-components-main.lc-e617909fe03f8b4b8511e8e21463a8dc-lc.min.js"></script>
-<script src="/etc.clientlibs/adobe-cms/clientlibs/clientlib-idlStyles.lc-1cdcd95be8967ff137bde26f49e9f773-lc.min.js"></script>
-<script src="/etc.clientlibs/adobe-cms/components/content/atoms/image-dm/clientlibs/site.lc-d8745ddb7348148535910a0ec30b1007-lc.min.js"></script>
+<script src="/etc.clientlibs/adobe-cms/clientlibs/clientlib-components-main.lc-aeb14cca9709489ae20169669684231f-lc.min.js"></script>
+<script src="/etc.clientlibs/adobe-cms/clientlibs/clientlib-idlStyles.lc-28565b58bd1054fc8b12df7e256b96d8-lc.min.js"></script>
+<script src="/etc.clientlibs/adobe-cms/components/content/atoms/image-dm/clientlibs/site.lc-c69b601a7c9fe6df55ae2abc12cb7f46-lc.min.js"></script>
 
 
 
@@ -4022,8 +4095,7 @@ Example:</p>
 
 
     
-    <script defer src="/etc.clientlibs/adobe-cms/clientlibs/clientlib-cweb-code-snippet.lc-24f99d6b7c4ddaab098e859bb80a2bd4-lc.min.js"></script>
-
+    
 
 
     
