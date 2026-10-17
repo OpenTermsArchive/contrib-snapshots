@@ -1591,7 +1591,9 @@
         class="devsite-nav-title"
       ><span class="devsite-nav-text" tooltip>Online sales with a product feed</span></a></li><li class="devsite-nav-item"><a href="/google-ads/api/performance-max/travel-goals"
         class="devsite-nav-title"
-      ><span class="devsite-nav-text" tooltip>Travel goals</span></a></li><li class="devsite-nav-item
+      ><span class="devsite-nav-text" tooltip>Travel goals</span></a></li><li class="devsite-nav-item"><a href="/google-ads/api/performance-max/pay-per-lead"
+        class="devsite-nav-title"
+      ><span class="devsite-nav-text" tooltip>Pay-per-lead goals</span></a></li><li class="devsite-nav-item
            devsite-nav-heading"><div class="devsite-nav-title devsite-nav-title-no-path">
         <span class="devsite-nav-text" tooltip>Concepts</span>
       </div></li><li class="devsite-nav-item
@@ -2559,16 +2561,31 @@ accounts from the customer level down to the keyword level. Typical use cases
 include:</p>
 
 <ul>
-<li>Automated account management</li>
-<li>Custom reporting</li>
-<li>Ad management based on inventory</li>
-<li>Smart Bidding strategy management</li>
+<li><strong><a href="/google-ads/api/docs/account-management/overview">Automated account management</a></strong>:
+Create and link accounts, manage account hierarchies, and automate user
+access.</li>
+<li><strong><a href="/google-ads/api/docs/reporting/overview">Custom reporting</a></strong>: Query performance metrics,
+segments, and resource attributes using the
+<a href="/google-ads/api/docs/query/overview">Google Ads Query Language (GAQL)</a>.</li>
+<li><strong><a href="/google-ads/api/docs/campaigns/overview">Campaign and inventory-based ad management</a></strong>:
+Create and update <a href="/google-ads/api/performance-max/getting-started">Performance Max</a>,
+<a href="/google-ads/api/docs/campaigns/search-campaigns/getting-started">Search</a>,
+<a href="/google-ads/api/docs/demand-gen/overview">Demand Gen</a>,
+<a href="/google-ads/api/docs/shopping-ads/overview">Shopping</a>,
+<a href="/google-ads/api/docs/video/overview">Video</a>, and
+<a href="/google-ads/api/docs/app-campaigns/overview">App</a> campaigns,
+<a href="/google-ads/api/docs/campaigns/budgets/overview">budgets</a>, and
+<a href="/google-ads/api/docs/assets/overview">assets</a>.</li>
+<li><strong><a href="/google-ads/api/docs/conversions/overview">Conversion measurement</a> and
+<a href="/google-ads/api/docs/campaigns/bidding/overview">Smart Bidding strategy management</a></strong>:
+Upload click, call, and enhanced conversions and configure automated bidding
+strategies.</li>
 </ul>
 
 <h2 id="compare" data-text="Is the Google Ads API the right product for me?" tabindex="-1">Is the Google Ads API the right product for me?</h2>
 
 <p>Google provides multiple products to help automate Google Ads accounts. Use the
-following table to identify the product that best fits your requirements.</p>
+following table to identify the product that best fits your requirements:</p>
 
 <table>
   <tr>
@@ -2579,7 +2596,9 @@ following table to identify the product that best fits your requirements.</p>
     <td>I am a developer who wants to build custom software or integrate with
     the Google Ads API, and I am comfortable managing server and database
     infrastructure.</td>
-    <td>Use the Google Ads API.</td>
+    <td>Use the Google Ads API. Start with the
+    <a href="/google-ads/api/docs/get-started/make-first-call">Quickstart</a> to configure
+    access and make your first API call.</td>
   </tr>
   <tr>
     <td>I am a developer who wants to write custom logic, but I prefer not to
@@ -2616,6 +2635,91 @@ following table to identify the product that best fits your requirements.</p>
     <a href="//support.google.com/google-ads/editor/answer/2484521">Google
     Ads Editor</a>.</td>
   </tr>
+</table>
+
+<h2 id="next-steps" data-text="Get started and explore key topics" tabindex="-1">Get started and explore key topics</h2>
+
+<p>If the Google Ads API is the right fit for your project, use the following task guide
+to configure access, install a client library, and build your integration:</p>
+
+<table>
+  <thead>
+    <tr>
+      <th>Goal</th>
+      <th>Primary guide</th>
+      <th>Related resources</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><b>Make your first API call</b></td>
+      <td><a href="/google-ads/api/docs/get-started/make-first-call">Quickstart</a></td>
+      <td>
+        <a href="/google-ads/api/docs/oauth/cloud-project">Google Cloud project setup</a>,
+        <a href="/google-ads/api/docs/api-policy/access-levels">Access levels</a>,
+        <a href="/google-ads/api/docs/best-practices/test-accounts">Test accounts</a>,
+        <a href="/google-ads/api/docs/concepts/overview">Basic concepts</a>,
+        <a href="/google-ads/api/docs/get-started/next-steps">Next steps</a>
+      </td>
+    </tr>
+    <tr>
+      <td><b>Configure OAuth 2.0 and credentials</b></td>
+      <td><a href="/google-ads/api/docs/oauth/overview">Authentication and authorization overview</a></td>
+      <td>
+        <a href="/google-ads/api/docs/oauth/access-model">Access model overview</a>,
+        <a href="/google-ads/api/docs/oauth/service-accounts">Service account workflow</a>,
+        <a href="/google-ads/api/docs/oauth/user-authentication">User authentication workflow</a>,
+        <a href="/google-ads/api/docs/api-policy/brand-verification">Brand verification</a>,
+        <a href="/google-ads/api/docs/api-policy/developer-token">Developer token sunset</a>
+      </td>
+    </tr>
+    <tr>
+      <td><b>Install a client library or call REST</b></td>
+      <td><a href="/google-ads/api/docs/client-libs">Client libraries</a></td>
+      <td>
+        <a href="/google-ads/api/docs/client-libs/java">Java</a>,
+        <a href="/google-ads/api/docs/client-libs/dotnet">.NET</a>,
+        <a href="/google-ads/api/docs/client-libs/php">PHP</a>,
+        <a href="/google-ads/api/docs/client-libs/python">Python</a>,
+        <a href="/google-ads/api/docs/client-libs/ruby">Ruby</a>,
+        <a href="/google-ads/api/docs/client-libs/perl">Perl</a>,
+        <a href="/google-ads/api/samples">Code samples</a>,
+        <a href="/google-ads/api/rest/overview">REST interface</a>
+      </td>
+    </tr>
+    <tr>
+      <td><b>Query reports and build GAQL queries</b></td>
+      <td><a href="/google-ads/api/docs/reporting/overview">Reporting overview</a></td>
+      <td>
+        <a href="/google-ads/api/docs/query/overview">Google Ads Query Language (GAQL)</a>,
+        <a href="/google-ads/api/fields/v26/overview_query_builder">Interactive Query Builder</a>,
+        <a href="/google-ads/api/fields/v26/query_validator">Query Validator</a>,
+        <a href="/google-ads/api/docs/query/cookbook">Query Cookbook</a>,
+        <a href="/google-ads/api/fields/v26/overview">Reporting reference (v26)</a>
+      </td>
+    </tr>
+    <tr>
+      <td><b>Use AI tools and interactive explorers</b></td>
+      <td><a href="/google-ads/api/docs/developer-toolkit/what-is-developer-assistant">Google Ads API Developer Assistant</a></td>
+      <td>
+        <a href="/google-ads/api/docs/developer-toolkit/ai-assistant">Install the Developer Assistant</a>,
+        <a href="/google-ads/api/docs/developer-toolkit/mcp-server">Google Ads MCP server</a>,
+        <a href="/google-ads/api/docs/developer-toolkit/agent-skills">Agent skills</a>,
+        <a href="/google-ads/api/docs/developer-toolkit/api-explorer">API Explorer</a>
+      </td>
+    </tr>
+    <tr>
+      <td><b>Troubleshoot errors and plan upgrades</b></td>
+      <td><a href="/google-ads/api/docs/get-started/handle-errors">Handle errors</a></td>
+      <td>
+        <a href="/google-ads/api/docs/common-errors">Common errors</a>,
+        <a href="/google-ads/api/docs/best-practices/understand-api-errors">Understand API errors</a>,
+        <a href="/google-ads/api/docs/release-notes">Release notes</a>,
+        <a href="/google-ads/api/docs/upgrade">Upgrade your API version</a>,
+        <a href="/google-ads/api/docs/sunset-dates">Deprecation and sunset schedule</a>
+      </td>
+    </tr>
+  </tbody>
 </table>
 
   
@@ -2707,7 +2811,7 @@ following table to identify the product that best fits your requirements.</p>
 
 <devsite-content-footer class="nocontent" data-nosnippet>
   <p>Except as otherwise noted, the content of this page is licensed under the <a href="https://creativecommons.org/licenses/by/4.0/">Creative Commons Attribution 4.0 License</a>, and code samples are licensed under the <a href="https://www.apache.org/licenses/LICENSE-2.0">Apache 2.0 License</a>. For details, see the <a href="https://developers.google.com/site-policies">Google Developers Site Policies</a>. Java is a registered trademark of Oracle and/or its affiliates.</p>
-  <p>Last updated 2026-10-14 UTC.</p>
+  <p>Last updated 2026-10-16 UTC.</p>
 </devsite-content-footer>
 
 
@@ -2760,7 +2864,7 @@ following table to identify the product that best fits your requirements.</p>
   
   
     <template class="devsite-content-data-template">
-      [[["Easy to understand","easyToUnderstand","thumb-up"],["Solved my problem","solvedMyProblem","thumb-up"],["Other","otherUp","thumb-up"]],[["Missing the information I need","missingTheInformationINeed","thumb-down"],["Too complicated / too many steps","tooComplicatedTooManySteps","thumb-down"],["Out of date","outOfDate","thumb-down"],["Samples / code issue","samplesCodeIssue","thumb-down"],["Other","otherDown","thumb-down"]],["Last updated 2026-10-14 UTC."],[],[]]
+      [[["Easy to understand","easyToUnderstand","thumb-up"],["Solved my problem","solvedMyProblem","thumb-up"],["Other","otherUp","thumb-up"]],[["Missing the information I need","missingTheInformationINeed","thumb-down"],["Too complicated / too many steps","tooComplicatedTooManySteps","thumb-down"],["Out of date","outOfDate","thumb-down"],["Samples / code issue","samplesCodeIssue","thumb-down"],["Other","otherDown","thumb-down"]],["Last updated 2026-10-16 UTC."],[],[]]
     </template>
   
 </div>
@@ -3296,7 +3400,7 @@ following table to identify the product that best fits your requirements.</p>
     <devsite-heading-link></devsite-heading-link>
     <devsite-analytics>
       
-        <script type="application/json" analytics>[{&#34;dimensions&#34;: {&#34;dimension11&#34;: false, &#34;dimension1&#34;: &#34;Signed out&#34;, &#34;dimension6&#34;: &#34;en&#34;, &#34;dimension5&#34;: &#34;en&#34;, &#34;dimension3&#34;: false, &#34;dimension4&#34;: &#34;Google Ads API&#34;}, &#34;gaid&#34;: &#34;UA-24532603-1&#34;, &#34;metrics&#34;: {&#34;ratings_count&#34;: &#34;metric2&#34;, &#34;ratings_value&#34;: &#34;metric1&#34;}, &#34;purpose&#34;: 1}]</script>
+        <script type="application/json" analytics>[{&#34;dimensions&#34;: {&#34;dimension4&#34;: &#34;Google Ads API&#34;, &#34;dimension3&#34;: false, &#34;dimension1&#34;: &#34;Signed out&#34;, &#34;dimension5&#34;: &#34;en&#34;, &#34;dimension6&#34;: &#34;en&#34;, &#34;dimension11&#34;: false}, &#34;gaid&#34;: &#34;UA-24532603-1&#34;, &#34;metrics&#34;: {&#34;ratings_value&#34;: &#34;metric1&#34;, &#34;ratings_count&#34;: &#34;metric2&#34;}, &#34;purpose&#34;: 1}]</script>
 <script type="application/json" tag-management>{&#34;at&#34;: &#34;True&#34;, &#34;ga4&#34;: [{&#34;id&#34;: &#34;G-272J68FCRF&#34;, &#34;purpose&#34;: 1}, {&#34;id&#34;: &#34;G-CHPHR65JZJ&#34;, &#34;purpose&#34;: 0}], &#34;ga4p&#34;: [{&#34;id&#34;: &#34;G-272J68FCRF&#34;, &#34;purpose&#34;: 1}], &#34;gtm&#34;: [{&#34;id&#34;: &#34;GTM-T98GCPGN&#34;, &#34;purpose&#34;: 1}], &#34;parameters&#34;: {&#34;internalUser&#34;: &#34;False&#34;, &#34;language&#34;: {&#34;machineTranslated&#34;: &#34;False&#34;, &#34;requested&#34;: &#34;en&#34;, &#34;served&#34;: &#34;en&#34;}, &#34;pageType&#34;: &#34;article&#34;, &#34;projectName&#34;: &#34;Google Ads API&#34;, &#34;signedIn&#34;: &#34;False&#34;, &#34;tenant&#34;: &#34;developers&#34;, &#34;recommendations&#34;: {&#34;sourcePage&#34;: &#34;&#34;, &#34;sourceType&#34;: 0, &#34;sourceRank&#34;: 0, &#34;sourceIdenticalDescriptions&#34;: 0, &#34;sourceTitleWords&#34;: 0, &#34;sourceDescriptionWords&#34;: 0, &#34;experiment&#34;: &#34;&#34;}, &#34;experiment&#34;: {&#34;ids&#34;: &#34;&#34;}}}</script>
       
     </devsite-analytics>
@@ -3307,12 +3411,12 @@ following table to identify the product that best fits your requirements.</p>
     
     
     
-<script nonce="RFVSVpjcQKIgwHiKakorHpyh5DGARY">
+<script nonce="PkN3e+Apk4SSyQzx5gjuvG3UFYM7TS">
   
   (function(d,e,v,s,i,t,E){d['GoogleDevelopersObject']=i;
     t=e.createElement(v);t.async=1;t.src=s;E=e.getElementsByTagName(v)[0];
     E.parentNode.insertBefore(t,E);})(window, document, 'script',
-    'https://www.gstatic.com/devrel-devsite/prod/v9ce9cb5b22b62a465ff52c45061a0a6a2d86a80b685e9aa8a182b203fdfbf420/developers/js/app_loader.js', '[1,"en",null,"/js/devsite_app_module.js","https://www.gstatic.com/devrel-devsite/prod/v9ce9cb5b22b62a465ff52c45061a0a6a2d86a80b685e9aa8a182b203fdfbf420","https://www.gstatic.com/devrel-devsite/prod/v9ce9cb5b22b62a465ff52c45061a0a6a2d86a80b685e9aa8a182b203fdfbf420/developers","https://developers-dot-devsite-v2-prod.appspot.com",null,null,["/_pwa/developers/manifest.json","https://www.gstatic.com/devrel-devsite/prod/v9ce9cb5b22b62a465ff52c45061a0a6a2d86a80b685e9aa8a182b203fdfbf420/images/video-placeholder.svg","https://www.gstatic.com/devrel-devsite/prod/v9ce9cb5b22b62a465ff52c45061a0a6a2d86a80b685e9aa8a182b203fdfbf420/developers/images/favicon-new.png","https://fonts.googleapis.com/css?family=Google+Sans:400,500|Roboto:400,400italic,500,500italic,700,700italic|Roboto+Mono:400,500,700&display=swap"],1,null,[1,6,8,12,14,17,21,25,50,52,63,70,75,76,80,87,91,92,93,97,98,100,101,102,103,104,105,107,108,109,110,112,113,117,118,120,122,124,125,126,127,129,130,131,132,133,134,135,136,138,140,141,147,148,149,151,152,156,157,158,159,161,163,164,168,169,170,179,180,182,183,186,191,193,196],"AIzaSyAP-jjEJBzmIyKR4F-3XITp8yM9T1gEEI8","AIzaSyB6xiKGDR5O3Ak2okS4rLkauxGUG7XP0hg","developers.google.com","AIzaSyAQk0fBONSGUqCNznf6Krs82Ap1-NV6J4o","AIzaSyCCxcqdrZ_7QMeLCRY20bh_SXdAYqy70KY",null,null,null,["BookNav__enable_tenant_cache_key","Profiles__require_profile_eligibility_for_signin","Concierge__enable_remove_info_panel_tags","DevPro__enable_cloud_innovators_plus","Analytics__enable_clearcut_logging","TpcFeatures__proxy_prod_host","DevPro__enable_google_one_card","Profiles__enable_awarding_url","Search__enable_dynamic_content_confidential_banner","MiscFeatureFlags__enable_variable_operator_index_yaml","Profiles__enable_auto_apply_credits","MiscFeatureFlags__enable_explain_this_code","MiscFeatureFlags__developers_footer_image","Search__enable_ai_eligibility_checks","MiscFeatureFlags__fix_lower_breadcrumbs","AIStudioInteractionsToggle__interactions_are_default","MiscFeatureFlags__remove_cross_domain_tracking_params","Search__enable_page_map","Profiles__enable_targeted_hero","DevPro__enable_enterprise","CloudShell__cloud_shell_button","Cloud__enable_cloud_shell_fte_user_flow","Concierge__enable_concierge_restricted","Cloud__enable_free_trial_server_call","Profiles__enable_developer_profile_pages_as_content","Profiles__enable_page_saving","EngEduTelemetry__enable_engedu_telemetry","DevPro__enable_vertex_credit_card","Concierge__enable_actions_menu","DevPro__enable_devpro_offers","Profiles__enable_stripe_subscription_management","Concierge__enable_key_takeaways","Concierge__enable_key_takeaways_new_ui","Search__enable_ai_search_summaries_restricted","Profiles__enable_callout_notifications","Profiles__enable_playlist_community_acl","Profiles__enable_recognition_badges","MiscFeatureFlags__enable_project_variables","Profiles__enable_purchase_prompts","MiscFeatureFlags__enable_appearance_cookies","Profiles__enable_user_type","MiscFeatureFlags__enable_view_transitions","DevPro__enable_developer_subscriptions","SignIn__enable_l1_signup_flow","MiscFeatureFlags__developers_footer_dark_image","Profiles__enable_developer_profile_benefits_ui_redesign","DevPro__remove_eu_tax_intake_form","Analytics__enable_devpro_interaction_logging","TpcFeatures__enable_unmirrored_page_left_nav","DevPro__enable_g1_ineligible_redirect","DevPro__enable_free_benefits","Cloud__cache_serialized_dynamic_content","Profiles__enable_complete_playlist_endpoint","DevPro__enable_credits_banner","Cloud__enable_legacy_calculator_redirect","Profiles__enable_join_program_group_endpoint","MiscFeatureFlags__enable_explicit_template_dependencies","Cloud__fast_free_trial","Profiles__enable_developer_profiles_callout","Profiles__enable_completequiz_endpoint","MiscFeatureFlags__enable_variable_operator","Profiles__enable_dashboard_curated_recommendations","Experiments__reqs_query_experiments","Profiles__enable_release_notes_notifications","DevPro__enable_code_assist","DevPro__enable_devsite_captcha","Cloud__enable_cloudx_experiment_ids","Profiles__enable_profile_collections","Search__enable_suggestions_from_borg","Concierge__enable_pushui","Cloud__enable_cloud_dlp_service","DevPro__enable_g1_integration","Search__enable_ai_search_summaries_for_all","DevPro__enable_nvidia_credits_card","MiscFeatureFlags__enable_framebox_badge_methods","DevPro__enable_google_payments_buyflow","Search__enable_ai_search_summaries","CloudShell__cloud_code_overflow_menu","Profiles__enable_completecodelab_endpoint","Concierge__enable_concierge","Significatio__enable_by_tenant","DevPro__enable_embed_profile_creation","MiscFeatureFlags__enable_firebase_utm","MiscFeatureFlags__gdp_dashboard_reskin_enabled","Concierge__enable_devsite_llm_tools","Cloud__enable_cloud_shell","Profiles__enable_public_developer_profiles","DevPro__enable_firebase_workspaces_card"],null,null,"AIzaSyBLEMok-5suZ67qRPzx0qUtbnLmyT_kCVE","https://developerscontentserving-pa.clients6.google.com","AIzaSyCM4QpTRSqP5qI4Dvjt4OAScIN8sOUlO-k","https://developerscontentsearch-pa.clients6.google.com",1,4,null,"https://developerprofiles-pa.clients6.google.com",[1,"developers","Google for Developers","developers.google.com",null,"developers-dot-devsite-v2-prod.appspot.com",null,null,[1,1,[1],null,null,null,null,null,null,null,null,[1],null,null,null,null,null,null,[1],[1,null,null,[1,20],"/recommendations/information"],null,null,null,[1,1,1],[1,1,null,1,1,null,null,["/meridian"]],[1,null,null,null,null,null,null,["/admob","/ad-manager/mobile-ads-sdk","/ml-kit"]],null,[null,["/meridian","/youtube/devices/"]],1,null,[1]],null,[null,null,null,null,null,null,"/images/lockup-new.svg","/images/touchicon-180-new.png",null,null,null,null,1,null,null,null,null,null,null,null,null,1,null,null,null,"/images/lockup-dark-theme-new.svg",[]],[],null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,[6,1,14,15,20,22,23,29,32,36],null,[[null,null,null,[3,7,10,2,39,17,4,32,24,11,12,13,34,15,25],null,null,[1,[["docType","Choose a content type",[["Tutorial",null,null,null,null,null,null,null,null,"Tutorial"],["Guide",null,null,null,null,null,null,null,null,"Guide"],["Sample",null,null,null,null,null,null,null,null,"Sample"]]],["product","Choose a product",[["Android",null,null,null,null,null,null,null,null,"Android"],["ARCore",null,null,null,null,null,null,null,null,"ARCore"],["ChromeOS",null,null,null,null,null,null,null,null,"ChromeOS"],["Firebase",null,null,null,null,null,null,null,null,"Firebase"],["Flutter",null,null,null,null,null,null,null,null,"Flutter"],["Assistant",null,null,null,null,null,null,null,null,"Google Assistant"],["GoogleCloud",null,null,null,null,null,null,null,null,"Google Cloud"],["GoogleMapsPlatform",null,null,null,null,null,null,null,null,"Google Maps Platform"],["GooglePay",null,null,null,null,null,null,null,null,"Google Pay & Google Wallet"],["GooglePlay",null,null,null,null,null,null,null,null,"Google Play"],["Tensorflow",null,null,null,null,null,null,null,null,"TensorFlow"]]],["category","Choose a topic",[["AiAndMachineLearning",null,null,null,null,null,null,null,null,"AI and Machine Learning"],["Data",null,null,null,null,null,null,null,null,"Data"],["Enterprise",null,null,null,null,null,null,null,null,"Enterprise"],["Gaming",null,null,null,null,null,null,null,null,"Gaming"],["Mobile",null,null,null,null,null,null,null,null,"Mobile"],["Web",null,null,null,null,null,null,null,null,"Web"]]]]]],[1,1],null,1],[[["UA-24532603-1"],["UA-22084204-5"],null,null,["UA-24532603-5"],["GTM-T98GCPGN"],null,[["G-272J68FCRF"],null,null,[["G-272J68FCRF",2]]],[["UA-24532603-1",2]],null,[["UA-24532603-5",2]],[["GTM-T98GCPGN",2]],1],[[15,12],[11,8],[6,5],[16,13],[13,10],[12,9],[14,11],[3,2],[1,1],[4,3],[5,4]],[[1,1],[2,2]]],null,4,null,null,null,null,null,null,null,null,null,null,null,null,null,"developers.devsite.google",null,null,null,null,null,[]],1,"pk_live_5170syrHvgGVmSx9sBrnWtA5luvk9BwnVcvIi7HizpwauFG96WedXsuXh790rtij9AmGllqPtMLfhe2RSwD6Pn38V00uBCydV4m",null,null,"https://developerscontentinsights-pa.clients6.google.com","AIzaSyCg-ZUslalsEbXMfIo9ZP8qufZgo3LSBDU","AIzaSyDxT0vkxnY_KeINtA4LSePJO-4MAZPMRsE","https://developers.clients6.google.com",["https://codeassist.google.com","https://code-assist-free-tier.corp.google.com"],null,"AIzaSyBQom12tzI-rybN7Sf-KfeL4nwm-Rf7PmI\n",null,null,"https://developers.googleapis.com"]')
+    'https://www.gstatic.com/devrel-devsite/prod/v9ce9cb5b22b62a465ff52c45061a0a6a2d86a80b685e9aa8a182b203fdfbf420/developers/js/app_loader.js', '[1,"en",null,"/js/devsite_app_module.js","https://www.gstatic.com/devrel-devsite/prod/v9ce9cb5b22b62a465ff52c45061a0a6a2d86a80b685e9aa8a182b203fdfbf420","https://www.gstatic.com/devrel-devsite/prod/v9ce9cb5b22b62a465ff52c45061a0a6a2d86a80b685e9aa8a182b203fdfbf420/developers","https://developers-dot-devsite-v2-prod.appspot.com",null,null,["/_pwa/developers/manifest.json","https://www.gstatic.com/devrel-devsite/prod/v9ce9cb5b22b62a465ff52c45061a0a6a2d86a80b685e9aa8a182b203fdfbf420/images/video-placeholder.svg","https://www.gstatic.com/devrel-devsite/prod/v9ce9cb5b22b62a465ff52c45061a0a6a2d86a80b685e9aa8a182b203fdfbf420/developers/images/favicon-new.png","https://fonts.googleapis.com/css?family=Google+Sans:400,500|Roboto:400,400italic,500,500italic,700,700italic|Roboto+Mono:400,500,700&display=swap"],1,null,[1,6,8,12,14,17,21,25,50,52,63,70,75,76,80,87,91,92,93,97,98,100,101,102,103,104,105,107,108,109,110,112,113,117,118,120,122,124,125,126,127,129,130,131,132,133,134,135,136,138,140,141,147,148,149,151,152,156,157,158,159,161,163,164,168,169,170,179,180,182,183,186,191,193,196],"AIzaSyAP-jjEJBzmIyKR4F-3XITp8yM9T1gEEI8","AIzaSyB6xiKGDR5O3Ak2okS4rLkauxGUG7XP0hg","developers.google.com","AIzaSyAQk0fBONSGUqCNznf6Krs82Ap1-NV6J4o","AIzaSyCCxcqdrZ_7QMeLCRY20bh_SXdAYqy70KY",null,null,null,["MiscFeatureFlags__fix_lower_breadcrumbs","Search__enable_page_map","DevPro__enable_vertex_credit_card","MiscFeatureFlags__enable_view_transitions","Analytics__enable_devpro_interaction_logging","Cloud__enable_legacy_calculator_redirect","Concierge__enable_actions_menu","DevPro__enable_devsite_captcha","CloudShell__cloud_code_overflow_menu","Concierge__enable_key_takeaways","DevPro__enable_developer_subscriptions","MiscFeatureFlags__developers_footer_image","TpcFeatures__enable_unmirrored_page_left_nav","EngEduTelemetry__enable_engedu_telemetry","Cloud__enable_free_trial_server_call","MiscFeatureFlags__enable_project_variables","Profiles__enable_stripe_subscription_management","Profiles__enable_profile_collections","DevPro__enable_firebase_workspaces_card","Cloud__cache_serialized_dynamic_content","DevPro__enable_nvidia_credits_card","BookNav__enable_tenant_cache_key","MiscFeatureFlags__gdp_dashboard_reskin_enabled","Profiles__enable_auto_apply_credits","MiscFeatureFlags__enable_explain_this_code","Experiments__reqs_query_experiments","Analytics__enable_clearcut_logging","DevPro__enable_cloud_innovators_plus","Profiles__enable_purchase_prompts","Cloud__enable_cloudx_experiment_ids","DevPro__enable_credits_banner","DevPro__enable_g1_ineligible_redirect","Search__enable_ai_search_summaries","Profiles__enable_completequiz_endpoint","Cloud__enable_cloud_shell_fte_user_flow","MiscFeatureFlags__developers_footer_dark_image","DevPro__enable_g1_integration","Concierge__enable_devsite_llm_tools","Significatio__enable_by_tenant","MiscFeatureFlags__remove_cross_domain_tracking_params","Search__enable_ai_search_summaries_for_all","Profiles__enable_page_saving","MiscFeatureFlags__enable_firebase_utm","Profiles__enable_release_notes_notifications","Profiles__enable_callout_notifications","Concierge__enable_remove_info_panel_tags","Cloud__enable_cloud_shell","DevPro__enable_google_one_card","Search__enable_dynamic_content_confidential_banner","Profiles__enable_completecodelab_endpoint","MiscFeatureFlags__enable_variable_operator_index_yaml","DevPro__enable_free_benefits","Profiles__enable_developer_profile_benefits_ui_redesign","DevPro__remove_eu_tax_intake_form","SignIn__enable_l1_signup_flow","Profiles__enable_playlist_community_acl","CloudShell__cloud_shell_button","TpcFeatures__proxy_prod_host","MiscFeatureFlags__enable_explicit_template_dependencies","DevPro__enable_enterprise","Search__enable_ai_search_summaries_restricted","DevPro__enable_devpro_offers","Profiles__enable_public_developer_profiles","Profiles__enable_awarding_url","Profiles__enable_developer_profile_pages_as_content","Profiles__enable_user_type","Search__enable_ai_eligibility_checks","Profiles__enable_dashboard_curated_recommendations","Profiles__enable_developer_profiles_callout","Cloud__enable_cloud_dlp_service","AIStudioInteractionsToggle__interactions_are_default","Search__enable_suggestions_from_borg","Profiles__enable_join_program_group_endpoint","Concierge__enable_concierge","Cloud__fast_free_trial","Profiles__enable_recognition_badges","DevPro__enable_google_payments_buyflow","MiscFeatureFlags__enable_appearance_cookies","Profiles__enable_complete_playlist_endpoint","DevPro__enable_code_assist","MiscFeatureFlags__enable_variable_operator","DevPro__enable_embed_profile_creation","Concierge__enable_concierge_restricted","Concierge__enable_pushui","Profiles__require_profile_eligibility_for_signin","Concierge__enable_key_takeaways_new_ui","MiscFeatureFlags__enable_framebox_badge_methods","Profiles__enable_targeted_hero"],null,null,"AIzaSyBLEMok-5suZ67qRPzx0qUtbnLmyT_kCVE","https://developerscontentserving-pa.clients6.google.com","AIzaSyCM4QpTRSqP5qI4Dvjt4OAScIN8sOUlO-k","https://developerscontentsearch-pa.clients6.google.com",1,4,null,"https://developerprofiles-pa.clients6.google.com",[1,"developers","Google for Developers","developers.google.com",null,"developers-dot-devsite-v2-prod.appspot.com",null,null,[1,1,[1],null,null,null,null,null,null,null,null,[1],null,null,null,null,null,null,[1],[1,null,null,[1,20],"/recommendations/information"],null,null,null,[1,1,1],[1,1,null,1,1,null,null,["/meridian"]],[1,null,null,null,null,null,null,["/admob","/ad-manager/mobile-ads-sdk","/ml-kit"]],null,[null,["/meridian","/youtube/devices/"]],1,null,[1]],null,[null,null,null,null,null,null,"/images/lockup-new.svg","/images/touchicon-180-new.png",null,null,null,null,1,null,null,null,null,null,null,null,null,1,null,null,null,"/images/lockup-dark-theme-new.svg",[]],[],null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,[6,1,14,15,20,22,23,29,32,36],null,[[null,null,null,[3,7,10,2,39,17,4,32,24,11,12,13,34,15,25],null,null,[1,[["docType","Choose a content type",[["Tutorial",null,null,null,null,null,null,null,null,"Tutorial"],["Guide",null,null,null,null,null,null,null,null,"Guide"],["Sample",null,null,null,null,null,null,null,null,"Sample"]]],["product","Choose a product",[["Android",null,null,null,null,null,null,null,null,"Android"],["ARCore",null,null,null,null,null,null,null,null,"ARCore"],["ChromeOS",null,null,null,null,null,null,null,null,"ChromeOS"],["Firebase",null,null,null,null,null,null,null,null,"Firebase"],["Flutter",null,null,null,null,null,null,null,null,"Flutter"],["Assistant",null,null,null,null,null,null,null,null,"Google Assistant"],["GoogleCloud",null,null,null,null,null,null,null,null,"Google Cloud"],["GoogleMapsPlatform",null,null,null,null,null,null,null,null,"Google Maps Platform"],["GooglePay",null,null,null,null,null,null,null,null,"Google Pay & Google Wallet"],["GooglePlay",null,null,null,null,null,null,null,null,"Google Play"],["Tensorflow",null,null,null,null,null,null,null,null,"TensorFlow"]]],["category","Choose a topic",[["AiAndMachineLearning",null,null,null,null,null,null,null,null,"AI and Machine Learning"],["Data",null,null,null,null,null,null,null,null,"Data"],["Enterprise",null,null,null,null,null,null,null,null,"Enterprise"],["Gaming",null,null,null,null,null,null,null,null,"Gaming"],["Mobile",null,null,null,null,null,null,null,null,"Mobile"],["Web",null,null,null,null,null,null,null,null,"Web"]]]]]],[1,1],null,1],[[["UA-24532603-1"],["UA-22084204-5"],null,null,["UA-24532603-5"],["GTM-T98GCPGN"],null,[["G-272J68FCRF"],null,null,[["G-272J68FCRF",2]]],[["UA-24532603-1",2]],null,[["UA-24532603-5",2]],[["GTM-T98GCPGN",2]],1],[[4,3],[11,8],[3,2],[13,10],[14,11],[6,5],[5,4],[12,9],[16,13],[1,1],[15,12]],[[2,2],[1,1]]],null,4,null,null,null,null,null,null,null,null,null,null,null,null,null,"developers.devsite.google",null,null,null,null,null,[]],1,"pk_live_5170syrHvgGVmSx9sBrnWtA5luvk9BwnVcvIi7HizpwauFG96WedXsuXh790rtij9AmGllqPtMLfhe2RSwD6Pn38V00uBCydV4m",null,null,"https://developerscontentinsights-pa.clients6.google.com","AIzaSyCg-ZUslalsEbXMfIo9ZP8qufZgo3LSBDU","AIzaSyDxT0vkxnY_KeINtA4LSePJO-4MAZPMRsE","https://developers.clients6.google.com",["https://codeassist.google.com","https://code-assist-free-tier.corp.google.com"],null,"AIzaSyBQom12tzI-rybN7Sf-KfeL4nwm-Rf7PmI\n",null,null,"https://developers.googleapis.com"]')
   
 </script>
 
