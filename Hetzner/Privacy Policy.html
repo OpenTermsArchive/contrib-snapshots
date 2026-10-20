@@ -25,6 +25,11 @@
 
     <link rel="alternate" hreflang="x-default" href="https://www.hetzner.com/legal/privacy-policy/">
 
+    <link rel="alternate" hreflang="fr" href="https://www.hetzner.com/fr/legal/privacy-policy/">
+
+    <link rel="alternate" hreflang="es" href="https://www.hetzner.com/es/legal/privacy-policy/">
+
+<script type="application/json" id="locale-alternates">{"de":"/de/legal/privacy-policy/","en":"/legal/privacy-policy/","fr":"/fr/legal/privacy-policy/","es":"/es/legal/privacy-policy/"}</script>
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta content='width=device-width, initial-scale=1.0, maximum-scale=5.0, user-scalable=1' name='viewport'/>
 
@@ -49,7 +54,7 @@
 
 <link
     rel="stylesheet preload"
-    href="/_resources/themes/general/dist/fonts.css?m=1791530682"
+    href="/_resources/themes/general/dist/fonts.css?m=1792487580"
     as="style"
     crossorigin="anonymous"
 />
@@ -58,52 +63,33 @@
 
 <!-- Matomo -->
 
-    <script>
-        var _paq = window._paq = window._paq || []
-        _paq.push(['setDocumentTitle', document.domain + ' / ' + document.title])
-            
-            _paq.push(['setCookieDomain', '*.hetzner.com'])
-            _paq.push(['setDomains', '*.hetzner.com'])
-            
-        _paq.push(['requireCookieConsent'])
-        _paq.push(['setConversionAttributionFirstReferrer', true])
-        _paq.push(['trackPageView'])
-        _paq.push(['enableLinkTracking'])
-        _paq.push(['enableHeartBeatTimer', 15]);
-        (function () {
-            var u = 'https://use.hetzner.com/'
-            _paq.push(['setTrackerUrl', u + 'meck'])
-            _paq.push(['setSiteId', '8'])
-            var d = document, g = d.createElement('script'), s = d.getElementsByTagName('script')[0]
-            g.async = true
-            g.src = u + 'heck.js'
-            s.parentNode.insertBefore(g, s)
-        })()
-    </script>
+    <script
+        src="/_resources/themes/hetzner/dist/matomo.js?m=1792487586"
+        data-site-id="8"
+        data-cookie-domain="*.hetzner.com"
+    ></script>
 
 <!-- End Matomo Code -->
 
 <!-- Matomo Tag Manager -->
 
-    <script>
-        var _mtm = window._mtm = window._mtm || [];
-        _mtm.push({'mtm.startTime': (new Date().getTime()), 'event': 'mtm.Start'});
-        (function() {
-            var d=document, g=d.createElement('script'), s=d.getElementsByTagName('script')[0];
-            g.async=true; g.src='https://use.hetzner.com/js/container_IGdNOkAE.js'; s.parentNode.insertBefore(g,s);
-        })();
-    </script>
+    <script
+        src="/_resources/themes/hetzner/dist/matomoTagManager.js?m=1792487586"
+        data-container-url="https://use.hetzner.com/js/container_IGdNOkAE.js"
+    ></script>
 
 <!-- End Matomo Tag Manager -->
 
-<link rel="stylesheet" type="text/css" href="/_resources/themes/general/dist/vendors.css?m=1791530682">
-<link rel="stylesheet" type="text/css" href="/_resources/themes/general/dist/fonts.css?m=1791530682">
-<link rel="stylesheet" type="text/css" href="/_resources/themes/hetzner/dist/bootstrap.css?m=1791530687">
-<link rel="stylesheet" type="text/css" href="/_resources/themes/hetzner/dist/vendors.css?m=1791530687">
-<link rel="stylesheet" type="text/css" href="/_resources/themes/hetzner/dist/app.css?m=1791530687">
-<link rel="stylesheet" type="text/css" href="/_resources/themes/hetzner/dist/company.css?m=1791530687">
+
+<link rel="stylesheet" type="text/css" href="/_resources/themes/general/dist/vendors.css?m=1792487580">
+<link rel="stylesheet" type="text/css" href="/_resources/themes/general/dist/fonts.css?m=1792487580">
+<link rel="stylesheet" type="text/css" href="/_resources/themes/hetzner/dist/bootstrap.css?m=1792487586">
+<link rel="stylesheet" type="text/css" href="/_resources/themes/hetzner/dist/vendors.css?m=1792487586">
+<link rel="stylesheet" type="text/css" href="/_resources/themes/hetzner/dist/app.css?m=1792487586">
+<link rel="stylesheet" type="text/css" href="/_resources/themes/hetzner/dist/company.css?m=1792487586">
+<script src="/_resources/themes/static/dist/webcomponents.js?m=1792487579"></script>
 </head>
-<body class="with-toptoolbar">
+<body>
 
 
 <header id="header">
@@ -140,10 +126,18 @@
 </div>
 
     
-    
+    <script async src="/_resources/themes/hetzner/dist/aichat.js?m=1792487586"></script>
+    <chatbot-widget
+        
+        data-language="en_default"
+        
+        theme="light"
+        custom-button="true"
+        data-current-location-url="https://www.hetzner.com/legal/privacy-policy/"
+    ></chatbot-widget>
 
 
-    <div class="modal fade" id="LangSettings" role="dialog">
+    <div class="modal fade js-lang-settings" id="LangSettings" role="dialog">
     <div class="modal-dialog modal-lg">
         <div class="modal-content lang-model-content">
             <div class="modal-header p-0">
@@ -178,6 +172,24 @@
                 data-title="English"
             >
                 <span>English</span>
+            </button>
+        
+            <button
+                class="btn btn-langsettings lvc-modal-lang-track"
+                id="language-fr"
+                data-url="https://www.hetzner.com/fr/legal/privacy-policy"
+                data-title="Français"
+            >
+                <span>Français</span>
+            </button>
+        
+            <button
+                class="btn btn-langsettings lvc-modal-lang-track"
+                id="language-es"
+                data-url="https://www.hetzner.com/es/legal/privacy-policy"
+                data-title="Español"
+            >
+                <span>Español</span>
             </button>
         
     </div>
@@ -527,107 +539,50 @@
         </div>
     </div>
 </div>
-<script type="application/javascript" src="/_resources/vendor/silverstripe/admin/client/dist/js/i18n.js?m=1772024856"></script>
-<script type="application/javascript" src="/_resources/themes/languages/javascript/static/lang/en.js?m=1791530658"></script>
-<script type="application/javascript" src="/_resources/themes/languages/javascript/static/lang/de.js?m=1791530658"></script>
-<script type="application/javascript" src="/_resources/themes/hetzner/dist/vendors.js?m=1791530687"></script>
-<script type="application/javascript" src="/_resources/themes/hetzner/dist/app.js?m=1791530687"></script>
-<script type="application/javascript" src="/_resources/themes/static/dist/vendors.js?m=1791530682"></script>
-<script type="application/javascript" src="/_resources/themes/static/dist/bundle.js?m=1791530682"></script>
-<script type="application/javascript" src="/_resources/themes/hetzner/dist/initmodal.js?m=1791530687"></script>
-<script>
-    document.addEventListener("DOMContentLoaded", function() {
-        const route = ['/', '/de','/de/'].includes(window.location.pathname) ? 'hetzner.com' : window.location.pathname
-        $('.lvc-modal-save-track').on('pointerdown',function () {
-            _paq.push(['trackEvent', 'LVC', 'Submit', route])
-        })
-        $('.lvc-modal-lang-track').on('pointerdown',function () {
-            const title = $(this).data('title')
-            _paq.push(['trackEvent', 'LVC', title, route])
-        })
-        $('.lvc-modal-currency-track').on('pointerdown',function () {
-            const title = $(this).data('title')
-            _paq.push(['trackEvent', 'LVC', title, route])
-        })
-        // listen emit function from lvcSwitch.js select2 select event
-        $(document).on('vatSettingsSelect', function (event) {
-            const country = event.originalEvent.detail.country
-            _paq.push(['trackEvent', 'Country Selection', country, route]);
-        });
-    })
 
-</script>
 
-    
-    <nav id="header-nav" class="header-nav" role="navigation" aria-label="Main navigation">
-        <div
-    id="geo-suggestion"
-    class="d-none background-color-white w-100 geo-suggestion"
->
-    <div class="container geo-header-layout">
-        <div class="geo-header-text">
-            <span class="geo-main-text">
-                We noticed you're browsing from a different part of the world.
-            </span>
-            <span>
-                Switch to settings tailored to your location?
-            </span>
-        </div>
-        <div class="d-flex" style="gap: 1rem;">
-            <button
-                id="geo-accept"
-                class="d-flex align-items-center btn btn-sm btn-prio-3"
-                style="gap: 5px;"
-            >
-                <i class="fa-solid fa-check"></i>
-                yes
-            </button>
-            <button
-                id="geo-decline"
-                class="btn btn-sm btn-text-link btn-pre-header"
-            >
-                <i class="fa-solid fa-xmark"></i>
-            </button>
-        </div>
+    <nav id="header-nav" class="header-nav js-nav-bar" role="navigation" aria-label="Main navigation">
+    <div class="lang-notice" id="lang-notice">
+        Automatically translated by AI. Discrepancies or errors may occur.
     </div>
-</div>
-
-        <div id="header-toptoolbar" class="pre-header align-items-center">
+    <div id="header-toptoolbar" class="pre-header align-items-center">
     <div class="flex">
     <div class=" ">
         <div class="drefp-obrut-go" style="display: none;"
-             data-src="/_resources/themes/hetzner/images/logo/drefp-obrut-go.png?m=1791530657"></div>
+             data-src="/_resources/themes/hetzner/images/logo/drefp-obrut-go.png?m=1792487548"></div>
     </div>
 </div>
     <div class="header-wrapper">
         <a class="navbar-brand" href="https://www.hetzner.com/">
             <img
-                    src="/_resources/themes/hetzner/images/logo/hetzner-logo.svg?m=1751371256"
-                    class="navbar-logo" alt="Logo Hetzner Online"
-                    height="20"
-                    width="163"
+                src="/_resources/themes/hetzner/images/logo/hetzner-logo.svg?m=1792487548"
+                class="navbar-logo" alt="Logo Hetzner Online"
+                height="20"
+                width="163"
             >
         </a>
         <div class="d-flex justify-content-center align-items-center toptoolbar-pills">
             
                 <button
-                        type="button"
-                        class="btn-pre-pill toptoolbar-askai"
-                        onclick="window.ChatbotWidget?.openChat({ isFullscreen: false })"
+                    type="button"
+                    class="btn-pre-pill toptoolbar-askai"
+                    data-chatbot-open
                 >
                     <i class="ho-icon ho-icon-speech-s"></i>
                     Ask AI
                 </button>
+                
             
 
             
                 <ho-localization-provider>
                     <ho-lvc-switch
-                            use-api="true"
-                            theme="grey"
-                            size="compact"
-                            short-currency
-                            short-vat
+                        languages="de,en,fr,es"
+                        use-api="true"
+                        theme="grey"
+                        size="compact"
+                        short-currency
+                        short-vat
                     ></ho-lvc-switch>
                 </ho-localization-provider>
             
@@ -635,12 +590,12 @@
             
                 <div class="dropdown toptoolbar-login">
                     <button
-                            type="button"
-                            class="btn-pre-pill dropdown-toggle"
-                            data-bs-toggle="dropdown"
-                            data-bs-display="static"
-                            aria-haspopup="true"
-                            aria-expanded="false"
+                        type="button"
+                        class="btn-pre-pill dropdown-toggle"
+                        data-bs-toggle="dropdown"
+                        data-bs-display="static"
+                        aria-haspopup="true"
+                        aria-expanded="false"
                     >
                         <span class="d-flex align-items-center" style="gap:4px;">
                             <i class="ho-icon ho-icon-user-s"></i>
@@ -691,7 +646,7 @@
     </div>
 </div>
 
-        <div id="header-main-nav">
+    <div id="header-main-nav">
     <ul class="main-nav-list">
         
             <li class="main-nav-entry">
@@ -855,6 +810,7 @@
                     
                         <span slot="start">from </span>
                     
+                    <span class="visually-hidden">€ 67.70 per month, excl. VAT</span>
                 </ho-price-container>
             </ho-localization-provider>
         </span>
@@ -1597,28 +1553,45 @@
     </ul>
 </div>
 
-    </nav>
+</nav>
 
-<script>
-    document.addEventListener("DOMContentLoaded", function () {
-        const route = ['/', '/de', '/de/'].includes(window.location.pathname) ? 'hetzner.com' : window.location.pathname
-        $('.nav-menu-data-track').on('pointerdown', function () {
-            const title = $(this).data('title')
-            _paq.push(['trackEvent', 'Navigation', title, route])
-        })
-        $('.nav-menu-track').on('pointerdown', function () {
-            const title = $(this).data('title')
-            _paq.push(['trackEvent', 'Navigation', title, route])
-        })
-        $('.nav-sub-menu-track').on('pointerdown', function () {
-            const title = $(this).data('title')
-            _paq.push(['trackEvent', 'Navigation', title, route])
-        })
-    })
-</script>
 
 </header>
 
+
+
+<div
+    id="geo-suggestion"
+    class="d-none geo-suggestion"
+>
+    <div class="geo-header-layout">
+        <div class="geo-header-text">
+            <span class="geo-main-text">
+                We noticed you're browsing from a different part of the world.
+            </span>
+            <span class="geo-sub-text">
+                Switch to settings tailored to your location?
+            </span>
+        </div>
+        <div class="d-flex" style="gap: 1rem;">
+            <button
+                id="geo-accept"
+                class="d-flex align-items-center btn btn-sm btn-prio-2 on-dark"
+                style="gap: 5px;"
+            >
+                <i class="ho-icon ho-icon-check-s"></i>
+                yes
+            </button>
+            <button
+                id="geo-decline"
+                class="d-flex align-items-center btn btn-sm btn-prio-2 on-dark"
+            >
+                <i class="ho-icon ho-icon-cross-s"></i>
+                no
+            </button>
+        </div>
+    </div>
+</div>
 
 
 
@@ -1854,17 +1827,7 @@
         </div>
     </div>
 </div>
-<script>
-    document.addEventListener("DOMContentLoaded", function() {
-        $("#menu-select").change(function(){
-            let value = $(this).val();
-            if (value.charAt(0) === '/') {
-                value = value.substring(1);
-            }
-            window.location.href = value;
-        })
-    })
-</script>
+
 
                     <div class="col-lg-9 col-md-9 col-sm-12 col-12">
                         <div class="row">
@@ -3079,7 +3042,7 @@
                 <div class="footer-brand-section">
 <a class="footer-brand" href="https://www.hetzner.com/">
     <img
-        src="/_resources/themes/hetzner/images/logo/hetzner-logo.svg?m=1791530657"
+        src="/_resources/themes/hetzner/images/logo/hetzner-logo.svg?m=1792487548"
         class="footer-logo" alt="Logo Hetzner Online"
         height="21px"
         width="171.297px"
@@ -3184,7 +3147,7 @@
                         </span>
                     </a>
                 
-                    <a class="footer-menu-link" href="/support-form/">
+                    <a class="footer-menu-link" href="/support/">
                         
                         <span class="link-name">
                             Contact
@@ -3274,6 +3237,7 @@
     <div class="footer-grey-section-left">
         <ho-localization-provider>
             <ho-lvc-switch
+                    languages="de,en,fr,es"
                     use-api="true"
                     theme="grey"
                     size="compact"
@@ -3286,7 +3250,7 @@
     Hetzner Online GmbH. All Rights Reserved.
     
         Prices 
-
+        <ho-localization-provider>
             <ho-vat-holder></ho-vat-holder>
         </ho-localization-provider>
     
@@ -3302,7 +3266,7 @@
     rel="noopener noreferrer"
 >
     <img
-        src="/_resources/themes/hetzner/images/icons/social-media/ICO-facebook-hover.svg?m=1791530657"
+        src="/_resources/themes/hetzner/images/icons/social-media/ICO-facebook-hover.svg?m=1792487548"
         alt="facebook logo"
     >
 </a>
@@ -3314,7 +3278,7 @@
     rel="noopener noreferrer"
 >
     <img
-        src="/_resources/themes/hetzner/images/icons/social-media/ICO-instagram-hover.svg?m=1791530657"
+        src="/_resources/themes/hetzner/images/icons/social-media/ICO-instagram-hover.svg?m=1792487548"
         alt="instagram logo"
     >
 </a>
@@ -3326,7 +3290,7 @@
     rel="noopener noreferrer"
 >
     <img
-        src="/_resources/themes/hetzner/images/icons/social-media/ICO-youtube-hover.svg?m=1791530657"
+        src="/_resources/themes/hetzner/images/icons/social-media/ICO-youtube-hover.svg?m=1792487548"
         alt="youtube logo"
     >
 </a>
@@ -3338,7 +3302,7 @@
     rel="me"
 >
     <img
-        src="/_resources/themes/hetzner/images/icons/social-media/ICO-mastodon-hover.svg?m=1791530657"
+        src="/_resources/themes/hetzner/images/icons/social-media/ICO-mastodon-hover.svg?m=1792487548"
         alt="mastodon logo"
     >
 </a>
@@ -3350,7 +3314,7 @@
     rel="noopener noreferrer"
 >
     <img
-        src="/_resources/themes/hetzner/images/icons/social-media/ICO-x-twitter-hover.svg?m=1791530657"
+        src="/_resources/themes/hetzner/images/icons/social-media/ICO-x-twitter-hover.svg?m=1792487548"
         alt="twitter logo"
     >
 </a>
@@ -3362,7 +3326,7 @@
     rel="noopener noreferrer"
 >
     <img
-        src="/_resources/themes/hetzner/images/icons/social-media/ICO-linkedin-hover.svg?m=1791530657"
+        src="/_resources/themes/hetzner/images/icons/social-media/ICO-linkedin-hover.svg?m=1792487548"
         alt="linkedin logo"
     >
 </a>
@@ -3376,6 +3340,14 @@
 
 
 <div class="back-top animate animated"><i class="fa fa-arrow-up"></i></div>
+<script type="application/javascript" src="/_resources/vendor/silverstripe/admin/client/dist/js/i18n.js?m=1772024856"></script>
+<script type="application/javascript" src="/_resources/themes/languages/javascript/static/lang/en.js?m=1792487548"></script>
+<script type="application/javascript" src="/_resources/themes/languages/javascript/static/lang/de.js?m=1792487548"></script>
+<script type="application/javascript" src="/_resources/themes/hetzner/dist/vendors.js?m=1792487586"></script>
+<script type="application/javascript" src="/_resources/themes/hetzner/dist/app.js?m=1792487586"></script>
+<script type="application/javascript" src="/_resources/themes/static/dist/bundle.js?m=1792487579"></script>
+<script type="application/javascript" src="/_resources/themes/hetzner/dist/initmodal.js?m=1792487586"></script>
+<script type="application/javascript" src="/_resources/themes/hetzner/dist/layoutScripts.js?m=1792487586"></script>
 </body>
 </html>
 
