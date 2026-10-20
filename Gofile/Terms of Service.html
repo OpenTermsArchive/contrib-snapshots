@@ -65,20 +65,13 @@
       <!-- Boot skeleton; account rows render after boot. -->
       <div>
         <div id="account-list" class="flex max-h-60 flex-col gap-1 overflow-y-auto overscroll-y-contain">
-    <button type="button" data-account-id="9150bb96-f9be-4481-b9d7-7a544a48c0d7" class="group/acc relative flex w-full touch-pan-y items-center gap-3 rounded-xl px-3 py-2.5 text-left select-none touch-callout-none transition-colors duration-150 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-brand-400 lg:group-data-[collapsed=true]/sidebar:justify-center lg:group-data-[collapsed=true]/sidebar:px-2 bg-brand-500/10 shadow-[inset_0_0_0_1px_rgb(59_130_246/0.25)]" aria-current="true" aria-haspopup="menu" aria-expanded="false">
-      <span class="relative flex size-9 shrink-0 items-center justify-center">
-        <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAEAAAABACAYAAACqaXHeAAACaUlEQVR4AeyXMUqEMRCFww8eQjtbWy8heAcbbyCClxBrGxsbT+AFPIStlRZewWJluseXZd/GIOyfzMLADHl5M5nMI/8u32/nG7WLu+ON2ufjy0ZNsfv4uvcv/j45FMMcepbwFRv+Uib/ZQMmH4CyXL1+FbWn04eidnR2X9QUG/7P+21RY0OvP26KmnJt8xUbPvk0V/hRgxo59SzhKzb8lAA7PFucE/B8eVLUqKHQiZpiw3d4TlTodpcRr7nDZ76oQS0wag6fE8COzxbnBKhewqc+4+1UC4waJ0ax4as+wyeecWDUgkONeK0lfMWGz/MERi0ngB2dLZ5uAnjBS+hEje8mNyg2fGqM+7lOPsbEO76oQY183K/Y8HMC2LHZ4pwAasRNgMNTw+SL//i7jHjH5+ohH/E5AezQbHFOQOuNO006Pv3O3+a7/VzvrScngB2dLc4JcBriu8mYE8M3nuutseNjPYyZj+fNCWCHZouHnwB3oVUDqBESuHW+7U7D5CeefMS7etx61QAmGD3OBox+w+583RPg3l2nYRbo8C4f+Vzc3QCX4NDXswGHfkP/XV81Aa0ac++sW+cBHd6tk8+dp2oACUaPswGj37A7XzUBrRrjt3vrflcg+ZivdT/xVQMIGD3OBox2w63nsRNADfJd5bc716lZ8jEmnnwuH/lcQ2wDHMHa17MBa7/B3vqrCaDmWhNQg06zzEc8+VrrIT/3Vw0gYPQ4GzD6DbvzVRNAzTkNuQTka40dP9dZL/MRXzWAgNHjbMDoN+zOV00Av8VJ4DTF/dRka0y+3nq4v2oAAaPH2YC133Bv/b8AAAD//1iej+IAAAAGSURBVAMAcgjkDqTtSS4AAAAASUVORK5CYII=" alt="" width="36" height="36" draggable="false" class="size-9 rounded-full shadow-lg shadow-brand-950/50 ring-1 ring-brand-400/60">
-        
-        <span class="absolute -bottom-0.5 -right-0.5 size-2.5 rounded-full bg-brand-400 ring-2 ring-surface-raised" title="Active account"></span>
-      </span>
+    <div class="flex items-center gap-3 rounded-xl px-3 py-2.5 lg:group-data-[collapsed=true]/sidebar:justify-center lg:group-data-[collapsed=true]/sidebar:px-2" aria-hidden="true">
+      <span class="size-9 shrink-0 animate-pulse rounded-full bg-white/10"></span>
       <span class="min-w-0 flex-1 lg:group-data-[collapsed=true]/sidebar:hidden">
-        <span class="block truncate text-sm font-semibold text-white">Guest 0361325725</span>
-        <span class="block truncate text-xs text-slate-500">
-          Guest account
-        </span>
+        <span class="mb-1.5 block h-3 w-24 animate-pulse rounded-full bg-white/10"></span>
+        <span class="block h-2.5 w-16 animate-pulse rounded-full bg-white/5"></span>
       </span>
-      <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" data-lucide="ellipsis-vertical" class="lucide lucide-ellipsis-vertical size-4 shrink-0 text-slate-500 lg:group-data-[collapsed=true]/sidebar:hidden" aria-hidden="true"><circle cx="12" cy="12" r="1"></circle><circle cx="12" cy="5" r="1"></circle><circle cx="12" cy="19" r="1"></circle></svg>
-    </button>
+    </div>
   </div>
         <button id="add-account" type="button" class="mt-1 flex w-full items-center gap-3 rounded-xl border border-dashed border-white/15 px-3 py-2.5 text-sm font-medium text-slate-400 transition-colors duration-150 hover:border-white/30 hover:bg-white/5 hover:text-white focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-brand-400 lg:group-data-[collapsed=true]/sidebar:justify-center lg:group-data-[collapsed=true]/sidebar:border-transparent lg:group-data-[collapsed=true]/sidebar:px-2">
           <span class="flex size-9 shrink-0 items-center justify-center rounded-full bg-white/5">
