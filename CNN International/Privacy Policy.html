@@ -66,7 +66,7 @@ var php_var = {"required":"This field is required.","email":"Please enter a vali
 <script type="text/javascript" src="https://www.wbdprivacy.com/wp-content/plugins/sitepress-multilingual-cms/templates/language-switchers/legacy-dropdown-click/script.min.js?ver=1" id="wpml-legacy-dropdown-click-0-js"></script>
 <link rel="https://api.w.org/" href="https://www.wbdprivacy.com/wp-json/"><link rel="alternate" title="oEmbed (JSON)" type="application/json+oembed" href="https://www.wbdprivacy.com/wp-json/oembed/1.0/embed?url=https%3A%2F%2Fwww.wbdprivacy.com%2Fpolicycenter%2Fb2c%2F">
 <link rel="alternate" title="oEmbed (XML)" type="text/xml+oembed" href="https://www.wbdprivacy.com/wp-json/oembed/1.0/embed?url=https%3A%2F%2Fwww.wbdprivacy.com%2Fpolicycenter%2Fb2c%2F&amp;format=xml">
-<meta name="generator" content="WPML ver:4.9.7 stt:7,22,9,12,37,1,15,18,4,3,13,20,23,27,31,32,33,65,40,42,41,44,45,49,10,46,2,50,53,54;">
+<meta name="generator" content="WPML ver:4.9.7 stt:7,22,9,12,37,1,15,69,18,4,3,13,20,23,25,27,31,32,33,62,65,40,42,41,44,45,49,67,10,46,2,50,52,66,68,53,54,57;">
 	<script>
 		jQuery(document).ready(function() {
 			jQuery.validator.addMethod("noSpaceFirstName", function(value, element) {
@@ -94,6 +94,13 @@ var php_var = {"required":"This field is required.","email":"Please enter a vali
 				}
 				var digits = String(value).replace(/\D/g, '');
 				return digits.length === 10;
+			}, php_var.brMobileInvalid);
+
+			// APAC TAOO: international mobile — basic client-side digit-range check.
+			// Real validation (libphonenumber) runs server-side in request-forms.php.
+			jQuery.validator.addMethod("apacMobileNational", function(value, element) {
+				var digits = String(value).replace(/\D/g, '');
+				return digits.length >= 4 && digits.length <= 15;
 			}, php_var.brMobileInvalid);
 		});
 		jQuery.extend(jQuery.validator.messages, {
@@ -292,6 +299,21 @@ a:hover {
  		{
         height: auto !important;
     }
+}
+/* APAC TAOO — stack radio buttons below the question sentence */
+.taoo-intake-selector {
+    flex-direction: column;
+    justify-content: flex-start;
+    gap: 0.5rem;
+}
+.taoo-intake-radios {
+    white-space: normal;
+}
+.taoo-intake-question {
+    flex: 0 0 auto !important;
+}
+#taoo-mobile-cc {
+    text-indent: inherit !important;
 }		</style>
 		
 	<script src="https://www.wbdprivacy.com/wp-includes/js/wp-emoji-release.min.js?ver=6.8.11" defer=""></script><link rel="stylesheet" type="text/css" href="https://privacyportal-cdn.onetrust.com/privacy-notice-scripts/css/v2/otnotice-core.css" class="otnotice-css"></head>
