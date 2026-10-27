@@ -65,20 +65,13 @@
       <!-- Boot skeleton; account rows render after boot. -->
       <div>
         <div id="account-list" class="flex max-h-60 flex-col gap-1 overflow-y-auto overscroll-y-contain">
-    <button type="button" data-account-id="88541ffe-e0db-4d8e-b688-5c23d22b42b2" class="group/acc relative flex w-full touch-pan-y items-center gap-3 rounded-xl px-3 py-2.5 text-left select-none touch-callout-none transition-colors duration-150 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-brand-400 lg:group-data-[collapsed=true]/sidebar:justify-center lg:group-data-[collapsed=true]/sidebar:px-2 bg-brand-500/10 shadow-[inset_0_0_0_1px_rgb(59_130_246/0.25)]" aria-current="true" aria-haspopup="menu" aria-expanded="false">
-      <span class="relative flex size-9 shrink-0 items-center justify-center">
-        <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAEAAAABACAYAAACqaXHeAAACjUlEQVR4AeyaMU4DMRBFrVTUINFwB07BZag4AAXiCFTcgZKGhlNwhzSRoEaiCPrd13O0EytZadcepC/Nz3yPx+MZdgXZ7N4+9o7717+9w33H2L72kP34vt1P4dAa/+yYHFzja2W7T/amDP6TBRi8Acrm6fuuOJ6vPovDfbJZsJeL2+Kg32PJ/tlelylI42A830s2/crR4bFku092jgArOBrPDtBcODRXDvfJ1tw4OM9zdxD381xkK0eHn0W2+2RnB8x9Y0uPnx3AG2qdMc3RFDSXjimtfK6Vrc9aoDUOnofnzQ5gRUbjw3UALzgswOXNrjgYwOdNNv3n5trDwfieq2z6ycMCcEFvPAvQ2422nifsAD5Hff5kc0N95tAcOtx3yHatbGqi/Zgv9eRhAbigN54F6O1GW88T/k0wCsj3dOoffr+Kg3py18pmPOrpJ6eev1NyBFix0Xh2AGeEHUC/ns2OSE8/Z5Cceu5Pv+ciO9LTnx3Aio7Gu++A6EKrAkQzyXdt6iPOGSSP1tPPfHhg6umvCkBB7zwL0PsNR+dr7gA9ax3cgDNNfyuP4nkuslvjNxegdYOl67MAS7+hufNr7gA+dzmj0XOXfnIemH7ux3y4PuLNBYgCrs2fBVjbjZ073+yAc1d0bfGyA9Z2Y1G+rf6qA/icjQLqu3cOvY87uJ7xyan3WLJ9L9nUk0fxqwIwQO88C9D7DUfnqzqA797knCn9/87Bd3PqGY+cesbzvWRTz3jkLEhVAAp651mA3m84Ol/1/QAu4Izp2euIZiyKx/jUk3M/z0V2FI/rcwRY4dF4dgBnhpwzo2evg3q9rzvYUZrTKVDvsWRzP89FNvOlnjw7gBUfja++A069sH8AAAD//71M0NAAAAAGSURBVAMAioYFLemW8jMAAAAASUVORK5CYII=" alt="" width="36" height="36" draggable="false" class="size-9 rounded-full shadow-lg shadow-brand-950/50 ring-1 ring-brand-400/60">
-        
-        <span class="absolute -bottom-0.5 -right-0.5 size-2.5 rounded-full bg-brand-400 ring-2 ring-surface-raised" title="Active account"></span>
-      </span>
+    <div class="flex items-center gap-3 rounded-xl px-3 py-2.5 lg:group-data-[collapsed=true]/sidebar:justify-center lg:group-data-[collapsed=true]/sidebar:px-2" aria-hidden="true">
+      <span class="size-9 shrink-0 animate-pulse rounded-full bg-white/10"></span>
       <span class="min-w-0 flex-1 lg:group-data-[collapsed=true]/sidebar:hidden">
-        <span class="block truncate text-sm font-semibold text-white">Guest 4522406662</span>
-        <span class="block truncate text-xs text-slate-500">
-          Guest account
-        </span>
+        <span class="mb-1.5 block h-3 w-24 animate-pulse rounded-full bg-white/10"></span>
+        <span class="block h-2.5 w-16 animate-pulse rounded-full bg-white/5"></span>
       </span>
-      <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" data-lucide="ellipsis-vertical" class="lucide lucide-ellipsis-vertical size-4 shrink-0 text-slate-500 lg:group-data-[collapsed=true]/sidebar:hidden" aria-hidden="true"><circle cx="12" cy="12" r="1"></circle><circle cx="12" cy="5" r="1"></circle><circle cx="12" cy="19" r="1"></circle></svg>
-    </button>
+    </div>
   </div>
         <button id="add-account" type="button" class="mt-1 flex w-full items-center gap-3 rounded-xl border border-dashed border-white/15 px-3 py-2.5 text-sm font-medium text-slate-400 transition-colors duration-150 hover:border-white/30 hover:bg-white/5 hover:text-white focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-brand-400 lg:group-data-[collapsed=true]/sidebar:justify-center lg:group-data-[collapsed=true]/sidebar:border-transparent lg:group-data-[collapsed=true]/sidebar:px-2">
           <span class="flex size-9 shrink-0 items-center justify-center rounded-full bg-white/5">
