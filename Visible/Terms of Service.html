@@ -1045,12 +1045,12 @@
         </div>
         <div class="scroll" id="loggedOutMenu" style="display:flex" role="presentation">
 		
-		
-          <a id="signIn" data-link="https://www.visible.com/sign-in" role="button" href="https://www.visible.com/sign-in" aria-label="User profile to activate press enter" data-tracking-name="tealium_event,sign_in,link_location,top_navigation,link_type,icon,page_name,terms_and_conditions">
+          <a id="signIn" data-link="https://visible.com/nsa/ui/auth/signin" role="button" href="https://visible.com/nsa/ui/auth/signin" aria-label="User profile to activate press enter" data-tracking-name="tealium_event,sign_in,link_location,top_navigation,link_type,icon,page_name,terms_and_conditions">
             <div class="login-img">
               <img src="/content/dam/visible-aem/header/login-icon_prod_1.svg" alt="logout"/>
             </div>
           </a>
+		
 		
           <a id="cart-id-desktop-signOut" class="shop-cart1" href="https://www.visible.com/shop/cart" data-tracking-name="tealium_event,cart,link_location,top_navigation,link_type,icon,page_name,terms_and_conditions" aria-label="cart" role="button">
             <img class="cartIcon img-responsive" src="/content/dam/visible-aem/header/cart_prod_1.svg" alt="cart"/>
@@ -1702,12 +1702,27 @@ Many services and applications offered through your device or the home internet 
 						<div>
 
 <div>
-    <p class="subscribeText">Subscribe to stay in the loop.</p>
+	<div class="signup-form"></div>
+   <!-- <p class="subscribeText">Subscribe to stay in the loop.</p>
     <div class="email-form emailForm">
         <div class="emailInput input-control">
             <div class="email-container">
-                <input id="emailFooter" inline="true" name="emailFooter" class="footer-input" required data-tracking-name="tealium_event,email_submit,link_location,footer,link_type,terms_and_conditions"/>
-                <button disabled id="emailSubmitBtn" dataTrackingName="tealium_event,email_submit,link_location,footer,link_type,button" class="button-width footer-button footerButton" type="submit" onclick="emailSubmit()">
+                <input
+                        id="emailFooter"
+                        inline="true"
+                        name="emailFooter"
+                        class="footer-input"
+                        required
+                        data-tracking-name="tealium_event,email_submit,link_location,footer,link_type,terms_and_conditions"
+                />
+                <button
+                        disabled
+                        id="emailSubmitBtn"
+                        dataTrackingName="tealium_event,email_submit,link_location,footer,link_type,button"
+                        class="button-width footer-button footerButton"
+                        type="submit"
+                        onclick="emailSubmit()"
+                >
                     <span data-hover="Submit">Submit</span>
                 </button>
                 <label for="emailFooter">Email address</label>
@@ -1715,7 +1730,7 @@ Many services and applications offered through your device or the home internet 
 
         </div>
         <p id="errorMsg" class="errorMsg">That is not a valid email format. Please try again.</p>
-    </div>
+    </div> -->
 </div></div>
 					    
                             
@@ -2108,7 +2123,9 @@ Many services and applications offered through your device or the home internet 
 				</div>
 				
 
-<div class="rowN noBottomPad noMargin">
+<div class="signup-form"></div>
+
+<!--<div class="rowN noBottomPad noMargin">
     <div class="col-sm-12 col-12 noPad-mobile">
         <div>
             <p class="subscribeTextMobile">Subscribe to stay in the loop.</p>
@@ -2121,8 +2138,22 @@ Many services and applications offered through your device or the home internet 
             <div class="form-row">
                 <div class="emailInput input-control">
                     <div class="email-container">
-                        <input id="emailFooterMobile" inline="true" name="emailFooterMobile" class="footer-input" required data-tracking-name="tealium_event,email_submit,link_location,footer,link_type,terms_and_conditions"/>
-                        <button disabled id="emailSubmitBtn" dataTrackingName="tealium_event,email_submit,link_location,footer,link_type,button" class="button-width footer-button footerButton" type="submit" onclick="emailSubmit()">
+                        <input
+                                id="emailFooterMobile"
+                                inline="true"
+                                name="emailFooterMobile"
+                                class="footer-input"
+                                required
+                                data-tracking-name="tealium_event,email_submit,link_location,footer,link_type,terms_and_conditions"
+                        />
+                        <button
+                                disabled
+                                id="emailSubmitBtn"
+                                dataTrackingName="tealium_event,email_submit,link_location,footer,link_type,button"
+                                class="button-width footer-button footerButton"
+                                type="submit"
+                                onclick="emailSubmit()"
+                        >
                             <span data-hover="Submit">Submit</span>
                         </button>
                         <label for="emailFooterMobile">Email address</label>
@@ -2132,7 +2163,7 @@ Many services and applications offered through your device or the home internet 
             <p id="errorMsg" class="errorMsg">That is not a valid email format. Please try again..</p>
         </div>
     </div>
-</div>
+</div>  -->
 				
                      <div class="awardContainer">
 	<img class="awardContainerImage" loading="lazy"/>
