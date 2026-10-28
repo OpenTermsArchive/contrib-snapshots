@@ -24,7 +24,7 @@
 <meta name="msapplication-TileImage" content="/ms-icon-144x144.png">
 <meta name="theme-color" content="#ffffff">
 <script>
-serverTime = new Date('2026-10-27 12:38:07 GMT');
+serverTime = new Date('2026-10-28 12:37:08 GMT');
 </script>
 <title>Terms of Service | DistroKid</title>
 <meta name="description" content="Read DistroKid's Terms of Service">
@@ -74,10 +74,10 @@ initializeDKModal();
 captchaSiteKey = "6Ld_vDcUAAAAABBf4b4MfIPqz5XA53JWQyOh6MX0";
 turnstileSiteKey = "0x4AAAAAAAwjnOrGSKrIkAR9";
 </script>
-<script src="/js/header.js?cacheHash=62c5e964d9996411" 1793104686382></script>
-<script src="/js/distro.js?cacheHash=6c2272cb0f8389c2" 1793104686382></script>
-<script src="/js/shared/metadata-field-sanitizer.js?cacheHash=f2b3f97c6cbe025" 1793104686382></script>
-<script src="/js/fixCaps.js?cacheHash=493db797f5542be8" 1793104686382></script>
+<script src="/js/header.js?cacheHash=62c5e964d9996411" 1793147826553></script>
+<script src="/js/distro.js?cacheHash=6c2272cb0f8389c2" 1793147826553></script>
+<script src="/js/shared/metadata-field-sanitizer.js?cacheHash=f2b3f97c6cbe025" 1793147826553></script>
+<script src="/js/fixCaps.js?cacheHash=493db797f5542be8" 1793147826553></script>
 <script src="/js/jquery.kenburns-0.1.js"></script>
 <script src="/js/lazysizes.min.js"></script>
 <script>
@@ -303,7 +303,7 @@ window.captchaProcessor = "recaptcha_v2";
 <div style="position:relative;" class="outer2 navNotLoggedIn">
 <div class="headerLoggedOutNav nav inner2">
 <div class="navInner">
-<input type="hidden" id="forgotPasswordSessionID" name="forgotPasswordSessionID" value="distrokid_bfd5d754-eaa6-43ee-90e7-4cc20c9781a5_0">
+<input type="hidden" id="forgotPasswordSessionID" name="forgotPasswordSessionID" value="distrokid_f79435f9-c46b-4f2f-b4ee-170512a73a5e_0">
 <script type="text/template" id="templateForgotPassword">
 <div class="signinBoxNotification">
 Done! Instructions to reset your password have been emailed.
@@ -381,45 +381,6 @@ Done. We just emailed instructions to you.
 window.countryCode = "CA";
 </script>
 <div class="wrapper">
-<!-- Checkout Started event for Mixea -->
-<script>
-const onMixeaCTAClick = function() {
-const pageData = $("#page-data").data();
-const convertAmountToNum = function (num) {
-return Number(num.split('').slice(1).join(''));
-}
-const priceDollars = convertAmountToNum(pageData.amount);
-const currency = pageData.currency;
-const discountFraction = Number(pageData.mixeaDiscount) || 0;
-const detail = {
-amount: { amountMinor: Math.round(priceDollars * 100), currency: currency },
-name: "Mixea",
-products: [{
-productName: "Mixea",
-name: "Mixea",
-productBrand: "Mixea",
-productPrice: { amountMinor: Math.round(priceDollars * 100), currency: currency },
-quantity: 1,
-category: "subscription",
-}]
-};
-if (discountFraction > 0) {
-detail.discountAmount = { amountMinor: Math.round(priceDollars * discountFraction * 100), currency: currency };
-}
-if (pageData.mixeaCoupon) {
-detail.coupon = pageData.mixeaCoupon;
-}
-window.dkDataLayer.push({
-type: "event",
-name: "Checkout Started",
-method: "checkout-started",
-eventType: "client-navigation",
-version: "3.0.0",
-detail: detail
-});
-};
-$("#mixea-buy-now-cta").on("click", onMixeaCTAClick);
-</script>
 <script>
 preload('/images/check.png');
 try {
@@ -497,7 +458,7 @@ Copyright Agent
 DistroKid LLC
 34 Third Ave #183
 New York, NY 10003
-Email: <a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="d1bdb4b6b0bd91b5b8a2a5a3bebab8b5ffb2bebc">[email&#160;protected]</a> <br>
+Email: <a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="9df1f8fafcf1ddf9f4eee9eff2f6f4f9b3fef2f0">[email&#160;protected]</a> <br>
 In accordance with the DMCA and other applicable law, DistroKid has adopted a policy of terminating, in appropriate circumstances and in DistroKid's sole discretion, users who are deemed to be repeat infringers. For the avoidance of doubt, the foregoing sentence in no way limits DistroKid's right to limit access to the Services and/or terminate the Accounts of any users for any reason, in DistroKid's sole discretion, including, without limitation, in the case of users who infringe, or allegedly infringe, any Intellectual Property Rights of others, whether or not there is any repeat infringement. <br>
 Please be advised that pursuant to federal law you may be held liable for damages if you make material misrepresentations in a Notice. Thus, if you are not sure that material located on or linked to by the infringes your copyright, you should consider first contacting an attorney. <br>
 <strong>Links to Third-Party Websites or Services</strong><br>
@@ -608,7 +569,7 @@ aria-label="DistroKid on Instagram"
 <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script type="importmap">{"imports":{"/js/shared/dk-banner/dk-banner.js":"/js/shared/dk-banner/dk-banner.js?cacheHash=6281422c1a2cad49"}}</script>
 <script src="/js/page-locale.js?cacheHash=3f5b671542614595" type="module"></script>
 <script>
-window.__sitetranWidgetConfig = {"scriptUrl":"//c.sitetran.com/widget/v3.js","isSeoPage":true,"isLoggedIn":false,"seoPagePath":"/terms/","sitetran":{"url_type":"none","auto_switch_from_browser_lang":true,"refresh_translation_seconds":0.1,"site_default_language_code":"en","phrase_discovery_enabled":true,"preferredLanguage":"en","zendeskLanguageCode":"en-us","site_id":1566,"static_url_language_code_lookup":{},"update_direction":true,"widget_type":"styled-select"},"zendeskLanguageMapping":{"ja":"ja","sv":"sv","tr":"tr","es-ES":"es-es","hu":"hu","en-GB":"en-us","da":"da","ro":"ro","ms":"ms","de":"de","cs":"cs","fr":"fr","el":"el","ko":"ko","fi":"fi","pt-BR":"pt-br","pl":"pl","ar":"ar","hi":"hi","th":"th","es":"es","nb":"nb","sw":"sw","nl":"nl","id":"id","he":"he","uk":"uk","it":"it","pt-PT":"pt-pt","fr-CA":"fr-ca","vi":"vi"},"languageBannerModuleUrl":"/js/language-banner.js?cacheHash=5338f31eae243f8","sitetranCommands":[],"accessToken":"eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJjbGkiOjEsImlhdCI6MTc5MzEwNDY4NywiaXNzIjoiaHR0cHM6Ly9kaXN0cm9raWQuY29tIiwic3ViIjowLCJleHAiOjE3OTMxMDgyODcsImRldiI6IiIsInNjb3BlIjoicmVhZC1wcm9maWxlIiwiYXVkIjoiIn0.UUWIp-P6dNR_XEfYCYXqRNWNBYDMSMbMUFklbJPtrY0"};
+window.__sitetranWidgetConfig = {"scriptUrl":"//c.sitetran.com/widget/v3.js","isSeoPage":true,"isLoggedIn":false,"seoPagePath":"/terms/","sitetran":{"url_type":"none","auto_switch_from_browser_lang":true,"refresh_translation_seconds":0.1,"site_default_language_code":"en","phrase_discovery_enabled":true,"preferredLanguage":"en","zendeskLanguageCode":"en-us","site_id":1566,"static_url_language_code_lookup":{},"update_direction":true,"widget_type":"styled-select"},"zendeskLanguageMapping":{"ja":"ja","sv":"sv","tr":"tr","es-ES":"es-es","hu":"hu","en-GB":"en-us","da":"da","ro":"ro","ms":"ms","de":"de","cs":"cs","fr":"fr","el":"el","ko":"ko","fi":"fi","pt-BR":"pt-br","pl":"pl","ar":"ar","hi":"hi","th":"th","es":"es","nb":"nb","sw":"sw","nl":"nl","id":"id","he":"he","uk":"uk","it":"it","pt-PT":"pt-pt","fr-CA":"fr-ca","vi":"vi"},"languageBannerModuleUrl":"/js/language-banner.js?cacheHash=5338f31eae243f8","sitetranCommands":[],"accessToken":"eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJjbGkiOjEsImlhdCI6MTc5MzE0NzgyOCwiaXNzIjoiaHR0cHM6Ly9kaXN0cm9raWQuY29tIiwic3ViIjowLCJleHAiOjE3OTMxNTE0MjgsImRldiI6IiIsInNjb3BlIjoicmVhZC1wcm9maWxlIiwiYXVkIjoiIn0.WcxfQjZpCus0QwWhSmXPuvzcSQ5Q2Qxb-COBWBXHp7Y"};
 </script>
 <script src="/js/sitetran-widget.js?cacheHash=7da02b18d81ac24e" type="module"></script>
 </div>
@@ -670,7 +631,7 @@ initialScope: {
 tags: {
 "dev_user": "unknown",
 "user_id": "0",
-"machine_name": "prod-dk-web-08"
+"machine_name": "prod-dk-web-07"
 }
 },
 beforeSend: function(event, hint) {
