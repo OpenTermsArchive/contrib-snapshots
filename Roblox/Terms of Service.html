@@ -1,13 +1,13 @@
 <!DOCTYPE html><html dir="ltr" lang="en-US"><head>
   <meta charset="utf-8">
-  <!-- v28123 -->
+  <!-- v28133 -->
 
 
   <title>Roblox Terms of Use – Roblox Support</title>
 
   
 
-  <meta name="description" content="Effective Date: November 1, 2026 We are updating our Terms of Use to make them clearer and to better explain how Roblox works. Here’s a..."><meta property="og:image" content="https://en.help.roblox.com/hc/theming_assets/01HZPAS6P8C1KHF2TQJ18XHPHE">
+  <meta name="description" content="Effective Date: November 1, 2026 We are updating our Terms of Use to make them clearer and to better explain how Roblox works. Here’s a..."><meta property="og:image" content="https://en.help.roblox.com/hc/theming_assets/01J9A30Q21JSCFQ5FNR3E489ZQ">
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="Roblox Support">
 <meta property="og:title" content="Roblox Terms of Use">
@@ -43,39 +43,43 @@ We have tried to simplify...">
 <link rel="alternate" hreflang="zh-tw" href="https://en.help.roblox.com/hc/zh-tw/articles/115004647846-Roblox-%E4%BD%BF%E7%94%A8%E6%A2%9D%E6%AC%BE">
 
   <link rel="stylesheet" href="//static.zdassets.com/hc/assets/application-2122bfef8fb65577eef53cdc0fdca3c1.css" media="all" id="stylesheet">
-  <link rel="stylesheet" type="text/css" href="/hc/theming_assets/26563/325214/style.css?digest=54553872065556">
+  <link rel="stylesheet" type="text/css" href="/hc/theming_assets/26563/325214/style.css?digest=55111954123284">
 
-  <link rel="icon" type="image/x-icon" href="/hc/theming_assets/01HZPAS6TBMWBFNK4DD9HN8EGZ">
+  <link rel="icon" type="image/x-icon" href="/hc/theming_assets/01J9A30QESKGH8VPB2JVBCGF7Q">
 
     
 
-  <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600" rel="stylesheet">
-<meta content="width=device-width, initial-scale=1.0" name="viewport">
+  <meta content="width=device-width, initial-scale=1.0" name="viewport">
 <!-- Make the translated search clear button label available for use in JS -->
 <!-- See buildClearSearchButton() in script.js -->
 <script async="" src="https://c.evidon.com/sitenotice/evidon-banner.js" charset="utf-8"></script><script async="" src="https://c.evidon.com/sitenotice/3822/translations/en-63831.js" charset="utf-8"></script><script async="" id="evidon-settings" src="//c.evidon.com/sitenotice/3822/roblox/settings.js" charset="utf-8"></script><script async="" id="evidon-themes" src="//c.evidon.com/sitenotice/3822/snthemes.js" charset="utf-8"></script><script async="" id="evidon-location" src="//c.evidon.com/geo/country.js" charset="utf-8"></script><script id="evidon-notice" src="//c.evidon.com/sitenotice/evidon-sitenotice-tag.js" charset="utf-8"></script><script async="" src="https://cdn.jsdelivr.net/npm/search-insights@1"></script><script type="text/javascript">window.searchClearButtonLabelLocalized = "Clear search";</script>
 
-<!-- Article Redirects -->
-<script>
-  (function() {
-    // Article ID -> Target URL
-    var articleRedirectMap = {
-      "203314100": "https://create.roblox.com/docs/production/monetization/developer-exchange",
-      "27953836216468": "https://create.roblox.com/docs/production/monetization/developer-exchange#submit-a-devex-request",
-      "27984458742676": "https://create.roblox.com/docs/production/monetization/developer-exchange#what-is-earned-robux",
-      "13061189551124": "https://create.roblox.com/docs/production/monetization/developer-exchange",
-      "27954482561300": "https://create.roblox.com/docs/production/monetization/developer-exchange#frequently-asked-questions",
-      "27985018895124": "https://create.roblox.com/docs/production/monetization/devex-portal"
-    };
-    var pathParts = window.location.pathname.split('/');
-    var articleIndex = pathParts.indexOf('articles');
-    if (articleIndex !== -1 && pathParts[articleIndex + 1]) {
-      var rawArticleId = pathParts[articleIndex + 1].split('-')[0];
-      if (articleRedirectMap[rawArticleId]) {
-        window.location.replace(articleRedirectMap[rawArticleId]);
-      }
-    }
-  })();
+<!-- 1. ES Module Shims (The Polyfill) -->
+<!-- This MUST run before the import map -->
+<script type="text/javascript">
+  if (!(HTMLScriptElement.supports && HTMLScriptElement.supports('importmap'))) {
+    document.write('<script async src="/hc/theming_assets/01KN2X1K9CD7ANK7T58C6TE08V"><\/script>');
+  }
+</script>
+
+<!-- 2. The Import Map (Registering all the new bundles) -->
+<script type="importmap">
+{
+  "imports": {
+	  "flash-notifications": "/hc/theming_assets/01KXGMWACAYPVWHVFHW4RBEJWZ",
+    "shared": "/hc/theming_assets/01KXGMWABBE6X80KA9AXEGCZ32"
+  }
+}
+</script>
+
+<!-- 3. Global Modules (Features that run on every page) -->
+<script type="module">
+  import { renderFlashNotifications } from "flash-notifications";
+
+  const settings = {"brand_color":"rgba(189, 190, 190, 1)","brand_text_color":"rgba(57, 59, 61, 1)","text_color":"rgba(204, 205, 211, 1)","link_color":"rgba(0, 157, 255, 1)","hover_link_color":"rgba(50, 181, 255, 1)","visited_link_color":"rgba(0, 116, 189, 1)","background_color":"rgba(35, 37, 39, 1)","heading_font":"-apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif","text_font":"-apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif","logo":"/hc/theming_assets/01J9A30Q21JSCFQ5FNR3E489ZQ","show_brand_name":false,"favicon":"/hc/theming_assets/01J9A30QESKGH8VPB2JVBCGF7Q","homepage_background_image":"/hc/theming_assets/01J9A30QZJAD8NYMEDW8D3WGG1","community_background_image":"/hc/theming_assets/01J9A30NE3QVGEK4XEN7G6P5HC","community_image":"/hc/theming_assets/01J9A30NDDT83644CMBJWWEGTR","instant_search":true,"scoped_kb_search":false,"scoped_community_search":false,"show_recent_activity":false,"show_articles_in_section":true,"show_article_author":false,"show_article_comments":false,"show_follow_article":false,"show_recently_viewed_articles":true,"show_related_articles":true,"show_article_sharing":false,"show_follow_section":false,"show_follow_post":false,"show_post_sharing":false,"show_follow_topic":false,"show_suggested_articles":false};
+  const baseLocale = "en-us";
+
+  renderFlashNotifications(settings, baseLocale);
 </script>
 
 <!-- Algolia Search Start -->
@@ -140,8 +144,46 @@ We have tried to simplify...">
 
 <!-- jQuery library End -->
 
+<!-- Article Redirect Start -->
+<script>
+  (function() {
+    // Article ID -> Target URL
+    var articleRedirectMap = {
+      "203314100": "https://create.roblox.com/docs/production/monetization/developer-exchange",
+      "27953836216468": "https://create.roblox.com/docs/production/monetization/developer-exchange#submit-a-devex-request",
+      "27984458742676": "https://create.roblox.com/docs/production/monetization/developer-exchange#what-is-earned-robux",
+      "13061189551124": "https://create.roblox.com/docs/production/monetization/developer-exchange",
+      "27954482561300": "https://create.roblox.com/docs/production/monetization/developer-exchange#frequently-asked-questions",
+      "27985018895124": "https://create.roblox.com/docs/production/monetization/devex-portal"
+    };
+    var pathParts = window.location.pathname.split('/');
+    var articleIndex = pathParts.indexOf('articles');
+    if (articleIndex !== -1 && pathParts[articleIndex + 1]) {
+      var rawArticleId = pathParts[articleIndex + 1].split('-')[0];
+      if (articleRedirectMap[rawArticleId]) {
+        window.location.replace(articleRedirectMap[rawArticleId]);
+      }
+    }
+  })();
+</script>
+<!-- Article Redirect End -->
+
+<!--************BUILDER SANS FONT CODE START*********************-->
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
+
+<!-- Preload the essential Latin typography layout layers -->
+<link rel="preload" href="/hc/theming_assets/01M64CZNPRZTMEPEPVV0DQD4T5" as="font" type="font/woff2" crossorigin="">
+<link rel="preload" href="/hc/theming_assets/01M64CZNNV2903YT9F7RNYH4Q7" as="font" type="font/woff2" crossorigin="">
+<link rel="preload" href="/hc/theming_assets/01M64CZPKKPTNYHWCXHBXZ305J" as="font" type="font/woff2" crossorigin="">
+
+<link href="https://fonts.googleapis.com/css2?family=Noto+Naskh+Arabic:wght@400..700&amp;family=Manrope:wght@200..800&amp;family=Noto+Sans+JP:wght@100..900&amp;family=Noto+Sans+KR:wght@100..900&amp;family=Noto+Sans+SC:wght@100..900&amp;family=Noto+Sans+TC:wght@100..900&amp;family=Noto+Sans+Thai:wght@100..900&amp;display=block" rel="stylesheet">
+
+<!--************BUILDER SANS FONT CODE END*********************-->
+  
 <!--Dictionary-->
-<script src="/hc/theming_assets/01KP9JMM678JBWFJM5DQPM8H08"></script>
+  <script src="/hc/theming_assets/01KP9JMM678JBWFJM5DQPM8H08"></script>
   
 <style>/*!
  * Copyright Zendesk, Inc.
@@ -913,7 +955,7 @@ We have tried to simplify...">
   white-space: nowrap;
 }
 
-/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbIndlYnBhY2s6Ly8uL3VpL2NvbXBvbmVudHMvU3Vic2NyaWJlL2luZGV4LmNzcyJdLCJuYW1lcyI6W10sIm1hcHBpbmdzIjoiQUFBQTtFQUNFLHNCQUFzQjtBQUN4Qjs7QUFFQTtFQUNFLGdCQUFnQjtFQUNoQixvQ0FBb0M7RUFDcEMsa0JBQWtCO0VBQ2xCLHdDQUF3QztFQUN4QyxlQUFlO0VBQ2Ysa0JBQWtCO0VBQ2xCLG1CQUFtQjtFQUNuQixPQUFPO0VBQ1AsZ0JBQWdCO0VBQ2hCLGFBQWE7RUFDYixlQUFlO0VBQ2YsYUFBYTtBQUNmOztBQUVBO0VBQ0UsV0FBVztFQUNYLGVBQWU7RUFDZixjQUFjO0VBQ2QsMEJBQTBCO0VBQzFCLG1CQUFtQjtBQUNyQjs7QUFFQTtFQUNFLHFCQUFxQjtFQUNyQixXQUFXO0FBQ2I7O0FBRUE7RUFDRSxrQkFBa0I7RUFDbEIsU0FBUztFQUNULGdCQUFnQjtFQUNoQiw4QkFBOEI7RUFDOUIsVUFBVTtFQUNWLFdBQVc7RUFDWCxtQkFBbUI7QUFDckIiLCJzb3VyY2VzQ29udGVudCI6WyI6cm9vdCB7XG4gIC0tcmVhY2gtbWVudS1idXR0b246IDE7XG59XG5cbi5saXN0IHtcbiAgYmFja2dyb3VuZDogI2ZmZjtcbiAgYm9yZGVyOiAxcHggc29saWQgcmdiKDIxNiwgMjE2LCAyMTYpO1xuICBib3JkZXItcmFkaXVzOiAzcHg7XG4gIGJveC1zaGFkb3c6IDAgMXB4IDVweCByZ2JhKDAsIDAsIDAsIDAuMSk7XG4gIGZvbnQtc2l6ZTogMTRweDtcbiAgZm9udC1zdHlsZTogbm9ybWFsO1xuICBmb250LXdlaWdodDogbm9ybWFsO1xuICBsZWZ0OiAwO1xuICBtaW4td2lkdGg6IDE3MHB4O1xuICBvdXRsaW5lOiBub25lO1xuICBwYWRkaW5nOiAxMHB4IDA7XG4gIHotaW5kZXg6IDEwMDA7XG59XG5cbi5pdGVtIHtcbiAgY29sb3I6ICMzMzM7XG4gIGN1cnNvcjogcG9pbnRlcjtcbiAgZGlzcGxheTogYmxvY2s7XG4gIHBhZGRpbmc6IDdweCA0MHB4IDdweCAyMHB4O1xuICB3aGl0ZS1zcGFjZTogbm93cmFwO1xufVxuXG4uc3BhY2VyIHtcbiAgZGlzcGxheTogaW5saW5lLWJsb2NrO1xuICB3aWR0aDogMTBweDtcbn1cblxuLmludmlzaWJsZSB7XG4gIHBvc2l0aW9uOiBhYnNvbHV0ZTtcbiAgdG9wOiBhdXRvO1xuICBvdmVyZmxvdzogaGlkZGVuO1xuICBjbGlwOiByZWN0KDFweCwgMXB4LCAxcHgsIDFweCk7XG4gIHdpZHRoOiAxcHg7XG4gIGhlaWdodDogMXB4O1xuICB3aGl0ZS1zcGFjZTogbm93cmFwO1xufVxuIl0sInNvdXJjZVJvb3QiOiIifQ== */</style></head>
+/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbIndlYnBhY2s6Ly8uL3VpL2NvbXBvbmVudHMvU3Vic2NyaWJlL2luZGV4LmNzcyJdLCJuYW1lcyI6W10sIm1hcHBpbmdzIjoiQUFBQTtFQUNFLHNCQUFzQjtBQUN4Qjs7QUFFQTtFQUNFLGdCQUFnQjtFQUNoQixvQ0FBb0M7RUFDcEMsa0JBQWtCO0VBQ2xCLHdDQUF3QztFQUN4QyxlQUFlO0VBQ2Ysa0JBQWtCO0VBQ2xCLG1CQUFtQjtFQUNuQixPQUFPO0VBQ1AsZ0JBQWdCO0VBQ2hCLGFBQWE7RUFDYixlQUFlO0VBQ2YsYUFBYTtBQUNmOztBQUVBO0VBQ0UsV0FBVztFQUNYLGVBQWU7RUFDZixjQUFjO0VBQ2QsMEJBQTBCO0VBQzFCLG1CQUFtQjtBQUNyQjs7QUFFQTtFQUNFLHFCQUFxQjtFQUNyQixXQUFXO0FBQ2I7O0FBRUE7RUFDRSxrQkFBa0I7RUFDbEIsU0FBUztFQUNULGdCQUFnQjtFQUNoQiw4QkFBOEI7RUFDOUIsVUFBVTtFQUNWLFdBQVc7RUFDWCxtQkFBbUI7QUFDckIiLCJzb3VyY2VzQ29udGVudCI6WyI6cm9vdCB7XG4gIC0tcmVhY2gtbWVudS1idXR0b246IDE7XG59XG5cbi5saXN0IHtcbiAgYmFja2dyb3VuZDogI2ZmZjtcbiAgYm9yZGVyOiAxcHggc29saWQgcmdiKDIxNiwgMjE2LCAyMTYpO1xuICBib3JkZXItcmFkaXVzOiAzcHg7XG4gIGJveC1zaGFkb3c6IDAgMXB4IDVweCByZ2JhKDAsIDAsIDAsIDAuMSk7XG4gIGZvbnQtc2l6ZTogMTRweDtcbiAgZm9udC1zdHlsZTogbm9ybWFsO1xuICBmb250LXdlaWdodDogbm9ybWFsO1xuICBsZWZ0OiAwO1xuICBtaW4td2lkdGg6IDE3MHB4O1xuICBvdXRsaW5lOiBub25lO1xuICBwYWRkaW5nOiAxMHB4IDA7XG4gIHotaW5kZXg6IDEwMDA7XG59XG5cbi5pdGVtIHtcbiAgY29sb3I6ICMzMzM7XG4gIGN1cnNvcjogcG9pbnRlcjtcbiAgZGlzcGxheTogYmxvY2s7XG4gIHBhZGRpbmc6IDdweCA0MHB4IDdweCAyMHB4O1xuICB3aGl0ZS1zcGFjZTogbm93cmFwO1xufVxuXG4uc3BhY2VyIHtcbiAgZGlzcGxheTogaW5saW5lLWJsb2NrO1xuICB3aWR0aDogMTBweDtcbn1cblxuLmludmlzaWJsZSB7XG4gIHBvc2l0aW9uOiBhYnNvbHV0ZTtcbiAgdG9wOiBhdXRvO1xuICBvdmVyZmxvdzogaGlkZGVuO1xuICBjbGlwOiByZWN0KDFweCwgMXB4LCAxcHgsIDFweCk7XG4gIHdpZHRoOiAxcHg7XG4gIGhlaWdodDogMXB4O1xuICB3aGl0ZS1zcGFjZTogbm93cmFwO1xufVxuIl0sInNvdXJjZVJvb3QiOiIifQ== */</style><style data-styled="active" data-styled-version="5.3.11"></style></head>
 <body class=""><div></div>
   
   
@@ -922,11 +964,8 @@ We have tried to simplify...">
   <script>
   //Redirect Community Standards to https://about.roblox.com
 (function() {
-  var articleurl = location.pathname.match(/\/hc\/([^\/]+)\/articles\/203313410/);
-  //var articleurl = location.pathname.match(/\/hc\/(en-us)\/articles\/203313410/);
+  var articleurl = location.pathname.match(/\/hc\/([^\/]+)\/articles\/25189427466516/);
   if (!articleurl) return;
-  
-  //location.replace("https://about.roblox.com/community-standards")
   
   var locale = articleurl[1];
   
@@ -960,86 +999,49 @@ We have tried to simplify...">
   location.replace(targets[locale]||fallback);
   })();
 </script>
-<link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600" rel="stylesheet">
+
 <a class="skip-navigation" tabindex="1" href="#main-content">Skip to main content</a>
 
 <header class="header">
   <a href="#" class="cd-top">Top</a>
   <div class="logo">
     <a title="Home" href="/hc/en-us">
-      <img src="/hc/theming_assets/01HZPAS6P8C1KHF2TQJ18XHPHE" alt="Roblox Support Help Center home page">
+      <img src="/hc/theming_assets/01J9A30Q21JSCFQ5FNR3E489ZQ" alt="Roblox Support Help Center home page">
       
     </a>
   </div>
-
-<!--   <div class="nav-wrapper-desktop">
-    <nav class="user-nav" id="user-nav">
-      <ul class="user-nav-list">
-  	   
-          <li>
-            <a class="sign-in" rel="nofollow" data-auth-action="signin" title="Opens a dialog" role="button" href="/hc/en-us/signin?return_to=https%3A%2F%2Fen.help.roblox.com%2Fhc%2Fen-us%2Farticles%2F115004647846-Roblox-Terms-of-Use">
-              Sign in
-            </a>
-          </li>
-        
-      </ul>
-    </nav>
-  </div> -->
-
-<div class="nav-wrapper-mobile">
-<!--     <button class="menu-button-mobile" aria-controls="user-nav-mobile" aria-expanded="false" aria-label="Toggle navigation menu">
-      
-      <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" focusable="false" viewBox="0 0 16 16" class="icon-menu">
-        <path fill="none" stroke="currentColor" stroke-linecap="round" d="M1.5 3.5h13m-13 4h13m-13 4h13"/>
-      </svg>
-    </button> -->
-    <nav class="menu-list-mobile" id="user-nav-mobile" aria-expanded="false">
-      <ul class="menu-list-mobile-items">
-        
-          <li class="item">
-            <a role="menuitem" rel="nofollow" data-auth-action="signin" title="Opens a dialog" href="/hc/en-us/signin?return_to=https%3A%2F%2Fen.help.roblox.com%2Fhc%2Fen-us%2Farticles%2F115004647846-Roblox-Terms-of-Use">
-              Sign in
-            </a>
-          </li>
-          <li class="nav-divider"></li>
-        
-        <li class="item"></li>
-        <li class="item"><a class="submit-a-request" role="menuitem" href="/hc/en-us/requests/new">Submit a request</a></li>
-        <li class="nav-divider"></li>
-        
-      </ul>
-    </nav>
-  </div>
+  
 </header>
 
 
   <main role="main">
-    <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600" rel="stylesheet">
-<div class="container-divider"></div>
+    <div class="container-divider"></div>
 <div id="article-metadata" data-article-id="115004647846" data-article-locale="en-us"></div>
 <div class="container">
-  <nav class="sub-nav">
-    <ol class="breadcrumbs">
-  
-    <li title="Roblox Support">
-      
-        <a href="/hc/en-us">Roblox Support</a>
-      
-    </li>
-  
-    <li title="Legal Documents">
-      
-        <a href="/hc/en-us/categories/45348186499220-Legal-Documents">Legal Documents</a>
-      
-    </li>
-  
-    <li title="Legal Documents">
-      
-        <a href="/hc/en-us/sections/360000007623-Legal-Documents">Legal Documents</a>
-      
-    </li>
-  
-</ol>
+  <div class="sub-nav">
+    <nav aria-label="Breadcrumb">
+  <ol class="breadcrumbs">
+    
+      <li>
+        
+          <a href="/hc/en-us">Roblox Support</a>
+        
+      </li>
+    
+      <li>
+        
+          <a href="/hc/en-us/categories/45348186499220-Legal-Documents">Legal Documents</a>
+        
+      </li>
+    
+      <li>
+        
+          <a href="/hc/en-us/sections/360000007623-Legal-Documents">Legal Documents</a>
+        
+      </li>
+    
+  </ol>
+</nav>
 
     <div class="search-container">
        <!-- Remove Zendesk search icon
@@ -1048,14 +1050,14 @@ We have tried to simplify...">
         <path stroke="currentColor" stroke-linecap="round" d="M11 11L7.5 7.5"/>
       </svg>
 -->
-      <form role="search" class="search" data-search="" action="/hc/en-us/search" accept-charset="UTF-8" method="get"><input type="hidden" name="utf8" value="✓" autocomplete="off"><input type="search" name="query" id="query" placeholder="Search our articles" aria-label="Search" class="aa-input" autocomplete="off" spellcheck="false" role="combobox" aria-autocomplete="list" aria-expanded="false" aria-labelledby="query" aria-owns="algolia-autocomplete-listbox-0" dir="auto" style=""><pre aria-hidden="true" style="position: absolute; visibility: hidden; white-space: pre; font-family: &quot;Source Sans Pro&quot;, sans-serif; font-size: 14px; font-style: normal; font-variant: normal; font-weight: 300; word-spacing: 0px; letter-spacing: normal; text-indent: 0px; text-rendering: auto; text-transform: none;"></pre><button type="button" aria-controls="query" class="clear-button"><svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" focusable="false" role="img" viewBox="0 0 12 12" aria-label="Clear search"><path stroke="currentColor" stroke-linecap="round" stroke-width="2" d="M3 9l6-6m0 6L3 3"></path></svg></button></form>
+      <form role="search" class="search" data-search="" action="/hc/en-us/search" accept-charset="UTF-8" method="get"><input type="hidden" name="utf8" value="✓" autocomplete="off"><input type="search" name="query" id="query" placeholder="Search our articles" aria-label="Search" class="aa-input" autocomplete="off" spellcheck="false" role="combobox" aria-autocomplete="list" aria-expanded="false" aria-labelledby="query" aria-owns="algolia-autocomplete-listbox-0" dir="auto" style=""><pre aria-hidden="true" style="position: absolute; visibility: hidden; white-space: pre; font-family: &quot;Builder Sans&quot;, &quot;Noto Naskh Arabic&quot;, &quot;Noto Sans JP&quot;, PingFangSC, &quot;Noto Sans KR&quot;, &quot;Noto Sans SC&quot;, STHeitiSC, &quot;Noto Sans TC&quot;, PingFangTC, &quot;Noto Sans Thai&quot;, Manrope, sans-serif; font-size: 14px; font-style: normal; font-variant: normal; font-weight: 400; word-spacing: 0px; letter-spacing: normal; text-indent: 0px; text-rendering: auto; text-transform: none;"></pre><button type="button" aria-controls="query" class="clear-button"><svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" focusable="false" role="img" viewBox="0 0 12 12" aria-label="Clear search"><path stroke="currentColor" stroke-linecap="round" stroke-width="2" d="M3 9l6-6m0 6L3 3"></path></svg></button></form>
     </div>
-  </nav>
+  </div>
 
   <div class="article-container" id="article-container">
     <aside class="article-sidebar" aria-labelledby="section-articles-title">
       
-        <div class="collapsible-sidebar">
+        <div class="collapsible-sidebar" aria-expanded="false">
           <button type="button" class="collapsible-sidebar-toggle" aria-labelledby="section-articles-title" aria-expanded="false">
             <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" focusable="false" viewBox="0 0 12 12" aria-hidden="true" class="collapsible-sidebar-toggle-icon chevron-icon">
               <path fill="none" stroke="currentColor" stroke-linecap="round" d="M3 4.5l2.6 2.6c.2.2.5.2.7 0L9 4.5"></path>
@@ -1071,43 +1073,63 @@ We have tried to simplify...">
             <ul>
               
                 <li>
-                  <a href="/hc/en-us/articles/115004647846-Roblox-Terms-of-Use" class="sidenav-item current-article">Roblox Terms of Use</a>
+                  <a href="/hc/en-us/articles/115004647846-Roblox-Terms-of-Use" class="sidenav-item current-article" aria-current="page">
+                       Roblox Terms of Use
+                  </a>
                 </li>
               
                 <li>
-                  <a href="/hc/en-us/articles/52986395990932-Roblox-Terms-of-Use-for-the-European-Economic-Area-the-United-Kingdom-and-Switzerland" class="sidenav-item ">Roblox Terms of Use for the European Economic Area, the United Kingdom and Switzerland</a>
+                  <a href="/hc/en-us/articles/52986395990932-Roblox-Terms-of-Use-for-the-European-Economic-Area-the-United-Kingdom-and-Switzerland" class="sidenav-item ">
+                       Roblox Terms of Use for the European Economic Area, the United Kingdom and Switzerland
+                  </a>
                 </li>
               
                 <li>
-                  <a href="/hc/en-us/articles/115004630823-Roblox-Privacy-and-Cookie-Policy" class="sidenav-item ">Roblox Privacy and Cookie Policy</a>
+                  <a href="/hc/en-us/articles/115004630823-Roblox-Privacy-and-Cookie-Policy" class="sidenav-item ">
+                       Roblox Privacy and Cookie Policy
+                  </a>
                 </li>
               
                 <li>
-                  <a href="/hc/en-us/articles/203313410-Roblox-Community-Standards" class="sidenav-item ">Roblox Community Standards</a>
+                  <a href="/hc/en-us/articles/203313410-Roblox-Community-Standards" class="sidenav-item ">
+                       Roblox Community Standards
+                  </a>
                 </li>
               
                 <li>
-                  <a href="/hc/en-us/articles/14663412502676-Roblox-is-Updating-our-Terms-of-Use" class="sidenav-item ">Roblox is Updating our Terms of Use</a>
+                  <a href="/hc/en-us/articles/14663412502676-Roblox-is-Updating-our-Terms-of-Use" class="sidenav-item ">
+                       Roblox is Updating our Terms of Use
+                  </a>
                 </li>
               
                 <li>
-                  <a href="/hc/en-us/articles/52986438082068-Roblox-is-Updating-our-Terms-of-Use-for-the-European-Economic-Area-the-United-Kingdom-and-Switzerland" class="sidenav-item ">Roblox is Updating our Terms of Use for the European Economic Area, the United Kingdom and Switzerland</a>
+                  <a href="/hc/en-us/articles/52986438082068-Roblox-is-Updating-our-Terms-of-Use-for-the-European-Economic-Area-the-United-Kingdom-and-Switzerland" class="sidenav-item ">
+                       Roblox is Updating our Terms of Use for the European Economic Area, the United Kingdom and Switzerland
+                  </a>
                 </li>
               
                 <li>
-                  <a href="/hc/en-us/articles/14663460303380-Roblox-is-Updating-our-Roblox-Privacy-and-Cookie-Policy" class="sidenav-item ">Roblox is Updating our Roblox Privacy and Cookie Policy</a>
+                  <a href="/hc/en-us/articles/14663460303380-Roblox-is-Updating-our-Roblox-Privacy-and-Cookie-Policy" class="sidenav-item ">
+                       Roblox is Updating our Roblox Privacy and Cookie Policy
+                  </a>
                 </li>
               
                 <li>
-                  <a href="/hc/en-us/articles/47656162239124-Advertising-Integrations-Terms" class="sidenav-item ">Advertising Integrations Terms</a>
+                  <a href="/hc/en-us/articles/47656162239124-Advertising-Integrations-Terms" class="sidenav-item ">
+                       Advertising Integrations Terms
+                  </a>
                 </li>
               
                 <li>
-                  <a href="/hc/en-us/articles/4415545981332-Roblox-Dictionary" class="sidenav-item ">Roblox Dictionary</a>
+                  <a href="/hc/en-us/articles/4415545981332-Roblox-Dictionary" class="sidenav-item ">
+                       Roblox Dictionary
+                  </a>
                 </li>
               
                 <li>
-                  <a href="/hc/en-us/articles/360059080071-Roblox-Accessibility-Statement" class="sidenav-item ">Roblox Accessibility Statement</a>
+                  <a href="/hc/en-us/articles/360059080071-Roblox-Accessibility-Statement" class="sidenav-item ">
+                       Roblox Accessibility Statement
+                  </a>
                 </li>
               
             </ul>
@@ -1121,11 +1143,10 @@ We have tried to simplify...">
 
     <article id="main-content" class="article">
       <header class="article-header">
-        <h1 title="Roblox Terms of Use" id="article-title" class="article-title">
+        <h1 title="Roblox Terms of Use" class="article-title">
           Roblox Terms of Use
           
         </h1>
-
         
       </header>
 
@@ -2284,10 +2305,10 @@ We have tried to simplify...">
 <p>UK Users can report content they suspect to be illegal under UK laws using our reporting functionality available <a href="https://www.roblox.com/illegal-content-reporting" target="_blank" rel="noopener noreferrer">here</a>, and make other OSA-specific complaints using a process we will make available. UK Users will also be able to report content they suspect to be harmful to children using a reporting functionality we will make available. Further details will be made available <a href="https://en.help.roblox.com/hc/articles/203312410" target="_blank" rel="noopener noreferrer">here</a>. Details about how to appeal decisions will be made available <a href="https://en.help.roblox.com/hc/articles/360000245263" target="_blank" rel="noopener noreferrer">here</a>.</p>
 </div></details>
 </div></div>
+
+          <!--Add content tags to articles and posts-->
           
-<!--           Add content tags to articles and posts -->
-           
-          
+
           
             <div class="article-attachments">
               <ul class="attachments">
@@ -2579,15 +2600,15 @@ We have tried to simplify...">
         
         
         
-
-<div class="article-return-to-top">
+    
+        <div class="article-return-to-top">
           <a href="#article-container">
             Return to top
             <svg xmlns="http://www.w3.org/2000/svg" class="article-return-to-top-icon" width="20" height="20" focusable="false" viewBox="0 0 12 12" aria-hidden="true">
               <path fill="none" stroke="currentColor" stroke-linecap="round" d="M3 4.5l2.6 2.6c.2.2.5.2.7 0L9 4.5"></path>
             </svg>
           </a>
-        </div> 
+        </div>
       </footer>
 
       <div class="article-relatives">
@@ -2637,21 +2658,21 @@ We have tried to simplify...">
 <div id="article-context" data-article-id="115004647846" data-article-locale="en-us" style="display:none;"></div>
   </main>
 
-  <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600" rel="stylesheet">
-<footer class="footer">
-  <div class="footer-outer">
+  <footer class="footer">
   <div class="footer-inner">
     <a title="Home" href="/hc/en-us">Roblox Support</a>
     
-
-	<a id="contact-us" href="https://www.roblox.com/support?articleId=115004647846&amp;articleLang=en-us">Contact Us</a>
+      <!-- AR links RBAdd  -->
+    
+    
+    <a id="contact-us" href="https://www.roblox.com/support?articleId=115004647846&amp;articleLang=en-us">Contact Us</a>
 <a href="https://en.help.roblox.com/hc/en-us/articles/115004630823">Privacy Policy</a>
 <a href="https://en.help.roblox.com/hc/en-us/articles/360059080071">Accessibility Statement</a>
 <a href="https://en.help.roblox.com/hc/en-us/articles/115004647846">Terms of Use</a>
-  <a href="#" class="evidon-notice-link" id="privacy-control-outer-link">
-    <img src="/hc/theming_assets/01KAEKPA607AKHC0C8D5ZE3YNR" alt="Your Privacy Choices Icon" class="footer-privacy-icon">
-  </a>
-  <div id="privacy-control-no-signal-detected" style="display: none;">
+    <a href="#" class="evidon-notice-link" id="privacy-control-outer-link">
+      <img src="/hc/theming_assets/01KAEKPA607AKHC0C8D5ZE3YNR" alt="Your Privacy Choices Icon" class="footer-privacy-icon">
+    </a>
+    <div id="privacy-control-no-signal-detected" style="display: none;">
 <p class="injected-gpc-status">No Opt-out Signal Detected</p>
 </div>
 
@@ -2665,23 +2686,25 @@ We have tried to simplify...">
 <p class="injected-gpc-status">Based on your past choices, your cookies have been configured as shown below</p>
 </div>
     
-	
+        <!-- END Cookie compliance/global privacy control     -->
+    
+    
     
     <div class="footer-language-selector">
       
         <div class="dropdown language-selector">
-          <button class="dropdown-toggle" aria-haspopup="true">
+          <button class="dropdown-toggle" aria-haspopup="true" aria-expanded="false" id="9faed170-4300-4bcf-92fb-a6f34f1d7ea4" aria-controls="80e1e51a-c3d9-4533-bf8a-531d538a5e1b">
             English (United States)
-            <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" focusable="false" viewBox="0 0 12 12" class="dropdown-chevron-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" focusable="false" viewBox="0 0 12 12" class="dropdown-chevron-icon" aria-hidden="true">
               <path fill="none" stroke="currentColor" stroke-linecap="round" d="M3 4.5l2.6 2.6c.2.2.5.2.7 0L9 4.5"></path>
             </svg>
           </button>
-          <span class="dropdown-menu dropdown-menu-end" role="menu">
+          <span class="dropdown-menu dropdown-menu-end" role="menu" id="80e1e51a-c3d9-4533-bf8a-531d538a5e1b" aria-labelledby="9faed170-4300-4bcf-92fb-a6f34f1d7ea4" aria-expanded="false" tabindex="-1">
             
             
             	
             		
-                  <a href="/hc/change_language/ar?return_to=%2Fhc%2Far%2Farticles%2F115004647846-%25D8%25B4%25D8%25B1%25D9%2588%25D8%25B7-%25D8%25A7%25D8%25B3%25D8%25AA%25D8%25AE%25D8%25AF%25D8%25A7%25D9%2585-Roblox" dir="rtl" rel="nofollow" role="menuitem">
+                  <a href="/hc/change_language/ar?return_to=%2Fhc%2Far%2Farticles%2F115004647846-%25D8%25B4%25D8%25B1%25D9%2588%25D8%25B7-%25D8%25A7%25D8%25B3%25D8%25AA%25D8%25AE%25D8%25AF%25D8%25A7%25D9%2585-Roblox" dir="rtl" rel="nofollow" role="menuitem" tabindex="-1">
                     العربية
                   </a>
             		
@@ -2701,7 +2724,7 @@ We have tried to simplify...">
             
             	
             		
-                  <a href="/hc/change_language/bn-in?return_to=%2Fhc%2Fbn-in%2Farticles%2F115004647846-Roblox-%25E0%25A6%25AC-%25E0%25A6%25AF%25E0%25A6%25AC%25E0%25A6%25B9%25E0%25A6%25BE%25E0%25A6%25B0%25E0%25A7%2587%25E0%25A6%25B0-%25E0%25A6%25B6%25E0%25A6%25B0-%25E0%25A6%25A4%25E0%25A6%25BE%25E0%25A6%25AC%25E0%25A6%25B2%25E0%25A7%2580" dir="ltr" rel="nofollow" role="menuitem" style="display: none;">
+                  <a href="/hc/change_language/bn-in?return_to=%2Fhc%2Fbn-in%2Farticles%2F115004647846-Roblox-%25E0%25A6%25AC-%25E0%25A6%25AF%25E0%25A6%25AC%25E0%25A6%25B9%25E0%25A6%25BE%25E0%25A6%25B0%25E0%25A7%2587%25E0%25A6%25B0-%25E0%25A6%25B6%25E0%25A6%25B0-%25E0%25A6%25A4%25E0%25A6%25BE%25E0%25A6%25AC%25E0%25A6%25B2%25E0%25A7%2580" dir="ltr" rel="nofollow" role="menuitem" tabindex="-1" style="display: none;">
                     বাংলা (ভারত)
                   </a>
             		
@@ -2729,7 +2752,7 @@ We have tried to simplify...">
             
             	
             		
-                  <a href="/hc/change_language/de?return_to=%2Fhc%2Fde%2Farticles%2F115004647846-Nutzungsbedingungen-von-Roblox" dir="ltr" rel="nofollow" role="menuitem">
+                  <a href="/hc/change_language/de?return_to=%2Fhc%2Fde%2Farticles%2F115004647846-Nutzungsbedingungen-von-Roblox" dir="ltr" rel="nofollow" role="menuitem" tabindex="-1">
                     Deutsch
                   </a>
             		
@@ -2757,7 +2780,7 @@ We have tried to simplify...">
             
             	
             		
-                  <a href="/hc/change_language/es?return_to=%2Fhc%2Fes%2Farticles%2F115004647846-T%25C3%25A9rminos-de-uso-de-Roblox" dir="ltr" rel="nofollow" role="menuitem">
+                  <a href="/hc/change_language/es?return_to=%2Fhc%2Fes%2Farticles%2F115004647846-T%25C3%25A9rminos-de-uso-de-Roblox" dir="ltr" rel="nofollow" role="menuitem" tabindex="-1">
                     Español
                   </a>
             		
@@ -2785,7 +2808,7 @@ We have tried to simplify...">
             
             	
             		
-                  <a href="/hc/change_language/fr?return_to=%2Fhc%2Ffr%2Farticles%2F115004647846-Conditions-d-utilisation-de-Roblox" dir="ltr" rel="nofollow" role="menuitem">
+                  <a href="/hc/change_language/fr?return_to=%2Fhc%2Ffr%2Farticles%2F115004647846-Conditions-d-utilisation-de-Roblox" dir="ltr" rel="nofollow" role="menuitem" tabindex="-1">
                     Français
                   </a>
             		
@@ -2801,7 +2824,7 @@ We have tried to simplify...">
             
             	
             		
-                  <a href="/hc/change_language/hi?return_to=%2Fhc%2Fhi%2Farticles%2F115004647846-Roblox-%25E0%25A4%25AA-%25E0%25A4%25B2%25E0%25A5%2588%25E0%25A4%259F%25E0%25A5%259E%25E0%25A5%2589%25E0%25A4%25B0-%25E0%25A4%25AE-%25E0%25A4%2595%25E0%25A5%2587-%25E0%25A4%2589%25E0%25A4%25AA%25E0%25A4%25AF%25E0%25A5%258B%25E0%25A4%2597-%25E0%25A4%2595%25E0%25A5%2580-%25E0%25A4%25B6%25E0%25A4%25B0-%25E0%25A4%25A4%25E0%25A5%2587%25E0%25A4%2582" dir="ltr" rel="nofollow" role="menuitem">
+                  <a href="/hc/change_language/hi?return_to=%2Fhc%2Fhi%2Farticles%2F115004647846-Roblox-%25E0%25A4%25AA-%25E0%25A4%25B2%25E0%25A5%2588%25E0%25A4%259F%25E0%25A5%259E%25E0%25A5%2589%25E0%25A4%25B0-%25E0%25A4%25AE-%25E0%25A4%2595%25E0%25A5%2587-%25E0%25A4%2589%25E0%25A4%25AA%25E0%25A4%25AF%25E0%25A5%258B%25E0%25A4%2597-%25E0%25A4%2595%25E0%25A5%2580-%25E0%25A4%25B6%25E0%25A4%25B0-%25E0%25A4%25A4%25E0%25A5%2587%25E0%25A4%2582" dir="ltr" rel="nofollow" role="menuitem" tabindex="-1">
                     हिंदी
                   </a>
             		
@@ -2821,7 +2844,7 @@ We have tried to simplify...">
             
             	
             		
-                  <a href="/hc/change_language/id?return_to=%2Fhc%2Fid%2Farticles%2F115004647846-Roblox-Ketentuan-Penggunaan" dir="ltr" rel="nofollow" role="menuitem">
+                  <a href="/hc/change_language/id?return_to=%2Fhc%2Fid%2Farticles%2F115004647846-Roblox-Ketentuan-Penggunaan" dir="ltr" rel="nofollow" role="menuitem" tabindex="-1">
                     Bahasa Indonesia
                   </a>
             		
@@ -2833,7 +2856,7 @@ We have tried to simplify...">
             
             	
             		
-                  <a href="/hc/change_language/it?return_to=%2Fhc%2Fit%2Farticles%2F115004647846-Condizioni-di-utilizzo-di-Roblox" dir="ltr" rel="nofollow" role="menuitem">
+                  <a href="/hc/change_language/it?return_to=%2Fhc%2Fit%2Farticles%2F115004647846-Condizioni-di-utilizzo-di-Roblox" dir="ltr" rel="nofollow" role="menuitem" tabindex="-1">
                     Italiano
                   </a>
             		
@@ -2845,7 +2868,7 @@ We have tried to simplify...">
             
             	
             		
-                  <a href="/hc/change_language/ja?return_to=%2Fhc%2Fja%2Farticles%2F115004647846-Roblox%25E5%2588%25A9%25E7%2594%25A8%25E8%25A6%258F%25E7%25B4%2584" dir="ltr" rel="nofollow" role="menuitem">
+                  <a href="/hc/change_language/ja?return_to=%2Fhc%2Fja%2Farticles%2F115004647846-Roblox%25E5%2588%25A9%25E7%2594%25A8%25E8%25A6%258F%25E7%25B4%2584" dir="ltr" rel="nofollow" role="menuitem" tabindex="-1">
                     日本語
                   </a>
             		
@@ -2869,7 +2892,7 @@ We have tried to simplify...">
             
             	
             		
-                  <a href="/hc/change_language/ko?return_to=%2Fhc%2Fko%2Farticles%2F115004647846-Roblox-%25EC%259D%25B4%25EC%259A%25A9-%25EC%2595%25BD%25EA%25B4%2580" dir="ltr" rel="nofollow" role="menuitem">
+                  <a href="/hc/change_language/ko?return_to=%2Fhc%2Fko%2Farticles%2F115004647846-Roblox-%25EC%259D%25B4%25EC%259A%25A9-%25EC%2595%25BD%25EA%25B4%2580" dir="ltr" rel="nofollow" role="menuitem" tabindex="-1">
                     한국어
                   </a>
             		
@@ -2893,7 +2916,7 @@ We have tried to simplify...">
             
             	
             		
-                  <a href="/hc/change_language/mr?return_to=%2Fhc%2Fmr%2Farticles%2F115004647846-Roblox-%25E0%25A4%25B5%25E0%25A4%25BE%25E0%25A4%25AA%25E0%25A4%25B0%25E0%25A4%25BE%25E0%25A4%259A-%25E0%25A4%25AF%25E0%25A4%25BE-%25E0%25A4%2585%25E0%25A4%259F%25E0%25A5%2580" dir="ltr" rel="nofollow" role="menuitem">
+                  <a href="/hc/change_language/mr?return_to=%2Fhc%2Fmr%2Farticles%2F115004647846-Roblox-%25E0%25A4%25B5%25E0%25A4%25BE%25E0%25A4%25AA%25E0%25A4%25B0%25E0%25A4%25BE%25E0%25A4%259A-%25E0%25A4%25AF%25E0%25A4%25BE-%25E0%25A4%2585%25E0%25A4%259F%25E0%25A5%2580" dir="ltr" rel="nofollow" role="menuitem" tabindex="-1">
                     मराठी
                   </a>
             		
@@ -2925,7 +2948,7 @@ We have tried to simplify...">
             
             	
             		
-                  <a href="/hc/change_language/nl?return_to=%2Fhc%2Fnl%2Farticles%2F115004647846-Roblox-past-het-gebruiksvoorwaarden" dir="ltr" rel="nofollow" role="menuitem">
+                  <a href="/hc/change_language/nl?return_to=%2Fhc%2Fnl%2Farticles%2F115004647846-Roblox-past-het-gebruiksvoorwaarden" dir="ltr" rel="nofollow" role="menuitem" tabindex="-1">
                     Nederlands
                   </a>
             		
@@ -2941,7 +2964,7 @@ We have tried to simplify...">
             
             	
             		
-                  <a href="/hc/change_language/pl?return_to=%2Fhc%2Fpl%2Farticles%2F115004647846-Warunki-korzystania-z-Roblox" dir="ltr" rel="nofollow" role="menuitem">
+                  <a href="/hc/change_language/pl?return_to=%2Fhc%2Fpl%2Farticles%2F115004647846-Warunki-korzystania-z-Roblox" dir="ltr" rel="nofollow" role="menuitem" tabindex="-1">
                     Polski
                   </a>
             		
@@ -2957,7 +2980,7 @@ We have tried to simplify...">
             
             	
             		
-                  <a href="/hc/change_language/pt-br?return_to=%2Fhc%2Fpt-br%2Farticles%2F115004647846-Termos-de-Uso-da-Roblox" dir="ltr" rel="nofollow" role="menuitem">
+                  <a href="/hc/change_language/pt-br?return_to=%2Fhc%2Fpt-br%2Farticles%2F115004647846-Termos-de-Uso-da-Roblox" dir="ltr" rel="nofollow" role="menuitem" tabindex="-1">
                     Português do Brasil
                   </a>
             		
@@ -3005,7 +3028,7 @@ We have tried to simplify...">
             
             	
             		
-                  <a href="/hc/change_language/ta?return_to=%2Fhc%2Fta%2Farticles%2F115004647846-Roblox-%25E0%25AE%25AA%25E0%25AE%25AF%25E0%25AE%25A9-%25E0%25AE%25AA%25E0%25AE%25BE%25E0%25AE%259F-%25E0%25AE%259F%25E0%25AF%2581-%25E0%25AE%25B5%25E0%25AE%25BF%25E0%25AE%25A4%25E0%25AE%25BF%25E0%25AE%25AE%25E0%25AF%2581%25E0%25AE%25B1%25E0%25AF%2588%25E0%25AE%2595%25E0%25AE%25B3" dir="ltr" rel="nofollow" role="menuitem">
+                  <a href="/hc/change_language/ta?return_to=%2Fhc%2Fta%2Farticles%2F115004647846-Roblox-%25E0%25AE%25AA%25E0%25AE%25AF%25E0%25AE%25A9-%25E0%25AE%25AA%25E0%25AE%25BE%25E0%25AE%259F-%25E0%25AE%259F%25E0%25AF%2581-%25E0%25AE%25B5%25E0%25AE%25BF%25E0%25AE%25A4%25E0%25AE%25BF%25E0%25AE%25AE%25E0%25AF%2581%25E0%25AE%25B1%25E0%25AF%2588%25E0%25AE%2595%25E0%25AE%25B3" dir="ltr" rel="nofollow" role="menuitem" tabindex="-1">
                     தமிழ்
                   </a>
             		
@@ -3017,7 +3040,7 @@ We have tried to simplify...">
             
             	
             		
-                  <a href="/hc/change_language/te?return_to=%2Fhc%2Fte%2Farticles%2F115004647846-Roblox-%25E0%25B0%2589%25E0%25B0%25AA%25E0%25B0%25AF%25E0%25B1%258B%25E0%25B0%2597-%25E0%25B0%25A8%25E0%25B0%25BF%25E0%25B0%25AC%25E0%25B0%2582%25E0%25B0%25A7%25E0%25B0%25A8%25E0%25B0%25B2%25E0%25B1%2581" dir="ltr" rel="nofollow" role="menuitem">
+                  <a href="/hc/change_language/te?return_to=%2Fhc%2Fte%2Farticles%2F115004647846-Roblox-%25E0%25B0%2589%25E0%25B0%25AA%25E0%25B0%25AF%25E0%25B1%258B%25E0%25B0%2597-%25E0%25B0%25A8%25E0%25B0%25BF%25E0%25B0%25AC%25E0%25B0%2582%25E0%25B0%25A7%25E0%25B0%25A8%25E0%25B0%25B2%25E0%25B1%2581" dir="ltr" rel="nofollow" role="menuitem" tabindex="-1">
                     తెలుగు
                   </a>
             		
@@ -3025,7 +3048,7 @@ We have tried to simplify...">
             
             	
             		
-                  <a href="/hc/change_language/th?return_to=%2Fhc%2Fth%2Farticles%2F115004647846-%25E0%25B8%2582-%25E0%25B8%25AD%25E0%25B8%2581%25E0%25B8%25B3%25E0%25B8%25AB%25E0%25B8%2599%25E0%25B8%2594%25E0%25B8%2581%25E0%25B8%25B2%25E0%25B8%25A3%25E0%25B9%2583%25E0%25B8%258A-%25E0%25B8%2587%25E0%25B8%25B2%25E0%25B8%2599%25E0%25B8%2582%25E0%25B8%25AD%25E0%25B8%2587-Roblox" dir="ltr" rel="nofollow" role="menuitem">
+                  <a href="/hc/change_language/th?return_to=%2Fhc%2Fth%2Farticles%2F115004647846-%25E0%25B8%2582-%25E0%25B8%25AD%25E0%25B8%2581%25E0%25B8%25B3%25E0%25B8%25AB%25E0%25B8%2599%25E0%25B8%2594%25E0%25B8%2581%25E0%25B8%25B2%25E0%25B8%25A3%25E0%25B9%2583%25E0%25B8%258A-%25E0%25B8%2587%25E0%25B8%25B2%25E0%25B8%2599%25E0%25B8%2582%25E0%25B8%25AD%25E0%25B8%2587-Roblox" dir="ltr" rel="nofollow" role="menuitem" tabindex="-1">
                     ไทย
                   </a>
             		
@@ -3033,7 +3056,7 @@ We have tried to simplify...">
             
             	
             		
-                  <a href="/hc/change_language/tr?return_to=%2Fhc%2Ftr%2Farticles%2F115004647846-Roblox-Kullan%25C4%25B1m-Ko%25C5%259Fullar%25C4%25B1" dir="ltr" rel="nofollow" role="menuitem">
+                  <a href="/hc/change_language/tr?return_to=%2Fhc%2Ftr%2Farticles%2F115004647846-Roblox-Kullan%25C4%25B1m-Ko%25C5%259Fullar%25C4%25B1" dir="ltr" rel="nofollow" role="menuitem" tabindex="-1">
                     Türkçe
                   </a>
             		
@@ -3049,7 +3072,7 @@ We have tried to simplify...">
             
             	
             		
-                  <a href="/hc/change_language/vi?return_to=%2Fhc%2Fvi%2Farticles%2F115004647846-%25C4%2590i%25E1%25BB%2581u-kho%25E1%25BA%25A3n-S%25E1%25BB%25AD-d%25E1%25BB%25A5ng-c%25E1%25BB%25A7a-Roblox" dir="ltr" rel="nofollow" role="menuitem">
+                  <a href="/hc/change_language/vi?return_to=%2Fhc%2Fvi%2Farticles%2F115004647846-%25C4%2590i%25E1%25BB%2581u-kho%25E1%25BA%25A3n-S%25E1%25BB%25AD-d%25E1%25BB%25A5ng-c%25E1%25BB%25A7a-Roblox" dir="ltr" rel="nofollow" role="menuitem" tabindex="-1">
                     Tiếng Việt
                   </a>
             		
@@ -3061,7 +3084,7 @@ We have tried to simplify...">
             
             	
             		
-                  <a href="/hc/change_language/zh-cn?return_to=%2Fhc%2Fzh-cn%2Farticles%2F115004647846-Roblox%25E4%25BD%25BF%25E7%2594%25A8%25E6%259D%25A1%25E6%25AC%25BE" dir="ltr" rel="nofollow" role="menuitem">
+                  <a href="/hc/change_language/zh-cn?return_to=%2Fhc%2Fzh-cn%2Farticles%2F115004647846-Roblox%25E4%25BD%25BF%25E7%2594%25A8%25E6%259D%25A1%25E6%25AC%25BE" dir="ltr" rel="nofollow" role="menuitem" tabindex="-1">
                     简体中文
                   </a>
             		
@@ -3069,7 +3092,7 @@ We have tried to simplify...">
             
             	
             		
-                  <a href="/hc/change_language/zh-tw?return_to=%2Fhc%2Fzh-tw%2Farticles%2F115004647846-Roblox-%25E4%25BD%25BF%25E7%2594%25A8%25E6%25A2%259D%25E6%25AC%25BE" dir="ltr" rel="nofollow" role="menuitem">
+                  <a href="/hc/change_language/zh-tw?return_to=%2Fhc%2Fzh-tw%2Farticles%2F115004647846-Roblox-%25E4%25BD%25BF%25E7%2594%25A8%25E6%25A2%259D%25E6%25AC%25BE" dir="ltr" rel="nofollow" role="menuitem" tabindex="-1">
                     繁體中文
                   </a>
             		
@@ -3079,7 +3102,6 @@ We have tried to simplify...">
         </div>
       
     </div>
-  </div>
   </div>
 </footer>
 
@@ -3105,13 +3127,13 @@ We have tried to simplify...">
   HelpCenter = {};
   HelpCenter.account = {"subdomain":"roblox","environment":"production","name":"Roblox"};
   HelpCenter.user = {"identifier":"da39a3ee5e6b4b0d3255bfef95601890afd80709","email":null,"name":"","role":"anonymous","avatar_url":"https://assets.zendesk.com/hc/assets/default_avatar.png","is_admin":false,"external_id":null,"organizations":[],"groups":[]};
-  HelpCenter.internal = {"asset_url":"//static.zdassets.com/hc/assets/","web_widget_asset_composer_url":"https://static.zdassets.com/ekr/snippet.js","current_session":{"locale":"en-us","csrf_token":null,"shared_csrf_token":null},"usage_tracking":{"event":"article_viewed","data":"BAh7CDoLbG9jYWxlSSIKZW4tdXMGOgZFVDoPYXJ0aWNsZV9pZGwrCKapz8YaADoKX21ldGF7DDoPYWNjb3VudF9pZGkCw2c6E2hlbHBfY2VudGVyX2lkaQRMUuwLOg1icmFuZF9pZGkDXvYEOgx1c2VyX2lkMDoTdXNlcl9yb2xlX25hbWVJIg5BTk9OWU1PVVMGOwZUOwBJIgplbi11cwY7BlQ6GmFub255bW91c190cmFja2luZ19pZDA=--423e6e7908eca19badecef8ea92625b4fa02b9d4","url":"https://en.help.roblox.com/hc/activity"},"current_record_id":"115004647846","current_record_url":"/hc/en-us/articles/115004647846-Roblox-Terms-of-Use","current_record_title":"Roblox Terms of Use","current_text_direction":"ltr","current_brand_id":325214,"current_brand_name":"Roblox","current_brand_url":"https://roblox.zendesk.com","current_brand_active":true,"current_path":"/hc/en-us/articles/115004647846-Roblox-Terms-of-Use","show_autocomplete_breadcrumbs":true,"user_info_changing_enabled":false,"has_user_profiles_enabled":false,"has_end_user_attachments":true,"user_aliases_enabled":false,"has_anonymous_kb_voting":true,"has_multi_language_help_center":true,"show_at_mentions":false,"embeddables_config":{"embeddables_web_widget":false,"embeddables_help_center_auth_enabled":false,"embeddables_connect_ipms":false},"answer_bot_subdomain":"static","gather_plan_state":"subscribed","has_article_verification":true,"has_gather":true,"has_ckeditor":false,"has_community_enabled":false,"has_community_badges":true,"has_community_post_content_tagging":false,"has_gather_content_tags":true,"has_guide_content_tags":true,"has_user_segments":true,"has_answer_bot_web_form_enabled":false,"has_garden_modals":false,"has_auth_email_less_sso":false,"theming_cookie_key":"hc-da39a3ee5e6b4b0d3255bfef95601890afd80709-2-preview","is_preview":false,"has_search_settings_in_plan":true,"theming_api_version":2,"theming_settings":{"brand_color":"rgba(189, 190, 190, 1)","brand_text_color":"rgba(57, 59, 61, 1)","text_color":"rgba(204, 205, 211, 1)","link_color":"rgba(0, 157, 255, 1)","hover_link_color":"rgba(50, 181, 255, 1)","visited_link_color":"rgba(0, 116, 189, 1)","background_color":"rgba(35, 37, 39, 1)","heading_font":"-apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif","text_font":"-apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif","logo":"/hc/theming_assets/01HZPAS6P8C1KHF2TQJ18XHPHE","show_brand_name":false,"favicon":"/hc/theming_assets/01HZPAS6TBMWBFNK4DD9HN8EGZ","homepage_background_image":"/hc/theming_assets/01HZPAS73RFSEEC9BG3FTMV2P1","community_background_image":"/hc/theming_assets/01HZPAS79DY0R3QY777ZFG9109","community_image":"/hc/theming_assets/01HZPAS7D858JKY1GZNMSK8C16","instant_search":true,"scoped_kb_search":false,"scoped_community_search":false,"show_recent_activity":false,"show_articles_in_section":true,"show_article_author":false,"show_article_comments":false,"show_follow_article":false,"show_recently_viewed_articles":true,"show_related_articles":true,"show_article_sharing":false,"show_follow_section":false,"show_follow_post":false,"show_post_sharing":false,"show_follow_topic":false,"request_list_beta":false},"has_pci_credit_card_custom_field":true,"help_center_restricted":false,"is_assuming_someone_else":false,"flash_messages":[],"user_photo_editing_enabled":true,"user_preferred_locale":"en-us","base_locale":"en-us","login_url":"https://roblox.zendesk.com/access?locale=en-us\u0026brand_id=325214\u0026return_to=https%3A%2F%2Fen.help.roblox.com%2Fhc%2Fen-us%2Farticles%2F115004647846-Roblox-Terms-of-Use","has_alternate_templates":true,"has_custom_statuses_enabled":true,"has_hc_generative_answers_setting_enabled":true,"has_suggested_initial_questions_enabled":false,"has_contentful_eap":false,"has_contentful_eap_eligible":false,"has_pdf_ingestion_eap":true,"has_pdf_ingestion_eap_eligible":true,"has_saas_management":false,"has_knowledge_category_translation_modal":false,"has_guide_service_catalog":true,"has_csat_reverse_2_scale_in_mobile":false,"has_knowledge_locale_display_names":true,"has_csat_bet365_branding":false,"has_csat_flora":false,"has_csat_theming_integration_phase_1":false,"has_help_center_gen_search_follow_up_conversation":true,"chat_page_renderable":false,"version":"v28123","dev_mode":false};
+  HelpCenter.internal = {"asset_url":"//static.zdassets.com/hc/assets/","web_widget_asset_composer_url":"https://static.zdassets.com/ekr/snippet.js","current_session":{"locale":"en-us","csrf_token":null,"shared_csrf_token":null},"usage_tracking":{"event":"article_viewed","data":"BAh7CDoLbG9jYWxlSSIKZW4tdXMGOgZFVDoPYXJ0aWNsZV9pZGwrCKapz8YaADoKX21ldGF7DDoPYWNjb3VudF9pZGkCw2c6E2hlbHBfY2VudGVyX2lkaQRMUuwLOg1icmFuZF9pZGkDXvYEOgx1c2VyX2lkMDoTdXNlcl9yb2xlX25hbWVJIg5BTk9OWU1PVVMGOwZUOwBJIgplbi11cwY7BlQ6GmFub255bW91c190cmFja2luZ19pZDA=--423e6e7908eca19badecef8ea92625b4fa02b9d4","url":"https://en.help.roblox.com/hc/activity"},"current_record_id":"115004647846","current_record_url":"/hc/en-us/articles/115004647846-Roblox-Terms-of-Use","current_record_title":"Roblox Terms of Use","current_text_direction":"ltr","current_brand_id":325214,"current_brand_name":"Roblox","current_brand_url":"https://roblox.zendesk.com","current_brand_active":true,"current_path":"/hc/en-us/articles/115004647846-Roblox-Terms-of-Use","show_autocomplete_breadcrumbs":true,"user_info_changing_enabled":false,"has_user_profiles_enabled":false,"has_end_user_attachments":true,"user_aliases_enabled":false,"has_anonymous_kb_voting":true,"has_multi_language_help_center":true,"show_at_mentions":false,"embeddables_config":{"embeddables_web_widget":false,"embeddables_help_center_auth_enabled":false,"embeddables_connect_ipms":false},"answer_bot_subdomain":"static","gather_plan_state":"subscribed","has_article_verification":true,"has_gather":true,"has_ckeditor":true,"has_community_enabled":false,"has_community_badges":true,"has_community_post_content_tagging":false,"has_gather_content_tags":true,"has_guide_content_tags":true,"has_user_segments":true,"has_answer_bot_web_form_enabled":false,"has_garden_modals":false,"has_auth_email_less_sso":false,"theming_cookie_key":"hc-da39a3ee5e6b4b0d3255bfef95601890afd80709-2-preview","is_preview":false,"has_search_settings_in_plan":true,"theming_api_version":4,"theming_settings":{"brand_color":"rgba(189, 190, 190, 1)","brand_text_color":"rgba(57, 59, 61, 1)","text_color":"rgba(204, 205, 211, 1)","link_color":"rgba(0, 157, 255, 1)","hover_link_color":"rgba(50, 181, 255, 1)","visited_link_color":"rgba(0, 116, 189, 1)","background_color":"rgba(35, 37, 39, 1)","heading_font":"-apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif","text_font":"-apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif","logo":"/hc/theming_assets/01J9A30Q21JSCFQ5FNR3E489ZQ","show_brand_name":false,"favicon":"/hc/theming_assets/01J9A30QESKGH8VPB2JVBCGF7Q","homepage_background_image":"/hc/theming_assets/01J9A30QZJAD8NYMEDW8D3WGG1","community_background_image":"/hc/theming_assets/01J9A30NE3QVGEK4XEN7G6P5HC","community_image":"/hc/theming_assets/01J9A30NDDT83644CMBJWWEGTR","instant_search":true,"scoped_kb_search":false,"scoped_community_search":false,"show_recent_activity":false,"show_articles_in_section":true,"show_article_author":false,"show_article_comments":false,"show_follow_article":false,"show_recently_viewed_articles":true,"show_related_articles":true,"show_article_sharing":false,"show_follow_section":false,"show_follow_post":false,"show_post_sharing":false,"show_follow_topic":false,"show_suggested_articles":false},"has_pci_credit_card_custom_field":true,"help_center_restricted":false,"is_assuming_someone_else":false,"flash_messages":[],"user_photo_editing_enabled":true,"user_preferred_locale":"en-us","base_locale":"en-us","login_url":"https://roblox.zendesk.com/access?locale=en-us\u0026brand_id=325214\u0026return_to=https%3A%2F%2Fen.help.roblox.com%2Fhc%2Fen-us%2Farticles%2F115004647846-Roblox-Terms-of-Use","has_alternate_templates":true,"has_custom_statuses_enabled":true,"has_hc_generative_answers_setting_enabled":true,"has_suggested_initial_questions_enabled":false,"has_contentful_eap":false,"has_contentful_eap_eligible":false,"has_pdf_ingestion_eap":true,"has_pdf_ingestion_eap_eligible":true,"has_saas_management":false,"has_knowledge_category_translation_modal":false,"has_guide_service_catalog":true,"has_csat_reverse_2_scale_in_mobile":false,"has_knowledge_locale_display_names":true,"has_csat_bet365_branding":false,"has_csat_flora":false,"has_csat_theming_integration_phase_1":false,"has_help_center_gen_search_follow_up_conversation":true,"chat_page_renderable":false,"version":"v28133","dev_mode":false};
 </script>
 
   
   
   <script src="//static.zdassets.com/hc/assets/hc_enduser-ba2f6695d7e0bf8c189d9a19cf6c1b25.js"></script>
-  <script type="text/javascript" src="/hc/theming_assets/26563/325214/script.js?digest=54553872065556"></script>
+  <script type="text/javascript" src="/hc/theming_assets/26563/325214/script.js?digest=55111954123284"></script>
   
 
-<span class="algolia-autocomplete" style="position: absolute; z-index: 100; display: none; direction: ltr;"><span class="aa-dropdown-menu" role="listbox" id="algolia-autocomplete-listbox-0" style="display: block; left: 0px; right: auto;"><div class="aa-dataset-articles"></div></span></span><div id="_evidon_banner" class="evidon-banner" role="dialog" aria-label="Cookie notice banner" tabindex="1" style="position: fixed; display: block; background: rgb(22, 34, 39); font-size: 1rem; color: rgb(242, 244, 243); bottom: 0px; left: 0px; right: 0px; padding: 1.5rem; z-index: 2147483647; border-top: 1px solid rgb(52, 58, 64);"><div id="_evidon-title" class="evidon-banner-title" style="display: block; font-size: 1.5rem; font-weight: bold; text-align: center; color: rgb(242, 244, 243); margin: 0px auto 1.5rem;">About Cookies On This Site</div><div id="_evidon-message" class="evidon-banner-message" style="display: block; margin: 0px auto 1.5rem; color: rgb(242, 244, 243); font-size: 1rem; max-width: 960px;">We use cookies to personalize and enhance your experience on our site. Visit our  <a tabindex="2" href="https://en.help.roblox.com/hc/en-us/articles/115004630823-Roblox-Privacy-and-Cookie-Policy-" target="_blank" style="text-decoration: underline"><font color="FFFFFF">Privacy Policy</font></a> for more information on our data collection practices. By clicking Accept, you agree to our use of cookies for the purposes listed in our  <a tabindex="2" href="#" onclick="event.preventDefault(); window.evidon.notice.showOptions();" style="text-decoration: underline"><font color="FFFFFF">Cookie Consent Tool</font></a>. To see a complete list of the companies that use these cookies and other technologies and to tell us whether they can be used on your device or not, access our Cookie Consent Tool. You will see this message only once, but you will always be able to set your preferences at any time in the Cookie Consent Tool.</div><button id="_evidon-accept-button" class="evidon-banner-acceptbutton" aria-label="Accept All" tabindex="3" style="display: inline-block; border: 0px; color: rgb(57, 59, 61); background: rgb(242, 244, 243); padding: 7px 22px; cursor: pointer; border-radius: 8px; line-height: 22px; float: right; margin: 0px 12px 0px 0px;">Accept All</button><button id="_evidon-option-button" class="evidon-banner-optionbutton" role="button" aria-label="Cookie Consent, Opens the preference dialog." tabindex="3" style="display: inline-block; padding: 8px 0px; background: transparent; border-radius: 4px; color: rgb(242, 244, 243); cursor: pointer; border: 0px; text-decoration: underline; margin: 0px 6px 8px 0px !important;">Cookie Consent</button></div></body></html>
+<span class="algolia-autocomplete" style="position: absolute; z-index: 100; display: none; direction: ltr;"><span class="aa-dropdown-menu" role="listbox" id="algolia-autocomplete-listbox-0" style="display: block; left: 0px; right: auto;"><div class="aa-dataset-articles"></div></span></span><div><div class="sc-aXZVg fCojMI"></div><div class="styled__StyledTransitionContainer-sc-nq0usb-1 jWkFuv"><div></div></div><div class="styled__StyledTransitionContainer-sc-nq0usb-1 iITdPH"><div></div></div><div class="styled__StyledTransitionContainer-sc-nq0usb-1 eqQhFs"><div></div></div><div class="styled__StyledTransitionContainer-sc-nq0usb-1 eeMgvT"><div></div></div><div class="styled__StyledTransitionContainer-sc-nq0usb-1 jTlaOb"><div></div></div><div class="styled__StyledTransitionContainer-sc-nq0usb-1 deQyYc"><div></div></div></div><div id="_evidon_banner" class="evidon-banner" role="dialog" aria-label="Cookie notice banner" tabindex="1" style="position: fixed; display: block; background: rgb(22, 34, 39); font-size: 1rem; color: rgb(242, 244, 243); bottom: 0px; left: 0px; right: 0px; padding: 1.5rem; z-index: 2147483647; border-top: 1px solid rgb(52, 58, 64);"><div id="_evidon-title" class="evidon-banner-title" style="display: block; font-size: 1.5rem; font-weight: bold; text-align: center; color: rgb(242, 244, 243); margin: 0px auto 1.5rem;">About Cookies On This Site</div><div id="_evidon-message" class="evidon-banner-message" style="display: block; margin: 0px auto 1.5rem; color: rgb(242, 244, 243); font-size: 1rem; max-width: 960px;">We use cookies to personalize and enhance your experience on our site. Visit our  <a tabindex="2" href="https://en.help.roblox.com/hc/en-us/articles/115004630823-Roblox-Privacy-and-Cookie-Policy-" target="_blank" style="text-decoration: underline"><font color="FFFFFF">Privacy Policy</font></a> for more information on our data collection practices. By clicking Accept, you agree to our use of cookies for the purposes listed in our  <a tabindex="2" href="#" onclick="event.preventDefault(); window.evidon.notice.showOptions();" style="text-decoration: underline"><font color="FFFFFF">Cookie Consent Tool</font></a>. To see a complete list of the companies that use these cookies and other technologies and to tell us whether they can be used on your device or not, access our Cookie Consent Tool. You will see this message only once, but you will always be able to set your preferences at any time in the Cookie Consent Tool.</div><button id="_evidon-accept-button" class="evidon-banner-acceptbutton" aria-label="Accept All" tabindex="3" style="display: inline-block; border: 0px; color: rgb(57, 59, 61); background: rgb(242, 244, 243); padding: 7px 22px; cursor: pointer; border-radius: 8px; line-height: 22px; float: right; margin: 0px 12px 0px 0px;">Accept All</button><button id="_evidon-option-button" class="evidon-banner-optionbutton" role="button" aria-label="Cookie Consent, Opens the preference dialog." tabindex="3" style="display: inline-block; padding: 8px 0px; background: transparent; border-radius: 4px; color: rgb(242, 244, 243); cursor: pointer; border: 0px; text-decoration: underline; margin: 0px 6px 8px 0px !important;">Cookie Consent</button></div></body></html>
