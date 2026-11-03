@@ -1115,7 +1115,7 @@
 
             
               <div class="lt-dropdown lt-dropdown--header" x-data="categoryMenu()">
-                <button class="lt-dropdown-toggle" aria-haspopup="true" x-show="categories.length &gt; 1" style="display: none;">
+                <button class="lt-dropdown-toggle" aria-haspopup="true" x-show="categories.length &gt; 1" style="">
                   <span>Categories</span>
                   <svg class="lt-icon" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor">
                     <use xlink:href="#icon-chevron-down"></use>
@@ -1125,7 +1125,7 @@
                   <template x-for="(category, index) in categories" :key="index">
                     <a :href="category.html_url" x-text="category.name" rel="nofollow" role="menuitem">
                     </a>
-                  </template>
+                  </template><a :href="category.html_url" x-text="category.name" rel="nofollow" role="menuitem" href="https://help.meetup.com/hc/en-us/categories/39488204937357-Account-and-Login">Account and Login</a><a :href="category.html_url" x-text="category.name" rel="nofollow" role="menuitem" href="https://help.meetup.com/hc/en-us/categories/39488576274573-Groups-and-Communications">Groups and Communications</a><a :href="category.html_url" x-text="category.name" rel="nofollow" role="menuitem" href="https://help.meetup.com/hc/en-us/categories/39488950343693-Events">Events</a><a :href="category.html_url" x-text="category.name" rel="nofollow" role="menuitem" href="https://help.meetup.com/hc/en-us/categories/39489490734605-Subscriptions-and-features-Overview">Subscriptions and features Overview</a><a :href="category.html_url" x-text="category.name" rel="nofollow" role="menuitem" href="https://help.meetup.com/hc/en-us/categories/39489069376781-Payments-Billing-inquiries">Payments &amp; Billing inquiries</a><a :href="category.html_url" x-text="category.name" rel="nofollow" role="menuitem" href="https://help.meetup.com/hc/en-us/categories/360000077551-Troubleshooting-FAQs">Troubleshooting &amp; FAQs</a><a :href="category.html_url" x-text="category.name" rel="nofollow" role="menuitem" href="https://help.meetup.com/hc/en-us/categories/360000089471-Policies-and-Community-Guidelines">Policies and Community Guidelines</a>
                 </span>
               </div>
             
