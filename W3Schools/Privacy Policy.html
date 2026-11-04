@@ -64,7 +64,7 @@ uic_prov_pre("default","",subjectFolder);
 <link rel="preload" href="/lib/fonts/source-sans-pro-v14-latin-700.woff2" as="font" type="font/woff2" crossorigin> 
 <link rel="preload" href="/lib/fonts/source-sans-pro-v14-latin-600.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="preload" href="/lib/fonts/W3HomeSSans-400.woff2" as="font" type="font/woff2" crossorigin>
-<link rel="stylesheet" href="/lib/topnav/main.v1.0.149.css">
+<link rel="stylesheet" href="/lib/topnav/main.v1.0.150.css">
 <link rel="stylesheet" href="/lib/my-learning/main.v1.0.107.css">
 <link rel="stylesheet" href="/lib/pathfinder/main.v1.0.12.css">
 <link rel="stylesheet" href="/lib/w3css/w3css.v6.0.5.css">
@@ -149,7 +149,7 @@ function w3_getStyleValue(elmnt,style) {
 
 <script src="/lib/common-deps/main.v1.0.24.js"></script>
 <script src="/lib/user-session/main.v1.0.52.js"></script>
-<script src="/lib/topnav/main.v1.0.149.js"></script>
+<script src="/lib/topnav/main.v1.0.150.js"></script>
 <script src="/lib/my-learning/main.v1.0.107.js"></script>
 
 </head><body>
@@ -4309,6 +4309,7 @@ a.track-progress-btn {
 
 .advb {
   --far: #DCE9EF;
+  --far-rgb: 220,233,239;
 
   position: relative;
   width: 100%;
@@ -4415,8 +4416,8 @@ a.track-progress-btn {
   pointer-events: none;
 
   background: linear-gradient(180deg,
-    rgba(220,233,239,.90) 0%,
-    rgba(220,233,239,0) 100%);
+    rgba(var(--far-rgb),.90) 0%,
+    rgba(var(--far-rgb),0) 100%);
 
 }
 
@@ -4938,6 +4939,79 @@ body.w3s-user-authenticated .advb-sign { display: none; }
 
 
 /* =========================================================
+   DARK MODE
+   Same scene at night. The pixel art is left alone: the sky
+   and mist take the site's dark surface colour, a blue wash
+   dims the grass, and the card and copy move to the dark
+   theme's greys. The speech bubble stays light, it is the
+   game's own object and the one thing that should still pop.
+   ========================================================= */
+
+body.darkpagetheme .advb {
+  --far: #0f1a24;
+  --far-rgb: 15,26,36;
+  color: #ddd;
+}
+
+/* The light-mode wash is an overlay only 200px tall, so it dimmed the
+   grass but not the tops of the tall trees, which stood out bright.
+   Dimming an overlay tall enough to catch them would also dim the sky,
+   so at night the ground and every prop are dimmed directly instead.
+   The lynx, bubble, chest and sign stay lit. */
+body.darkpagetheme .advb-wash { display: none; }
+
+body.darkpagetheme .advb-field,
+body.darkpagetheme .advb-road,
+body.darkpagetheme .advb-prop { filter: brightness(.5) saturate(.9); }
+
+/* The full-height mist fogged the whole treeline and left the trees
+   looking ghostly. At night it becomes a haze band that straddles the
+   horizon only: sky colour at the grass edge, clearing 40px above it
+   and 70px below it, so the trees keep their shape. The field is 214px
+   tall, so the band is anchored to the bottom of the banner. */
+body.darkpagetheme .advb-mist {
+  /* under the props (4), over the ground (1-2): the haze softens the
+     horizon without washing over the trees that stand on it */
+  z-index: 3;
+  top: auto;
+  bottom: 144px;
+  height: 110px;
+  background: linear-gradient(180deg,
+    rgba(var(--far-rgb),0) 0%,
+    rgba(var(--far-rgb),.9) 36%,
+    rgba(var(--far-rgb),.45) 62%,
+    rgba(var(--far-rgb),0) 100%);
+}
+
+body.darkpagetheme .advb-sign { filter: brightness(.8) drop-shadow(0 6px 10px rgba(0,0,0,.45)); }
+
+body.darkpagetheme .advb-kicker { color: #3fd69a; }
+body.darkpagetheme .advb-right .advb-kicker { color: #f2b45c; }
+body.darkpagetheme .advb-title { color: #f1f1f1; }
+body.darkpagetheme .advb-text { color: #b9c6d0; }
+
+body.darkpagetheme .advb-card {
+  background: #15202b;
+  border-color: #38444d;
+  box-shadow: 0 6px 20px rgba(0,0,0,.45);
+}
+
+body.darkpagetheme .advb-stats {
+  background: #1d2a35;
+  border-color: #38444d;
+}
+
+body.darkpagetheme .advb-stat { color: #9fb0bb; }
+body.darkpagetheme .advb-stat + .advb-stat { border-top-color: #38444d; }
+body.darkpagetheme .advb-stat b { color: #f1f1f1; }
+
+body.darkpagetheme .advb-btn { box-shadow: 0 2px 5px rgba(0,0,0,.4); }
+
+/* the badges are black, so on the dark band they need an edge */
+body.darkpagetheme .advb-badge rect { stroke: #4a5964; stroke-width: 1; }
+
+
+/* =========================================================
    REDUCED MOTION
    ========================================================= */
 
@@ -5276,7 +5350,7 @@ of all content. While using W3Schools, you agree to have read and accepted our <
 
 
 </div>
-<!-- <script src="/lib/topnav/main.v1.0.149.js"></script> -->
+<!-- <script src="/lib/topnav/main.v1.0.150.js"></script> -->
 <script src="/lib/w3schools_footer.v1.0.1.js"></script>
 <script src="/lib/w3schools_features.js?update=20261102"></script>
 
