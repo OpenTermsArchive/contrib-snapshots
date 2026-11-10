@@ -409,6 +409,37 @@ body.page-id-237702 .wp-block-heading + h3.wp-block-heading.has-source-serif-4-f
 		text-align: left;
 	}
 }
+
+/* RC link on /spaces page
+@nyiriland 11.8.26 */
+.cover-noho-tour .wp-block-cover__inner-container {
+	position: absolute;
+	height: 100%;
+	width: 100%;
+	display: flex;
+}
+
+.noho-rc-button {
+	position: absolute;
+	bottom: 16px;
+	right: 16px;
+}
+
+.noho-rc-button .wp-block-button__link:before {
+	content: '🏎 ';
+	width: 24px;
+	display: inline-block;
+	transform: scalex(-1);
+}
+
+.cover-noho-tour .wp-block-cover__inner-container .noho-rc-button .wp-block-button__link {
+	opacity: 0;
+	transition: opacity .3s ease;
+}
+
+.cover-noho-tour .wp-block-cover__inner-container:hover .noho-rc-button .wp-block-button__link {
+	opacity: 1;
+}
 :root :where(.wp-block-button .wp-block-button__link){padding: calc(0.667em + 1px) calc(1.33em + 1px);}
 :root :where(.wp-block-buttons-is-layout-flow) > :first-child{margin-block-start: 0;}:root :where(.wp-block-buttons-is-layout-flow) > :last-child{margin-block-end: 0;}:root :where(.wp-block-buttons-is-layout-flow) > *{margin-block-start: var(--wp--preset--spacing--30);margin-block-end: 0;}:root :where(.wp-block-buttons-is-layout-constrained) > :first-child{margin-block-start: 0;}:root :where(.wp-block-buttons-is-layout-constrained) > :last-child{margin-block-end: 0;}:root :where(.wp-block-buttons-is-layout-constrained) > *{margin-block-start: var(--wp--preset--spacing--30);margin-block-end: 0;}:root :where(.wp-block-buttons-is-layout-flex){gap: var(--wp--preset--spacing--30);}:root :where(.wp-block-buttons-is-layout-grid){gap: var(--wp--preset--spacing--30);}
 :root :where(.wp-block-post-title){font-size: var(--wp--preset--font-size--title);}
@@ -435,7 +466,7 @@ body.page-id-237702 .wp-block-heading + h3.wp-block-heading.has-source-serif-4-f
 .wp-container-core-group-is-layout-de868385{flex-wrap:nowrap;gap:var(--wp--preset--spacing--20);align-items:center;}.wp-container-core-navigation-is-layout-091ab7b5{flex-wrap:nowrap;gap:0px;justify-content:flex-end;}.wp-container-core-columns-is-layout-b26fcb8f{flex-wrap:nowrap;gap:0px 0px;}.wp-container-core-group-is-layout-6ca22602{flex-wrap:nowrap;gap:4px;}.wp-container-core-group-is-layout-91e1be55 > :where(:not(.alignleft):not(.alignright):not(.alignfull)){max-width:762px;margin-left:0 !important;margin-right:auto !important;}.wp-container-core-group-is-layout-91e1be55 > .alignwide{max-width:762px;}.wp-container-core-group-is-layout-91e1be55 .alignfull{max-width:none;}.wp-container-core-columns-is-layout-d501e02e{flex-wrap:nowrap;gap:1.2rem 3rem;}.wp-container-content-9cfa9a5a{flex-grow:1;}.wp-container-core-navigation-is-layout-6d24e0d9{flex-wrap:nowrap;gap:16px;}.wp-container-core-social-links-is-layout-ca61bfa8{flex-wrap:nowrap;gap:0 16px;justify-content:center;}.wp-container-core-columns-is-layout-3a88641f{flex-wrap:nowrap;}.wp-container-core-navigation-is-layout-ebcc7d55{flex-wrap:nowrap;gap:var(--wp--preset--spacing--30);justify-content:flex-end;}.wp-container-core-columns-is-layout-0f881cd9{flex-wrap:nowrap;}.wp-elements-1 a:where(:not(.wp-element-button)){color:#777777;}.wp-container-core-group-is-layout-f045ee3a > .alignfull{margin-right:calc(var(--wp--preset--spacing--40) * -1);margin-left:calc(var(--wp--preset--spacing--40) * -1);}
 /*# sourceURL=core-block-supports-inline-css */
 </style>
-<link crossorigin='anonymous' rel='stylesheet' id='all-css-54-1' href='/_static/??-eJyNzEEOwjAMBMAPYUzTQ8sB8ZZg3BCUxFXsgPg9LReEkBC3Xa1m8T4DSTEuhnbhzIp+JPTNJHuzSOB2XYdqj8RbUt3gfyAWSu28jqpsigtF45oVZALleov0/ZcbzKmFWBQrn5KEJYYXfddfKLBAEvIWpXwUmJKPdaXHfOiGfe9cP7jx+gRdmFx5&cssminify=yes' type='text/css' media='all' />
+<link crossorigin='anonymous' rel='stylesheet' id='all-css-54-1' href='/_static/??-eJyNzMEKAjEMBNAfMmYrBfUgfkuN2Vppm6VJFf/eXS8ignibYXiD9wlIqnE1tAsXVgw7wtBNSjBLBJvBOVR7ZF6T6gr/A6lS7udlVGVTnCkat6IgIyi3W6Lvv9Jhyj2mqtj4lCXOMb7ou/5CkQWyULAk9aPAmENqCz2Wg9vu/cY7P/jrE12IXHE=&cssminify=yes' type='text/css' media='all' />
 <style id="jetpack-global-styles-frontend-style-inline-css">
 :root { --font-headings: unset; --font-base: unset; --font-headings-default: -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Oxygen-Sans,Ubuntu,Cantarell,"Helvetica Neue",sans-serif; --font-base-default: -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Oxygen-Sans,Ubuntu,Cantarell,"Helvetica Neue",sans-serif;}
 /*# sourceURL=jetpack-global-styles-frontend-style-inline-css */
@@ -444,7 +475,7 @@ body.page-id-237702 .wp-block-heading + h3.wp-block-heading.has-source-serif-4-f
 <script data-wp-strategy="defer" defer id="automattic-2011-toc-dropdown-view-script-js" src="https://automattic.com/wp-content/themes/a8c/automattic-2011/blocks/build/toc-dropdown/view.js?m=1783974298i&#038;ver=555b6b7cb0b70de92864"></script>
 <script id="a8ctheme-expand-details-script-js" src="https://automattic.com/wp-content/themes/a8c/automattic-2011/blocks/build/expand-details/view.js?m=1774036010i&#038;ver=60336903813ff3f54b8b"></script>
 <script id="wpcom-actionbar-placeholder-js-extra">
-var actionbardata = {"siteID":"54117","postID":"700369","siteURL":"https://automattic.com","xhrURL":"https://automattic.com/wp-admin/admin-ajax.php","nonce":"818032c5ac","isLoggedIn":"","statusMessage":"","statusSubscribed":"","subsEmailDefault":"instantly","proxyScriptUrl":"https://s0.wp.com/wp-content/js/wpcom-proxy-request.js?m=1513050504i&amp;ver=20211021","shortlink":"https://wp.me/Pe4R-2Wch","i18n":{"followedText":"New posts from this site will now appear in your \u003Ca href=\"https://wordpress.com/reader\"\u003EReader\u003C/a\u003E","foldBar":"Collapse this bar","unfoldBar":"Expand this bar","shortLinkCopied":"Copied to clipboard."}};
+var actionbardata = {"siteID":"54117","postID":"700369","siteURL":"https://automattic.com","xhrURL":"https://automattic.com/wp-admin/admin-ajax.php","nonce":"18ac36356d","isLoggedIn":"","statusMessage":"","statusSubscribed":"","subsEmailDefault":"instantly","proxyScriptUrl":"https://s0.wp.com/wp-content/js/wpcom-proxy-request.js?m=1513050504i&amp;ver=20211021","shortlink":"https://wp.me/Pe4R-2Wch","i18n":{"followedText":"New posts from this site will now appear in your \u003Ca href=\"https://wordpress.com/reader\"\u003EReader\u003C/a\u003E","foldBar":"Collapse this bar","unfoldBar":"Expand this bar","shortLinkCopied":"Copied to clipboard."}};
 //# sourceURL=wpcom-actionbar-placeholder-js-extra
 </script>
 <script id="jetpack-mu-wpcom-settings-js-before">
@@ -471,9 +502,9 @@ var JETPACK_MU_WPCOM_SETTINGS = {"assetsUrl":"https://automattic.com/wp-content/
 <meta property="og:type" content="article" />
 <meta property="og:title" content="Terms of Service" />
 <meta property="og:url" content="https://automattic.com/tos/" />
-<meta property="og:description" content="Last updated October 6, 2026 Print PDF Changelog Introduction The Gist We (the folks at Automattic) are on a mission to make the web a better place. We hope you love our products and services — fro…" />
+<meta property="og:description" content="Last updated November 9, 2026 Print PDF Changelog Introduction The Gist We (the folks at Automattic) are on a mission to make the web a better place. We hope you love our products and services — fr…" />
 <meta property="article:published_time" content="2026-11-09T09:38:21+00:00" />
-<meta property="article:modified_time" content="2026-11-09T09:51:32+00:00" />
+<meta property="article:modified_time" content="2026-11-09T15:53:25+00:00" />
 <meta property="og:site_name" content="Automattic" />
 <meta property="og:image" content="https://automattic.com/wp-content/uploads/2026/10/a8c-favicon-1.png?w=200" />
 <meta property="og:image:width" content="200" />
@@ -500,9 +531,9 @@ var JETPACK_MU_WPCOM_SETTINGS = {"assetsUrl":"https://automattic.com/wp-content/
 <link rel="search" type="application/opensearchdescription+xml" href="https://s1.wp.com/opensearch.xml" title="WordPress.com" />
 <link rel="canonical" href="https://automattic.com/tos/" />
 <script type="application/ld+json">
-{"@context":"https:\/\/schema.org","@graph":[{"@type":"Corporation","@id":"https:\/\/automattic.com\/#organization","url":"https:\/\/automattic.com\/","name":"Automattic","foundingDate":"2005-08-01","slogan":"We don't make software for free, we make it for freedom.","description":"We are the people behind WordPress.com, WooCommerce, Jetpack, Simplenote, Longreads, VaultPress, Akismet, Gravatar, Crowdsignal, Cloudup, and more. We believe in making the web a better place, and we believe in Open Source. The vast majority of our work is available under the GPL.","logo":{"@type":"ImageObject","@id":"https:\/\/automattic.com\/#logo","url":"https:\/\/automattic.com\/wp-content\/themes\/a8c\/automattic-2011\/images\/automattic-logo-2x.png","width":552,"height":60,"caption":"Automattic"},"image":{"@id":"https:\/\/automattic.com\/#logo"},"address":{"@type":"PostalAddress","streetAddress":"60 29th Street #343","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94110","addressCountry":"US"},"founder":{"@type":"Person","@id":"https:\/\/wordpress.com\/schema.org\/author\/5#person","name":"Matt Mullenweg","description":"In 2002 I started contributing to Open Source software, and life has just gotten better from there. Co-founder of WordPress, founder Automattic.","image":{"@type":"ImageObject","@id":"https:\/\/wordpress.com\/schema.org\/author\/5#personimage","url":"https:\/\/secure.gravatar.com\/avatar\/33252cd1f33526af53580fcb1736172f06e6716f32afdd1be19ec3096d15dea5?s=96&d=mm","width":96,"height":96,"caption":"Matt Mullenweg"}},"numberOfEmployees":{"@type":"QuantitativeValue","value":1347},"sameAs":["https:\/\/x.com\/automattic","https:\/\/www.facebook.com\/AutomatticInc","https:\/\/www.linkedin.com\/company\/automattic\/","https:\/\/en.wikipedia.org\/wiki\/Automattic","https:\/\/www.youtube.com\/c\/automattic"],"subOrganization":{"@id":"https:\/\/wordpress.com\/#organization"}},{"@type":"WebSite","@id":"https:\/\/automattic.com\/#website","url":"https:\/\/automattic.com\/","name":"Automattic","description":"Making the web a better place","publisher":{"@id":"https:\/\/automattic.com\/#organization"},"image":{"@id":"https:\/\/automattic.com\/#logo"},"sameAs":["https:\/\/x.com\/automattic","https:\/\/www.facebook.com\/AutomatticInc","https:\/\/www.linkedin.com\/company\/automattic\/","https:\/\/en.wikipedia.org\/wiki\/Automattic","https:\/\/www.youtube.com\/c\/automattic"]},{"@type":"BreadcrumbList","@id":"https:\/\/automattic.com\/tos\/#breadcrumbs","itemListElement":[{"@type":"ListItem","position":0,"item":{"@type":"WebSite","@id":"https:\/\/automattic.com\/#website-breadcrumb","url":"https:\/\/automattic.com\/","name":"Home"}},{"@type":"ListItem","position":1,"item":{"@type":"WebPage","@id":"https:\/\/automattic.com\/tos\/#webpage-breadcrumb","url":"https:\/\/automattic.com\/tos\/","name":"Terms of Service"}}]},{"@type":"ImageObject","@id":"https:\/\/automattic.com\/tos\/#primaryimage","url":"https:\/\/automattic.com\/wp-content\/uploads\/2026\/10\/a8c-favicon-1.png?w=200","width":200,"height":200,"caption":"Terms of Service"},{"@type":"WebPage","@id":"https:\/\/automattic.com\/tos\/#webpage","url":"https:\/\/automattic.com\/tos\/","name":"Terms of Service","description":"Making the web a better place","inLanguage":"en","isPartOf":{"@id":"https:\/\/automattic.com\/#website"},"primaryImageOfPage":{"@id":"https:\/\/automattic.com\/tos\/#primaryimage"},"publisher":{"@id":"https:\/\/automattic.com\/#organization"},"datePublished":"2026-11-09T09:38:21+0000","dateModified":"2026-11-09T09:51:32+0000","breadcrumb":{"@id":"https:\/\/automattic.com\/tos\/#breadcrumbs"}}]}
+{"@context":"https:\/\/schema.org","@graph":[{"@type":"Corporation","@id":"https:\/\/automattic.com\/#organization","url":"https:\/\/automattic.com\/","name":"Automattic","foundingDate":"2005-08-01","slogan":"We don't make software for free, we make it for freedom.","description":"We are the people behind WordPress.com, WooCommerce, Jetpack, Simplenote, Longreads, VaultPress, Akismet, Gravatar, Crowdsignal, Cloudup, and more. We believe in making the web a better place, and we believe in Open Source. The vast majority of our work is available under the GPL.","logo":{"@type":"ImageObject","@id":"https:\/\/automattic.com\/#logo","url":"https:\/\/automattic.com\/wp-content\/themes\/a8c\/automattic-2011\/images\/automattic-logo-2x.png","width":552,"height":60,"caption":"Automattic"},"image":{"@id":"https:\/\/automattic.com\/#logo"},"address":{"@type":"PostalAddress","streetAddress":"60 29th Street #343","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94110","addressCountry":"US"},"founder":{"@type":"Person","@id":"https:\/\/wordpress.com\/schema.org\/author\/5#person","name":"Matt Mullenweg","description":"In 2002 I started contributing to Open Source software, and life has just gotten better from there. Co-founder of WordPress, founder Automattic.","image":{"@type":"ImageObject","@id":"https:\/\/wordpress.com\/schema.org\/author\/5#personimage","url":"https:\/\/secure.gravatar.com\/avatar\/33252cd1f33526af53580fcb1736172f06e6716f32afdd1be19ec3096d15dea5?s=96&d=mm","width":96,"height":96,"caption":"Matt Mullenweg"}},"numberOfEmployees":{"@type":"QuantitativeValue","value":1347},"sameAs":["https:\/\/x.com\/automattic","https:\/\/www.facebook.com\/AutomatticInc","https:\/\/www.linkedin.com\/company\/automattic\/","https:\/\/en.wikipedia.org\/wiki\/Automattic","https:\/\/www.youtube.com\/c\/automattic"],"subOrganization":{"@id":"https:\/\/wordpress.com\/#organization"}},{"@type":"WebSite","@id":"https:\/\/automattic.com\/#website","url":"https:\/\/automattic.com\/","name":"Automattic","description":"Making the web a better place","publisher":{"@id":"https:\/\/automattic.com\/#organization"},"image":{"@id":"https:\/\/automattic.com\/#logo"},"sameAs":["https:\/\/x.com\/automattic","https:\/\/www.facebook.com\/AutomatticInc","https:\/\/www.linkedin.com\/company\/automattic\/","https:\/\/en.wikipedia.org\/wiki\/Automattic","https:\/\/www.youtube.com\/c\/automattic"]},{"@type":"BreadcrumbList","@id":"https:\/\/automattic.com\/tos\/#breadcrumbs","itemListElement":[{"@type":"ListItem","position":0,"item":{"@type":"WebSite","@id":"https:\/\/automattic.com\/#website-breadcrumb","url":"https:\/\/automattic.com\/","name":"Home"}},{"@type":"ListItem","position":1,"item":{"@type":"WebPage","@id":"https:\/\/automattic.com\/tos\/#webpage-breadcrumb","url":"https:\/\/automattic.com\/tos\/","name":"Terms of Service"}}]},{"@type":"ImageObject","@id":"https:\/\/automattic.com\/tos\/#primaryimage","url":"https:\/\/automattic.com\/wp-content\/uploads\/2026\/10\/a8c-favicon-1.png?w=200","width":200,"height":200,"caption":"Terms of Service"},{"@type":"WebPage","@id":"https:\/\/automattic.com\/tos\/#webpage","url":"https:\/\/automattic.com\/tos\/","name":"Terms of Service","description":"Making the web a better place","inLanguage":"en","isPartOf":{"@id":"https:\/\/automattic.com\/#website"},"primaryImageOfPage":{"@id":"https:\/\/automattic.com\/tos\/#primaryimage"},"publisher":{"@id":"https:\/\/automattic.com\/#organization"},"datePublished":"2026-11-09T09:38:21+0000","dateModified":"2026-11-09T15:53:25+0000","breadcrumb":{"@id":"https:\/\/automattic.com\/tos\/#breadcrumbs"}}]}
 </script>
-<meta name="description" content="Last updated October 6, 2026 Print PDF Changelog Introduction The Gist We (the folks at Automattic) are on a mission to make the web a better place. We hope you love our products and services — from website publishing tools to ecommerce solutions to security backup systems to management tools for distributed companies to the&hellip;" />
+<meta name="description" content="Last updated November 9, 2026 Print PDF Changelog Introduction The Gist We (the folks at Automattic) are on a mission to make the web a better place. We hope you love our products and services — from website publishing tools to ecommerce solutions to security backup systems to management tools for distributed companies to the&hellip;" />
 <meta name="robots" content="noindex" />
 <style class="wp-fonts-local">
 @font-face{font-family:"Source Serif Pro";font-style:normal;font-weight:300;font-display:swap;src:url('https://automattic.com/wp-content/themes/a8c/automattic-2011/fonts/SourceSerif4-var.woff2') format('woff2');unicode-range:U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;}
@@ -578,7 +609,7 @@ var JETPACK_MU_WPCOM_SETTINGS = {"assetsUrl":"https://automattic.com/wp-content/
 		<div class="entry-content tos-content wp-block-post-content is-layout-flow wp-block-post-content-is-layout-flow">
 <div class="wp-block-group has-global-padding is-content-justification-left is-layout-constrained wp-container-core-group-is-layout-91e1be55 wp-block-group-is-layout-constrained">
 <div class="wp-block-group is-nowrap is-layout-flex wp-container-core-group-is-layout-6ca22602 wp-block-group-is-layout-flex">
-<p class="wp-block-paragraph" style="font-style:italic;font-weight:400">Last updated <em>October 6, 2026</em></p>
+<p class="wp-block-paragraph" style="font-style:italic;font-weight:400">Last updated <em>November 9, 2026</em></p>
 </div>
 </div>
 
@@ -671,7 +702,7 @@ var JETPACK_MU_WPCOM_SETTINGS = {"assetsUrl":"https://automattic.com/wp-content/
 
 
 
-<p class="wp-block-paragraph">These Terms govern your access to and use of the software, applications, extensions, and other products and services we provide through or for <a href="https://wordpress.com/">WordPress.com</a>, <a href="https://woocommerce.com/">WooCommerce.com</a>, <a href="https://pay.woo.com">WooPay</a>, <a href="https://jetpack.com/">Jetpack.com</a>, <a href="https://gravatar.com/">Gravatar.com</a>, <a href="https://vaultpress.com/">VaultPress.com</a>, <a href="https://happy.tools/">Happy.Tools</a>, <a href="https://jetpackcrm.com/">Jetpack CRM</a>, <a href="http://mailpoet.com">MailPoet</a>, <a href="https://wpscan.com/">WPScan.com</a>, <a href="https://developer.wordpress.com/studio/">Studio</a>, <a href="https://wpcourses.com/">WordPress.com Courses</a>, <a href="https://blazepro.com/">BlazePro.com</a>, <a href="https://quickforget.com/">QuickForget.com</a>, <a href="https://www.beeper.com/">Beeper</a>, and <a href="https://telex.automattic.ai/">Telex</a> (our “Services”). Please note that Woo-related products and services are intended for commercial use and you acknowledge that your use is that of a representative of a business (as defined by applicable law) and not that of a consumer.</p>
+<p class="wp-block-paragraph">These Terms govern your access to and use of the software, applications, extensions, and other products and services we provide through or for <a href="https://wordpress.com/">WordPress.com</a>, <a href="https://woocommerce.com/">WooCommerce.com</a>, <a href="https://pay.woo.com">WooPay</a>, <a href="https://jetpack.com/">Jetpack.com</a>, <a href="https://gravatar.com/">Gravatar.com</a>, <a href="https://vaultpress.com/">VaultPress.com</a>, <a href="https://happy.tools/">Happy.Tools</a>, <a href="https://jetpackcrm.com/">Jetpack CRM</a>, <a href="http://mailpoet.com">MailPoet</a>, <a href="https://wpscan.com/">WPScan.com</a>, <a href="https://developer.wordpress.com/studio/">Studio</a>, <a href="https://wpcourses.com/">WordPress.com Courses</a>, <a href="https://blazepro.com/">BlazePro.com</a>, <a href="https://quickforget.com/">QuickForget.com</a>, <a href="https://www.beeper.com/">Beeper</a>, and <a href="https://spacefast.com/">Spacefast</a> (our “Services”). Please note that Woo-related products and services are intended for commercial use and you acknowledge that your use is that of a representative of a business (as defined by applicable law) and not that of a consumer.</p>
 
 
 
@@ -1171,6 +1202,24 @@ var JETPACK_MU_WPCOM_SETTINGS = {"assetsUrl":"https://automattic.com/wp-content/
 
 
 
+<details id="spacefast" class="wp-block-details has-icon-spacefast is-layout-flow wp-block-details-is-layout-flow"><summary>Spacefast</summary>
+<p class="wp-block-paragraph">Spacefast lets you publish and host websites, apps, and other things you make. Each project you publish is a &#8220;Space.&#8221;</p>
+
+
+
+<p class="wp-block-paragraph"><strong>Publishing without an account.</strong> You can publish a temporary Space without an account. Before you can preview it, you must agree to these Terms. A temporary Space stays live for a limited time. To keep it, you must claim it with an account. If you don&#8217;t claim it in time, we may turn it off and delete it. Anyone with the claim link can claim the Space, so keep it private.</p>
+
+
+
+<p class="wp-block-paragraph"><strong>Paid plans and usage.</strong> Paid plans include a monthly usage credit. The credit is shared across your team (if applicable), resets each month, and does not roll over. Usage above the credit is charged at the rates on the <a href="https://spacefast.com/pricing/">Pricing</a> and <a href="https://spacefast.com/docs/pricing/">Pricing and Limits</a> pages and added to your next monthly bill.</p>
+
+
+
+<p class="wp-block-paragraph"><strong>Domains.</strong> Domain registrations and renewals are subject to the Domain Names terms.</p>
+</details>
+
+
+
 <details id="ecommerce-services" class="wp-block-details has-icon-ecommerce is-layout-flow wp-block-details-is-layout-flow"><summary>Ecommerce Services</summary>
 <p class="wp-block-paragraph">We offer Services via <a href="https://woocommerce.com/">Woo</a>,&nbsp;<a href="https://wordpress.com/">WordPress.com</a>, and <a href="https://jetpack.com/">Jetpack</a> that enable you to sell items (goods, content, services, etc.), receive payments on your website, or otherwise earn money, like <a href="https://woocommerce.com/payments/">WooPayments</a>, <a href="https://pay.woo.com/">WooPay</a>, and the <a href="https://wordpress.com/support/wordpress-editor/blocks/payments/">Payments feature</a>&nbsp;(collectively, “Ecommerce Services”).</p>
 
@@ -1425,14 +1474,6 @@ var JETPACK_MU_WPCOM_SETTINGS = {"assetsUrl":"https://automattic.com/wp-content/
 
 
 <p class="wp-block-paragraph">You’re responsible for your Input, the use of any Output, and for complying with any applicable laws, so you must review all Output before using or publishing it. AI may occasionally generate Output that’s inaccurate, irrelevant, offensive, harmful, or similar to others’ content. Please see our <a href="https://automattic.com/ai-guidelines">AI Guidelines</a> for the policies you must comply with when you use AI features, details about the third-party providers we use to provide AI features, and helpful information about AI generally.</p>
-
-
-
-<p class="wp-block-paragraph"><strong>Telex</strong>. Any <a href="https://wordpress.org/blocks/">blocks</a> you create with <a href="https://telex.automattic.ai/">Telex</a> may be publicly available and associated with your profile, and shall be licensed to the public under the GPL (<a href="https://www.gnu.org/licenses/old-licenses/gpl-2.0.en.html">GPL version 2</a> or later).</p>
-
-
-
-<p class="wp-block-paragraph">In addition, you grant us a separate, worldwide, royalty-free, transferable, sub-licensable, and non-exclusive license to use, reproduce, modify, distribute, adapt, publicly display, and publish your blocks, username, and profile, for the purpose of of providing our Services and promoting your blocks and Telex. This license does not affect any ownership rights you may have in the Output.</p>
 </details>
 
 
@@ -1894,13 +1935,13 @@ var JETPACK_MU_WPCOM_SETTINGS = {"assetsUrl":"https://automattic.com/wp-content/
 								<div class="actnbr-panel__group"><a class="actnbr-menu__item actnbr-sitename" href="https://automattic.com"><img loading='lazy' alt='' src='https://automattic.com/wp-content/uploads/2026/10/a8c-favicon-1.png?w=50' srcset='https://automattic.com/wp-content/uploads/2026/10/a8c-favicon-1.png?w=50 1x, https://automattic.com/wp-content/uploads/2026/10/a8c-favicon-1.png?w=75 1.5x, https://automattic.com/wp-content/uploads/2026/10/a8c-favicon-1.png?w=100 2x, https://automattic.com/wp-content/uploads/2026/10/a8c-favicon-1.png?w=150 3x, https://automattic.com/wp-content/uploads/2026/10/a8c-favicon-1.png?w=200 4x' class='avatar avatar-50' height='50' width='50' /><span class="actnbr-menu__label">Automattic</span></a></div>																	<div class="actnbr-panel__group">
 										<div class="actnbr-message no-display" aria-live="polite"></div>
 										<form method="post" action="https://subscribe.wordpress.com" accept-charset="utf-8" class="no-display">
-																							<div class="actnbr-follow-count">Join 11,750 other subscribers</div>
+																							<div class="actnbr-follow-count">Join 11,751 other subscribers</div>
 																							<input type="email" name="email" placeholder="Want updates? Enter your email" class="actnbr-email-field" aria-label="Email address" />
 											<input type="hidden" name="action" value="subscribe" />
 											<input type="hidden" name="blog_id" value="54117" />
 											<input type="hidden" name="source" value="https://automattic.com/tos/" />
 											<input type="hidden" name="sub-type" value="actionbar-follow" />
-											<input type="hidden" id="_wpnonce" name="_wpnonce" value="e9ebc28ec5" />											<button type="submit" class="actnbr-button">Sign me up</button>
+											<input type="hidden" id="_wpnonce" name="_wpnonce" value="fc164cbb95" />											<button type="submit" class="actnbr-button">Sign me up</button>
 										</form>
 										<p class="actnbr-login-nudge">
 											Have a WordPress.com account? <a href="https://wordpress.com/log-in?redirect_to=https%3A%2F%2Fr-login.wordpress.com%2Fremote-login.php%3Faction%3Dlink%26back%3Dhttps%253A%252F%252Fautomattic.com%252Ftos%252F">Log in now.</a>										</p>
@@ -1981,7 +2022,7 @@ _stq = window._stq || [];
 _tkq.push(['storeContext', {'blog_id':'54117','blog_tz':'0','user_lang':'en','blog_lang':'en','user_id':'0'}]);
 		// Prevent sending pageview tracking from WP-Admin pages.
 		_stq.push(['view', {'blog':'54117','v':'wpcom','tz':'0','user_id':'0','post':'700369','subd':'automattic'}]);
-		_stq.push(['extra', {'crypt':'UE5tW3cvZGRWRT1KYTlKak98Rz9haG9wL35lbm9BTmhlUWM/cDdpK05BSyV2VmxZL3A1WXx2ZGN0fkxxJStucS1bK3JqVz9IcTYtSVpYZy8xUkc9ajhxV01rUUorS1VzKyY1WWJQT0xLTndETE1qJjRmNzhKYTIrUTksWiV1QkdfblYmSEtFeHNELGxJck81LjZwUkVUdEZIPWddNG81eDhpWUJ3M0JBREtsWEhxbVFvTzMvNlE5TkV0LGE='}]);
+		_stq.push(['extra', {'crypt':'UE5tW3cvZGRWRT1KYTlKak98Rz9haG9wL35lbm9BTmhlUWM/cDdpK05BSyV2VmxZL3A1WXx2ZGN0fkxxJStucS1bK3JqVz9IcTYtSVpYZy8xUkc9ajhxV01rUUorS1VzKyY1WWJQT0xLTndETE1qJjRmNzhKYTIrUTksWiV1QkdfblYmSEtFeHNELGxJck81LjZwUkVUdEZIPWddNG81eDhpWUJ3M0JBREtsWEhxbVFvTzNsVldMMnlQYUc='}]);
 _stq.push([ 'clickTrackerInit', '54117', '700369' ]);
 </script>
 <noscript><img src="https://pixel.wp.com/b.gif?v=noscript" style="height:1px;width:1px;overflow:hidden;position:absolute;bottom:1px;" alt="" /></noscript>
@@ -1989,8 +2030,6 @@ _stq.push([ 'clickTrackerInit', '54117', '700369' ]);
 		<script defer src="/wp-content/js/bilmur.min.js?i=19&amp;m=202646"></script> 	</body>
 </html>
 <!--
-	generated 67 seconds ago
-	generated in 0.426 seconds
-	served from batcache in 0.003 seconds
-	expires in 233 seconds
+	generated in 0.321 seconds
+	220477 bytes batcached for 300 seconds
 -->
