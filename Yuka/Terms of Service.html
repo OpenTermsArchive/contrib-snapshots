@@ -9,6 +9,45 @@
 
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
+    <script>
+  (function () {
+    var root = document.documentElement;
+    var PREF_NAME = "io.helpdocs.darkmode";
+    var DARK = "dark";
+    var LIGHT = "light";
+    var allowDark = true;
+
+    if (!allowDark) {
+      root.classList.remove("dark-mode");
+      root.classList.add("dark-mode-loaded");
+      return;
+    }
+
+    var pref = null;
+    try {
+      pref = new URLSearchParams(window.location.search).get("hd_color_scheme");
+    } catch (e) {
+      // No URLSearchParams: fall through to the stored preference.
+    }
+    if (pref !== DARK && pref !== LIGHT) {
+      try {
+        pref = window.sessionStorage.getItem(PREF_NAME);
+      } catch (e) {
+        // sessionStorage throws in private-mode and sandboxed contexts.
+      }
+    }
+    if (pref !== DARK && pref !== LIGHT) return;
+
+    if (pref === DARK) {
+      root.classList.add("dark-mode");
+    } else {
+      root.classList.remove("dark-mode");
+    }
+    root.classList.add("dark-mode-loaded");
+  })();
+</script>
+
+
         <link rel="shortcut icon" href="https://files.helpdocs.io/n0njida9x8/favico.png">
     
 
@@ -43,9 +82,9 @@
     
 
     
-    <script src="https://cdn.helpdocs.io/js/js.cookie.min.js?v=7908b94"></script>
+    <script src="https://cdn.helpdocs.io/js/js.cookie.min.js?v=9f8eb6f"></script>
 
-    <link id="gist-css" rel="stylesheet" href="https://cdn.helpdocs.io/css/highlightjs-github-gist.min.css?v=7908b94" async>
+    <link id="gist-css" rel="stylesheet" href="https://cdn.helpdocs.io/css/highlightjs-github-gist.min.css?v=9f8eb6f" async>
 
     
 
@@ -398,7 +437,7 @@ body {
                     style="display: initial !important; visibility: visible !important; text-decoration: none !important;"
                   >
                     <img
-                      src="https://cdn.helpdocs.io/img/logo_grey.png?v=7908b94"
+                      src="https://cdn.helpdocs.io/img/logo_grey.png?v=9f8eb6f"
                       alt="Powered by HelpDocs"
                       style="display: initial !important; visibility: visible !important; filter: brightness(0.6) !important; max-height: 30px !important;"
                     />
@@ -639,17 +678,17 @@ body {
 
 
 
-    <script src="https://cdn.helpdocs.io/js/highlight.min.js?v=7908b94"></script>
+    <script src="https://cdn.helpdocs.io/js/highlight.min.js?v=9f8eb6f"></script>
 
     
                       
         
-    <script src="https://cdn.helpdocs.io/js/libs/hdanalytics.js?v=7908b94"></script>
-    <script src="https://cdn.helpdocs.io/js/libs/instantsearch.js?v=7908b94"></script>
+    <script src="https://cdn.helpdocs.io/js/libs/hdanalytics.js?v=9f8eb6f"></script>
+    <script src="https://cdn.helpdocs.io/js/libs/instantsearch.js?v=9f8eb6f"></script>
 
     
 
-    <script src="https://cdn.helpdocs.io/js/libs/hdthemeutils.js?v=7908b94"></script>
+    <script src="https://cdn.helpdocs.io/js/libs/hdthemeutils.js?v=9f8eb6f"></script>
 
     
 
