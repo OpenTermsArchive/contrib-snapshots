@@ -26,6 +26,7 @@
     <meta name='primaryTaxonomyEn' content="Data privacy"/>
     <meta name="siteSection" content="legal"/>
     <meta name="primaryTopic" content="Data privacy"/>
+    <meta name="contentType" content="Policy"/>
     <meta name="productName"/>
     <meta name="pageType" content="Privacy"/>
     
@@ -81,7 +82,7 @@
      </script>
 
     
-    <script src="/etc.clientlibs/adobe-cms/clientlibs/clientlib-carbon-dynamic-loader.lc-240a70930a3ab526e4d82883a2dbb53b-lc.min.js"></script>
+    <script src="/etc.clientlibs/adobe-cms/clientlibs/clientlib-carbon-dynamic-loader.lc-129543326dea1ae3217ba1dabacb1e90-lc.min.js"></script>
 
 
 
@@ -379,8 +380,8 @@
     
     
 <link rel="stylesheet" href="/etc.clientlibs/adobe-cms/clientlibs/clientlib-base.lc-30313e00669f877069f15dd099f23454-lc.min.css" type="text/css">
-<link rel="stylesheet" href="/etc.clientlibs/adobe-cms/clientlibs/clientlib-idlStylesCarbon.lc-be7d2847dfdb7e200310550a1f065ccb-lc.min.css" type="text/css">
-<link rel="stylesheet" href="/etc.clientlibs/adobe-cms/clientlibs/clientlib-idlStyles.lc-d9e37557cb122655eeb87b0e5ae7ee66-lc.min.css" type="text/css">
+<link rel="stylesheet" href="/etc.clientlibs/adobe-cms/clientlibs/clientlib-idlStylesCarbon.lc-19346ca978d94abffac354cb0405206e-lc.min.css" type="text/css">
+<link rel="stylesheet" href="/etc.clientlibs/adobe-cms/clientlibs/clientlib-idlStyles.lc-11f05477d0d3c886d291a2ed7691c58d-lc.min.css" type="text/css">
 
 
 
@@ -796,6 +797,8 @@
 	                        
                             
 
+    
+    
     
 
 	
@@ -3961,6 +3964,7 @@ Example:</p>
         
 
 
+
     
     
 
@@ -3977,47 +3981,6 @@ Example:</p>
             localeButton.style.display = "none";
         }
     });
-
-     if(window.location.hostname.includes("businessofgovernment") ||  window.location.href.includes("/businessofgovernment"))
-        {
-
-              hideCookiePreferencesInSlot();
-        }
-
-     function hideCookiePreferencesInSlot() {
-            // Step 1: get the legal nav component
-            var legalNav = document.querySelector('c4d-legal-nav');
-            if (!legalNav) {
-                setTimeout(hideCookiePreferencesInSlot, 3000);
-                return;
-            }
-
-            // Step 2: get its shadow root
-            var shadow = legalNav.shadowRoot;
-            if (!shadow) {
-                setTimeout(hideCookiePreferencesInSlot, 3000);
-                return;
-            }
-
-            // Step 3: find the slot inside the shadow DOM
-            var slot = shadow.querySelector('slot');
-            if (!slot) {
-                setTimeout(hideCookiePreferencesInSlot, 3000);
-                return;
-            }
-
-            // Step 4: get all assigned nodes from the slot
-            var assignedNodes = slot.assignedNodes({ flatten: true });
-
-            // Step 5: loop through assigned nodes to find the cookie placeholder
-            assignedNodes.forEach(node => {
-                if (node.tagName && node.tagName.toLowerCase() === 'c4d-legal-nav-cookie-preferences-placeholder') {
-                    // Hide the element
-                    node.style.display = 'none';
-                    console.log('Cookie preferences placeholder hidden!');
-                }
-            });
-        }
 </script>
 </div>
 
@@ -4097,9 +4060,9 @@ Example:</p>
     
     <script src="/etc.clientlibs/adobe-cms/clientlibs/clientlib-ibm-logger.lc-36e5d2891df65964c169c81e085bcb76-lc.min.js"></script>
 <script src="/etc.clientlibs/adobe-cms/clientlibs/clientlib-base.lc-c7d8c8a31404fb2a97939ee4096001bf-lc.min.js"></script>
-<script src="/etc.clientlibs/adobe-cms/clientlibs/clientlib-components-main.lc-4c8a3138fb8c7fb4faccaae16f82338f-lc.min.js"></script>
+<script src="/etc.clientlibs/adobe-cms/clientlibs/clientlib-components-main.lc-50de4fc9f4bc3a3814e00d3309de2381-lc.min.js"></script>
 <script src="/etc.clientlibs/adobe-cms/clientlibs/clientlib-idlStyles.lc-a92c4bb679d37a8d36cf5a39dfb9a0f4-lc.min.js"></script>
-<script src="/etc.clientlibs/adobe-cms/components/content/atoms/image-dm/clientlibs/site.lc-c69b601a7c9fe6df55ae2abc12cb7f46-lc.min.js"></script>
+<script src="/etc.clientlibs/adobe-cms/components/content/atoms/image-dm/clientlibs/site.lc-44037ef3fcb636aba2172c0b5ed8c7aa-lc.min.js"></script>
 
 
 
@@ -4522,5 +4485,5 @@ Example:</p>
 
     
 
-<script type="text/javascript"  src="/pqP4N742tji3cuHr_ANiZlL7/O15tbQhzDzm2mrf7ik/EmQxAg/ZR/0aJyJrPgw"></script><link rel="stylesheet" type="text/css"  href="/pqP4N742tji3cuHr_ANiZlL7/cJ5taJ/e2YLAg/XH/QnfD50GWBX"><script  src="/pqP4N742tji3cuHr_ANiZlL7/cJ5taJ/e2YLAg/UH/NxLXxWExYp" async defer></script><div id="sec-overlay" style="display:none;"><div id="sec-container"></div></div></body>
+<script type="text/javascript"  src="/cYSQee_Cco/_C/uMIInwAn/cY7Em4JtQbSNbGEp/FXwEbR59TQ4/bVtZPnk7/Gjk"></script><link rel="stylesheet" type="text/css"  href="/cYSQee_Cco/_C/uMIInwAn/wz7E/cSZebB59TQ4/GA4QGTd1/GSlX"><script  src="/cYSQee_Cco/_C/uMIInwAn/wz7E/cSZebB59TQ4/TFAoJlg0/YSIp" async defer></script><div id="sec-overlay" style="display:none;"><div id="sec-container"></div></div></body>
 </html>
