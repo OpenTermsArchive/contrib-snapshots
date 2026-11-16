@@ -119,10 +119,10 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 <!-- Main website navigation -->
 <header id="global_header">
     <div class="content_wrap">
-        <input type="checkbox" id="hamburger-checkbox" class="header-checkbox" aria-label="Toggle Navigation">
         <div id="global_header_logo">
             <a href="/" aria-label="Go to Wide Angle Software Homepage"><img class="img_no_border" src="/images/style/logo_ns2.png" alt="Wide Angle Software" width="180" height="60"  /></a>
         </div>
+        <a id="skip-nav" href="#main">Skip to main content</a>
         <nav id="global_header_navigation">
             <ul id="main_navigation_list">
                 <li id="products_header_link" class="global_header_link"><a href="/products/">Products <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" fill="currentColor" viewBox="0 0 12 10">
@@ -226,21 +226,21 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
         </nav>
 
         <!-- Mobile controls -->
-        <label id="hamburger_nav_icon_wrapper" class="header-toggle" for="hamburger-checkbox">
-            <div id="hamburger_nav_icon">
+        <button type="button" id="hamburger_nav_icon_wrapper" aria-label="Main navigation" class="hamburger-button" aria-expanded="false" aria-controls="global_header_navigation">
+            <div id="hamburger_nav_icon" aria-hidden="true">
                 <span></span>
                 <span></span>
                 <span></span>
                 <span></span>
             </div>
-        </label>
+        </button>
 
     </div>
 </header>
 <div class="clear"></div>
 
 <!-- Start Main content -->
-<main>  <div id="content_sub_navigation" class="policies-subnav">
+<main id="main">  <div id="content_sub_navigation" class="policies-subnav">
     <a class="content_sub_navigation_link" href="/about.php">About Us</a>
     <a class="content_sub_navigation_link" href="/cookies/">Cookies</a>
     <a class="content_sub_navigation_link" href="/terms/">Terms</a>
@@ -541,11 +541,11 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
             "de" == b[a].hreflang
                 ? (c += "<li class='language_option'><a href='" + b[a].href + "'>Deutsch (de)</a></li>", d++)
                 : "fr" == b[a].hreflang
-                ? (c += "<li class='language_option'><a href='" + b[a].href + "'>Fran&ccedil;ais (fr)</a></li>", d++)
-                : "es" == b[a].hreflang
-                ? (c += "<li class='language_option'><a href='" + b[a].href + "'>Espa&ntilde;ol (es)</a></li>", d++)
-                : "ja" == b[a].hreflang &&
-                  (c += "<li class='language_option'><a href='" + b[a].href + "'>\u65E5\u672C\u8A9E (jp)</a></li>", d++),
+                    ? (c += "<li class='language_option'><a href='" + b[a].href + "'>Fran&ccedil;ais (fr)</a></li>", d++)
+                    : "es" == b[a].hreflang
+                        ? (c += "<li class='language_option'><a href='" + b[a].href + "'>Espa&ntilde;ol (es)</a></li>", d++)
+                        : "ja" == b[a].hreflang &&
+                        (c += "<li class='language_option'><a href='" + b[a].href + "'>\u65E5\u672C\u8A9E (jp)</a></li>", d++),
                 a++;
 
         c += "</ul></div>";
@@ -559,7 +559,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
     }
 
     // Wait until the DOM is fully loaded before querying page elements.
-    document.addEventListener('DOMContentLoaded', function() {
+    document.addEventListener('DOMContentLoaded', function () {
 
         // Primary navigation elements.
         const hamburgerIcon = document.getElementById('hamburger_nav_icon_wrapper');
@@ -578,7 +578,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
         function addFastEventListener(element, event, handler, preventDefault = false) {
             if (!element) return;
 
-            element.addEventListener(event, function(e) {
+            element.addEventListener(event, function (e) {
                 if (preventDefault) {
                     e.preventDefault();
                 }
@@ -609,6 +609,10 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
             if (hamburgerIcon && navigationMenu) {
                 hamburgerIcon.classList.toggle('open');
                 navigationMenu.classList.toggle('open');
+
+                //Update aria label if open/closed
+                const isOpen = hamburgerIcon.getAttribute('aria-expanded') !== 'true'
+                hamburgerIcon.setAttribute('aria-expanded', String(isOpen));
             }
         }
 
@@ -634,8 +638,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
                 }
             }
 
-            addFastEventListener(productsLink, "click", handleProductsClick);
-            addFastEventListener(productsLink, "touchstart", handleProductsClick, true);
+            productsLink.addEventListener('click', handleProductsClick)
         }
 
         // Dynamically build the language picker if the placeholder exists.
@@ -653,7 +656,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
                  * Toggles the language list on touch devices.
                  * The "open" class is expected to be handled via CSS.
                  */
-                addFastEventListener(languageCurrent, 'touchstart', function(event) {
+                addFastEventListener(languageCurrent, 'touchstart', function (event) {
                     event.preventDefault();
                     touchHandled = true;
                     languageSelection.classList.toggle('open');
