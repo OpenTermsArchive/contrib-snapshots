@@ -246,8 +246,9 @@
 
 
 <script>
-(function(){try{var s=sessionStorage.getItem('$userService')||localStorage.getItem('$userService');if(s){var d=JSON.parse(s);if(d&&d.account_id&&d.emailId)document.documentElement.classList.add('vh-logged-in');}}catch(e){}}());
+(function(){try{var p=window.location.pathname||'';if(p==='/nsa/ui/auth/'||p.indexOf('/nsa/ui/auth/')===0)document.documentElement.classList.add('vh-agentic-suppressed');}catch(e){}try{var s=sessionStorage.getItem('$userService')||localStorage.getItem('$userService');if(s){var d=JSON.parse(s);if(d&&d.account_id&&d.emailId)document.documentElement.classList.add('vh-logged-in');}}catch(e){}}());
 </script>
+
 <div class="nav-header visibleHeader" role="banner" data-gtm-placement="header" data-logout-redirect-url="/buy/plans" data-logout-context-paths="/m">
     <div class="navigation-main-wrapper" id="navigationMainWrapper">
         <div class="mobile-menu">
