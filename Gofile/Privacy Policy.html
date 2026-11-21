@@ -36,6 +36,7 @@
 
   <!-- Rendered-page signal for crawler-serving middleware. -->
   <script>window.prerenderReady = false;</script>
+  <script>window.__gfBoot = Date.now();</script>
   <script src="/js/wt.obf.js" defer=""></script>
   <script src="/assets/vendor/lucide.min.js" defer=""></script>
   <script type="module" src="/js/app.js"></script>
@@ -65,14 +66,14 @@
       <!-- Boot skeleton; account rows render after boot. -->
       <div>
         <div id="account-list" class="flex max-h-60 flex-col gap-1 overflow-y-auto overscroll-y-contain">
-    <button type="button" data-account-id="abd77bed-237b-43b8-af45-ad9ea637130e" class="group/acc relative flex w-full touch-pan-y items-center gap-3 rounded-xl px-3 py-2.5 text-left select-none touch-callout-none transition-colors duration-150 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-brand-400 lg:group-data-[collapsed=true]/sidebar:justify-center lg:group-data-[collapsed=true]/sidebar:px-2 bg-brand-500/10 shadow-[inset_0_0_0_1px_rgb(59_130_246/0.25)]" aria-current="true" aria-haspopup="menu" aria-expanded="false">
+    <button type="button" data-account-id="9543ff37-7dd6-4079-a407-b96304ac0905" class="group/acc relative flex w-full touch-pan-y items-center gap-3 rounded-xl px-3 py-2.5 text-left select-none touch-callout-none transition-colors duration-150 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-brand-400 lg:group-data-[collapsed=true]/sidebar:justify-center lg:group-data-[collapsed=true]/sidebar:px-2 bg-brand-500/10 shadow-[inset_0_0_0_1px_rgb(59_130_246/0.25)]" aria-current="true" aria-haspopup="menu" aria-expanded="false">
       <span class="relative flex size-9 shrink-0 items-center justify-center">
-        <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAEAAAABACAYAAACqaXHeAAACdElEQVR4AezZMW4cMQwF0Mm0QXrfIldJmhwjyVGSHCMXSZ/ON3BvuF6D3cfbwQiCK49ogAC/+UlJFD+0Xu//Hr/eZuz/5y+3GZupfcSdWau4RzXOfrdvi/90AxYfgG1/+P5rS/v47bad2aeH31vay98P25lZa9Rw+We1K5Z7Kd98cZ61/JbA6EauHu8JePrzc0srXaU5Ackt37iaMz6LR/VqD2nWz7OUn9zyewLs2Gq4J0CNiettTTPuxJTO0oybL5aftco3bn7utXzj4p4AO7oaXm4CvOC7BpRu0uqtTLOAmhKXbtPMFye3fOuJzc+9lp9nKV/+XQMkXB13A65+w6Pz7aWztNJN2qhA5pYvv/7mTivOmSW3fOuZa1ycZynf/JaAHVsN9wR4476zpcO0ekvT5KuxUX3z5VtPfu6l/Nxr+fKt3xNgR1bDPQGlkzQnoN7OtOenH1uaGjU/ueXLFxcnzXojfu61fPPzrOX3BNih1fDlJ2B0oXvqrXwTfEfVoHHzxfLF8sXyZ/dTZ0zrCbDDq+GegNkbV4P1+TvNuBpN7pEv33rmGJ89T0/AbMeuxu8J8EbVmJoU55tavvFZjcq3Xq2RZlzseTxvT4AdWQ33BHjj9Td0mpqUL5avBrP2kS/feq4nlu8a8nsC7Mhq+HITMHuBd/8brO/J0nxXZxdQg2pULH92PfebZynfeE/AbIevxu8JGN2oGhWP8o2rQbH8EXY/4lF+T8CoQ1eP9wSomdE77Gd18Vs17cRZz/XE5nsez9sTYMdWwz0Baqw+L6c5Efl93JGvxsyfxdY7WjN/Z/08S/metyfAjq2G3/0EvPXCXgEAAP//z7LwlQAAAAZJREFUAwAPekFtbQb1HwAAAABJRU5ErkJggg==" alt="" width="36" height="36" draggable="false" class="size-9 rounded-full shadow-lg shadow-brand-950/50 ring-1 ring-brand-400/60">
+        <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAEAAAABACAYAAACqaXHeAAACjElEQVR4AeyYsU1DQRBET78AQgqgARqgAjIaoANEQEhMSICoABogowIaoAByREgBGE02emd59GVZgru1NNLO3729vb0dfdvLz+PFxnH1cbJxuG+b/fn0snEwxn2y6SdXjGOtn/F+Ftn0L23yTzVg8gFoy/X5e3OwIe6T/XV02Rx3ZzfN4T7Z7pOtZ7ugGAdj3Seb/uuV5ykJ8MZn4zUBt2/3zZEmQLpz+FrZ7pOtZw492wWPlc1YPXPQn+r3tbJrAlLHRvfXBKQbfng9bQ7pxpE0mPzcP8XT77XI9lplMz95TQA7MhufbgJ4wQs1xQB+16afXDp0JL/Hyk7x9JOnennemgB2cDZeEyDdOfTudFAz5L5W9qEnSHs4WA+5n0W2r5VdE3DoG/vr+WsCqBm+R6Ubh3Tj4A0ffz83B/3cj5zxnks2/V6LbK9VNs/D/WoC2NHZeE0Ab5waSRpifPpfXrrcBdbDfNyPPNXL/DUB7MhsfPgJSBfaNUDvUkdK4LGyqW+up6bJGc982sPBeHKPlU1/1wAGjM6rAaPfcDrfQo3xvUouHTn0/dyRNO1rt9ksmPl8L9nMwXrJed6SADs+G68J2PfGqVHmW6tRxjNf2o/xidcEpA6N7q8JoKb4nkwTQM2Sp/cw92M885Gn+pif560JSB0c3T/cBKy9sK4B/E8taY6aTQUwP3lan/ZjvSl/14BUwGj+asBoN7r2PN0EUGPk+g3uoObcJ3ttQYxXDkfaj/WSM3/XAAaMzqsBo99wOl83AdQYE/C7NDWW3ruu520292M+7sd6uD6dp2sAE4zOqwGj33A630KNUGNMwN/XXM94+qlpcsanfKyH8TwP85cE2LHZ+L+fgH0v7BcAAP//QGhiZAAAAAZJREFUAwDc5FcN/0CiHQAAAABJRU5ErkJggg==" alt="" width="36" height="36" draggable="false" class="size-9 rounded-full shadow-lg shadow-brand-950/50 ring-1 ring-brand-400/60">
         
         <span class="absolute -bottom-0.5 -right-0.5 size-2.5 rounded-full bg-brand-400 ring-2 ring-surface-raised" title="Active account"></span>
       </span>
       <span class="min-w-0 flex-1 lg:group-data-[collapsed=true]/sidebar:hidden">
-        <span class="block truncate text-sm font-semibold text-white">Guest 6582775024</span>
+        <span class="block truncate text-sm font-semibold text-white">Guest 1143331189</span>
         <span class="block truncate text-xs text-slate-500">
           Guest account
         </span>
