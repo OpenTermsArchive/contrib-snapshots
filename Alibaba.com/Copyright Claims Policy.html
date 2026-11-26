@@ -14,7 +14,7 @@
 
 </head>
 <body data-spm='8038972'><script>
-with(document)with(body)with(insertBefore(createElement("script"),firstChild))setAttribute("exparams","category=&userid=&aplus&yunid=&&trid=2103243417956530906025851e0d09&asid=AQAAAADifQdr+VHjZgAAAAAI7EULD82nBw==",id="tb-beacon-aplus",src=(location>"https"?"//g":"//g")+".alicdn.com/alilog/mlog/aplus_v2.js")
+with(document)with(body)with(insertBefore(createElement("script"),firstChild))setAttribute("exparams","category=&userid=&aplus&yunid=&&trid=2101dd0617956962979472553e0cc7&asid=AQAAAACqJghrdgaEMgAAAAB0Dg0XP8oqBw==",id="tb-beacon-aplus",src=(location>"https"?"//g":"//g")+".alicdn.com/alilog/mlog/aplus_v2.js")
 </script>
 
 <script>
@@ -44,7 +44,6 @@ with(document)with(body)with(insertBefore(createElement("script"),firstChild))se
     
 <script>
     (function () {
-        var serverRuleLanguageLocked = 'true' === 'true';
         // Hash SPA 不会重新渲染 VM；详情与普通页面切换时刷新一次，以同步服务端规则语言状态。
         var isNumericId = function (value) {
             return /^\d+$/.test(value || '');
@@ -55,7 +54,7 @@ with(document)with(body)with(insertBefore(createElement("script"),firstChild))se
             var hashPath = hash.substring(1, hashQueryIndex < 0 ? hash.length : hashQueryIndex);
             var hashParams = new URLSearchParams(hashQueryIndex < 0 ? '' : hash.substring(hashQueryIndex + 1));
             var searchParams = new URLSearchParams(window.location.search);
-            var isRuleDetail = hashPath === '/rule/detail';
+            var isRuleDetail = /^\/(rule|ruleStudy|ruleStudy1|ruleStudy2|ruleHOR)\/detail$/.test(hashPath);
 
             if (isRuleDetail) {
                 var hashRuleId = hashParams.get('ruleId');
@@ -67,26 +66,28 @@ with(document)with(body)with(insertBefore(createElement("script"),firstChild))se
                     searchParams.set('type', 'detail');
                     searchParams.set('ruleId', hashRuleId);
                     searchParams.set('cId', hashCategoryId);
-                    replacePageSearch(searchParams, hash);
-                    return true;
+                    return replacePageSearch(searchParams, hash);
                 }
                 return false;
             }
 
-            if (serverRuleLanguageLocked || searchParams.get('type') === 'detail') {
+            if (searchParams.get('type') === 'detail') {
                 searchParams.delete('type');
                 searchParams.delete('ruleId');
                 searchParams.delete('cId');
-                replacePageSearch(searchParams, hash);
-                return true;
+                return replacePageSearch(searchParams, hash);
             }
             return false;
         };
         var replacePageSearch = function (searchParams, hash) {
             var search = searchParams.toString();
-            window.location.replace(
-                window.location.pathname + (search ? '?' + search : '') + hash
-            );
+            var target = window.location.pathname + (search ? '?' + search : '') + hash;
+            var current = window.location.pathname + window.location.search + window.location.hash;
+            if (target === current) {
+                return false;
+            }
+            window.location.replace(target);
+            return true;
         };
 
         if (syncRuleLanguageRoute()) {
