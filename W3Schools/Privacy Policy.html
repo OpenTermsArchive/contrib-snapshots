@@ -64,8 +64,8 @@ uic_prov_pre("default","",subjectFolder);
 <link rel="preload" href="/lib/fonts/source-sans-pro-v14-latin-700.woff2" as="font" type="font/woff2" crossorigin> 
 <link rel="preload" href="/lib/fonts/source-sans-pro-v14-latin-600.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="preload" href="/lib/fonts/W3HomeSSans-400.woff2" as="font" type="font/woff2" crossorigin>
-<link rel="stylesheet" href="/lib/topnav/main.v1.0.155.css">
-<link rel="stylesheet" href="/lib/my-learning/main.v1.0.108.css">
+<link rel="stylesheet" href="/lib/topnav/main.v1.0.157.css">
+<link rel="stylesheet" href="/lib/my-learning/main.v1.0.109.css">
 <link rel="stylesheet" href="/lib/pathfinder/main.v1.0.12.css">
 <link rel="stylesheet" href="/lib/w3css/w3css.v6.0.5.css">
 <link rel="stylesheet" href="/lib/w3schools/main.v1.0.8.css">
@@ -148,9 +148,9 @@ function w3_getStyleValue(elmnt,style) {
 </script>
 
 <script src="/lib/common-deps/main.v1.0.24.js"></script>
-<script src="/lib/user-session/main.v1.0.52.js"></script>
-<script src="/lib/topnav/main.v1.0.155.js"></script>
-<script src="/lib/my-learning/main.v1.0.108.js"></script>
+<script src="/lib/user-session/main.v1.0.55.js"></script>
+<script src="/lib/topnav/main.v1.0.157.js"></script>
+<script src="/lib/my-learning/main.v1.0.109.js"></script>
 
 </head><body>
 
@@ -393,6 +393,7 @@ function w3_getStyleValue(elmnt,style) {
     </div>
     <div class="tnb-right-section">
       <a
+        id="tnb-adventure-badge"
         href="/adventure/index.php"
         class="tnb-adventure-badge w3-bar-item ga-top ga-adventure-top"
         target="_blank"
@@ -403,7 +404,7 @@ function w3_getStyleValue(elmnt,style) {
         <span class="tnb-adventure-badge-new">NEW</span>
         <img
           class="tnb-adventure-badge-mascot"
-          src="/adventure/img/mascot-lynx.png"
+          src="/lib/topnav/adventure-app/images/mascot-lynx.png"
           width="64"
           height="82"
           alt=""
@@ -418,7 +419,7 @@ function w3_getStyleValue(elmnt,style) {
       <!-- < user-anonymous -->
       <div
         id="tnb-login-btn"
-        class="user-anonymous tnb-login-btn w3-bar-item w3-btn w3-hide bar-item-hover w3-right w3s-green ga-top ga-top-login"
+        class="user-anonymous tnb-profile-action-btn tnb-login-btn w3-bar-item w3-btn w3-hide bar-item-hover w3-right w3s-green ga-top ga-top-login"
         title="Sign in to your account"
         aria-label="Sign in to your account"
         tabindex="0"
@@ -442,7 +443,7 @@ function w3_getStyleValue(elmnt,style) {
       </div>
       <!-- <div
         id="tnb-signup-btn"
-        class="user-anonymous tnb-signup-btn w3-bar-item w3-button w3-hide w3-right ws-green ws-hover-green ga-top ga-top-signup"
+        class="user-anonymous tnb-profile-action-btn tnb-signup-btn w3-bar-item w3-button w3-hide w3-right ws-green ws-hover-green ga-top ga-top-signup"
         title="Sign Up to Improve Your Learning Experience"
         aria-label="Sign Up to Improve Your Learning Experience"
         tabindex="0"
@@ -455,7 +456,7 @@ function w3_getStyleValue(elmnt,style) {
       <a
         id="tnb-user-profile"
         href="https://profile.w3schools.com/log-in"
-        class="user-authenticated user-profile-btn w3-alt-btn w3-hide ga-top ga-top-profile"
+        class="user-authenticated tnb-profile-action-btn user-profile-btn w3-alt-btn w3-hide ga-top ga-top-profile"
         title="Your W3Schools Profile"
         aria-label="Your W3Schools Profile"
       >
@@ -721,6 +722,7 @@ function w3_getStyleValue(elmnt,style) {
       </a>
       -->
       <!-- > user-authenticated - action-btn -->
+      <div id="tnb-right-section-inner-dynamic" aria-hidden="true"></div>
     </div>
   </div>
   <nav
@@ -862,7 +864,7 @@ function w3_getStyleValue(elmnt,style) {
       >
         <img
           class="tnb-adventure-menu-mascot"
-          src="/adventure/img/mascot-lynx.png"
+          src="/lib/topnav/adventure-app/images/mascot-lynx.png"
           width="64"
           height="82"
           alt=""
@@ -985,7 +987,8 @@ function w3_getStyleValue(elmnt,style) {
       </div>
       <a
         class="user-authenticated w3-hide w3-button ga-top ga-top-logout"
-        href="https://profile.w3schools.com/logout"
+        href="#"
+        data-tnb-action="logout"
         title="Logout"
         aria-label="Logout"
       >
@@ -1485,7 +1488,8 @@ function w3_getStyleValue(elmnt,style) {
               </p>
               <div class="exnav-quick-social">
                 <a
-                  href="https://profile.w3schools.com/signup"
+                  href="javascript:void(0)"
+                  onclick="TopNavBar.signInWithSocialNetworkProvider('Google')"
                   title="Sign in with Google"
                 >
                   <svg
@@ -1512,7 +1516,8 @@ function w3_getStyleValue(elmnt,style) {
                   </svg>
                 </a>
                 <a
-                  href="https://profile.w3schools.com/signup"
+                  href="javascript:void(0)"
+                  onclick="TopNavBar.signInWithSocialNetworkProvider('Facebook')"
                   title="Sign in with Facebook"
                 >
                   <svg
@@ -1525,7 +1530,8 @@ function w3_getStyleValue(elmnt,style) {
                   </svg>
                 </a>
                 <a
-                  href="https://profile.w3schools.com/signup"
+                  href="javascript:void(0)"
+                  onclick="TopNavBar.signInWithSocialNetworkProvider('Github')"
                   title="Sign in with GitHub"
                 >
                   <svg
@@ -2479,7 +2485,7 @@ function w3_getStyleValue(elmnt,style) {
                       </div>
                       <div class="services-adventure-phone">
                         <img
-                          src="/adventure/img/screen-map.png"
+                          src="/lib/topnav/adventure-app/images/screen-map.png"
                           width="420"
                           height="868"
                           alt=""
@@ -2487,7 +2493,7 @@ function w3_getStyleValue(elmnt,style) {
                         />
                         <img
                           class="services-adventure-mascot"
-                          src="/adventure/img/mascot-lynx.png"
+                          src="/lib/topnav/adventure-app/images/mascot-lynx.png"
                           width="230"
                           height="295"
                           alt=""
@@ -2878,7 +2884,7 @@ function w3_getStyleValue(elmnt,style) {
                       Use our color picker to find different RGB, HEX and HSL colors.
                       <img
                         class="w3-hide-medium"
-                        src="/images/colorpicker2000.png"
+                        src="/lib/topnav/images/colorpicker2000.png"
                         alt="A circular color wheel showing the gradation of colors in the spectrum"
                         loading="lazy"
                         style="margin-left: 15px; width: 35px; position: absolute; top: 15px; right: 15px"
@@ -2957,7 +2963,7 @@ function w3_getStyleValue(elmnt,style) {
                       W3Schools Coding Game! Help the lynx collect pine cones
                       <img
                         class="w3-hide-medium"
-                        src="/signup/lynxlogo.svg"
+                        src="/lib/topnav/images/lynxlogo.svg"
                         alt="Lynx logo"
                         style="margin-left: 15px; width: 35px; position: absolute; top: 7px; right: 15px"
                       />
@@ -3503,6 +3509,7 @@ body.darkpagetheme #scroll_left_btn > span {
   <a href="/angularjs/default.asp" class="ga-nav" title="Angular.js Tutorial">ANGULARJS</a>
   <a href="/git/default.asp" class="ga-nav" title="Git Tutorial">GIT</a>
   <a href="/postgresql/index.php" class="ga-nav" title="PostgreSQL Tutorial">POSTGRESQL</a>
+  <a href="/sqlite/default.asp" class="ga-nav" title="SQLite Tutorial">SQLITE</a>
   <a href="/mongodb/index.php" class="ga-nav" title="MongoDB Tutorial">MONGODB</a>
   <a href="/asp/default.asp" class="ga-nav" title="ASP Tutorial">ASP</a>
   <a href="/ai/default.asp" class="ga-nav" title="A.I. Tutorial">AI</a>
@@ -3520,8 +3527,12 @@ body.darkpagetheme #scroll_left_btn > span {
   <a href="/htmlcss/default.asp" class="ga-nav" title="Introduction to HTML &amp; CSS">INTRO TO HTML &amp; CSS</a>
   <a href="/bash/index.php" class="ga-nav" title="Bash Tutorial">BASH</a>
   <a href="/rust/index.php" class="ga-nav" title="Rust Tutorial">RUST</a>
+  <a href="/dart/index.php" class="ga-nav" title="Dart Tutorial">DART</a>
+  <a href="/playwright/index.php" class="ga-nav" title="Playwright Tutorial">PLAYWRIGHT</a>
   <a href="/tools/index.php" class="ga-nav" title="Web Developer Tools">TOOLS</a>
   <a href="/math/index.php" class="ga-nav" title="Math Tutorial">MATH</a>
+  <a href="/googlesheets/index.php" class="ga-nav" title="Google Sheets Tutorial">SHEETS</a>
+  <a href="/powerbi/index.php" class="ga-nav" title="Power BI Tutorial">POWER BI</a>
   <a href="javascript:void(0)" style="width:50px;visibility:hidden;"></a>  
 
 </div>
@@ -5351,7 +5362,7 @@ of all content. While using W3Schools, you agree to have read and accepted our <
 
 
 </div>
-<!-- <script src="/lib/topnav/main.v1.0.155.js"></script> -->
+<!-- <script src="/lib/topnav/main.v1.0.157.js"></script> -->
 <script src="/lib/w3schools_footer.v1.0.2.js"></script>
 <script src="/lib/w3schools_features.js?update=20261117"></script>
 
